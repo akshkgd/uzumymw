@@ -1,0 +1,24 @@
+require('./jquery.min.js');
+require('./popper.min.js');
+require('./bootstrap2.js');
+require('./bootstrap.js')
+// require('./aos');
+// require('./clipboard.min.js');
+// require('./jquery.fancybox.min.js');
+require('./flatpickr.min.js');
+require('./flickity.pkgd.min.js');
+// require('./ion.rangeSlider.min.js');
+// require('./isotope.pkgd.min.js');
+// require('./jarallax.min.js');
+// require('./jarallax-video.min.js');
+// require('./jarallax-element.min.js');
+require('./jquery.countdown.min.js');
+// require('./jquery.smartWizard.min.js');
+// require('./plyr.polyfilled.min.js');
+// require('./prism.js');
+require('./scrollMonitor.js');
+require('./smooth-scroll.polyfills.min.js');
+require('./svg-injector.umd.production.js');
+// require('./twitterFetcher_min.js');
+// require('./typed.min.js');
+require('./theme.js');

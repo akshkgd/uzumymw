@@ -1,0 +1,6 @@
+{
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 100,
+    "editor.fontSize": 13,
+    "prettier.embeddedLanguageFormatting": "off"
+}

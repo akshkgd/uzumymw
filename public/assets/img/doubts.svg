@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="72" height="72" viewBox="0 0 72 72">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #707070;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #0f8cff;
+        stroke: #0f8cff;
+      }
+
+      .cls-3, .cls-4, .cls-5 {
+        stroke-linecap: round;
+      }
+
+      .cls-3, .cls-4 {
+        stroke-width: 3px;
+      }
+
+      .cls-4 {
+        fill: none;
+        stroke: #fff;
+      }
+
+      .cls-5 {
+        fill: #fdc601;
+        stroke: #fdc601;
+        stroke-width: 2px;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3394" data-name="Rectangle 3394" class="cls-1" width="72" height="72" transform="translate(-6133 -7312)"/>
+    </clipPath>
+  </defs>
+  <g id="doubts" class="cls-2" transform="translate(6133 7312)">
+    <g id="Group_18288" data-name="Group 18288" transform="translate(-7611.672 -3839.55)">
+      <ellipse id="Ellipse_102" data-name="Ellipse 102" class="cls-3" cx="23.637" cy="23.638" rx="23.637" ry="23.638" transform="translate(1491.23 -3460.058)"/>
+      <path id="Path_15289" data-name="Path 15289" class="cls-4" d="M1499.1-3452.628s-.633-6.259,5.488-6.532c7.53-.337,7.569,5.962,7.569,5.962s.712,7.3-6.767,7.751a.783.783,0,0,0-.75.774c0,3.775.008,5.21.008,5.21" transform="translate(9.832 9.887)"/>
+      <ellipse id="Ellipse_102-2" data-name="Ellipse 102" class="cls-5" cx="1.866" cy="1.866" rx="1.866" ry="1.866" transform="translate(1512.506 -3424.898)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="72" height="72" viewBox="0 0 72 72">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #707070;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #0f8cff;
+      }
+
+      .cls-4, .cls-9 {
+        fill: none;
+      }
+
+      .cls-4, .cls-6 {
+        stroke: #fff;
+      }
+
+      .cls-4, .cls-7 {
+        stroke-linecap: round;
+      }
+
+      .cls-4, .cls-6, .cls-7 {
+        stroke-width: 2px;
+      }
+
+      .cls-5 {
+        fill: #fec601;
+      }
+
+      .cls-6 {
+        fill: #e21032;
+      }
+
+      .cls-7 {
+        fill: rgba(0,0,0,0);
+        stroke: #021028;
+        stroke-linejoin: round;
+      }
+
+      .cls-8 {
+        stroke: none;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3379" data-name="Rectangle 3379" class="cls-1" width="72" height="72" transform="translate(-6133 -7312)"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_536" data-name="Mask Group 536" class="cls-2" transform="translate(6133 7312)">
+    <g id="Group_18264" data-name="Group 18264" transform="translate(-6125 -7293.697)">
+      <path id="Path_15275" data-name="Path 15275" class="cls-3" d="M112.636-81.243H64.561v-33h48.075v33Z" transform="translate(-64.561 114.243)"/>
+      <line id="Line_320" data-name="Line 320" class="cls-4" x2="30.19" transform="translate(9.282 7.921)"/>
+      <line id="Line_321" data-name="Line 321" class="cls-4" x2="30.19" transform="translate(9.282 15.208)"/>
+      <g id="Group_18263" data-name="Group 18263" transform="translate(35.274 17.422)">
+        <path id="Path_15276" data-name="Path 15276" class="cls-5" d="M112.33-83.639a12.973,12.973,0,0,1-.135,1.685H88.867a12.978,12.978,0,0,1-.123-1.685,11.685,11.685,0,0,1,2.366-7.077,11.8,11.8,0,0,1,3.75-3.243,11.587,11.587,0,0,1,5.671-1.467,11.713,11.713,0,0,1,5.589,1.4,11.717,11.717,0,0,1,3.843,3.306A11.686,11.686,0,0,1,112.33-83.639Z" transform="translate(-88.744 106.229)"/>
+        <circle id="Ellipse_102" data-name="Ellipse 102" class="cls-5" cx="4.782" cy="4.782" r="4.782" transform="translate(7.012 2)"/>
+      </g>
+      <g id="Ellipse_769" data-name="Ellipse 769" class="cls-6" transform="translate(-2 -7)">
+        <circle class="cls-8" cx="5.5" cy="5.5" r="5.5"/>
+        <circle class="cls-9" cx="5.5" cy="5.5" r="4.5"/>
+      </g>
+    </g>
+    <g id="Group_17334" data-name="Group 17334" transform="translate(-2936.8 -533.375) rotate(30)">
+      <path id="Union_26" data-name="Union 26" class="cls-7" d="M4,4,0,8ZM0,0,4,4Z" transform="translate(-6130 -4272) rotate(180)"/>
+      <line id="Line_139" data-name="Line 139" class="cls-7" x2="14" transform="translate(-6120 -4276) rotate(180)"/>
+      <line id="Line_140" data-name="Line 140" class="cls-7" y1="12.124" x2="7" transform="translate(-6119.968 -4288.143)"/>
+    </g>
+  </g>
+</svg>

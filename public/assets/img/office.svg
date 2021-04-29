@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="72" height="72" viewBox="0 0 72 72">
+  <defs>
+    <style>
+      .cls-1, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2 {
+        clip-path: url(#clip-path);
+      }
+
+      .cls-3 {
+        fill: #fdc601;
+      }
+
+      .cls-4, .cls-5 {
+        stroke: #198cff;
+        stroke-linecap: round;
+        stroke-width: 2px;
+      }
+
+      .cls-5 {
+        fill: #198cff;
+      }
+
+      .cls-6 {
+        fill: #fff;
+      }
+    </style>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3126" data-name="Rectangle 3126" class="cls-1" width="72" height="72"/>
+    </clipPath>
+  </defs>
+  <g id="Gotooffice" transform="translate(-1570.128 3346.13)">
+    <g id="Group_17923" data-name="Group 17923" class="cls-2" transform="translate(1570.128 -3346.13)">
+      <g id="Group_18455" data-name="Group 18455" transform="translate(-48.888 3278.926)">
+        <rect id="Rectangle_3465" data-name="Rectangle 3465" class="cls-3" width="41.999" height="40.842" transform="translate(63.888 -3257.368)"/>
+        <line id="Line_342" data-name="Line 342" class="cls-4" x2="54" transform="translate(57.887 -3216.526)"/>
+        <rect id="Rectangle_3466" data-name="Rectangle 3466" class="cls-5" width="26.477" height="53.399" transform="translate(71.649 -3269.925)"/>
+        <g id="Group_18450" data-name="Group 18450">
+          <rect id="Rectangle_3467" data-name="Rectangle 3467" class="cls-6" width="4.286" height="4.286" transform="translate(76.887 -3264.225)"/>
+          <rect id="Rectangle_3468" data-name="Rectangle 3468" class="cls-6" width="4.286" height="4.286" transform="translate(88.602 -3264.225)"/>
+        </g>
+        <g id="Group_18451" data-name="Group 18451">
+          <rect id="Rectangle_3469" data-name="Rectangle 3469" class="cls-6" width="4.286" height="4.286" transform="translate(76.887 -3255.654)"/>
+          <rect id="Rectangle_3470" data-name="Rectangle 3470" class="cls-6" width="4.286" height="4.286" transform="translate(88.602 -3255.654)"/>
+        </g>
+        <g id="Group_18452" data-name="Group 18452">
+          <rect id="Rectangle_3471" data-name="Rectangle 3471" class="cls-6" width="4.286" height="4.286" transform="translate(76.887 -3247.082)"/>
+          <rect id="Rectangle_3472" data-name="Rectangle 3472" class="cls-6" width="4.286" height="4.286" transform="translate(88.602 -3247.082)"/>
+        </g>
+        <g id="Group_18453" data-name="Group 18453">
+          <rect id="Rectangle_3473" data-name="Rectangle 3473" class="cls-6" width="4.286" height="4.286" transform="translate(76.887 -3238.511)"/>
+          <rect id="Rectangle_3474" data-name="Rectangle 3474" class="cls-6" width="4.286" height="4.286" transform="translate(88.602 -3238.511)"/>
+        </g>
+        <g id="Group_18454" data-name="Group 18454">
+          <rect id="Rectangle_3475" data-name="Rectangle 3475" class="cls-6" width="4.286" height="4.286" transform="translate(76.887 -3229.939)"/>
+          <rect id="Rectangle_3476" data-name="Rectangle 3476" class="cls-6" width="4.286" height="4.286" transform="translate(88.602 -3229.939)"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
