@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Crypt;
 use App\Batch;
 use App\CourseEnrollment;
 use Razorpay\Api\Api;
@@ -33,42 +34,71 @@ class CourseEnrollmentController extends Controller
     public function checkEnroll($id)
     {
         $batch = Batch::findorFail($id);
-        if($this->isEnrolled($id)=='true'){
-            $a = new CourseEnrollment;
-            $a->userId = Auth::User()->id;
-            $a->batchId = $batch->id;
-            $a->price = $batch->price;
-            $a->amountpayable = $batch->price;
-            $a->save();
-            $enrollId = $a->id;
-            return redirect('checkout/'.$enrollId);}
+        if($this->isEnrolled($id)=='true')
+        {
+            if($this->batchStatus($id)=='true')
+            {
+                if($this->inLimit($id)=='true')
+                {
+                    $a = new CourseEnrollment;
+                    $a->userId = Auth::User()->id;
+                    $a->batchId = $batch->id;
+                    $a->price = $batch->price;
+                    $a->amountpayable = $batch->price;
+                    $a->save();
+                    $enrollId = Crypt::encrypt($a->id);
+                    return redirect('checkout/'.$enrollId);
+                }
+                else{
+                    session()->flash('alert-warning', 'All the seats are full');
+                    return redirect('/home');
+                }
+                
+            }
+            else{
+                session()->flash('alert-warning', 'Batch is not active');
+                return redirect('/home');
+            }
+        }
         else{
             session()->flash('alert-warning', 'already enrolled');
-            return redirect('/home');
+            return redirect( '/home');
         }
-        
 
-        
-        
-        
     }
     private function isEnrolled($id){
         $isEnrolled = CourseEnrollment::where('batchId', $id)->where('userId', Auth::user()->id)->get();
         if($isEnrolled->count() == 0)
         return 'true';
-        else{
-            session()->flash('alert-warning', 'already enrolled');
-            return redirect('/home');
-        }
+        
        
     }
     private function enroll($batch){
         
         
     }
+    private function batchStatus($id){
+        $batch = Batch::findorFail($id);
+        if($batch->status == 1)
+        {
+            return 'true';
+        }
+    }
+
+    private function inLimit($id){
+        $batch = Batch::findorFail($id);
+        if($batch->limit !=''){
+        $isEnrolled = CourseEnrollment::where('batchId', $id)->where('hasPaid', 1)->get();
+        if($isEnrolled->count() < $batch->limit)
+        return 'true';
+        }
+        
+       
+    }
 
     public function checkout($id)
     {
+        $id = Crypt::decrypt($id);
         $enrollment = CourseEnrollment::findorFail($id);
         if (Auth::user()->id == $enrollment->userId && $enrollment->hasPaid == 0) {
             $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
