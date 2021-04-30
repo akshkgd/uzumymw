@@ -120,7 +120,7 @@ li{
       </div>
       <div class="border-top">
         <div class="card-body text-center p-2">
-          <p class="ck-font m-0 lead">Have questions? <a href="" class="fw-400">Check out our FAQs</a>
+          <p class="ck-font m-0 lead">Have questions? <a href="https://api.whatsapp.com/send/?phone=917355191435&text=Hi, I am facing problem while enrolling in {{$batch->name}}" target="_blank" class="fw-400">Chat Now</a>
             </h4>
         </div>
       </div>
