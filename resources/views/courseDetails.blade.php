@@ -35,13 +35,13 @@ li{
           <div class="border-bottom px-2 ">
             <div data-target="#abc{{$topic->id}}" class="accordion-panel-title pr-2" data-toggle="collapse" role="button"
               aria-expanded="false" aria-controls="panel-1">
-              <span class="h6 m-0 ck-fon py-3  pl-2">{{$topic->title}}</span> 
+              <span class="h6 m-0 ck-fon py-3 lead pl-2">{{$topic->title}}</span> 
              <span> <b></b> <img class="icon ml-1" style="height: 16px" src="{{asset('assets/img/icons/interface/plus.svg')}}" alt="plus interface icon"
                 data-inject-svg /></span>
             </div>
             <div class="collapse" id="abc{{$topic->id}}">
               <div class="pt-0">
-                <p class="mb-2 pl-2">
+                <p class="mb-2 pl-2 lead">
                   {!! str_replace("~" , "  <br /><i class='bi bi-file-earmark-text-fill'></i>", $topic->modules) !!}
                 </p>
               </div>
@@ -92,7 +92,7 @@ li{
             <span class="display-4 js-price-per-month fw-400" >{{$batch->payable}}</span>
           </div>
           <h5 class="ck-font fw-400 m-0"> Live Classes From {{Carbon\Carbon::parse($batch->startDate)->format('D, d M')}} to {{Carbon\Carbon::parse($batch->endDate)->format('d M')}}</h6>
-            <p class="ck-font fw-400 ">Timings: {{$batch->timing}}</h5>
+            <p class="ck-font fw-400 ">Timings: {{$batch->schedule}}</h5>
           <a class="btn  mt-2 d-block btn-primary mt- js-pricing-submit-button"
         href="{{action('CourseEnrollmentController@checkEnroll', $batch->id)}}">Enroll Now</a>
         </div>
