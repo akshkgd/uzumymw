@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\CourseEnrollment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use App\Batch;
-use App\BatchContent;
+use App\batchContent;
+use App\BatchTopics;
 use App\Feedback;
 
 class TeacherController extends Controller
