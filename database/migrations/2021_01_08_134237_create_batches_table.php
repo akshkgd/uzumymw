@@ -30,10 +30,10 @@ class CreateBatchesTable extends Migration
             $table->integer('type')->default(0); // 0 is for course and 1 for crash course / workshops
             $table->date('startDate');
             $table->date('endDate');
-            $table->string('schedule')->nullable();
+            $table->text('schedule')->nullable();
             $table->text('about')->nullable();
-            $table->text('syllabus')->nullable();
-            $table->text('pre')->nullable();
+            $table->text('learn')->nullable();
+            $table->text('benefits')->nullable();
             $table->string('groupLink')->nullable();
             $table->string('groupLink1')->nullable();
             $table->string('groupLink2')->nullable();

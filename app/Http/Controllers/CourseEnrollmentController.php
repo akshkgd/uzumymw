@@ -44,7 +44,7 @@ class CourseEnrollmentController extends Controller
                     $a->userId = Auth::User()->id;
                     $a->batchId = $batch->id;
                     $a->price = $batch->price;
-                    $a->amountpayable = $batch->price;
+                    $a->amountpayable = $batch->payable;
                     $a->save();
                     $enrollId = Crypt::encrypt($a->id);
                     return redirect('checkout/'.$enrollId);

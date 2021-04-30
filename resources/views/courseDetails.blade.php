@@ -13,7 +13,7 @@ li{
 </div>
 
 <section>
-  <div class="container pt-5 mt-5">
+  <div class="container pt-0 pt-lg-5 pt-xlg-5 pt-md-5 mt-5 ">
     <div class="row">
       <div class="col-md-7">
         <h1 class="display-5"> {{$batch->name}}</h1>
@@ -79,13 +79,13 @@ li{
 
 
 
-  <div class="col-md-5 ">
+  <div class="col-md-5 mb-5 mb-lg-0 mb-xlg-0 ">
 
     <div class="card card-primary sticky-lg-top ">
       <div class="bg-primary-alt rounded-lg">
         <div class="card-body">
           <h2 class="text-primary ck-font fw-400 mb-1" >{{$batch->name}}</h3>
-          <p class="text-primary">Only 50 Seats<span class="text-dark">, available on the first come first serve basis</span></p>
+          <p class="text-primary">Only {{$batch->limit}} Seats<span class="text-dark">, available on the first come first serve basis</span></p>
           <p class="text-muted"></p>
           <div class="d-flex justify-content-aroun ">
             <span class="h3 pt-1 mr-1 js-dollar-sign text-muted">Rs</span>
@@ -111,12 +111,14 @@ li{
         
         <ul>
           <li>Lifetime Access to projects</li>
+          <li>Recording of Live Sessions</li>
           <li>Free Doubt Sessions</li>
           <li>Assignments for practice</li>
           <li>Free e-book</li>
           <li>Certificate of Completion</li>
           
         </ul>
+        
       </div>
       <div class="border-top">
         <div class="card-body text-center p-2">
@@ -127,22 +129,7 @@ li{
     </div>
 
 
-    <div class=" card card-body border-no justify-content-center border-non text-center shad ">
-      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cupiditate, dicta fugit non exercitationem voluptatem
-        veritatis, voluptates temporibus facere officia laboriosam architecto deserunt molestias repellendus minus
-        blanditiis adipisci consequuntur doloribus maxime!</p>
-
-
-      <hr>
-      <div class="d-flex justify-content-center my-3 ">
-        <span class="h3 pt-1 mr-1 js-dollar-sign text-muted">Rs</span>
-        <span class="display-3 js-price-per-month text-muted " style="text-decoration:line-through; font-weight:400">{{$batch->payable}}</span>
-        <span class="h3 pt-1 mr-1 js-dollar-sign ">Rs</span>
-        <span class="display-3 js-price-per-month" >{{$batch->payable}}</span>
-      </div>
-      <a class="btn btn-lg btn-primary mt- js-pricing-submit-button"
-        href="{{action('CourseEnrollmentController@checkEnroll', $batch->id)}}">Enroll Now</a>
-    </div>
+    
 
   </div>
   </div>
@@ -153,6 +140,11 @@ li{
   </div>
 </section>
 
-
+<div class="slider-menu mt-5">
+    
+  <h3 class="ck-font ">₹{{$batch->payable}} <span class="lead " style="text-decoration: line-through;">₹{{$batch->price}}</span>   </h3>
+    <br>
+  <a href="{{action('CourseEnrollmentController@checkEnroll', $batch->id)}}" class="btn btn-primary btn-lg w-100">Enroll Now</a> 
+</div>
 
 @endsection

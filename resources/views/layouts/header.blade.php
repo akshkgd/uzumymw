@@ -28,7 +28,11 @@
     </form> --}}
     @auth
     <div class="dropdown ml-2">
+      @if(Auth::user()->google_id == '')
+      <img src="{{asset(Auth::user()->avatar)}}" alt="User" class="avatar avatar-sm dropdown-toggle" data-toggle="dropdown" data-hover="true" aria-haspopup="true" aria-expanded="false">
+      @else
       <img src="{{Auth::user()->avatar}}" alt="User" class="avatar avatar-sm dropdown-toggle" data-toggle="dropdown" data-hover="true" aria-haspopup="true" aria-expanded="false">
+      @endif
       <div class="dropdown-menu dropdown-menu-right dropdown-content mb-0 pb-0">
         <div class="dropdown-header">
           <h6 class="dropdown-ite m-0  text-dark ck-font">{{Auth::user()->name}}</h6>
@@ -69,8 +73,8 @@
     @endguest
     <div class="ml-2">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
-        <img class="icon navbar-toggler-open" src="assets/img/icons/interface/menu.svg" alt="menu interface icon" data-inject-svg />
-        <img class="icon navbar-toggler-close" src="assets/img/icons/interface/cross.svg" alt="cross interface icon" data-inject-svg />
+        <img class="icon navbar-toggler-open" src="{{asset('assets/img/icons/interface/menu.svg')}}" alt="menu interface icon" data-inject-svg />
+        <img class="icon navbar-toggler-close" src="{{asset('assets/img/icons/interface/cross.svg')}}" alt="cross interface icon" data-inject-svg />
       </button>
     </div>
   </div>

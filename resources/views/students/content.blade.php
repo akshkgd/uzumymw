@@ -16,7 +16,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-11 col-xl-9 col-sm-10 col-md-10 ">
                 <div class="text-center">
-                    <h1 class="display5">Introduction to machine learning</h1>
+                    <h1 class="display5">{{$batch->name}}</h1>
                 </div>
                 <div class="card shadow-3d mt-6">
                     @foreach ($content as $b)
@@ -39,7 +39,7 @@
                     </div>
                     @endforeach
                     <div class="p-3">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit illum fuga rem quo optio alias cum, veniam et eum minima reiciendis eius cupiditate voluptatem, labore veritatis temporibus ab nemo! Mollitia.</p>
+                        <p></p>
                    
                     </div>
                     

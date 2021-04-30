@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('gender')->nullable();
             $table->integer('role')->default(0); //o is for student
             $table->string('password')->nullable();
-            $table->string('avatar')->default('/img/avatar-1.svg');
+            $table->string('avatar')->default('assets/img/mask.svg');
             $table->integer('status')->default(1); //0 will deactivate the account
             $table->string('coupan')->unique()->nullable();
             $table->timestamp("lastActivity")->useCurrent();

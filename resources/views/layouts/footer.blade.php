@@ -10,15 +10,15 @@
         <div class="row mb-4">
           <div class="col">
             <ul class="nav justify-content-center">
-              <li class="nav-item"><a href="#" class="nav-link">Demos</a>
+              <li class="nav-item"><a href="{{url('/course')}}" class="nav-link">Courses</a>
               </li>
-              <li class="nav-item"><a href="#" class="nav-link">Pages</a>
+              <li class="nav-item"><a href="{{url('/about')}}" class="nav-link">About Us</a>
               </li>
-              <li class="nav-item"><a href="#" class="nav-link">Blog</a>
+              <li class="nav-item"><a href="{{url('/contact-us')}}" class="nav-link">Contact Us</a>
               </li>
-              <li class="nav-item"><a href="#" class="nav-link">Portfolio</a>
+              <li class="nav-item"><a href="{{url('/privacy')}}" class="nav-link">Privacy Policy</a>
               </li>
-              <li class="nav-item"><a href="#" class="nav-link">Elements</a>
+              {{-- <li class="nav-item"><a href="#" class="nav-link">Elements</a> --}}
               </li>
             </ul>
           </div>
@@ -56,8 +56,7 @@
         </div>
         <div class="row justify-content-center text-center">
           <div class="col-xl-10">
-            <small class="text-muted">&copy;2020 All Rights Reserved. Your Brand® is a registered trademark of Your Company. Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. Mac App Store is a service mark of Apple Inc. Google
-              Play and the Google Play logo are trademarks of Google Inc.</small>
+            <small class="text-muted">&copy;2021 All Rights Reserved. Codekaro is a registered bussiness under Efslon global solutions. </small>
           </div>
         </div>
       </div>
@@ -78,15 +77,15 @@
       </div>
     </div> --}}
 
-    <div class="dropup">
-      <a class="btn btn-dark p-3 bg-dark btn-round btn-floating" data-smooth-scroll data-aos="fade-up" data-aos-offset="150" data-aos-mirror="true" data-aos-once="false"  data-placement="left"  type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="dropu">
+      <a href="https://api.whatsapp.com/send/?phone=917355191435" class="btn btn-dark p-3 bg-dark btn-round btn-floating" data-smooth-scroll data-aos="fade-up" data-aos-offset="150" data-aos-mirror="true" data-aos-once="false"  data-placement="left"  type="button" aria-haspopup="true" aria-expanded="false">
         <img class="icon " src="assets/img/icons/theme/communication/chat-4.svg" alt="twitter social icon" data-inject-svg />
       </a>
-      <div class="dropdown-menu">
+      {{-- <div class="dropdown-menu">
         <h6 class="dropdown-header">Heading</h6>
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
-      </div>
+      </div> --}}
     </div>
     

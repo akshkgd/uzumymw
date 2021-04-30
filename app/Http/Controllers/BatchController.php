@@ -26,9 +26,16 @@ class BatchController extends Controller
     
     public function details($id)
     {
-        $batch = Batch::find($id);
+        $batch = Batch::findorfail($id);
+        if($batch->status == 1)
+        {
         $topics = BatchTopics::all();
         return view('courseDetails',compact('batch', 'topics') );
+        }
+        else{
+            session()->flash('alert-danger', 'Error');
+            return redirect()->back();
+        }
     }
 
     /**
@@ -124,8 +131,8 @@ class BatchController extends Controller
         $a->endDate = $request->endDate ;
         $a->schedule = $request->timing ;
         $a->about = $request->about ;
-        $a->syllabus = $request-> syllabus;
-        $a->pre = $request->pre ;
+        $a->learn = $request->learn;
+        $a->benefits = $request->benefits ;
         $a->groupLink = $request->groupLink ;
         $a->groupLink2 = $request-> groupLink2;
         $a->teacherId = $request->teacherId ;

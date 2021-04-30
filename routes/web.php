@@ -22,6 +22,7 @@ Route::view('/video','students.content1');
 Route::view('/complete','students.completeProfile');
 Route::get('/webhook', 'TelegramController@webhook');
 Route::view('/contact-us','contact');
+Route::view('/privacy','privacy');
 
 Route::get('/', function () {
     

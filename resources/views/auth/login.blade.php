@@ -1,8 +1,13 @@
 @extends('layouts.app')
 @section('content')
 <style>
+  .btn-google-login{
+    border:1px solid grey;
+
+  }
   .btn-google:hover{
-    background-color: ;
+    border:1px solid #1A73E8;
+    background-color: rgba(232,240,254,0.502);
     color:dodgerblue;
   }
 </style>
@@ -28,8 +33,8 @@
           <h1 class="mb-1">Welcome back</h1>
           <span>Enter your account details below</span>
         </div>
-        <div class="py-3 d-none">
-          <a href="{{ url('/redirect') }}" class="btn  btn-block btn-outline-primary-3 btn-google" ><img src="{{asset('assets/img/google.png')}}" alt="" style="height: 40px; padding-bottom:3px; margin-right:10px; ">Continue with Google </a>
+        <div class="py-3 d-">
+          <a href="{{ url('/redirect') }}" class="btn  btn-block btn-google-login btn-google" ><img src="{{asset('assets/img/google.png')}}" alt="" style="height: 40px; padding-bottom:3px; margin-right:10px; ">Continue with Google </a>
 
                       
                   </div>

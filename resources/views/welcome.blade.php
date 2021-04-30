@@ -73,27 +73,27 @@
             {{-- <a href="" class="text-success">Explore All</a> --}}
         </div>
 
-                <div class="row justify-content-cent">
+                <div class="row justify-content-between">
                 
                     
                         
                 {{-- <div class="controls-light a mb-6" data-flickity='{ "autoPlay": true, "imagesLoaded": true, "wrapAround": true }'> --}}
                     @foreach ($batches as $batch)
                     
-                    <div class="carousel-cell col-md-6 col-lg-3 col-sm-6 col-xs mt-">
+                    <div class=" col-md-6 col-lg-3 col-sm-6 ">
                         <a class="card hover-shadow-sm border-none shadow"
-                            href="{{action('CourseEnrollmentController@checkEnroll', $batch->id)}}">
-                            <img src="/assets/img/course-react.jpg" alt="Image" class="card-img-top">
+                            href="{{action('BatchController@details', $batch->id )}}">
+                            <img src="/assets/img/course-python.jpeg" alt="Image" class="card-img-top">
                             <div class="card-bod d-flex flex-column">
                                 <div class=" p-1">
-                                    <h6 class="mb-0 lead">Introduction to JavaScript 1
+                                    <h6 class="mb-0 lead">{{$batch->name}}
                                         </h4>
-                                        <p class="">Tue, 27th jan</p>
+                                        <p class="">{{Carbon\Carbon::parse($batch->nextClass)->format('D, d M Y')}}</p>
                                         
                                 </div>
                                 <div class="d-flex flex-wrap align-items-center">
-                                    <span class="badge badge-pill  badge-ck-primary  m-1" style="font-size: 1.3 rem;">Primary</span>
-                                    <span class="badge badge-pill bg-primary-3-alt m-1">Primary 3</span>
+                                    <span class="badge badge-pill  badge-ck-primary  m-1" style="font-size: 1.3 rem;">Python</span>
+                                    <span class="badge badge-pill bg-primary-3-alt m-1">Live Sessions</span>
                                   </div>
                             </div>
                         </a>
@@ -122,8 +122,7 @@
             <div class="col-xl-8 col-lg-9 text-center">
                 <h2 class="display-5 mx-xl-8 ">Students love Codekaro</h2>
                 <p class="lead">
-                    Here's what some of our 40,000 satisfied customers have to say about working with Medium Rare
-                    themes.
+                    Here's what some of our 407 satisfied students have to say about learning with codekaro.
                 </p>
             </div>
         </div>

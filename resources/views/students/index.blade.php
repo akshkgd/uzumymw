@@ -99,53 +99,41 @@
             <a href="" class="btn btn-primary">Explore all courses</a>
             </div>
           </div>
-          <div class="col-md-6 d-flex">
-            <div class="card card-body">
-              {{-- <img src="{{asset('assets/img/course-javascript.jpg')}}" alt="" class="img-fluid rounded-lg"> --}}
-              <h1 class="lead-1">Python bootcamp!!</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto quas nesciunt saepe nobis distinctio velit, facilis provident cum, aliquid officiis blanditiis expedita veritatis exercitationem soluta non, doloremque esse sapiente ducimus!</p>
-              <a href="ksqlq" style="bottom: 0">dkelk</a>
-            </div>
-            
-          </div>
           </div>
         @endforelse
         @endisset
         {{-- faq starts --}}
         <h3 class="display lead-1 text-center pt-5">Frequently Asked Questions</h3>
         <div class="card shadow-3d">
-          <div class="border-bottom px-2 mb-3">
-            <div data-target="#panel-3" class="accordion-panel-title pr-2" data-toggle="collapse" role="button"
+          <div class="border-bottom px-2 ">
+            <div data-target="#panel-1" class="accordion-panel-title pr-2" data-toggle="collapse" role="button"
               aria-expanded="false" aria-controls="panel-1">
-              <span class="h6 pt-3 pl-2">Panel Title</span>
+              <span class="h6 pt-3 px-2">How to join the upcoming class</span>
               <img class="icon" src="assets/img/icons/interface/plus.svg" alt="plus interface icon" data-inject-svg />
             </div>
-            <div class="collapse" id="panel-3">
+            <div class="collapse" id="panel-1">
               <div class="pt-3">
                 <p class="mb-2 pl-2">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                  laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                  architecto beatae vitae dicta sunt explicabo.
+                  You can join your upcoming class by clicking on the launch class button. Since these are the live classes make sure to launch your class 5 minutes before the time to avoid any technical glitches.
                 </p>
               </div>
             </div>
           </div>
-          <div class=" px-2 mb-3">
-            <div data-target="#panel-4" class="accordion-panel-title" data-toggle="collapse" role="button"
+          <div class="border-bottom px-2 ">
+            <div data-target="#panel-2" class="accordion-panel-title pr-2" data-toggle="collapse" role="button"
               aria-expanded="false" aria-controls="panel-1">
-              <span class="h6 mb-0 pl-3">Panel Title 2</span>
+              <span class="h6 pt-3 px-2">I missed my live class</span>
               <img class="icon" src="assets/img/icons/interface/plus.svg" alt="plus interface icon" data-inject-svg />
             </div>
-            <div class="collapse" id="panel-4">
+            <div class="collapse" id="panel-2">
               <div class="pt-3">
-                <p class="mb-0 pl-3">
-                  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque
-                  laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                  architecto beatae vitae dicta sunt explicabo.
+                <p class="mb-2 pl-2">
+                  Do not worry, once the live class is over the recorded video is saved in your dashboard and you can watch it later.
                 </p>
               </div>
             </div>
           </div>
+          
         </div>
         {{-- faq ends --}}
 

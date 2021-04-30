@@ -53,7 +53,7 @@ body{
                         <div class="col-md-6 col-lg-3">
                             <a class="card hover-shadow-sm border-none shadow"
                                 href="{{action('BatchController@details', $batch->id )}}">
-                                <img src="/assets/img/course-javascript.jpg" alt="Image" class="card-img-top">
+                                <img src="{{asset('assets/img/course-python.jpeg')}}" alt="Image" class="card-img-top">
                                 <div class="card-bod d-flex flex-column">
                                     <div class=" p-1">
                                         <h6 class="lead m-0">{{$batch->name}}</h6>
@@ -82,7 +82,7 @@ body{
     </div>
 </section>
 
-<section class="pt-5 ">
+<section class="pt-5 d-none">
     <div class="container">
         <div class="row">
             
