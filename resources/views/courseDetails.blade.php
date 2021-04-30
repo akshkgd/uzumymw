@@ -17,9 +17,7 @@ li{
     <div class="row">
       <div class="col-md-7">
         <h1 class="display-5"> {{$batch->name}}</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem voluptatibus ea dolores facere, cumque
-          non, nesciunt ipsam modi aspernatur suscipit dignissimos accusamus reiciendis? Impedit nam modi consectetur!
-          Cum, amet architecto.</p>
+        <p>{{$batch->description}}</p>
 
 
         <div>
