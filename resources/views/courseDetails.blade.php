@@ -36,7 +36,7 @@ li{
             <div data-target="#abc{{$topic->id}}" class="accordion-panel-title pr-2" data-toggle="collapse" role="button"
               aria-expanded="false" aria-controls="panel-1">
               <span class="h6 m-0 ck-fon py-3  pl-2">{{$topic->title}}</span> 
-             <span> <b>.</b> vkdlfd<img class="icon ml-1" style="height: 16px" src="{{asset('assets/img/icons/interface/plus.svg')}}" alt="plus interface icon"
+             <span> <b></b> <img class="icon ml-1" style="height: 16px" src="{{asset('assets/img/icons/interface/plus.svg')}}" alt="plus interface icon"
                 data-inject-svg /></span>
             </div>
             <div class="collapse" id="abc{{$topic->id}}">
@@ -49,7 +49,7 @@ li{
           </div>
           @endforeach
           <div class="py-2 px-3">
-              <p class="lead m-0 p-0"> <li>14 Modules</li> </p>
+              <p class="lead m-0 p-0"> <li>7 Modules</li> </p>
           </div>
           
         </div> 
