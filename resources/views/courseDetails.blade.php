@@ -59,7 +59,7 @@ li{
           <div class="bg-primary-3-alt rounded p-2">
             <h5>About Mentors</h3>
               <div class=" d-flex align-items-center mb-2">
-                <img src="{{asset('/assets/img/avatars/female-4.jpg')}}" alt="Benjamin Cameron"
+                <img src="{{$batch->teacher->avatar}}" alt="Benjamin Cameron"
                   class="avatar avatar-lg mr-3">
                 <div>
                   <h6 class="mb-0">{{$batch->teacher->name}}
