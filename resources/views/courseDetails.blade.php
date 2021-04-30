@@ -35,13 +35,13 @@ li{
           <div class="border-bottom px-2 ">
             <div data-target="#abc{{$topic->id}}" class="accordion-panel-title pr-2" data-toggle="collapse" role="button"
               aria-expanded="false" aria-controls="panel-1">
-              <span class="h6 m-0 ck-fon py-3 lead-1 pl-2">{{$topic->title}}</span> 
+              <span class="h6 m-0 ck-fon py-3  pl-2" style="font-size:18px;">{{$topic->title}}</span> 
              <span> <b></b> <img class="icon ml-1" style="height: 16px" src="{{asset('assets/img/icons/interface/plus.svg')}}" alt="plus interface icon"
                 data-inject-svg /></span>
             </div>
             <div class="collapse" id="abc{{$topic->id}}">
               <div class="pt-0">
-                <p class="mb-2 pl-2 " style="font-size:18px;">
+                <p class="mb-2 pl-2 " style="font-size:17px;">
                   {!! str_replace("~" , "  <br /><i class='bi bi-file-earmark-text-fill'></i>", $topic->modules) !!}
                 </p>
               </div>
