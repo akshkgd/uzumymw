@@ -138,7 +138,7 @@ li{
   </div>
 </section>
 
-<div class="slider-menu mt-5 d-none">
+<div class="slider-menu mt-5">
     
   <h3 class="ck-font ">₹{{$batch->payable}} <span class="lead " style="text-decoration: line-through;">₹{{$batch->price}}</span>   </h3>
     <br>
