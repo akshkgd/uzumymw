@@ -83,10 +83,10 @@
       <ul class="navbar-nav">
         <li class="nav-item"><a href="{{url('/course')}}" class="nav-link">Courses</a>
         </li>
-        <li class="nav-item"><a href="{{url('/live-classes')}}" class="nav-link">Live Classes</a>
+        {{-- <li class="nav-item"><a href="{{url('/live-classes')}}" class="nav-link">Live Classes</a> --}}
         </li>
         @guest
-        <li class="nav-item"><a href="{{url('/faq')}}" class="nav-link">Faq</a>
+        {{-- <li class="nav-item"><a href="{{url('/faq')}}" class="nav-link">Faq</a> --}}
         </li>
         <li class="nav-item"><a href="{{url('/about')}}" class="nav-link">About</a>
         </li>
