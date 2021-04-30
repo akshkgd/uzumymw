@@ -64,7 +64,7 @@ li{
                 <div>
                   <h6 class="mb-0">{{$batch->teacher->name}}
             </h5>
-            <a href="#" class="text-muted">{{$batch->teacher->name}}</a>
+            {{-- <a href="#" class="text-muted">{{$batch->teacher->email}}</a> --}}
           </div>
 
         </div>
