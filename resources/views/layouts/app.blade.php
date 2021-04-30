@@ -27,9 +27,7 @@
     </div> --}}
   @yield('content')
   @auth
-  {{-- <a href="#" class="btn btn-dark p-3 bg-dark btn-round btn-floating">
-    <img class="icon " src="assets/img/icons/theme/communication/chat-4.svg" alt="twitter social icon" data-inject-svg />
-  </a> --}}
+ 
   @endauth
     <script src="/js/app.js" defer></script>
     
