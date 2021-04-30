@@ -28,10 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::User()->mobile == ""   ){
-            return view('students.completeProfile');
-        }
-        else{
+        
         
         // return view('home');
         if(Auth::User()->role == 0){
@@ -62,7 +59,7 @@ class HomeController extends Controller
             return view ('home');
         }
     }
-    }
+    
     public function editProfile(){
         return view ('editProfile');
     }
