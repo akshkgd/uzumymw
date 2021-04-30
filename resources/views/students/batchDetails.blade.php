@@ -40,14 +40,14 @@
                   <h4><span class="add-countdown-time" %} data-countdown-date="{{$Enrollment->batch->startDate->format('Y/m/d')}}"> </span>  Remaining</h3>
                   
                  
-                  <a href="{{action('CourseEnrollmentController@checkout', $Enrollment->id )}}" class="btn btn-lg btn-outline-primary">Complete Payment</a>  
+                  <a href="{{action('CourseEnrollmentController@checkout', Crypt::encrypt($Enrollment->id) )}}" class="btn btn-lg btn-outline-primary">Complete Payment</a>  
                   @endif
                   @if($batch->status >0)
-                <div class="progress text-success mt-3">
+                {{-- <div class="progress text-success mt-3">
                     <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                   
                   </div>
-                  <p class="lead">45% Compleated</p>
+                  <p class="lead">45% Compleated</p> --}}
                   @endif
                 </div>
               </div> 
