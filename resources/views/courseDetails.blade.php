@@ -139,7 +139,7 @@ li{
 </section>
 
 
-<section class="pb-0">
+<section class=" p-0">
   <div class="container mb-5">
       <div class="row justify-content-center">
           <h2 class="display-5 text-sm-center fw-400 p-3">We have designed a <span class="text-prima ck-highlight">flexible program</span>   for you</h2>
@@ -206,7 +206,7 @@ li{
                   <img src="{{asset('assets/img/testimonials/bhanu-397d99374e67f29c99c907f25fe8e1bb6d8c8bdfbf3b78c780daddb3686941ef.png.gz')}}"  class="avatar  mr-3">
                   <div>
                     <h6 class="mb-0">Bhanu Pratap Singh Rathore</h6>
-                    <a href="#" class="text-muted">{{$batch->teacher->email}}</a>
+                    <p class="m-0 p-0 text-muted">Student</p>
                   </div>
                 </div>
                 <p class="">All the interactive live classes with experienced instructors, the sessions with veteran mentors and the rigorous mock interviews helped bridge the gap in my learning process.</p>
@@ -218,7 +218,7 @@ li{
                 <img src="{{asset('assets/img/testimonials/suryakant-0a0b8726c67de8fe3464ac8ce00746a4ff6e8e61fef846f8c4c9825570fec2b4.png.gz')}}"  class="avatar  mr-3">
                 <div>
                   <h6 class="mb-0">Suryakant Mishra</h6>
-                  <a href="#" class="text-muted">{{$batch->teacher->email}}</a>
+                  <p class="m-0 p-0 text-muted">Student</p>
                 </div>
               </div>
               <p class="">The mentorship arrangement and the peer culture has helped me evolve as a coder, and I am genuinely grateful for my association with codekaro.</p>
@@ -229,8 +229,8 @@ li{
             <div class=" d-flex align-items-center mb-2">
               <img src="{{asset('assets/img/testimonials/suman-b8c6c6d44724e249c439ba0c7e24afa71cbcd8197f90c28d4ee776346cdbb175.png.gz')}}"  class="avatar  mr-3">
               <div>
-                <h6 class="mb-0">Suman Mahato</h6>
-                <a href="#" class="text-muted">{{$batch->teacher->email}}</a>
+                <h6 class="m-0 p-0">Suman Mahato</h6>
+                <p class="m-0 p-0 text-muted">Student</p>
               </div>
             </div>
             <p class="">I still watch the recorded classes of Scaler, and try to hone my skills more, Scaler has helped me gain confidence and constantly strengthen my core concepts.</p>
