@@ -131,15 +131,13 @@
                 <div class="card card-body">
                     <div class="flex-grow-1 mb-3">
                         <p class="lead">
-                            &ldquo;This is a superb product with very
-                            <span class="highlight">nice designs and clean code.</span>
-                            Using it is a breeze. 5-star product. Also, there's updates.&rdquo;
+                            &ldquo;A lot of <span class="highlight"> advanced web dev topics taught at codekaro</span> taught by ashish sir  gave me an edge over my peers, and I ultimately absorbed more here than I ever did anywhere else.</span>&rdquo;
                         </p>
                     </div>
                     <div class="avatar-author align-items-center">
-                        <img src="assets/img/mask.svg" alt="Avatar" class="avatar">
+                        <img src="{{asset('assets/img/testimonials/abhishek-24f7f7604ee082202491761ff6cff18e29d347aae7276c8fe7e62cb627e2122b.png.gz')}}" alt="Avatar" class="avatar">
                         <div class="ml-2">
-                            <h6>agneesh</h6>
+                            <h6>Abhishek Bajpayee</h6>
                             <span>Student</span>
                         </div>
                     </div>
@@ -155,9 +153,9 @@
                         </p>
                     </div>
                     <div class="avatar-author align-items-center">
-                        <img src="assets/img/mask.svg" alt="Avatar" class="avatar">
+                        <img src="{{asset('assets/img/testimonials/vinay-aa12f1085fdd2dce4ad078f978b3535e82ea7eecedc6809a344503459f106470 (1).png.gz')}}" alt="Avatar" class="avatar">
                         <div class="ml-2">
-                            <h6>Paul</h6>
+                            <h6>Vinay Prajapati</h6>
                             <span>Student</span>
                         </div>
                     </div>
@@ -171,9 +169,9 @@
                         </p>
                     </div>
                     <div class="avatar-author align-items-center">
-                        <img src="assets/img/mask.svg" alt="Avatar" class="avatar">
+                        <img src="{{asset('assets/img/testimonials/vipul-f0eb1acf0da84c06a50c5b2c59932001997786b176dec02bd16128ee9ea83628.png.gz')}}" alt="Avatar" class="avatar">
                         <div class="ml-2">
-                            <h6>rajasekhar reddy</h6>
+                            <h6>Vipul reddy</h6>
                             <span>Student</span>
                         </div>
                     </div>
@@ -188,9 +186,9 @@
                         </p>
                     </div>
                     <div class="avatar-author align-items-center">
-                        <img src="assets/img/mask.svg" alt="Avatar" class="avatar">
+                        <img src="{{asset('assets/img/testimonials/saurav-fbdcb7c4b535897b2592239ffe21b4902b806bcf3f3e33493309d6736afa91a5.png.gz')}}" alt="Avatar" class="avatar">
                         <div class="ml-2">
-                            <h6>theus</h6>
+                            <h6>Saurav Gupta</h6>
                             <span>Student</span>
                         </div>
                     </div>
@@ -204,9 +202,9 @@
                         </p>
                     </div>
                     <div class="avatar-author align-items-center">
-                        <img src="assets/img/mask.svg" alt="Avatar" class="avatar">
+                        <img src="{{asset('assets/img/testimonials/akash-8c2b93c2a5a0a162722e7069c3621141c3a841c552d21bc9b816cbc9f1b2805b.png.gz')}}" alt="Avatar" class="avatar">
                         <div class="ml-2">
-                            <h6>garyhorsman</h6>
+                            <h6>Akash Sharma</h6>
                             <span>Student</span>
                         </div>
                     </div>
@@ -221,9 +219,9 @@
                         </p>
                     </div>
                     <div class="avatar-author align-items-center">
-                        <img src="assets/img/mask.svg" alt="Avatar" class="avatar">
+                        <img src="{{asset('assets/img/testimonials/mayank-b145ab03c6d8449bf7a532c6209577454941eb924d9cfc4b1b00a6ac1a784101.png.gz')}}" alt="Avatar" class="avatar">
                         <div class="ml-2">
-                            <h6>felipelobo328</h6>
+                            <h6>Mayank Sisode</h6>
                             <span>Student</span>
                         </div>
                     </div>

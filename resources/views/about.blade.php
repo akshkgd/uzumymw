@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title', 'About Codekaro')
+@section('meta_keywords', 'About Codekaro')
+@section('meta_description', 'Our goal is to create the best possible coding school at the lowest possible cost for students.')
 @section('content')
 <div class="navbar-container ">
   <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white">
