@@ -17639,7 +17639,15 @@ background-color: #E1F7e8 !important;
 .dropdown-user-name{
     
 }
-
+.ck-highlight {
+    display: inline-block;
+    height: inherit;
+    background-image: url('/assets/img/highlighter.svg');
+    background-position: 0  2.3rem;
+    font-weight: bolder;
+    background-repeat: repeat-x;
+}
+/* test */
 @media (min-width: 577px) {
     .lead-1{
         font-size: 28px;
