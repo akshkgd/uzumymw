@@ -233,7 +233,7 @@ li{
                 <p class="m-0 p-0 text-muted">Student</p>
               </div>
             </div>
-            <p class="">I still watch the recorded classes of Scaler, and try to hone my skills more, Scaler has helped me gain confidence and constantly strengthen my core concepts.</p>
+            <p class="">I still watch the recorded classes of Codekaro, and try to hone my skills more, codekaro has helped me gain confidence and constantly strengthen my core concepts.</p>
           </div>
       </div>
       </div>

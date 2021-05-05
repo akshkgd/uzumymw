@@ -17864,4 +17864,16 @@ background-color: #E1F7e8 !important;
 		top: 1.5rem
 	}
 }
+
+.ck-event-img {
+    border-top-left-radius: calc(0.625rem - 1px);
+    border-top-right-radius: calc(0.625rem - 1px);
+    height: 160px;
+    width: max-content;
+    object-fit: cover;
+    object-position: center center;
+}
+.ck-icon{
+    font-size: 17px;
+}
 /*# sourceMappingURL=theme-software-library.min.css.map p */

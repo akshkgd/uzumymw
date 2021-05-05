@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<livewire:styles />
 <div class="navbar-container">
     <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white"  data-sticky="top" >
         @include('layouts.header')
