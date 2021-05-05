@@ -196,7 +196,7 @@ li{
 
   </div>
 </section>
-<section class="pt-2">
+<section class="p-0">
   <div class="container mb-sm-5 pt-0">
       <div class="row justify-content-center">
           <h2 class="display-5 text-sm-center fw-400 p-3">We built codekaro for <span class="text-prima ck-highlight"> college students </span> and they love us</h2>
@@ -239,6 +239,20 @@ li{
       </div>
   </div>
 </section>
+
+
+<section class="p-0 mb-5">
+  <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+          <h2 class="display-5 text-sm-center fw-400 px-3">Still have doubts? <span class="text-prima ck-highlight">Request Callback</span></h2>
+          <p class="lead">Still have doubts or query, you can simply request callback and our team will get back to you as soon as possible</p>
+          <a href="" class="btn btn-lg btn-primary m-0 fw-400">Request Callback</a>
+        </div>
+      </div>
+  </div>
+</section>
+
 
 <div class="slider-menu mt-5">
     

@@ -17845,8 +17845,7 @@ background-color: #E1F7e8 !important;
 		position: -webkit-sticky!important;
 		position: sticky!important;
 		top: 13;
-        
-		z-index: 1020
+        z-index: 1020
 	}
 	[class*=sticky-lg][class*='-top'][class*=col] {
 		top: 1.5rem
