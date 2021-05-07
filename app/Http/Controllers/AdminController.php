@@ -16,6 +16,10 @@ use Redirect;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified', 'isAdmin']);
+    }
     public function students()
     {
         $users = User::latest()->paginate(50);

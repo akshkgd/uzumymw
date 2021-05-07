@@ -190,7 +190,7 @@
       document.getElementById("greet").style.color = "#4185f4";
     }
   </script>
-  @if (Auth::user()->role==0)
+@if(Auth::user()->mobile == '')
 <div class="m-1">
   {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subscribe-modal">
     Subscribe
@@ -203,36 +203,54 @@
             <img class="icon bg-dark" src="assets/img/icons/interface/cross.svg" alt="cross interface icon" data-inject-svg />
           </button>
           <div class="m-xl-4 m-3">
-            <div class="icon-round icon-round-lg bg-primary mx-auto mb-4">
-              <img class="icon bg-primary" src="assets/img/icons/theme/communication/mail-opened.svg" alt="mail-opened icon" data-inject-svg />
-            </div>
+            {{-- <div class="icon-round icon-round-lg bg-primary mx-auto mb-4">
+              <img class=" bg-primary avatar avatar-lg" src="{{Auth::user()->avatar}}" alt="mail-opened icon"  />
+            </div> --}}
             <div class="text-center mb-4">
-              <h4 class="h3 mb-1">Subscribe</h4>
-              <p>Subscribe and receive our newsletters to follow the news about our fresh and fantastic products.</p>
+              <h4 class="h3 mb-1">Hi,  <strong>{!! strtok(Auth::user()->name, " ")!!}</strong> 👋</h4>
+              <p>Before you start your coding journey with codekaro let us know a bit more about you.</p></p>
             </div>
-            <form action="https://mailform.mediumra.re/leap/mailchimp.php" data-form-email novalidate>
+            <form method="POST" action="{{ route('completeStudentsProfile') }}">
+              @csrf
               <div class="form-row">
-                <div class="col-12">
-                  <input type="email" class="form-control mb-2" placeholder="Email Address" name="email" required>
+                @if (Auth::user()->mobile =='')
+                <div class="col-md-12">
+                  <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="floatingInput" name="mobile" placeholder="name@example.com" value="{{Auth::user()->mobile}}">
+                    <label for="floatingInput">Mobile Number</label>
+                  </div>
                 </div>
-                <div class="col-12">
-                  <div class="d-none alert alert-success" role="alert" data-success-message>
-                    Thanks, a member of our team will be in touch shortly.
+                @endif
+                @if (Auth::user()->college =='')
+                <div class="col-md-12">
+                  <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="floatingInput" name="college" placeholder="name@example.com" value="{{Auth::user()->college}}">
+                    <label for="floatingInput">Your School / College</label>
                   </div>
-                  <div class="d-none alert alert-danger" role="alert" data-error-message>
-                    Please fill all fields correctly.
+                </div>
+                @endif
+                @if (Auth::user()->course =='')
+                <div class="col-md-12">
+                  <div class="form-floating mb-2">
+                    <input type="text" class="form-control" id="floatingInput" name="course" placeholder="name@example.com" value="{{Auth::user()->course}}">
+                    <label for="floatingInput">Course</label>
                   </div>
+                </div>
+                @endif
+                
+                
                   <div data-recaptcha data-sitekey="6Lemz4gUAAAAAElq4ZHFBzI7j8QUiYMn9I0mzQWG" data-size="invisible" data-badge="bottomleft">
                   </div>
                   <button type="submit" class="btn btn-primary btn-loading btn-block" data-loading-text="Sending">
                     <img class="icon" src="assets/img/icons/theme/code/loading.svg" alt="loading icon" data-inject-svg />
-                    <span>Subscribe</span>
+                    <span class="fw-400">Add Details</span>
                   </button>
+                  <small class="text-muted form-text fw-400">We’ll never share your details. See our <a href="#">Privacy Policy</a>
+                  </small>
                 </div>
-              </div>
+              
             </form>
-            <small class="text-muted form-text">We’ll never share your details. See our <a href="#">Privacy Policy</a>
-            </small>
+            
 
           </div>
         </div>
@@ -240,13 +258,15 @@
     </div>
   </div>
 </div>
-@endif
+
+
 <script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script type="text/javascript">
   $(window).on('load', function() {
       $('#subscribe-modal').modal('show');
   });
 </script>
+@endif
 
 
 

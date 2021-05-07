@@ -37,7 +37,7 @@
     <div class="container">
         
         <div class="row justify-content-center text-center">
-            <div class="col-lg-3 col-md-3 hidden-sm">
+            <div class="col-lg-4 col-md-4 mt-md-2 hidden-sm">
                 <img src="{{asset('assets/img/test3.png')}}" alt="" class="img-fluid">
                 
 
@@ -82,7 +82,7 @@
                     <div class=" col-md-6 col-lg-3 col-sm-6 ">
                         <a class="card hover-shadow-sm border-none shadow"
                             href="{{action('BatchController@details', $batch->id )}}">
-                            <img src="/assets/img/course-python.jpeg" alt="Image" class="card-img-top">
+                            <img src="/assets/img/course-python.jpeg"  loading="lazy" alt="Image" class="card-img-top">
                             <div class="card-bod d-flex flex-column">
                                 <div class=" p-1">
                                     <h6 class="mb-0 lead">{{$batch->name}}
@@ -249,7 +249,7 @@
                 <a href="#" class="btn btn-primary">Join Now</a>
             </div>
 
-            <img src="assets/img/discord.svg" alt="" class="img-fluid" style="margin-bottom: -2px;">
+            <img src="assets/img/discord.svg" alt="" class="img-fluid" loading="lazy"  style="margin-bottom: -2px;">
 
         </div>
     </div>

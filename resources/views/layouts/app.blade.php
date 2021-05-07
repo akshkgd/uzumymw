@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
     <title>@yield('title','Codekaro - Live Coding Classes learn to code like a pro')</title>
     <meta name="keywords" content="@yield('meta_keywords','Codekaro try to bring latest courses to students. Not only that we provide a dedicated team to answer their doubts.')">
     <meta name="description" content="@yield('meta_description','Codekaro try to bring latest courses to students. Not only that we provide a dedicated team to answer their doubts.')">
@@ -27,7 +26,8 @@
     <script type="text/javascript">
       window.addEventListener("load", function () {    document.querySelector('body').classList.add('loaded');  });
     </script>
-    <link href="{{asset('assets/css/theme-software-library.min.css')}}" rel="stylesheet" type="text/css" media="all" />
+    <!-- CSS only -->
+<link href="{{asset('assets/css/theme-software-library.min.css')}}" rel="stylesheet" type="text/css" media="all" />
     {{-- <link rel="preload" as="font" href="assets/fonts/Inter-UI-upright.var.woff2" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" as="font" href="assets/fonts/Inter-UI.var.woff2" type="font/woff2" crossorigin="anonymous"> --}}
   </head>

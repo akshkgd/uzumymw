@@ -59,7 +59,8 @@
                     <div class="form-floating mb-2">
                         <input type="text" class="form-control" id="floatingInput" name="college" placeholder="name@example.com" value="{{Auth::user()->college}}">
                         <label for="floatingInput">Your School / College</label>
-                      </div><div class="form-floating mb-2">
+                      </div>
+                      <div class="form-floating mb-2">
                         <input type="text" class="form-control" id="floatingInput" name="course" placeholder="name@example.com" value="{{Auth::user()->course}}">
                         <label for="floatingInput">Course</label>
                       </div>
