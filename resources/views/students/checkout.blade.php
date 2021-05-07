@@ -1,5 +1,8 @@
 @extends('layouts.app')
 @section('content')
+@section('title', 'checkout for ' . e($batch->name))
+@section('meta_keywords', '' . e($batch->name))
+@section('meta_description', '' . e($batch->description))
 <style>
     .form-control{
         border:1px solid lightgrey;

@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title', 'Codekaro Dashboard ')
+@section('meta_keywords', 'Student Section')
+@section('meta_description', 'Student DashBoard')
 <style>
 
 </style>
@@ -66,8 +69,11 @@
                 </div>
 
                 <div class="text pt-md-2">
-                  <a href="{{$Enrollment->batch->meetingLink}}" class=" btn btn-outline-primary" target="_blank">Launch
-                    Class</a>
+                  @if($Enrollment->hasPaid == 1)
+                  <a href="{{$Enrollment->batch->meetingLink}}" class=" btn btn-outline-primary" target="_blank">LaunchClass</a>
+                  @else
+                  <a href="{{action('CourseEnrollmentController@checkout', Crypt::encrypt($Enrollment->id) )}}" class=" btn btn-outline-primary fw-400" target="_blank">Complete Payment</a>
+                  @endif
                 </div>
               </div>
 

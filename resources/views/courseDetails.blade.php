@@ -5,6 +5,10 @@ li{
   margin-bottom: 3px;
 }
 </style>
+@section('title', '' . e($batch->name))
+@section('meta_keywords', '' . e($batch->name))
+@section('meta_description', '' . e($batch->description))
+
 @section('content')
 <div class="navbar-container pb-5">
   <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>

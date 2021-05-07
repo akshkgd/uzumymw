@@ -145,8 +145,8 @@
                     @if ($Enrollment->hasPaid == 0)
                     <p class="lead text-dark">Start Date: {{Carbon\Carbon::parse($Enrollment->batch->startDate)->format('D, d M Y')}}</p>
                     {{-- <a href="" class="btn btn-outline-primary fw-400">complete payment</a> --}}
-                    <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet provident nisi corporis repellat, et a ipsa quibusdam fugiat sapiente tempore molestias atque magni autem debitis! Non quos aperiam eveniet voluptatum.</p>
-                    <a href="{{$Enrollment->batch->meetingLink}}" target="_blank" class="btn btn-outline-primary">Complete Payment</a>
+                    {{-- <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet provident nisi corporis repellat, et a ipsa quibusdam fugiat sapiente tempore molestias atque magni autem debitis! Non quos aperiam eveniet voluptatum.</p> --}}
+                    <a href="{{action('CourseEnrollmentController@checkout', Crypt::encrypt($Enrollment->id) )}}" target="_blank" class="btn btn-outline-primary">Complete Payment</a>
                     @elseif ($Enrollment->hasPaid == 1 && $Enrollment->batch->status <= 2)
                       <p class=" text-primary m-0">Next Class</p>
                       <h1 class="lead-1">{{$Enrollment->batch->topic}}</h1>
