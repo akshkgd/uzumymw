@@ -255,7 +255,7 @@
     </div>
 </div>
 @include('layouts.footer')
-<livewire:scripts />
+
 
 
 <!-- Include stylesheet -->

@@ -10587,7 +10587,7 @@ svg.bg-primary-3-alt * {
 .text-primary svg.icon:not([class*="bg-"]) * {
     fill: #1A73E8;
 }
-@font-face {
+/* @font-face {
     font-family: "Inter UI";
     font-style: normal;
     font-weight: 400;
@@ -10626,7 +10626,7 @@ svg.bg-primary-3-alt * {
     font-display: swap;
     unicode-range: U+000-5FF;
     src: url(../fonts/Inter-UI-upright.var.woff2) format("woff2-variations"), url(../fonts/Inter-UI-Bold.woff2) format("woff2"), url(../fonts/Inter-UI-Bold.woff) format("woff");
-}
+} */
 html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
