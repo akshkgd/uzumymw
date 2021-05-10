@@ -30,7 +30,7 @@
                <td>{{ ++$i }}</td>
                <td>  <a href="{{action('AdminController@studentDetails', $user->id )}}">{{$user->name}}</a>   </td>
                <td>{{$user->email}}</td>
-               <td>{
+               <td>
                    <a href="tel:{{$user->mobile}}" class='link'>{{$user->mobile}}</a>
                </td>
                <td>{{$user->college}}</td>
