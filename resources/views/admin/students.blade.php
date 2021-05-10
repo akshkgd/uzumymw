@@ -20,6 +20,8 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Mobile</th>
+                <th>College</th>
+                <th>Course</th>
                 <th>Last Activity</th>
                 <th width="280px">Action</th>
             </tr>
@@ -28,7 +30,11 @@
                <td>{{ ++$i }}</td>
                <td>  <a href="{{action('AdminController@studentDetails', $user->id )}}">{{$user->name}}</a>   </td>
                <td>{{$user->email}}</td>
-               <td>{{$user->mobile}}</td>
+               <td>{
+                   <a href="tel:{{$user->mobile}}" class='link'>{{$user->mobile}}</a>
+               </td>
+               <td>{{$user->college}}</td>
+               <td>{{$user->course}}</td>
                <td>{{$user->lastActivity->format('D, d M Y h:i A')}}</td>   
                <td></td> 
             </tr> 

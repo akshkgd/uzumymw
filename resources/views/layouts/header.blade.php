@@ -69,7 +69,7 @@
 
     @guest
     <a href="{{url('/redirect')}}" class=" text-primary-3" style="letter-spacing: 0;">Login</a>  
-    <a href="{{url('/redirect')}}" class="btn btn-primary-3 ml-2" style="letter-spacing: 0;">Try for Free</a>  
+    <a href="{{url('/redirect')}}" class="btn btn-primary-3 ml-2 fw-400" style="letter-spacing: 0;">Try for Free</a>  
     @endguest
     <div class="ml-2">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">

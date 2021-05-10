@@ -120,13 +120,13 @@
                         <div class="border-bottom px-2 ">
                             <div data-target="#panel-1" class="accordion-panel-title pr-2" data-toggle="collapse"
                                 role="button" aria-expanded="false" aria-controls="panel-1">
-                                <span class="h6 pt-3 px-2">How to join the upcoming class</span>
-                                <img class="icon" src="assets/img/icons/interface/plus.svg" alt="plus interface icon"
+                                <span class="h5 text-dark ck-font fw-400 pt-3 px-2">How to join the upcoming class</span>
+                                <img class="icon text-dark" src="assets/img/icons/interface/plus.svg" alt="plus interface icon"
                                     data-inject-svg />
                             </div>
                             <div class="collapse" id="panel-1">
                                 <div class="pt-3">
-                                    <p class="mb-2 pl-2">
+                                    <p class="mb-2 pl-2 lead">
                                         You can join your upcoming class by clicking on the launch class button. Since these
                                         are the live classes make sure to launch your class 5 minutes before the time to
                                         avoid any technical glitches.
@@ -137,13 +137,13 @@
                         <div class="border-bottom px-2 ">
                             <div data-target="#panel-2" class="accordion-panel-title pr-2" data-toggle="collapse"
                                 role="button" aria-expanded="false" aria-controls="panel-1">
-                                <span class="h6 pt-3 px-2">I missed my live class</span>
-                                <img class="icon" src="assets/img/icons/interface/plus.svg" alt="plus interface icon"
+                                <span class="h5 text-dark ck-font fw-400 pt-3 px-2">I missed my live class</span>
+                                <img class="icon text-dark" src="assets/img/icons/interface/plus.svg" alt="plus interface icon"
                                     data-inject-svg />
                             </div>
                             <div class="collapse" id="panel-2">
                                 <div class="pt-3">
-                                    <p class="mb-2 pl-2">
+                                    <p class="mb-2 pl-2 lead">
                                         Do not worry, once the live class is over the recorded video is saved in your
                                         dashboard and you can watch it later.
                                     </p>
