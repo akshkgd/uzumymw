@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="navbar-container">
-    <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white"  data-sticky="top" >
+    <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white"   >
         @include('layouts.header')
     </nav>
     
@@ -33,7 +33,7 @@
    
   </section>    --}}
  
-   <section class="pt-5 pt-md-0 pt-lg-0 pt-xlg-0 mt-0 ">
+   <section class="pt-0 pt-md-0 pt-lg-0 pt-xlg-0 mt-3 ">
     <div class="container">
         
         <div class="row justify-content-center text-center">
