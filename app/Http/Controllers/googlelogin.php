@@ -48,7 +48,7 @@ class googlelogin extends Controller
                 $user->save();
                 Auth::loginUsingId($user->id);
             }
-            // return redirect()->to('/home');
+           
             return redirect()->intended('/home');
         } 
         catch (Exception $e) {
