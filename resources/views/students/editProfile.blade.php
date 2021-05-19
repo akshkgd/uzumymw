@@ -93,14 +93,14 @@
                             </p>
                             @foreach($devices as $device)
                             <div class=" d-flex align-items-center mb-1">
-                                @if( (new \Jenssegers\Agent\Agent())->isMobile() )
+                                {{-- @if( (new \Jenssegers\Agent\Agent())->isMobile() )
                                 <img src="{{asset('assets/img/icons/theme/devices/iphone-x.svg')}}"
                                     alt="{{Auth::User()->name}}'s avatar" class="avatar border-rounde mr-3 pb-3 p" data-inject-svg>
                                 @endif
                                 @if((new \Jenssegers\Agent\Agent())->isDesktop())
                                     <img src="{{asset('assets/img/icons/theme/devices/display-2.svg')}}"
                                     alt="{{Auth::User()->name}}'s avatar" class="avatar border-rounde mr-3 mb-3" data-inject-svg>
-                                @endif
+                                @endif --}}
                                 <div class="">
                                     <h6 class="mb-0 fw-400">{{(new \Jenssegers\Agent\Agent())->device()}} -
                                         {{(new \Jenssegers\Agent\Agent())->browser()}}

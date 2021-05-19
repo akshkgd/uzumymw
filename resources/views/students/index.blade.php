@@ -53,7 +53,7 @@
                     {{-- alert ends --}}
                     @isset($Enrollments)
                         @forelse ($Enrollments as $Enrollment)
-                            <div class="card card-dark card-ico shadow-3d">
+                            <div class="card card-dark cb-card card-ico shadow-3d">
                                 <div class="card-body">
                                     <div class="flex-grow-1">
                                         <h4 class="lead-1 mb-2">{{ $Enrollment->batch->topic }}</h4>
@@ -76,7 +76,7 @@
                                                         class=" btn btn-outline-primary" target="_blank">LaunchClass</a>
                                                 @else
                                                     <a href="{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($Enrollment->id)) }}"
-                                                        class=" btn btn-outline-primary fw-400" target="_blank">Complete
+                                                        class=" btn btn-outline-primary fw-400">Complete
                                                         Payment</a>
                                                 @endif
                                             </div>

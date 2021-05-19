@@ -11,42 +11,21 @@
 <div class="container">
     @include('layouts.alert')
 </div>
-
-   {{-- <section class="has-divider ">
-    <div class="container">
-      <div class="row align-items-center justify-content-between o-hidden">
-        <div class="col-md-4 order-sm-2 mb-5 mb-sm-0" data-aos="fade-left">
-          <img src="{{asset('assets/img/test3.png')}}" alt="Image">
-        </div>
-        <div class="col-md-8 pr-xl-5 order-sm-1">
-            <h1 class="display-4 ck-font">Get started on your adventure in coding </h1>
-            <div class="my-4">
-              <p class="lead">There are 72M students learning to code around the world. We try to make learning more
-                  accessible, equitable and more seamless for them.</p>
-            </div>
-            
-            <a href="#" class="btn btn-lg btn-primary">Get In Touch</a>
-            <a href="#" class="btn btn-lg btn-outline-primary">Get In Touch</a>
-        </div>
-      </div>
-    </div>
-   
-  </section>    --}}
  
-   <section class="pt-0 pt-md-0 pt-lg-0 pt-xlg-0 mt-3 ">
-    <div class="container">
+   <section class="pt-0 pt-md-0 pt-lg-0 pt-xlg-0 mt-1 ">
+    <div class="container mt-5">
         
-        <div class="row justify-content-center text-center">
-            <div class="col-lg-4 col-md-4 mt-md-2 hidden-sm">
-                <img src="{{asset('assets/img/test3.png')}}" alt="" class="img-fluid">
-                
+       <div class="row justify-content-center text-center">
+        <div class="col-lg-4 col-md-4 mt-md-2 hidden-s">
+            <img src="{{asset('assets/img/forgot-your-password@2x.png')}}" alt="" class="img-fluid rounded">
+            
 
-            </div>
         </div>
+    </div>
       <div class="row justify-content-center text-center ">
         <div class="col-xl-8 col-lg-9 col-md-10">
           <h1 class="display-4 ck-font">Improve your coding skills with live coding classes</h1>
-          <p class="lead">There are 72M students learning to code around the world. We try to make learning more
+          <p class="lead px-0 px-xlg-5 px-lg-5 px-md-5">There are 72M students learning to code around the world. We try to make learning more
             accessible, equitable and more seamless for them.</p>
           {{-- <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-items-sm-start mt-5"> --}}
             {{-- <div class="d-flex flex-column mx-1 text-center"> --}}
@@ -57,7 +36,9 @@
             <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-outline-primary-3 btn-sm-block ">Explore Courses</a>
           </div>
         </div>
+       
       </div>
+      
       
     </div>
   </section> 
@@ -79,10 +60,27 @@
                 {{-- <div class="controls-light a mb-6" data-flickity='{ "autoPlay": true, "imagesLoaded": true, "wrapAround": true }'> --}}
                     @foreach ($batches as $batch)
                     
-                    <div class=" col-md-6 col-lg-3 col-sm-6 ">
-                        <a class="card hover-shadow-sm border-none shadow"
+                    <div class=" col-md-6 col-lg-6 col-sm-6 ">
+                        <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
                             href="{{action('BatchController@details', $batch->id )}}">
-                            <img src="/assets/img/course-python.jpeg"  loading="lazy" alt="Image" class="card-img-top">
+                            <img src="{{asset('assets/img/testimonials/T6jCsf3.png')}}"  loading="lazy" alt="Image" class="card-img-top">
+                            <div class="card-bod d-flex flex-column">
+                                <div class=" p-2">
+                                    <h1 class="lead-1">Understand the system design behind Zomato </h1>
+                   <p class="lea m-0 text-dark">Start Time: 05:00 PM {{Carbon\Carbon::parse($batch->nextClass)->format('D, d M Y')}}</p>
+                   <p class="lad m-0 text-dark">Duration: 2 Hours</p>
+                                        
+                                </div>
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <span class="badge badge-pill  badge-ck-primary  m-1" style="font-size: 1.3 rem;">Python</span>
+                                    <span class="badge badge-pill bg-primary-3-alt  m-1">Live Session</span>
+                                  </div>
+                            </div>
+                        </a>
+                    </div><div class=" col-md-6 col-lg-6 col-sm-6 ">
+                        <a class="card hover-shadow-sm border-none shadow-lg"
+                            href="{{action('BatchController@details', $batch->id )}}">
+                            <img src="{{asset('assets/img/testimonials/T6jCsf3.png')}}"  loading="lazy" alt="Image" class="card-img-top">
                             <div class="card-bod d-flex flex-column">
                                 <div class=" p-1">
                                     <h6 class="mb-0 lead">{{$batch->name}}
@@ -98,7 +96,8 @@
                         </a>
                     </div>
                     
-                
+                    
+                    
                     @endforeach
                    
                    

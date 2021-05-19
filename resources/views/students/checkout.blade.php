@@ -65,7 +65,6 @@
                     data-prefill.email="{{Auth::user()->email}}"
                     data-prefill.contact="{{Auth::user()->mobile}}"
                      data-theme.color="#1A73E8">
-
                 </script>
                 <input type="hidden" custom="Hidden Element" name="b" value="{{$batch->id}}">
             </form>  

@@ -7,8 +7,12 @@
     </nav>
     
 </div>
+
+
+
+
 <section class="">
-    <div class="container">
+    <div class="container pt-5">
       <div class="row justify-content-center">
         <div class="col-md-10 col-lg-10 col-xlg-10">
             @if (session('status'))
@@ -17,7 +21,7 @@
                         </div>
                     @endif
             <div class="row align-items-center justify-content-between o-hidden">
-              <div class="col-md-6 order-sm-2 mb-5 mb-sm-0" data-aos="fade-left">
+              <div class="col-md-6 order-sm-2 mb-5 mb-sm-0" >
                 <img src="{{asset('assets/img/forgot-your-password@2x.png')}}" alt="Image">
               </div>
               <div class="col-md-6 pr-xl-5 order-sm-1">

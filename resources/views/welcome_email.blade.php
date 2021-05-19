@@ -1,5 +1,5 @@
 
-<p class="lead">Dear {{$name}},</p>
+<p class="lead">Dear {!! strtok($name, ' ') !!},</p>
 
 
 

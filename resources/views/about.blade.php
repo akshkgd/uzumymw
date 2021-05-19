@@ -14,17 +14,19 @@
 <section>
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-md-5  ">
+      <div class="col-xl-9 col-lg-9  pt-5">
+        <h1 class=" display-5 ck-font mb-3">Committed to significantly improve the coding skills of as many students as possible.</h1>
+          
         <div class="text-center">
-          <img src="{{asset('assets/img/instructor.jpeg')}}" alt="" class="img-fluid">
+          <img src="{{asset('assets/img/ck_header.png')}}" alt="" class="img-fluid rounded-lg">
         </div>
         
       </div>
     </div>
     <div class="row pt-5 justify-content-center">
       <div class="col-xl-9 col-lg-9">
-        <div class="d-fle align-content-center text-center">
-          <h1 class="text-secondar display-5 ck-font">Committed to significantly improve the coding skills of as many students as possible.</h1>
+        <div class="d-fle align-content-center text-cente">
+         
         
           {{-- <p class=" pt-2 pt-md-0 lead">There are 72M students learning to code around the world. We try to make learning more accessible, equitable and more seamless for them. --}}
             
@@ -36,6 +38,7 @@
 
                 “To achieve this, we’ve created a new video format for code screencasts. We call it “scrims”.
                 This format is the backbone of our school. Not only because it results in a superior learning experience. But also because it enables us to iterate more quickly, to attract better teachers, to facilitate better peer-learning, to keep server costs low, and much more.</p>
+      
                 <p class=" pt-3" style="font-size:20px">Ashish Shukla, Founder & C.E.O.</p>
               </div>
         

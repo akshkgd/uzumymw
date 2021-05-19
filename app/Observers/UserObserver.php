@@ -18,9 +18,18 @@ class UserObserver
      */
     public function created(User $user)
     {
-        $user->notify(new welcomeEmailNotification());
-        // Mail::to($user['email'])->send(new WelcomeEmail($user));
-        Mail::to($user['email'])->send(new WelcomeEmail($user));
+        
+        $email_data = array(
+            'name' => $user['name'],
+            'email' => $user['email'],
+        );
+    
+        // send email with the template
+        Mail::send('Welcome_email', $email_data, function ($message) use ($email_data) {
+            $message->to($email_data['email'], $email_data['name'])
+                ->subject('Welcome to Codekaro')
+                ->from('info@codekaro.in', 'Codekaro');
+        });
     }
 
     /**

@@ -289,4 +289,94 @@
             class="btn btn-primary btn-lg w-100">Enroll Now</a>
     </div>
 
+    {{-- callback form --}}
+            <div class="m-1">
+                {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subscribe-modal">
+    Subscribe
+  </button> --}}
+                <div class="modal fade" id="subscribe-modal" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <img class="icon bg-dark" src="{{asset('assets/img/icons/interface/cross.svg')}}"
+                                        alt="cross interface icon" data-inject-svg />
+                                </button>
+                                <div class="m-xl-4 m-3">
+                                    {{-- <div class="icon-round icon-round-lg bg-primary mx-auto mb-4">
+              <img class=" bg-primary avatar avatar-lg" src="{{Auth::user()->avatar}}" alt="mail-opened icon"  />
+            </div> --}}
+                                    <div class="text-center mb-4">
+                                        <h4 class="h3 mb-1">Hi, <strong></strong> 👋</h4>
+                                        <p>Before you start your coding journey with codekaro let us know a bit more about
+                                            you.</p>
+                                        </p>
+                                    </div>
+                                    <form method="POST" action="{{ route('completeStudentsProfile') }}">
+                                        @csrf
+                                        <div class="form-row">
+                                            
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-2">
+                                                        <input type="text" class="form-control" id="floatingInput"
+                                                            name="mobile" placeholder="name@example.com"
+                                                            value="">
+                                                        <label for="floatingInput">Mobile Number</label>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-2">
+                                                        <input type="text" class="form-control" id="floatingInput"
+                                                            name="college" placeholder="name@example.com"
+                                                            value="">
+                                                        <label for="floatingInput">Your School / College</label>
+                                                    </div>
+                                                </div>
+                                            
+                                                <div class="col-md-12">
+                                                    <div class="form-floating mb-2">
+                                                        <input type="text" class="form-control" id="floatingInput"
+                                                            name="course" placeholder="name@example.com"
+                                                            value="">
+                                                        <label for="floatingInput">Course</label>
+                                                    </div>
+                                                </div>
+                                            
+
+
+                                            <div data-recaptcha data-sitekey="6Lemz4gUAAAAAElq4ZHFBzI7j8QUiYMn9I0mzQWG"
+                                                data-size="invisible" data-badge="bottomleft">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary btn-loading btn-block"
+                                                data-loading-text="Sending">
+                                                <img class="icon" src="assets/img/icons/theme/code/loading.svg"
+                                                    alt="loading icon" data-inject-svg />
+                                                <span class="fw-400">Add Details</span>
+                                            </button>
+                                            <small class="text-muted form-text fw-400">We’ll never share your details. See
+                                                our <a href="#">Privacy Policy</a>
+                                            </small>
+                                        </div>
+
+                                    </form>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+            <script type="text/javascript">
+                $(window).on('load', function() {
+                    $('#subscribe-modal').modal('show');
+                });
+
+            </script>
+       {{-- callback form ends --}}
+
 @endsection

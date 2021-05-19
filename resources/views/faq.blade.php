@@ -31,9 +31,9 @@
 
             <div class="d-flex justify-content-between align-items-center mt-3">
               <div class="d-flex align-items-center">
-                <img src="{{$faq->user->avatar}}" alt="Avatar" class="avatar">
+                <img src="{{$faq->avatar}}" alt="Avatar" class="avatar">
                 <div class="text-small ml-2">
-                  <span class="d-block">Written by {{$faq->user->name}}</span>
+                  <span class="d-block">Written by {{$faq->name}}</span>
                   <span class="text-muted">Last Updated {{$faq->updated_at->format('M Y')}}</span>
                 </div>
               </div>

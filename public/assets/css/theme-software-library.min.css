@@ -17891,4 +17891,7 @@ select:-webkit-autofill:focus {
 .ck-icon{
     font-size: 17px;
 }
+.cb-card{
+    background-image: url('/public/assets/img/coding-cards.svg');
+}
 /*# sourceMappingURL=theme-software-library.min.css.map p */

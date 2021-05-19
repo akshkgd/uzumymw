@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Faq;
+use App\User;
 use Illuminate\Http\Request;
 
 class FaqController extends Controller
@@ -14,7 +15,7 @@ class FaqController extends Controller
      */
     public function index()
     {
-        $faqs = Faq::all();
+        $faqs = User::all();
         return view('faq', compact('faqs'));
     }
 
