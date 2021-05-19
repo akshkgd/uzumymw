@@ -57,7 +57,7 @@
                 <script src="https://checkout.razorpay.com/v1/checkout.js"
                     data-key="{{ env('RAZOR_KEY') }}" 
                     data-amount="100"
-                     data-order_id="{{$order->id}}"
+                    data-order_id="{{$order->id}}"
                     data-buttontext="Pay Now" data-name="Codekaro" 
                     data-description="{{$batch->name}}"
                     data-image="{{ asset('/assets/img/logo.svg') }}"
