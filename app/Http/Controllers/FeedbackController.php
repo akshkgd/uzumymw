@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Validator;
 
 class FeedbackController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -47,10 +51,19 @@ class FeedbackController extends Controller
             Session()->flash('alert-danger', $validator->messages()->first());
             return redirect()->back()->withInput();
        }
-        $checkFeedback = Feedback::where('batchId', $request->batchId)->where('userId', Auth::user()->id)->get();
+        if($request->batchId !='')
+        {
+            $checkFeedback = Feedback::where('batchId', $request->batchId)->where('userId', Auth::user()->id)->get();
+        }
+        if($request->workshopId !='')
+        {
+            $checkFeedback = Feedback::where('batchId', $request->workshopId)->where('userId', Auth::user()->id)->get();
+        }
         if($checkFeedback->count()==0){
         $a = new Feedback();
         $a->batchId = $request->batchId;
+        $a->workshopId = $request->workshopId;
+        $a->topicId = $request->topicId;
         $a->userId = Auth::user()->id;
         $a->feedback = $request->feedback;
         $a->save();

@@ -20,9 +20,9 @@
     <section>
         <div class="container pt-0 pt-lg-5 pt-xlg-5 pt-md-5 mt-5 ">
             <div class="row">
-                <div class="col-md-7">
-                    <h1 class="display-5"> {{ $batch->name }}</h1>
-                    <p>{{ $batch->description }}</p>
+                <div class="col-md-8">
+                    <h1 class="display-5 m-0"> {{ $batch->name }}</h1>
+                    <p class="lead">{{ $batch->description }}</p>
 
 
                     <div>
@@ -33,14 +33,15 @@
                     </div>
 
                     {{-- course content starts --}}
+                    <p class="lead-1 mb-0 text-dark">Course Content</p>
                     <div class="card shadow-3d ">
                         @foreach ($topics as $topic)
 
 
                             <div class="border-bottom px-2 ">
-                                <div data-target="#abc{{ $topic->id }}" class="accordion-panel-title pr-2"
+                                <div data-target="#abc{{ $topic->id }}" class="accordion-panel-title pr-2 py-3"
                                     data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-1">
-                                    <span class="h6 m-0 ck-fon py-3  pl-2"
+                                    <span class="h6 m-0 ck-font fw-400   pl-2"
                                         style="font-size:18px;">{{ $topic->title }}</span>
                                     <span> <b></b> <img class="icon ml-1" style="height: 16px"
                                             src="{{ asset('assets/img/icons/interface/plus.svg') }}"
@@ -56,9 +57,7 @@
                             </div>
                         @endforeach
                         <div class="py-2 px-3">
-                            <p class="lead m-0 p-0">
-                                <li>7 Modules</li>
-                            </p>
+                            <p class="lead m-0 text-dark">{{$topics->count()}} Modules</p>
                         </div>
 
                     </div>
@@ -86,61 +85,73 @@
 
 
 
-                <div class="col-md-5 mb-5 mb-lg-0 mb-xlg-0 ">
+                <div class="col-md-4 mb-5 mb-lg-0 mb-xlg-0 ">
 
-                    <div class="card card-primary sticky-lg-top ">
-                        <div class="bg-primary-alt rounded-lg">
-                            <div class="card-body">
-                                <h2 class="text-primary ck-font fw-400 mb-1">{{ $batch->name }}</h3>
+                    <div class="card card-primary sticky-lg-top border-none shadow-lg p-2">
+                        <img src="{{ asset('storage/'.$batch->img) }}" alt="" class="img-fluid rounded">
+                        <div class="bg-primary-al rounded-lg">
+                            <div class="mt-2">
+                                <h1 class="lead-1 mb-1 text-dark">{{ $batch->name }}</h3>
                                     <p class="text-primary">Only {{ $batch->limit }} Seats<span class="text-dark">,
                                             available on the first come first serve basis</span></p>
-                                    <p class="text-muted"></p>
+                                            
                                     <div class="d-flex justify-content-aroun ">
-                                        <span class="h3 pt-1 mr-1 js-dollar-sign text-muted">Rs</span>
-                                        <span class="display-4 mr-2 js-price-per-month text-muted "
+                                        <span class="h3 pt-1 mr-1 js-dollar-sign text-dark ck-font">Rs</span>
+                                        <span class="display-5 mr-2 js-price-per-month text-muted "
                                             style="text-decoration:line-through; font-weight:400">{{ $batch->price }}</span>
-                                        <span class="h3 pt-1 mr-1 js-dollar-sign">Rs</span>
-                                        <span class="display-4 js-price-per-month fw-400">{{ $batch->payable }}</span>
+                                        <span class="display-5 js-price-per-month fw-400">{{ $batch->payable }}</span>
                                     </div>
-                                    <h5 class="ck-font fw-400 m-0"> Live Classes From
+
+                                    <h5 class="ck-font fw-400 m-0">Classes From
                                         {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M') }} to
                                         {{ Carbon\Carbon::parse($batch->endDate)->format('d M') }}</h6>
-                                        <p class="ck-font fw-400 ">Timings: {{ $batch->schedule }}
+                                        <p class="ck-font fw-400 ">Timings: {{ $batch->name}}
                                     </h5>
-                                    <a class="btn  mt-2 d-block btn-primary mt- js-pricing-submit-button"
+                                    
+                                    <a class="btn btn-lg fw-400  mt-2 d-block btn-primary-3 mt- js-pricing-submit-button"
                                         href="{{ action('CourseEnrollmentController@checkEnroll', $batch->id) }}">Enroll
                                         Now</a>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between">
-
-                                <!-- <h6>End Date: {{ $batch->endDate }}</h6> -->
-
+                        <div class="">
+                            <div data-target="#ab1" class="accordion-panel-title "
+                                data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-1">
+                                <span class="h6 m-0 ck-font fw-400 text-dark"
+                                    style="font-size:18px;">know more</span>
+                                <span> <b></b> <img class="icon ml-1 text-dark" style="height: 16px"
+                                        src="{{ asset('assets/img/icons/interface/plus.svg') }}"
+                                        alt="plus interface icon" data-inject-svg /></span>
                             </div>
                             <!-- <h6>67 Days live Sessions</h5> -->
+                                <div class="collapse" id="ab1">
+                                    <div class="pt-3">
+                                        <h5 class="ck-font">This Online Course Includes</h6>
 
-                            <h5 class="ck-font">This Online Course Includes</h6>
+                                            <ul>
+                                                <li>Lifetime Access to projects</li>
+                                                <li>Recording of Live Sessions</li>
+                                                <li>Free Doubt Sessions</li>
+                                                <li>Assignments for practice</li>
+                                                <li>Free e-book</li>
+                                                <li>Certificate of Completion</li>
+            
+                                            </ul>
 
-                                <ul>
-                                    <li>Lifetime Access to projects</li>
-                                    <li>Recording of Live Sessions</li>
-                                    <li>Free Doubt Sessions</li>
-                                    <li>Assignments for practice</li>
-                                    <li>Free e-book</li>
-                                    <li>Certificate of Completion</li>
+                                            <div class="border-top">
+                                                <div class="card-body text-center p-2">
+                                                    <p class="ck-font m-0 lead">Have questions? <a
+                                                            href="https://api.whatsapp.com/send/?phone=917355191435&text=Hi, I am facing problem while enrolling in {{ $batch->name }}"
+                                                            target="_blank" class="fw-400">Chat Now</a>
+                                                        </h4>
+                                                </div>
+                                            </div>
+                                    </div>
+                                </div>
 
-                                </ul>
+                            
 
                         </div>
-                        <div class="border-top">
-                            <div class="card-body text-center p-2">
-                                <p class="ck-font m-0 lead">Have questions? <a
-                                        href="https://api.whatsapp.com/send/?phone=917355191435&text=Hi, I am facing problem while enrolling in {{ $batch->name }}"
-                                        target="_blank" class="fw-400">Chat Now</a>
-                                    </h4>
-                            </div>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

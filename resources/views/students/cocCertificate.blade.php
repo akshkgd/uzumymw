@@ -6,15 +6,15 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 col-xl-12 col-md-12">
-                <div class="card pb-0 ">
+                <div class="card pb-0 shadow" style="border:0px solid #feefc3;">
                     <div class="card-boy">
 
                         <section class="bg-primary-alt t has-divider mt-0 pt-0 rounded-lg" style="background:#ffefc3;; " data-overlay>
                             <div class="container pt-4 pb-0">
                                 <div class="row justify-content-center">
                                     <div class="col-lg-10 col-xl-8 text-center">
-                                        <h1 class="lead pb-0 mb-2 text-warning">Codekaro E Certificate</h1>
-                                        <h1 class="h2 m-0 text-warning" style="font-family: 'Pacifico', cursive; letter-spacing: 2px; color:#fbc129;"> Certificate of Participation </h1>
+                                        <h1 class="lead pb-0 mb-2 text-warning">Codekaro E-Certificate</h1>
+                                        <h1 class="h2 m-0 text-warning" style="font-family: 'Pacifico', cursive; letter-spacing: 2px; color:#fbc129;"> Certificate of Achievement </h1>
 
                                         
                                     </div>
@@ -32,8 +32,8 @@
                     <div class="card-body ">
                         <div class="pt-1 text-center">
                             <h5 class="ck-font m-0 lead">This is to certify that</h3>
-                            <h1 class="display-5 m-1">{{$certificate->student->name}}</h1>
-                            <p class=" lead mx-5">from {{$certificate->student->college}}, has participated in  <strong>{{$batch->name}}</strong></p>
+                            <h1 class="display-5 m-1">{{$certificate->students->name}}</h1>
+                            <p class=" lead mx-5">from {{$certificate->students->college}}, is hearby awarded the certificate of achievement for the successful completion of <strong>{{$batch->name}}</strong></p>
                                 <h4 class="text-s lead"></h4>
                                 @if($batch->association !="")
                                 <p style="font-size: 18px; ">in association with {{$batch->association}}</p>

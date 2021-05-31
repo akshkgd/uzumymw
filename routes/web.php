@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Batch;
+use App\Workshop;
 use App\User;
 use App\CourseEnrollment;
  use Telegram\Bot\Laravel\Facades\Telegram;
@@ -28,10 +29,15 @@ Route::view('/eventd','eventDetails');
 
 Route::get('/', function () {
     
-    $batches = Batch::where('status',1)->get();
+    $batches = Workshop::where('status',1)->latest()->take(3)->get();;
     return view('welcome', compact('batches'));
 });
 
+Route::get('/eventd', function () {
+    
+    $event = Workshop::first();
+    return view('eventDetails', compact('event'));
+});
 
 
 Route::get('/batch', function () {
@@ -88,10 +94,15 @@ route::post('/edit-profile', 'ProfileController@updateStudentsProfile')->name('u
 route::post('/complete-profile', 'ProfileController@completeStudentsProfile')->name('completeStudentsProfile');
 
 Route::get('/enroll/{id}', 'CourseEnrollmentController@checkEnroll');
+Route::get('/workshop-enroll/{id}', 'WorkshopEnrollmentController@checkEnroll')->middleware('auth');
 Route::get('/checkout/{id}', 'CourseEnrollmentController@checkout');
 Route::post('payment', 'CourseEnrollmentController@payment')->name('payment');
 Route::get('/my-course', 'CourseEnrollmentController@myCourse');
 Route::get('/batch/{id}', 'BatchController@batchDetails');
+Route::get('/workshop/{id}', 'WorkshopController@details');
+Route::get('/workshop-details/{id}', 'WorkshopController@workshopDetails');
+Route::get('/workshop-certificate/{id}', 'WorkshopEnrollmentController@certificate');
+Route::get('/course-certificate/{id}', 'BatchController@certificate');
 Route::get('/explore-course/{id}', 'BatchController@details');
 
 
@@ -110,12 +121,14 @@ Route::get('/certificate', function(){
 
 // teachers
 route::post('/update-class', 'BatchController@updateClass')->name('updateClass');
+route::post('/update-workshop', 'TeacherController@updateWorkshopClass')->name('updateWorkshopClass');
 Route::get('/my-classes', 'BatchController@myClasses');
 Route::get('/class-details/{id}', 'BatchController@classDetails');
 Route::get('/enrollments/{id}', 'TeacherController@enrollments');
 Route::get('/generate-certificate/{id}', 'TeacherController@generateCertificate');
 Route::get('/addContent/{id}', 'TeacherController@addContent');
 Route::post('/store-content', 'TeacherController@storeContent')->name('addContent');
+Route::post('/update-batch-status', 'TeacherController@updateBatchStatus')->name('updateBatchStatus');
 
 
 
@@ -133,5 +146,7 @@ Route::get('/admin/create/batch', 'AdminController@createBatch');
 Route::get('/admin/create/batch/topics/{id}', 'AdminController@addTopics');
 Route::post('/storeTopic', 'AdminController@storeTopic')->name('storeTopic');
 Route::get('/delete-topic/{id}', 'AdminController@deleteTopic');
+Route::get('/create-workshop', 'AdminController@createWorkshop');
+Route::post('/storeWorkshop', 'AdminController@addWorkshop')->name('storeWorkshop');
 
 

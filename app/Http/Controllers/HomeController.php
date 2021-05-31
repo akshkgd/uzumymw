@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Batch;
 use App\User;
+use App\Workshop;
 use App\CourseEnrollment;
+use App\WorkshopEnrollment;
 
 class HomeController extends Controller
 {
@@ -37,9 +39,10 @@ class HomeController extends Controller
             // ->join('batches', 'batches.id', '=', 'course_enrollments.batchId')->orderBy('date', 'asc')->get();
             // dd($Enrollments);
             $Enrollments = CourseEnrollment::where('userId', Auth::user()->id)->where('status', 1)->orderBy('nextClass', 'asc')->get();
-            $batches = Batch::where('status', 0)->get();
+            $workshopEnrollments = WorkshopEnrollment::where('userId', Auth::user()->id)->where('status', 1)->get();
+            $batches = Workshop::where('status',1)->latest()->take(2)->get();;
             // 
-            return view ('students.index', compact('Enrollments', 'batches'));}
+            return view ('students.index', compact('Enrollments', 'batches', 'workshopEnrollments'));}
             else{
                 session()->flash('alert-danger', 'Your Acount has been terminated!');
                 return view('students.index');
@@ -47,8 +50,9 @@ class HomeController extends Controller
         }
         elseif(Auth::User()->role == 1){
             $batches = Batch::where('TeacherId', Auth::User()->id)->orderBy('nextClass', 'asc')->get();
+            $workshops = Workshop::where('TeacherId', Auth::User()->id)->where('status', '<', 3)->orderBy('nextClass', 'asc')->get();
             
-            return view('teachers.index', compact('batches'));
+            return view('teachers.index', compact('batches', 'workshops'));
         }
         elseif(Auth::User()->role == 100){
             $users = User::all()->count();

@@ -6,12 +6,40 @@ use App\CourseEnrollment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use App\Batch;
+use App\Workshop;
 use App\batchContent;
 use App\BatchTopics;
 use App\Feedback;
 
 class TeacherController extends Controller
 {
+    public function updateClass(Request $request)
+    {   
+
+    
+        $batch = Batch::findorFail($request->batchId);
+        $batch->topic = $request->topic;
+        $batch->nextClass = $request->nextClass;
+        $batch->desc = $request->desc;
+        $batch->meetingLink = $request->meetingLink;
+        $batch->save();
+        return redirect()->back();
+        
+    }
+
+    public function updateWorkshopClass(Request $request)
+    {   
+
+    
+        $batch = Workshop::findorFail($request->batchId);
+        $batch->topic = $request->topic;
+        $batch->nextClass = $request->nextClass;
+        $batch->desc = $request->desc;
+        $batch->meetingLink = $request->meetingLink;
+        $batch->save();
+        return redirect()->back();
+        
+    }
     public function enrollments($id)
     {
         $batch = Batch::findorFail($id);
@@ -31,7 +59,7 @@ class TeacherController extends Controller
         $enrollment = CourseEnrollment::findorFail($id);
         if($enrollment->certificateId == '')
         {
-            $enrollment->certificateId = substr(uniqid(), 0, 12);
+            $enrollment->certificateId = substr(md5(time()), 0, 16);
             $enrollment->save();
             $name = Auth::user()->name;
             session()->flash('alert-success',  'Certificate Generated Successfully!');
@@ -45,6 +73,16 @@ class TeacherController extends Controller
         $batchContent = BatchContent::where('batchId', $batch->id)->get();
         if($batch->teacherId == Auth::user()->id)
         return view('teachers.addContent', compact('batch', 'batchContent'));
+    }
+
+    public function updateBatchStatus(Request $request)
+    {
+        $batch = Batch::findorFail($request->batchId);
+        $batch->status = $request->status;
+        $batch->save();
+        session()->flash('alert-success',  'Status Updated!');
+        return back();
+
     }
 
 

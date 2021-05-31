@@ -20,6 +20,7 @@ class CreateWorkshopsTable extends Migration
             $table->text('description')->nullable();
             $table->string('slug')->unique()->nullable();
             $table->integer('payable')->nullable()->default(0);
+            $table->integer('certificateFee')->nullable()->default(0);
             $table->string('offerId')->nullable();
             $table->string('limit')->nullable();
             $table->string('img')->nullable();

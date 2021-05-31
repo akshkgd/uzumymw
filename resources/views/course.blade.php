@@ -24,12 +24,12 @@ body{
 
 </style>
     <div class="container pb-0 pt-5">
-      <div class="row align-items-center justify-content-between o-hidden">
+      <div class="row align-items-center justify-content-center o-hidden">
         {{-- <div class="col-md-4 order-sm-2 mb-5 mb-sm-0" data-aos="fade-left">
           <img src="assets/img/t.svg" alt="Image">
         </div> --}}
-        <div class="col-md-8 pr-xl-5 order-sm-1">
-            <h1 class="display-6 "> @auth
+        <div class="col-md-8 pr-xl-5 order-sm-1 text-center">
+            <h1 class="display-5 "> @auth
                 Hi <span>{!!strtok(Auth::user()->name, "
                          ")!!}</span>,  <br>
                  @endauth Let's learn coding with live classes</h1>
@@ -50,10 +50,10 @@ body{
                 {{-- <h1 class="display-6 ck-font">Lets do Coding! </h1> --}}
                     <div class="row">
                         @foreach ($batches as $batch)
-                        <div class="col-md-6 col-lg-3">
+                        <div class="col-md-6 col-lg-4">
                             <a class="card hover-shadow-sm border-none shadow"
                                 href="{{action('BatchController@details', $batch->id )}}">
-                                <img src="{{asset('assets/img/course-python.jpeg')}}" alt="Image" class="card-img-top">
+                                <img src="{{ asset('storage/'.$batch->img) }}" alt="Image" class="card-img-top">
                                 <div class="card-bod d-flex flex-column">
                                     <div class=" p-1">
                                         <h6 class="lead m-0">{{$batch->name}}</h6>
@@ -66,6 +66,29 @@ body{
                                 </div>
                             </a>
                         </div>  
+
+                        <div class=" col-md-6 col-lg-4 d-flex ">
+                            <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
+                                href="{{ action('WorkshopController@details', $batch->id) }}">
+                                <div class="flex-grow-1">
+                                <img src="{{ asset('storage/'.$batch->img) }}" loading="lazy" alt="Image"
+                                    class="card-img-top">
+                                <div class="card-bod d-flex flex-column">
+                                    <div class=" p-2">
+                                        <h4 class="mb-0 ck-font fw-400">{{$batch->name}} </h1>
+                                            <p class="lea m-0 text-dark">Start Time: {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
+                                                {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M Y') }}</p>
+                                            <p class="lad m-0 text-dark">Duration: 2 Hours</p>
+
+                                    </div>
+                                </div>
+                                </div>
+                                    <div class="d-flex flex-wrap align-items-center">
+                                        <span class="badge badge-pill badge-ck-primary  m-1">Live Session</span>
+                                        <span class="badge badge-pill badge-ck-success  m-1">Free</span>
+                                    </div>
+                            </a>
+                        </div>
                         @endforeach
                         {{-- card test --}}
                         

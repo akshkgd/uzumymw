@@ -145,6 +145,15 @@ class BatchController extends Controller
         return redirect('/home');
     }
 
+
+    public function certificate($id)
+    {
+        $certificate = CourseEnrollment::where('certificateId', $id)->firstOrFail();
+        $batch = Batch::findorFail($certificate->batchId);
+            return view('students.cocCertificate', compact('certificate', 'batch'));
+        
+    }
+
     /**
      * Display the specified resource.
      *

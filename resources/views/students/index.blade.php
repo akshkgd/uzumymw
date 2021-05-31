@@ -42,7 +42,7 @@
                     {{-- user section --}}
                     <div class="text-center ">
                         <img src="{{ Auth::user()->avatar }}" alt="" class="avatar avatar-lg">
-                        <h1 class="display lead-1 pt-2 mb-0"><span id="time"></span> {{ Auth::user()->name }}</h1>
+                        <h1 class="display lead-1 pt-2 mb-0"><span id="time"></span>  {{Auth::user()->name}}</h1>
                         <p class="lead">Eat Sleep Code repeat</p>
                     </div>
 
@@ -51,7 +51,56 @@
                     {{-- alert start --}}
 
                     {{-- alert ends --}}
+                    @isset($workshopEnrollments)
+                        @if ($workshopEnrollments->count() > 0)
+                            <span class="badge badge-pill badge-ck-primary text-center lead mb-2">Upcoming Class</span>
+                        @endif
+                        @forelse ($workshopEnrollments as $event)
+                            <div class="card card-dark cb-card card-ico shadow-3d">
+                                <div class="card-body">
+                                    <div class="flex-grow-1">
+                                        <h4 class="lead-1 mb-2">{{ $event->workshop->topic }}</h4>
+                                        <span>
+                                            {!! $event->workshop->desc !!}
+                                        </span>
+                                        <div class="d-md-flex justify-content-between pt-1">
+                                            <div class="">
+                                                <h5 class="mb-0 ck-font text-primary-3">
+                                                    {{ Carbon\Carbon::parse($event->workshop->nextClass)->format('D, d M Y') }}
+                                                    </h4>
+                                                    <h6 class="ck-font">
+                                                        {{ Carbon\Carbon::parse($event->workshop->nextClass)->format('h:i A') }}
+                                                </h5>
+                                            </div>
+
+                                            <div class="text pt-md-2">
+                                                <a href="{{ $event->workshop->meetingLink }}"
+                                                    class=" btn btn-primary fw-400 @if ($event->workshop->meetingLink == '') disabled @endif" target="_blank">Launch Class</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="border-to pt-4">
+                                        <a href="{{ action('WorkshopController@workshopDetails', Crypt::encrypt($event->id)) }}"
+                                            class="btn ck-c-btn">Course Details</a>
+                                        <a href="{{ $event->workshop->groupLink}}" target="_blank" class="btn ck-c-btn">Join WhatsApp Group</a>
+                                        <p class="text-dark small pt-2 m-0">No recording for the free class will be provided,
+                                            make sure to join the class on time. Launch class button will be active 10 minutes
+                                            before the class.</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        @empty
+
+                        @endforelse
+                    @endisset
+
+
                     @isset($Enrollments)
+                        @if ($Enrollments->count() > 0)
+                            <span class="badge badge-pill badge-ck-primary text-center lead mb-2">Upcoming Class</span>
+                        @endif
                         @forelse ($Enrollments as $Enrollment)
                             <div class="card card-dark cb-card card-ico shadow-3d">
                                 <div class="card-body">
@@ -93,8 +142,7 @@
                                     <a href="{{ action('BatchController@batchDetails', Crypt::encrypt($Enrollment->id)) }}"
                                         class="btn ck-c-btn">Course Details</a>
                                     <a href="{{ action('StudentController@notes', Crypt::encrypt($Enrollment->id)) }}"
-                                        class="btn ck-c-btn">Notes
-                                        & Assignments</a>
+                                        class="btn ck-c-btn">Notes & Assignments</a>
                                     <a href="{{ action('StudentController@recordings', Crypt::encrypt($Enrollment->id)) }}"
                                         class="btn ck-c-btn">Recording</a>
                                 </div>
@@ -102,60 +150,108 @@
 
                             </div>
                         @empty
-                            <div class="row   o-hidden pt-5 mt-5">
-                                <div class="col-md-6 d-flex">
-                                    <div class="card card-dark card-body">
-                                        <img src="{{ asset('assets/img/starred_A.png') }}" class="img-fluid" alt="Image">
-                                        <h1 class="lead-1 pb-3">No upcoming classes for you!</h1>
-                                        <p class="lead">Your next class will be scheduled when you enroll in a course </p>
-                                        <a href="" class="btn btn-primary">Explore all courses</a>
+                            <div class="row   o-hidden  mt-5">
+                                <div class="col-md-12 d-flex">
+                                    <div class="card card-body">
+                                        {{-- <img src="{{ asset('assets/img/starred_A.png') }}" class="img-fluid" alt="Image"> --}}
+                                        <h1 class="lead m-0">No upcoming classes for you! 😔</h1>
+                                        <p class="">Your next class will be scheduled when you enroll in a course </p>
+                                        {{-- <a href="" class="btn btn-primary">Explore all courses</a> --}}
                                     </div>
                                 </div>
                             </div>
-                        @endforelse
-                    @endisset
-                    {{-- faq starts --}}
-                    <h3 class="display lead-1 text-center pt-5">Frequently Asked Questions</h3>
-                    <div class="card shadow-3d">
-                        <div class="border-bottom px-2 ">
-                            <div data-target="#panel-1" class="accordion-panel-title pr-2" data-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="panel-1">
-                                <span class="h5 text-dark ck-font fw-400 pt-3 px-2">How to join the upcoming class</span>
-                                <img class="icon text-dark" src="assets/img/icons/interface/plus.svg" alt="plus interface icon"
-                                    data-inject-svg />
-                            </div>
-                            <div class="collapse" id="panel-1">
-                                <div class="pt-3">
-                                    <p class="mb-2 pl-2 lead">
-                                        You can join your upcoming class by clicking on the launch class button. Since these
-                                        are the live classes make sure to launch your class 5 minutes before the time to
-                                        avoid any technical glitches.
-                                    </p>
-                                </div>
+                                
+                            
+                                        
+                        
+                                        <div class="row justify-content-center">
+                        
+                        
+                        
+                                            {{-- <div class="controls-light a mb-6" data-flickity='{ "autoPlay": true, "imagesLoaded": true, "wrapAround": true }'> --}}
+                                            @foreach ($batches as $batch)
+                        
+                                                <div class=" col-md-6  d-flex ">
+                                                    <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
+                                                        href="{{ action('WorkshopController@details', $batch->id) }}">
+                                                        <div class="flex-grow-1">
+                                                        <img src="{{ asset('storage/'.$batch->img) }}" loading="lazy" alt="Image"
+                                                            class="card-img-top">
+                                                        <div class="card-bod d-flex flex-column">
+                                                            <div class=" p-2">
+                                                                <h4 class="mb-0 ck-font fw-400">{{$batch->name}} </h1>
+                                                                    <p class="lea m-0 text-dark">Start Time: {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
+                                                                        {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M Y') }}</p>
+                                                                    <p class="lad m-0 text-dark">Duration: 2 Hours</p>
+                        
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                            <div class="d-flex flex-wrap align-items-center">
+                                                                <span class="badge badge-pill  badge-ck-primary  m-1">Python</span>
+                                                                <span class="badge badge-pill badge-ck-success  m-1">Live Session</span>
+                                                                <span class="badge badge-pill badge-ck-success  m-1">Free</span>
+                                                            </div>
+                                                    </a>
+                                                </div>
+                        
+                                                
+                                            @endforeach
+                        
+                        
+                                        </div>
+                        
+                                    {{-- </div> --}}
+                                    {{-- </div>
+                                    </div> --}}
+                        
+                                    
+                               
+                            
+                    @endforelse
+                @endisset
+                {{-- faq starts --}}
+                <h3 class="display lead-1 text-center pt-5">Frequently Asked Questions</h3>
+                <div class="card shadow-3d">
+                    <div class="border-bottom px-2 ">
+                        <div data-target="#panel-1" class="accordion-panel-title pr-2" data-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="panel-1">
+                            <span class="h5 text-dark ck-font fw-400 pt-3 px-2">How to join the upcoming class</span>
+                            <img class="icon text-dark" src="assets/img/icons/interface/plus.svg" alt="plus interface icon"
+                                data-inject-svg />
+                        </div>
+                        <div class="collapse" id="panel-1">
+                            <div class="pt-3">
+                                <p class="mb-2 pl-2">
+                                    You can join your upcoming class by clicking on the launch class button. Since these
+                                    are the live classes make sure to launch your class 5 minutes before the time to
+                                    avoid any technical glitches.
+                                </p>
                             </div>
                         </div>
-                        <div class="border-bottom px-2 ">
-                            <div data-target="#panel-2" class="accordion-panel-title pr-2" data-toggle="collapse"
-                                role="button" aria-expanded="false" aria-controls="panel-1">
-                                <span class="h5 text-dark ck-font fw-400 pt-3 px-2">I missed my live class</span>
-                                <img class="icon text-dark" src="assets/img/icons/interface/plus.svg" alt="plus interface icon"
-                                    data-inject-svg />
-                            </div>
-                            <div class="collapse" id="panel-2">
-                                <div class="pt-3">
-                                    <p class="mb-2 pl-2 lead">
-                                        Do not worry, once the live class is over the recorded video is saved in your
-                                        dashboard and you can watch it later.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                    {{-- faq ends --}}
+                    <div class=" px-2 ">
+                        <div data-target="#panel-2" class="accordion-panel-title pr-2" data-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="panel-1">
+                            <span class="h5 text-dark ck-font fw-400 pt-3 px-2">I missed my live class</span>
+                            <img class="icon text-dark" src="assets/img/icons/interface/plus.svg" alt="plus interface icon"
+                                data-inject-svg />
+                        </div>
+                        <div class="collapse" id="panel-2">
+                            <div class="pt-3">
+                                <p class="mb-2 pl-2">
+                                    Do not worry, once the live class is over the recorded video is saved in your
+                                    dashboard and you can watch it later.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
+                {{-- faq ends --}}
+
             </div>
+        </div>
         </div>
 
         @include('layouts.dfooter')

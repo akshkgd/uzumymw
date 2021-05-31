@@ -4695,6 +4695,11 @@ a.badge:hover {
     padding-left: 1rem;
     border-radius: 10rem;
 }
+.badge-pill-primary{
+    color: #fff;
+    background-color: #1A73E8;
+    font-size: .825rem;
+}
 .badge-primary {
     color: #fff;
     background-color: #1A73E8;
@@ -4702,6 +4707,22 @@ a.badge:hover {
 .badge-ck-primary {
     color: #4185f4;;
     background-color: #d2e3fc;
+    font: size 0.825rem;
+}
+.badge-ck-warning {
+    color: #fbc129;
+    background-color:#feefc3;
+    font: size 0.925rem;
+}
+.badge-ck-success {
+    color: #4eb76a;
+    background-color: #ceead6;
+    font: size 0.925rem;
+}
+.badge-ck-danger {
+    color: #f28b82;
+    background-color: #f8d1ce;
+    font: size 0.925rem;
 }
 a.badge-primary:focus,
 a.badge-primary:hover {
@@ -17723,6 +17744,9 @@ select:-webkit-autofill:focus {
         font-weight: 500;
         letter-spacing: 0;
     }
+    .hidden-lg{
+        display: none !important;
+    }
 }
 @media (max-width: 577px) {
     .display-6{
@@ -17819,17 +17843,17 @@ select:-webkit-autofill:focus {
 }
 .ck-c-btn{
     border: 1px solid lightgrey;
+    border-radius: 22px;
     font-weight: 400;
     margin-top: 3px;
-    
     margin-bottom: 3px;
 
 }
 .ck-c-btn:hover{
-    border: 2px solid var(--primary);
+    border: 1px solid var(--primary);
     font-weight: 400;
     background-color: #d2e3fc;;
-    color:var(--primary)
+    /* color:var(--primary) */
     
 }
 @media (min-width:576px) {

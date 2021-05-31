@@ -28,17 +28,17 @@
             <ul class="nav">
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <img class="icon " src="assets/img/icons/social/instagram.svg" alt="instagram social icon" data-inject-svg />
+                  <img class="icon " src="{{asset('assets/img/icons/social/instagram.svg')}}" alt="instagram social icon" data-inject-svg />
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <img class="icon " src="assets/img/icons/social/twitter.svg" alt="twitter social icon" data-inject-svg />
+                  <img class="icon " src="{{asset('assets/img/icons/social/twitter.svg')}}" alt="twitter social icon" data-inject-svg />
                 </a>
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <img class="icon " src="assets/img/icons/social/youtube.svg" alt="youtube social icon" data-inject-svg />
+                  <img class="icon " src="{{asset('assets/img/icons/social/youtube.svg')}}" alt="youtube social icon" data-inject-svg />
                 </a>
               </li>
               <li class="nav-item">
@@ -48,7 +48,7 @@
               </li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
-                  <img class="icon " src="assets/img/icons/social/facebook.svg" alt="facebook social icon" data-inject-svg />
+                  <img class="icon " src="{{asset('assets/img/icons/social/facebook.svg')}}" alt="facebook social icon" data-inject-svg />
                 </a>
               </li>
             </ul>

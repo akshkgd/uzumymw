@@ -17,6 +17,7 @@ class CreateWorkshopEnrollmentsTable extends Migration
             $table->id();
             $table->foreignId('userId');
             $table->foreignId('workshopId');
+            $table->foreignId('topicId')->nullable();
             $table->dateTime('nextClass')->nullable();
             $table->integer('amountPayable')->nullable();
             $table->integer('amountPaid')->nullable();

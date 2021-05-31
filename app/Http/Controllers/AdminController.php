@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 use App\Batch;
 use App\User;
+use App\Workshop;
 use App\BatchTopics;
 use App\CourseEnrollment;
 use Razorpay\Api\Api;
@@ -126,5 +127,44 @@ class AdminController extends Controller
         session()->flash('alert-success', 'Topics deleted Successfully!');
         return redirect()->back();
 
+    }
+
+    public function createWorkshop()
+    {
+        $teachers = User::where('role', 1)->get();
+        return view('admin.createworkshop', compact('teachers'));
+    }
+
+    public function addWorkshop(Request $request)
+    {
+        $a = new Workshop();
+        $a->topicId = $request->courseId;
+        $a->name = $request->name;
+        $a->description = $request->description;
+        $a->payable = $request->payable ;
+        $a->offerId = $request->offerId ;
+        $a->limit = $request->limit;
+        $a->img = $request->img ;
+        if($request->hasFile('img')){
+            // $a->association = $request->association;
+            $path = $request->file('img')->store('img', 'public');
+            $a->img = $path;}
+        
+        $a->startDate = $request->startDate ;
+        $a->endDate = $request->endDate ;
+        $a->schedule = $request->schedule ;
+        $a->about = $request->about ;
+        $a->learn = $request->learn;
+        $a->benefits = $request->benefits ;
+        $a->groupLink = $request->groupLink ;
+        $a->groupLink1 = $request-> groupLink1;
+        $a->teacherId = $request->teacherId ;
+        $a->meetingLink = $request->meetingLink ;
+        $a->topic = $request->topic ;
+        $a->desc = $request->desc ;
+        $a->nextClass = $request->nextClass ;
+        $a->save();
+        session()->flash('alert-danger', 'Batch Added');
+        return redirect('/home');
     }
 }
