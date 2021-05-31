@@ -65,7 +65,7 @@
                             <div class="col-sm-4 text-md-right text-center px-5 mt-5">
                                 
                                 <h6 class=" ck-font m-0" style="color:#4185f4;">Certificate Id : {{$certificate->certificateId}}</h5>
-                                    <p style="font-size: 14px" class="ck-font m-0">Verify the authenticity of this certificate <a href="https://codekaro.in/workshop-certificate/{{$certificate->certificateId}}" target="_blank">using this link</a></h6>
+                                    <p style="font-size: 14px" class="ck-font m-0">Verify the authenticity of this certificate <a href="https://codekaro.in/course-certificate/{{$certificate->certificateId}}" target="_blank">using this link</a></h6>
                             </div>
                         </div>
                         
