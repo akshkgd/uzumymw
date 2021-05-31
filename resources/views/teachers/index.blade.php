@@ -72,181 +72,191 @@
                         {{-- no course card --}}
                     @else
                         <div class="text-sm-center text-md-left mb-3 mb-md-1 mb-lg-2 ">
-                            
+
                         </div>
                         {{-- workshop card --}}
                         @if ($workshops->count() != 0)
-                        <span class="badge badge-pill badge-ck-success lead m-1">Upcoming Workshops</span>
-                        @foreach ($workshops as $batch)
-                        <div class="card  card-ico shadow-3d">
-                            <div class="card-body">
-                                <div class="flex-grow-1">
-                                    <div class="h3">{{ $batch->topic }}</div>
-                                    <p>
-                                        {!! $batch->desc !!}
-                                    </p>
-                                    <div class="d-md-flex justify-content-between">
-                                        <div class="">
-                                            <h5 class="mb-0 text-primary-3">
-                                                {{ Carbon\Carbon::parse($batch->nextClass)->format('D, d M Y') }}
-                                                </h4>
-                                                <h6>{{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
-                                            </h5>
+                            <span class="badge badge-pill badge-ck-success lead m-1">Upcoming Workshops</span>
+                            @foreach ($workshops as $batch)
+                                <div class="card  card-ico shadow-3d">
+                                    <div class="card-body">
+                                        <div class="flex-grow-1">
+                                            <div class="h3">{{ $batch->topic }}</div>
+                                            <p>
+                                                {!! $batch->desc !!}
+                                            </p>
+                                            <div class="d-md-flex justify-content-between">
+                                                <div class="">
+                                                    <h5 class="mb-0 text-primary-3">
+                                                        {{ Carbon\Carbon::parse($batch->nextClass)->format('D, d M Y') }}
+                                                        </h4>
+                                                        <h6>{{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
+                                                    </h5>
+                                                </div>
+
+                                                <div class="text pt-md-2">
+                                                    @if ($batch->meetingLink != '')
+                                                        <a href="{{ $batch->meetingLink }}" target="_blank"
+                                                            class="fw-400 btn btn-primary">Launch Class</a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <a href="{{ action('BatchController@classDetails', $batch->id) }}"
+                                                class="btn ck-c-btn">Details</a>
+                                            <a href="{{ action('TeacherController@enrollments', $batch->id) }}"
+                                                class="btn ck-c-btn">Enrollments</a>
+                                            <a href="{{ action('TeacherController@addContent', $batch->id) }}"
+                                                class="btn ck-c-btn">Add Content</a>
+
                                         </div>
 
-                                        <div class="text pt-md-2">
-                                            @if ($batch->meetingLink != '')
-                                                <a href="{{ $batch->meetingLink }}" target="_blank"
-                                                    class="fw-400 btn btn-primary">Launch Class</a>
-                                            @endif
+
+                                    </div>
+                                    <div class="border-top ">
+                                        <div data-target="#panel-{{ $batch->id }}" class="accordion-panel-title p-3"
+                                            data-toggle="collapse" role="button" aria-expanded="false"
+                                            aria-controls="panel-1">
+                                            <span class="h6 mb-0 text-primary-3">Update Next Class</span>
+                                            <img class="icon" src="assets/img/icons/interface/plus.svg"
+                                                alt="plus interface icon" data-inject-svg />
+                                        </div>
+
+                                        <div class="collapse" id="panel-{{ $batch->id }}">
+                                            <div class="px-3">
+                                                <form action="{{ route('updateWorkshopClass') }}" method="POST"
+                                                    class="form-inlin ">
+                                                    @csrf
+                                                    {{-- <div class="row pl-0 pr-0"> --}}
+                                                    <div class="form-floating mt-3 mb-2 ">
+
+                                                        <input type="text" id="floatingInput" class="form-control"
+                                                            value="{{ $batch->topic }}" name="topic"
+                                                            placeholder="Password">
+                                                        <label for="floatingInput">Next Topic</label>
+                                                    </div>
+                                                    <div class="form-floating mt-3 mb-2">
+                                                        <input type="password" class="form-control" name="nextClass"
+                                                            value="{{ $batch->nextClass }}"
+                                                            placeholder="Next Class Timings" data-flatpickr
+                                                            data-enable-time="true" data-date-format="Y-m-d H:i">
+                                                        <label for="inputPassword2">Date and time</label>
+                                                        <input type="hidden" value="{{ $batch->id }}" name="batchId">
+                                                    </div>
+                                                    <div class="form-floating mt-3 mb-2">
+                                                        <input type="text" class="form-control"
+                                                            value="{{ $batch->meetingLink }}" name="meetingLink"
+                                                            placeholder="Meeting Link"><label for="inputPassword2">Meeting
+                                                            Link</label>
+                                                        <label for="inputPassword2">Meeting Link</label>
+                                                    </div>
+
+                                                    <button type="submit"
+                                                        class="btn btn-outline-primary mt-2">Update</button>
+                                                    <div class="">
+                                                    </div>
+
+                                                    {{-- </div> --}}
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                    <a href="{{ action('BatchController@classDetails', $batch->id) }}"
-                                        class="btn ck-c-btn">Details</a>
-                                    <a href="{{ action('TeacherController@enrollments', $batch->id) }}"
-                                        class="btn ck-c-btn">Enrollments</a>
-                                    <a href="{{ action('TeacherController@addContent', $batch->id) }}"
-                                        class="btn ck-c-btn">Add Content</a>
 
                                 </div>
-
-
-                            </div>
-                            <div class="border-top ">
-                                <div data-target="#panel-{{ $batch->id }}" class="accordion-panel-title p-3"
-                                    data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-1">
-                                    <span class="h6 mb-0 text-primary-3">Update Next Class</span>
-                                    <img class="icon" src="assets/img/icons/interface/plus.svg"
-                                        alt="plus interface icon" data-inject-svg />
-                                </div>
-
-                                <div class="collapse" id="panel-{{ $batch->id }}">
-                                    <div class="px-3">
-                                        <form action="{{ route('updateWorkshopClass') }}" method="POST" class="form-inlin ">
-                                            @csrf
-                                            {{-- <div class="row pl-0 pr-0"> --}}
-                                            <div class="form-floating mt-3 mb-2 ">
-
-                                                <input type="text" id="floatingInput" class="form-control"
-                                                    value="{{ $batch->topic }}" name="topic" placeholder="Password">
-                                                <label for="floatingInput">Next Topic</label>
-                                            </div>
-                                            <div class="form-floating mt-3 mb-2">
-                                                <input type="password" class="form-control" name="nextClass"
-                                                    value="{{ $batch->nextClass }}" placeholder="Next Class Timings"
-                                                    data-flatpickr data-enable-time="true" data-date-format="Y-m-d H:i">
-                                                <label for="inputPassword2">Date and time</label>
-                                                <input type="hidden" value="{{ $batch->id }}" name="batchId">
-                                            </div>
-                                            <div class="form-floating mt-3 mb-2">
-                                                <input type="text" class="form-control"
-                                                    value="{{ $batch->meetingLink }}" name="meetingLink"
-                                                    placeholder="Meeting Link"><label for="inputPassword2">Meeting
-                                                    Link</label>
-                                                <label for="inputPassword2">Meeting Link</label>
-                                            </div>
-
-                                            <button type="submit" class="btn btn-outline-primary mt-2">Update</button>
-                                            <div class="">
-                                            </div>
-
-                                            {{-- </div> --}}
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                    @endforeach
+                            @endforeach
                         @endif
                         {{-- workshop card ends --}}
 
                         {{-- course card --}}
-                        @if ($workshops->count() != 0)
-                        <span class="badge badge-pill badge-ck-success lead m-1">Upcoming Classes</span>
-                        @foreach ($batches as $batch)
-                            <div class="card  card-ico shadow-3d">
-                                <div class="card-body">
-                                    <div class="flex-grow-1">
-                                        <div class="h3">{{ $batch->topic }}</div>
-                                        <p>
-                                            {!! $batch->desc !!}
-                                        </p>
-                                        <div class="d-md-flex justify-content-between">
-                                            <div class="">
-                                                <h5 class="mb-0 text-primary-3">
-                                                    {{ Carbon\Carbon::parse($batch->nextClass)->format('D, d M Y') }}
-                                                    </h4>
-                                                    <h6>{{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
-                                                </h5>
-                                            </div>
-
-                                            <div class="text pt-md-2">
-                                                @if ($batch->meetingLink != '')
-                                                    <a href="{{ $batch->meetingLink }}" target="_blank"
-                                                        class="fw-400 btn btn-primary">Launch Class</a>
-                                                @endif
-                                            </div>
-                                        </div>
-                                        <a href="{{ action('BatchController@classDetails', $batch->id) }}"
-                                            class="btn ck-c-btn">Details</a>
-                                        <a href="{{ action('TeacherController@enrollments', $batch->id) }}"
-                                            class="btn ck-c-btn">Enrollments</a>
-                                        <a href="{{ action('TeacherController@addContent', $batch->id) }}"
-                                            class="btn ck-c-btn">Add Content</a>
-
-                                    </div>
-
-
-                                </div>
-                                <div class="border-top ">
-                                    <div data-target="#panel-{{ $batch->id }}" class="accordion-panel-title p-3"
-                                        data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-1">
-                                        <span class="h6 mb-0 text-primary-3">Update Next Class</span>
-                                        <img class="icon" src="assets/img/icons/interface/plus.svg"
-                                            alt="plus interface icon" data-inject-svg />
-                                    </div>
-
-                                    <div class="collapse" id="panel-{{ $batch->id }}">
-                                        <div class="px-3">
-                                            <form action="{{ route('updateClass') }}" method="POST" class="form-inlin ">
-                                                @csrf
-                                                {{-- <div class="row pl-0 pr-0"> --}}
-                                                <div class="form-floating mt-3 mb-2 ">
-
-                                                    <input type="text" id="floatingInput" class="form-control"
-                                                        value="{{ $batch->topic }}" name="topic" placeholder="Password">
-                                                    <label for="floatingInput">Next Topic</label>
-                                                </div>
-                                                <div class="form-floating mt-3 mb-2">
-                                                    <input type="password" class="form-control" name="nextClass"
-                                                        value="{{ $batch->nextClass }}" placeholder="Next Class Timings"
-                                                        data-flatpickr data-enable-time="true" data-date-format="Y-m-d H:i">
-                                                    <label for="inputPassword2">Date and time</label>
-                                                    <input type="hidden" value="{{ $batch->id }}" name="batchId">
-                                                </div>
-                                                <div class="form-floating mt-3 mb-2">
-                                                    <input type="text" class="form-control"
-                                                        value="{{ $batch->meetingLink }}" name="meetingLink"
-                                                        placeholder="Meeting Link"><label for="inputPassword2">Meeting
-                                                        Link</label>
-                                                    <label for="inputPassword2">Meeting Link</label>
-                                                </div>
-
-                                                <button type="submit" class="btn btn-outline-primary mt-2">Update</button>
+                        @if ($batches->count() != 0)
+                            <span class="badge badge-pill badge-ck-success lead m-1">Upcoming Classes</span>
+                            @foreach ($batches as $batch)
+                                <div class="card  card-ico shadow-3d">
+                                    <div class="card-body">
+                                        <div class="flex-grow-1">
+                                            <div class="h3">{{ $batch->topic }}</div>
+                                            <p>
+                                                {!! $batch->desc !!}
+                                            </p>
+                                            <div class="d-md-flex justify-content-between">
                                                 <div class="">
+                                                    <h5 class="mb-0 text-primary-3">
+                                                        {{ Carbon\Carbon::parse($batch->nextClass)->format('D, d M Y') }}
+                                                        </h4>
+                                                        <h6>{{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
+                                                    </h5>
                                                 </div>
 
-                                                {{-- </div> --}}
-                                            </form>
+                                                <div class="text pt-md-2">
+                                                    @if ($batch->meetingLink != '')
+                                                        <a href="{{ $batch->meetingLink }}" target="_blank"
+                                                            class="fw-400 btn btn-primary">Launch Class</a>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <a href="{{ action('BatchController@classDetails', $batch->id) }}"
+                                                class="btn ck-c-btn">Details</a>
+                                            <a href="{{ action('TeacherController@enrollments', $batch->id) }}"
+                                                class="btn ck-c-btn">Enrollments</a>
+                                            <a href="{{ action('TeacherController@addContent', $batch->id) }}"
+                                                class="btn ck-c-btn">Add Content</a>
+
+                                        </div>
+
+
+                                    </div>
+                                    <div class="border-top ">
+                                        <div data-target="#panel-{{ $batch->id }}" class="accordion-panel-title p-3"
+                                            data-toggle="collapse" role="button" aria-expanded="false"
+                                            aria-controls="panel-1">
+                                            <span class="h6 mb-0 text-primary-3">Update Next Class</span>
+                                            <img class="icon" src="assets/img/icons/interface/plus.svg"
+                                                alt="plus interface icon" data-inject-svg />
+                                        </div>
+
+                                        <div class="collapse" id="panel-{{ $batch->id }}">
+                                            <div class="px-3">
+                                                <form action="{{ route('updateClass') }}" method="POST"
+                                                    class="form-inlin ">
+                                                    @csrf
+                                                    {{-- <div class="row pl-0 pr-0"> --}}
+                                                    <div class="form-floating mt-3 mb-2 ">
+
+                                                        <input type="text" id="floatingInput" class="form-control"
+                                                            value="{{ $batch->topic }}" name="topic"
+                                                            placeholder="Password">
+                                                        <label for="floatingInput">Next Topic</label>
+                                                    </div>
+                                                    <div class="form-floating mt-3 mb-2">
+                                                        <input type="password" class="form-control" name="nextClass"
+                                                            value="{{ $batch->nextClass }}"
+                                                            placeholder="Next Class Timings" data-flatpickr
+                                                            data-enable-time="true" data-date-format="Y-m-d H:i">
+                                                        <label for="inputPassword2">Date and time</label>
+                                                        <input type="hidden" value="{{ $batch->id }}" name="batchId">
+                                                    </div>
+                                                    <div class="form-floating mt-3 mb-2">
+                                                        <input type="text" class="form-control"
+                                                            value="{{ $batch->meetingLink }}" name="meetingLink"
+                                                            placeholder="Meeting Link"><label for="inputPassword2">Meeting
+                                                            Link</label>
+                                                        <label for="inputPassword2">Meeting Link</label>
+                                                    </div>
+
+                                                    <button type="submit"
+                                                        class="btn btn-outline-primary mt-2">Update</button>
+                                                    <div class="">
+                                                    </div>
+
+                                                    {{-- </div> --}}
+                                                </form>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            </div>
-                        @endforeach
-                    
-                        {{-- course card --}}
+                                </div>
+                            @endforeach
+
+                            {{-- course card --}}
                         @endif
                     @endif
 
