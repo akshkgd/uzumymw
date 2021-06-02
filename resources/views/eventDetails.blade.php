@@ -1,5 +1,7 @@
 @extends('layouts.app')
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+@section('title', '' . e($event->name))
+@section('meta_keywords', '' . e($event->name))
+@section('meta_description', '' . e($event->description))
 @section('content')
 
     <div class="navbar-container">

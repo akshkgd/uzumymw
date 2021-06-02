@@ -2,7 +2,7 @@
   @guest
   <a class="navbar-brand" href="{{url('/')}}">
     {{-- <img src="assets/img/tlogo.png" alt="Leap"> --}}
-    <span style="font-size: 24px;" class="layer-">Codekaro
+    <span style="" class="layer-">Codekaro
       
     </span>
     
