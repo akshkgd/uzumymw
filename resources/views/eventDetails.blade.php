@@ -83,7 +83,7 @@
                                 <p class="text-primary">Only {{ $event->limit }} Seats<span class="text-dark">,
                                         available on the first come first serve basis</span></p>
                                 <h5 class="ck-font fw-400 m-0 lead">
-                                    {{ Carbon\Carbon::parse($event->startDate)->format('D, d M h:m A') }} @if ($event->endDate != '') to
+                                    {{ Carbon\Carbon::parse($event->startDate)->format('D, d M') }} {{ Carbon\Carbon::parse($event->nextClass)->format('h:i A') }} @if ($event->endDate != '') to
                                         {{ Carbon\Carbon::parse($event->endDate)->format('d M') }} @endif
                                     </h6>
                                     <p class="ck-font fw-400 ">Timings: {{ $event->schedule }}</p>
