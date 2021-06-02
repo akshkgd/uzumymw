@@ -27,7 +27,7 @@
           <div class="col-auto">
             <ul class="nav">
               <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="https://www.instagram.com/codekaro.in/" class="nav-link">
                   <img class="icon " src="{{asset('assets/img/icons/social/instagram.svg')}}" alt="instagram social icon" data-inject-svg />
                 </a>
               </li>
