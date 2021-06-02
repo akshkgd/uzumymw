@@ -2,6 +2,7 @@
 @section('title', '' . e($event->name))
 @section('meta_keywords', '' . e($event->name))
 @section('meta_description', '' . e($event->description))
+@section('meta_image', '' . e(asset('storage/' . $event->img)))
 @section('content')
 
     <div class="navbar-container">

@@ -9,6 +9,7 @@
     <title>@yield('title','Codekaro - Live Coding Classes learn to code like a pro')</title>
     <meta name="keywords" content="@yield('meta_keywords','Codekaro try to bring latest courses to students. Not only that we provide a dedicated team to answer their doubts.')">
     <meta name="description" content="@yield('meta_description','Codekaro try to bring latest courses to students. Not only that we provide a dedicated team to answer their doubts.')">
+    <meta name="image" content="@yield('meta_image','{{asset('assets/img/test3.png')}}')">
     <link rel="canonical" href="{{url()->current()}}"/>
     <link rel="icon" href="{{asset('/assets/img/chrome-icon.png')}}">
     <!-- Global site tag (gtag.js) - Google Analytics -->
