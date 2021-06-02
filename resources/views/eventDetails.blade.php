@@ -1,4 +1,11 @@
 @extends('layouts.app')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+<style>
+    li {
+        margin-bottom: 3px;
+    }
+
+</style>
 @section('title', '' . e($event->name))
 @section('meta_keywords', '' . e($event->name))
 @section('meta_description', '' . e($event->description))
@@ -21,11 +28,7 @@
 
     <section class="d-non ">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    {{-- <h2 class="display-5">Understand the system design behind Zomato</h1> --}}
-                </div>
-            </div>
+           
 
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-12 ">
@@ -75,7 +78,7 @@
 
                 </div>
                 <div class="col-lg-4 col-md-12">
-                    <div class="card border-none  shadow-lg sticky-lg-top ">
+                    <div class="card border-none  shadow-lg sticky-lg-top">
 
                         <div class="p-2">
                             <img src="{{ asset('storage/' . $event->img) }}" alt="Image" class="card-img-to rounded mb-3">
