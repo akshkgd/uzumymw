@@ -132,7 +132,7 @@ class AdminController extends Controller
     public function createWorkshop()
     {
         $teachers = User::where('role', 1)->get();
-        return view('admin.createworkshop', compact('teachers'));
+        return view('admin.createWorkshop', compact('teachers'));
     }
 
     public function addWorkshop(Request $request)

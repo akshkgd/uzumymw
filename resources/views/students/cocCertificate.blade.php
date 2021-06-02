@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-10 col-xl-12 col-md-12">
-                <div class="card pb-0 shadow" style="border:0px solid #feefc3;">
+                <div class="card pb-0 shadow-lg" style="border:0px solid #feefc3;">
                     <div class="card-boy">
 
                         <section class="bg-primary-alt t has-divider mt-0 pt-0 rounded-lg" style="background:#ffefc3;; " data-overlay>
