@@ -47,11 +47,9 @@
                             <a href="#" class="btn btn-lg mt-2 btn-white ck-font fw-400">Enroll now</a>
                     </div>
                     
-                    <h1 class="display-5 m-0">{{ $event->name }}</h1>
+                    <h1 class="display-5 ">{{ $event->name }}</h1>
                     <p class="lead">{{$event->description}}</p>
-                    <p class="lead text-dark">Live Classes From
-                        {{ Carbon\Carbon::parse($event->startDate)->format('D, d M') }} to
-                        {{ Carbon\Carbon::parse($event->endDate)->format('d M') }} </p>
+                    
                     {{-- <img src="{{asset('assets/img/testimonials/T6jCsf3.png')}}" alt="" class="img-fluid rounded mb-3"> --}}
                     {!! $event->about !!}
 
@@ -83,10 +81,9 @@
                                 <p class="text-primary">Only {{ $event->limit }} Seats<span class="text-dark">,
                                         available on the first come first serve basis</span></p>
                                 <h5 class="ck-font fw-400 m-0 lead">
-                                    {{ Carbon\Carbon::parse($event->startDate)->format('D, d M') }} {{ Carbon\Carbon::parse($event->nextClass)->format('h:i A') }} @if ($event->endDate != '') to
-                                        {{ Carbon\Carbon::parse($event->endDate)->format('d M') }} @endif
+                                    {{ Carbon\Carbon::parse($event->startDate)->format('D, d M') }} {{ Carbon\Carbon::parse($event->nextClass)->format('h:i A') }}
                                     </h6>
-                                    <p class="ck-font fw-400 ">Timings: {{ $event->schedule }}</p>
+                                    <p class="ck-font fw-400 text-dark">Schedule: {{ $event->schedule }}</p>
                                 </h5>
 
 

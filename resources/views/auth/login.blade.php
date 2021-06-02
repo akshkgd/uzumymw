@@ -18,7 +18,7 @@
 
 
     </div>
-    
+
     <section class="min-vh-100 p-0 m-0">
 
         <div class="container">
@@ -31,20 +31,17 @@
             </div>
             <div class="row justify-content-center pt-3">
                 <div class="col-xl-5 col-lg-6 col-md-6 ">
-                  <div class="text-center">
-                    {{-- <a href="index.html"><h4 class="">Codekaro</h1></a> --}}
-                </div>
+                    <div class="text-center">
+                        {{-- <a href="index.html"><h4 class="">Codekaro</h1></a> --}}
+                    </div>
 
                     <div class="card p-3 border-none shadow" style="border: 3px solid black">
-                      
+
                         <div class="text-cente mb-4">
                             <h1 class=" m-0 display-5">Sign in</h1>
                             <p class=" lead m-0 text-dark">Welcome back to codekaro</p>
                         </div>
-                        {{-- <div class="py-2 d-non text-center">
-          <a href="{{ url('/redirect') }}" class=" fw-400 p-1 btn btn-lg btn-primary-3 btn-block px-2" >Continue with Google</a>
-
-                  </div> --}}
+                        
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
@@ -117,6 +114,13 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                    <div class="text-center">
+                        {{-- <div class="py-2 d-non text-center">
+          <a href="{{ url('/redirect') }}" class=" fw-400 p-1 btn btn-lg btn-primary-3 btn-block px-2" >Continue with Google</a>
+
+                  </div> --}}
+                  <p class="lead text-dark">New to codekaro? <a href="{{ url('/redirect') }}" class="card-link fw-400 ck-font">join now</a></p>
                     </div>
                 </div>
             </div>
