@@ -93,9 +93,9 @@
                                 <div class="card-bod d-flex flex-column">
                                     <div class=" p-2">
                                         <h4 class="mb-0 ck-font fw-400">{{$batch->name}} </h1>
-                                            <p class="lea m-0 text-dark">Start Time: {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
+                                            <p class="lea m-0 text-dark">Timing: {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
                                                 {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M Y') }}</p>
-                                            <p class="lad m-0 text-dark">Duration: 2 Hours</p>
+                                            <p class="lad m-0 text-dark">Schedule: {{$batch->schedule}}</p>
 
                                     </div>
                                 </div>
