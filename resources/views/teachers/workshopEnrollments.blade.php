@@ -33,8 +33,8 @@
                                     @foreach ($enrollments as $enrollment)
                                         <tr>
                                             <th scope="row">{{ ++$i }}</th>
-                                            <td> <img src="{{ $enrollment->students->avatar }}" alt=""
-                                            class="avatar avatar-sm"> {{ $enrollment->students->name }}</td>
+                                            <td> <img src="{{ $enrollment->student->avatar }}" alt=""
+                                            class="avatar avatar-sm"> {{ $enrollment->student->name }}</td>
                                             <td>{{ $enrollment->students->email }}</td>
                                             <td>{{ $enrollment->students->college }}</td>
                                             <td>{{ $enrollment->students->course }}</td>
