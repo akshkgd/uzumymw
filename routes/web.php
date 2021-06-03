@@ -24,8 +24,7 @@ Route::view('/complete','students.completeProfile');
 Route::get('/webhook', 'TelegramController@webhook');
 Route::view('/contact-us','contact');
 Route::view('/privacy','privacy');
-Route::view('/event','event');
-Route::view('/eventd','eventDetails');
+
 
 Route::get('/', function () {
     
@@ -33,11 +32,6 @@ Route::get('/', function () {
     return view('welcome', compact('batches'));
 });
 
-Route::get('/eventd', function () {
-    
-    $event = Workshop::first();
-    return view('eventDetails', compact('event'));
-});
 
 
 Route::get('/batch', function () {
@@ -46,9 +40,6 @@ Route::get('/batch', function () {
 Route::get('/about',  function(){
     return view('about');
 });
-// Route::get('/course',  function(){
-//     return view('course');
-// });
 
 Route::get('/logged-in-devices', 'ProfileController@index')
 		->name('logged-in-devices.list')
@@ -61,24 +52,12 @@ Route::get('/logout/all', 'ProfileController@logoutAllDevices')
 Route::get('/logout/{device_id}', 'ProfileController@logoutDevice')
 		->name('logged-in-devices.logoutSpecific')
 		->middleware('auth');
-
-Route::get('/updated-activity', 'TelegramBotController@updatedActivity');
-Route::get('set-hook', 'TelegramBotController@setWebHook');
-Route::get('get-me', 'TelegramBotController@getMe');
-
-Route::post(env('TELEGRAM_BOT_TOKEN') . '/webhook', 'TelegramBotController@handleRequest');
-Route::get('/bot', function() {
-    $updates = Telegram::getUpdates();
-    return (json_encode($updates));
-    dd($updates);
-});
-
 // student routes start
 Route::get('/notes/{id}', 'StudentController@notes');
 Route::get('/recording-sessions/{id}/{key?}', 'StudentController@recordings');
 
 //student routes end
-
+Route::get('/event', 'WorkshopController@index');
 Route::resource('/faq', 'FaqController');
 Route::resource('/course', 'BatchController');
 Route::resource('/feedback', 'FeedbackController');

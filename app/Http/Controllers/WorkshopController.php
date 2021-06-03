@@ -16,6 +16,11 @@ use Carbon\Carbon;
 
 class WorkshopController extends Controller
 {
+    public function index()
+    {
+        $batches = Workshop::where('status',1)->latest()->get();;
+        return view('event', compact('batches'));
+    }
     
     public function details($id)
     {
@@ -49,4 +54,5 @@ class WorkshopController extends Controller
         
         
     }
+
 }
