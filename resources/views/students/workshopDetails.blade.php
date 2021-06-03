@@ -22,8 +22,9 @@
                         <div class="card-body">
                             <h2 class="lead-1 m-0">{{ $workshop->name }}</h3>
                                 <p>{!! $workshop->desc !!}</p>
-                                <a href="" class="btn ck-c-btn">Notes & Assignments</a>
-                                <a href="" class="btn ck-c-btn">Recording sessions</a>
+                                <a href="{{url('/home')}}" class="btn ck-c-btn">Dashboard</a>
+                                <a href="{{ $workshop->groupLink}}" target="_blank" class="btn ck-c-btn">Join WhatsApp Group</a>
+                                <p class="small pt-3 m-0 pb-0">joining the whatsApp group is important as all the information will be shared on the group! </p>
                         </div>
 
                         <div class="d-non card-body border-top">

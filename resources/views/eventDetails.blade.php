@@ -31,13 +31,15 @@
            
 
             <div class="row justify-content-center">
-                <div class="col-lg-8 col-md-12 ">
-                    <div class="card card-body bg-primary text-light hidden-lg m-0 mb-3">
+                <div class="col-lg-8 col-md-12 order-sm-1">
+                    <div class="card card-body bg-primary text-light hidden-lg m-0 mb-3 d-none">
                         <span class="h2 ck-font fw-400 d-block ck-fon">{{$event->name}}</span>
                         <p class="lead pr-xl-3 m-0">
                             Live Classes from
-                            {{ Carbon\Carbon::parse($event->startDate)->format('D, d M') }} to
+                            {{ Carbon\Carbon::parse($event->startDate)->format('D, d M') }} @if($event->endDate != '')
+                            to
                             {{ Carbon\Carbon::parse($event->endDate)->format('d M') }}
+                            @endif
                         </p>
                         <p class="ck-font fw-400 m-0">Schedule: {{ $event->schedule }}</p>
                         <p class="ck-font fw-400 ">Seat Limit: {{ $event->limit }}</p>
@@ -77,7 +79,7 @@
 
 
                 </div>
-                <div class="col-lg-4 col-md-12">
+                <div class="col-lg-4 col-md-12 order-sm-2">
                     <div class="card border-none  shadow-lg sticky-lg-top">
 
                         <div class="p-2">
