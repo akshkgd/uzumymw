@@ -53,7 +53,10 @@
                     {{-- alert ends --}}
                     @isset($workshopEnrollments)
                         @if ($workshopEnrollments->count() > 0)
-                            <span class="badge badge-pill badge-ck-primary text-center lead mb-2">Upcoming Class</span>
+                        <div class="text-sm-center">
+                            <span class="badge badge-pill badge-ck-primary text-center lead mb-2 mt-3 ">Upcoming Class</span>
+                        </div>
+                            
                         @endif
                         @forelse ($workshopEnrollments as $event)
                             <div class="card card-dark cb-card card-ico shadow-3d">
@@ -99,9 +102,10 @@
 
                     @isset($Enrollments)
                         @if ($Enrollments->count() > 0)
-                            <span class="badge badge-pill badge-ck-primary text-center lead mb-2">Upcoming Class</span>
+                            {{-- <span class="badge badge-pill badge-ck-primary text-center lead mb-2">Upcoming Class</span> --}}
                         @endif
                         @forelse ($Enrollments as $Enrollment)
+                        @if ($Enrollment->batch->status < 3 && $Enrollment->batch->status > 0)
                             <div class="card card-dark cb-card card-ico shadow-3d">
                                 <div class="card-body">
                                     <div class="flex-grow-1">
@@ -149,6 +153,7 @@
 
 
                             </div>
+                            @endif
                         @empty
                             <div class="row   o-hidden  mt-5">
                                 <div class="col-md-12 d-flex">

@@ -49,7 +49,7 @@ class HomeController extends Controller
             }
         }
         elseif(Auth::User()->role == 1){
-            $batches = Batch::where('TeacherId', Auth::User()->id)->orderBy('nextClass', 'asc')->get();
+            $batches = Batch::where('TeacherId', Auth::User()->id)->where('status', '<', 3)->orderBy('nextClass', 'asc')->get();
             $workshops = Workshop::where('TeacherId', Auth::User()->id)->where('status', '<', 3)->orderBy('nextClass', 'asc')->get();
             
             return view('teachers.index', compact('batches', 'workshops'));

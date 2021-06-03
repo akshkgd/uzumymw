@@ -64,6 +64,12 @@
                         <input type="text" class="form-control" id="floatingInput" name="course" placeholder="name@example.com" value="{{Auth::user()->course}}">
                         <label for="floatingInput">Course</label>
                       </div>
+                      @if (Auth::user()->role==1)
+                      <div class="form-floating mb-2">
+                        <input type="text" class="form-control" id="floatingInput" name="bio" placeholder="name@example.com" value="{{Auth::user()->bio}}">
+                        <label for="floatingInput">Bio</label>
+                      </div>
+                      @endif
 
                       <div>
                         <button type="submit" class="btn btn-primary">Save Changes</button>

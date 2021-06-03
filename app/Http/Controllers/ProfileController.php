@@ -41,6 +41,7 @@ class ProfileController extends Controller
         $user->mobile = $request->mobile;
         $user->college = $request->college;
         $user->course = $request->course;
+        $user->bio = $request->bio;
         $user->save();
         session()->flash('alert-success', 'Profile Successfully Updated!');
         return redirect()->back();
