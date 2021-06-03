@@ -35,9 +35,9 @@
                                             <th scope="row">{{ ++$i }}</th>
                                             <td> <img src="{{ $enrollment->student->avatar }}" alt=""
                                             class="avatar avatar-sm"> {{ $enrollment->student->name }}</td>
-                                            <td>{{ $enrollment->students->email }}</td>
-                                            <td>{{ $enrollment->students->college }}</td>
-                                            <td>{{ $enrollment->students->course }}</td>
+                                            <td>{{ $enrollment->student->email }}</td>
+                                            <td>{{ $enrollment->student->college }}</td>
+                                            <td>{{ $enrollment->student->course }}</td>
 
                                         </tr>
                                     @endforeach
