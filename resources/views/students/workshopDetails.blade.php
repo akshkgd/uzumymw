@@ -134,8 +134,8 @@
         </div>
     </section>
     {{-- workshop details ends --}}
-    <a href="#" class="btn btn-dark p-3 bg-dark btn-round btn-floating">
-        <img class="icon " src="assets/img/icons/theme/communication/chat-4.svg" alt="twitter social icon"
+    <a href="https://api.whatsapp.com/send/?phone=917355191435&text=Hi, I am {{Auth::user()->name}} my registered mail id is {{Auth::user()->email}} i have issue in {{$workshop->name}}" target="_blank" class="btn btn-dark p-3 bg-dark btn-round btn-floating">
+        <img class="icon " src="{{asset('assets/img/icons/theme/communication/chat-4.svg')}}" alt="twitter social icon"
             data-inject-svg />
     </a>
     {{-- <a href="" class="btn btn-dark p-3 bg-dark btn-round  btn-floating">  <img src="/assets/img/icons/communication/chat4.svg" alt=""></a> --}}

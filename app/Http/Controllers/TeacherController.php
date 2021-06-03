@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CourseEnrollment;
+use App\WorkshopEnrollment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use App\Batch;
@@ -52,6 +53,20 @@ class TeacherController extends Controller
             return redirect()->back();
         }
     }
+
+    public function workshopEnrollments($id)
+    {
+        $batch = Workshop::findorFail($id);
+        if($batch->teacherId == Auth::user()->id)
+        {
+        $enrollments = WorkshopEnrollment::where('workshopId', $id)->where('status', 1)->get();
+        return view('teachers.workshopEnrollments', compact('enrollments'))->with('i');
+        }
+        else{
+            return redirect()->back();
+        }
+    }
+
 
 
     public function generateCertificate($id)

@@ -104,6 +104,7 @@ route::post('/update-workshop', 'TeacherController@updateWorkshopClass')->name('
 Route::get('/my-classes', 'BatchController@myClasses');
 Route::get('/class-details/{id}', 'BatchController@classDetails');
 Route::get('/enrollments/{id}', 'TeacherController@enrollments');
+Route::get('/workshop-enrollments/{id}', 'TeacherController@workshopEnrollments');
 Route::get('/generate-certificate/{id}', 'TeacherController@generateCertificate');
 Route::get('/addContent/{id}', 'TeacherController@addContent');
 Route::post('/store-content', 'TeacherController@storeContent')->name('addContent');

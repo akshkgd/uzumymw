@@ -103,7 +103,7 @@
                                             </div>
                                             <a href="{{ action('BatchController@classDetails', $batch->id) }}"
                                                 class="btn ck-c-btn">Details</a>
-                                            <a href="{{ action('TeacherController@enrollments', $batch->id) }}"
+                                            <a href="{{ action('TeacherController@workshopEnrollments', $batch->id) }}"
                                                 class="btn ck-c-btn">Enrollments</a>
                                             <a href="{{ action('TeacherController@addContent', $batch->id) }}"
                                                 class="btn ck-c-btn">Add Content</a>

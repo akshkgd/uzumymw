@@ -31,6 +31,42 @@
            
 
             <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-12 order-sm-2">
+                    <div class="card border-none  shadow-lg sticky-lg-top">
+
+                        <div class="p-2">
+                            <img src="{{ asset('storage/' . $event->img) }}" alt="Image" class="card-img-to rounded mb-3">
+                            <h2 class="ck-font lead-1  m-0">{{ $event->name }}</h1>
+                                <p class="text-primary">Only {{ $event->limit }} Seats<span class="text-dark">,
+                                        available on the first come first serve basis</span></p>
+                                <h5 class="ck-font fw-400 m-0 lead">
+                                    {{ Carbon\Carbon::parse($event->startDate)->format('D, d M') }} {{ Carbon\Carbon::parse($event->nextClass)->format('h:i A') }}
+                                    </h6>
+                                    <p class="ck-font fw-400 text-dark">Schedule: {{ $event->schedule }}</p>
+                                </h5>
+
+
+                                {{-- <h5 class="ck-font fw-400">This Free Course Includes</h6> --}}
+
+                                <ul class="px-3 ">
+                                    <li>LinkedIn sharable Certificate</li>
+                                    <li>Lifetime Access to projects</li>
+                                    <li>Assignments for practice</li>
+                                </ul>
+
+                                <a href="{{ action('WorkshopEnrollmentController@checkEnroll', $event->id) }}"
+                                    class="btn btn-lg btn-outline-primary-3 btn-block fw-400">Enroll now for free</a>
+                        </div>
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
                 <div class="col-lg-8 col-md-12 order-sm-1">
                     <div class="card card-body bg-primary text-light hidden-lg m-0 mb-3 d-none">
                         <span class="h2 ck-font fw-400 d-block ck-fon">{{$event->name}}</span>
@@ -79,42 +115,7 @@
 
 
                 </div>
-                <div class="col-lg-4 col-md-12 order-sm-2">
-                    <div class="card border-none  shadow-lg sticky-lg-top">
-
-                        <div class="p-2">
-                            <img src="{{ asset('storage/' . $event->img) }}" alt="Image" class="card-img-to rounded mb-3">
-                            <h2 class="ck-font lead-1  m-0">{{ $event->name }}</h1>
-                                <p class="text-primary">Only {{ $event->limit }} Seats<span class="text-dark">,
-                                        available on the first come first serve basis</span></p>
-                                <h5 class="ck-font fw-400 m-0 lead">
-                                    {{ Carbon\Carbon::parse($event->startDate)->format('D, d M') }} {{ Carbon\Carbon::parse($event->nextClass)->format('h:i A') }}
-                                    </h6>
-                                    <p class="ck-font fw-400 text-dark">Schedule: {{ $event->schedule }}</p>
-                                </h5>
-
-
-                                {{-- <h5 class="ck-font fw-400">This Free Course Includes</h6> --}}
-
-                                <ul class="px-3 ">
-                                    <li>LinkedIn sharable Certificate</li>
-                                    <li>Lifetime Access to projects</li>
-                                    <li>Assignments for practice</li>
-                                </ul>
-
-                                <a href="{{ action('WorkshopEnrollmentController@checkEnroll', $event->id) }}"
-                                    class="btn btn-lg btn-outline-primary-3 btn-block fw-400">Enroll now for free</a>
-                        </div>
-
-
-
-
-
-
-
-
-                    </div>
-                </div>
+                
             </div>
         </div>
     </section>
