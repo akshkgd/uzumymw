@@ -48,7 +48,7 @@ class AdminController extends Controller
     public function banStudent($id)
     {
         $user  = User::findorFail($id);
-        $user->is_active = 0;
+        $user->status = 0;
         $user->save();
         session()->flash('alert-success', 'Account Updated Successfully!');
         return redirect()->back();
@@ -56,7 +56,7 @@ class AdminController extends Controller
     public function activateStudent($id)
     {
         $user  = User::findorFail($id);
-        $user->is_active = 1;
+        $user->status = 1;
         $user->save();
         session()->flash('alert-success', 'Account Updated Successfully!');
         return redirect()->back();
