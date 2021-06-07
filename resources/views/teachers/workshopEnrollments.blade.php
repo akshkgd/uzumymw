@@ -39,7 +39,7 @@
                                             <td>{{ $enrollment->student->email }}</td>
                                             <td>{{ $enrollment->student->college }}</td>
                                             <td>{{ $enrollment->student->course }}</td>
-                                            <td>{{ $enrollment->created_at->format('D M y')}}</td>
+                                            <td>{{ $enrollment->created_at->format('d M ')}}</td>
 
                                         </tr>
                                     @endforeach
@@ -75,7 +75,7 @@
                                             <td>{{ $enrollment->student->email }}</td>
                                             <td>{{ $enrollment->student->college }}</td>
                                             <td>{{ $enrollment->student->course }}</td>
-                                            <td>{{ $enrollment->created_at->format('D M y')}}</td>
+                                            <td>{{ $enrollment->created_at->format('d M')}}</td>
 
                                         </tr>
                                     @endforeach
