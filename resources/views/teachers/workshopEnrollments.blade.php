@@ -27,6 +27,7 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">College</th>
                                         <th scope="col">Course</th>
+                                        <th scope="col">Enrolled on </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,6 +39,7 @@
                                             <td>{{ $enrollment->student->email }}</td>
                                             <td>{{ $enrollment->student->college }}</td>
                                             <td>{{ $enrollment->student->course }}</td>
+                                            <td>{{ $enrollment->created_at->format('D M y')}}</td>
 
                                         </tr>
                                     @endforeach
@@ -61,6 +63,7 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">College</th>
                                         <th scope="col">Course</th>
+                                        <th scope="col">Enrolled on </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -72,6 +75,7 @@
                                             <td>{{ $enrollment->student->email }}</td>
                                             <td>{{ $enrollment->student->college }}</td>
                                             <td>{{ $enrollment->student->course }}</td>
+                                            <td>{{ $enrollment->created_at->format('D M y')}}</td>
 
                                         </tr>
                                     @endforeach
