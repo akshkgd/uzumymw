@@ -60,7 +60,8 @@ class TeacherController extends Controller
         if($batch->teacherId == Auth::user()->id)
         {
         $enrollments = WorkshopEnrollment::where('workshopId', $id)->where('status', 1)->get();
-        return view('teachers.workshopEnrollments', compact('enrollments'))->with('i');
+        $failedEnrollments = WorkshopEnrollment::where('workshopId', $id)->where('status', 0)->get();
+        return view('teachers.workshopEnrollments', compact('enrollments', 'failedEnrollments'))->with('i');
         }
         else{
             return redirect()->back();

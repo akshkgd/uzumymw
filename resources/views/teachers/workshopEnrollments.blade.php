@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="card-boy">
                             <div class="p-3">
-                                <h3 class="">Student Details</h3>
+                                <h3 class="ck-font">Students Enrolled</h3>
                             </div>
 
                             <table class="table table-responsive-lg">
@@ -31,6 +31,40 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($enrollments as $enrollment)
+                                        <tr>
+                                            <th scope="row">{{ ++$i }}</th>
+                                            <td> <img src="{{ $enrollment->student->avatar }}" alt=""
+                                            class="avatar avatar-sm"> {{ $enrollment->student->name }}</td>
+                                            <td>{{ $enrollment->student->email }}</td>
+                                            <td>{{ $enrollment->student->college }}</td>
+                                            <td>{{ $enrollment->student->course }}</td>
+
+                                        </tr>
+                                    @endforeach
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-boy">
+                            <div class="p-3">
+                                <h4 class="ck-font">Students failed to book the slot</h3>
+                            </div>
+
+                            <table class="table table-responsive-lg">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">College</th>
+                                        <th scope="col">Course</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($failedEnrollments as $enrollment)
                                         <tr>
                                             <th scope="row">{{ ++$i }}</th>
                                             <td> <img src="{{ $enrollment->student->avatar }}" alt=""
