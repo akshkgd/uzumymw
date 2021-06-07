@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Crypt;
 use App\Batch;
 use App\CourseEnrollment;
+use App\WorkshopEnrollment;
 use Razorpay\Api\Api;
 use Session;
 use Redirect;
@@ -151,12 +152,11 @@ class CourseEnrollmentController extends Controller
 
     public function myCourse(){
         $courses = CourseEnrollment::where('userId', Auth::user()->id)->get();
-        if($courses->count() !=0)
-        return view('students.myCourses', compact('courses'));
-        else{
-            session()->flash('alert-danger', 'You Have not enrolled in any course yet!');
-            return redirect('/home');
-        }
+        $workshops = WorkshopEnrollment::where('userId', Auth::user()->id)->where('status', 1)->get();
+        
+        return view('students.myCourses', compact('courses', 'workshops'));
+        
+        
     }
     
 }
