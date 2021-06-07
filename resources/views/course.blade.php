@@ -68,28 +68,7 @@ body{
                             </a>
                         </div>  
 
-                        <div class=" col-md-6 col-lg-4 d-flex ">
-                            <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
-                                href="{{ action('WorkshopController@details', $batch->id) }}">
-                                <div class="flex-grow-1">
-                                <img src="{{ asset('storage/'.$batch->img) }}" loading="lazy" alt="Image"
-                                    class="card-img-top">
-                                <div class="card-bod d-flex flex-column">
-                                    <div class=" p-2">
-                                        <h4 class="mb-0 ck-font fw-400">{{$batch->name}} </h1>
-                                            <p class="lea m-0 text-dark">Start Time: {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
-                                                {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M Y') }}</p>
-                                            <p class="lad m-0 text-dark">Duration: 2 Hours</p>
-
-                                    </div>
-                                </div>
-                                </div>
-                                    <div class="d-flex flex-wrap align-items-center">
-                                        <span class="badge badge-pill badge-ck-primary  m-1">Live Session</span>
-                                        <span class="badge badge-pill badge-ck-success  m-1">Free</span>
-                                    </div>
-                            </a>
-                        </div>
+                        
                         @endforeach
                         {{-- card test --}}
                         
