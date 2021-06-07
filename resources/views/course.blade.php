@@ -55,10 +55,11 @@ body{
                                 href="{{action('BatchController@details', $batch->id )}}">
                                 <img src="{{ asset('storage/'.$batch->img) }}" alt="Image" class="card-img-top">
                                 <div class="card-bod d-flex flex-column">
-                                    <div class=" p-1">
-                                        <h6 class="lead m-0">{{$batch->name}}</h6>
+                                    <div class=" p-2">
+                                        <h4 class="mb-0 ck-font fw-400">{{$batch->name}}</h6>
                                         
-                                            <p class="">{{Carbon\Carbon::parse($batch->nextClass)->format('D, d M Y')}} at {{$batch->time}}</p> 
+                                            <p class="m-0 pt-2">From {{Carbon\Carbon::parse($batch->startDate)->format('D, d M Y')}} to {{Carbon\Carbon::parse($batch->endDate)->format('D, d M Y')}}</p> 
+                                            <p class=""> <strong>Schedule</strong> {{$batch->schedule}}</p>
                                             
                                          
 

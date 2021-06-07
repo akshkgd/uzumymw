@@ -276,7 +276,7 @@
     </section>
 
 
-    <section class="p-0 mb-5">
+    <section class="p-0 mb-5 d-none">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-center">
@@ -301,7 +301,7 @@
     </div>
 
     {{-- callback form --}}
-            <div class="m-1">
+            <div class="m-1 ">
                 {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#subscribe-modal">
     Subscribe
   </button> --}}
@@ -381,7 +381,7 @@
             </div>
 
 
-            <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+            {{-- <script src="{{ asset('assets/js/jquery.min.js') }}"></script> --}}
             <script type="text/javascript">
                 $(window).on('load', function() {
                     $('#subscribe-modal').modal('show');
