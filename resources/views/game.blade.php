@@ -269,7 +269,7 @@
                 <div class="final-score-container">
                     <span class="final-score-title">Final score: </span>
                     <span class="final-score-value">0 Points</span>
-                    <p class="end-text"> Take a screenshot and show it to Mansoor Codes :)</p>
+                    <p class="end-text"> Take a screenshot and show it to Codekaro on instagram :)</p>
                 </div>
                 <button class="btn-general btn-next">Next</button>
                 <button class="btn-general btn-retry">Retry<span class="iconify" data-inline="false" data-icon="akar-icons:arrow-right" style="font-size: 22px;"></span></button>
