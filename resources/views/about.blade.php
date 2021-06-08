@@ -39,7 +39,7 @@
                 “To achieve this, we’ve created a new video format for code screencasts. We call it “scrims”.
                 This format is the backbone of our school. Not only because it results in a superior learning experience. But also because it enables us to iterate more quickly, to attract better teachers, to facilitate better peer-learning, to keep server costs low, and much more.</p>
       
-                <p class=" pt-3" style="font-size:20px">Ashish Shukla, Founder & C.E.O.</p>
+                <p class=" pt-3" style="font-size:20px">Ashish Shukla</p>
               </div>
         
         </p>
