@@ -39,7 +39,7 @@
                 “To achieve this, we’ve created a new video format for code screencasts. We call it “scrims”.
                 This format is the backbone of our school. Not only because it results in a superior learning experience. But also because it enables us to iterate more quickly, to attract better teachers, to facilitate better peer-learning, to keep server costs low, and much more.</p>
       
-                <p class=" pt-3" style="font-size:20px">Ashish Shukla</p>
+                <p class=" pt-3" style="font-size:20px">Ashish Shukla, Founder & CEO</p>
               </div>
         
         </p>
@@ -52,5 +52,33 @@
     </div>
   </div>
 </section>
+
+
+<section>
+  <div class="container">
+    <div class="row mb-4 justify-content-between">
+      <div class="col text-center">
+        <h2 class="h1 ck-font">coders behind codekaro</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-sm-6 col-lg-4 d-flex align-items-center mb-5" data-aos="fade-up" data-aos-delay="100">
+        <img src="{{asset('assets/img/team/ashish black.png')}}" alt="Benjamin Cameron" class="avatar avatar-xlg mr-3">
+        <div>
+          <h5 class="mb-0">Ashish Shukla</h5>
+          <a href="{{url('/ashish')}}" class="stretched-link">@ashish</a>
+        </div>
+      </div>
+      <div class="col-sm-6 col-lg-4 d-flex align-items-center mb-5" data-aos="fade-up" data-aos-delay="200">
+        <img src="{{asset('assets/img/team/circle-cropped.png')}}" alt="Andrea Souzakis" class="avatar avatar-xlg mr-3">
+        <div>
+          <h5 class="mb-0">Himanshu Srivastava</h5>
+          <a href="{{url('/himanshu')}}" class="stretched-link">@himanshu</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 @include('layouts.footer')
     @endsection
