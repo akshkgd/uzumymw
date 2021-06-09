@@ -41,7 +41,7 @@
             
                                 @endif
                                     <h5 class="lead">
-                                        {{$certificate->updated_at->format('d M Y')}}
+                                        {{$batch->updated_at->format('d M Y')}}
                                         </p>
                             {{-- <p class="lead">4th Aug 2020</p> --}}
                         </div>

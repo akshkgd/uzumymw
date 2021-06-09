@@ -1,23 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <style>
-        .btn-google-login {
-            border: 2px solid #1A73E8;
-            ;
-            border-radius: 30px;
 
-        }
-
-        .btn-google:hover {
-            border: 2px solid #1A73E8;
-            background-color: rgba(232, 240, 254, 0.502);
-            color: #1A73E8;
-        }
-
-    </style>
-
-
-    </div>
 
     <section class="min-vh-100 p-0 m-0">
 
@@ -35,21 +18,22 @@
                         {{-- <a href="index.html"><h4 class="">Codekaro</h1></a> --}}
                     </div>
 
-                    <div class="card p-3 border-none shadow" style="border: 3px solid black">
+                    <div class="card p-3 border-none shadow-lg" style="border: 3px solid black">
 
                         <div class="text-cente mb-4">
                             <h1 class=" m-0 display-5">Sign in</h1>
                             <p class=" lead m-0 text-dark">Welcome back to codekaro</p>
                         </div>
                         
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('login') }}" >
                             @csrf
 
                             <div class="form-group row">
-
+                                
 
 
                                 <div class="col-md-12">
+                                    <a href="{{url('/redirect')}}" class="btn btn-primary-3 mb-2 fw-400">Continue with Google</a>
                                     <div class="form-floating mt-0 ">
                                         <input id="email" type="email"
                                             class="form-control @error('email') is-invalid @enderror" name="email"
@@ -102,10 +86,10 @@
                             </div>
                             <div class="form-group row mb-0">
                                 <div class="col-md-12 ">
-                                    <button type="submit" class="btn  btn-block fw-400 btn-ck btn-primary">
+                                    <button type="submit" class="btn  btn-primary mb-2 fw-400 btn-block">
                                         {{ __('Login') }}
                                     </button>
-                                    <p class="pt-2">By continuing, you agree to Codekaro's Conditions of Use and <a
+                                    <p class="m-0 small">By continuing, you agree to Codekaro's Conditions of Use and <a
                                             href="{{ url('/privacy') }}" class="fw-400">Privacy policy</a>.
                                     </p>
                                     <div class="text-center mt-3">

@@ -16,9 +16,9 @@ class welcomeEmailNotification extends Notification implements ShouldQueue
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($name)
     {
-        //
+        $this->name = $name;
     }
 
     /**
@@ -42,6 +42,7 @@ class welcomeEmailNotification extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->subject('Welcome to Codekaro')
+                    ->greeting('Hello '.$this->name.',')
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
