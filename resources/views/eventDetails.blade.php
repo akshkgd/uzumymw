@@ -123,10 +123,10 @@
     @include('layouts.footer')
     <div class="slider-menu mt-5">
 
-        <h3 class="ck-font ">₹49 <span class="lead "
+        <h3 class="ck-font ">Free <span class="lead "
                 style="text-decoration: line-through;">₹99</span> </h3>
         <br>
-        <a href=""
+        <a href="{{ action('WorkshopEnrollmentController@checkEnroll', $event->id) }}"
             class="btn btn-primary-3 fw-400 ck-font btn-lg w-100">Enroll Now</a>
     </div>
 
