@@ -105,7 +105,7 @@
                                     <h5 class="ck-font fw-400 m-0">Classes From
                                         {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M') }} to
                                         {{ Carbon\Carbon::parse($batch->endDate)->format('d M') }}</h6>
-                                        <p class="ck-font fw-400 ">Timings: {{ $batch->name}}
+                                        <p class="ck-font fw-400 ">Timings: {{ $batch->schedule}}
                                     </h5>
                                     
                                     <a class="btn btn-lg fw-400  mt-2 d-block btn-primary-3 mt- js-pricing-submit-button"

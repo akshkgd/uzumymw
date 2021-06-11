@@ -29,7 +29,7 @@ class BatchController extends Controller
         $batch = Batch::findorfail($id);
         if($batch->status == 1)
         {
-        $topics = BatchTopics::all();
+        $topics = BatchTopics::where('batchId', $batch->id)->get();
         return view('courseDetails',compact('batch', 'topics') );
         }
         else{

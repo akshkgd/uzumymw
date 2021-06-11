@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
-    This is a primary alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like🥳.
-  </div> --}}
+<div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
+    New masterclasses has been launched 🥳 <a href="{{url('/event')}}" class="alert-link">Check Now</a>. Limited seats available.
+  </div>
     <div class="navbar-container">
         <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white">
             @include('layouts.header')

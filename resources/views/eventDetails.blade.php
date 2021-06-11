@@ -32,7 +32,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-12 order-sm-2">
-                    <div class="card border-none  shadow-lg sticky-lg-top">
+                    <div class="card border-none  shadow-lg sticky-lg-top hidden-sm">
 
                         <div class="p-2">
                             <img src="{{ asset('storage/' . $event->img) }}" alt="Image" class="card-img-to rounded mb-3">
@@ -68,8 +68,12 @@
                     </div>
                 </div>
                 <div class="col-lg-8 col-md-12 order-sm-1">
-                    <div class="card card-body bg-primary text-light hidden-lg m-0 mb-3 d-none">
-                        <span class="h2 ck-font fw-400 d-block ck-fon">{{$event->name}}</span>
+                    
+                    
+                    <h1 class="display-5 ">{{ $event->name }}</h1>
+                    <div class="hidden-lg">
+                        <img src="{{ asset('storage/' . $event->img) }}" alt="Image" class="card-img-to rounded mb-3">
+                        
                         <p class="lead pr-xl-3 m-0">
                             Live Classes from
                             {{ Carbon\Carbon::parse($event->startDate)->format('D, d M') }} @if($event->endDate != '')
@@ -87,10 +91,7 @@
                                 <li>Assignments for practice</li>
                                 <li>No hidden charges</li>
                             </ul>
-                            <a href="#" class="btn btn-lg mt-2 btn-white ck-font fw-400">Enroll now</a>
                     </div>
-                    
-                    <h1 class="display-5 ">{{ $event->name }}</h1>
                     <p class="lead">{{$event->description}}</p>
                     
                     {{-- <img src="{{asset('assets/img/testimonials/T6jCsf3.png')}}" alt="" class="img-fluid rounded mb-3"> --}}
@@ -119,6 +120,15 @@
             </div>
         </div>
     </section>
-
     @include('layouts.footer')
+    <div class="slider-menu mt-5">
+
+        <h3 class="ck-font ">₹49 <span class="lead "
+                style="text-decoration: line-through;">₹99</span> </h3>
+        <br>
+        <a href=""
+            class="btn btn-primary-3 fw-400 ck-font btn-lg w-100">Enroll Now</a>
+    </div>
+
+    
 @endsection
