@@ -131,5 +131,6 @@ Route::post('/storeTopic', 'AdminController@storeTopic')->name('storeTopic');
 Route::get('/delete-topic/{id}', 'AdminController@deleteTopic');
 Route::get('/create-workshop', 'AdminController@createWorkshop');
 Route::post('/storeWorkshop', 'AdminController@addWorkshop')->name('storeWorkshop');
+Route::get('/admin/batch-enrollment/{id}', 'AdminController@batchEnrollment');
 
 

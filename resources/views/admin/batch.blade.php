@@ -28,7 +28,7 @@
             @foreach ($batches as $batch)
             <tr>
                <td>{{ ++$i }}</td>
-               <td>  <a href="">{{$batch->name}}</a>   </td>
+               <td>  <a href="{{action('AdminController@batchEnrollment', $batch->id )}}">{{$batch->name}}</a>   </td>
                <td>{{$batch->startDate}}</td>
                <td>{{$batch->enrollments}}</td>
                <td>{{$batch->paidEnrollments}}</td>   

@@ -108,6 +108,15 @@ class AdminController extends Controller
         return view('admin.createBatch');
     }
 
+
+    public function batchEnrollment($id)
+    {
+        $batch = Batch::findorFail($id);
+        $paidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->get();
+        $unpaidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 0)->get();
+        return view('admin.batchEnrollment', compact('batch', 'paidEnrollments', 'unpaidEnrollments'))->with('i');
+    }
+
     public function storeTopic(Request $request)
     {
         $batch = Batch::findorFail($request->batchId);
