@@ -79,6 +79,7 @@ Route::get('/enroll/{id}', 'CourseEnrollmentController@checkEnroll');
 Route::get('/workshop-enroll/{id}', 'WorkshopEnrollmentController@checkEnroll')->middleware('auth');
 Route::get('/checkout/{id}', 'CourseEnrollmentController@checkout');
 Route::post('payment', 'CourseEnrollmentController@payment')->name('payment');
+Route::get('invoice/{id}', 'CourseEnrollmentController@invoice');
 Route::get('/my-course', 'CourseEnrollmentController@myCourse');
 Route::get('/batch/{id}', 'BatchController@batchDetails');
 Route::get('/workshop/{id}', 'WorkshopController@details');

@@ -158,5 +158,12 @@ class CourseEnrollmentController extends Controller
         
         
     }
+
+
+    public function invoice($id){
+        $id = Crypt::decrypt($id);
+        $invoice = CourseEnrollment::findorFail($id);
+        return view('students.invoice', compact('invoice'));
+    }
     
 }
