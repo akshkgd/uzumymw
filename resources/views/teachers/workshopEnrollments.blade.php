@@ -19,7 +19,7 @@
                                 <h3 class="ck-font">Students Enrolled</h3>
                             </div>
 
-                            <table class="table table-responsive-lg">
+                            <table class="table table-responsive">
                                 <thead>
                                     <tr>
                                         <th scope="">#</th>
