@@ -24,7 +24,7 @@
                                 <p>{!! $batch->desc !!}</p>
                                 <a href="" class="btn ck-c-btn">Notes & Assignments</a>
                                 <a href="" class="btn ck-c-btn">Recording sessions</a>
-                                <a href="{{ action('CourseEnrollmentController@invoice', Crypt::encrypt($batch->id)) }}" target="_blank" class="btn ck-c-btn">View Invoice</a>
+                                <a href="{{ action('CourseEnrollmentController@invoice', Crypt::encrypt($Enrollment->id)) }}" target="_blank" class="btn ck-c-btn">View Invoice</a>
                         </div>
 
                         <div class="d-non card-body border-top">

@@ -25,6 +25,7 @@
                                         <th scope="col">#</th>
                                         <th scope="col">Name</th>
                                         <th scope="col">Email</th>
+                                        <th scope="col">Mobile</th>
                                         <th scope="col">College</th>
                                         <th scope="col">Course</th>
                                         <th scope="col">Enrolled on </th>
@@ -37,6 +38,7 @@
                                             <td> <img src="{{ $enrollment->student->avatar }}" alt=""
                                             class="avatar avatar-sm"> {{ $enrollment->student->name }}</td>
                                             <td>{{ $enrollment->student->email }}</td>
+                                            <td> <a href="tel:{{ $enrollment->student->email }}">{{ $enrollment->student->email }}</a> </td>
                                             <td>{{ $enrollment->student->college }}</td>
                                             <td>{{ $enrollment->student->course }}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
