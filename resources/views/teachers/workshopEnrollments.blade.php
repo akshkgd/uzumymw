@@ -22,13 +22,13 @@
                             <table class="table table-responsive-lg">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Email</th>
-                                        <th scope="col">Mobile</th>
-                                        <th scope="col">College</th>
-                                        <th scope="col">Course</th>
-                                        <th scope="col">Enrolled on </th>
+                                        <th scope="">#</th>
+                                        <th scope="">Name</th>
+                                        <th scope="">Email</th>
+                                        <th scope="">Mobile</th>
+                                        <th scope="">College</th>
+                                        <th scope="">Course</th>
+                                        <th scope="">Enrolled on </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,7 +38,7 @@
                                             <td> <img src="{{ $enrollment->student->avatar }}" alt=""
                                             class="avatar avatar-sm"> {{ $enrollment->student->name }}</td>
                                             <td>{{ $enrollment->student->email }}</td>
-                                            <td> <a href="tel:{{ $enrollment->student->email }}">{{ $enrollment->student->email }}</a> </td>
+                                            <td> <a href="tel:{{ $enrollment->student->mobile }}">{{ $enrollment->student->mobile }}</a> </td>
                                             <td>{{ $enrollment->student->college }}</td>
                                             <td>{{ $enrollment->student->course }}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
