@@ -14,6 +14,7 @@ use App\CourseEnrollment;
 use Razorpay\Api\Api;
 use Session;
 use Redirect;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -142,6 +143,27 @@ class AdminController extends Controller
     {
         $teachers = User::where('role', 1)->get();
         return view('admin.createWorkshop', compact('teachers'));
+    }
+    public function paymentReceived($id)
+    {
+        $id = Crypt::decrypt($id);
+        $enrollment = CourseEnrollment::findorFail($id);
+        $batch = Batch::findorFail($enrollment->batchId);
+        return view('admin.paymentReceived', compact('enrollment','batch'));
+    }
+    public function updatePaymentStatus(Request $request)
+    {
+        $enrollment = CourseEnrollment::findorFail($request->enrollmentId);
+        $enrollment->invoiceId = $request->invoiceId;
+        $enrollment->transactionId = $request->transactionId;
+        $enrollment->paymentMethod = $request->paymentMethod;
+        $enrollment->amountPaid = $request->amountPaid;
+        $enrollment->hasPaid = $request->hasPaid;
+        $enrollment->paidAt = Carbon::now();
+        $enrollment->save();
+        session()->flash('alert-success', 'Payment Details Updated Successfully!');
+        return redirect('/home');
+        
     }
 
     public function addWorkshop(Request $request)

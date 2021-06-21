@@ -30,6 +30,8 @@
                                         <th scope="col">College</th>
                                         <th scope="col">Course</th>
                                         <th scope="col">Enrolled on </th>
+                                        <th scope="col">Actions</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,6 +45,9 @@
                                             <td>{{ $enrollment->students->college }}</td>
                                             <td>{{ $enrollment->students->course }}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
+                                            <td>
+                                                <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id) )}}" class="">Payment Received</a>
+                                            </td>
 
                                         </tr>
                                     @endforeach
@@ -68,6 +73,7 @@
                                         <th scope="col">College</th>
                                         <th scope="col">Course</th>
                                         <th scope="col">Enrolled on </th>
+                                        <th scope="col">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -81,6 +87,9 @@
                                             <td>{{ $enrollment->students->college }}</td>
                                             <td>{{ $enrollment->students->course }}</td>
                                             <td>{{ $enrollment->created_at->format('d M')}}</td>
+                                            <td>
+                                                <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id) )}}" class="">Payment Received</a>
+                                            </td>
 
                                         </tr>
                                     @endforeach

@@ -134,5 +134,7 @@ Route::get('/delete-topic/{id}', 'AdminController@deleteTopic');
 Route::get('/create-workshop', 'AdminController@createWorkshop');
 Route::post('/storeWorkshop', 'AdminController@addWorkshop')->name('storeWorkshop');
 Route::get('/admin/batch-enrollment/{id}', 'AdminController@batchEnrollment');
+Route::get('/admin/payment-received/{id}', 'AdminController@paymentReceived');
+Route::post('/updatePaymentStatus', 'AdminController@updatePaymentStatus')->name('updatePaymentStatus');
 
 
