@@ -59,6 +59,7 @@
                             
                         @endif
                         @forelse ($workshopEnrollments as $event)
+                        @if ($event->workshop->status < 3 && $event->workshop->status > 0)
                             <div class="card card-dark cb-card card-ico shadow-3d">
                                 <div class="card-body">
                                     <div class="flex-grow-1">
@@ -94,6 +95,7 @@
 
                                 </div>
                             </div>
+                            @endif
                         @empty
 
                         @endforelse
@@ -145,10 +147,16 @@
               Class</a> --}}
                                     <a href="{{ action('BatchController@batchDetails', Crypt::encrypt($Enrollment->id)) }}"
                                         class="btn ck-c-btn">Course Details</a>
-                                    <a href="{{ action('StudentController@notes', Crypt::encrypt($Enrollment->id)) }}"
-                                        class="btn ck-c-btn">Notes & Assignments</a>
-                                    <a href="{{ action('StudentController@recordings', Crypt::encrypt($Enrollment->id)) }}"
-                                        class="btn ck-c-btn">Recording</a>
+                                        @if ($Enrollment->batch->type == 1)
+                                        <a href="{{ action('StudentController@notes', Crypt::encrypt($Enrollment->id)) }}"
+                                            class="btn ck-c-btn">Notes & Assignments</a>
+                                        <a href="{{ action('StudentController@recordings', Crypt::encrypt($Enrollment->id)) }}"
+                                            class="btn ck-c-btn">Recording</a>
+                                        @endif
+                                        @if ($Enrollment->batch->type == 2)
+                                        <a href="{{ $Enrollment->batch->groupLink}}" target="_blank" class="btn ck-c-btn">Join WhatsApp Group</a>
+                                        @endif
+                                    
                                 </div>
 
 

@@ -27,6 +27,7 @@ Route::view('/game','game');
 Route::view('/himanshu','team.himanshu');
 Route::view('/ashish','team.ashish');
 Route::view('/privacy','privacy');
+Route::view('/learn-git-and-github','git');
 
 
 Route::get('/', function () {

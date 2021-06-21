@@ -57,7 +57,7 @@
                                 <div class="div pt-3">
                                     <p class="m-0">Transaction Id: <span class="text-dark">{{$invoice->transactionId}}</span> </p>
                                     <p class="m-0">Payment Method: <span class="text-dark">{{$invoice->paymentMethod}}</span></p>
-                                    <p class="m-0">Amount Paid: <span class="text-dark">{{$invoice->amountPaid}}</span></p>
+                                    <p class="m-0">Amount Paid: <span class="text-dark">{!!($invoice->amountPaid/100)!!}</span></p>
                                     <p class="m-0">Paid On: <span class="text-dark">{{$invoice->paidAt}}</span></p>
                                 </div>
                             @endif
