@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\CourseEnrollment;
+use App\BatchContent;
 use App\User;
 use App\Batch;
-use App\BatchContent;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 
