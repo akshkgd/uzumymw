@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use App\Batch;
 use App\Workshop;
-use App\batchContent;
+use App\BatchContent;
 use App\BatchTopics;
 use App\Feedback;
 
