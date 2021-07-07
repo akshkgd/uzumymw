@@ -54,7 +54,7 @@
                     <input type="hidden" id="quill_html" name="desc"></input>
                       
                     <div class="form-floating mb-2 mt-2">
-                        <input type="text" class="form-control" id="floatingInput" name="youtubeLink" placeholder="Content">
+                        <input type="text" class="form-control" id="floatingInput" name="videoLink" placeholder="Content">
                         <label for="floatingInput">Youtube Video Id</label>
                       </div>
 
