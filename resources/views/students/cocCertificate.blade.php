@@ -14,8 +14,11 @@
                                 <div class="row justify-content-center">
                                     <div class="col-lg-10 col-xl-8 text-center">
                                         <h1 class="lead pb-0 mb-2 text-warning">Codekaro E-Certificate</h1>
+                                        @if ($batch->type == 3)
+                                        <h1 class="h2 m-0 text-warning" style="font-family: 'Pacifico', cursive; letter-spacing: 2px; color:#fbc129;"> Certificate of Internship </h1>
+                                        @else
                                         <h1 class="h2 m-0 text-warning" style="font-family: 'Pacifico', cursive; letter-spacing: 2px; color:#fbc129;"> Certificate of Achievement </h1>
-
+                                        @endif
                                         
                                     </div>
                                 </div>
@@ -33,13 +36,24 @@
                         <div class="pt-1 text-center">
                             <h5 class="ck-font m-0 lead">This is to certify that</h3>
                             <h1 class="display-5 m-1">{{$certificate->students->name}}</h1>
-                            <p class=" lead mx-5">from {{$certificate->students->college}}, is hearby awarded the certificate of achievement for the successful completion of <strong>{{$batch->name}}</strong></p>
-                                <h4 class="text-s lead"></h4>
-                                @if($batch->association !="")
-                                <p style="font-size: 18px; ">in association with {{$batch->association}}</p>
-                                
-            
-                                @endif
+                            @if ($batch->type == 3)
+                            <p class=" lead mx-5">From {{$certificate->students->college}}, has successfully completed <strong>{{$batch->name}}</strong> Internship from <strong>{{ Carbon\Carbon::parse($batch->startDate)->format('d M') }}</strong>  to  <strong>{{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }}</strong></p>
+                            <h4 class="text-s lead"></h4>
+                            @if($batch->association !="")
+                            <p style="font-size: 18px; ">in association with {{$batch->association}}</p>
+                            
+        
+                            @endif
+                            @else
+                            <p class=" lead mx-5">From {{$certificate->students->college}}, is hearby awarded the certificate of achievement for the successful completion of <strong>{{$batch->name}}</strong></p>
+                            <h4 class="text-s lead"></h4>
+                            @if($batch->association !="")
+                            <p style="font-size: 18px; ">in association with {{$batch->association}}</p>
+                            
+        
+                            @endif
+                            @endif
+                            
                                     <h5 class="lead">
                                         {{$certificate->updated_at->format('d M Y')}}
                                         </p>
