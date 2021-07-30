@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Development Masterclass</title>
+    <meta name="keywords" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
+    <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
+    <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
+    <link rel="icon" href="https://codekaro.in/assets/img/chrome-icon.png">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC9ETJV29G"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-HC9ETJV29G');
+    </script>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{asset('css/ck_light.css')}}">
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-lg-12 mx-auto p-3 ">
+            {{-- <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
+                <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94"
+                        role="img">
+                        <title>Bootstrap</title>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                            fill="currentColor"></path>
+                    </svg>
+                    <span class="fs-4">Codekaro</span>
+                </a>
+            </header> --}}
+
+            <main class="text-center mt-5">
+                <h1 class="title">Get started with 5 days live <span class="wd_highlight">Web Development</span> Bootcamp</h1>
+                {{-- <a class="d-bloc d-sm-inline-block py-1 px-3 mb-4 text-dark text-decoration-none rounded-3 hero-notice "
+                    href="https://blog.getbootstrap.com/2021/02/22/bootstrap-icons-1-4-0/">
+                    <strong>New in v1.4.0:</strong> 60+ weather icons!
+                </a> --}}
+                <div class="row justify-content-center">
+                    <p class="fs-4 col-md-10 text-center">Get started as a front-end web developer using HTML, CSS,
+                        JavaScript and Bootstrap. The modern web development course for everyone! </p>
+                </div>
+
+
+                <h4> <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
+                  <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+                </svg></span> Live Classes from  3rd  August</h3>
+
+                    <div class="my-5">
+                        <a href="https://codekaro.in/enroll/9" class="btn btn-dark btn-lg btn-block px-5">
+                            <h2 class="fs-3 mb-1">Enroll now at 80% off</h2>
+                            <p class="mb-0">Now for <del>₹999</del> ₹199 Only for the next 20 students</p>
+                        </a>
+                    </div>
+            </main>
+        </div>
+
+    </div>
+
+    {{-- test --}}
+    <section>
+        <div class="container ">
+            <div class="row justify-content-center">
+                <div class="col-md-4 mt-4">
+                    <div class="card text-center f-1">
+                        <div class="p-2">
+                            <img src="{{asset('assets/img/missed-class-logo-1.svg')}}" alt="">
+                            <h2 class="fs-4 mt-2">Missed a class?</h2>
+                            <p class="">No worries, watch the recordings later at your convenience from your Archive.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card text-center f-3">
+                        <div class="p-2">
+                            <img src="{{asset('assets/img/hd.svg')}}" alt="">
+                            <h2 class="fs-4 mt-2">Have doubts?</h2>
+                            <p class="">Fear not, peer to peer group will help you out any issue, big or small.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card text-center f-2">
+                        <div class="p-2">
+                            <img src="{{asset('assets/img/wtr.svg')}}" alt="">
+                            <h2 class="fs-4 mt-2">Get Certificate!</h2>
+                            <p>Receive a linkedIn shareable certificate after the completion of live classes</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card text-center f-4">
+                        <div class="p-2">
+                            <img src="{{asset('assets/img/time.svg')}}" alt="">
+                            <h2 class="fs-4 mt-2">All Live classes</h2>
+                            <p class="">Watch all the classes live and clear your doubts instantly.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card text-center f-5">
+                        <div class="p-2">
+                            <img src="{{asset('assets/img/project.svg')}}" alt="" height="70">
+                            <h2 class="fs-4 mt-2">Project-based Learning</h2>
+                            <p class="">An immersive project-based curriculum focused on practical developer skills.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{{-- test --}}
+    <section class="">
+        <div class="container mb-5">
+            <div class="row justify-content-center">
+                <div class="col-md-9 col-lg-9 d-fle">
+                  <div class="">
+                    
+                    <h2>What's inside</h2>
+<p>This course contains 157 interactive screencasts spread across 6 modules.</p> 
+                  </div>
+                    <div class="card card-body">
+                      <h3><span style="background-color: transparent; color: rgb(0, 0, 0);">Day 1: Introduction to HTML and Web Development</span></h3><ul><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Setting up Visual Studio Code&nbsp;&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn the anatomy of HTML syntax to structure your websites.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understand the HTML boilerplate and HTML doctypes.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to structure text in HTML.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to structure HTML lists to create unordered and ordered lists.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to insert images using HTML&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to create hyperlinks using anchor tags.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understand how to use HTML tables for content.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn HTML best practices.</span></li></ul><h3><span style="background-color: transparent; color: rgb(0, 0, 0);">Day 2: Introduction to CSS and Portfolio</span></h3><p><br></p><ul><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understand what are cascading style sheets and how you can use it to style your website.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to use CSS selectors and properties.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn about how to use inline, internal and external CSS.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn about CSS sizing methods.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn the anatomy of CSS syntax and structure.</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">&nbsp;CSS specificity and implementing style hierarchy.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Class vs. Ids and how to target each.</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">CSS display and how to implement layout.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Font styling using CSS and web safe fonts.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Centering elements using CSS.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Website design fundamentals and typography.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understand CSS coding best practices.&nbsp;</span></li></ul><p><br></p><h3><span style="background-color: transparent; color: rgb(0, 0, 0);">Day 3: Introduction to responsive web design &amp; Bootstrap</span></h3><ul><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn the fundamentals of implementing responsive web design.</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">The fundamentals of UI design for websites.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to install the Bootstrap framework.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understanding the Bootstrap grid layout system.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to use bootstrap containers to layout your website easily.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn to use other Bootstrap components such as buttons.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Adding symbols using Font Awesome.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn to use Bootstrap carousels.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Add Bootstrap cards to your website.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Using Bootstrap navigation bars.</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Using Bootstrap Utilities</span></li></ul><p><br></p><h3><span style="background-color: transparent; color: rgb(0, 0, 0);">Day 4: Bootstrap Project&nbsp;</span></h3><ul><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Creating a modern website using bootstrap 5</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Bonus Gift🎁</span></li></ul><p><br></p><h3><span style="background-color: transparent; color: rgb(0, 0, 0);">Day 5: Introduction to Javascript</span></h3><ul><li><span style="background-color: transparent; color: rgb(0, 0, 0);">The Fundamentals of Code , Starting code with alerts and prompts.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understand Variables and Data Types in JavaScript&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Variable naming in JS&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Working with strings and numbers&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Randomisation and logical operators&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Loops, collections and Conditionals.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Functions and invocation patterns&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Discussion of ECMAScripts&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Project : Number guessing game</span></li></ul>
+
+                    </div>
+                </div>
+                <div class="my-5 text-center">
+                    <a href="https://codekaro.in/enroll/9" class="btn btn-dark btn-lg btn-block px-5">
+                        <h2 class="fs-3 mb-1">Enroll now at 80% off</h2>
+                        <p class="mb-0">Now for <del>₹999</del> ₹199 Only for the next 20 students</p>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+
+
+    <section>
+        <div class="container">
+            <div class="text-center">
+                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 1800+ students</h1>
+                <p class="lead mb-4">Here's what some of our students have to say about learning with codekaro.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    {{-- <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> Congrats Codekaro team.., you are doing a wonderful job and your session are helpful for my carrer..thankyou</p>&mdash; Nandhakumar (@nandhank_) <a href="https://twitter.com/nandhank_/status/1407353108187996162?ref_src=twsrc%5Etfw">June 22, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
+                    <blockquote class="twitter-tweet">
+                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
+                            The session was awesome .. Really very much helpful ....i must refer to my friends too
+                            .....you are doing awesome sir.</p>&mdash; Chinam (@Chinam22154291) <a
+                            href="https://twitter.com/Chinam22154291/status/1409510674724622343?ref_src=twsrc%5Etfw">June
+                            28, 2021</a>
+                    </blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet">
+                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
+                            Great explanations and good session of web development masterclass. Thank you so much for
+                            your excellent sessions.</p>&mdash; Santhosh G (@Santhos49708756) <a
+                            href="https://twitter.com/Santhos49708756/status/1407722856121651202?ref_src=twsrc%5Etfw">June
+                            23, 2021</a>
+                    </blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet">
+                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
+                            Really a great tutor for learning web development</p>&mdash; Ravi Sadariya (@ravi_1821) <a
+                            href="https://twitter.com/ravi_1821/status/1409494936139960325?ref_src=twsrc%5Etfw">June 28,
+                            2021</a>
+                    </blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    {{-- <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> attended your bootcamp of web development really enjoyed and got to learn alot of new things thanks alot</p>&mdash; Pranjal Sharma (@sharmapranjal51) <a href="https://twitter.com/sharmapranjal51/status/1406267633264074756?ref_src=twsrc%5Etfw">June 19, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet">
+                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
+                            you are simply superb in delivering the content in a simple manner, hoping to learn lot more
+                            stuff from you</p>&mdash; Akhilesh (@Akhiles34785868) <a
+                            href="https://twitter.com/Akhiles34785868/status/1409496613207216134?ref_src=twsrc%5Etfw">June
+                            28, 2021</a>
+                    </blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet">
+                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
+                            Congrats Codekaro team.., you are doing a wonderful job and your session are helpful for my
+                            carrer..thankyou</p>&mdash; Nandhakumar (@nandhank_) <a
+                            href="https://twitter.com/nandhank_/status/1407353108187996162?ref_src=twsrc%5Etfw">June 22,
+                            2021</a>
+                    </blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet">
+                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
+                            Nice explanations for every single word of coding, and to so much interactive and so much
+                            learnable and so on</p>&mdash; saravanachandru S K (@saravanachandr8) <a
+                            href="https://twitter.com/saravanachandr8/status/1409863395700928514?ref_src=twsrc%5Etfw">June
+                            29, 2021</a>
+                    </blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet">
+                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> He
+                            teaches good and way helpful for me . Expecting to make more bootcamps related to Web
+                            Development 😃. He just covered HTML , CSS , Bootstrap , JS basics in just 4 days in a clear
+                            and understanding way ! Marvelous teaching ! <a
+                                href="https://twitter.com/hashtag/CodeKaro?src=hash&amp;ref_src=twsrc%5Etfw">#CodeKaro</a>
+                        </p>&mdash; Haris Kumar (@ironfrost_2627) <a
+                            href="https://twitter.com/ironfrost_2627/status/1416029750649184264?ref_src=twsrc%5Etfw">July
+                            16, 2021</a>
+                    </blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet">
+                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
+                            today I attend 1st class of this bootcamp it just awesome 🔥🔥<br>I learn so much new thinks
+                            and also eager to learn more like 👍👍</p>&mdash; Sakshi Tannirwar (@sakshitannirwa8) <a
+                            href="https://twitter.com/sakshitannirwa8/status/1414999822948442116?ref_src=twsrc%5Etfw">July
+                            13, 2021</a>
+                    </blockquote>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir you are doing a great job and I learnt a lot from you.</p>&mdash; Rahul Yadav (@RahulYa26176535) <a href="https://twitter.com/RahulYa26176535/status/1416029077455065095?ref_src=twsrc%5Etfw">July 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir,realy helpfull your masterclass for learn html css js and bootstrap</p>&mdash; Aswanth M (@_YMS___) <a href="https://twitter.com/_YMS___/status/1416030098801631233?ref_src=twsrc%5Etfw">July 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+            <div class="my-5 text-center">
+                <a href="https://codekaro.in/enroll/9" class="btn btn-dark btn-lg btn-block px-5">
+                    <h2 class="fs-3 mb-1">Enroll now at 80% off</h2>
+                    <p class="mb-0">Now for <del>₹999</del> ₹199 Only for the next 20 students</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container mt-5">
+            <div class="text-center">
+                <h1 class=" mx-xl-8 mb-0 fw-600">Meet Your Mentor</h1>
+                {{-- <p class="lead mb-4">Here's what some of our 1123 satisfied students have to say about learning with codekaro.</p> --}}
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 mt-4 text-center">
+                    <img src="{{ asset('assets/img/team/ashish black.png') }}" alt="" class="avatar">
+                    <h2 class="mt-3">Ashish Shukla</h2>
+                    <p class="fs-5 ">I am a freelance web developer and instructor, passionate about educating students
+                        through engaging lessons. Ex AOSPL, Lido Learning</p>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container text-center ct">
+            <h1 id="headline fw-600 mb-0">Live class is starting in</h1>
+            <div id="countdown">
+              <ul>
+                <li><span id="days"></span>days</li>
+                <li><span id="hours"></span>Hours</li>
+                <li><span id="minutes"></span>Minutes</li>
+                <li><span id="seconds"></span>Seconds</li>
+              </ul>
+            </div>
+            <div id="content" class="emoji">
+              <span>🥳</span>
+              <span>🎉</span>
+              <span>🎂</span>
+            </div>
+            <div class="my-5">
+                <a href="https://codekaro.in/enroll/9" class="btn btn-dark btn-lg btn-block px-5">
+                    <h2 class="fs-3 mb-1">Enroll now at 80% off</h2>
+                    <p class="mb-0">Now for <del>₹999</del> ₹199 Only for the next 20 students</p>
+                </a>
+            </div>
+          </div>
+  </section>
+  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
+    <img src="{{asset('assets/img/hd.svg')}}" alt="" height="65">
+      </a>
+
+  <footer class="bd-footer p-3 p-md-5 mt-5 bg-light text-center text-sm-left">
+    <div class="container">
+    <ul class="bd-footer-links">
+    <li><a href="https://github.com/twbs">About</a></li>
+    <li><a href="https://twitter.com/getbootstrap">Contact</a></li>
+    <li><a href="https://getbootstrap.com/docs/5.0/about/overview/">Privacy Policy</a></li>
+    </ul>
+    <p>©2020-21 Codekaro All Rights Reserved.</p>
+    </div>
+    </footer>
+    <script>
+        (function () {
+  const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+  let birthday = "Aug 3, 2021 17:00:00",
+      countDown = new Date(birthday).getTime(),
+      x = setInterval(function() {    
+
+        let now = new Date().getTime(),
+            distance = countDown - now;
+
+        document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+        //do something later when date is reached
+        if (distance < 0) {
+          let headline = document.getElementById("headline"),
+              countdown = document.getElementById("countdown"),
+              content = document.getElementById("content");
+
+          headline.innerText = "Class has Started!";
+          countdown.style.display = "none";
+          content.style.display = "block";
+
+          clearInterval(x);
+        }
+        //seconds
+      }, 0)
+  }());
+    </script>
+    
+    
+</body>
+
+</html>

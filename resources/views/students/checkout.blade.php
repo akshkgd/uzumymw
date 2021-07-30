@@ -60,7 +60,7 @@
                     data-order_id="{{$order->id}}"
                     data-buttontext="Pay Now" data-name="Codekaro" 
                     data-description="{{$batch->name}}"
-                    data-image="{{ asset('/assets/img/logo.svg') }}"
+                    data-image="{{ asset('assets/img/codekaro-dark.png') }}"
                     data-prefill.name="{{Auth::user()->name}}"
                     data-prefill.email="{{Auth::user()->email}}"
                     data-prefill.contact="{{Auth::user()->mobile}}"

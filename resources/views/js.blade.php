@@ -23,9 +23,9 @@
           {{-- <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-items-sm-start mt-5"> --}}
             {{-- <div class="d-flex flex-column mx-1 text-center"> --}}
               
-             
+             <h4>13 July 2021</h4>
             {{-- </div> --}}
-            <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-primary-3 btn-sm-block ">Enroll now in the course</a>
+            <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-primary-3 btn-sm-block ">Enroll now at 90% off</a>
             <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-outline-primary-3 btn-sm-block ">Explore Course</a>
           </div>
         </div>
@@ -190,12 +190,17 @@
           </div>
         </div>
       </div>
+      <div class="text-center">
+        <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-primary-3 btn-sm-block ">Enroll now at 90% off @rs 99</a>
+      </div>
+     
     </div>
   </section>
  <section>
    <div class="container">
     <div class="text-center">
-      <h1 class="display-5 mx-xl-8 mb-5">Students love Codekaro</h1>
+      <h1 class="display-5 mx-xl-8 mb-0">Students love Codekaro</h1>
+      <p class="lead mb-4">Here's what some of our 1123 satisfied students have to say about learning with codekaro.</p>
     </div>
      <div class="row">
        <div class="col-md-4">
@@ -233,7 +238,7 @@
             <img class="bg-primary" src="assets/img/decorations/deco-blob-10.svg" alt="deco-blob-10 decoration" data-inject-svg />
           </div>
           <div class="decoration bottom left" data-aos="fade-right">
-            <img class="bg-primary" src="assets/img/decorations/deco-lines-4.svg" alt="deco-lines-4 decoration" data-inject-svg />
+            {{-- <img class="bg-primary" src="assets/img/decorations/deco-lines-4.svg" alt="deco-lines-4 decoration" data-inject-svg /> --}}
           </div>
         </div>
         <div class="col-xl-5 col-md-6">
@@ -241,13 +246,13 @@
             <div>Howdy, I'm Ashish,</div>
             <span>A</span>
             <div class="highlight">
-              <span data-typed-text data-loop="true" data-type-speed="65" data-strings='["visual designer","front-end developer","product creator","restless maker"]'></span>
+              <span data-typed-text data-loop="true" data-type-speed="65" data-strings='["Instructor","full stack developer","product creator","freelancer"]'></span>
             </div>
           </div>
           <p class="lead">I am a freelance web developer and instructor passionate about educating students through engaging lessons. Ex AOSPL, Lido Learning
 
         </p>
-          <a href="#" class="lead">@joethedesigner</a>
+          <a href="https://codekaro.in/ashish" class="lead" target="_blank">@ashish</a>
         </div>
       </div>
     </div>

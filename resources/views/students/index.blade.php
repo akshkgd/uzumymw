@@ -154,7 +154,7 @@
                                             class="btn ck-c-btn">Recording</a>
                                         @endif
                                         @if ($Enrollment->batch->type == 2)
-                                        <a href="{{ $Enrollment->batch->groupLink}}" target="_blank" class="btn ck-c-btn">Join WhatsApp Group</a>
+                                        <a  target="_blank" class="btn ck-c-btn" @if($Enrollment->hasPaid == 1) href="{{ $Enrollment->batch->groupLink}}" @endif>Join WhatsApp Group</a>
                                         @endif
                                     
                                 </div>
