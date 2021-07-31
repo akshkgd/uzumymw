@@ -18,7 +18,8 @@ use App\CourseEnrollment;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/video','students.content1');
+Route::view('/internship-certificate/8be76c72dffcb7c5','clgInternship.himanshu');
+Route::view('/internship-certificate/8be76c72dffcb7c6','clgInternship.ashish');
 
 Route::view('/complete','students.completeProfile');
 Route::get('/webhook', 'TelegramController@webhook');
