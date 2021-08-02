@@ -61,9 +61,9 @@
                 </svg></span> Live Classes from  3rd  August</h3>
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/enroll/9" class="btn btn-dark btn-lg btn-block px-5">
-                            <h2 class="fs-3 mb-1">Enroll now at 80% off</h2>
-                            <p class="mb-0">Now for <del>₹999</del> ₹199 Only for the next 20 students</p>
+                        <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
+                            <h2 class="fs-3 mb-1">Enroll now for free</h2>
+                            <p class="mb-0">Enroll now limited seats are available</p>
                         </a>
                     </div>
             </main>
@@ -75,7 +75,7 @@
     <section>
         <div class="container ">
             <div class="row justify-content-center">
-                <div class="col-md-4 mt-4">
+                {{-- <div class="col-md-4 mt-4">
                     <div class="card text-center f-1">
                         <div class="p-2">
                             <img src="{{asset('assets/img/missed-class-logo-1.svg')}}" alt="">
@@ -84,7 +84,7 @@
                         </div>
                         
                     </div>
-                </div>
+                </div> --}}
                 <div class="col-md-4 mt-4">
                     <div class="card text-center f-3">
                         <div class="p-2">
@@ -143,10 +143,10 @@
 
                     </div>
                 </div>
-                <div class="my-5 text-center">
-                    <a href="https://codekaro.in/enroll/9" class="btn btn-dark btn-lg btn-block px-5">
-                        <h2 class="fs-3 mb-1">Enroll now at 80% off</h2>
-                        <p class="mb-0">Now for <del>₹999</del> ₹199 Only for the next 20 students</p>
+                <div class="my-5">
+                    <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
+                        <h2 class="fs-3 mb-1">Enroll now for free</h2>
+                        <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
                 </div>
                 
@@ -255,9 +255,9 @@
                 </div>
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/enroll/9" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now at 80% off</h2>
-                    <p class="mb-0">Now for <del>₹999</del> ₹199 Only for the next 20 students</p>
+                <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
+                    <h2 class="fs-3 mb-1">Enroll now for free</h2>
+                    <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
             </div>
         </div>
@@ -298,23 +298,23 @@
               <span>🎂</span>
             </div>
             <div class="my-5">
-                <a href="https://codekaro.in/enroll/9" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now at 80% off</h2>
-                    <p class="mb-0">Now for <del>₹999</del> ₹199 Only for the next 20 students</p>
+                <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
+                    <h2 class="fs-3 mb-1">Enroll now for free</h2>
+                    <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
             </div>
           </div>
   </section>
-  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
+  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
     <img src="{{asset('assets/img/hd.svg')}}" alt="" height="65">
       </a>
 
   <footer class="bd-footer p-3 p-md-5 mt-5 bg-light text-center text-sm-left">
     <div class="container">
     <ul class="bd-footer-links">
-    <li><a href="https://github.com/twbs">About</a></li>
-    <li><a href="https://twitter.com/getbootstrap">Contact</a></li>
-    <li><a href="https://getbootstrap.com/docs/5.0/about/overview/">Privacy Policy</a></li>
+    <li><a href="https://codekaro.in/about">About</a></li>
+    <li><a href="https://codekaro.in/contact">Contact</a></li>
+    <li><a href="https://codekaro.in/privacy">Privacy Policy</a></li>
     </ul>
     <p>©2020-21 Codekaro All Rights Reserved.</p>
     </div>
