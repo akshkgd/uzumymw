@@ -44,7 +44,7 @@
             </header> --}}
 
             <main class="text-center mt-5">
-                <h1 class="title">Get started with 5 days live <span class="wd_highlight">Web Development</span> Bootcamp</h1>
+                <h1 class="title">Get started with 5 days live <span class="wd_highlight">Web Development</span> Bootcamp for Free</h1>
                 {{-- <a class="d-bloc d-sm-inline-block py-1 px-3 mb-4 text-dark text-decoration-none rounded-3 hero-notice "
                     href="https://blog.getbootstrap.com/2021/02/22/bootstrap-icons-1-4-0/">
                     <strong>New in v1.4.0:</strong> 60+ weather icons!
@@ -143,7 +143,7 @@
 
                     </div>
                 </div>
-                <div class="my-5">
+                <div class="my-5 text-center">
                     <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
                         <h2 class="fs-3 mb-1">Enroll now for free</h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
