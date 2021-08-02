@@ -55,7 +55,7 @@
 
 
 <section>
-  <div class="container">
+  <div class="container d-none">
     <div class="row mb-4 justify-content-between">
       <div class="col text-center">
         <h2 class="h1 ck-font">coders behind codekaro</h2>
