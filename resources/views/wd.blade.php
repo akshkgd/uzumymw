@@ -28,7 +28,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="container ">
         <div class="col-lg-12 mx-auto p-3 ">
             {{-- <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
                 <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
@@ -43,27 +43,21 @@
                 </a>
             </header> --}}
 
-            <main class="text-center mt-5">
-                <h1 class="title">Get started with 5 days live <span class="wd_highlight">Web Development</span> Bootcamp for Free</h1>
-                {{-- <a class="d-bloc d-sm-inline-block py-1 px-3 mb-4 text-dark text-decoration-none rounded-3 hero-notice "
-                    href="https://blog.getbootstrap.com/2021/02/22/bootstrap-icons-1-4-0/">
-                    <strong>New in v1.4.0:</strong> 60+ weather icons!
-                </a> --}}
+            <main class="text-center mt-5 pt-lg-5">
+                <h1 class="title">Get started with 3 days  <span class="wd_highlight">Web Development</span> <br> Bootcamp for free</h1>
+               
                 <div class="row justify-content-center">
-                    <p class="fs-4 col-md-10 text-center">Get started as a front-end web developer using HTML, CSS,
-                        JavaScript and Bootstrap. The modern web development course for everyone! </p>
+                    <p class="fs-5 text-muted col-md-10 text-center">Get started as a front-end web developer using HTML, CSS,
+                         and JavaScript. <br> The modern web development course for everyone! </p>
                 </div>
 
 
-                <h4> <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-calendar-check" viewBox="0 0 16 16">
-                  <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-                </svg></span> Live Classes from  3rd  August</h3>
+                <h4 class="fw-500 py-4"> <strong>9th  August</strong>  | 05:00 PM IST</h3>
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
-                            <h2 class="fs-3 mb-1">Enroll now for free</h2>
-                            <p class="mb-0">Enroll now limited seats are available</p>
+                        <a href="https://codekaro.in/workshop-enroll/16" class="btn btn-dark btn-lg btn-block px-5">
+                            <h2 class="fs-3 mb-1 fw-500 text-capitalize">Enroll now for free</h2>
+                            <p class="mb-0 fw-200">Enroll now limited seats are available</p>
                         </a>
                     </div>
             </main>
@@ -131,20 +125,69 @@
 {{-- test --}}
     <section class="">
         <div class="container mb-5">
-            <div class="row justify-content-center">
-                <div class="col-md-9 col-lg-9 d-fle">
-                  <div class="">
-                    
-                    <h2>What's inside</h2>
-<p>This course contains 43 topics spread across 5 modules.</p> 
-                  </div>
-                    <div class="card card-body">
-                      <h3><span style="background-color: transparent; color: rgb(0, 0, 0);">Day 1: Introduction to HTML and Web Development</span></h3><ul><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Setting up Visual Studio Code&nbsp;&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn the anatomy of HTML syntax to structure your websites.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understand the HTML boilerplate and HTML doctypes.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to structure text in HTML.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to structure HTML lists to create unordered and ordered lists.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to insert images using HTML&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to create hyperlinks using anchor tags.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understand how to use HTML tables for content.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn HTML best practices.</span></li></ul><h3><span style="background-color: transparent; color: rgb(0, 0, 0);">Day 2: Introduction to CSS and Portfolio</span></h3><p><br></p><ul><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understand what are cascading style sheets and how you can use it to style your website.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to use CSS selectors and properties.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn about how to use inline, internal and external CSS.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn about CSS sizing methods.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn the anatomy of CSS syntax and structure.</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">&nbsp;CSS specificity and implementing style hierarchy.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Class vs. Ids and how to target each.</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">CSS display and how to implement layout.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Font styling using CSS and web safe fonts.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Centering elements using CSS.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Website design fundamentals and typography.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understand CSS coding best practices.&nbsp;</span></li></ul><p><br></p><h3><span style="background-color: transparent; color: rgb(0, 0, 0);">Day 3: Introduction to responsive web design &amp; Bootstrap</span></h3><ul><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn the fundamentals of implementing responsive web design.</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">The fundamentals of UI design for websites.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to install the Bootstrap framework.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understanding the Bootstrap grid layout system.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">How to use bootstrap containers to layout your website easily.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn to use other Bootstrap components such as buttons.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Adding symbols using Font Awesome.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Learn to use Bootstrap carousels.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Add Bootstrap cards to your website.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Using Bootstrap navigation bars.</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Using Bootstrap Utilities</span></li></ul><p><br></p><h3><span style="background-color: transparent; color: rgb(0, 0, 0);">Day 4: Bootstrap Project&nbsp;</span></h3><ul><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Creating a modern website using bootstrap 5</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Bonus Gift🎁</span></li></ul><p><br></p><h3><span style="background-color: transparent; color: rgb(0, 0, 0);">Day 5: Introduction to Javascript</span></h3><ul><li><span style="background-color: transparent; color: rgb(0, 0, 0);">The Fundamentals of Code , Starting code with alerts and prompts.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Understand Variables and Data Types in JavaScript&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Variable naming in JS&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Working with strings and numbers&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Randomisation and logical operators&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Loops, collections and Conditionals.&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Functions and invocation patterns&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Discussion of ECMAScripts&nbsp;</span></li><li><span style="background-color: transparent; color: rgb(0, 0, 0);">Project : Number guessing game</span></li></ul>
-
+            <div class="row d-flex">
+              <h2>What's inside</h2>
+              <p>This course contains 18 topics spread across 3 modules.</p>
+                <div class="col-md-4">
+                  <div class="card f-2">
+                    <div class="p-3">
+                      <h4>Day 1</h4>
+                      <ul>
+                        <li>Introduction to Javascript</li>
+                        <li>Data Types & Variables</li>
+                        <li>String Concatenation</li>
+                        <li>String Lengths & Slicing</li>
+                        <li>Conditionals</li>
+                        <li>Loops</li>
+                      </ul>
                     </div>
+                    <div class="cd f-2-bottom p-3">
+                      Understand HTML
+                    </div>
+                   
+                  </div>
                 </div>
+                <div class="col-md-4">
+                  <div class="card f-1 ">
+                    <div class="p-3">
+                      <h4>Day 2</h4>
+                      <ul>
+                        <li>Introduction to CSS</li>
+                        <li>Selectors and Typography</li>
+                        <li>CSS Box Model</li>
+                        <li>Flexbox</li>
+                        <li>Bonus Gift 🎁</li>
+                        <li><strong>Profile Page Project </strong> </li>
+                      </ul>
+                    </div>
+                    <div class="cd f-1-bottom p-3">
+                        Understand CSS with Project
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 d-n">
+                  <div class="card f-4 ">
+                    <div class="p-3">
+                      <h4>Day 3</h4>
+                      <ul>
+                        <li>Introduction to Javascript</li>
+                        <li>Data Types & Variables</li>
+                        <li>Functions and Arrays</li>
+                        <li>Objects</li>
+                        <li>Loops & Conditionals</li>
+                        <li><strong>Toss Coin Game 🪙</strong> </li>
+                      </ul>
+                    </div>
+                  <div class="cd f-4-bottom p-3">
+                    Understand JS with a Game
+                  </div>
+                </div>
+                </div>
+                
+                
+                
                 <div class="my-5 text-center">
-                    <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
+                    <a href="https://codekaro.in/workshop-enroll/16" class="btn btn-dark btn-lg btn-block px-5">
                         <h2 class="fs-3 mb-1">Enroll now for free</h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
@@ -255,7 +298,7 @@
                 </div>
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/16" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -283,7 +326,7 @@
 
     <section>
         <div class="container text-center ct">
-            <h1 id="headline fw-600 mb-0">Live class is starting in</h1>
+            <h1 id="headlin fw-600 mb-0">Live class is starting in</h1>
             <div id="countdown">
               <ul>
                 <li><span id="days"></span>days</li>
@@ -296,17 +339,20 @@
               <span>🥳</span>
               <span>🎉</span>
               <span>🎂</span>
+              <p id="headline"></p>
             </div>
             <div class="my-5">
-                <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/16" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
             </div>
           </div>
   </section>
+
+
   <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
-    <img src="{{asset('assets/img/hd.svg')}}" alt="" height="65">
+    <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="65">
       </a>
 
   <footer class="bd-footer p-3 p-md-5 mt-5 bg-light text-center text-sm-left">
@@ -326,7 +372,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "Aug 3, 2021 17:00:00",
+  let birthday = "Aug 9, 2021 17:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
