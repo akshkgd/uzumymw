@@ -133,12 +133,12 @@
                     <div class="p-3">
                       <h4>Day 1</h4>
                       <ul>
-                        <li>Introduction to Javascript</li>
-                        <li>Data Types & Variables</li>
-                        <li>String Concatenation</li>
+                        <li>Introduction to HTML</li>
+                        <li>The Anatomy of an HTML Tag</li>
+                        <li>HTML Boilerplate?</li>
                         <li>String Lengths & Slicing</li>
-                        <li>Conditionals</li>
-                        <li>Loops</li>
+                        <li>Important Tags</li>
+                        <li>Advanced Tags</li>
                       </ul>
                     </div>
                     <div class="cd f-2-bottom p-3">
