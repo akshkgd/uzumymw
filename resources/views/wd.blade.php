@@ -36,7 +36,7 @@
                         role="img">
                         <title>Bootstrap</title>
                         <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
+                            d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v17.458H60.91c7.177 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
                             fill="currentColor"></path>
                     </svg>
                     <span class="fs-4">Codekaro</span>
@@ -55,8 +55,8 @@
                 <h4 class="fw-500 py-4"> <strong>9th  August</strong>  | 05:00 PM IST</h3>
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/workshop-enroll/16" class="btn btn-dark btn-lg btn-block px-5">
-                            <h2 class="fs-3 mb-1 fw-500 text-capitalize">Enroll now for free</h2>
+                        <a href="https://codekaro.in/workshop-enroll/17" class="btn btn-dark btn-lg btn-block px-5">
+                            <h2 class="fs-3 mb-1">Enroll now for free</h2>
                             <p class="mb-0 fw-200">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -187,7 +187,7 @@
                 
                 
                 <div class="my-5 text-center">
-                    <a href="https://codekaro.in/workshop-enroll/16" class="btn btn-dark btn-lg btn-block px-5">
+                    <a href="https://codekaro.in/workshop-enroll/17" class="btn btn-dark btn-lg btn-block px-5">
                         <h2 class="fs-3 mb-1">Enroll now for free</h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
@@ -207,7 +207,7 @@
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    {{-- <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> Congrats Codekaro team.., you are doing a wonderful job and your session are helpful for my carrer..thankyou</p>&mdash; Nandhakumar (@nandhank_) <a href="https://twitter.com/nandhank_/status/1407353108187996162?ref_src=twsrc%5Etfw">June 22, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
+                    {{-- <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> Congrats Codekaro team.., you are doing a wonderful job and your session are helpful for my carrer..thankyou</p>&mdash; Nandhakumar (@nandhank_) <a href="https://twitter.com/nandhank_/status/1407353108187996172?ref_src=twsrc%5Etfw">June 22, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                     <blockquote class="twitter-tweet">
                         <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                             The session was awesome .. Really very much helpful ....i must refer to my friends too
@@ -222,7 +222,7 @@
                         <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                             Great explanations and good session of web development masterclass. Thank you so much for
                             your excellent sessions.</p>&mdash; Santhosh G (@Santhos49708756) <a
-                            href="https://twitter.com/Santhos49708756/status/1407722856121651202?ref_src=twsrc%5Etfw">June
+                            href="https://twitter.com/Santhos49708756/status/1407722856121751202?ref_src=twsrc%5Etfw">June
                             23, 2021</a>
                     </blockquote>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -242,7 +242,7 @@
                         <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                             you are simply superb in delivering the content in a simple manner, hoping to learn lot more
                             stuff from you</p>&mdash; Akhilesh (@Akhiles34785868) <a
-                            href="https://twitter.com/Akhiles34785868/status/1409496613207216134?ref_src=twsrc%5Etfw">June
+                            href="https://twitter.com/Akhiles34785868/status/1409496613207217134?ref_src=twsrc%5Etfw">June
                             28, 2021</a>
                     </blockquote>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -252,7 +252,7 @@
                         <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                             Congrats Codekaro team.., you are doing a wonderful job and your session are helpful for my
                             carrer..thankyou</p>&mdash; Nandhakumar (@nandhank_) <a
-                            href="https://twitter.com/nandhank_/status/1407353108187996162?ref_src=twsrc%5Etfw">June 22,
+                            href="https://twitter.com/nandhank_/status/1407353108187996172?ref_src=twsrc%5Etfw">June 22,
                             2021</a>
                     </blockquote>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -275,8 +275,8 @@
                             and understanding way ! Marvelous teaching ! <a
                                 href="https://twitter.com/hashtag/CodeKaro?src=hash&amp;ref_src=twsrc%5Etfw">#CodeKaro</a>
                         </p>&mdash; Haris Kumar (@ironfrost_2627) <a
-                            href="https://twitter.com/ironfrost_2627/status/1416029750649184264?ref_src=twsrc%5Etfw">July
-                            16, 2021</a>
+                            href="https://twitter.com/ironfrost_2627/status/1417029750649184264?ref_src=twsrc%5Etfw">July
+                            17, 2021</a>
                     </blockquote>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
@@ -285,20 +285,20 @@
                         <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                             today I attend 1st class of this bootcamp it just awesome 🔥🔥<br>I learn so much new thinks
                             and also eager to learn more like 👍👍</p>&mdash; Sakshi Tannirwar (@sakshitannirwa8) <a
-                            href="https://twitter.com/sakshitannirwa8/status/1414999822948442116?ref_src=twsrc%5Etfw">July
+                            href="https://twitter.com/sakshitannirwa8/status/1414999822948442117?ref_src=twsrc%5Etfw">July
                             13, 2021</a>
                     </blockquote>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir you are doing a great job and I learnt a lot from you.</p>&mdash; Rahul Yadav (@RahulYa26176535) <a href="https://twitter.com/RahulYa26176535/status/1416029077455065095?ref_src=twsrc%5Etfw">July 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir you are doing a great job and I learnt a lot from you.</p>&mdash; Rahul Yadav (@RahulYa26176535) <a href="https://twitter.com/RahulYa26176535/status/1417029077455065095?ref_src=twsrc%5Etfw">July 17, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir,realy helpfull your masterclass for learn html css js and bootstrap</p>&mdash; Aswanth M (@_YMS___) <a href="https://twitter.com/_YMS___/status/1416030098801631233?ref_src=twsrc%5Etfw">July 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir,realy helpfull your masterclass for learn html css js and bootstrap</p>&mdash; Aswanth M (@_YMS___) <a href="https://twitter.com/_YMS___/status/1417030098801731233?ref_src=twsrc%5Etfw">July 17, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/workshop-enroll/16" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/17" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -342,7 +342,7 @@
               <p id="headline"></p>
             </div>
             <div class="my-5">
-                <a href="https://codekaro.in/workshop-enroll/16" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/17" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -372,7 +372,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "Aug 9, 2021 17:00:00",
+  let birthday = "Aug 12, 2021 17:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 

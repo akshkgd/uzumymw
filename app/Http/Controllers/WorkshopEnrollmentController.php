@@ -13,6 +13,8 @@ use Razorpay\Api\Api;
 use Session;
 use Redirect;
 use Carbon\Carbon;
+use App\Mail\EmailForQueuing;
+use Mail;
 
 class WorkshopEnrollmentController extends Controller
 {
@@ -37,6 +39,8 @@ class WorkshopEnrollmentController extends Controller
                     $a->certificateId = substr(md5(time()), 0, 16);
                     $a->save();
                     session()->flash('alert-success', 'You have successfully enrolled in the '. $workshop->name);
+                    $enrollId = $a->id;
+                    $this->successMail($enrollId, $workshop);
                     return redirect('/home');
 
                 }
@@ -91,6 +95,26 @@ class WorkshopEnrollmentController extends Controller
         
        
     }
+    private function successMail($enrollId, $workshop){
+    $email_data = array(
+        'name' => Auth::user()->name,
+        'email' => Auth::user()->email,
+        'workshopName' => $workshop['name'],
+        'workshopGroup' => $workshop['groupLink'],
+        'nextClass' => $workshop['nextClass'],
+        'teacher' => $workshop->teacher->name,
+
+    );
+
+    // send email with the template
+    Mail::send('mail.workshopEnrollmentSuccess', $email_data, function ($message) use ($email_data) {
+        $message->to($email_data['email'], $email_data['name'], $email_data['workshopName'], $email_data['workshopGroup'], $email_data['teacher'], $email_data['nextClass'])
+            ->subject('Welcome to the '. $email_data['workshopName'])
+            ->from('info@codekaro.in', 'Codekaro');
+    });
+}
+
+    
     public function certificate($id)
     {
         $certificate = WorkshopEnrollment::where('certificateId', $id)->firstOrFail();
