@@ -215,14 +215,14 @@
                             href="https://twitter.com/Chinam22154291/status/1409510674724622343?ref_src=twsrc%5Etfw">June
                             28, 2021</a>
                     </blockquote>
-                    <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <script asy src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
                         <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                             Great explanations and good session of web development masterclass. Thank you so much for
                             your excellent sessions.</p>&mdash; Santhosh G (@Santhos49708756) <a
-                            href="https://twitter.com/Santhos49708756/status/1407722856121751202?ref_src=twsrc%5Etfw">June
+                            href="https://twitter.com/Santhos49708756/status/1407722856121651202?ref_src=twsrc%5Etfw">June
                             23, 2021</a>
                     </blockquote>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
@@ -242,7 +242,7 @@
                         <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                             you are simply superb in delivering the content in a simple manner, hoping to learn lot more
                             stuff from you</p>&mdash; Akhilesh (@Akhiles34785868) <a
-                            href="https://twitter.com/Akhiles34785868/status/1409496613207217134?ref_src=twsrc%5Etfw">June
+                            href="https://twitter.com/Akhiles34785868/status/1409496613207216134?ref_src=twsrc%5Etfw">June
                             28, 2021</a>
                     </blockquote>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
@@ -252,7 +252,7 @@
                         <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                             Congrats Codekaro team.., you are doing a wonderful job and your session are helpful for my
                             carrer..thankyou</p>&mdash; Nandhakumar (@nandhank_) <a
-                            href="https://twitter.com/nandhank_/status/1407353108187996172?ref_src=twsrc%5Etfw">June 22,
+                            href="https://twitter.com/nandhank_/status/1407353108187996162?ref_src=twsrc%5Etfw">June 22,
                             2021</a>
                     </blockquote>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
@@ -275,7 +275,7 @@
                             and understanding way ! Marvelous teaching ! <a
                                 href="https://twitter.com/hashtag/CodeKaro?src=hash&amp;ref_src=twsrc%5Etfw">#CodeKaro</a>
                         </p>&mdash; Haris Kumar (@ironfrost_2627) <a
-                            href="https://twitter.com/ironfrost_2627/status/1417029750649184264?ref_src=twsrc%5Etfw">July
+                            href="https://twitter.com/ironfrost_2627/status/1416029750649184264?ref_src=twsrc%5Etfw">July
                             17, 2021</a>
                     </blockquote>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
@@ -285,17 +285,17 @@
                         <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                             today I attend 1st class of this bootcamp it just awesome 🔥🔥<br>I learn so much new thinks
                             and also eager to learn more like 👍👍</p>&mdash; Sakshi Tannirwar (@sakshitannirwa8) <a
-                            href="https://twitter.com/sakshitannirwa8/status/1414999822948442117?ref_src=twsrc%5Etfw">July
+                            href="https://twitter.com/sakshitannirwa8/status/1414999822948442116?ref_src=twsrc%5Etfw">July
                             13, 2021</a>
                     </blockquote>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir you are doing a great job and I learnt a lot from you.</p>&mdash; Rahul Yadav (@RahulYa26176535) <a href="https://twitter.com/RahulYa26176535/status/1417029077455065095?ref_src=twsrc%5Etfw">July 17, 2021</a></blockquote> 
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir you are doing a great job and I learnt a lot from you.</p>&mdash; Rahul Yadav (@RahulYa26176535) <a href="https://twitter.com/RahulYa26176535/status/1416029077455065095?ref_src=twsrc%5Etfw">July 17, 2021</a></blockquote> 
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir,realy helpfull your masterclass for learn html css js and bootstrap</p>&mdash; Aswanth M (@_YMS___) <a href="https://twitter.com/_YMS___/status/1417030098801731233?ref_src=twsrc%5Etfw">July 17, 2021</a></blockquote> 
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir,realy helpfull your masterclass for learn html css js and bootstrap</p>&mdash; Aswanth M (@_YMS___) <a href="https://twitter.com/_YMS___/status/1416030098801631233?ref_src=twsrc%5Etfw">July 17, 2021</a></blockquote> 
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
             </div>
