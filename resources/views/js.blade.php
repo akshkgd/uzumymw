@@ -47,8 +47,7 @@
                 <h1 class="title">Get started with 3 days  <span class="wd_highlight">Live Javascript</span> <br> Bootcamp at 95% off</h1>
                
                 <div class="row justify-content-center">
-                    <p class="fs-5 text-muted col-md-10 text-center">Get started as a front-end web developer using HTML, CSS,
-                        JavaScript and Bootstrap. <br> The modern web development course for everyone! </p>
+                    <p class="fs-5 text-muted col-md-10 text-center">Modern JavaScript from the beginning - all the way up to JS expert level! THE must-have JavaScript masterclass in 2021. </p>
                 </div>
 
 
