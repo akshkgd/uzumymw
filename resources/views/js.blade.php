@@ -56,7 +56,7 @@
 
                     <div class="my-5">
                         <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
-                            <h2 class="fs-3 mb-1 fw-500 text-capitalize">Enroll now for free</h2>
+                            <h2 class="fs-3 mb-1  text-capitalize">Enroll now at 95% off</h2>
                             <p class="mb-0 fw-200">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -206,7 +206,7 @@
                 
                 <div class="my-5 text-center">
                     <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
-                        <h2 class="fs-3 mb-1">Enroll now for free</h2>
+                        <h2 class="fs-3 mb-1">Enroll now at 95% off</h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
                 </div>
@@ -317,7 +317,7 @@
             </div>
             <div class="my-5 text-center">
                 <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now for free</h2>
+                    <h2 class="fs-3 mb-1">Enroll now at 95% off</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -361,7 +361,7 @@
             </div>
             <div class="my-5">
                 <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now for free</h2>
+                    <h2 class="fs-3 mb-1">Enroll now at 95% off</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
             </div>
