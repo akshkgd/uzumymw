@@ -29,7 +29,7 @@ Route::view('/himanshu','team.himanshu');
 Route::view('/ashish','team.ashish');
 Route::view('/privacy','privacy');
 Route::view('/learn-git-and-github','git');
-Route::view('/javascript','js');
+Route::view('/javascript-live-masterclass','js');
 Route::view('/web-development-live-masterclass','wd');
 
 

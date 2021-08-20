@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Development Masterclass</title>
-    <meta name="keywords" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
-    <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
-    <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
+    <title>Javascript Masterclass</title>
+    <meta name="keywords" content="Modern JavaScript from the beginning - all the way up to JS expert level! THE must-have JavaScript masterclass in 2021.">
+    <meta name="og:description" content="Modern JavaScript from the beginning - all the way up to JS expert level! THE must-have JavaScript masterclass in 2021.">
+    <link rel="canonical" href="https://codekaro.in/javascript-live-masterclass"/>
     <link rel="icon" href="https://codekaro.in/assets/img/chrome-icon.png">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC9ETJV29G"></script>
     <script>
@@ -44,7 +44,7 @@
             </header> --}}
 
             <main class="text-center mt-5 pt-lg-5">
-                <h1 class="title">Get started with 4 days  <span class="wd_highlight">Live Javascript</span> <br> Bootcamp at 95% off</h1>
+                <h1 class="title">Get started with 3 days  <span class="wd_highlight">Live Javascript</span> <br> Bootcamp at 95% off</h1>
                
                 <div class="row justify-content-center">
                     <p class="fs-5 text-muted col-md-10 text-center">Get started as a front-end web developer using HTML, CSS,
@@ -52,12 +52,12 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong>3rd  August</strong>  | 05:00 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong>26th August</strong>  | 05:00 PM IST</h3>
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
-                            <h2 class="fs-3 mb-1  text-capitalize">Enroll now at 95% off</h2>
-                            <p class="mb-0 fw-200">Enroll now limited seats are available</p>
+                        <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
+                            <h2 class="fs-3 mb-1">Enroll now at 95% off</h2>
+                            <p class="mb-0">Enroll now limited seats are available</p>
                         </a>
                     </div>
             </main>
@@ -142,7 +142,7 @@
                       </ul>
                     </div>
                     <div class="cd f-2-bottom p-3">
-                      jdkjfkd
+                      Understand the Basics of JS
                     </div>
                    
                   </div>
@@ -161,11 +161,11 @@
                     </ul>
                     </div>
                     <div class="cd f-1-bottom p-3">
-                      jdkjfkd
+                        Understand the Loops and Conditionals 
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 d-none">
                   <div class="card f-3 ">
                     <div class="p-3">
                       <h4>Day 3</h4>
@@ -179,14 +179,14 @@
                       </ul>
                     </div>
                   <div class="cd f-3-bottom p-3">
-                    jdkjfkd
+                    Major Project
                   </div>
                 </div>
                 </div>
                 <div class="col-md-4">
                   <div class="card f-4 ">
                     <div class="p-3">
-                      <h4>Day 4</h4>
+                      <h4>Day 3</h4>
                       <ul>
                         <li>Introduction to API</li>
                         <li>How to use API & JSON data</li>
@@ -197,7 +197,7 @@
                       </ul>
                     </div>
                     <div class="cd f-4-bottom p-3">
-                      jdkjfkd
+                        Major Project
                     </div>
                     
                   </div>
@@ -205,7 +205,7 @@
                 
                 
                 <div class="my-5 text-center">
-                    <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
+                    <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
                         <h2 class="fs-3 mb-1">Enroll now at 95% off</h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
@@ -316,7 +316,7 @@
                 </div>
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now at 95% off</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -360,7 +360,7 @@
               <p id="headline"></p>
             </div>
             <div class="my-5">
-                <a href="https://codekaro.in/workshop-enroll/15" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now at 95% off</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -369,7 +369,7 @@
   </section>
 
 
-  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
+  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in Javascript Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
     <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="65">
       </a>
 
@@ -390,7 +390,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "Aug 3, 2021 17:00:00",
+  let birthday = "Aug 26, 2021 17:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
