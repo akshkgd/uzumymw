@@ -244,10 +244,10 @@
                             </p>
                         </div>
                         <div class="avatar-author align-items-center">
-                            <img src="{{ asset('assets/img/testimonials/mayank-b145ab03c6d8449bf7a532c6209577454941eb924d9cfc4b1b00a6ac1a784101.png.gz') }}"
+                            <img src="{{ asset('assets/img/testimonials/bhanu-397d99374e67f29c99c907f25fe8e1bb6d8c8bdfbf3b78c780daddb3686941ef.png.gz') }}"
                                 alt="Avatar" class="avatar">
                             <div class="ml-2">
-                                <h6>Mayank Sisode</h6>
+                                <h6>Bhanu Pratap Singh Rathore</h6>
                                 <span>Student</span>
                             </div>
                         </div>
