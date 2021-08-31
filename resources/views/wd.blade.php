@@ -52,7 +52,7 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong>26th August</strong>  | 06:00 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong>1st September </strong>  | 06:00 PM IST</h3>
 
                     <div class="my-5">
                         <a href="https://codekaro.in/workshop-enroll/20" class="btn btn-dark btn-lg btn-block px-5">
@@ -268,16 +268,7 @@
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet">
-                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> He
-                            teaches good and way helpful for me . Expecting to make more bootcamps related to Web
-                            Development 😃. He just covered HTML , CSS , Bootstrap , JS basics in just 4 days in a clear
-                            and understanding way ! Marvelous teaching ! <a
-                                href="https://twitter.com/hashtag/CodeKaro?src=hash&amp;ref_src=twsrc%5Etfw">#CodeKaro</a>
-                        </p>&mdash; Haris Kumar (@ironfrost_2627) <a
-                            href="https://twitter.com/ironfrost_2627/status/1416029750649184264?ref_src=twsrc%5Etfw">July
-                            17, 2021</a>
-                    </blockquote>
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> webdevlopment bootcamp day-1 was too good....we learnt a lot from today&#39;s session ....4 more days to go..... 😌</p>&mdash; Shrushti Rajanhire (@ShrushtiRajanh1) <a href="https://twitter.com/ShrushtiRajanh1/status/1422553338265153536?ref_src=twsrc%5Etfw">August 3, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
@@ -354,7 +345,7 @@
 
 
   <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
-    <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="65">
+    <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="50" width="50">
       </a>
 
   <footer class="bd-footer p-3 p-md-5 mt-5 bg-light text-center text-sm-left">
@@ -374,7 +365,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "Aug 26, 2021 18:00:00",
+  let birthday = "Sept 1, 2021 18:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
