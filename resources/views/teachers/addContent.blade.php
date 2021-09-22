@@ -99,6 +99,7 @@
                                 {{-- <th scope="row">0</th> --}}
                                 <td>  {{$content->title}}</td>
                                 <td>{{$content->videoLink}}</td>
+                                <td>{{$created_at->format('D, d M Y h:i A')}}</td>
                               </tr>  
                               @empty
                               <p>nothing</p>
