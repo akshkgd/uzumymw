@@ -98,7 +98,7 @@
                             <tr>
                                 {{-- <th scope="row">0</th> --}}
                                 <td>  {{$content->title}}</td>
-                                <td>{{$content->videoId}}</td>
+                                <td>{{$content->videoLink}}</td>
                               </tr>  
                               @empty
                               <p>nothing</p>
