@@ -40,13 +40,14 @@
 
                     <div class="form-floating mt-3 mb-2">
                         <input type="number" class="form-control" id="floatingInput" name="type" placeholder="Content Title" value="1">
-                        <label for="floatingInput">Content Title</label>
+                        <label for="floatingInput">Assignment / Recordings </label>
                       </div>
+                      <p class="small">Add 1 for assignments and 2 for recordings</p>
 
                     
                       <div class="form-floating mt-3 mb-2">
                         <input type="text" class="form-control" id="floatingInput" name="title" placeholder="Content Title">
-                        <label for="floatingInput">Content Title</label>
+                        <label for="floatingInput">Assignment / Video Title</label>
                       </div>
                     
 

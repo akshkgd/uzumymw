@@ -76,7 +76,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="username" class="">Next Class</label>
-                                <input type="date" name="nextClass" class="form-control" placeholder="Date of Delivery">
+                                <input type="datetime-local" name="nextClass" class="form-control" placeholder="Date of Delivery">
                             </div>
                             <div class="form-group">
                                 <label for="username" class="">Meeting Link</label>
