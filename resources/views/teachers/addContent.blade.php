@@ -86,19 +86,19 @@
                     <table class="table table-responsive-lg">
                         <thead>
                           <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Mobile</th>
-                            <th scope="col">Certificate</th>
+                            {{-- <th scope="col">#</th> --}}
+                            <th scope="col">Title</th>
+                            <th scope="col">Youtube Video ID</th>
+                            <th scope="col">Added On</th>
+                        
                           </tr>
                         </thead>
                         <tbody>
                             @forelse ($batchContent as $content)
                             <tr>
-                                <th scope="row">0</th>
+                                {{-- <th scope="row">0</th> --}}
                                 <td>  {{$content->title}}</td>
-                                
+                                <td>{{$content->videoId}}</td>
                               </tr>  
                               @empty
                               <p>nothing</p>
