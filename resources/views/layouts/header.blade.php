@@ -68,7 +68,7 @@
     @endauth
 
     @guest
-    <a href="{{url('/redirect')}}" class=" text-primary-3" style="letter-spacing: 0;">Login</a>  
+    <a href="{{url('/login')}}" class=" text-primary-3" style="letter-spacing: 0;">Login</a>  
     <a href="{{url('/redirect')}}" class="btn btn-primary-3 ml-2 fw-400" style="letter-spacing: 0;">Try for Free</a>  
     @endguest
     <div class="ml-2">
