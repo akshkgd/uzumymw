@@ -96,9 +96,12 @@
 <p>20. <b>Waiver And Severability</b></p>
 <p>No waiver by Company of any term or condition set forth in Terms shall be deemed a further or continuing waiver of such term or condition or a waiver of any other term or condition, and any failure of Company to assert a right or provision under Terms shall not constitute a waiver of such right or provision.</p>
 <p>If any provision of Terms is held by a court or other tribunal of competent jurisdiction to be invalid, illegal or unenforceable for any reason, such provision shall be eliminated or limited to the minimum extent such that the remaining provisions of Terms will continue in full force and effect.</p>
-<p>21. <b>Acknowledgement</b></p>
+<p>21. <b>Referral Policy</b></p>
+<p>On every successful referral you can earn upto one thousand ruppes and the payout is being made on every saturday.</p>
+<p>Payouts will be added to your EMIs (pending course payment.) if you have active EMI for the course.</p>
+<p>22. <b>Acknowledgement</b></p>
 <p>BY USING SERVICE OR OTHER SERVICES PROVIDED BY US, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM.</p>
-<p>22. <b>Contact Us</b></p>
+<p>23. <b>Contact Us</b></p>
 <p>Please send your feedback, comments, requests for technical support by email: <b>info@codekaro.in</b>.</p>
         </div>
     </div>
