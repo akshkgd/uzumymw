@@ -101,6 +101,9 @@
 <p>Payouts will be added to your EMIs (pending course payment.) if you have active EMI for the course.</p>
 <p>22. <b>Acknowledgement</b></p>
 <p>BY USING SERVICE OR OTHER SERVICES PROVIDED BY US, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM.</p>
+<p>23. <b>Refund policy</b></p>
+<p>You can ask for refund till 5 days after the starting of the batch, after that no refund will be made under any circumstances</p>
+<p><b>Token Amounts are non Refundable</b></p>
 <p>23. <b>Contact Us</b></p>
 <p>Please send your feedback, comments, requests for technical support by email: <b>info@codekaro.in</b>.</p>
         </div>
