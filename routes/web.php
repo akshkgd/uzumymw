@@ -31,7 +31,7 @@ Route::view('/privacy','privacy');
 Route::view('/learn-git-and-github','git');
 Route::view('/javascript-live-masterclass','js');
 Route::view('/web-development-live-masterclass','wd');
-
+Route::view('/web-development-bootcamp','wdm');
 
 Route::get('/', function () {
     
