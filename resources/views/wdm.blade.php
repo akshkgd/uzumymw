@@ -35,9 +35,8 @@
           </a>
             
             <form class="d-flex">
-              
-              <button type="button" class="btn btn-dark px-4" data-bs-toggle="modal" data-bs-target="#login">
-                  Enroll Now
+              <a href="https://codekaro.in/enroll/16" class="btn btn-dark">Enroll Now</a>
+             
             </form>
         
         </div>
@@ -393,7 +392,7 @@
   </section>
 
 
-  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
+  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in Web Development Bootcamp WDM-10" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
     <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="50" width="50">
       </a>
 
