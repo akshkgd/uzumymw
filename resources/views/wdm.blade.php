@@ -18,6 +18,7 @@
 
     gtag('config', 'G-HC9ETJV29G');
     </script>
+    <!-- Facebook Pixel Code --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '1180474805808058'); fbq('track', 'PageView');</script><noscript> <img height="1" width="1" src="https://www.facebook.com/tr?id=1180474805808058&ev=PageView&noscript=1"/></noscript><!-- End Facebook Pixel Code -->
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -69,11 +70,11 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong> Starting 10th October </strong>  | 4:00 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong> From 10th October </strong>  | </h3>
 
                     <div class="my-5">
                         <a href="https://codekaro.in/enroll/16" class="btn btn-dark btn-lg btn-block px-5">
-                            <h2 class="fs-3 mb-1">Enroll now at just Rs 499/-</h2>
+                            <h2 class="fs-3 mb-1">Enroll now </h2>
                             <p class="mb-0 fw-200">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -224,7 +225,7 @@
                 
                 <div class="my-5 text-center">
                     <a href="https://codekaro.in/enroll/16" class="btn btn-dark btn-lg btn-block px-5">
-                        <h2 class="fs-3 mb-1">Enroll now at just Rs 499/-</h2>
+                        <h2 class="fs-3 mb-1">Enroll now </h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
                 </div>
@@ -340,7 +341,7 @@
             </div>
             <div class="my-5 text-center">
                 <a href="https://codekaro.in/enroll/16" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now at just Rs 499/-</h2>
+                    <h2 class="fs-3 mb-1">Enroll now </h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -384,7 +385,7 @@
             </div>
             <div class="my-5">
                 <a href="https://codekaro.in/enroll/16" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now at just Rs 499/-</h2>
+                    <h2 class="fs-3 mb-1">Enroll now </h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
             </div>
