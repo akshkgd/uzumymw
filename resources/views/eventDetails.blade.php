@@ -114,6 +114,43 @@
                         </div>
                     </div>
 
+                    <div class="my-2">
+                        <blockquote class="twitter-tweet">
+                            <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
+                                today I attend 1st class of this bootcamp it just awesome 🔥🔥<br>I learn so much new thinks
+                                and also eager to learn more like 👍👍</p>&mdash; Sakshi Tannirwar (@sakshitannirwa8) <a
+                                href="https://twitter.com/sakshitannirwa8/status/1414999822948442116?ref_src=twsrc%5Etfw">July
+                                13, 2021</a>
+                        </blockquote>
+                    </div>
+                    <div class="my-2">
+                        <blockquote class="twitter-tweet">
+                            <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
+                                Nice explanations for every single word of coding, and to so much interactive and so much
+                                learnable and so on</p>&mdash; saravanachandru S K (@saravanachandr8) <a
+                                href="https://twitter.com/saravanachandr8/status/1409863395700928514?ref_src=twsrc%5Etfw">June
+                                29, 2021</a>
+                        </blockquote>
+                    </div>
+                    <div class="my-2">
+                        <blockquote class="twitter-tweet">
+                            <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
+                                Congrats Codekaro team.., you are doing a wonderful job and your session are helpful for my
+                                carrer..thankyou</p>&mdash; Nandhakumar (@nandhank_) <a
+                                href="https://twitter.com/nandhank_/status/1407353108187996162?ref_src=twsrc%5Etfw">June 22,
+                                2021</a>
+                        </blockquote>
+                    </div>
+                    <div class="my-2">
+                        <blockquote class="twitter-tweet">
+                            <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
+                                you are simply superb in delivering the content in a simple manner, hoping to learn lot more
+                                stuff from you</p>&mdash; Akhilesh (@Akhiles34785868) <a
+                                href="https://twitter.com/Akhiles34785868/status/1409496613207216134?ref_src=twsrc%5Etfw">June
+                                28, 2021</a>
+                        </blockquote>
+                    </div>
+
 
                 </div>
                 
