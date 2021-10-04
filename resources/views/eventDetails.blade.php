@@ -124,6 +124,8 @@
                         </blockquote>
                     </div>
                     <div class="my-2">
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
                         <blockquote class="twitter-tweet">
                             <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                                 Nice explanations for every single word of coding, and to so much interactive and so much
