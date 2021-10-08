@@ -114,7 +114,7 @@
                         </div>
                     </div>
 
-                    <div class="my-2">
+                    <div class="my-2 w-100">
                         <blockquote class="twitter-tweet">
                             <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                                 today I attend 1st class of this bootcamp it just awesome 🔥🔥<br>I learn so much new thinks
