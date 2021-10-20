@@ -368,7 +368,7 @@
 
     <section>
         <div class="container text-center ct">
-            <h1 id="headlin fw-600 mb-0">Live class is starting in</h1>
+            <h1 id="headlin fw-600 mb-0">Time Is Running Out. Grab Your Spot Fast!</h1>
             <div id="countdown">
               <ul>
                 <li><span id="days"></span>days</li>
@@ -377,6 +377,7 @@
                 <li><span id="seconds"></span>Seconds</li>
               </ul>
             </div>
+            <p class="fs-5">*Price will increase to Rs 3999 after the timer hits zero</p>
             <div id="content" class="emoji">
               <span>🥳</span>
               <span>🎉</span>
@@ -414,7 +415,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "Nov 20, 2021 18:00:00",
+  let birthday = "Oct 21, 2021 10:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
