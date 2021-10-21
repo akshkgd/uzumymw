@@ -13,7 +13,6 @@
             @include('layouts.alert')
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-xl-12 col-sm-12 col-md-12 ">
-                    <h4 class="">{{$batch->name}}</h1>
                     <div class="card">
                         <div class="card-boy">
                             <div class="p-3">
