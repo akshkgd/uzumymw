@@ -70,7 +70,7 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong> From 20th November </strong>  | Rs 499 <del class="text-muted">Rs 3999</del> </h3>
+                <h4 class="fw-500 py-4"> <strong> From 20th November </strong>  | Rs 999 <del class="text-muted">Rs 3999</del> </h3>
 
                     <div class="my-5">
                         <a href="https://codekaro.in/enroll/17" class="btn btn-dark btn-lg btn-block px-5">
@@ -415,7 +415,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "Oct 22, 2021 10:00:00",
+  let birthday = "Oct 22, 2021 00:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
