@@ -22,6 +22,10 @@ class AdminController extends Controller
     {
         $this->middleware(['auth', 'verified', 'isAdmin']);
     }
+    public function getUsers(){
+        $users = User::all();
+        return view('admin.emails', compact('users'))->with('i');
+    }
     public function students()
     {
         $users = User::latest()->paginate(50);
