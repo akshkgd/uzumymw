@@ -139,6 +139,6 @@ Route::post('/storeWorkshop', 'AdminController@addWorkshop')->name('storeWorksho
 Route::get('/admin/batch-enrollment/{id}', 'AdminController@batchEnrollment');
 Route::get('/admin/payment-received/{id}', 'AdminController@paymentReceived');
 Route::post('/updatePaymentStatus', 'AdminController@updatePaymentStatus')->name('updatePaymentStatus');
-Route::get('/admin/users', 'AdminController@getUsers')
+Route::get('/admin/users', 'AdminController@getUsers');
 
 
