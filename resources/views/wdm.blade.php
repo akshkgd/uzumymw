@@ -70,7 +70,7 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong> From 20th November </strong>  | Rs 999 <del class="text-muted">Rs 3999</del> </h3>
+                <h4 class="fw-500 py-4"> <strong> From 20th November </strong>  | Rs 499 <del class="text-muted">Rs 3999</del> </h3>
 
                     <div class="my-5">
                         <a href="https://codekaro.in/enroll/17" class="btn btn-dark btn-lg btn-block px-5">
