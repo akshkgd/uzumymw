@@ -44,18 +44,18 @@
             </header> --}}
 
             <main class="text-center mt-5 pt-lg-5">
-                <h1 class="title">Get started with 3 days  <span class="wd_highlight">Live Javascript</span> <br> Bootcamp at 95% off</h1>
+                <h1 class="title">Get started with 2 hours  <span class="wd_highlight">Live Javascript</span> <br> Masterclass</h1>
                
                 <div class="row justify-content-center">
                     <p class="fs-5 text-muted col-md-10 text-center">Modern JavaScript from the beginning - all the way up to JS expert level! <br> THE must-have JavaScript masterclass in 2021. </p>
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong>26th August</strong>  | 04:00 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong>23rd October</strong>  | 05:30 PM IST</h3>
 
                     <div class="my-5">
                         <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
-                            <h2 class="fs-3 mb-1">Enroll now at 95% off</h2>
+                            <h2 class="fs-3 mb-1">Enroll now for Free</h2>
                             <p class="mb-0">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -130,7 +130,7 @@
                 <div class="col-md-4">
                   <div class="card f-2">
                     <div class="p-3">
-                      <h4>Day 1</h4>
+                      <h4>Module 1</h4>
                       <ul>
                         <li>Introduction to Javascript</li>
                         <li>Data Types & Variables</li>
@@ -149,7 +149,7 @@
                 <div class="col-md-4">
                   <div class="card f-1 ">
                     <div class="p-3">
-                      <h4>Day 2</h4>
+                      <h4>Module 2</h4>
                     <ul>
                       <li>Creating and Calling Functions</li>
                       <li>Parameters and Arguments</li>
@@ -167,9 +167,8 @@
                 <div class="col-md-4 d-none">
                   <div class="card f-3 ">
                     <div class="p-3">
-                      <h4>Day 3</h4>
+                      <h4>Module 3</h4>
                       <ul>
-                        <li>Async/await</li>
                         <li>Promise object </li>
                         <li>Javascript Objects</li>
                         <li>Arrow Functions</li>
@@ -205,7 +204,7 @@
                 
                 <div class="my-5 text-center">
                     <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
-                        <h2 class="fs-3 mb-1">Enroll now at 95% off</h2>
+                        <h2 class="fs-3 mb-1">Enroll now for Free</h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
                 </div>
@@ -219,12 +218,12 @@
     <section>
         <div class="container">
             <div class="text-center">
-                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 1800+ students</h1>
+                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 5100+ students</h1>
                 <p class="lead mb-4">Here's what some of our students have to say about learning with codekaro.</p>
             </div>
             <div class="row">
                 <div class="col-md-6">
-                    {{-- <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> Congrats Codekaro team.., you are doing a wonderful job and your session are helpful for my carrer..thankyou</p>&mdash; Nandhakumar (@nandhank_) <a href="https://twitter.com/nandhank_/status/1407353108187996162?ref_src=twsrc%5Etfw">June 22, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
+                    {{-- <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> Congrats Codekaro team.., you are doing a wonderful job and your session are helpful for my carrer..thankyou</p>&mdash; Nandhakumar (@nandhank_) <a href="https://twitter.com/nandhank_/status/1407353108187996172?ref_src=twsrc%5Etfw">June 22, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                     <blockquote class="twitter-tweet">
                         <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
                             The session was awesome .. Really very much helpful ....i must refer to my friends too
@@ -232,7 +231,7 @@
                             href="https://twitter.com/Chinam22154291/status/1409510674724622343?ref_src=twsrc%5Etfw">June
                             28, 2021</a>
                     </blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <script asy src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
@@ -242,7 +241,7 @@
                             href="https://twitter.com/Santhos49708756/status/1407722856121651202?ref_src=twsrc%5Etfw">June
                             23, 2021</a>
                     </blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
@@ -251,7 +250,7 @@
                             href="https://twitter.com/ravi_1821/status/1409494936139960325?ref_src=twsrc%5Etfw">June 28,
                             2021</a>
                     </blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                     {{-- <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> attended your bootcamp of web development really enjoyed and got to learn alot of new things thanks alot</p>&mdash; Pranjal Sharma (@sharmapranjal51) <a href="https://twitter.com/sharmapranjal51/status/1406267633264074756?ref_src=twsrc%5Etfw">June 19, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
@@ -262,7 +261,7 @@
                             href="https://twitter.com/Akhiles34785868/status/1409496613207216134?ref_src=twsrc%5Etfw">June
                             28, 2021</a>
                     </blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
@@ -272,7 +271,7 @@
                             href="https://twitter.com/nandhank_/status/1407353108187996162?ref_src=twsrc%5Etfw">June 22,
                             2021</a>
                     </blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
@@ -282,20 +281,11 @@
                             href="https://twitter.com/saravanachandr8/status/1409863395700928514?ref_src=twsrc%5Etfw">June
                             29, 2021</a>
                     </blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet">
-                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> He
-                            teaches good and way helpful for me . Expecting to make more bootcamps related to Web
-                            Development 😃. He just covered HTML , CSS , Bootstrap , JS basics in just 4 days in a clear
-                            and understanding way ! Marvelous teaching ! <a
-                                href="https://twitter.com/hashtag/CodeKaro?src=hash&amp;ref_src=twsrc%5Etfw">#CodeKaro</a>
-                        </p>&mdash; Haris Kumar (@ironfrost_2627) <a
-                            href="https://twitter.com/ironfrost_2627/status/1416029750649184264?ref_src=twsrc%5Etfw">July
-                            16, 2021</a>
-                    </blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> webdevlopment bootcamp day-1 was too good....we learnt a lot from today&#39;s session ....4 more days to go..... 😌</p>&mdash; Shrushti Rajanhire (@ShrushtiRajanh1) <a href="https://twitter.com/ShrushtiRajanh1/status/1422553338265153536?ref_src=twsrc%5Etfw">August 3, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
@@ -305,18 +295,32 @@
                             href="https://twitter.com/sakshitannirwa8/status/1414999822948442116?ref_src=twsrc%5Etfw">July
                             13, 2021</a>
                     </blockquote>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir you are doing a great job and I learnt a lot from you.</p>&mdash; Rahul Yadav (@RahulYa26176535) <a href="https://twitter.com/RahulYa26176535/status/1416029077455065095?ref_src=twsrc%5Etfw">July 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir you are doing a great job and I learnt a lot from you.</p>&mdash; Rahul Yadav (@RahulYa26176535) <a href="https://twitter.com/RahulYa26176535/status/1416029077455065095?ref_src=twsrc%5Etfw">July 17, 2021</a></blockquote> 
+                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir,realy helpfull your masterclass for learn html css js and bootstrap</p>&mdash; Aswanth M (@_YMS___) <a href="https://twitter.com/_YMS___/status/1416030098801631233?ref_src=twsrc%5Etfw">July 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir,realy helpfull your masterclass for learn html css js and bootstrap</p>&mdash; Aswanth M (@_YMS___) <a href="https://twitter.com/_YMS___/status/1416030098801631233?ref_src=twsrc%5Etfw">July 17, 2021</a></blockquote> 
+                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> thankyou Ashish sir it was an amazing Bootcamp with you. I have learned a lot from you than I have ever before. Keep on giving us these bootcamp more.</p>&mdash; mahreen ahmed (@mahreenrizwan55) <a href="https://twitter.com/mahreenrizwan55/status/1439225168795213825?ref_src=twsrc%5Etfw">September 18, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> Class was interesting..I learned lot in a very short span of time...thank you so much..keep on sharing your knowledge...</p>&mdash; Bhuvaneshwari Dinesh (@Bhuvane06893457) <a href="https://twitter.com/Bhuvane06893457/status/1435963326622679043?ref_src=twsrc%5Etfw">September 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> <a href="https://twitter.com/CodeKaro?ref_src=twsrc%5Etfw">@CodeKaro</a> Classes with Ashish have been so worthwhile! Ashish has an amazing way of breaking things down so that they are understandable, and always keeping it light, fun and Enjoyable.</p>&mdash; Rahul Majukar (@RahulMajukar) <a href="https://twitter.com/RahulMajukar/status/1434885297657958401?ref_src=twsrc%5Etfw">September 6, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a><br>Hats of To you sir. The best webinar ever attended. Deeply explained,all concept cleared.<br>We done sirji🔥🔥</p>&mdash; yatin (@itsyatin_21) <a href="https://twitter.com/itsyatin_21/status/1435962920379170820?ref_src=twsrc%5Etfw">September 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>
             <div class="my-5 text-center">
                 <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now at 95% off</h2>
+                    <h2 class="fs-3 mb-1">Enroll now </h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -343,7 +347,7 @@
 
     <section>
         <div class="container text-center ct">
-            <h1 id="headlin fw-600 mb-0">Live class is starting in</h1>
+            <h1 id="headlin fw-600 mb-0">Time Is Running Out. Grab Your Spot Fast!</h1>
             <div id="countdown">
               <ul>
                 <li><span id="days"></span>days</li>
@@ -351,6 +355,9 @@
                 <li><span id="minutes"></span>Minutes</li>
                 <li><span id="seconds"></span>Seconds</li>
               </ul>
+              <p class="fs-5">*Price will increase to Rs 3999 after the timer hits zero
+
+            </p>
             </div>
             <div id="content" class="emoji">
               <span>🥳</span>
@@ -360,7 +367,7 @@
             </div>
             <div class="my-5">
                 <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now at 95% off</h2>
+                    <h2 class="fs-3 mb-1">Enroll now for Free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -388,15 +395,19 @@
         minute = second * 60,
         hour = minute * 60,
         day = hour * 24;
+        let minutesToAdd= 30;
+        console.log(minutesToAdd)
+        let currentDate = new Date();
+        let futureDate = new Date(currentDate.getTime() + minutesToAdd*60000);
 
-  let birthday = "Aug 26, 2021 17:00:00",
-      countDown = new Date(birthday).getTime(),
-      x = setInterval(function() {    
+    let birthday = futureDate,
+    countDown = new Date(birthday).getTime(),
+    x = setInterval(function() {    
 
         let now = new Date().getTime(),
-            distance = countDown - now;
+        distance = countDown - now;
 
-        document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("days").innerText = Math.floor(distance / (day)),
           document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
           document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
           document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
