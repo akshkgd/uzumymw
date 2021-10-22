@@ -184,7 +184,7 @@
                 <div class="col-md-4">
                   <div class="card f-4 ">
                     <div class="p-3">
-                      <h4>Day 3</h4>
+                      <h4>Module 3</h4>
                       <ul>
                         <li>Introduction to API</li>
                         <li>How to use API & JSON data</li>
@@ -355,7 +355,7 @@
                 <li><span id="minutes"></span>Minutes</li>
                 <li><span id="seconds"></span>Seconds</li>
               </ul>
-              <p class="fs-5">*Price will increase to Rs 3999 after the timer hits zero
+              <p class="fs-5">*Price will increase to Rs 499 after the timer hits zero
 
             </p>
             </div>
