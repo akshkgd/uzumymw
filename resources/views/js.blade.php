@@ -54,7 +54,7 @@
                 <h4 class="fw-500 py-4"> <strong>23rd October</strong>  | 05:30 PM IST</h3>
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
+                        <a href="https://codekaro.in/enroll/31" class="btn btn-dark btn-lg btn-block px-5">
                             <h2 class="fs-3 mb-1">Enroll now for Free</h2>
                             <p class="mb-0">Enroll now limited seats are available</p>
                         </a>
@@ -203,7 +203,7 @@
                 
                 
                 <div class="my-5 text-center">
-                    <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
+                    <a href="https://codekaro.in/enroll/31" class="btn btn-dark btn-lg btn-block px-5">
                         <h2 class="fs-3 mb-1">Enroll now for Free</h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
@@ -319,7 +319,7 @@
                 </div>
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/enroll/31" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now </h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -366,7 +366,7 @@
               <p id="headline"></p>
             </div>
             <div class="my-5">
-                <a href="https://codekaro.in/enroll/14" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/enroll/31" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for Free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
