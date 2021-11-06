@@ -52,7 +52,7 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong>27th October </strong>  | 05:15 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong>7th November </strong>  | 05:45 PM IST</h3>
 
                     <div class="my-5">
                         <a href="https://codekaro.in/workshop-enroll/35" class="btn btn-dark btn-lg btn-block px-5">
