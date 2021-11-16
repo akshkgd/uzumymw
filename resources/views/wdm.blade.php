@@ -419,8 +419,8 @@
         let currentDate = new Date();
         // let futureDate = new Date(currentDate.getTime() + minutesToAdd*60000);
     
-    let birthday = futureDate,
-    countDown = new Date(birthday).getTime(),
+    // let birthday = futureDate,
+    // countDown = new Date(birthday).getTime(),
     x = setInterval(function() {    
         let birthday = "Nov 16, 2021 24:00:00",
         countDown = new Date(birthday).getTime(),
