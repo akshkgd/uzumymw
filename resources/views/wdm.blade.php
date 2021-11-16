@@ -377,7 +377,7 @@
                 <li><span id="seconds"></span>Seconds</li>
               </ul>
             </div>
-            <p class="fs-5">*Price will increase to Rs 3999 after the timer hits zero</p>
+            <p class="fs-5">*Price will increase to Rs 3999  after the timer hits zero</p>
             <div id="content" class="emoji">
               <span>🥳</span>
               <span>🎉</span>
@@ -417,12 +417,13 @@
         let minutesToAdd= 30;
         console.log(minutesToAdd)
         let currentDate = new Date();
-        let futureDate = new Date(currentDate.getTime() + minutesToAdd*60000);
-
+        // let futureDate = new Date(currentDate.getTime() + minutesToAdd*60000);
+    
     let birthday = futureDate,
     countDown = new Date(birthday).getTime(),
     x = setInterval(function() {    
-
+        let birthday = "Nov 16, 2021 24:00:00",
+        countDown = new Date(birthday).getTime(),
         let now = new Date().getTime(),
         distance = countDown - now;
 
