@@ -10,7 +10,7 @@ class WorkshopEnrollment extends Model
     
     public function workshop(){
 
-        return $this->belongsTo ('App\Workshop', 'workshopId', 'id');
+        return $this->belongsTo('App\Workshop', 'workshopId', 'id');
     }
     public function student(){
 
