@@ -25,6 +25,7 @@
     "dependencies": {
         "@tanem/svg-injector": "^8.2.1",
         "aos": "^2.3.4",
+        "composer": "^4.1.0",
         "flatpickr": "^4.6.8",
         "flickity": "^2.2.1",
         "ion-rangeslider": "^2.3.1",

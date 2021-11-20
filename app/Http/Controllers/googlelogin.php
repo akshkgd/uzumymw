@@ -10,12 +10,13 @@ use Exception;
 use Carbon\Carbon;
 
 
+
 class googlelogin extends Controller
 {
     
     public function redirectToProvider()
     {
-        return Socialite::driver('google')->redirect();
+        return Socialite::driver('google')->stateless()->redirect();
     }
 
 
@@ -24,7 +25,7 @@ class googlelogin extends Controller
         try {
             
         
-            $googleUser = Socialite::driver('google')->user();
+            $googleUser = Socialite::driver('google')->stateless()->user();
             $existUser = User::where('email',$googleUser->email)->first();
             
 
