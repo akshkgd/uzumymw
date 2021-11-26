@@ -23,7 +23,7 @@
                             <h2 class="lead-1 m-0">{{ $batch->name }}</h3>
                                 <p>{!! $batch->desc !!}</p>
                                 <a href="" class="btn ck-c-btn">Notes & Assignments</a>
-                                <a href="" class="btn ck-c-btn">Recording sessions</a>
+                                <a href="{{ action('StudentController@recordings', Crypt::encrypt($Enrollment->id)) }}" class="btn ck-c-btn">Recording sessions</a>
                                 <a href="{{ action('CourseEnrollmentController@invoice', Crypt::encrypt($Enrollment->id)) }}" target="_blank" class="btn ck-c-btn">View Invoice</a>
                         </div>
 
@@ -34,9 +34,9 @@
 
                                 <div class="">
                                     <h5 class="mb-0 text-primary-3 ck-font">
-                                        {{ Carbon\Carbon::parse($Enrollment->nextClass)->format('D, d M Y') }} </h4>
+                                        {{ Carbon\Carbon::parse($Enrollment->batch->nextClass)->format('D, d M Y') }} </h4>
                                         <h6 class="ck-font">
-                                            {{ Carbon\Carbon::parse($Enrollment->nextClass)->format('h:i A') }}
+                                            {{ Carbon\Carbon::parse($Enrollment->batch->nextClass)->format('h:i A') }}
                                     </h5>
                                 </div>
                                 <a href="{{ $batch->meetingLink }}" target="_blank" class="btn btn-outline-primary">Join
