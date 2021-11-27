@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-// use Telegram\Bot\Api;
+use App\Http\Controllers\TopicController;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 /*
@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::any('/'.env('TELEGRAM_BOT_TOKEN'),'TelegramController@index')->name('webhook');
+Route::get('uzumymw', 'TopicController@getUsers');

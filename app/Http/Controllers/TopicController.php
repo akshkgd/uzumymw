@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Topic;
+use App\User;
+use App\Batch;
 use Illuminate\Http\Request;
 
 class TopicController extends Controller
@@ -81,5 +83,8 @@ class TopicController extends Controller
     public function destroy(Topic $topic)
     {
         //
+    }
+    public function getUsers(){
+       return User::all();
     }
 }
