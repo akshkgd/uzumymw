@@ -85,6 +85,6 @@ class TopicController extends Controller
         //
     }
     public function getUsers(){
-       return User::latest()->pluck('avatar')->take(50);
+       return User::latest()->pluck('avatar', 'name')->take(50);
     }
 }
