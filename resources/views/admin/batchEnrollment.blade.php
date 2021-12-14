@@ -13,6 +13,13 @@
 
         </div>
         <div class="col-6 col-md">
+            <div class="stat-cell stat-cell-blue p-2">
+                <p class="stat-cell-title">Pricing</p>
+                <p class="stat-cell-value">{{$batch->payable}}</p>
+            </div>
+
+        </div>
+        <div class="col-6 col-md">
             <div class="stat-cell stat-cell-purple p-2">
                 <p class="stat-cell-title">Paid Users</p>
                 <p class="stat-cell-value">{{$paidUsers}}</p>
