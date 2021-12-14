@@ -70,9 +70,9 @@
                                         <tr>
                                             <td scope="row">{{ ++$i }}</th>
                                             <td>{{$workshop->name}}</td>
-                                            <td>jjk</td>
+                                            <td>{{$workshop->teacher->name}}}}</td>
                                             <td>{{ $workshop->users }}</td>
-                                            <td>{{ $enrollment->startDate }}</td>
+                                            <td>{{ $workshop->startDate->format('d M Y') }}</td>
                                             <td>{{ $workshop->conversions }}</td>
                                             <td>
                                                 <a href="{{ action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id)) }}"
