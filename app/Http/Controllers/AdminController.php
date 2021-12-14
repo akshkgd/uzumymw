@@ -124,7 +124,8 @@ class AdminController extends Controller
         $totalUsers = $paidUsers + $unpaidUsers;
         $earning = (CourseEnrollment::where('batchId',$id)->where('hasPaid',1)->sum('amountPaid'))/100;
         $teacherEarning = $earning * 0.4;
-        return view('admin.batchEnrollment', compact('batch', 'paidEnrollments', 'unpaidEnrollments', 'totalUsers', 'paidUsers', 'unpaidUsers', 'earning', 'teacherEarning'))->with('i');
+        $profit = $earning - $teacherEarning;
+        return view('admin.batchEnrollment', compact('batch', 'paidEnrollments', 'unpaidEnrollments', 'totalUsers', 'paidUsers', 'unpaidUsers', 'earning', 'teacherEarning', 'profit'))->with('i');
     }
 
     public function storeTopic(Request $request)

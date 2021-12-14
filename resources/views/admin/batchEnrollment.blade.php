@@ -3,7 +3,7 @@
 <div class="container mt-5">
     <div class="card card-body">
         <h4 class="text-dark my-3">{{$batch->name}}</h1>
-            <p>From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }}</p>
+            <p>From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }} {{$batch->payable}}</p>
     <div class="row">
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
@@ -12,13 +12,7 @@
             </div>
 
         </div>
-        <div class="col-6 col-md">
-            <div class="stat-cell stat-cell-blue p-2">
-                <p class="stat-cell-title">Pricing</p>
-                <p class="stat-cell-value">{{$batch->payable}}</p>
-            </div>
-
-        </div>
+        
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-purple p-2">
                 <p class="stat-cell-title">Paid Users</p>
@@ -44,6 +38,13 @@
             <div class="stat-cell stat-cell-green p-2">
                 <p class="stat-cell-title">Teacher Share</p>
                 <p class="stat-cell-value">{{$teacherEarning}}</p>
+            </div>
+
+        </div>
+        <div class="col-6 col-md">
+            <div class="stat-cell stat-cell-green p-2">
+                <p class="stat-cell-title">Profit</p>
+                <p class="stat-cell-value">{{$profit}}</p>
             </div>
 
         </div>
