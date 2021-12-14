@@ -1,12 +1,14 @@
 @extends('layouts.ck-admin')
 @section('content')
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         <div class="d-flex justify-content-between">
             <div class="">
                 <h2 class="text-dark fw-bolder">{{$batch->name}}</h1>
-                    <p class= "fs-5 mt-0">From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }} </p>   
-                    <p class="py-1 px-4 bg-green-alt rounded-pill d-inline"><span class="text-green">{{$batch->payable}}</span></p> 
+                    <p class= "fs-5 mt-0">From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }} 
+                        <span class="py-1 px-4 bg-green-alt rounded-pill d-inline"><span class="text-green">{{$batch->payable}}</span></span> 
+                    
+                    </p>   
             </div>
             <div class="">
                 <a href="" class="btn btn-primary mt-3">Edit Batch</a>
