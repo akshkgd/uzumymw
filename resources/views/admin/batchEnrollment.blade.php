@@ -8,7 +8,7 @@
                 <p>From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }} ( <span class="text-dark">{{$batch->payable}}</span> )</p>    
         </div>
         <div class="">
-            <a href="" class="btn btn-primary mt-3">Edit Batch</a>
+            <a href="" class="btn btn-light mt-3">Edit Batch</a>
 
         </div>
     </div>
