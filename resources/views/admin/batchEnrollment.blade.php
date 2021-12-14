@@ -2,6 +2,11 @@
 @section('content')
 <div class="container mt-5">
     <div class="row">
+        
+    </div>
+</div>
+<div class="container mt-5">
+    <div class="card card-body">
         <div class="d-flex justify-content-between">
             <div class="">
                 <h2 class="text-dark fw-bolder">{{$batch->name}}</h1>
@@ -15,11 +20,6 @@
     
             </div>
         </div>
-    </div>
-</div>
-<div class="container mt-5">
-    <div class="card card-body">
-        <h4 class="text-dark">Overview</h4>
          <div class="row">
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
