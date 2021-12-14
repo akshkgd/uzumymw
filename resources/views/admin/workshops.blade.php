@@ -8,7 +8,7 @@
                 <div class="col-6 col-md">
                     <div class="stat-cell stat-cell-red p-2">
                         <p class="stat-cell-title">Total Workshops</p>
-                        <p class="stat-cell-value">{{ $workshops }}</p>
+                        <p class="stat-cell-value">{{ $totalWorkshops }}</p>
                     </div>
 
                 </div>
