@@ -16,7 +16,7 @@
                                 <h3 class="ck-font">Students Enrolled</h3>
                             </div>
 
-                            <table class="table table-responsive-lg">
+                            <table class="table table-fluid">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
