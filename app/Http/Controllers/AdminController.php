@@ -157,7 +157,7 @@ class AdminController extends Controller
     }
     public function workshops()
     {
-        $workshops = Workshop::latest()->get();
+        $workshops = Workshop::latest()->take(30)->get();
         foreach ($workshops as $workshop){
             $workshop->teacher = User::findorFail($workshop->teacherId);
             $users = WorkshopEnrollment::where('workshopId', $workshop->id)->get();
