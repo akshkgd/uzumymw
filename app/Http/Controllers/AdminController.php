@@ -157,7 +157,26 @@ class AdminController extends Controller
     }
     public function workshops()
     {
-        $workshops = Workshop::all()->count();
+        $workshops = Workshop::latest()->take(30);
+        foreach ($workshops as $workshop){
+            $workshop->teacher = User::findorFail($workshop->teacherId);
+            $users = WorkshopEnrollment::where('workshopId', $workshop->id)->get();
+            foreach($users as $user){
+                $isConverted = CourseEnrollment::where('userId', $user->userId)->where('hasPaid', 1)->count();
+                if($isConverted == 0){
+                    $user->isConverted = 0;
+                }
+                else{
+                    $user->isConverted = 1;
+                }
+            }
+            $totalUsers = $users->count();
+            $paidUsers = $users->where('isConverted', 1)->count();
+            $conversions = $paidUsers / $totalUsers * 100;
+            $workshop->conversions = $conversions;
+            $workshop->users = $totalUsers;
+        }
+        $totalWorkshops = Workshop::all()->count();
         $users = WorkshopEnrollment::select('userId')->distinct()->get();
         foreach($users as $user){
             $isConverted = CourseEnrollment::where('userId', $user->userId)->where('hasPaid', 1)->count();
@@ -171,7 +190,7 @@ class AdminController extends Controller
         $totalUsers = $users->count();
         $paidUsers = $users->where('isConverted', 1)->count();
         $conversionRate = ($paidUsers/$totalUsers)*100;
-        return view('admin.workshops', compact('workshops', 'totalUsers', 'paidUsers', 'conversionRate'))->with('i');
+        return view('admin.workshops', compact('workshops', 'totalWorkshops', 'totalUsers', 'paidUsers', 'conversionRate'))->with('i');
     }
     public function paymentReceived($id)
     {
