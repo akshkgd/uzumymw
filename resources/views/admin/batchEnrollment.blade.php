@@ -7,7 +7,10 @@
             <h4 class="text-dark my-3">{{$batch->name}}</h1>
                 <p>From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }} ( <span class="text-dark">{{$batch->payable}}</span> )</p>    
         </div>
-        <a href="" class="btn btn-primary">Edit Batch</a>
+        <div class="">
+            <a href="" class="btn btn-primary">Edit Batch</a>
+
+        </div>
     </div>
          <div class="row">
         <div class="col-6 col-md">
