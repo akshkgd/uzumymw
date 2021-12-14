@@ -3,7 +3,7 @@
 <div class="container mt-5">
     <div class="card card-body">
         <h4 class="text-dark my-3">{{$batch->name}}</h1>
-            <p>From {{$batch->startDate->format('D, M, y')}} to {{$batch->endDate->format('d, M, Y')}}</p>
+            <p>From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }}</p>
     <div class="row">
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
