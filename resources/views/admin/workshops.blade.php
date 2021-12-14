@@ -73,7 +73,7 @@
                                             <td>{{$workshop->teacher->name}}</td>
                                             <td>{{ $workshop->users }}</td>
                                             <td>{{ $workshop->startDate->format('d M Y') }}</td>
-                                            <td>{{ $workshop->conversions }}</td>
+                                            <td>{{ round($workshop->conversions, 0)  }}</td>
                                             <td>
                                                 <a href=""
                                                     class="">Edit</a>
