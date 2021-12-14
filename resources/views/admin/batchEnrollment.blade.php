@@ -17,7 +17,7 @@
                             </div>
 
                             <table class="table table-fluid">
-                                <tdead>
+                               
                                     <tr>
                                         <td scope="col">#</th>
                                         <td scope="col">Name</th>
@@ -27,8 +27,7 @@
                                         <td scope="col">Actions</th>
 
                                     </tr>
-                                </thead>
-                                <tbody>
+                               
                                     @foreach ($paidEnrollments as $enrollment)
                                         <tr>
                                             <td scope="row">{{ ++$i }}</th>
@@ -44,7 +43,7 @@
                                         </tr>
                                     @endforeach
 
-                                </tbody>
+                               
                             </table>
                         </div>
                     </div>
@@ -66,7 +65,7 @@
                                         <td scope="col">Actions</th>
                                     </tr>
                                
-                                <tbody>
+                                
                                     @foreach ($unpaidEnrollments as $enrollment)
                                         <tr>
                                             <td scope="row">{{ ++$i }}</th>
@@ -82,7 +81,7 @@
                                         </tr>
                                     @endforeach
 
-                                </tbody>
+                              
                             </table>
                         </div>
                     </div>
