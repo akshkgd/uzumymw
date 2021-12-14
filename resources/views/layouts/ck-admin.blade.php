@@ -37,7 +37,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container">
-        <a class="navbar-brand text-primary" href="#" style="  font-weight: bolder; font-size: 22px;">
+        <a class="navbar-brand text-primary fw-bolder fs-5" href="#">
             Codekaro
         </a>
         <button
@@ -81,14 +81,14 @@
 					role="button"
 					data-bs-toggle="dropdown"
 				>
-					<div class="avatar avatar-md avatar-indicators avatar-online" >
-						<img alt="avatar" src="{{Auth::user()->avatar}}" class="rounded-circle" height="40"/>
+					<div class="" >
+						<img alt="avatar" src="{{Auth::user()->avatar}}" class="avatar-sm"/>
 					</div>
 				</a>
             <div class="dropdown-menu dropdown-menu-end shadow">
                 <div class="dropdow px-3">
                     <div class="d-flex">
-                        <div class="avatar avatar-md avatar-indicators avatar-online">
+                        <div class=" avatar-md avatar-indicators avatar-online">
                             <img
                                 alt="avatar"
                                 src="{{Auth::user()->avatar}}"
