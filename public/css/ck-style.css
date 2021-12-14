@@ -354,3 +354,6 @@
 .table-borderless thead th {
     border: 0;
 }
+.td-none{
+  text-decoration: none !important;
+}
