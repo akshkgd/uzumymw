@@ -14,28 +14,28 @@
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-purple p-2">
                 <p class="stat-cell-title">Paid Users</p>
-                <p class="stat-cell-value">232</p>
+                <p class="stat-cell-value">{{$paidUsers}}</p>
             </div>
 
         </div>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-yellow p-2">
                 <p class="stat-cell-title">Unpaid Users</p>
-                <p class="stat-cell-value">4343</p>
+                <p class="stat-cell-value">{{$unpaidUsers}}</p>
             </div>
 
         </div>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-teal p-2">
                 <p class="stat-cell-title">Earnings</p>
-                <p class="stat-cell-value">2323</p>
+                <p class="stat-cell-value">{{$earning}}</p>
             </div>
 
         </div>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-green p-2">
                 <p class="stat-cell-title">Teacher Share</p>
-                <p class="stat-cell-value">4343</p>
+                <p class="stat-cell-value">{{$teacherEarning}}</p>
             </div>
 
         </div>
