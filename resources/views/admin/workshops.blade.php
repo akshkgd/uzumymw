@@ -66,7 +66,7 @@
 
                                     </tr>
 
-                                    @foreach ($workshopDetails as $workshop)
+                                    @foreach ($workshops as $workshop)
                                         <tr>
                                             <td scope="row">{{ ++$i }}</th>
                                             <td>{{$workshop->name}}</td>
