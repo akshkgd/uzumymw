@@ -168,8 +168,10 @@ class AdminController extends Controller
                 $user->isConverted = 1;
             }
         }
+        $totalUsers = $users->count();
         $paidUsers = $users->where('isConverted', 1)->count();
-        return view('admin.workshops', compact('workshops', 'users', 'paidUsers'))->with('i');
+        $conversionRate = ($paidUsers/$totalUsers)*100;
+        return view('admin.workshops', compact('workshops', 'totalUsers', 'paidUsers', 'conversionRate'))->with('i');
     }
     public function paymentReceived($id)
     {

@@ -16,7 +16,7 @@
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-purple p-2">
                 <p class="stat-cell-title">Total Users</p>
-                <p class="stat-cell-value">{{$users}}</p>
+                <p class="stat-cell-value">{{$totalUsers}}</p>
             </div>
 
         </div>
@@ -31,7 +31,7 @@
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-green p-2">
                 <p class="stat-cell-title">Conversions</p>
-                <p class="stat-cell-value">{{$paidUsers}}</p>
+                <p class="stat-cell-value">{{$conversionRate}}</p>
             </div>
 
         </div>
