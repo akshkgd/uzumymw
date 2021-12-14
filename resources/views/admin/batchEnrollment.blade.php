@@ -1,10 +1,6 @@
 @extends('layouts.ck-admin')
 @section('content')
-    <div class="navbar-container ">
-        <nav class="navbar navbar-expand-lg navbar-light border-bottom-0 " data-overlay>
-            @include('layouts.header')
-        </nav>
-    </div>
+    
 
     {{-- Enrollment details --}}
 
