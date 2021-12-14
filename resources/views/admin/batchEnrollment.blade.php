@@ -16,7 +16,7 @@
                                 <h3 class="ck-font">Students Enrolled</h3>
                             </div>
 
-                            <table class="table table-fluid">
+                            <table class="table table-responsive">
                                
                                     <tr>
                                         <td scope="col">#</th>
@@ -54,7 +54,7 @@
                                 <h4 class="ck-font">Students with pending Payment</h3>
                             </div>
 
-                            <table class="table table-responsive-lg">
+                            <table class="table table-responsive">
                                 
                                     <tr>
                                         <td scope="col">#</th>
