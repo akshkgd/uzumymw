@@ -1,10 +1,9 @@
 @extends('layouts.ck-admin')
 @section('content')
 <div class="container mt-5">
+    <div class="card card-body">
+        <h4 class="">{{$batch->name}}</h1>
     <div class="row">
-        <div class="card card-body">
-
-            <h4 class="">{{$batch->name}}</h1>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
                 <p class="stat-cell-title">Total Users</p>
