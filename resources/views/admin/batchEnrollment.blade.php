@@ -2,7 +2,7 @@
 @section('content')
 <div class="container mt-5">
     <div class="card card-body">
-        <h4 class="">{{$batch->name}}</h1>
+        <h4 class="text-dark mb-3">{{$batch->name}}</h1>
     <div class="row">
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
@@ -48,7 +48,7 @@
     {{-- Enrollment details --}}
 
     <section>
-        <div class="container pt-5 mt-5">
+        <div class="container mt-5">
             @include('layouts.alert')
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-xl-12 col-sm-12 col-md-12 ">
