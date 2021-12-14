@@ -119,7 +119,12 @@ class AdminController extends Controller
         $batch = Batch::findorFail($id);
         $paidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->get();
         $unpaidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 0)->get();
-        return view('admin.batchEnrollment', compact('batch', 'paidEnrollments', 'unpaidEnrollments'))->with('i');
+        $totalUsers = $paidUsers + $unpaidUsers;
+        $paidUsers = $paidEnrollments->count();
+        $unpaidUsers = $unpaidEnrollments->count();
+        $earning = CourseEnrollment::where('batchId',$id)->where('hasPaid',1)->sum('amountPaid');
+        $teacherEarning = $earnings * 0.4;
+        return view('admin.batchEnrollment', compact('batch', 'paidEnrollments', 'unpaidEnrollments', 'totalUsers', 'paidUsers', 'unpaidUsers', 'earning', 'teacherEarning'))->with('i');
     }
 
     public function storeTopic(Request $request)

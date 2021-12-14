@@ -7,38 +7,39 @@
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
                 <p class="stat-cell-title">Total Users</p>
-                <p class="stat-cell-value">123</p>
+                <p class="stat-cell-value">{{$totalUsers}}</p>
             </div>
 
         </div>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-purple p-2">
-                <p class="stat-cell-title">Users (This Month)</p>
+                <p class="stat-cell-title">Paid Users</p>
                 <p class="stat-cell-value">232</p>
             </div>
 
         </div>
         <div class="col-6 col-md">
+            <div class="stat-cell stat-cell-yellow p-2">
+                <p class="stat-cell-title">Unpaid Users</p>
+                <p class="stat-cell-value">4343</p>
+            </div>
+
+        </div>
+        <div class="col-6 col-md">
             <div class="stat-cell stat-cell-teal p-2">
-                <p class="stat-cell-title">Live Batches</p>
+                <p class="stat-cell-title">Earnings</p>
                 <p class="stat-cell-value">2323</p>
             </div>
 
         </div>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-green p-2">
-                <p class="stat-cell-title">Users</p>
+                <p class="stat-cell-title">Teacher Share</p>
                 <p class="stat-cell-value">4343</p>
             </div>
 
         </div>
-        <div class="col-6 col-md">
-            <div class="stat-cell stat-cell-yellow p-2">
-                <p class="stat-cell-title">Users</p>
-                <p class="stat-cell-value">4343</p>
-            </div>
-
-        </div>
+        
     </div>
 </div>
 </div>
