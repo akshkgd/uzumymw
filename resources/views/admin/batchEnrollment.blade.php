@@ -5,7 +5,7 @@
         <div class="d-flex justify-content-between">
             <div class="">
                 <h2 class="text-dark fw-bolder">{{$batch->name}}</h1>
-                    <p class= "fs-5 mt-0">From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }} 
+                    <p class= " mt-0">From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }} 
                         <span class="py-1 px-4 bg-green-alt rounded-pill d-inline"><span class="text-green">{{$batch->payable}}</span></span> 
                     
                     </p>   
