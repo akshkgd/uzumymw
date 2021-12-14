@@ -11,16 +11,16 @@
             <div class="">
                 <h2 class="text-dark fw-bolder">{{$batch->name}}</h1>
                     <p class= " mt-0">From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }} 
-                        <span class="py-1 px-4 bg-green-alt rounded-pill d-inline"><span class="text-green">{{$batch->payable}}</span></span> 
+                        <span class=""><span class="text-green">{{$batch->payable}}</span></span> 
                     
                     </p>   
             </div>
             <div class="">
-                <a href="" class="btn btn-primary mt-3">Edit Batch</a>
+                <a href="" class="btn btn-muted ">Edit Batch</a>
     
             </div>
         </div>
-         <div class="row">
+         <div class="row mt-3">
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
                 <p class="stat-cell-title">Total Users</p>
