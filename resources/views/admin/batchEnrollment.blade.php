@@ -1,10 +1,6 @@
 @extends('layouts.ck-admin')
 @section('content')
-<div class="container mt-5">
-    <div class="row">
-        
-    </div>
-</div>
+
 <div class="container mt-5">
     <div class="card card-body">
         <div class="d-flex justify-content-between">
@@ -20,7 +16,7 @@
     
             </div>
         </div>
-         <div class="row mt-3">
+         <div class="row mt-4">
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
                 <p class="stat-cell-title">Total Users</p>
