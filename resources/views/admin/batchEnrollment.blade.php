@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.ck-admin')
 @section('content')
     <div class="navbar-container ">
         <nav class="navbar navbar-expand-lg navbar-light border-bottom-0 " data-overlay>

@@ -1,0 +1,302 @@
+.promotion {
+    border: 6px solid #ffd338;
+    border-radius: 20px;
+  }
+  .btn-floating {
+    position: fixed;
+    z-index: 1030;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+  .btn-round {
+    width: 3rem;
+    height: 3rem;
+    line-height: 2rem;
+    border-radius: 50%;
+    padding: 0;
+    background: #040303;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #login-form {
+    display: none;
+  }
+  #register-form {
+    display: none;
+  }
+  
+  .card[class*="hover-"] {
+    transition: background-color 0.2s ease, box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+  .card-hover:hover {
+    transition: background-color 0.2s ease, box-shadow 0.2s ease,
+      transform 0.2s ease;
+  }
+  .border-none {
+    border: none !important;
+  }
+  .fw-700 {
+    font-weight: 700 !important;
+  }
+  .fw-600 {
+    font-weight: 600 !important;
+  }
+  .fw-900 {
+    font-weight: 900 !important;
+  }
+  .course-card {
+    height: 170px;
+    object-fit: cover;
+  }
+  @media (max-width: 576px) {
+    .highlighter-1 {
+      display: inline-block;
+      height: inherit;
+      background-image: url("../img/ck_highlighter.svg");
+      background-position: 0 0.055rem;
+      background-repeat: repeat-x;
+      padding-right: 24px;
+    }
+  }
+  @media (max-width: 776px) {
+    .hidden-sm {
+      display: none !important;
+    }
+  }
+  @media (min-width: 776px) {
+    .hidden-lg {
+      display: none !important;
+    }
+  }
+  @media (min-width: 576px) {
+    .highlighter-1 {
+      display: inline-block;
+      height: inherit;
+      background-image: url("../img/ck_highlighter.svg");
+      background-position: 0 0.125rem;
+      background-repeat: repeat-x;
+      padding-right: 24px;
+    }
+    .title {
+      font-size: 50px;
+      font-weight: 700;
+    }
+    .sticky-lg {
+      position: sticky;
+      top: 20px;
+    }
+  }
+  
+  .highlighter-2 {
+    display: inline-block;
+    height: inherit;
+    background-image: url("../img/ck_highlighter.svg");
+    background-position: 0 0.725rem;
+    background-repeat: repeat-x;
+    padding-right: 18px;
+  }
+  
+  a.card {
+    text-decoration: none;
+    color: #040303;
+    font-weight: 400;
+    transition: all 0.1s ease;
+  }
+  a.card[class*="hover-shadow"]:hover {
+    transform: translate3d(-4px, -4px, 0) rotateZ(-1deg);
+  }
+  .wave-background-inner.primary {
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#faf7f2),
+      to(hsla(0, 100%, 98%, 0))
+    );
+    background-image: linear-gradient(180deg, #faf7f2, hsla(0, 100%, 98%, 0));
+  }
+  
+  .wave-background-inner {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(#fff5f5),
+      to(hsla(0, 100%, 98%, 0))
+    );
+    background-image: linear-gradient(180deg, #fff5f5, hsla(0, 100%, 98%, 0));
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  .wave-background-wave {
+    position: absolute;
+    left: 50%;
+    top: -0.1875em;
+    z-index: 2;
+    width: 100%;
+    min-width: 90rem;
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    color: #fff;
+  }
+  
+  .hero {
+    position: relative;
+    z-index: 100;
+  }
+  .w-embed:after,
+  .w-embed:before {
+    content: " ";
+    display: table;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-column-end: 2;
+    grid-row-end: 2;
+  }
+  .w-embed:after {
+    clear: both;
+  }
+  .background-inner {
+    position: relative;
+    z-index: 20;
+  }
+  .background-wrapper {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+  }
+  .wave-background {
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+    width: 100%;
+  }
+  .wave-background.absolute {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+  }
+  .pt-10 {
+    padding-top: 10rem;
+  }
+  .ck-rounded {
+    border-radius: 16px !important;
+  }
+  .bg-info {
+    background-color: rgba(232, 240, 254, 0.502);
+  }
+  .bg-teal-alt {
+    background-color: rgb(231, 255, 255);
+  }
+  .bg-coral-alt {
+    background-color: rgb(255, 225, 214);
+  }
+  .bg-blueviolet-alt {
+    background-color: rgb(234, 211, 255);
+  }
+  .bg-green-alt {
+      background: #ebf5f1;
+      transition: background-color .25s;
+  }
+  .bg-purple-alt {
+      background: #f2f0fa;
+      transition: background-color .25s;
+  }
+  .bg-red-alt {
+      background: #f7eded;
+      transition: background-color .25s;
+  }
+  .color-teal {
+    color: teal;
+  }
+  .color-coral {
+    color: coral;
+  }
+  .color-blueviolet {
+    color: blueviolet;
+  }
+  .color-green {
+    color: green;
+  }
+  .color-purple {
+    color: purple;
+  }
+  .stat-cell{
+      border-radius: 8px;
+      margin-bottom: 22px;
+  }
+  .stat-cell-red {
+      background: #f7eded;
+      transition: background-color .25s;
+  }
+  .stat-cell-green {
+      background: #ebf5f1;
+      transition: background-color .25s;
+  }
+  .stat-cell-teal {
+      background: #eaf4f7;
+      transition: background-color .25s;
+  }
+  .stat-cell-yellow {
+      background: #faf1e1;
+      transition: background-color .25s;
+  }
+  .stat-cell-blue {
+      background: #eaf0f7;
+      transition: background-color .25s;
+  }
+  .stat-cell-purple {
+      background: #f2f0fa;
+      transition: background-color .25s;
+  }
+  .stat-cell .stat-cell-value {
+      font-size: 1.125rem !important;
+  }
+  .stat-cell .stat-cell-title {
+      font-size: .875rem !important;
+  }
+  .stat-cell-teal .stat-cell-value {
+      color: #002d3b;
+  }
+  .stat-cell-purple .stat-cell-value {
+      color: #211445;
+  }
+  .stat-cell-green .stat-cell-value {
+      color: #012e1b;
+  }
+  .stat-cell-blue .stat-cell-value {
+      color: #002750;
+  }
+  .stat-cell-red .stat-cell-value {
+      color: #491010;
+  }
+  
+  .stat-cell-red .stat-cell-title {
+      color: #a31313;
+  }
+  .stat-cell-green .stat-cell-title {
+      color: #006d3f;
+  }
+  .stat-cell-teal .stat-cell-title {
+      color: #006d8e;
+  }
+  .stat-cell-purple .stat-cell-title {
+      color: #4b2aad;
+  }
+  .stat-cell-blue .stat-cell-title {
+      color: #0055b0;
+  }
+  .stat-cell-yellow .stat-cell-title {
+      color: #9b5d00;
+  }
+  

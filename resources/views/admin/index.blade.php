@@ -1,50 +1,56 @@
-@extends('layouts.admin')
+@extends('layouts.ck-admin')
 
 @section('content')
 
-<!-- Page wrapper with content-wrapper inside -->
-<!-- <div class="page-wrapper"> -->
-<!-- <div class="content-wrapper"> -->
-<!-- Container-fluid -->
-<!-- <div class="container-fluid"> -->
-<!-- First comes a content container with the main title -->
-<div class="content">
-    <h1 class="content-title font-size-22">Dashboard</h1>
+    <!-- main dashboard -->
 
-    <div class="card justify-content-between d-flex bg-1">
-        <div>
-            <span>Purchase Today</span>
-            <h1 class="card-title">₹897777</h1>
-        </div>
-
-
-        <div>
-            <span>Purchase This Month</span>
-            <h1 class="card-title">₹78777</h1>
-        </div>
-        <div>
-            <span>Purchase Previous Month</span>
-            <h1 class="card-title">₹76999</h1>
-        </div>
-        <div>
-            <span>Purchase Analysis (This Month)</span>
-
-
-        </div>
-        <div>
-            <span>Total Purchase</span>
-            <h1 class="card-title">₹670000</h1>
-        </div>
-
-
-
-
-    </div>
-
-</div>
+    <div class="container mt-5">
+      <div class="row">
+          <div class="col-6 col-md">
+              <div class="stat-cell stat-cell-red p-2">
+                      <p class="stat-cell-title">Total Users</p>
+                      <p class="stat-cell-value">{{$users}}</p>
+                  </div>
+                  
+              </div>
+              <div class="col-6 col-md">
+                  <div class="stat-cell stat-cell-purple p-2">
+                          <p class="stat-cell-title">Users (This Month)</p>
+                          <p class="stat-cell-value">{{$batches}}</p>
+                      </div>
+                      
+                  </div>
+                  <div class="col-6 col-md">
+                      <div class="stat-cell stat-cell-teal p-2">
+                              <p class="stat-cell-title">Live Batches</p>
+                              <p class="stat-cell-value">{{$batches}}</p>
+                          </div>
+                          
+                      </div>
+                      <div class="col-6 col-md">
+                          <div class="stat-cell stat-cell-green p-2">
+                                  <p class="stat-cell-title">Users</p>
+                                  <p class="stat-cell-value">4343</p>
+                              </div>
+                              
+                          </div>
+                          <div class="col-6 col-md">
+                              <div class="stat-cell stat-cell-yellow p-2">
+                                      <p class="stat-cell-title">Users</p>
+                                      <p class="stat-cell-value">4343</p>
+                                  </div>
+                                  
+                              </div>
+          </div>
+      </div>
+  
+  
+  
+  
+      <!-- main dashboard ends -->
 
 <!-- First row (equally spaced) -->
-<div class="row row-eq-spacing">
+<div class="row row-eq-spacing d-none">
     <div class="col-6 col-xl-3">
       <div class="card">
         <h2 class="card-title">Users</h2>
