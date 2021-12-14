@@ -3,6 +3,7 @@
 <div class="container mt-5">
     <div class="card card-body">
         <h4 class="text-dark my-3">{{$batch->name}}</h1>
+            <p>From {{$batch->startDate->format(D, M, y)}}</p>
     <div class="row">
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
