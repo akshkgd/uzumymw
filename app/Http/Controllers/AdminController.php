@@ -172,8 +172,12 @@ class AdminController extends Controller
             }
             $totalUsers = $users->count();
             $paidUsers = $users->where('isConverted', 1)->count();
-            // $conversions = $paidUsers / $totalUsers * 100;
-            $workshop->conversions = 0;
+            if($totalUsers != 0){
+                $workshop->conversions = $paidUsers / $totalUsers * 100;
+            }
+            else{
+                $workshop->conversions = 0;
+            }
             $workshop->users = $totalUsers;
         }
         $totalWorkshops = Workshop::all()->count();

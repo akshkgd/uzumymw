@@ -70,7 +70,7 @@
                                         <tr>
                                             <td scope="row">{{ ++$i }}</th>
                                             <td>{{$workshop->name}}</td>
-                                            <td>{{$workshop->teacher->name}}}}</td>
+                                            <td>{{$workshop->teacher->name}}</td>
                                             <td>{{ $workshop->users }}</td>
                                             <td>{{ $workshop->startDate->format('d M Y') }}</td>
                                             <td>{{ $workshop->conversions }}</td>
