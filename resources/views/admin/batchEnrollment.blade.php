@@ -2,7 +2,7 @@
 @section('content')
 <div class="container mt-5">
     <div class="card card-body">
-        <h4 class="text-dark mb-3">{{$batch->name}}</h1>
+        <h4 class="text-dark my-3">{{$batch->name}}</h1>
     <div class="row">
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
