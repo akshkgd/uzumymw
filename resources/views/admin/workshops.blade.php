@@ -75,8 +75,8 @@
                                             <td>{{ $workshop->startDate->format('d M Y') }}</td>
                                             <td>{{ $workshop->conversions }}</td>
                                             <td>
-                                                <a href="{{ action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id)) }}"
-                                                    class="">Payment Received</a>
+                                                <a href=""
+                                                    class="">Edit</a>
                                             </td>
 
                                         </tr>
