@@ -309,3 +309,48 @@
       width: 30px;
       height: 30px;
   }
+  .avatar-lg{
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+  }
+  .table {
+    width: 100%;
+    margin-bottom: 1.5rem;
+    color: #495057;
+    background-color: transparent;
+}
+.table td,
+.table th {
+    padding: 1rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+.table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+}
+.table tbody + tbody {
+    border-top: 2px solid #dee2e6;
+}
+.table-sm td,
+.table-sm th {
+    padding: 0.5rem;
+}
+.table-bordered {
+    border: 1px solid #dee2e6;
+}
+.table-bordered td,
+.table-bordered th {
+    border: 1px solid #dee2e6;
+}
+.table-bordered thead td,
+.table-bordered thead th {
+    border-bottom-width: 2px;
+}
+.table-borderless tbody + tbody,
+.table-borderless td,
+.table-borderless th,
+.table-borderless thead th {
+    border: 0;
+}
