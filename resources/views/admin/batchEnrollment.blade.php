@@ -8,21 +8,21 @@
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
                 <p class="stat-cell-title">Total Users</p>
-                <p class="stat-cell-value">{{ $users }}</p>
+                <p class="stat-cell-value">123</p>
             </div>
 
         </div>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-purple p-2">
                 <p class="stat-cell-title">Users (This Month)</p>
-                <p class="stat-cell-value">{{ $batches }}</p>
+                <p class="stat-cell-value">232</p>
             </div>
 
         </div>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-teal p-2">
                 <p class="stat-cell-title">Live Batches</p>
-                <p class="stat-cell-value">{{ $batches }}</p>
+                <p class="stat-cell-value">2323</p>
             </div>
 
         </div>
