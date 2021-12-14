@@ -76,7 +76,8 @@
                                         <tr>
                                             <td scope="row">{{ ++$i }}</th>
                                             <td> <img src="{{ $enrollment->students->avatar }}" alt=""
-                                            class="avatar avatar-sm"> {{ $enrollment->students->name }}</td>
+                                            class="avatar avatar-sm">
+                                            <a href="{{action('AdminController@studentDetails', $enrollment->students->id  )}}">{{ $enrollment->students->name }}</a></td>
                                             <td>{{ $enrollment->students->email }}</td>
                                             <td>{{ $enrollment->students->mobile }}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
