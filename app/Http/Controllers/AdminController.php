@@ -11,6 +11,7 @@ use App\User;
 use App\Workshop;
 use App\BatchTopics;
 use App\CourseEnrollment;
+use App\WorkshopEnrollment;
 use Razorpay\Api\Api;
 use Session;
 use Redirect;
@@ -153,6 +154,22 @@ class AdminController extends Controller
     {
         $teachers = User::where('role', 1)->get();
         return view('admin.createWorkshop', compact('teachers'));
+    }
+    public function workshops()
+    {
+        $workshops = Workshop::all()->count();
+        $users = WorkshopEnrollment::select('userId')->distinct()->get();
+        foreach($users as $user){
+            $isConverted = CourseEnrollment::where('userId', $user->userId)->where('hasPaid', 1)->count();
+            if($isConverted == 0){
+                $user->isConverted = 0;
+            }
+            else{
+                $user->isConverted = 1;
+            }
+        }
+        $paidUsers = $users->where('isConverted', 1)->count();
+        return view('admin.workshops', compact('workshops', 'users', 'paidUsers'))->with('i');
     }
     public function paymentReceived($id)
     {
