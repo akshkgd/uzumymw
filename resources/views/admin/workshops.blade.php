@@ -31,7 +31,7 @@
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-green p-2">
                 <p class="stat-cell-title">Conversions</p>
-                <p class="stat-cell-value">{{($paidUsers / $users)*100}}</p>
+                <p class="stat-cell-value">{{$paidUsers}}</p>
             </div>
 
         </div>
