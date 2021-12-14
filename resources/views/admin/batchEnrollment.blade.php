@@ -1,17 +1,23 @@
 @extends('layouts.ck-admin')
 @section('content')
-<div class="container mt-5">
-    <div class="card card-body">
-        <div class="d-flex justify-content-between">
-        <div class="">
-            <h4 class="text-dark my-3">{{$batch->name}}</h1>
-                <p>From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }} ( <span class="text-dark">{{$batch->payable}}</span> )</p>    
-        </div>
-        <div class="">
-            <a href="" class="btn btn-muted mt-3">Edit Batch</a>
-
+<div class="container">
+    <div class="row">
+        <div class="d-flex-lg justify-content-between">
+            <div class="">
+                <h2 class="text-dark fw-bolder">{{$batch->name}}</h1>
+                    <p class= "fs-5 mt-0">From {{$batch->startDate->format('d M y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }} </p>   
+                    <p class="py-1 px-4 bg-green-alt rounded-pill "><span class="text-green">{{$batch->payable}}</span></p> 
+            </div>
+            <div class="">
+                <a href="" class="btn btn-primary mt-3">Edit Batch</a>
+    
+            </div>
         </div>
     </div>
+</div>
+<div class="container mt-5">
+    <div class="card card-body">
+        <h4 class="text-dark">Quick Overvire</h4>
          <div class="row">
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
