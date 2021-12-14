@@ -123,7 +123,7 @@ class AdminController extends Controller
         $unpaidUsers = $unpaidEnrollments->count();
         $totalUsers = $paidUsers + $unpaidUsers;
         $earning = CourseEnrollment::where('batchId',$id)->where('hasPaid',1)->sum('amountPaid');
-        $teacherEarning = $earnings * 0.4;
+        $teacherEarning = $earning * 0.4;
         return view('admin.batchEnrollment', compact('batch', 'paidEnrollments', 'unpaidEnrollments', 'totalUsers', 'paidUsers', 'unpaidUsers', 'earning', 'teacherEarning'))->with('i');
     }
 
