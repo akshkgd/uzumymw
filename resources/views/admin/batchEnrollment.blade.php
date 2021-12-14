@@ -10,12 +10,12 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12 col-xl-12 col-sm-12 col-md-12 ">
                     <h4 class="">{{$batch->name}}</h1>
-                    <div class="card">
+                    <div class="card mb-5">
                         <div class="card-boy">
                             <div class="p-3">
                                 <h3 class="ck-font">Students Enrolled</h3>
                             </div>
-
+                            <div class="table-responsive">
                             <table class="table table-responsive">
                                
                                     <tr>
@@ -45,6 +45,7 @@
 
                                
                             </table>
+                            <div class="table-responsive">
                         </div>
                     </div>
 
@@ -53,7 +54,7 @@
                             <div class="p-3">
                                 <h4 class="ck-font">Students with pending Payment</h3>
                             </div>
-
+                            <div class="table-responsive">
                             <table class="table table-responsive">
                                 
                                     <tr>
@@ -83,6 +84,7 @@
 
                               
                             </table>
+                            </div>
                         </div>
                     </div>
                 </div>
