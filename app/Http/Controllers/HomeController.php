@@ -57,10 +57,10 @@ class HomeController extends Controller
         elseif(Auth::User()->role == 100){
             $users = User::all()->count();
             $batches = Batch::where('status', 1)->get()->count();
-            $total = CourseEnrollment::all()->sum('amountPaid');
+            $total = CourseEnrollment::where('hasPaid', 1)->sum('amountPaid')/100;
             $month_date = date('m');
-            $month = CourseEnrollment::whereMonth('paidAt', $month_date)->sum('amountPaid');
-            $previousMonth = CourseEnrollment::whereMonth('paidAt', date('m', strtotime('-1 month')))->sum('amountPaid');
+            $month = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', $month_date)->sum('amountPaid')/100;
+            $previousMonth = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', date('m', strtotime('-1 month')))->sum('amountPaid')/100;
         return view('admin.index', compact('users', 'batches', 'total', 'month', 'previousMonth'));
         }
         else{
