@@ -21,6 +21,13 @@
 
             </div>
             <div class="col-6 col-md">
+                <div class="stat-cell stat-cell-yellow p-2">
+                    <p class="stat-cell-title">Users (Previous Month)</p>
+                    <p class="stat-cell-value">{{ $usersPreviousMonth }}</p>
+                </div>
+
+            </div>
+            <div class="col-6 col-md">
                 <div class="stat-cell stat-cell-teal p-2">
                     <p class="stat-cell-title">Total Earnings</p>
                     <p class="stat-cell-value">{{ $total }}</p>

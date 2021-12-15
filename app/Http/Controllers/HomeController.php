@@ -58,6 +58,7 @@ class HomeController extends Controller
             $users = User::all()->count();
             $month_date = date('m');
             $usersThisMonth = User::whereMonth('created_at', $month_date)->count();
+            $usersPreviousMonth = User::whereMonth('created_at', date('m', strtotime('-1 month')))->count();
             $batches = Batch::where('status', 1)->get()->count();
             $total = CourseEnrollment::where('hasPaid', 1)->sum('amountPaid')/100;
             $month = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', $month_date)->sum('amountPaid')/100;
