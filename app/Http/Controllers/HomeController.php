@@ -64,7 +64,6 @@ class HomeController extends Controller
             $previousMonth = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', date('m', strtotime('-1 month')))->sum('amountPaid')/100;
         return view('admin.index', compact('users', 'batches', 'total', 'month', 'previousMonth', 'usersThisMonth'));
         }
-        }
         else{
             return view ('home');
         }
