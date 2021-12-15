@@ -22,22 +22,22 @@
             </div>
             <div class="col-6 col-md">
                 <div class="stat-cell stat-cell-teal p-2">
-                    <p class="stat-cell-title">Live Batches</p>
-                    <p class="stat-cell-value">{{ $batches }}</p>
+                    <p class="stat-cell-title">Total Earnings</p>
+                    <p class="stat-cell-value">{{ $total }}</p>
                 </div>
 
             </div>
             <div class="col-6 col-md">
                 <div class="stat-cell stat-cell-green p-2">
-                    <p class="stat-cell-title">Users</p>
-                    <p class="stat-cell-value">4343</p>
+                    <p class="stat-cell-title">Earnings This Month</p>
+                    <p class="stat-cell-value">{{$month}}</p>
                 </div>
 
             </div>
             <div class="col-6 col-md">
                 <div class="stat-cell stat-cell-yellow p-2">
-                    <p class="stat-cell-title">Users</p>
-                    <p class="stat-cell-value">4343</p>
+                    <p class="stat-cell-title">Earnings Previous Month</p>
+                    <p class="stat-cell-value">{{$previousMonth}}</p>
                 </div>
 
             </div>

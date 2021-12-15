@@ -57,7 +57,11 @@ class HomeController extends Controller
         elseif(Auth::User()->role == 100){
             $users = User::all()->count();
             $batches = Batch::where('status', 1)->get()->count();
-        return view('admin.index', compact('users', 'batches'));
+            $total = CourseEnrollment::all()->sum('amountPaid');
+            $month_date = date('m');
+            $month = CourseEnrollment::whereMonth('paidAt', $month_date)->sum('amountPaid');
+            $previousMonth = PurchaseDetails::whereMonth('paidAt', date('m', strtotime('-1 month')))->sum('amountPaid');
+        return view('admin.index', compact('users', 'batches', 'total', 'month', 'previousMonth'));
         }
         else{
             return view ('home');
