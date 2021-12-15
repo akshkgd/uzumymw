@@ -22,7 +22,7 @@
             </div>
             <div class="col-6 col-md">
                 <div class="stat-cell stat-cell-yellow p-2">
-                    <p class="stat-cell-title">Users (Previous Month)</p>
+                    <p class="stat-cell-title">Previous Month</p>
                     <p class="stat-cell-value">{{ $usersPreviousMonth }}</p>
                 </div>
 
@@ -43,7 +43,7 @@
             </div>
             <div class="col-6 col-md">
                 <div class="stat-cell stat-cell-yellow p-2">
-                    <p class="stat-cell-title">Earnings Previous Month</p>
+                    <p class="stat-cell-title">Previous Month</p>
                     <p class="stat-cell-value">{{$previousMonth}}</p>
                 </div>
 
