@@ -107,7 +107,7 @@ class CourseEnrollmentController extends Controller
             $batch = Batch::find($enrollment->batchId);
             $receiptId = Str::random(20);
             $amountPayable = $batchId->payable*100;
-            $order  = $api->order->create(array('amount' => $amountPayable, 'currency' => 'INR'));
+            $order  = $api->order->create(array('amount' => $amountPayable, 'currency' => 'INR', 'notes' => array('Name' => Auth::user()->name, 'Email' => Auth::user()->email, 'Phone' => Auth::user()->mobile, 'Course' => $batchId->name, )));
             $enrollment->invoiceID = $order->id;
             $enrollment->save();
             return view('students.checkout', compact('enrollment', 'batch','order'));
