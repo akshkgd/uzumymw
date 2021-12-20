@@ -27,7 +27,7 @@ class UserObserver
         // send email with the template
         Mail::send('welcome_email', $email_data, function ($message) use ($email_data) {
             $message->to($email_data['email'], $email_data['name'])
-                ->subject('Welcome to Codekaro')
+                ->subject('Welcome to Codekaro ' . strtok($email_data['name'], ' ') )
                 ->from('info@codekaro.in', 'Codekaro');
         });
     }
