@@ -187,8 +187,8 @@
                           <li>Introduction to Libraries</li>
                           <li>Understanding Try and Catch</li>
                           <li>Python OOps</li>
-                          <li>Project: 🔒Password Generator</li>
-                          <li>Project: 😉Emoji Converter</li>
+                          <li><strong>🔒Password Generator</strong> </li>
+                          <li><strong>😉Emoji Converter</strong> </li>
                           <li>Introduction to Machine Learning</li>
                         </ul>
                       </div>
