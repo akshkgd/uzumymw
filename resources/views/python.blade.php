@@ -7,8 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Python Live Masterclass</title>
     <meta name="keywords" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
-    <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
-    <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
+    <meta name="og:description" content="Get started with data science and machine learning using Python
+    . The modern Python course for everyone!">
+    <link rel="canonical" href="https://codekaro.in/python-masterclass"/>
     <link rel="icon" href="https://codekaro.in/assets/img/chrome-icon.png">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC9ETJV29G"></script>
     <script>
@@ -185,9 +186,9 @@
                         <ul>
                           <li>Introduction to Libraries</li>
                           <li>Understanding Try and Catch</li>
-                          <li>Python Class</li>
                           <li>Python OOps</li>
-                          <li>Hangman Game</li>
+                          <li>Project: 🔒Password Generator</li>
+                          <li>Project: 😉Emoji Converter</li>
                           <li>Introduction to Machine Learning</li>
                         </ul>
                       </div>
