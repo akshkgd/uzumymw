@@ -52,7 +52,7 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong>20th December to 22nd December </strong>  | 06:30 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong>21st December to 23rd December </strong>  | 06:30 PM IST</h3>
 
                     <div class="my-5">
                         <a href="https://codekaro.in/workshop-enroll/46" class="btn btn-dark btn-lg btn-block px-5">
@@ -365,7 +365,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "Dec 20, 2021 18:30:00",
+  let birthday = "Dec 21, 2021 18:30:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
