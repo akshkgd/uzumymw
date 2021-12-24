@@ -11,7 +11,7 @@
     <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
     <link rel="icon" href="https://codekaro.in/assets/img/chrome-icon.png">
     <meta name="facebook-domain-verification" content="0vagnkaf1wvqul6ovwp554g4m1qeyo" />
-    <!-- Facebook Pixel Code -->
+   <!-- Facebook Pixel Code -->
 <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -21,11 +21,11 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '438131724437018');
+    fbq('init', '1564705437240026');
     fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=438131724437018&ev=PageView&noscript=1"
+    src="https://www.facebook.com/tr?id=1564705437240026&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Facebook Pixel Code -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC9ETJV29G"></script>
