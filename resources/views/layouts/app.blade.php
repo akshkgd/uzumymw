@@ -11,6 +11,7 @@
     <meta name="og:description" content="@yield('meta_description','Codekaro try to bring latest courses to students. Not only that we provide a dedicated team to answer their doubts.')">
     <link rel="canonical" href="{{url()->current()}}"/>
     <link rel="icon" href="{{asset('/assets/img/chrome-icon.png')}}">
+    <meta name="facebook-domain-verification" content="0vagnkaf1wvqul6ovwp554g4m1qeyo" />
     <!-- Facebook Pixel Code -->
 <script>
   !function(f,b,e,v,n,t,s)
