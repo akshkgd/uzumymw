@@ -10,7 +10,7 @@
     <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
     <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
     <link rel="icon" href="https://codekaro.in/assets/img/chrome-icon.png">
-    <meta name="facebook-domain-verification" content="0vagnkaf1wvqul6ovwp554g4m1qeyo" />
+    <meta name="facebook-domain-verification" content="nlndijpgith63pnf9skj942enj02m8" />
    <!-- Facebook Pixel Code -->
 <script>
     !function(f,b,e,v,n,t,s)

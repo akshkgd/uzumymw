@@ -11,7 +11,7 @@
     <meta name="og:description" content="@yield('meta_description','Codekaro try to bring latest courses to students. Not only that we provide a dedicated team to answer their doubts.')">
     <link rel="canonical" href="{{url()->current()}}"/>
     <link rel="icon" href="{{asset('/assets/img/chrome-icon.png')}}">
-    <meta name="facebook-domain-verification" content="0vagnkaf1wvqul6ovwp554g4m1qeyo" />
+    <meta name="facebook-domain-verification" content="nlndijpgith63pnf9skj942enj02m8" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC9ETJV29G"></script>
