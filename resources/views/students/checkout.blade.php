@@ -55,7 +55,7 @@
               <form action="{{ route('payment') }}" method="POST" class="">
                 @csrf
                 <script src="https://checkout.razorpay.com/v1/checkout.js"
-                    data-key="{{ env('RAZOR_KEY') }}" 
+                    data-key='rzp_live_YFwQzuSuorFCPM' 
                     data-amount="100"
                     data-order_id="{{$order->id}}"
                     data-buttontext="Pay Now" data-name="Codekaro" 
