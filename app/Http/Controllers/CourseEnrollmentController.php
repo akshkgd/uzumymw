@@ -103,7 +103,8 @@ class CourseEnrollmentController extends Controller
         $enrollment = CourseEnrollment::findorFail($id);
         $batchId = Batch::findorFail($enrollment->batchId);
         if (Auth::user()->id == $enrollment->userId && $enrollment->hasPaid == 0) {
-            $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
+            // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
+            $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
             $batch = Batch::find($enrollment->batchId);
             $receiptId = Str::random(20);
             $amountPayable = $batchId->payable*100;
