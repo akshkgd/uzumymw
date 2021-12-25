@@ -124,8 +124,8 @@ class CourseEnrollmentController extends Controller
         
         $input = $request->all();
 
-        $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
-
+        // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
+        $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
         
         if(count($input)  && !empty($input['razorpay_payment_id'])) {
