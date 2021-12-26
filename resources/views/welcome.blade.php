@@ -46,7 +46,7 @@
         </div>
           <div class="row justify-content-center text-center ">
             <div class="col-xl-8 col-lg-9 col-md-10">
-              <h1 class="display-4 ck-font">Improve your coding skills with live coding classes</h1>
+              <h1 class="display-4 ck-font t-5 pt-5">Improve your coding skills with live coding classes</h1>
               <p class="lead px-0 px-xlg-5 px-lg-5 px-md-5">There are 72M students learning to code around the world. We try to make learning more
                 accessible, equitable and more seamless for them.</p>
               {{-- <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-items-sm-start mt-5"> --}}

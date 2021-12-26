@@ -78,11 +78,11 @@
                          . <br> The modern Python course for everyone! </p>
                 </div>
 
+                <h4 class="fw-500 py-4"> <strong>30th December to 1st January </strong>  | 06:30 PM IST</h3>
 
-                <h4 class="fw-500 py-4"> <strong>21st December to 22nd December </strong>  | 04:00 PM IST</h3>
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/workshop-enroll/47" class="btn btn-dark btn-lg btn-block px-5">
+                        <a href="https://codekaro.in/workshop-enroll/49" class="btn btn-dark btn-lg btn-block px-5">
                             <h2 class="fs-3 mb-1">Enroll now for free</h2>
                             <p class="mb-0 fw-200">Enroll now limited seats are available</p>
                         </a>
@@ -218,7 +218,7 @@
                   </div>
                 
                 <div class="my-5 text-center">
-                    <a href="https://codekaro.in/workshop-enroll/47" class="btn btn-dark btn-lg btn-block px-5">
+                    <a href="https://codekaro.in/workshop-enroll/49" class="btn btn-dark btn-lg btn-block px-5">
                         <h2 class="fs-3 mb-1">Enroll now for free</h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
@@ -322,7 +322,7 @@
                 </div>
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/workshop-enroll/47" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/49" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -369,7 +369,7 @@
               <p id="headline"></p>
             </div>
             <div class="my-5">
-                <a href="https://codekaro.in/workshop-enroll/47" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/49" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -378,7 +378,7 @@
   </section>
 
 
-  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
+  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Machine Learning Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
     <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="50" width="50">
       </a>
 
@@ -399,7 +399,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "Dec 21, 2021 16:00:00",
+  let birthday = "Dec 30, 2021 18:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
