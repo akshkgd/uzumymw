@@ -36,8 +36,9 @@ Route::view('/web-development-bootcamp','wdm');
 
 Route::get('/', function () {
     
-    $batches = Workshop::where('status',1)->latest()->take(3)->get();;
-    return view('welcome', compact('batches'));
+    $batches = Workshop::where('status',1)->latest()->take(3)->get();
+    $users = User::all()->count();
+    return view('welcome', compact('batches', 'users'));
 });
 
 

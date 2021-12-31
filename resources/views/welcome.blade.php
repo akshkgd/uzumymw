@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
+{{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
     New masterclasses has been launched 🥳 <a href="{{url('/event')}}" class="alert-link">Check Now</a>. Limited seats available.
-  </div>
+  </div> --}}
     <div class="navbar-container">
         <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white">
             @include('layouts.header')
@@ -15,14 +15,14 @@
         @include('layouts.alert')
     </div>
 
-    {{-- <section class="has-divider m-0 p-0">
+    {{-- <section class="has-divide mt-5 m-0 p-0">
         <div class="container pb-0">
           <div class="row align-items-center justify-content-between o-hidden">
-            <div class="col-lg-6 order-sm-2 mb-5 mb-sm-0" data-aos="fade-left">
-              <img src="{{ asset('assets/img/workspace-illustration.png') }}" alt="Image">
+            <div class="col-lg-5 order-sm-2 mb-5 mb-sm-0" data-aos="fade-left">
+              <img src="{{ asset('assets/img/IN_HERO_C.png') }}" alt="Image">
             </div>
-            <div class="col-lg-6 pr-xl-5 order-sm-1">
-                <h1 class="display-4 ck-font">Improve your coding skills with live coding classes</h1>
+            <div class="col-lg-7 pr-xl-5 order-sm-1">
+                <h1 class="display-4 ck-font">Improve your coding skills with live classes</h1>
                 <p class="lead ">There are 72M students learning to code around the
                     world. We try to make learning more
                     accessible, equitable and more seamless for them.</p>
@@ -44,11 +44,11 @@
     
             </div>
         </div>
-          <div class="row justify-content-center text-center ">
+          <div class="row justify-content-center text-center">
             <div class="col-xl-8 col-lg-9 col-md-10">
-              <h1 class="display-4 ck-font t-5 pt-5">Improve your coding skills with live coding classes</h1>
-              <p class="lead px-0 px-xlg-5 px-lg-5 px-md-5">There are 72M students learning to code around the world. We try to make learning more
-                accessible, equitable and more seamless for them.</p>
+              <h1 class="display-4 ck-font t-5 pt-0">Improve your coding skills with live coding classes</h1>
+              <p class="lead px-0 px-xlg-4 px-lg-4 px-md-5 ">There are 72M students learning to code around the world. We try to make learning more
+                accessible, equitable & more seamless for them.</p>
               {{-- <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-items-sm-start mt-5"> --}}
                 {{-- <div class="d-flex flex-column mx-1 text-center"> --}}
                   
@@ -133,7 +133,7 @@
                 <div class="col-xl-8 col-lg-9 text-center">
                     <h2 class="display-5 mx-xl-8 ">Students love Codekaro</h2>
                     <p class="lead">
-                        Here's what some of our 407 satisfied students have to say about learning with codekaro.
+                        Here's what {{$users}}+ satisfied students have to say about learning with codekaro.
                     </p>
                 </div>
             </div>
