@@ -12,9 +12,9 @@
     <div class="container">
         <div class="row mb-5 justify-content-center">
             <div class="col-xl-8 col-lg-9 text-center">
-                <h2 class="display-5 mx-xl-8 ">Students love Codekaro</h2>
+                <h2 class="display-5 mx-xl-8 ">Hear more from people like you</h2>
                 <p class="lead">
-                    Here's what satisfied students have to say about learning with codekaro.
+                    Here's what satisfied 9000+  students have to say about learning with codekaro.
                 </p>
             </div>
         </div>
