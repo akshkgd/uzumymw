@@ -34,6 +34,7 @@ Route::view('/web-development-live-masterclass','wd');
 Route::view('/python-masterclass','python');
 Route::view('/web-development-bootcamp','wdm');
 Route::view('/love','love');
+Route::view('/l', 'FeedbackController@index');
 
 Route::get('/', function () {
     

@@ -6,5 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Feedback extends Model
 {
-    //
+    public function batch(){
+
+        return $this->belongsTo ('App\Batch', 'batchId', 'id');
+    }
+    public function user(){
+
+        return $this->belongsTo ('App\User', 'userId', 'id');
+    }
 }

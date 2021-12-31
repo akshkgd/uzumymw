@@ -20,7 +20,8 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+        $feedbacks = Feedback::all();
+        return view('l',compact('feedbacks'));
     }
 
     /**
