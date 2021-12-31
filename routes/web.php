@@ -33,12 +33,14 @@ Route::view('/javascript-live-masterclass','js');
 Route::view('/web-development-live-masterclass','wd');
 Route::view('/python-masterclass','python');
 Route::view('/web-development-bootcamp','wdm');
+Route::view('/love','love');
 
 Route::get('/', function () {
     
     $batches = Workshop::where('status',1)->latest()->take(3)->get();
+    $courses = Batch::where('status',1)->latest()->take(2)->get();
     $users = User::all()->count();
-    return view('welcome', compact('batches', 'users'));
+    return view('welcome', compact('batches', 'users', 'courses'));
 });
 
 

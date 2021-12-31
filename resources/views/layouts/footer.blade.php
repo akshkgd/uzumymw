@@ -78,7 +78,7 @@
     </div> --}}
 
     <div class="dropu">
-      <a href="https://api.whatsapp.com/send/?phone=917355191435" class="btn btn-success rounded-pill bg-success  btn-floating" data-smooth-scroll data-aos="fade-up" data-aos-offset="150" data-aos-mirror="true" data-aos-once="false"  data-placement="left"  type="button" aria-haspopup="true" aria-expanded="false">
+      <a href="https://api.whatsapp.com/send/?phone=917355191435" class="btn btn-dark rounded-pill bg-dark  btn-floating" data-smooth-scroll data-aos="fade-up" data-aos-offset="150" data-aos-mirror="true" data-aos-once="false"  data-placement="left"  type="button" aria-haspopup="true" aria-expanded="false">
        <span>Chat on WhatsApp</span> <img class="icon " src="{{asset('assets/img/icons/theme/communication/chat-4.svg')}}" alt="twitter social icon" data-inject-svg />
       </a>
       {{-- <div class="dropdown-menu">
