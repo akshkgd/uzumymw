@@ -29,7 +29,7 @@
                     </div>
                     <div class="avatar-author align-items-center">
                         <img src="{{$feedback->user->avatar}}" alt="{{$feedback->user->name}}" class="avatar-img rounded-circle">
-                            alt="Avatar" class="avatar">
+            
                         <div class="ml-2">
                             <h6>{{$feedback->user->name}}</h6>
                             <span>{{$feedback->user->college}}</span>
