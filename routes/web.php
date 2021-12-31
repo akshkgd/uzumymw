@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Batch;
 use App\Workshop;
 use App\User;
+use App\Feedback;
 use App\CourseEnrollment;
  use Telegram\Bot\Laravel\Facades\Telegram;
 
