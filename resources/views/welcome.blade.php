@@ -54,7 +54,7 @@
                   
                  
                 {{-- </div> --}}
-                <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-primary-3 btn-sm-block ">Book Free Masterclass</a>
+                <a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal" class="mx-1 fw-400 m-1 btn btn-lg btn-primary-3 btn-sm-block ">Book Free Masterclass</a>
                 <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-outline-primary-3 btn-sm-block ">Explore Courses</a>
               </div>
             </div>
@@ -346,5 +346,67 @@
 
 
     <!-- Include stylesheet -->
+    <!-- login modal -->
+    <div class="modal fad border-none" id="sign-in-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    {{-- <div class="modal" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> --}}
+        <div class="modal-dialog modal-dialog-masterclass modal-dialog-centered border-none" role="document">
+            <div class="modal-content border-none rounded-5 shadow">
+              <div class="modal-header pt-3 px-3 pb-4 border-bottom-0">
+                {{-- <h3 class="fw-bol mb-0">Book your Free Masterclass</h2> --}}
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <img class="icon bg-dark" src="assets/img/icons/interface/cross.svg" alt="cross interface icon" data-inject-svg />
+                  </button>
+              </div>
+        
+              <div class="modal-body px-3 pt-0">
+                {{-- <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nemo non corrupti id, minus maiores quos beatae nobis voluptatum eum?</p> --}}
+                @foreach ($batches as $batch)
+                <button class="w-100 mb-3 btn btn-lg rounded-5 hover-grey" type="submit" style="border-radius: 12px; border:1px solid; text-align:left">
+                   
+                        <div data-target="#panel-{{$batch->id}}" class="accordion-panel-titl" data-toggle="collapse" role="button"
+                            aria-expanded="false" aria-controls="panel-1">
+                            <h4 class="m-0">{{$batch->name}}</h4> 
+                            <p class="fw-400 small-1 m-0">From <strong>5th August</strong>  9 pm to 10 pm</p>
+                        </div>
+                        <div class="collapse modal-small" id="panel-{{$batch->id}}">
+                            <div class="">
+                                <p class="fw-400 ">{{$batch->description}}</p>
+                                <div class="my-2">
+                                    <p class="badge badge-pill badge-ck-danger text-danger small my-2 px-2 py-1 fw-400 d-inline rounded-pill">Only 5 Seats Left</p>
+
+                                </div>
+                            {{-- <h6 class="m-0">
+                                Thu, 30 Dec 06:30 PM
+                                </h6>
+                                <p class="ck-font fw-400 text-dark m-0">Schedule: 06:30 to 07:30 PM</p>
+                            </h5> --}}
+
+
+                            
+
+                            <div>
+                                <p class="m-0 fw-400 text-dark">✔️ LinkedIn sharable Certificate</p>
+                                <p class="m-0 fw-400 text-dark">✔️ Lifetime Access to projects</p>
+                                <p class="m-0 fw-400 text-dark">✔️ Assignments for practice</p>
+                            </div>
+
+                            <a href="{{ action('WorkshopEnrollmentController@checkEnroll', $batch->id) }}"
+                                class="btn text-white fw-400 a19di23v mt-2" style="border:1px solid; border-radius:8px; text:dark; ">Enroll now for free</a>
+                            </div>
+                        </div>
+                </button>
+                @endforeach
+                
+                 <div class="text-center">
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet.</p>
+                 </div>
+                 
+              </div>
+            </div>
+          </div>
+          </div>
+    
+          
+          <!-- register modal ends -->
 
 @endsection
