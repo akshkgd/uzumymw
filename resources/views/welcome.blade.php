@@ -352,7 +352,7 @@
         <div class="modal-dialog modal-dialog-masterclass modal-dialog-centered border-none" role="document">
             <div class="modal-content border-none rounded-5 shadow">
               <div class="modal-header pt-3 px-3 pb-4 border-bottom-0">
-                {{-- <h3 class="fw-bol mb-0">Book your Free Masterclass</h2> --}}
+                <h3 class="fw-bol mb-0">Book your Free Masterclass</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <img class="icon bg-dark" src="assets/img/icons/interface/cross.svg" alt="cross interface icon" data-inject-svg />
                   </button>
