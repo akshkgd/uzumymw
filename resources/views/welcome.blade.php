@@ -352,7 +352,7 @@
         <div class="modal-dialog modal-dialog-masterclass modal-dialog-centered border-none" role="document">
             <div class="modal-content border-none rounded-5 shadow">
               <div class="modal-header pt-3 px-3 pb-4 border-bottom-0">
-                <h3 class="fw-bol mb-0">Book your Free Masterclass</h2>
+                <h4 class="fw-bol mb-0 fw-400 ">Book your free masterclass</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <img class="icon bg-dark" src="assets/img/icons/interface/cross.svg" alt="cross interface icon" data-inject-svg />
                   </button>
@@ -366,11 +366,11 @@
                         <div data-target="#panel-{{$batch->id}}" class="accordion-panel-titl" data-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="panel-1">
                             <h4 class="m-0">{{$batch->name}}</h4> 
-                            <p class="fw-400 small-1 m-0">From <strong>5th August</strong>  9 pm to 10 pm</p>
+                            <p class="fw-400 small-1 m-0">From <strong>{{$batch->startDate->format('D, d M')}}</strong>  {{$batch->schedule}}</p>
                         </div>
                         <div class="collapse modal-small" id="panel-{{$batch->id}}">
                             <div class="">
-                                <p class="fw-400 ">{{$batch->description}}</p>
+                                <p class="fw-400 mt-2">{{$batch->description}}</p>
                                 <div class="my-2">
                                     <p class="badge badge-pill badge-ck-danger text-danger small my-2 px-2 py-1 fw-400 d-inline rounded-pill">Only 5 Seats Left</p>
 
