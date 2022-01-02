@@ -46,7 +46,7 @@
     </script>
     <!-- CSS only -->
     <!-- CSS only -->
-    <link href="{{asset('assets/css/theme-software-library.min.css')}}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{asset('assets/css/theme-software-library.css')}}" rel="stylesheet" type="text/css" media="all" />
     {{-- <link rel="preload" as="font" href="assets/fonts/Inter-UI-upright.var.woff2" type="font/woff2" crossorigin="anonymous">
     <link rel="preload" as="font" href="assets/fonts/Inter-UI.var.woff2" type="font/woff2" crossorigin="anonymous"> --}}
   </head>
