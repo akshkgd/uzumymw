@@ -41,6 +41,17 @@ class CourseEnrollmentController extends Controller
             {
                 if($this->inLimit($id)=='true')
                 {
+                    if($batch->payable == 0){
+                    $a = new CourseEnrollment;
+                    $a->userId = Auth::User()->id;
+                    $a->batchId = $batch->id;
+                    $a->price = $batch->price;
+                    $a->amountpayable = $batch->payable;
+                    $a->status = 1;
+                    $a->haspaid = 1;
+                    $a->save();
+                    }
+                    else{
                     $a = new CourseEnrollment;
                     $a->userId = Auth::User()->id;
                     $a->batchId = $batch->id;
@@ -49,6 +60,7 @@ class CourseEnrollmentController extends Controller
                     $a->save();
                     $enrollId = Crypt::encrypt($a->id);
                     return redirect('checkout/'.$enrollId);
+                    }
                 }
                 else{
                     session()->flash('alert-warning', 'All the seats are full');

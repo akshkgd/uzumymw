@@ -361,7 +361,7 @@
               <div class="modal-body px-3 pt-0">
                 {{-- <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nemo non corrupti id, minus maiores quos beatae nobis voluptatum eum?</p> --}}
                 @foreach ($batches as $batch)
-                <button class="w-100 mb-3 btn btn-lg rounded-5 hover-grey" type="submit" style="border-radius: 12px; border:1px solid; text-align:left">
+                <button class="w-100 mb-3 btn btn-lg rounded-5 hover-grey border-gradient" type="submit" style="  text-align:left">
                    
                         <div data-target="#panel-{{$batch->id}}" class="accordion-panel-titl" data-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="panel-1">
