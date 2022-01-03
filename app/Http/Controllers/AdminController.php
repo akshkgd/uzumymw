@@ -214,7 +214,7 @@ class AdminController extends Controller
         $enrollment->paidAt = Carbon::now();
         $enrollment->save();
         session()->flash('alert-success', 'Payment Details Updated Successfully!');
-        return redirect('/home');
+        return redirect('/admin/batch-enrollment/'.$enrollment->batchId);
         
     }
 

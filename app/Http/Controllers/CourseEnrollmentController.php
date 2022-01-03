@@ -13,6 +13,8 @@ use Razorpay\Api\Api;
 use Session;
 use Redirect;
 use Carbon\Carbon;
+use App\Mail\EmailForQueuing;
+use Mail;
 
 class CourseEnrollmentController extends Controller
 {
@@ -50,6 +52,10 @@ class CourseEnrollmentController extends Controller
                     $a->status = 1;
                     $a->haspaid = 1;
                     $a->save();
+                    $enrollemnt = $a;
+                    $this->successMail($enrollemnt, $batch);
+                    session()->flash('alert-success', 'you have successfully enrolled in the course');
+                    return redirect('/home');
                     }
                     else{
                     $a = new CourseEnrollment;
@@ -179,6 +185,28 @@ class CourseEnrollmentController extends Controller
         $invoice = CourseEnrollment::findorFail($id);
         return view('students.invoice', compact('invoice'));
     }
+
+
+    private function successMail($enrollId, $workshop){
+        $email_data = array(
+            'name' => Auth::user()->name,
+            'email' => Auth::user()->email,
+            'workshopName' => $workshop['name'],
+            'workshopGroup' => $workshop['groupLink'],
+            'discord' => $workshop['groupLink1'],
+            'nextClass' => $workshop['nextClass'],
+            'teacher' => $workshop->teacher->name,
+    
+        );
+    
+        // send email with the template
+        Mail::send('mail.coursePurchase', $email_data, function ($message) use ($email_data) {
+            $message->to($email_data['email'], $email_data['name'], $email_data['workshopName'], $email_data['workshopGroup'], $email_data['teacher'], $email_data['nextClass'])
+                ->subject('Complete the onboarding process for  '. $email_data['workshopName'])
+                ->from('info@codekaro.in', 'Codekaro');
+        });
+    }
+    
     
 }
 
