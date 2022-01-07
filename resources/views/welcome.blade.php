@@ -34,12 +34,12 @@
         </div>
         
       </section> --}}
-      <section class="pt-0 pt-md-0 pt-lg-0 pt-xlg-0 mt-1 ">
-        <div class="container mt-5">
+      <section class="pt-0 pt-md-0 pt-lg-0 pt-xlg-0 ">
+        <div class="container mt-2">
             
            <div class="row justify-content-center text-center">
             <div class="col-lg-4 col-md-4 mt-md-2 hidden-s">
-                <img src="{{asset('assets/img/forgot-your-password@2x.png')}}" alt="" class="img-fluid rounded">
+                <img src="{{asset('assets/img/girl.png')}}" alt="" class="img-fluid rounded">
                 
     
             </div>
@@ -131,6 +131,7 @@
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-xl-8 col-lg-9 text-center">
+                    <img src="{{asset('assets/img/hand-with-mic.svg')}}" alt="" class="avatar-lg">
                     <h2 class="display-5 mx-xl-8 ">Students love Codekaro</h2>
                     <p class="lead">
                         Here's what {{$users}}+ satisfied students have to say about learning with codekaro.
