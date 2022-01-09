@@ -18203,5 +18203,36 @@ select:-webkit-autofill:focus {
     border:1px solid #0a0c0d;
     border-radius: 12px;
 }
+.teacher-card{
+    border-radius: 12px;
+    text-align: center;
+    padding: 12px;
+    background-color: rgba(166,151,255,.1);
+    margin-bottom: 50px;
+}
+.teacher-icon{
+    height: 60px;
+    vertical-align: middle;
+    border-style: none;
+    top:0;
+    margin-top: -52px;
+
+}
+.teacher-icon-2{
+    background-color: #e4ddff;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    /* padding: 12px; */
+    
+}
+.bg-teacher-icon{
+    background-color: #e4ddff;
+    ;
+}
+.bg-teacher-icon svg{
+    background: 0 0!important;
+}
+
 
 /*# sourceMappingURL=theme-software-library.min.css.map p */

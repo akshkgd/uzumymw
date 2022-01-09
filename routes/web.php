@@ -35,6 +35,7 @@ Route::view('/web-development-live-masterclass','wd');
 Route::view('/python-masterclass','python');
 Route::view('/web-development-bootcamp','wdm');
 Route::view('/love','love');
+Route::view('/teach','teach');
 Route::get('/l', function () {
     $feedbacks = Feedback::all();
     return view('l',compact('feedbacks'));
