@@ -105,8 +105,8 @@
                 <div class="d-flex justify-content-center">
                     <img src="{{asset('assets/img/ai.png')}}" alt="" class="">
                     <div class="ml-2">
-                        <h4 class="m-0">10000+ </h4>
-                        <p class="m-0">Students</p>
+                        <h4 class="m-0">50+ </h4>
+                        <p class="m-0">Teachers</p>
                     </div>
                 </div>
             </div>
@@ -123,8 +123,8 @@
                 <div class="d-flex justify-content-center">
                     <img src="{{asset('assets/img/ti.png')}}" alt="" class="">
                     <div class="ml-2">
-                        <h4 class="m-0">10000+ </h4>
-                        <p class="m-0">Students</p>
+                        <h4 class="m-0">100000+ </h4>
+                        <p class="m-0">Hours Teach</p>
                     </div>
                 </div>
             </div>
