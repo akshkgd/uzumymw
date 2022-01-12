@@ -122,7 +122,7 @@ route::post('/update-workshop/timings', 'TeacherController@updateWorkshopClass')
 Route::get('/my-classes', 'BatchController@myClasses');
 Route::get('/my-workshops', 'TeacherController@myWorkshops');
 Route::get('/class-details/{id}', 'BatchController@classDetails');
-Route::get('/workshop-details/{id}', 'TeacherController@workshopDetails');
+Route::get('teacher/workshop-details/{id}', 'TeacherController@workshopDetails');
 Route::get('/enrollments/{id}', 'TeacherController@enrollments');
 Route::get('/workshop-enrollments/{id}', 'TeacherController@workshopEnrollments');
 Route::get('/generate-certificate/{id}', 'TeacherController@generateCertificate');
