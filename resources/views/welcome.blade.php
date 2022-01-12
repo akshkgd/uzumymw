@@ -367,7 +367,7 @@
                         <div data-target="#panel-{{$batch->id}}" class="accordion-panel-titl" data-toggle="collapse" role="button"
                             aria-expanded="false" aria-controls="panel-1">
                             <h4 class="m-0">{{$batch->name}}</h4> 
-                            <p class="fw-400 small-1 m-0">From <strong>{{$batch->startDate->format('D, d M')}}</strong>  {{$batch->schedule}}</p>
+                            <p class="fw-400 small-1 m-0">From <strong>{{ Carbon\Carbon::parse($batch->startDate)->format('D, d M Y') }}</strong>  {{$batch->schedule}}</p>
                         </div>
                         <div class="collapse modal-small" id="panel-{{$batch->id}}">
                             <div class="">

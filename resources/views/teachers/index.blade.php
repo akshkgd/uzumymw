@@ -76,12 +76,21 @@
                         </div>
                         {{-- workshop card --}}
                         @if ($workshops->count() != 0)
-                            <span class="badge badge-pill badge-ck-success lead m-1">Upcoming Workshops</span>
+                            <span class="badge badge-pill badge-ck-success lead m-1 text-success">Upcoming Workshops</span>
                             @foreach ($workshops as $batch)
                                 <div class="card  card-ico shadow-3d">
                                     <div class="card-body">
                                         <div class="flex-grow-1">
-                                            <div class="h3">{{ $batch->topic }}</div>
+                                            <div class="d-md-flex justify-content-between">
+                                            <div class="h3">{{ $batch->topic }} </div>
+                                            <div class="">
+                                                @if($batch->status == 0)
+                                            <p class=" badge-ck-danger rounded-pill px-2 fw-400 d-inline text-danger" style="font-size: 14px">Private</p>
+                                                @else()
+                                            <p class=" badge-ck-success rounded-pill px-2 fw-400 small d-inline text-success" style="font-size: 14px">Live</p>
+                                                @endif
+                                            </div>
+                                            </div>
                                             <p>
                                                 {!! $batch->desc !!}
                                             </p>
@@ -101,7 +110,7 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                            <a href="{{ action('BatchController@classDetails', $batch->id) }}"
+                                            <a href="{{ action('TeacherController@workshopDetails', $batch->id) }}"
                                                 class="btn ck-c-btn">Details</a>
                                             <a href="{{ action('TeacherController@workshopEnrollments', $batch->id) }}"
                                                 class="btn ck-c-btn">Enrollments</a>

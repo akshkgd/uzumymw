@@ -95,9 +95,35 @@ class TeacherController extends Controller
     {
         $batch = Batch::findorFail($request->batchId);
         $batch->status = $request->status;
+        $batch->payable = $request->payable;
         $batch->save();
         session()->flash('alert-success',  'Status Updated!');
         return back();
+
+    }
+
+    public function updateWorkshop(Request $request)
+    {
+        $batch = Workshop::findorFail($request->batchId);
+        if($batch->teacherId == Auth::user()->id)
+        {
+        $batch->name = $request->name;
+        $batch->description = $request->description;
+        $batch->limit = $request->limit;
+        $batch->schedule = $request->schedule;
+        $batch->startDate = $request->startDate;
+        $batch->endDate = $request->endDate;
+        $batch->groupLink = $request->groupLink;
+        $batch->status = $request->status;
+
+        $batch->save();
+        session()->flash('alert-success',  'Status Updated!');
+        return back();
+        }
+        else{
+            session()->flash('alert-danger',  'You can not update this workshop!');
+            return back();
+        }
 
     }
 
@@ -119,5 +145,23 @@ class TeacherController extends Controller
             return back();
 
         }
+    }
+
+    public function workshopDetails($id){
+        $batch = Workshop::findorFail($id);
+
+        return view('teachers.workshopDetails', compact('batch'));
+    }
+    public function myWorkshops()
+    {
+        $workshops = Workshop::where('teacherId', Auth::User()->id)->get();
+        foreach($workshops as $workshop){
+            $enrollments = WorkshopEnrollment::where('workshopId',$workshop->id);
+            $totalEnrollments = $enrollments->count();
+            $workshop->totalEnrollments = $totalEnrollments;
+        }
+        // dd($batches);
+        return view('teachers.myWorkshops',compact('workshops'));
+        
     }
 }

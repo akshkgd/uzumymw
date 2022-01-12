@@ -13,7 +13,7 @@
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 col-xl-8">
-            @foreach ($batches as $batch)
+            @foreach ($workshops as $batch)
           <div class="card  card-ico shadow-3d">
             <div class="card-body">
                 <div class="flex-grow-1">
@@ -36,7 +36,7 @@
                     </p>
                     <div class="d-md-flex justify-content-between">
                         <div class="">
-                                <h4 class="text-primary-3 m-0"><strong>Earnings: </strong>{{$batch->earning}}
+                                <h4 class="text-primary-3 m-0"><strong>Total Enrollments: </strong>{{$batch->totalEnrollments}}
                                 </h4>
                                 <p class="mt-0 mb-3 text-primary-3">
                                   <strong>From</strong>  {{ Carbon\Carbon::parse($batch->startDate)->format('d M') }} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }}
@@ -51,12 +51,12 @@
                         </div>
                     </div>
                   </div>
-                  <a href="{{ action('BatchController@classDetails', $batch->id) }}"
-                      class="btn ck-c-btn">Details</a>
-                  <a href="{{ action('TeacherController@enrollments', $batch->id) }}"
-                      class="btn ck-c-btn">Enrollments</a>
-                  <a href="{{ action('TeacherController@addContent', $batch->id) }}"
-                      class="btn ck-c-btn">Add Content</a>
+                  <a href="{{ action('TeacherController@workshopDetails', $batch->id) }}"
+                    class="btn ck-c-btn">Details</a>
+                <a href="{{ action('TeacherController@workshopEnrollments', $batch->id) }}"
+                    class="btn ck-c-btn">Enrollments</a>
+                <a href="{{ action('TeacherController@addContent', $batch->id) }}"
+                    class="btn ck-c-btn">Add Content</a>
 
               </div>
               <div class="border-top ">
@@ -70,7 +70,7 @@
 
                 <div class="collapse" id="panel-{{ $batch->id }}">
                     <div class="px-3">
-                        <form action="{{ route('updateClass') }}" method="POST"
+                        <form action="{{ route('updateWorkshopClass') }}" method="POST"
                             class="form-inlin ">
                             @csrf
                             {{-- <div class="row pl-0 pr-0"> --}}
@@ -106,10 +106,11 @@
                         </form>
                     </div>
                 </div>
-            </div>
+                </div>
           </div>
           @endforeach
         </div>
+          
       </div>
     </div></section>
 @endsection

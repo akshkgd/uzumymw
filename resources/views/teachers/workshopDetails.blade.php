@@ -25,13 +25,13 @@
                             <h2 class="lead-1 m-0">{{ $batch->name }}</h3>
                                 <p class="">{!! $batch->desc !!}</p>
 
-                                <a href="{{ action('BatchController@classDetails', $batch->id) }}"
+                                <a href="{{ action('TeacherController@workshopDetails', $batch->id) }}"
                                     class="btn ck-c-btn">Details</a>
-                                <a href="{{ action('TeacherController@enrollments', $batch->id) }}"
-                                    class="btn ck-c-btn">Enrollments</a>
-                                <a href="{{ action('TeacherController@addContent', $batch->id) }}"
+                                    <a href="{{ action('TeacherController@workshopEnrollments', $batch->id) }}"
+                                        class="btn ck-c-btn">Enrollments</a>
+                                {{-- <a href="{{ action('TeacherController@addContent', $batch->id) }}"
                                     class="btn ck-c-btn">Add
-                                    Content</a>
+                                    Content</a> --}}
 
                                 
                     </div>
@@ -60,12 +60,12 @@
 
                         @endif
                         @if ($batch->status > 0)
-                            <div class="progress text-success mt-3">
+                            {{-- <div class="progress text-success mt-3">
                                 <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25"
                                     aria-valuemin="0" aria-valuemax="100"></div>
 
                             </div>
-                            <p class="lead">45% Compleated</p>
+                            <p class="lead">45% Compleated</p> --}}
                         @endif
                     </div>
                     <div class="border-top ">
@@ -78,7 +78,7 @@
 
                         <div class="collapse" id="panel-{{ $batch->id }}">
                             <div class="px-3 py-1">
-                                <form action="{{ route('updateClass') }}" method="POST" class="form-inlin ">
+                                <form action="{{ route('updateWorkshopClass') }}" method="POST" class="form-inlin ">
                                     @csrf
                                     {{-- <div class="row pl-0 pr-0"> --}}
                                     <div class="form-floating mt-3 mb-2 ">
@@ -127,21 +127,45 @@
                   <div class="col ">
                       <div class="card">
                           <div class="card-body">
-                              <h2 class="lead-1 m-0">Update Batch Status - <span class="text-danger">Warning!!</span> </h3>
+                              <h2 class="lead-1 m-0">Update Workshop Details - <span class="text-danger">Warning!!</span> </h3>
                                 <p class="text-danger">Changing the batch status can restrict some features for students!</p>
                                   
   
-                                  <form action="{{ route('updateBatchStatus') }}" method="POST" class="form-inlin ">
+                                  <form action="{{ route('updateWorkshop') }}" method="POST" class="form-inlin ">
                                       @csrf
                                       {{-- <div class="row pl-0 pr-0"> --}}
-                                        <div class="form-floating mt-3 mb-2 ">
-  
-                                            <input type="text" id="floatingInput" class="form-control"
-                                                value="{{ $batch->payable }}" name="payable" placeholder="Amount Payable">
-                                            <label for="floatingInput">Batch Pricing</label>
-                                            <input type="hidden" value="{{ $batch->id }}" name="batchId">
-    
-    
+                                        <div class="form-group">
+                                            <label for="username" class="">Batch name</label>
+                                            <input type="text" name="name" class="form-control" placeholder="Date of Delivery" value="{{$batch->name}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username" class="">Description</label>
+                                            <input type="text" name="description" class="form-control" placeholder="Date of Delivery" value="{{$batch->description}}">
+                                        </div>
+            
+            
+                                        <div class="form-group">
+                                            <label for="username" class="">Seat Limit</label>
+                                            <input type="number" name="limit" class="form-control" placeholder="Date of Delivery" value="{{$batch->limit}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username" class="">Start Date</label>
+                                            <input type="date" name="startDate" class="form-control" placeholder="Date of Delivery" value="{{$batch->startDate}}">
+                                        </div>
+                                       
+                                        <div class="form-group">
+                                            <label for="username" class="">End Date</label>
+                                            <input type="date" name="endDate" class="form-control" placeholder="Date of Delivery" value="{{$batch->endDate}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="username" class="">Schedule</label>
+                                            <input type="text" name="schedule" class="form-control" placeholder="Date of Delivery" value="{{$batch->schedule}}">
+                                        </div>
+            
+            
+                                        <div class="form-group">
+                                            <label for="username" class="">WhatsApp Group</label>
+                                            <input type="text" name="groupLink" class="form-control" placeholder="Date of Delivery" value="{{$batch->groupLink}}">
                                         </div>
                                       <div class="form-floating mt-3 mb-2 ">
   
@@ -154,68 +178,13 @@
                                           <button type="submit" class="btn btn-outline-primary">Update</button>
   
                                       </div>
-
                                   </form>
                       </div>
                       </div>
                   </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-md-6 col-lg-6 d-flx">
-                        <div class="card">
-                            <div class="card-bod">
-                                <div class="flex-grow-1">
-                                    <div class="card-body">
-                                        <h1 class="lead-1">Important Links</h1>
-                                        <p>Important links and groups of this batch</p>
-
-                                    </div>
-                                    <div class="">
-                                        <a href="#" class="list-group-item-card list-group-item-action ">Cras justo
-                                            odio</a>
-                                        <a href="#" class="list-group-item-card list-group-item-action ">Cras justo
-                                            odio</a>
-                                        <a href="#" class="list-group-item-card list-group-item-action ">Cras justo
-                                            odio</a>
-                                        <a href="#" class="list-group-item-card list-group-item-action ">Cras justo
-                                            odio</a>
-                                        <a href="#" class="list-group-item-card list-group-item-action ">Cras justo
-                                            odio</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 d-flex">
-                        <div class="card">
-                            <div class="card-bod">
-                                <div class="flex-grow-1">
-                                    <div class="card-body">
-                                        <h1 class="lead-1 mr-6">Earnings for this batch</h1>
-                                        <h1 class="lead-1">
-                                            </h3>
-                                            <p class="text-primary mb-0"></p>
-                                            <h1 class="mb-0">{{ $total }}.00 Rs</h1>
-                                            <p class="lead pt-5">Earnings will be automatically processed at the end of the month! Status will be changed to paid once compensation is processed</p>
-
-                                    </div>
-
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-
-
-
-
-
-
+               
             </div>
         </div>
         </div>

@@ -118,15 +118,18 @@ Route::get('/certificate', function(){
 
 // teachers
 route::post('/update-class', 'BatchController@updateClass')->name('updateClass');
-route::post('/update-workshop', 'TeacherController@updateWorkshopClass')->name('updateWorkshopClass');
+route::post('/update-workshop/timings', 'TeacherController@updateWorkshopClass')->name('updateWorkshopClass');
 Route::get('/my-classes', 'BatchController@myClasses');
+Route::get('/my-workshops', 'TeacherController@myWorkshops');
 Route::get('/class-details/{id}', 'BatchController@classDetails');
+Route::get('/workshop-details/{id}', 'TeacherController@workshopDetails');
 Route::get('/enrollments/{id}', 'TeacherController@enrollments');
 Route::get('/workshop-enrollments/{id}', 'TeacherController@workshopEnrollments');
 Route::get('/generate-certificate/{id}', 'TeacherController@generateCertificate');
 Route::get('/addContent/{id}', 'TeacherController@addContent');
 Route::post('/store-content', 'TeacherController@storeContent')->name('addContent');
 Route::post('/update-batch-status', 'TeacherController@updateBatchStatus')->name('updateBatchStatus');
+Route::post('/update-workshop', 'TeacherController@updateWorkshop')->name('updateWorkshop');
 
 
 
