@@ -334,7 +334,7 @@
                 <div class="mb-5">
                     {{-- <h1 class="display-5 mb-0 pb-0">Join our Community</h1> --}}
                     <p class="pt-0 mt-0">500+ online students</p>
-                    <a href="#" class="btn btn-primary">Join Now</a>
+                    <a href="#" class="btn btn-warning px-4 fw-400">Join Now</a>
                 </div>
 
                 <img src="assets/img/discord.svg" alt="" class="img-fluid" loading="lazy" style="margin-bottom: -2px;">
