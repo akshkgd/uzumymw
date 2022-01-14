@@ -96,7 +96,7 @@
                 <div class="d-flex justify-content-center">
                     <img src="{{asset('assets/img/si.png')}}" alt="" class="">
                     <div class="ml-2">
-                        <h4 class="m-0">11000+ </h4>
+                        <h4 class="m-0">18000+ </h4>
                         <p class="m-0">Students</p>
                     </div>
                 </div>
@@ -114,8 +114,8 @@
                 <div class="d-flex justify-content-center">
                     <img src="{{asset('assets/img/mi.png')}}" alt="" class="">
                     <div class="ml-2">
-                        <h4 class="m-0">10000+ g </h4>
-                        <p class="m-0">Students</p>
+                        <h4 class="m-0">1000+ </h4>
+                        <p class="m-0">Hours of Content</p>
                     </div>
                 </div>
             </div>
@@ -123,8 +123,8 @@
                 <div class="d-flex justify-content-center">
                     <img src="{{asset('assets/img/ti.png')}}" alt="" class="">
                     <div class="ml-2">
-                        <h4 class="m-0">100000+ </h4>
-                        <p class="m-0">Hours Teach</p>
+                        <h4 class="m-0">10000+ </h4>
+                        <p class="m-0">Hours Live Class</p>
                     </div>
                 </div>
             </div>
@@ -172,7 +172,7 @@
 
         </div>
     <div class="text-center my-5">
-        <a href="" class="btn btn-dark">Start Application</a>
+        <a href="https://forms.gle/Cf28JWEBYBFvieEL8" target="_blank" class="btn btn-dark">Start Application</a>
     </div>
 
 
