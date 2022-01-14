@@ -164,7 +164,7 @@
                    
                    <p>Step 3</p>
                    <h5 class="mb-0">Interview</h5>
-                   <p>Explore if Lido is the best fit for you and if you are the best fit for Lido</p>
+                   <p>Explore if Codekaro is the best fit for you and if you are the best fit for Codekaro</p>
              </div>
             </div>
             
