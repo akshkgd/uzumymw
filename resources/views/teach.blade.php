@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title', '' . e('Online Teaching Jobs- Become An Online Tutor - Codekaro')
-@section('meta_description', '' . e('Codekaro is an Ed-tech company revolutionizing the formal classroom education through a unique and immersive online classroom for every child in India. Codekaro’s goal is to inspire and empower every child for the future. In order to achieve this goal, we invite you to be a part of our ever-growing Codekaro family.'))
+@section('title', '' . 'Online Teaching Jobs- Become An Online Tutor - Codekaro')
+@section('meta_description', '' .'Codekaro is an Ed-tech company revolutionizing the formal classroom education through a unique and immersive online classroom for every child in India. Codekaro’s goal is to inspire and empower every child for the future. In order to achieve this goal, we invite you to be a part of our ever-growing Codekaro family.')
 @section('content')
 
     {{-- <div class="navbar-container">
