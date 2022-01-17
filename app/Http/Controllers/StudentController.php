@@ -13,10 +13,10 @@ use Illuminate\Contracts\Encryption\DecryptException;
 
 class StudentController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware(['auth', 'verified']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware(['auth', 'verified']);
+    // }
     public function notes($id)
     {
         // $id = Crypt::decrypt($id);
@@ -48,7 +48,7 @@ class StudentController extends Controller
         }
         
         $enrollment = CourseEnrollment::findorFail($id);
-        if(Auth::User()->id = $enrollment->userId){
+        if(Auth::User()->id == $enrollment->userId){
         if ($enrollment->hasPaid == 1) {
             if ($videoLink) {
                 $video = BatchContent::where('batchId', $enrollment->batchId)->where('type', 2)->where('videoLink', $videoLink)->first();
