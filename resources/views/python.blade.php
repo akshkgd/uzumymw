@@ -196,7 +196,7 @@
                   </div>
                 </div>
                 </div>
-                <div class="col-md-4 d-none">
+                <div class="col-md-4 ">
                     <div class="card f-3 ">
                       <div class="p-3">
                         <h4>Day 3</h4>
