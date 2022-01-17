@@ -13,10 +13,10 @@ use Illuminate\Contracts\Encryption\DecryptException;
 
 class StudentController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware(['auth', 'verified']);
-    // }
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
     public function notes($id)
     {
         // $id = Crypt::decrypt($id);
