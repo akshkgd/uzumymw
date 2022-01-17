@@ -17175,12 +17175,12 @@ textarea.form-control-lg {
 .plyr__poster {
     background-size: cover !important;
 }
-button.plyr__control--overlaid {
+/* button.plyr__control--overlaid {
     background: #1a73e8;
     width: 3.75rem;
     height: 3.75rem;
     padding: 0;
-}
+} */
 button.plyr__control--overlaid svg {
     transform: scaleX(0.75);
     margin: 0 auto;

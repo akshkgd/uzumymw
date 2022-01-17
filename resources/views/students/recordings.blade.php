@@ -6,6 +6,7 @@
   }
   
 </style>
+<link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css" />
 <div class="navbar-container ">
   <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
     @include('layouts.header')
