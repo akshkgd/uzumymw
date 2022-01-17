@@ -196,24 +196,7 @@
                   </div>
                 </div>
                 </div>
-                <div class="col-md-4 ">
-                    <div class="card f-3 ">
-                      <div class="p-3">
-                        <h4>Day 3</h4>
-                        <ul>
-                          <li>Introduction to Machine Learning</li>
-                          <li>Introduction</li>
-                          <li>Training Model</li>
-                          <li>Data Sets</li>
-                          <li>Bonus Gift 🎁</li>
-                          <li><strong>World Happiness Index Project </strong> </li>
-                        </ul>
-                      </div>
-                      <div class="cd f-3-bottom p-3">
-                          Understand ML with Project
-                      </div>
-                    </div>
-                  </div>
+                
                 
                 <div class="col-md-4">
                     <div class="card f-2">
@@ -232,6 +215,24 @@
                         Understand Machine Learning
                       </div>
                      
+                    </div>
+                  </div>
+                  <div class="col-md-4 ">
+                    <div class="card f-3 ">
+                      <div class="p-3">
+                        <h4>Day 3</h4>
+                        <ul>
+                          <li>Introduction to Machine Learning</li>
+                          <li>Introduction</li>
+                          <li>Training Model</li>
+                          <li>Data Sets</li>
+                          <li>Bonus Gift 🎁</li>
+                          <li><strong>World Happiness Index Project </strong> </li>
+                        </ul>
+                      </div>
+                      <div class="cd f-3-bottom p-3">
+                          Understand ML with Project
+                      </div>
                     </div>
                   </div>
                 
