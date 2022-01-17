@@ -56,7 +56,7 @@
 
 
     
-
+    {{Auth::User()->id}}
 
   </div>
   </div>
@@ -75,9 +75,10 @@
 
             </div>
         </div>
-      
+        
     </div>
 </section>
+
 @endif
 @endisset
 
