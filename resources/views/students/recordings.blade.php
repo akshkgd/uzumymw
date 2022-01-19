@@ -60,7 +60,7 @@
 
 
     
-    {{Auth::User()->id}}
+    {{$video->id}}
 
   </div>
   </div>
