@@ -6,7 +6,7 @@
   }
   
 </style>
-<link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css" />
+{{-- <link rel="stylesheet" href="https://cdn.plyr.io/3.6.12/plyr.css" /> --}}
 <div class="navbar-container ">
   <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
     @include('layouts.header')
@@ -28,7 +28,7 @@
         
     @isset($video)
         
-    
+    <div class=""></div>
     <div class="plyr" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div>
     <h1 class="lead-1 pt-2 pb-0">{{$video->title}}</h1>
     <div class="">
