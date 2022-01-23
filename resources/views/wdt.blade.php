@@ -5,29 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Development Masterclass</title>
-    <meta name="keywords" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
-    <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
-    <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
+    <title>Learn HTML, CSS, Javascript Live</title>
+    <meta name="keywords" content="Get started as a front-end web developer using HTML, CSS, JavaScript with Live Classes">
+    <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript with Live Classes at codekaro">
+    <link rel="canonical" href="https://codekaro.in/web-development-bootcamp"/>
     <link rel="icon" href="https://codekaro.in/assets/img/chrome-icon.png">
-    <meta name="facebook-domain-verification" content="nlndijpgith63pnf9skj942enj02m8" />
-   <!-- Facebook Pixel Code -->
-<script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1180474805808058');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1180474805808058&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Facebook Pixel Code -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC9ETJV29G"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
@@ -36,6 +18,7 @@
 
     gtag('config', 'G-HC9ETJV29G');
     </script>
+    <!-- Facebook Pixel Code --><script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '1180474805808058'); fbq('track', 'PageView');</script><noscript> <img height="1" width="1" src="https://www.facebook.com/tr?id=1180474805808058&ev=PageView&noscript=1"/></noscript><!-- End Facebook Pixel Code -->
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -46,8 +29,25 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+        <div class="container">
+          <a class="navbar-brand fw-700 wd_highligh fs-4" href="#">
+             Codekaro
+          </a>
+            
+            <form class="d-flex">
+              <a href="https://codekaro.in/enroll/17" class="btn btn-dark">Enroll Now</a>
+             
+            </form>
+        
+        </div>
+      </nav>
+  
+      <!-- navbar ends -->
+  
+      <!-- navbar ends -->
     <div class="container ">
-        <div class="col-lg-12 mx-auto p-3 ">
+        <div class="col-lg-10 mx-auto p-3 ">
             {{-- <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
                 <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94"
@@ -61,8 +61,8 @@
                 </a>
             </header> --}}
 
-            <main class="text-center mt-5 pt-lg-5">
-                <h1 class="title">Get started with 3 days  <span class="wd_highlight">Web Development</span> <br> Bootcamp for free</h1>
+            <main class="text-center mt-5 ">
+                <h1 class="titl display-4 fw-700">Get started with 30 days <span class="wd_highlight1">Web Development</span> Bootcamp</h1>
                
                 <div class="row justify-content-center">
                     <p class="fs-5 text-muted col-md-10 text-center">Get started as a front-end web developer using HTML, CSS,
@@ -70,11 +70,11 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong>24th January to 26th January </strong>  | 06:00 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong> From 25th November </strong>  | Rs 499 <del class="text-muted">Rs 3999</del> </h3>
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/workshop-enroll/53" class="btn btn-dark btn-lg btn-block px-5">
-                            <h2 class="fs-3 mb-1">Enroll now for free</h2>
+                        <a href="https://codekaro.in/enroll/17" class="btn btn-dark btn-lg btn-block px-5">
+                            <h2 class="fs-3 mb-1">Enroll now </h2>
                             <p class="mb-0 fw-200">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -87,7 +87,7 @@
     <section>
         <div class="container ">
             <div class="row justify-content-center">
-                {{-- <div class="col-md-4 mt-4">
+                <div class="col-md-4 mt-4">
                     <div class="card text-center f-1">
                         <div class="p-2">
                             <img src="{{asset('assets/img/missed-class-logo-1.svg')}}" alt="">
@@ -96,7 +96,7 @@
                         </div>
                         
                     </div>
-                </div> --}}
+                </div>
                 <div class="col-md-4 mt-4">
                     <div class="card text-center f-3">
                         <div class="p-2">
@@ -146,18 +146,36 @@
             <div class="row d-flex">
               <h2>What's inside</h2>
               <p>This course contains 18 topics spread across 3 modules.</p>
-                
+                <div class="col-md-4">
+                  <div class="card f-2">
+                    <div class="p-3">
+                      <h4>Module 1</h4>
+                      <ul>
+                        <li>Introduction to HTML</li>
+                        <li>The Anatomy of an HTML Tag</li>
+                        <li>HTML Boilerplate?</li>
+                        <li>String Lengths & Slicing</li>
+                        <li>Important Tags</li>
+                        <li>Advanced Tags</li>
+                      </ul>
+                    </div>
+                    <div class="cd f-2-bottom p-3">
+                      Understand HTML
+                    </div>
+                   
+                  </div>
+                </div>
                 <div class="col-md-4">
                   <div class="card f-1 ">
                     <div class="p-3">
-                      <h4>Day 1</h4>
+                      <h4>Module 2</h4>
                       <ul>
-                        <li>Introduction to HTML,  CSS</li>
+                        <li>Introduction to CSS</li>
                         <li>Selectors and Typography</li>
                         <li>CSS Box Model</li>
                         <li>Flexbox</li>
                         <li>Bonus Gift 🎁</li>
-                        <li><strong>Profile Page Project </strong> </li>
+                        <li><strong>Complete Responsive Portfolio</strong> </li>
                       </ul>
                     </div>
                     <div class="cd f-1-bottom p-3">
@@ -168,14 +186,14 @@
                 <div class="col-md-4 d-n">
                   <div class="card f-4 ">
                     <div class="p-3">
-                      <h4>Day 2</h4>
+                      <h4>Module 3</h4>
                       <ul>
                         <li>Introduction to Javascript</li>
                         <li>Data Types & Variables</li>
                         <li>Functions and Arrays</li>
-                        <li>Objects</li>
-                        <li>Loops & Conditionals</li>
-                        <li><strong>Toss Coin Game 🪙</strong> </li>
+                        <li>Async Await & Promise Functions</li>
+                        <li>DOM</li>
+                        <li><strong>5 Projects using Js & API</strong> </li>
                       </ul>
                     </div>
                   <div class="cd f-4-bottom p-3">
@@ -183,30 +201,31 @@
                   </div>
                 </div>
                 </div>
-                
                 <div class="col-md-4">
-                    <div class="card f-2">
+                    <div class="card f-2 ">
                       <div class="p-3">
-                        <h4>Day 3</h4>
+                        <h4>Bonus Gift🎁</h4>
                         <ul>
-                          <li>Introduction to React JS</li>
-                          <li>Installing react Project</li>
-                          <li>Creating Custom Component</li>
-                          <li>Passing Values using Props</li>
-                          <li>Event Management</li>
-                          <li>Zomato Clone</li>
+                          <li>Introduction to GIT</li>
+                          <li>Using Git in CLI</li>
+                          <li>Branching and </li>
+                          <li>Merging</li>
+                          <li>GitHub</li>
+                          <li><strong>Host websites on GitHub for Free </strong> </li>
                         </ul>
                       </div>
                       <div class="cd f-2-bottom p-3">
-                        Understand React with Project
+                          Understand Git & Github
                       </div>
-                     
                     </div>
                   </div>
+                  
+                
+                
                 
                 <div class="my-5 text-center">
-                    <a href="https://codekaro.in/workshop-enroll/53" class="btn btn-dark btn-lg btn-block px-5">
-                        <h2 class="fs-3 mb-1">Enroll now for free</h2>
+                    <a href="https://codekaro.in/enroll/17" class="btn btn-dark btn-lg btn-block px-5">
+                        <h2 class="fs-3 mb-1">Enroll now </h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
                 </div>
@@ -220,7 +239,7 @@
     <section>
         <div class="container">
             <div class="text-center">
-                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 7100+ students</h1>
+                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 5100+ students</h1>
                 <p class="lead mb-4">Here's what some of our students have to say about learning with codekaro.</p>
             </div>
             <div class="row">
@@ -307,10 +326,22 @@
                     <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir,realy helpfull your masterclass for learn html css js and bootstrap</p>&mdash; Aswanth M (@_YMS___) <a href="https://twitter.com/_YMS___/status/1416030098801631233?ref_src=twsrc%5Etfw">July 17, 2021</a></blockquote> 
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> thankyou Ashish sir it was an amazing Bootcamp with you. I have learned a lot from you than I have ever before. Keep on giving us these bootcamp more.</p>&mdash; mahreen ahmed (@mahreenrizwan55) <a href="https://twitter.com/mahreenrizwan55/status/1439225168795213825?ref_src=twsrc%5Etfw">September 18, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> Class was interesting..I learned lot in a very short span of time...thank you so much..keep on sharing your knowledge...</p>&mdash; Bhuvaneshwari Dinesh (@Bhuvane06893457) <a href="https://twitter.com/Bhuvane06893457/status/1435963326622679043?ref_src=twsrc%5Etfw">September 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> <a href="https://twitter.com/CodeKaro?ref_src=twsrc%5Etfw">@CodeKaro</a> Classes with Ashish have been so worthwhile! Ashish has an amazing way of breaking things down so that they are understandable, and always keeping it light, fun and Enjoyable.</p>&mdash; Rahul Majukar (@RahulMajukar) <a href="https://twitter.com/RahulMajukar/status/1434885297657958401?ref_src=twsrc%5Etfw">September 6, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a><br>Hats of To you sir. The best webinar ever attended. Deeply explained,all concept cleared.<br>We done sirji🔥🔥</p>&mdash; yatin (@itsyatin_21) <a href="https://twitter.com/itsyatin_21/status/1435962920379170820?ref_src=twsrc%5Etfw">September 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/workshop-enroll/53" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now for free</h2>
+                <a href="https://codekaro.in/enroll/17" class="btn btn-dark btn-lg btn-block px-5">
+                    <h2 class="fs-3 mb-1">Enroll now </h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -337,7 +368,7 @@
 
     <section>
         <div class="container text-center ct">
-            <h1 id="headlin fw-600 mb-0">Live class is starting in</h1>
+            <h1 id="headlin fw-600 mb-0">Time Is Running Out. Grab Your Spot Fast!</h1>
             <div id="countdown">
               <ul>
                 <li><span id="days"></span>days</li>
@@ -346,6 +377,7 @@
                 <li><span id="seconds"></span>Seconds</li>
               </ul>
             </div>
+            <p class="fs-5">*Price will increase to Rs 3999  after the timer hits zero</p>
             <div id="content" class="emoji">
               <span>🥳</span>
               <span>🎉</span>
@@ -353,8 +385,8 @@
               <p id="headline"></p>
             </div>
             <div class="my-5">
-                <a href="https://codekaro.in/workshop-enroll/53" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now for free</h2>
+                <a href="https://codekaro.in/enroll/17" class="btn btn-dark btn-lg btn-block px-5">
+                    <h2 class="fs-3 mb-1">Enroll now </h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -362,7 +394,7 @@
   </section>
 
 
-  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
+  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in Web Development Bootcamp WDM-10" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
     <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="50" width="50">
       </a>
 
@@ -383,7 +415,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "Jan 24, 2022 18:30:00",
+  let birthday = "Nov 24, 2021 24:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
