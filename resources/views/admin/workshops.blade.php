@@ -72,7 +72,7 @@
                                             <td>{{$workshop->name}}</td>
                                             <td>{{$workshop->teacher->name}}</td>
                                             <td>{{ $workshop->users }}</td>
-                                            <td>{{ $workshop->startDate->format('d M Y') }}</td>
+                                            <td>{{ Carbon\Carbon::parse($workshop->startDate)->format('D, d M Y') }}</td>
                                             <td>{{ round($workshop->conversions, 0)  }}</td>
                                             <td>
                                                 <a href=""
