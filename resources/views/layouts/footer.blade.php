@@ -78,14 +78,24 @@
     </div> --}}
 
     <div class="dropu">
-      <a href="https://api.whatsapp.com/send/?phone=917355191435" class="btn btn-dark rounded-pill bg-dark  btn-floating" data-smooth-scroll data-aos="fade-up" data-aos-offset="150" data-aos-mirror="true" data-aos-once="false"  data-placement="left"  type="button" aria-haspopup="true" aria-expanded="false">
+      {{-- <a href="https://api.whatsapp.com/send/?phone=917355191435" class="btn btn-dark rounded-pill bg-dark  btn-floating" data-smooth-scroll data-aos="fade-up" data-aos-offset="150" data-aos-mirror="true" data-aos-once="false"  data-placement="left"  type="button" aria-haspopup="true" aria-expanded="false">
        <span>Chat on WhatsApp</span> <img class="icon " src="{{asset('assets/img/icons/theme/communication/chat-4.svg')}}" alt="twitter social icon" data-inject-svg />
-      </a>
-      {{-- <div class="dropdown-menu">
+      </a> --}}
+      {{-- <script>
+        function initFreshChat() {
+          window.fcWidget.init({
+            token: "b925c806-4051-48e0-8a3c-1afc12db5946",
+            host: "https://wchat.in.freshchat.com"
+          });
+        }
+        function initialize(i,t){var e;i.getElementById(t)?initFreshChat():((e=i.createElement("script")).id=t,e.async=!0,e.src="https://wchat.in.freshchat.com/js/widget.js",e.onload=initFreshChat,i.head.appendChild(e))}function initiateCall(){initialize(document,"Freshdesk Messaging-js-sdk")}window.addEventListener?window.addEventListener("load",initiateCall,!1):window.attachEvent("load",initiateCall,!1);
+      </script> --}}
+     {{-- <div class="dropdown-menu">
         <h6 class="dropdown-header">Heading</h6>
         <a class="dropdown-item" href="#">Action</a>
         <a class="dropdown-item" href="#">Another action</a>
         <a class="dropdown-item" href="#">Something else here</a>
       </div> --}}
+      <script> (function (d, w, c) { if(!d.getElementById("spd-busns-spt")) { var n = d.getElementsByTagName('script')[0], s = d.createElement('script'); var loaded = false; s.id = "spd-busns-spt"; s.async = "async"; s.setAttribute("data-self-init", "false"); s.setAttribute("data-init-type", "opt"); s.src = 'https://cdn.in-freshbots.ai/assets/share/js/freshbots.min.js'; s.setAttribute("data-client", "d75c9881e6c2d2ee972af1fa53a000fa71357eda"); s.setAttribute("data-bot-hash", "76bf697914c605533ab6ce73d8e8b0337b920698"); s.setAttribute("data-env", "prod"); s.setAttribute("data-region", "in"); if (c) { s.onreadystatechange = s.onload = function () { if (!loaded) { c(); } loaded = true; }; } n.parentNode.insertBefore(s, n); } }) (document, window, function () { Freshbots.initiateWidget({ autoInitChat: false, getClientParams: function () { return ; } }, function(successResponse) { }, function(errorResponse) { }); }); </script>
     </div>
     
