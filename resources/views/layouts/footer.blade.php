@@ -19,9 +19,7 @@
               <li class="nav-item"><a href="{{url('/privacy')}}" class="nav-link">Privacy Policy</a>
               </li>
               <li class="nav-item"><a href="{{url('/teach')}}" class="nav-link">Become a Teacher</a></li>
-              <li class="nav-item"><a href="https://codekaro.freshdesk.com/" class="nav-link">Raise Ticket</a></li>
-              {{-- <li class="nav-item"><a href="#" class="nav-link">Elements</a> --}}
-              </li>
+              <li class="nav-item"><a href="https://codekaro.freshdesk.com/support/home" class="nav-link">Raise Ticket</a></li> {{-- <li class="nav-item"><a href="#" class="nav-link">Elements</a> --}} </li>
             </ul>
           </div>
         </div>
