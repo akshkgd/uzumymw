@@ -28,6 +28,7 @@ Route::view('/contact-us','contact');
 Route::view('/game','game');
 Route::view('/himanshu','team.himanshu');
 Route::view('/ashish','team.ashish');
+Route::view('/arpit','team.arpit');
 Route::view('/privacy','privacy');
 Route::view('/learn-git-and-github','git');
 Route::view('/javascript-live-masterclass','js');
