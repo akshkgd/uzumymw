@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
+    {{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
     New masterclasses has been launched 🥳 <a href="{{url('/event')}}" class="alert-link">Check Now</a>. Limited seats available.
   </div> --}}
     <div class="navbar-container">
@@ -34,37 +34,39 @@
         </div>
         
       </section> --}}
-      <section class="pt-0 pt-md-0 pt-lg-0 pt-xlg-0 ">
+    <section class="pt-0 pt-md-0 pt-lg-0 pt-xlg-0 ">
         <div class="container mt-2">
-            
-           <div class="row justify-content-center text-center">
-            <div class="col-lg-4 col-md-4 mt-md-2 hidden-s">
-                <img src="{{asset('assets/img/girl.png')}}" alt="" class="img-fluid rounded">
-                
-    
+
+            <div class="row justify-content-center text-center">
+                <div class="col-lg-4 col-md-4 mt-md-2 hidden-s">
+                    <img src="{{ asset('assets/img/girl.png') }}" alt="" class="img-fluid rounded">
+
+
+                </div>
             </div>
-        </div>
-          <div class="row justify-content-center text-center">
-            <div class="col-xl-8 col-lg-9 col-md-10">
-              <h1 class="display-4 ck-font t-5 pt-0">Improve your coding skills with live coding classes</h1>
-              <p class="lead px-0 px-xlg-4 px-lg-4 px-md-5 ">There are 72M students learning to code around the world. We try to make learning more
-                accessible, equitable & more seamless for them.</p>
-              {{-- <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-items-sm-start mt-5"> --}}
-                {{-- <div class="d-flex flex-column mx-1 text-center"> --}}
-                  
-                 
-                {{-- </div> --}}
-                <a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal" class="mx-1 fw-400 m-1 btn btn-lg btn-primary-3 btn-sm-block ">Book Free Masterclass</a>
-                <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-outline-primary-3 btn-sm-block ">Explore Courses</a>
-              </div>
+            <div class="row justify-content-center text-center">
+                <div class="col-xl-8 col-lg-9 col-md-10">
+                    <h1 class="display-4 ck-font t-5 pt-0">Improve your coding skills with live coding classes</h1>
+                    <p class="lead px-0 px-xlg-4 px-lg-4 px-md-5 ">There are 72M students learning to code around the world.
+                        We try to make learning more
+                        accessible, equitable & more seamless for them.</p>
+                    {{-- <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-items-sm-start mt-5"> --}}
+                    {{-- <div class="d-flex flex-column mx-1 text-center"> --}}
+
+
+                    {{-- </div> --}}
+                    <a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal"
+                        class="mx-1 fw-400 m-1 btn btn-lg btn-primary-3 btn-sm-block ">Book Free Masterclass</a>
+                    <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-outline-primary-3 btn-sm-block ">Explore Courses</a>
+                </div>
             </div>
-           
-          </div>
-          
-          
+
         </div>
-      </section> 
-    
+
+
+        </div>
+    </section>
+
 
 
     {{-- live courses --}}
@@ -75,7 +77,7 @@
                     <div class="col-xl-8 col-lg-9 text-center mb-3">
                         <h2 class="display-5 mx-xl-8 ">Learn what fascinates you for free</h2>
                         <p class="lead">
-                            Here's what some of our 407 satisfied students have to say about learning with codekaro.
+                            More than 9000 students have attended our Masterclasses and loved them.
                         </p>
                     </div>
                 </div>
@@ -85,32 +87,50 @@
 
 
                     {{-- <div class="controls-light a mb-6" data-flickity='{ "autoPlay": true, "imagesLoaded": true, "wrapAround": true }'> --}}
-                        @foreach ($batches as $batch)
-                        
+                    @foreach ($batches as $batch)
+
                         <div class=" col-md-6 col-lg-4 d-flex ">
-                            <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
+                            @if ($batch->topicId == 1)
+                                <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
+                                    href="{{ url('web-development-live-masterclass') }}">
+                                @elseif($batch->topicId == 2)
+                                    <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
+                                        href="{{ url('python-masterclass') }}">
+                                @else
+                                <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
                                 href="{{ action('WorkshopController@details', $batch->id) }}">
-                                <div class="flex-grow-1">
+                            @endif
+                            <div class="flex-grow-1">
+                                @if($batch->topicId == 1)
+                                    <img src="{{ asset('assets/img/wd-masterclass.png') }}" class="card-img-top" alt="" style="height: 200px; width:100%; object-fit:cover;">
+                                @elseif($batch->topicId == 2)
+                                    <img src="{{ asset('assets/img/ck_header.png') }}" class="card-img-top" alt="" style="height: 200px; width:100%; object-fit:cover;">
+                                @else
                                 <img src="{{ asset('storage/'.$batch->img) }}" loading="lazy" alt="Image"
-                                    class="card-img-top">
+                                    class="card-img-top" style="height: 200px; width:100%; object-fit:cover;">
+                                @endif
                                 <div class="card-bod d-flex flex-column">
                                     <div class=" p-2">
-                                        <h4 class="mb-0 ck-font fw-400">{{$batch->name}} </h1>
-                                            <p class="lea m-0 text-dark">Timing: {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
-                                                {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M Y') }}</p>
-                                            <p class="lad m-0 text-dark">Schedule: {{$batch->schedule}}</p>
+                                        <h5 class="mb-2 ck-font fw-400">{{ $batch->name }} </h1>
+                                            <p class="lea m-0 text-dark"> <strong> From
+                                                    {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M') }}
+                                                </strong> <span class="text-muted">at
+                                                    {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}</span>
+                                            </p>
+
+                                            <p class="lad m-0 text-dark">Schedule: {{ $batch->schedule }}</p>
 
                                     </div>
                                 </div>
-                                </div>
-                                    <div class="d-flex flex-wrap align-items-center">
-                                        <span class="badge badge-pill badge-ck-primary  m-1">Live Session</span>
-                                        <span class="badge badge-pill badge-ck-success  m-1">Free</span>
-                                    </div>
+                            </div>
+                            <div class="d-flex flex-wrap align-items-center">
+                                <span class="badge badge-pill badge-primary fw-400 m-1">Live Session</span>
+                                <span class="badge badge-pill badge-success fw-400 m-1">Free</span>
+                            </div>
                             </a>
                         </div>
 
-                        
+
                     @endforeach
 
 
@@ -131,10 +151,10 @@
         <div class="container">
             <div class="row mb-5 justify-content-center">
                 <div class="col-xl-8 col-lg-9 text-center">
-                    <img src="{{asset('assets/img/hand-with-mic.svg')}}" alt="" class="avatar-lg">
+                    <img src="{{ asset('assets/img/hand-with-mic.svg') }}" alt="" class="avatar-lg">
                     <h2 class="display-5 mx-xl-8 ">Students love Codekaro</h2>
                     <p class="lead">
-                        Here's what {{$users}}+ satisfied students have to say about learning with codekaro.
+                        Here's what {{ $users }}+ satisfied students have to say about learning with codekaro.
                     </p>
                 </div>
             </div>
@@ -143,7 +163,8 @@
                     <div class="card card-body">
                         <div class="flex-grow-1 mb-3">
                             <p class="lead">
-                                &ldquo;A lot of <span class="highlight"> advanced web dev topics taught at codekaro</span>
+                                &ldquo;A lot of <span class="highlight"> advanced web dev topics taught at
+                                    codekaro</span>
                                 taught by ashish sir gave me an edge over my peers, and I ultimately absorbed more here than
                                 I ever did anywhere else.</span>&rdquo;
                             </p>
@@ -277,32 +298,33 @@
 
 
                     {{-- <div class="controls-light a mb-6" data-flickity='{ "autoPlay": true, "imagesLoaded": true, "wrapAround": true }'> --}}
-                        @foreach ($courses as $batch)
-                        
+                    @foreach ($courses as $batch)
+
                         <div class=" col-md-6 col-lg-4 d-flex ">
                             <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
                                 href="{{ action('WorkshopController@details', $batch->id) }}">
                                 <div class="flex-grow-1">
-                                <img src="{{ asset('storage/'.$batch->img) }}" loading="lazy" alt="Image"
-                                    class="card-img-top">
-                                <div class="card-bod d-flex flex-column">
-                                    <div class=" p-2">
-                                        <h4 class="mb-0 ck-font fw-400">{{$batch->name}} </h1>
-                                            <p class="lea m-0 text-dark">Timing: {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
-                                                {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M Y') }}</p>
-                                            <p class="lad m-0 text-dark">Schedule: {{$batch->schedule}}</p>
+                                    <img src="{{ asset('storage/' . $batch->img) }}" loading="lazy" alt="Image"
+                                        class="card-img-top">
+                                    <div class="card-bod d-flex flex-column">
+                                        <div class=" p-2">
+                                            <h4 class="mb-0 ck-font fw-400">{{ $batch->name }} </h1>
+                                                <p class="lea m-0 text-dark">Timing:
+                                                    {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
+                                                    {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M Y') }}</p>
+                                                <p class="lad m-0 text-dark">Schedule: {{ $batch->schedule }}</p>
 
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="d-flex flex-wrap align-items-center">
+                                    <span class="badge badge-pill badge-ck-primary  m-1">Live Session</span>
+                                    <span class="badge badge-pill badge-ck-success  m-1">Free</span>
                                 </div>
-                                    <div class="d-flex flex-wrap align-items-center">
-                                        <span class="badge badge-pill badge-ck-primary  m-1">Live Session</span>
-                                        <span class="badge badge-pill badge-ck-success  m-1">Free</span>
-                                    </div>
                             </a>
                         </div>
 
-                        
+
                     @endforeach
 
 
@@ -334,10 +356,11 @@
                 <div class="mb-5">
                     {{-- <h1 class="display-5 mb-0 pb-0">Join our Community</h1> --}}
                     <p class="pt-0 mt-0">500+ online students</p>
-                    <a href="#" class="btn btn-warning px-4 fw-400">Join Now</a>
+                    <a href="#" class="btn btn-dark px-4 fw-400">Join Now</a>
                 </div>
 
-                <img src="assets/img/discord.svg" alt="" class="img-fluid" loading="lazy" style="margin-bottom: -2px;">
+                <img src="assets/img/discord.svg" alt="" class="img-fluid" loading="lazy"
+                    style="margin-bottom: -2px;">
 
             </div>
         </div>
@@ -349,65 +372,66 @@
     <!-- Include stylesheet -->
     <!-- login modal -->
     <div class="modal fad border-none" id="sign-in-modal" tabindex="-1" role="dialog" aria-hidden="true">
-    {{-- <div class="modal" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> --}}
+        {{-- <div class="modal" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"> --}}
         <div class="modal-dialog modal-dialog-masterclass modal-dialog-centered border-none" role="document">
             <div class="modal-content border-none rounded-5 shadow">
-              <div class="modal-header pt-3 px-3 pb-4 border-bottom-0">
-                <h4 class="fw-bol mb-0 fw-400 "> Book your free masterclass</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <img class="icon bg-dark" src="assets/img/icons/interface/cross.svg" alt="cross interface icon" data-inject-svg />
-                  </button>
-              </div>
-        
-              <div class="modal-body px-3 pt-0">
-                {{-- <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nemo non corrupti id, minus maiores quos beatae nobis voluptatum eum?</p> --}}
-                @foreach ($batches as $batch)
-                <button class="w-100 mb-3 btn btn-lg rounded-5 hover-grey border-gradient" type="submit" style="  text-align:left">
-                   
-                        <div data-target="#panel-{{$batch->id}}" class="accordion-panel-titl" data-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="panel-1">
-                            <h4 class="m-0">{{$batch->name}}</h4> 
-                            <p class="fw-400 small-1 m-0">From <strong>{{ Carbon\Carbon::parse($batch->startDate)->format('D, d M Y') }}</strong>  {{$batch->schedule}}</p>
-                        </div>
-                        <div class="collapse modal-small" id="panel-{{$batch->id}}">
-                            <div class="">
-                                <p class="fw-400 mt-2">{{$batch->description}}</p>
-                                <div class="my-2">
-                                    <p class="badge badge-pill badge-ck-danger text-danger small my-2 px-2 py-1 fw-400 d-inline rounded-pill">Only 5 Seats Left</p>
+                <div class="modal-header pt-3 px-3 pb-4 border-bottom-0">
+                    <h4 class="fw-bol mb-0 fw-400 "> Book your free masterclass</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <img class="icon bg-dark" src="assets/img/icons/interface/cross.svg" alt="cross interface icon"
+                            data-inject-svg />
+                    </button>
+                </div>
 
+                <div class="modal-body px-3 pt-0">
+                    {{-- <p class="text-muted">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem nemo non corrupti id, minus maiores quos beatae nobis voluptatum eum?</p> --}}
+                    @foreach ($batches as $batch)
+                        <button class="w-100 mb-3 btn btn-lg rounded-5 hover-grey border-gradient" type="submit"
+                            style="  text-align:left">
+
+                            <div data-target="#panel-{{ $batch->id }}" class="accordion-panel-titl"
+                                data-toggle="collapse" role="button" aria-expanded="false" aria-controls="panel-1">
+                                <div class="d-flex justify-content-between">
+                                <h5 class="m-0 ck-fon fw-40 text-dark">{{ $batch->name }}</h5>
+
+                                    <div class="my-0">
+                                        <p
+                                            class="badge badge-pill badge-ck-danger text-danger small my-2 px-2 py-1 fw-400 d-inline rounded-pill">
+                                            5 Seats Left</p>
+
+                                    </div>
                                 </div>
-                            {{-- <h6 class="m-0">
-                                Thu, 30 Dec 06:30 PM
-                                </h6>
-                                <p class="ck-font fw-400 text-dark m-0">Schedule: 06:30 to 07:30 PM</p>
-                            </h5> --}}
-
-
-                            
-
-                            <div>
-                                <p class="m-0 fw-400 text-dark">✔️ LinkedIn sharable Certificate</p>
-                                <p class="m-0 fw-400 text-dark">✔️ Lifetime Access to projects</p>
-                                <p class="m-0 fw-400 text-dark">✔️ Assignments for practice</p>
+                                <p class="fw-400 small-1 m-0">From
+                                    <strong>{{ Carbon\Carbon::parse($batch->startDate)->format('D, d M Y') }}</strong>
+                                    {{ $batch->schedule }}</p>
                             </div>
+                            <div class="collapse modal-small" id="panel-{{ $batch->id }}">
+                                <div class="">
+                                    <p class="fw-400 mt-2">{{ $batch->description }}</p>
+                                     <ul>
+                                        <li class="m-0 fw-400 text-dark">LinkedIn sharable Certificate</li>
+                                        <li class="m-0 fw-400 text-dark">Lifetime Access to projects</li>
+                                        <li class="m-0 fw-400 text-dark">Assignments for practice</li>
+                                    </ul>
 
-                            <a href="{{ action('WorkshopEnrollmentController@checkEnroll', $batch->id) }}"
-                                class="btn text-white fw-400 a19di23v mt-2" style="border:1px solid; border-radius:8px; text:dark; ">Enroll now for free</a>
+                                    <a href="{{ action('WorkshopEnrollmentController@checkEnroll', $batch->id) }}"
+                                        class="btn btn-dark mt-2 fw-400 "
+                                        style="border:1px solid; border-radius:8px; text:dark; ">Enroll now for free</a>
+                                </div>
                             </div>
-                        </div>
-                </button>
-                @endforeach
-                
-                 <div class="text-center">
-                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet.</p>
-                 </div>
-                 
-              </div>
+                        </button>
+                    @endforeach
+
+                    <div class="text-center">
+                        <p>More than 9000 students have attended our Masterclasses and loved them. Join now and start learning!</p>
+                    </div>
+
+                </div>
             </div>
-          </div>
-          </div>
-    
-          
-          <!-- register modal ends -->
+        </div>
+    </div>
+
+
+    <!-- register modal ends -->
 
 @endsection
