@@ -124,7 +124,7 @@
                                 </div>
                             </div>
                             <div class="d-flex flex-wrap align-items-center">
-                                <span class="badge badge-pill badge-ck-danger fw-400 m-1">Live Session</span>
+                                <span class="badge badge-pill badge-ck-primary fw-400 m-1">Live Session</span>
                                 <span class="badge badge-pill badge-ck-success fw-400 m-1">Free</span>
                             </div>
                             </a>
