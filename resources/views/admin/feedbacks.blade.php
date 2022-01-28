@@ -37,7 +37,7 @@
                         </div>
                         <div class="mx-3">
                             @if($feedback->status == 0)
-                            <a href="{{action('AdminController@removeFeedback', $feedback->id)}}" class="btn btn-danger">Remove</a>
+                            <a href="{{action('AdminController@removeFeedback', $feedback->id)}}" class="btn btn-danger text-white">Remove</a>
                             @else
                             <a href="{{action('AdminController@addFeedback', $feedback->id)}}" class="btn btn-primary">Approve</a>
                             @endif
