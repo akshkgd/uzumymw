@@ -39,7 +39,7 @@ Route::view('/wdt','wdt');
 Route::view('/love','love');
 Route::view('/teach','teach');
 Route::get('/l', function () {
-    $feedbacks = Feedback::all()->where('status',0)->latest();
+    $feedbacks = Feedback::latest()->where('status',0)->get();
     return view('l',compact('feedbacks'));
 });
 
