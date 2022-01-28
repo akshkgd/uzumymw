@@ -77,7 +77,7 @@ class AdminController extends Controller
         return redirect()->back();
     }
     public function feedbacks(){
-        $feedbacks = Feedback::all();
+        $feedbacks = Feedback::latest()->get();
         return view('admin.feedbacks', compact('feedbacks'))->with('i');
     }
     public function removeFeedback($id)
