@@ -37,29 +37,24 @@
                 @endif
                 <div class="dropdown-menu dropdown-menu-right dropdown-content mb-0 pb-0">
                     <div class="dropdown-header">
-                        <h6 class="dropdown-ite m-0  text-dark ck-font">{{ Auth::user()->name }}</h6>
-                        <p class="lea text-primary">{{ Auth::user()->email }}</p>
+                        <div class="d-flex">
+                            <img src="{{ Auth::user()->avatar }}" class="avatar" alt="">
+                            <div class="ml-2">
+                                <h6 class="m-0  text-dark ck-font fw-400">{{ Auth::user()->name }}</h6>
+                                <p class="small">{{ Auth::user()->email }}</p>
+                            </div>
+                        </div>
+                        
                     </div>
+                    
 
-                    <hr class="pb-2 mb-0">
-                    {{-- <a class="dropdown-item" href="{{url('/home')}}">
-          <img class="icon text-dark mr-1" src="{{asset('assets/img/icons/theme/text/menu.svg')}}" alt="heart icon" data-inject-svg />
-          <span class="">Dashboard</span>
-        </a> --}}
-                    {{-- <a class="dropdown-item " href="{{url('/my-course')}}">
-          <img class="icon text-dark mr-1" src="{{asset('assets/img/icons/theme/code/terminal.svg')}}" alt="heart icon" data-inject-svg />
-          <span>My Learnings</span>
-        </a> --}}
-                    <a class="dropdown-item" href="{{ url('/my-account') }}">
-                        <img class="icon text-dark mr-1" src="{{ asset('assets/img/icons/theme/general/user.svg') }}"
-                            alt="heart icon" data-inject-svg />
-                        <span>My Account</span>
-                    </a>
-                    <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">
-                        <img class="icon text-dark mr-1" src="{{ asset('assets/img/icons/theme/navigation/sign-out.svg') }}"
-                            alt="heart icon" data-inject-svg />
-                        <span>Logout</span>
+                    
+               
+                    <a class="dropdown-item fw-400 text-dark" href="{{ url('/home') }}">Dashboard</a>
+                    <a class="dropdown-item fw-400 text-dark" href="{{ url('/my-account') }}">Account</a>
+                    <a class="dropdown-item fw-400 text-dark" href="{{url('/my-course')}}">Classes</a>
+                    <a href="{{ route('logout') }}" class="dropdown-item fw-400 text-danger" onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">Logout
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

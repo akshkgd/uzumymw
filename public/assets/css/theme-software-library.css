@@ -3144,17 +3144,19 @@ input[type="submit"].btn-block {
     z-index: 1000;
     display: none;
     float: left;
-    min-width: 10rem;
+    min-width: 20rem;
     padding: 0.75rem 0;
     margin: 0.125rem 0 0;
     font-size: 1rem;
+    font-weight: 400;
     color: #495057;
     text-align: left;
     list-style: none;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #c9caca;
-    border-radius: 0.3125rem;
+    border: none;
+    border-radius: 12px;
+    
 }
 .dropdown-menu-left {
     right: auto;
@@ -3293,7 +3295,7 @@ input[type="submit"].btn-block {
 .dropdown-item {
     display: block;
     width: 100%;
-    padding: 0.4rem 1.5rem;
+    padding: 0.6rem 1.5rem;
     clear: both;
     font-weight: 400;
     color: rgba(43, 44, 46, 0.877);
@@ -10308,6 +10310,7 @@ a.card[class*="hover-shadow"]:hover {
 }
 .dropdown-menu {
     /* box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.05); */
+   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 15%)
 }
 .dropdown-menu h6 {
     margin-bottom: 1rem;
