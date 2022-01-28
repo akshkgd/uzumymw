@@ -22,7 +22,7 @@
     </script>
    
     <!-- CSS only -->
-    <link href="{{asset('css/ck-admin.css')}}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{asset('css/admin.css')}}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{asset('css/ck-style.css')}}" rel="stylesheet" type="text/css" media="all" />
 
     {{-- <link rel="preload" as="font" href="assets/fonts/Inter-UI-upright.var.woff2" type="font/woff2" crossorigin="anonymous">
