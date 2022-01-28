@@ -39,7 +39,7 @@ Route::view('/wdt','wdt');
 Route::view('/love','love');
 Route::view('/teach','teach');
 Route::get('/l', function () {
-    $feedbacks = Feedback::all();
+    $feedbacks = Feedback::all()->where('status',0);
     return view('l',compact('feedbacks'));
 });
 
@@ -156,6 +156,9 @@ Route::get('/admin/payment-received/{id}', 'AdminController@paymentReceived');
 Route::post('/updatePaymentStatus', 'AdminController@updatePaymentStatus')->name('updatePaymentStatus');
 Route::get('/admin/users', 'AdminController@getUsers');
 Route::get('/admin/workshops', 'AdminController@workshops');
+Route::get('/admin/feedbacks', 'AdminController@feedbacks');
+Route::get('/admin/remove-feedback/{id}', 'AdminController@removeFeedback');
+Route::get('/admin/add-feedback/{id}', 'AdminController@addFeedback');
 
 
 

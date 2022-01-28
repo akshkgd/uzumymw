@@ -9,6 +9,7 @@ use Illuminate\Support\Str;
 use App\Batch;
 use App\User;
 use App\Workshop;
+use App\Feedback;
 use App\BatchTopics;
 use App\CourseEnrollment;
 use App\WorkshopEnrollment;
@@ -73,6 +74,26 @@ class AdminController extends Controller
         $user->role = 1;
         $user->save();
         session()->flash('alert-success', 'Account Updated Successfully!');
+        return redirect()->back();
+    }
+    public function feedbacks(){
+        $feedbacks = Feedback::all();
+        return view('admin.feedbacks', compact('feedbacks'))->with('i');
+    }
+    public function removeFeedback($id)
+    {
+        $feedback  = Feedback::findorFail($id);
+        $feedback->status = 1;
+        $feedback->save();
+        session()->flash('alert-success', 'Feedback Removed!');
+        return redirect()->back();
+    }
+    public function addFeedback($id)
+    {
+        $feedback  = Feedback::findorFail($id);
+        $feedback->status = 0;
+        $feedback->save();
+        session()->flash('alert-success', 'Feedback Added Back!');
         return redirect()->back();
     }
     public function downgradeTeacher($id)

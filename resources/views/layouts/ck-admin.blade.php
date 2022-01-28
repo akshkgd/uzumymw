@@ -81,6 +81,15 @@
                   <li><a class="dropdown-item" href="#">All Webinar</a></li>
                 </ul>
               </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Quick Actions
+                </a>
+                <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="{{url('admin/feedbacks')}}">Feedbacks</a></li>
+                  <li><a class="dropdown-item" href="#">All Webinar</a></li>
+                </ul>
+              </li>
           </ul>
           <ul class="navbar-nav">
             <li class="dropdown ms-2">

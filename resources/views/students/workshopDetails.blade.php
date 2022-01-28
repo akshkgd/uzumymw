@@ -1,7 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <style>
-
+        .twitter-share-button{
+            padding-top: px !important;
+        }
     </style>
     <div class="navbar-container ">
         <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
@@ -83,18 +85,15 @@
                                         <input type="hidden" name="topicId" value="{{ $workshop->topicId }}">
                                     </div>
                                     <div>
-                                        <button type="submit" class="btn btn-outline-primary-3 ck-font">Update
+                                        <button type="submit" class="btn ck-c-btn">Update
                                             Feedback</button>
-                                        <a href="#" class="m-1 btn btn-outline-primary-3">
-                                            <img class="icon" src="{{ asset('assets/img/icons/social/twitter.svg') }}"
-                                                alt="heart icon" data-inject-svg />
-                                            <span>Share it!</span>
-                                        </a>
-                                        <a href="#" class="m-1 btn btn-outline-primary-3">
+                                            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw"  class="twitter-share-button" data-size="large" data-text="{{ $feedback->feedback }}" data-url="https://codekaro.in" data-hashtags="codekaro" data-show-count="true">Share Now</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                            
+                                        {{-- <a href="#" class="m-1 btn btn-outline-primary-3">
                                             <img class="icon" src="{{ asset('assets/img/icons/social/linkedin.svg') }}"
                                                 alt="heart icon" data-inject-svg />
                                             <span>Share it!</span>
-                                        </a>
+                                        </a> --}}
                                     </div>
                                 </form>
                             </div>

@@ -2382,7 +2382,14 @@ textarea.form-control-lg {
     color: #fff;
     background-color: #4b2aad;
     border-color: #4b2aad; }
-
+.btn-danger{
+  color: #fff;
+  background-color: #dc3545;
+}
+.btn-danger:hover{
+  color: #fff;
+  background-color: #c82333;
+}
 .btn-dark {
   color: #fff;
   background-color: #040303;
