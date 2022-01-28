@@ -45,12 +45,12 @@
                        @endif
                        <div class="flex-grow-1">
                            @if($batch->topicId == 1)
-                               <img src="{{ asset('assets/img/wd-masterclass.png') }}" class="card-img-top" alt="" style="height: 160px; width:100%; object-fit:cover;">
+                               <img src="{{ asset('assets/img/wd-masterclass.png') }}" class="card-img-top" alt="" >
                            @elseif($batch->topicId == 2)
-                               <img src="{{ asset('assets/img/ck_header.png') }}" class="card-img-top" alt="" style="height: 160px; width:100%; object-fit:cover;">
+                               <img src="{{ asset('assets/img/ck_header.png') }}" class="card-img-top" alt="" >
                            @else
                            <img src="{{ asset('storage/'.$batch->img) }}" loading="lazy" alt="Image"
-                               class="card-img-top" style="height: 160px; width:100%; object-fit:cover;">
+                               class="card-img-top" >
                            @endif
                            <div class="card-bod d-flex flex-column">
                                <div class=" p-2">

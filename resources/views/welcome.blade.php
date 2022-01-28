@@ -102,12 +102,12 @@
                             @endif
                             <div class="flex-grow-1">
                                 @if($batch->topicId == 1)
-                                    <img src="{{ asset('assets/img/wd-masterclass.png') }}" class="card-img-top" alt="" style="height: 200px; width:100%; object-fit:cover;">
+                                    <img src="{{ asset('assets/img/wd-masterclass.png') }}" class="card-img-top" alt="" >
                                 @elseif($batch->topicId == 2)
-                                    <img src="{{ asset('assets/img/ck_header.png') }}" class="card-img-top" alt="" style="height: 200px; width:100%; object-fit:cover;">
+                                    <img src="{{ asset('assets/img/ck_header.png') }}" class="card-img-top" alt="" >
                                 @else
                                 <img src="{{ asset('storage/'.$batch->img) }}" loading="lazy" alt="Image"
-                                    class="card-img-top" style="height: 200px; width:100%; object-fit:cover;">
+                                    class="card-img-top" >
                                 @endif
                                 <div class="card-bod d-flex flex-column">
                                     <div class=" p-2">
@@ -124,8 +124,8 @@
                                 </div>
                             </div>
                             <div class="d-flex flex-wrap align-items-center">
-                                <span class="badge badge-pill badge-primary fw-400 m-1">Live Session</span>
-                                <span class="badge badge-pill badge-success fw-400 m-1">Free</span>
+                                <span class="badge badge-pill badge-ck-danger fw-400 m-1">Live Session</span>
+                                <span class="badge badge-pill badge-ck-success fw-400 m-1">Free</span>
                             </div>
                             </a>
                         </div>
