@@ -1,3 +1,4 @@
+/* css */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&display=swap");
 @font-face {
   font-family: 'Euclidcircularb';
@@ -8391,5 +8392,7 @@ textarea.form-control-lg {
 
   .d-print-none {
     display: none !important; } }
+
+    
 
 /*# sourceMappingURL=main.css.map */
