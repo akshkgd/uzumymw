@@ -78,7 +78,7 @@
                          . <br> The modern Python course for everyone! </p>
                 </div>
 
-                <h4 class="fw-500 py-4"> <strong>29th January to 31st January </strong>  | 06:00 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong>1st February to 3rd February </strong>  | 06:00 PM IST</h3>
 
 
                     <div class="my-5">
@@ -418,7 +418,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "jan 29, 2022 18:00:00",
+  let birthday = "feb 1, 2022 18:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 

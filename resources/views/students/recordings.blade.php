@@ -6,6 +6,7 @@
   }
   
 </style>
+
 <div class="navbar-container ">
   <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
     @include('layouts.header')
@@ -15,7 +16,6 @@
     
 @isset($content)
  @if($content->count()>0)   
-
 
 <section>
   <div class="container pt-5">
@@ -28,8 +28,8 @@
     @isset($video)
         
     <div class=""></div>
-    <div class="plyr" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div>
-    <h1 class="lead-1 pt-2 pb-0">{{$video->title}}</h1>
+    <div id="player" class="plyr" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div>
+    <h1 class="lead-1 pt-2 pb-0" id="title">{{$video->title}}</h1>
     <div class="">
         {!!$video->desc!!}
     </div>
@@ -50,7 +50,7 @@
               <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
               <path d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"/>
             </svg></span> {{$c->title}} </a>
-            @endforeach
+             @endforeach
             
         
           </div>
@@ -82,6 +82,11 @@
         
     </div>
 </section>
+
+
+
+
+
 
 @endif
 @endisset

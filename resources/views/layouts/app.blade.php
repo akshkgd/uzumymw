@@ -58,6 +58,11 @@
   @yield('content')
  
     <script src="/js/app.js" defer></script>
-    
+    <script>
+      console.log('hi');
+      function loadVideo(){
+        // document.getElementById('player').innerHTML = '<div id="player" class="plyr" data-plyr-provider="youtube" data-plyr-embed-id="'+videoId+'"></div>';
+        document.getElementById('title').innerHTML = 'jfdkjfkdjf';
+    </script>
   </body>
 </html>
