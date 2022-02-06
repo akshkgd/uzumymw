@@ -62,7 +62,7 @@
             </header> --}}
 
             <main class="text-center mt-5 pt-lg-5">
-                <h1 class="title">Get started with 3 days  <span class="wd_highlight">Web Development</span> <br> Bootcamp for free</h1>
+                <h1 class="display-5 fw-bolder">Get started with 3 days  <span class="wd_highlight">Web Development</span> <br> Bootcamp for free</h1>
                
                 <div class="row justify-content-center">
                     <p class="fs-5 text-muted col-md-10 text-center">Get started as a front-end web developer using HTML, CSS,
@@ -70,7 +70,7 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong>6th February to 8th February </strong>  | 06:00 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong>7th February to 9th February </strong>  | 06:00 PM IST</h3>
 
                     <div class="my-5">
                         <a href="https://codekaro.in/workshop-enroll/50" class="btn btn-dark btn-lg btn-block px-5">
@@ -383,7 +383,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "feb 6, 2022 18:30:00",
+  let birthday = "feb 7, 2022 18:30:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 

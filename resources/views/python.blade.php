@@ -71,7 +71,7 @@
             </header> --}}
 
             <main class="text-center mt-5 pt-lg-5">
-                <h1 class="titl" style="font-size: 56px">Get started with 3 days  <span class="wd_highlight">Machine Learning</span> Bootcamp for free</h1>
+                <h1 class="" style="font-size: 56px">Get started with 3 days  <span class="wd_highlight">Machine Learning</span> Bootcamp for free</h1>
                
                 <div class="row justify-content-center">
                     <p class="fs-5 text-muted col-md-10 text-center">Get started with data science and machine learning using Python
