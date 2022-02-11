@@ -6,6 +6,7 @@ use App\Batch;
 use App\User;
 use App\Mail\WelcomeEmail;
 use App\Notifications\courseTest;
+use App\Mail\OnboardingMail;
 use Illuminate\Notifications\Notifiable;
 use App\Mail\EmailForQueuing;
 use Mail;
@@ -36,6 +37,7 @@ class CourseEnrollmentObserver
             if($courseEnrollment->hasPaid == 1){
                 $user = User::find($courseEnrollment->userId);
                 $workshop = Batch::find($courseEnrollment->batchId);
+                
                 $email_data = array(
                     'name' => $user['name'],
                     'email' => $user['email'],
@@ -46,14 +48,20 @@ class CourseEnrollmentObserver
                     'teacher' => $workshop->teacher->name,
             
                 );
-            
+                $user->workshop = $workshop['name'];
+                $user->workshopGroup = $workshop['groupLink'];
+                $user->discord = $workshop['groupLink1'];
+                $user->nextClass = $workshop['nextClass'];
+                $user->teacher = $workshop->teacher->name;
+                // dd($user);
                 // send email with the template
                 // Mail::send('mail.coursePurchase', $email_data, function ($message) use ($email_data) {
                 //     $message->to($email_data['email'], $email_data['name'], $email_data['workshopName'], $email_data['workshopGroup'], $email_data['teacher'], $email_data['nextClass'])
                 //         ->subject('Complete the onboarding process for '. $email_data['workshopName'])
                 //         ->from('info@codekaro.in', 'Codekaro');
                 // });
-                $user->notify(new courseTest($user));
+                // $user->notify(new courseTest($user));
+                Mail::to($user->email)->send(new OnboardingMail($user));
             }
         }
         
