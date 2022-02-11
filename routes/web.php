@@ -188,7 +188,7 @@ Route::post('/message', function(Request $request) {
             ]
         ]
     ];
-    $headers = ["Authorization" => "Basic " . base64_encode(env('NEXMO_API_KEY') . ":" . env('NEXMO_API_SECRET'))];
+    $headers = ["Authorization" => "Basic " . (env('NEXMO_API_KEY') . ":" . env('NEXMO_API_SECRET'))];
 
     $client = new \GuzzleHttp\Client();
     $response = $client->request('POST', $url, ["headers" => $headers, "json" => $params]);
