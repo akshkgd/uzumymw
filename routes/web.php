@@ -179,7 +179,7 @@ Route::post('/message', function(Request $request) {
     // TODO: validate incoming params first!
 
     $url = "https://messages-sandbox.nexmo.com/v0.1/messages";
-    $params = ["to" => ["type" => "whatsapp", "number" => '917355191435'],
+    $params = ["to" => ["type" => "whatsapp", "number" => $request->input('number')],
         "from" => ["type" => "whatsapp", "number" => "14157386170"],
         "message" => [
             "content" => [
