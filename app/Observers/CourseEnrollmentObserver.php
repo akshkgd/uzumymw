@@ -48,12 +48,9 @@ class CourseEnrollmentObserver
                     'teacher' => $workshop->teacher->name,
             
                 );
-                $user->workshopName = $workshop['name'];
-                $user->workshopGroup = $workshop['groupLink'];
-                $user->discord = $workshop['groupLink1'];
-                $user->nextClass = $workshop['nextClass'];
-                $user->teacher = $workshop->teacher->name;
-                // dd($user);
+                
+
+                // dd($email_data);
                 // send email with the template
                 // Mail::send('mail.coursePurchase', $email_data, function ($message) use ($email_data) {
                 //     $message->to($email_data['email'], $email_data['name'], $email_data['workshopName'], $email_data['workshopGroup'], $email_data['teacher'], $email_data['nextClass'])
@@ -61,7 +58,7 @@ class CourseEnrollmentObserver
                 //         ->from('info@codekaro.in', 'Codekaro');
                 // });
                 // $user->notify(new courseTest($user));
-                Mail::to($user->email)->send(new OnboardingMail($user));
+                Mail::to($user->email)->send(new OnboardingMail($email_data));
             }
         }
         

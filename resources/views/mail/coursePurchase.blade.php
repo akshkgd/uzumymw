@@ -1,12 +1,12 @@
-<p style="font-size:16px">{!! strtok($user->name, ' ') !!} you are awesome! :)</p>
-<p style="font-size:16px">You have just now enrolled for the <strong>{{ $user->workshopName }}</strong> . I'm super excited about having you on board. Your class will start from {{ Carbon\Carbon::parse($user->nextClass)->format('D, d M') }} at {{ Carbon\Carbon::parse($user->nextClass)->format('h:i A') }} (IST). </p>
+<p style="font-size:16px">{!! strtok($email_data['name'], ' ') !!} you are awesome! :)</p>
+<p style="font-size:16px">You have just now enrolled for the <strong>{{ $email_data['workshopName'] }}</strong> . I'm super excited about having you on board. Your class will start from {{ Carbon\Carbon::parse($email_data['nextClass'])->format('D, d M') }} at {{ Carbon\Carbon::parse($email_data['nextClass'])->format('h:i A') }} (IST). </p>
 <p style="font-size:16px; font-weight:bold;">Next Steps:</p>
 <ol>
-    <li style="font-size:16px">Join the Private WhatApp Group: <a href="{{ $user->workshopGroup }}">CLICK
+    <li style="font-size:16px">Join the Private WhatApp Group: <a href="{{ $email_data['workshopGroup'] }}">CLICK
             HERE</a></li>
     <li style="font-size:16px;">Create Account on Discord: <a
             href="https://discord.com/register">CLICK HERE</a></li>
-    <li style="font-size:16px">Join Discord Community: <a href="{{ $user->discord }}">CLICK HERE</a>
+    <li style="font-size:16px">Join Discord Community: <a href="{{ $email_data['discord'] }}">CLICK HERE</a>
     </li>
 
 </ol>
@@ -20,4 +20,4 @@
 
 <br>
 <p style="font-size:16px; margin-bottom:0">All the best,</p>
-<p style="font-size:16px; margin:0">{{ $user->teacher }}</p>
+<p style="font-size:16px; margin:0">{{ $email_data['teacher'] }}</p>

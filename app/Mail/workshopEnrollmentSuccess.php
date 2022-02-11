@@ -7,7 +7,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class OnboardingMail extends Mailable implements ShouldQueue
+
+class workshopEnrollmentSuccess extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     public $email_data;
@@ -28,6 +29,6 @@ class OnboardingMail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Complete the onboarding process for '. $this->email_data['workshopName'])->view('mail.coursePurchase');
+        return $this->subject('Registration Successful for '. $this->email_data['workshopName'])->view('mail.workshopEnrollmentSuccess');
     }
 }

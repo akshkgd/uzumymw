@@ -15,7 +15,7 @@ use Redirect;
 use Carbon\Carbon;
 use App\Mail\EmailForQueuing;
 use Mail;
-use Ognjen\Laravel\AsyncMail;
+use App\Mail\workshopEnrollmentSuccess;
 
 class WorkshopEnrollmentController extends Controller
 {
@@ -108,11 +108,12 @@ class WorkshopEnrollmentController extends Controller
     );
 
     // send email with the template
-    Mail::send('mail.workshopEnrollmentSuccess', $email_data, function ($message) use ($email_data) {
-        $message->to($email_data['email'], $email_data['name'], $email_data['workshopName'], $email_data['workshopGroup'], $email_data['teacher'], $email_data['nextClass'])
-            ->subject('Welcome to the '. $email_data['workshopName'])
-            ->from('info@codekaro.in', 'Codekaro');
-    });
+    // Mail::send('mail.workshopEnrollmentSuccess', $email_data, function ($message) use ($email_data) {
+    //     $message->to($email_data['email'], $email_data['name'], $email_data['workshopName'], $email_data['workshopGroup'], $email_data['teacher'], $email_data['nextClass'])
+    //         ->subject('Welcome to the '. $email_data['workshopName'])
+    //         ->from('info@codekaro.in', 'Codekaro');
+    // });
+    Mail::to($email_data['email'])->send(new workshopEnrollmentSuccess($email_data));
 }
 
     
