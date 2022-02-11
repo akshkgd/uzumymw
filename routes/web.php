@@ -174,7 +174,7 @@ Route::get('/message', function(Request $request) {
 
     $url = "https://messages-sandbox.nexmo.com/v0.1/messages";
     $params = ["to" => ["type" => "whatsapp", "number" => '917355191435'],
-        "from" => ["type" => "whatsapp", "number" => "918542929271"],
+        "from" => ["type" => "whatsapp", "number" => "14157386170"],
         "message" => [
             "content" => [
                 "type" => "text",
