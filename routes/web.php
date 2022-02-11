@@ -169,11 +169,11 @@ Route::get('/admin/add-feedback/{id}', 'AdminController@addFeedback');
 
 
 // whatsApp test
-Route::post('/message', function(Request $request) {
+Route::get('/message', function(Request $request) {
     // TODO: validate incoming params first!
 
     $url = "https://messages-sandbox.nexmo.com/v0.1/messages";
-    $params = ["to" => ["type" => "whatsapp", "number" => $request->input('number')],
+    $params = ["to" => ["type" => "whatsapp", "number" => '917355191435'],
         "from" => ["type" => "whatsapp", "number" => "918542929271"],
         "message" => [
             "content" => [
