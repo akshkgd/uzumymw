@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 use App\Batch;
 use App\Workshop;
 use App\User;
@@ -159,6 +160,37 @@ Route::get('/admin/workshops', 'AdminController@workshops');
 Route::get('/admin/feedbacks', 'AdminController@feedbacks');
 Route::get('/admin/remove-feedback/{id}', 'AdminController@removeFeedback');
 Route::get('/admin/add-feedback/{id}', 'AdminController@addFeedback');
+
+
+
+
+
+
+
+
+// whatsApp test
+Route::post('/message', function(Request $request) {
+    // TODO: validate incoming params first!
+
+    $url = "https://messages-sandbox.nexmo.com/v0.1/messages";
+    $params = ["to" => ["type" => "whatsapp", "number" => $request->input('number')],
+        "from" => ["type" => "whatsapp", "number" => "918542929271"],
+        "message" => [
+            "content" => [
+                "type" => "text",
+                "text" => "Hello from Vonage and Laravel :) Please reply to this message with a number between 1 and 100"
+            ]
+        ]
+    ];
+    $headers = ["Authorization" => "Basic " . base64_encode(env('NEXMO_API_KEY') . ":" . env('NEXMO_API_SECRET'))];
+
+    $client = new \GuzzleHttp\Client();
+    $response = $client->request('POST', $url, ["headers" => $headers, "json" => $params]);
+    $data = $response->getBody();
+    Log::Info($data);
+
+    return view('thanks');
+});
 
 
 
