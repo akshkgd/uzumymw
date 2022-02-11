@@ -48,7 +48,7 @@ class CourseEnrollmentObserver
                     'teacher' => $workshop->teacher->name,
             
                 );
-                $user->workshop = $workshop['name'];
+                $user->workshopName = $workshop['name'];
                 $user->workshopGroup = $workshop['groupLink'];
                 $user->discord = $workshop['groupLink1'];
                 $user->nextClass = $workshop['nextClass'];
