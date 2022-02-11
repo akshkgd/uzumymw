@@ -5,8 +5,11 @@ use App\CourseEnrollment;
 use App\Batch;
 use App\User;
 use App\Mail\WelcomeEmail;
+use App\Notifications\courseTest;
+use Illuminate\Notifications\Notifiable;
 use App\Mail\EmailForQueuing;
 use Mail;
+use Ognjen\Laravel\AsyncMail;
 
 class CourseEnrollmentObserver
 {
@@ -45,11 +48,12 @@ class CourseEnrollmentObserver
                 );
             
                 // send email with the template
-                Mail::send('mail.coursePurchase', $email_data, function ($message) use ($email_data) {
-                    $message->to($email_data['email'], $email_data['name'], $email_data['workshopName'], $email_data['workshopGroup'], $email_data['teacher'], $email_data['nextClass'])
-                        ->subject('Complete the onboarding process for '. $email_data['workshopName'])
-                        ->from('info@codekaro.in', 'Codekaro');
-                });
+                // Mail::send('mail.coursePurchase', $email_data, function ($message) use ($email_data) {
+                //     $message->to($email_data['email'], $email_data['name'], $email_data['workshopName'], $email_data['workshopGroup'], $email_data['teacher'], $email_data['nextClass'])
+                //         ->subject('Complete the onboarding process for '. $email_data['workshopName'])
+                //         ->from('info@codekaro.in', 'Codekaro');
+                // });
+                $user->notify(new courseTest($user));
             }
         }
         

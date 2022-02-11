@@ -6,9 +6,8 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Illuminate\Notifications\Notifiable;
 
-class welcomeEmailNotification extends Notification implements ShouldQueue
+class courseTest extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -17,10 +16,10 @@ class welcomeEmailNotification extends Notification implements ShouldQueue
      *
      * @return void
      */
-    // public function __construct($name)
-    // {
-    //     $this->name = $name;
-    // }
+    public function __construct()
+    {
+        //
+    }
 
     /**
      * Get the notification's delivery channels.
@@ -42,7 +41,6 @@ class welcomeEmailNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Welcome to Codekaro')
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');

@@ -1,5 +1,5 @@
 
-<p class="lead">Dear {!! strtok($name, ' ') !!},</p>
+<p class="lead">Dear {!! strtok($user->name, ' ') !!},</p>
 
 
 

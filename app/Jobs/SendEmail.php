@@ -7,6 +7,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use App\Workshop;
+use App\Batch;
+use App\BatchEnrollment;
+use App\User;
 
 class SendEmail implements ShouldQueue
 {

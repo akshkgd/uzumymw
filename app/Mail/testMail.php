@@ -7,16 +7,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class WelcomeEmail extends Mailable implements ShouldQueue
+class testMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
-
+    public $user;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    
+    public function __construct($user)
+    {
+        $this->user = $user;
+    }
 
     /**
      * Build the message.
@@ -25,10 +28,6 @@ class WelcomeEmail extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Welcome to Codekaro')
-            ->view('welcome_email')->with([
-                'name' => $this->user->name,
-            ]);
-        
+        return $this->view('welcome_email');
     }
 }

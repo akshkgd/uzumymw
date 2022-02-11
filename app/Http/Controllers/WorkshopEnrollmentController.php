@@ -15,6 +15,7 @@ use Redirect;
 use Carbon\Carbon;
 use App\Mail\EmailForQueuing;
 use Mail;
+use Ognjen\Laravel\AsyncMail;
 
 class WorkshopEnrollmentController extends Controller
 {
