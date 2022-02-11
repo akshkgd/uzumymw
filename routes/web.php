@@ -169,7 +169,13 @@ Route::get('/admin/add-feedback/{id}', 'AdminController@addFeedback');
 
 
 // whatsApp test
-Route::get('/message', function(Request $request) {
+
+Route::get('/message', function() {
+    // show a form
+    return view('message');
+});
+
+Route::post('/message', function(Request $request) {
     // TODO: validate incoming params first!
 
     $url = "https://messages-sandbox.nexmo.com/v0.1/messages";
