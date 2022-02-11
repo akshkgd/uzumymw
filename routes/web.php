@@ -179,7 +179,7 @@ Route::post('/message', function(Request $request) {
     // TODO: validate incoming params first!
 
     $url = "https://messages-sandbox.nexmo.com/v0.1/messages";
-    $params = ["to" => ["type" => "whatsapp", "number" => $request->input('number')],
+    $params = ["to" => ["type" => "whatsapp", "number" => '917355191435'],
         "from" => ["type" => "whatsapp", "number" => "14157386170"],
         "message" => [
             "content" => [
@@ -188,14 +188,12 @@ Route::post('/message', function(Request $request) {
             ]
         ]
     ];
-    $headers = ["Authorization" => "Basic " . (env('NEXMO_API_KEY') . ":" . env('NEXMO_API_SECRET'))];
+    $headers = ["Authorization" => "Basic " . base64_encode('362cc70e' . ":" . 'G26qE4CM2DG5HJ4E')];
 
     $client = new \GuzzleHttp\Client();
     $response = $client->request('POST', $url, ["headers" => $headers, "json" => $params]);
     $data = $response->getBody();
-    Log::Info($data);
-
-    return view('thanks');
+    dd($data);
 });
 
 
