@@ -58,6 +58,7 @@ class CourseEnrollmentObserver
                 //         ->from('info@codekaro.in', 'Codekaro');
                 // });
                 // $user->notify(new courseTest($user));
+                
                 Mail::to($user->email)->send(new OnboardingMail($email_data));
             }
         }

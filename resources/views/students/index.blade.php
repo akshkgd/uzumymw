@@ -163,7 +163,7 @@
                             </div>
                             @endif
                         @empty
-                            <div class="row   o-hidden  mt-5">
+                            <div class="row  d-none  o-hidden  mt-5">
                                 <div class="col-md-12 d-flex">
                                     <div class="card card-body">
                                         {{-- <img src="{{ asset('assets/img/starred_A.png') }}" class="img-fluid" alt="Image"> --}}
@@ -177,12 +177,8 @@
                             
                                         
                         
-                                        <div class="row justify-content-center">
-                        
-                        
-                        
-                                            {{-- <div class="controls-light a mb-6" data-flickity='{ "autoPlay": true, "imagesLoaded": true, "wrapAround": true }'> --}}
-                                            @foreach ($batches as $batch)
+                                        <div class="row d-none justify-content-center">
+                                             @foreach ($batches as $batch)
                         
                                                 <div class=" col-md-6  d-flex ">
                                                     <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
