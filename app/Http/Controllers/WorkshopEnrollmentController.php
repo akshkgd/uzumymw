@@ -42,7 +42,8 @@ class WorkshopEnrollmentController extends Controller
                     session()->flash('alert-success', 'You have successfully enrolled in the '. $workshop->name);
                     $enrollId = $a->id;
                     $this->successMail($enrollId, $workshop);
-                    return redirect('/home');
+                    $enrollId = Crypt::encrypt($a->id);
+                    return redirect('workshop-enrollment-success/'.$enrollId);
 
                 }
                 else{

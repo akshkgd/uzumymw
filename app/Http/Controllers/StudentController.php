@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CourseEnrollment;
 use App\BatchContent;
+use App\WorkshopEnrollment;
+use App\Workshop;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Batch;
@@ -36,6 +38,12 @@ class StudentController extends Controller
         }
     }
 
+    public function workshopEnrollmentSuccess($id){
+        $id = Crypt::decrypt($id);
+        $enrollment = WorkshopEnrollment::findorFail($id);
+        $workshop = Workshop::findorFail($enrollment->workshopId);
+        return view('students.workshopEnrollmentSuccess', compact('enrollment', 'workshop'));
+    }
 
     public function recordings($id, $videoLink = null)
     {
