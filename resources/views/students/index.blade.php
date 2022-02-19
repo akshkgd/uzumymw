@@ -163,7 +163,7 @@
                             </div>
                             @endif
                         @empty
-                            <div class="row  d-none  o-hidden  mt-5">
+                            <div class="row   o-hidden  mt-5">
                                 <div class="col-md-12 d-flex">
                                     <div class="card card-body">
                                         {{-- <img src="{{ asset('assets/img/starred_A.png') }}" class="img-fluid" alt="Image"> --}}
