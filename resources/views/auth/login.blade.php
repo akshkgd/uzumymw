@@ -2,7 +2,7 @@
 @section('content')
 <script>
     if(navigator.userAgent.includes("Instagram")){
-        document.getElementById('continue-google-login-button').display.none;
+        document.getElementById('continue-google-login-button').style.display = 'none';
     }
  </script>
 
