@@ -52,6 +52,11 @@
             position: relative;
         } */
     </style>
+    <script>
+        if(navigator.userAgent.includes("Instagram")){
+            window.location.href = "googlechrome://codekaro.in/web-development-live-masterclass";
+        }
+     </script>
 </head>
 
 <body>
