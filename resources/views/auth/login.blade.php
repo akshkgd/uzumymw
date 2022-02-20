@@ -1,6 +1,10 @@
 @extends('layouts.app')
 @section('content')
-
+<script>
+    if(navigator.userAgent.includes("Instagram")){
+        document.getElementById('continue-google-login-button').display.none;
+    }
+ </script>
 
     <div class="navbar-container">
         <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white">
