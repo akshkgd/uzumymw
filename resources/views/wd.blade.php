@@ -43,6 +43,18 @@
     <style>
 
     </style>
+    <script>
+        <script>
+   if(navigator.userAgent.includes("Instagram")){
+       window.location.href = "https://mywebsite.com/DummyBytes";
+   }
+
+<script>
+   if(navigator.userAgent.includes("Instagram")){
+       window.location.href = "https://codekaro.in/web-development-live-masterclass";
+   }
+</script>
+  
 </head>
 
 <body>
