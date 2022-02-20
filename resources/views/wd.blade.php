@@ -43,11 +43,11 @@
     <style>
 
     </style>
-    <script>
+    {{-- <script>
         if(navigator.userAgent.includes("Instagram")){
             window.location.href = "https://codekaro.in/web-development-live-masterclass";
         }
-     </script>
+     </script> --}}
   
 </head>
 
