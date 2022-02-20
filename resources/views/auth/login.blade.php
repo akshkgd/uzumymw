@@ -1,10 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<script>
-    if(navigator.userAgent.includes("Instagram")){
-        document.getElementById('continue-google-login-button').style.display = 'none';
-    }
- </script>
+
 
     <div class="navbar-container">
         <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white">
@@ -112,7 +108,7 @@
                     <div class="text-center">
                         <p class="m-0  text-dark">By continuing, you agree to Codekaro's Conditions of Use and <a
                                 href="{{ url('/privacy') }}" class="fw-400">Privacy policy</a>. </p>
-                        <p style="font-size:22px" class="mt-3 text-dark">New to codekaro? <a href="{{ url('/redirect') }}"
+                        <p style="font-size:22px" class="mt-3 text-dark">New to codekaro? <a href="{{ url('/register') }}"
                                 class="card-link fw-400 ck-font">Join Now</a></p>
                     </div>
                 </div>
@@ -135,6 +131,21 @@
                 document.getElementById('continue-email-register-button').style.display = "none";
             }
         </script>
+        <script>
+            if(navigator.userAgent.includes("Instagram")){
+                document.getElementById('continue-google-login-button').style.display = 'none';
+            }
+            var isChrome = !!window.chrome; // "!!" converts the object to a boolean value
+            var isSafari = !!window.safari;
+            var isFirefox = !!window.firefox;
+            console.log(isFirefox)
+            console.log(isSafari);
+            console.log(isChrome);
+            if(isChrome != true && isSafari != true && isFirefox != true){
+            document.getElementById('continue-google-login-button').style.display = 'none';
+            displayLoginForm()
+    }
+            </script>
     </section>
 
 
