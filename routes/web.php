@@ -22,6 +22,7 @@ use App\CourseEnrollment;
 */
 Route::view('/internship-certificate/8be76c72dffcb7c5','clgInternship.himanshu');
 Route::view('/internship-certificate/8be76c72dffcb7c6','clgInternship.ashish');
+Route::view('/internship-certificate/8be76c72dffcb7c7','clgInternship.vivek');
 
 Route::view('/complete','students.completeProfile');
 Route::get('/webhook', 'TelegramController@webhook');
