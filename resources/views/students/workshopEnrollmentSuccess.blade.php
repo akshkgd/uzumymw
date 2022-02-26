@@ -62,8 +62,8 @@
                         <h1 class="display-2">🎁</h1>
                       <h2 class="fs-1">Hi {!! strtok(Auth::User()->name, ' ') !!}, you have successfully enrolled for the <span class="wd_highlight1">{{$workshop->name}}</span> </h4>
                       <p class="mt-5">Next Step</p>
-                      <a href="{{$workshop->groupLink}}" class="btn btn-success btn-lg py-3 px-4 rounded-pill" style="background-color: #25D366; border:1px solid #25D366;">1. Join WhatsApp Group Now</a>
-                      <a href="{{url('/home')}}" class="btn btn-dark btn-lg py-3 px-4 rounded-pill" style="">2. Complete your Profile</a>
+                      <a href="{{$workshop->groupLink}}" class="btn btn-success btn-lg py-3 px-4 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">1. Join WhatsApp Group Now</a>
+                      <a href="{{url('/home')}}" class="btn btn-dark btn-lg py-3 px-4 rounded-pill my-2" style="">2. Complete your Profile</a>
 
                     </div>
                     <div class="cd f-1-bottom p-3">
