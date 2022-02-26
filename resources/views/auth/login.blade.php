@@ -132,9 +132,7 @@
             }
         </script>
         <script>
-            if(navigator.userAgent.includes("Instagram")){
-                document.getElementById('continue-google-login-button').style.display = 'none';
-            }
+            
             var isChrome = !!window.chrome; // "!!" converts the object to a boolean value
             var isSafari = !!window.safari;
             var isFirefox = !!window.firefox;
@@ -142,8 +140,8 @@
             console.log(isSafari);
             console.log(isChrome);
             if(isChrome != true && isSafari != true && isFirefox != true){
-            document.getElementById('continue-google-login-button').style.display = 'none';
-            displayLoginForm()
+            document.getElementById('continue-google-login-button').style.display = 'block';
+            // displayLoginForm()
     }
             </script>
     </section>
