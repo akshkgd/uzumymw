@@ -2,10 +2,13 @@
   <div class="container">
     <a class="navbar-brand fw-bold text-primary fs-5" href="#">Codekaro</a>
 
-    <span>
+    <span class="ms-auto">
+      @guest
       <a href="" type="button" class="btn btn-dark px-4 rounded-pill hidden-lg" data-bs-toggle="modal"
-                        data-bs-target="#login">
-                        Login </a>
+      data-bs-target="#login">
+      Login </a>
+      @endguest
+      
                         <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                           <span class="navbar-toggler-icon"></span>
                         </button>
@@ -15,10 +18,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link disabled">Disabled</a>
+        <a class="nav-link " aria-current="page" href="{{url('/event')}}">Free Classes</a>
+        <a class="nav-link" href="{{url('/course')}}">Course</a>
+        <a class="nav-link" href="{{url('/about')}}">About us</a>
       </div>
       <div class="ms-auto">
         @guest
