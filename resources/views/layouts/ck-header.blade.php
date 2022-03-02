@@ -52,8 +52,8 @@
                                             height="50" />
                                     </div>
                                     <div class="ms-3 lh-1">
-                                        <p class="mt-2">Annette Black</h5>
-                                            <small class="mb-0 text-muted">annette@geeksui.com
+                                        <p class="mt-2">{{ Auth::user()->name }}</h5>
+                                            <small class="mb-0 text-muted">{{ Auth::user()->email }}
                                         </p>
                                     </div>
                                 </div>
