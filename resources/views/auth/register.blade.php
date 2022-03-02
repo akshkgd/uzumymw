@@ -201,7 +201,7 @@
     console.log(isSafari);
     console.log(isChrome);
     if(isChrome != true && isSafari != true && isFirefox != true){
-    document.getElementById('continue-google-login-button').style.display = 'none';
+    document.getElementById('continue-google-login-button').style.display = 'block';
     displayLoginForm()
     }
  </script>

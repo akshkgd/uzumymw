@@ -1,70 +1,37 @@
-@extends('layouts.app')
+@extends('layouts.ck')
 
 @section('content')
     {{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
     New masterclasses has been launched 🥳 <a href="{{url('/event')}}" class="alert-link">Check Now</a>. Limited seats available.
   </div> --}}
-    <div class="navbar-container">
-        <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white">
-            @include('layouts.header')
-        </nav>
-
-    </div>
-
+    
+    @include('layouts.ck-header')
     <div class="container">
         @include('layouts.alert')
     </div>
 
-    {{-- <section class="has-divide mt-5 m-0 p-0">
-        <div class="container pb-0">
-          <div class="row align-items-center justify-content-between o-hidden">
-            <div class="col-lg-5 order-sm-2 mb-5 mb-sm-0" data-aos="fade-left">
-              <img src="{{ asset('assets/img/IN_HERO_C.png') }}" alt="Image">
-            </div>
-            <div class="col-lg-7 pr-xl-5 order-sm-1">
-                <h1 class="display-4 ck-font">Improve your coding skills with live classes</h1>
-                <p class="lead ">There are 72M students learning to code around the
-                    world. We try to make learning more
-                    accessible, equitable and more seamless for them.</p>
-                <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-primary-3 btn-sm-block ">Continue with google</a>
-                <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-outline-primary-3 btn-sm-block ">Explore
-                    Courses</a>
-            </div>
-          </div>
-        </div>
-        
-      </section> --}}
+    
     <section class="pt-0 pt-md-0 pt-lg-0 pt-xlg-0 ">
-        <div class="container mt-2">
-
-            <div class="row justify-content-center text-center">
-                <div class="col-lg-4 col-md-4 mt-md-2 hidden-s">
-                    <img src="{{ asset('assets/img/girl.png') }}" alt="" class="img-fluid rounded">
-
-
-                </div>
+        <div class="container mt-0 pt-lg-5 hero">
+            <div class="row justify-content-center ">
+              <div class="col-md-6 col-lg-4 mt-5 mt-lg-0 text-center">
+                <img src="{{asset('assets/img/girl.png')}}" class="hero-img" alt="">
+              </div>
             </div>
-            <div class="row justify-content-center text-center">
-                <div class="col-xl-8 col-lg-9 col-md-10">
-                    <h1 class="display-4 ck-font t-5 pt-0">Improve your coding skills with live coding classes</h1>
-                    <p class="lead px-0 px-xlg-4 px-lg-4 px-md-5 ">There are 72M students learning to code around the world.
-                        We try to make learning more
-                        accessible, equitable & more seamless for them.</p>
-                    {{-- <div class="d-flex flex-column flex-sm-row justify-content-center align-items-center align-items-sm-start mt-5"> --}}
-                    {{-- <div class="d-flex flex-column mx-1 text-center"> --}}
-
-
-                    {{-- </div> --}}
-                    <a href="#" type="button" data-toggle="modal" data-target="#sign-in-modal"
-                        class="mx-1 fw-400 m-1 btn btn-lg btn-primary-3 btn-sm-block ">Book Free Masterclass</a>
-                    <a href="#" class="mx-1 fw-400 m-1 btn btn-lg btn-outline-primary-3 btn-sm-block ">Explore Courses</a>
-                </div>
-            </div>
-
-        </div>
-
-
-        </div>
+            <div class="row justify-content-center ">
+              <div class="col-lg-8 text-center">
+                <div class="">
+                  <!-- fw-700 fw-sm-ligh ck-mt-sm-5 -->
+                  <h1 class="display-5 fw-bolder mt-2">Improve your coding skills with  <span class="highlighter- wd_highlight1">live Coding classes</span> 
+                </h1>
+                <p class="fs-5">
+                  There are 72M students learning to code around the world. We try to
+                  make learning more accessible, equitable and more seamless for them.
+                </p>
+                <a href="" class="btn btn-primary btn-lg rounded-pill fw-light px-4 text-capitalize">Get Started Your journey</a>
+                <!-- <img src="./img/discord.svg" alt="" class="img-fluid hidden-lg mt-5"> -->
+      
+              </div>
     </section>
 
 
