@@ -38,30 +38,28 @@
 
     {{-- live courses --}}
     @if ($batches->count() > 0)
-        <section data-reading-position>
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-8 col-lg-9 text-center mb-3">
-                        <h2 class="display-5 mx-xl-8 ">Learn what fascinates you for free</h2>
-                        <p class="lead">
-                            More than 9000 students have attended our Masterclasses and loved them.
-                        </p>
+    <section>
+        <div class="">
+          
+                   <div class="container">
+                    <div class="row justify-content-center pt-5 mt-lg-5">
+                      <div class="col-lg-8 text-center">
+                        <h1 class="fs-1 fw-700">Learn what fascinates you for free</h2>
+                            <p class="fs-5">Here's what some of our 407 satisfied students have to say about learning with codekaro.</p>
+                      </div>
                     </div>
-                </div>
-
-                <div class="row justify-content-center">
 
 
-
+                    <div class="row my-5 justify-content-center">
                     {{-- <div class="controls-light a mb-6" data-flickity='{ "autoPlay": true, "imagesLoaded": true, "wrapAround": true }'> --}}
                     @foreach ($batches as $batch)
 
-                        <div class=" col-md-6 col-lg-4 d-flex ">
+                        <div class=" col-md-6 col-lg-4 d-flex mb-3">
                             @if ($batch->topicId == 1)
-                                <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
+                                <a class="card hover-shadow-sm border-none shadow shadow-3d"
                                     href="{{ url('web-development-live-masterclass') }}">
                                 @elseif($batch->topicId == 2)
-                                    <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
+                                    <a class="card hover-shadow-sm border-none shadow shadow-3d"
                                         href="{{ url('python-masterclass') }}">
                                 @else
                                 <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
@@ -69,16 +67,17 @@
                             @endif
                             <div class="flex-grow-1">
                                 @if($batch->topicId == 1)
-                                    <img src="{{ asset('assets/img/wd-masterclass.png') }}" class="card-img-top" alt="" >
+                                    <img src="{{ asset('assets/img/wd-masterclass.png') }}" class="card-img-top course-card" alt="" >
                                 @elseif($batch->topicId == 2)
-                                    <img src="{{ asset('assets/img/ck_header.png') }}" class="card-img-top" alt="" >
+                                    <img src="{{ asset('assets/img/ck_header.png') }}" class="card-img-top course-card" alt="" >
                                 @else
                                 <img src="{{ asset('storage/'.$batch->img) }}" loading="lazy" alt="Image"
                                     class="card-img-top" >
                                 @endif
                                 <div class="card-bod d-flex flex-column">
-                                    <div class=" p-2">
-                                        <h5 class="mb-2 ck-font fw-400">{{ $batch->name }} </h1>
+                                    <div class=" p-2 text-center">
+                                        <h5 class="my-2 fs- fw-600">{{ $batch->name }} </h1>
+                                            <p class="small">{{$batch->description}}</p>
                                             <p class="lea m-0 text-dark"> <strong> From
                                                     {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M') }}
                                                 </strong> <span class="text-muted">at
@@ -89,11 +88,12 @@
 
                                     </div>
                                 </div>
+                                
                             </div>
-                            <div class="d-flex flex-wrap align-items-center">
+                            {{-- <div class="d-flex flex-wrap align-items-center">
                                 <span class="badge badge-pill badge-ck-primary fw-400 m-1">Live Session</span>
                                 <span class="badge badge-pill badge-ck-success fw-400 m-1">Free</span>
-                            </div>
+                            </div> --}}
                             </a>
                         </div>
 
@@ -105,146 +105,98 @@
 
             </div>
             </div>
-            </div>
-
-            </div>
+            </div> 
         </section>
     @endif
 
     {{-- live courses ends --}}
 
-
-    <section class=mt-0">
-        <div class="container">
-            <div class="row mb-5 justify-content-center">
-                <div class="col-xl-8 col-lg-9 text-center">
-                    <img src="{{ asset('assets/img/hand-with-mic.svg') }}" alt="" class="avatar-lg">
-                    <h2 class="display-5 mx-xl-8 ">Students love Codekaro</h2>
-                    <p class="lead">
-                        Here's what {{ $users }}+ satisfied students have to say about learning with codekaro.
-                    </p>
+    <section class="my-5 fb-s">
+        <div class="container pt-lg-5 mt-lg-5">
+          <div class="text-center">
+            <img src="{{ asset('assets/img/hand-with-mic.svg') }}" alt="">
+          <h1 class=" fw-bolder">Students Love Codekaro</h1>
+          <p class="fs-5 mb-5">Here's what {{$users}} satisfied students have to say about learning with codekaro.</p>
+          </div>
+          <div class="row" data-masonry='{"percentPosition": true }'>
+            <div class="col-md-4 my-3">
+              <div class="card p-3 ">
+                <p class="fs-5">“A lot of advanced web dev topics taught at codekaro taught by ashish sir gave me an edge over my peers, and I ultimately absorbed more here than I ever did anywhere else.”</p>
+                <div class="d-flex">
+                  <img src="{{asset('assets/img/testimonials/abhishek-24f7f7604ee082202491761ff6cff18e29d347aae7276c8fe7e62cb627e2122b (1).png.gz')}}" class="avatar" alt="">
+                  <div class=" m-2">
+                    <p class="m-0 text-dark ">Abhishek Bajpayee</h4>
+                    <p class="m-0 small">Student</p>
+                  </div>
                 </div>
+              </div>
             </div>
-            <div class="row" data-isotope-collection data-ignore-hash="true">
-                <div class="col-sm-6 col-lg-4" data-isotope-item>
-                    <div class="card card-body">
-                        <div class="flex-grow-1 mb-3">
-                            <p class="lead">
-                                &ldquo;A lot of <span class="highlight"> advanced web dev topics taught at
-                                    codekaro</span>
-                                taught by ashish sir gave me an edge over my peers, and I ultimately absorbed more here than
-                                I ever did anywhere else.</span>&rdquo;
-                            </p>
-                        </div>
-                        <div class="avatar-author align-items-center">
-                            <img src="{{ asset('assets/img/testimonials/abhishek-24f7f7604ee082202491761ff6cff18e29d347aae7276c8fe7e62cb627e2122b.png.gz') }}"
-                                alt="Avatar" class="avatar">
-                            <div class="ml-2">
-                                <h6>Abhishek Bajpayee</h6>
-                                <span>Student</span>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-md-4 my-3">
+              <div class="card p-3 ">
+                <p class="fs-5">“ <span class="highlight">It was great learnig with codekaro</span>  It helped in gaining enough experience to get my internship”</p>
+                <div class="d-flex">
+                  <img src="{{asset('assets/img/testimonials/bhanu-397d99374e67f29c99c907f25fe8e1bb6d8c8bdfbf3b78c780daddb3686941ef.png.gz')}}" class="avatar" alt="">
+                  <div class=" m-2">
+                    <p class="m-0 text-dark ">Bhanu Pratap Singh Rathore</h4>
+                    <p class="m-0 small">Student</p>
+                  </div>
                 </div>
-                <div class="col-sm-6 col-lg-4" data-isotope-item>
-                    <div class="card card-body">
-                        <div class="flex-grow-1 mb-3">
-                            <p class="lead">
-                                &ldquo;Python course was well designed,<span class="highlight"> easy to learn
-                                    even if you are new to coding.</span>
-                                Great value for money.&rdquo;
-                            </p>
-                        </div>
-                        <div class="avatar-author align-items-center">
-                            <img src="{{ asset('assets/img/testimonials/vinay-aa12f1085fdd2dce4ad078f978b3535e82ea7eecedc6809a344503459f106470 (1).png.gz') }}"
-                                alt="Avatar" class="avatar">
-                            <div class="ml-2">
-                                <h6>Vinay Prajapati</h6>
-                                <span>Student</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4" data-isotope-item>
-                    <div class="card card-body">
-                        <div class="flex-grow-1 mb-3">
-                            <p class="lead">
-                                The course is well designed and assignments are quite exciting. It has all the levels of
-                                problems beginning from easy to hard, evenly distributed to motivate you. I would say that
-                                it was the best decision to choose an online course at Codekaro
-                            </p>
-                        </div>
-                        <div class="avatar-author align-items-center">
-                            <img src="{{ asset('assets/img/testimonials/vipul-f0eb1acf0da84c06a50c5b2c59932001997786b176dec02bd16128ee9ea83628.png.gz') }}"
-                                alt="Avatar" class="avatar">
-                            <div class="ml-2">
-                                <h6>Vipul reddy</h6>
-                                <span>Student</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4" data-isotope-item>
-                    <div class="card card-body">
-                        <div class="flex-grow-1 mb-3">
-                            <p class="lead">
-                                &ldquo;The
-                                <span class='highlight'>course is very well organized.</span>And as a front-end developer, I
-                                am much confident now.&rdquo;
-                            </p>
-                        </div>
-                        <div class="avatar-author align-items-center">
-                            <img src="{{ asset('assets/img/testimonials/saurav-fbdcb7c4b535897b2592239ffe21b4902b806bcf3f3e33493309d6736afa91a5.png.gz') }}"
-                                alt="Avatar" class="avatar">
-                            <div class="ml-2">
-                                <h6>Saurav Gupta</h6>
-                                <span>Student</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4" data-isotope-item>
-                    <div class="card card-body">
-                        <div class="flex-grow-1 mb-3">
-                            <p class="lead">
-                                &ldquo;I have completed two courses with Codekaro. <span class='highlight'>The faculty were
-                                    awesome and highlighted every important aspect of the course </span> and the subject in
-                                general. Their focus was to solve all my doubts so that I can level up my coding
-                                journey.</span>&rdquo;
-                            </p>
-                        </div>
-                        <div class="avatar-author align-items-center">
-                            <img src="{{ asset('assets/img/testimonials/akash-8c2b93c2a5a0a162722e7069c3621141c3a841c552d21bc9b816cbc9f1b2805b.png.gz') }}"
-                                alt="Avatar" class="avatar">
-                            <div class="ml-2">
-                                <h6>Akash Sharma</h6>
-                                <span>Student</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-4" data-isotope-item>
-                    <div class="card card-body">
-                        <div class="flex-grow-1 mb-3">
-                            <p class="lead">
-                                &ldquo;It was
-                                <span class="highlight">great learnig with codekaro</span> It helped in gaining enough
-                                experience to get my internship&rdquo;
-                            </p>
-                        </div>
-                        <div class="avatar-author align-items-center">
-                            <img src="{{ asset('assets/img/testimonials/bhanu-397d99374e67f29c99c907f25fe8e1bb6d8c8bdfbf3b78c780daddb3686941ef.png.gz') }}"
-                                alt="Avatar" class="avatar">
-                            <div class="ml-2">
-                                <h6>Bhanu Pratap Singh Rathore</h6>
-                                <span>Student</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              </div>
             </div>
+            <div class="col-md-4 my-3">
+              <div class="card p-3 ">
+                <p class="fs-5">“The course is well designed and assignments are quite exciting. It has all the levels of problems beginning from easy to hard, evenly distributed to motivate you. <span class="highlight"> I would say that it was the best decision to choose an online course at Codekaro”</span></p>
+                <div class="d-flex">
+                  <img src="{{asset('assets/img/testimonials/vipul-f0eb1acf0da84c06a50c5b2c59932001997786b176dec02bd16128ee9ea83628.png.gz')}}" class="avatar" alt="">
+                  <div class=" m-2">
+                    <p class="m-0 text-dark ">Vipul Reddy</h4>
+                    <p class="m-0 small">Student</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 my-3">
+              <div class="card p-3 ">
+                <p class="fs-5">“I have completed two courses with Codekaro. The faculty were awesome and highlighted every important aspect of the course and the subject in general. Their focus was to solve all my doubts so that I can level up my coding journey.”</p>
+                <div class="d-flex">
+                  <img src="{{asset('assets/img/testimonials/akash-8c2b93c2a5a0a162722e7069c3621141c3a841c552d21bc9b816cbc9f1b2805b.png.gz')}}" class="avatar" alt="">
+                  <div class=" m-2">
+                    <p class="m-0 text-dark ">Akash Sharma</h4>
+                    <p class="m-0 small">Student</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 my-3">
+              <div class="card p-3 ">
+                <p class="fs-5">“The course is very well organized.And as a front-end developer, I am much confident now.”</p>
+                <div class="d-flex">
+                  <img src="{{asset('assets/img/testimonials/saurav-fbdcb7c4b535897b2592239ffe21b4902b806bcf3f3e33493309d6736afa91a5.png.gz')}}" class="avatar" alt="">
+                  <div class=" m-2">
+                    <p class="m-0 text-dark ">Saurav Gupta</h4>
+                    <p class="m-0 small">Student</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 my-3">
+              <div class="card p-3 ">
+                <p class="fs-5">“Python course was well designed, easy to learn even if you are new to coding. Great value for money.”</p>
+                <div class="d-flex">
+                  <img src="{{asset('assets/img/testimonials/vinay-aa12f1085fdd2dce4ad078f978b3535e82ea7eecedc6809a344503459f106470 (1).png.gz')}}" class="avatar" alt="">
+                  <div class=" m-2">
+                    <p class="m-0 text-dark ">Vinay Prajapati</h4>
+                    <p class="m-0 small">Student</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            
+          </div>
         </div>
-    </section>
+      </section>
+
 
 
     {{-- live courses --}}
@@ -305,34 +257,25 @@
         </section>
     @endif
 
-    {{-- live courses ends --}}
-
-    <div class="container">
-        <div class="row justify-content-center text-center ">
-            <div class="col-xl-8 col-lg-9 col-md-10">
-
-
-                <h1 class="display-5">Join our Community of Coders</h1>
-                <p class="lead ">There are 72M students learning to code around the world. We try to make
-                    learning more
-                    accessible, equitable and more seamless for them.</p>
+    <section>
+        <div class="container my-5">
+          <div class="row justify-content-center">
+            <div class="col-sm-3">
+              <img src="{{asset('assets/img/gift.svg')}}" class="img-fluid hidden-sm" alt="">
             </div>
-        </div>
-        <div class="row justify-content-center">
+            </div>
+  
+            <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
-                <div class="mb-5">
-                    {{-- <h1 class="display-5 mb-0 pb-0">Join our Community</h1> --}}
-                    <p class="pt-0 mt-0">500+ online students</p>
-                    <a href="#" class="btn btn-dark px-4 fw-400">Join Now</a>
-                </div>
-
-                <img src="assets/img/discord.svg" alt="" class="img-fluid" loading="lazy"
-                    style="margin-bottom: -2px;">
-
+              <h1 class="fw-bolder">Book your <span class="wd_highlight1">free masterclass </span>now</h1>
+              <p class="fs-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam neque repudiandae cumque maiores tempora reiciendis.</p>
+              
+              <button  class="btn btn-primary px-4 rounded-pill text-uppercas my-5 btn-lg fw-light" data-bs-toggle="modal" data-bs-target="#masterclass">Book free masterclass</a>
+              <!-- <img src="./img/discord.svg" px- alt="" class="img-fluid mt-5"> -->
             </div>
+          </div>
         </div>
-    </div>
-    @include('layouts.footer')
+      </section>
 
 
 

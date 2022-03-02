@@ -48,7 +48,7 @@
             <ul class="d-flex justify-content-center justify-content-lg-end text-dark m-0 p-0" type="none">
               
               <li class="nav-item">
-                <a class="nav-link text-dark" href="#"><img height="30" src="./img/facebook.svg" alt=""></a>
+                <a class="nav-link text-dark" href="#"><img height="30" src="{{asset('assets/img/facebook.svg')}}" alt=""></a>
               </li>
               <li class="nav-item">
                 <a class="nav-link text-dark mt-1" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
@@ -57,7 +57,7 @@
               </li>
   
               <li class="nav-item">
-                <a class="nav-link text-dark fs-5"  href="#"><img height="30" src="./img/twitter.svg" alt=""></a>
+                <a class="nav-link text-dark fs-5"  href="#"><img height="30" src="{{asset('assets/img/twitter.svg')}}" alt=""></a>
               </li>
             </ul>
           </div>
@@ -133,26 +133,80 @@
               <div class="modal-body px-lg-5 p-4  pt-0">
                 <p class="fs-6">Login to your account to see all your upcoming classes.</p>
                 <button onclick="originalLoginForm()" id="goBackBtn" class="btn ck-outline-btn">Go back</button>
-                <button class="w-100 mb-3 btn btn-lg rounded-pill fw-light btn-dark " style="font-size: 16px; padding: 10px 0;" id="continue-gmail-login-button" type="submit">Continue with Google</button>
+                <a href="{{ url('/redirect') }}" class="w-100 mb-3 btn btn-lg rounded-pill fw-light btn-dark " style="font-size: 16px; padding: 10px 0;" id="continue-gmail-login-button" type="submit">Continue with Google</a>
                 <button class="w-100 mb-2 btn btn-lg rounded-pill btn-outline-dark" style="font-size: 16px; padding: 10px 0;" onclick="displayLoginForm()" id="continue-email-login-button" style="border-radius: 33px;">Continue with Email</button>
-                <form class="mt-3" id="login-form">
-                  <div class="form-floating  ">
-                    <input type="email" class="form-control rounded-4 input-email" id="floatingInput" placeholder="name@example.com">
-                    <label for="floatingInput">Email address</label>
-                  </div>
-                  <div class="form-floating">
-                    <input type="password" class="form-control rounded-4 input-password" id="floatingPassword" placeholder="Password">
-                    <label for="floatingPassword">Password</label>
-                  </div>
-                  <button class="btn w-10 px-5 borde rounded-pill btn-dark text-white shado fw-300 mt-3 login-bt" type="submit">Login</button>
-                
-                  
-                  <!-- <button class="btn btn-lg py- w-10 px-5 borde rounded-pill btn-dark text-white shado fw-300 mt-3 login-btn"  type="submit">Continue with Google</button> -->
-                  <!-- <small class="small">By clicking Sign up, you agree to the terms of use.</small> -->
+                <form method="POST" action="{{ route('login') }}" class="d-non " id="login-form">
+                  @csrf
 
-                  
-                  
-                </form>
+                  <div class="form-group row">
+
+
+
+                      <div class="col-md-12">
+
+                          <div class="form-floating mt-0 ">
+                              <input id="email" type="email"
+                                  class="form-control input-email @error('email') is-invalid @enderror" name="email"
+                                  value="{{ old('email') }}" required autocomplete="email" placeholder="email">
+                              @error('email')
+                                  <span class="invalid-feedback lead" role="alert">
+                                      <p class="m-0">{{ $message }}</p>
+                                  </span>
+                              @enderror
+                              <label for="email">Email</label>
+                          </div>
+
+
+
+                      </div>
+                  </div>
+
+                  <div class="form-group row mb-2">
+
+
+
+                      <div class="col-md-12">
+                          <div class="form-floating mt-0 ">
+                              <input id="password" type="password"
+                                  class="form-control input-password @error('password') is-invalid @enderror" name="password"
+                                  required autocomplete="current-password" placeholder="password"
+                                  style="background-color: white !important">
+                              @error('password')
+                                  <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $message }}</strong>
+                                  </span>
+                              @enderror
+                              @error('email')
+                                  @if (Route::has('password.request'))
+                                      <div class=" my-1">
+                                          <a class="fw-400 card-link " href="{{ route('password.request') }}">
+                                              {{ __('Forgot Your Password?') }}
+                                          </a>
+                                      </div>
+
+                                  @endif
+                              @enderror
+                              <label for="password">Password</label>
+                          </div>
+
+
+
+                      </div>
+
+                  </div>
+                  <div class="form-group row mb-0">
+                      <div class="col-md-12 ">
+                          <button type="submit" class="btn  btn-dark rounded-pill px-4 mb-2 fw-400">
+                              {{ __('Login') }}
+                          </button>
+
+                          </p>
+                          <div class="text-center mt-3">
+                              {{-- <p class="lead">New to Codekaro? <a href="{{url('/register')}}" class="fw-400">Join now</a></p> --}}
+                          </div>
+                      </div>
+                  </div>
+              </form>
                   
               </div>
             </div>
@@ -220,6 +274,6 @@
             }
         </script>
 
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{asset('assets/js/ck.js')}}"></script>
   </body>
 </html>

@@ -1,0 +1,17 @@
+<svg width="236" height="120" xmlns="http://www.w3.org/2000/svg" fill="none">
+ <mask height="87" width="236" y="0" x="0" maskUnits="userSpaceOnUse" id="mask0_4609_118504">
+  <rect id="svg_1" fill="white" rx="12" height="87" width="236"/>
+ </mask>
+
+ <g>
+  <title>Layer 1</title>
+  <ellipse id="svg_3" fill="#FFF0CB" ry="52.5" rx="51.5" cy="57.5" cx="121.5"/>
+  <path id="svg_4" fill="#FC9577" d="m106.999,44.8892l-6.121,12.1056l29.09,2.773l5.63,-11.3694l-28.599,-3.5092z"/>
+  <path id="svg_5" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.4" stroke="black" d="m120.93,78.6824c-0.722,1.4443 -2.369,3.0213 -4.592,2.0568l-19.604,-9.7287c-2.134,-1.0631 -1.368,-3.2233 -0.654,-4.6602l18.073,-36.242c0.351,-0.6936 0.96,-1.2217 1.696,-1.4699c0.737,-0.2482 1.54,-0.1963 2.236,0.1443l19.604,9.7286c0.692,0.3487 1.219,0.9567 1.465,1.6923c0.245,0.7356 0.191,1.5393 -0.151,2.2369l-14.167,28.4219"/>
+  <path id="svg_6" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.4" stroke="black" d="m114.752,80.4021c-0.721,1.4443 -2.369,3.0212 -4.592,2.0567l-19.604,-9.7286c-2.134,-1.0632 -1.368,-3.2233 -0.653,-4.6603l18.072,-36.2419c0.351,-0.6936 0.961,-1.2218 1.697,-1.4699c0.736,-0.2482 1.539,-0.1964 2.236,0.1442"/>
+  <path id="svg_7" stroke-linejoin="round" stroke-linecap="round" stroke-width="1.4" stroke="black" d="m124.753,71.0734l-1.55,3.11c-0.358,0.6683 -0.965,1.1686 -1.689,1.3922c-0.724,0.2235 -1.506,0.1521 -2.176,-0.1988l-18.259,-9.0656c-0.174,-0.0895 -0.364,-0.1433 -0.56,-0.1584c-0.195,-0.015 -0.391,0.009 -0.577,0.0707c-0.186,0.0617 -0.359,0.1599 -0.506,0.2887c-0.148,0.1289 -0.269,0.2859 -0.356,0.4619c-0.093,0.175 -0.15,0.3668 -0.167,0.5639c-0.017,0.1972 0.005,0.3957 0.066,0.5837c0.061,0.1881 0.159,0.3618 0.289,0.5109c0.13,0.149 0.288,0.2703 0.466,0.3567l16.69,8.3095"/>
+  <path id="svg_8" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.4" stroke="black" d="m139.5,58.0278l1.899,2.6252"/>
+  <path id="svg_9" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.4" stroke="black" d="m141.088,51.2564l2.408,-1.2203"/>
+  <path id="svg_10" stroke-linecap="round" stroke-miterlimit="10" stroke-width="1.4" stroke="black" d="m142.024,55.11l4.388,1.1052"/>
+ </g>
+</svg>
