@@ -76,9 +76,9 @@
                                 @endif
                                 <div class="card-bod d-flex flex-column">
                                     <div class=" p-2 text-center">
-                                        <h5 class="my-2 fs- fw-600">{{ $batch->name }} </h1>
-                                            <p class="small">{{$batch->description}}</p>
-                                            <p class="lea m-0 text-dark"> <strong> From
+                                        <h5 class="my-2 fs- fw-500">{{ $batch->name }} </h1>
+                                            <p class="smal text-muted">{{$batch->description}}</p>
+                                            <p class="lea m-0 text-dark fw-500"> <strong> From
                                                     {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M') }}
                                                 </strong> <span class="text-muted">at
                                                     {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}</span>
