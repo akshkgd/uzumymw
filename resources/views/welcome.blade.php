@@ -342,6 +342,6 @@
     </div>
 
 
-    <!-- register modal ends -->
+    @include('layouts.ck-footer')
 
 @endsection
