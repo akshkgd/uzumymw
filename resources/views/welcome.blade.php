@@ -28,7 +28,7 @@
                   There are 72M students learning to code around the world. We try to
                   make learning more accessible, equitable and more seamless for them.
                 </p>
-                <a href="" class="btn btn-primary btn-lg rounded-pill fw-light px-4 text-capitalize">Get Started Your journey</a>
+                <a href="" class="btn btn-dark btn-lg rounded-pill fw-light px-4 text-capitalize">Get Started Your journey</a>
                 <!-- <img src="./img/discord.svg" alt="" class="img-fluid hidden-lg mt-5"> -->
       
               </div>

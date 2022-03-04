@@ -55,7 +55,31 @@
 @yield('content')
 
     
-
+{{-- <script>
+  (function (w, d, s, u) {
+  w.gbwawc = {
+  url: u,
+  options: {
+          waId: "+91917355191435",
+          siteName: "Codekaro",
+          siteTag: "Usually reply in 4 minutes",
+          siteLogo: "https://waw.gallabox.com/chatbotavatars/1.png",
+          widgetPosition: "RIGHT",
+          triggerMessage: "",
+          welcomeMessage: "Welcome to Gallabox! Convert conversations to actions...",
+          brandColor: "#25D366",
+          messageText: "",
+          replyOptions: ['Free Masterclass','Courses',''],
+      },
+  };
+  var h = d.getElementsByTagName(s)[0],
+  j = d.createElement(s);
+  j.async = true;
+  j.src = u + "/whatsapp-widget.min.js?_=" + Math.random();
+  h.parentNode.insertBefore(j, h);
+  })(window, document, "script", "https://waw.gallabox.com");
+  </script>
+   --}}
         
 <div class="">
   <div class="btn-g dropup d-non">
@@ -64,9 +88,9 @@
     </button>
     <ul class="dropdown-menu shadow">
       <!-- Dropdown menu links -->
-      <li><a class="dropdown-item" href="#">Help</a></li>
-      <li><a class="dropdown-item" href="#">WhatsApp Us</a></li>
-      <li><a class="dropdown-item" href="#">Raise Ticket</a></li>
+      <li><a class="dropdown-item" href="{{url('/help')}}">Help</a></li>
+      <li><a class="dropdown-item" href="https://api.whatsapp.com/send/?phone=+917355191435&text=ok" target="_blank">WhatsApp Us</a></li>
+      <li><a class="dropdown-item" href="https://codekaro.freshdesk.com/support/home">Raise Ticket</a></li>
     </ul>
   </div>
 </div>
