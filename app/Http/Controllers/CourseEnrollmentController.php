@@ -161,8 +161,10 @@ class CourseEnrollmentController extends Controller
             }
             $enrollment = CourseEnrollment::where('invoiceId', $response['order_id'])->update(['status' => 1, 'hasPaid' => 1, 'amountPaid'=> $response['amount'], 'paidAt'=> Carbon::now(), 'paymentMethod'=> $response['method'], 'transactionId'=> $response['id'] ]);
             
-            \Session::put('success', 'Payment successful');
-        return redirect('/home');
+            $enrollment = CourseEnrollment::where('invoiceId', $response['order_id'])->first();
+            // return view('students.PaymentComplete', compact('enrollment'));
+            session()->flash('alert-success', 'Payment Completed Successfully');
+            return redirect('/home');
             
         }
         

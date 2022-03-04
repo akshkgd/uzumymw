@@ -53,7 +53,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-5">
         <div class="login-card border-none shadow p-3 text-center">
-          {{-- <img src="{{asset('assets/img/paymentLeftCardIcon.52206375.svg')}}" alt="" class="img-flui" height="100"> --}}
+          <img src="{{asset('assets/img/booking-congrats.4d81c4bf.svg')}}" alt="" class="img-flui" height="100">
           <div class="">
             <p class="mt-3 mb-0 danger-pill">Payment Due</p>
           </div>
