@@ -1,5 +1,20 @@
 @extends('layouts.ck')
-
+<style>
+  .ck-btn{
+        
+        background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
+        border: 1px solid transparent;
+        border:none;
+        color: white;
+        padding: 12px 46px !important;
+        font-weight:400;
+        display: inline-block;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 100px;
+        box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px;
+    }
+</style>
 @section('content')
     {{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
     New masterclasses has been launched 🥳 <a href="{{url('/event')}}" class="alert-link">Check Now</a>. Limited seats available.
@@ -28,7 +43,7 @@
                   There are 72M students learning to code around the world. We try to
                   make learning more accessible, equitable and more seamless for them.
                 </p>
-                <a href="" class="btn btn-dark btn-lg rounded-pill fw-light px-4 text-capitalize">Get Started Your journey</a>
+                <a href="{{url('/event')}}" class="btn ck-btn btn-lg rounded-pill fw-light px-4 text-capitaliz text-white">Get started on your journey</a>
                 <!-- <img src="./img/discord.svg" alt="" class="img-fluid hidden-lg mt-5"> -->
       
               </div>
