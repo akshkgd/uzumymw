@@ -43,7 +43,7 @@
                   There are 72M students learning to code around the world. We try to
                   make learning more accessible, equitable and more seamless for them.
                 </p>
-                <a href="{{url('/event')}}" class="btn ck-btn btn-lg rounded-pill fw-light px-4 text-capitaliz text-white">Get started on your journey</a>
+                <a href="{{url('/event')}}" class="btn ck-bt btn-dark btn-lg rounded-pill fw-light px-4 text-capitaliz text-white">Get started on your journey</a>
                 <!-- <img src="./img/discord.svg" alt="" class="img-fluid hidden-lg mt-5"> -->
       
               </div>
