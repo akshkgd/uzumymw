@@ -68,7 +68,7 @@
             </header> --}}
 
             <main class="text-center mt-5 pt-lg-5">
-                <h1 class="display-5 fw-bolder">Get started with 3 days  <span class="wd_highlight">Web Development</span> <br> Bootcamp for free</h1>
+                <h1 class="display-5 fw-bolder">Get started with 2 days  <span class="wd_highlight">Web Development</span> <br> Bootcamp for free</h1>
                
                 <div class="row justify-content-center">
                     <p class="fs-5 text-muted col-md-10 text-center">Get started as a front-end web developer using HTML, CSS,
@@ -76,10 +76,10 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong>6th March to 8th March </strong>  | 06:00 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong>9th March to 10th March </strong>  | 06:00 PM IST</h3>
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/workshop-enroll/72" class="btn btn-dark btn-lg btn-block px-5">
+                        <a href="https://codekaro.in/workshop-enroll/73" class="btn btn-dark btn-lg btn-block px-5">
                             <h2 class="fs-3 mb-1">Enroll now for free</h2>
                             <p class="mb-0 fw-200">Enroll now limited seats are available</p>
                         </a>
@@ -190,7 +190,7 @@
                 </div>
                 </div>
                 
-                <div class="col-md-4">
+                <div class="col-md-4 d-none">
                     <div class="card f-2">
                       <div class="p-3">
                         <h4>Day 3</h4>
@@ -211,7 +211,7 @@
                   </div>
                 
                 <div class="my-5 text-center">
-                    <a href="https://codekaro.in/workshop-enroll/72" class="btn btn-dark btn-lg btn-block px-5">
+                    <a href="https://codekaro.in/workshop-enroll/73" class="btn btn-dark btn-lg btn-block px-5">
                         <h2 class="fs-3 mb-1">Enroll now for free</h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
@@ -296,13 +296,7 @@
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet">
-                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
-                            today I attend 1st class of this bootcamp it just awesome 🔥🔥<br>I learn so much new thinks
-                            and also eager to learn more like 👍👍</p>&mdash; Sakshi Tannirwar (@sakshitannirwa8) <a
-                            href="https://twitter.com/sakshitannirwa8/status/1414999822948442116?ref_src=twsrc%5Etfw">July
-                            13, 2021</a>
-                    </blockquote>
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> thank you sir ,for having wonderful time having with us and providing much knowledge for us.<br>its great time and willing to have more time and more classes. thank you sir</p>&mdash; sudarsan (@sudarsa26414724) <a href="https://twitter.com/sudarsa26414724/status/1480915539958632454?ref_src=twsrc%5Etfw">January 11, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
@@ -315,7 +309,7 @@
                 </div>
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/workshop-enroll/72" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/73" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -359,7 +353,7 @@
               <p id="headline"></p>
             </div>
             <div class="my-5">
-                <a href="https://codekaro.in/workshop-enroll/72" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/73" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -389,7 +383,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "mar 6, 2022 18:30:00",
+  let birthday = "mar 9, 2022 18:30:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 

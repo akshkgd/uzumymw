@@ -108,7 +108,7 @@
                     <div class="text-center">
                         <p class="m-0  text-dark">By continuing, you agree to Codekaro's Conditions of Use and <a
                                 href="{{ url('/privacy') }}" class="fw-400">Privacy policy</a>. </p>
-                        <p style="font-size:22px" class="mt-3 text-dark">New to codekaro? <a href="{{ url('/redirect') }}"
+                        <p style="font-size:22px" class="mt-3 text-dark">New to codekaro? <a href="{{ url('/register') }}"
                                 class="card-link fw-400 ck-font">Join Now</a></p>
                     </div>
                 </div>
