@@ -76,18 +76,18 @@
             </header> --}}
 
             <main class="text-center mt-5 pt-lg-5">
-                <h1 class="" style="font-size: 56px">Get started with 3 days  <span class="wd_highlight">Machine Learning</span> Bootcamp for free</h1>
+                <h1 class="" style="font-size: 56px">Get started with 2 days  <span class="wd_highlight">Machine Learning</span> Bootcamp for free</h1>
                
                 <div class="row justify-content-center">
                     <p class="fs-5 text-muted col-md-10 text-center">Get started with data science and machine learning using Python
                          . <br> The modern Python course for everyone! </p>
                 </div>
 
-                <h4 class="fw-500 py-4"> <strong>9th February to 11th February </strong>  | 06:00 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong>12th march to 13th March </strong>  | 06:00 PM IST</h3>
 
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/workshop-enroll/64" class="btn btn-dark btn-lg btn-block px-5">
+                        <a href="https://codekaro.in/workshop-enroll/74" class="btn btn-dark btn-lg btn-block px-5">
                             <h2 class="fs-3 mb-1">Enroll now for free</h2>
                             <p class="mb-0 fw-200">Enroll now limited seats are available</p>
                         </a>
@@ -160,7 +160,7 @@
             <div class="row justify-content-center ">
                 <div class="text-center">
                     <h2>What's inside</h2>
-              <p>This course contains 18 topics spread across 3 modules.</p>
+              <p>This course contains 18 topics spread across 2 modules.</p>
               
                 </div>
                 
@@ -189,11 +189,11 @@
                       <ul>
                         <li>Introduction to Python</li>
                         <li>Data Types & Variables</li>
-                        <li>Loops & Conditionals</li>
-                        <li>Built in Functions</li>
-                        <li>Lucky Draw Winner</li>
+                        <li>Numpy</li>
+                        <li>Reading and writing CSV</li>
+                        <li>Data visualization</li>
                         
-                        <li><strong>Toss Coin Game 🪙</strong> </li>
+                        <li><strong>Use Python for ML</strong> </li>
                       </ul>
                     </div>
                   <div class="cd f-4-bottom p-3">
@@ -203,7 +203,7 @@
                 </div>
                 
                 
-                <div class="col-md-4">
+                <div class="col-md-4 d-none">
                     <div class="card f-2">
                       <div class="p-3">
                         <h4>Day 2</h4>
@@ -223,26 +223,25 @@
                     </div>
                   </div>
                   <div class="col-md-4 ">
-                    <div class="card f-3 ">
+                    <div class="card f-2 ">
                       <div class="p-3">
                         <h4>Day 3</h4>
                         <ul>
                           <li>Introduction to Machine Learning</li>
-                          <li>Introduction</li>
-                          <li>Training Model</li>
-                          <li>Data Sets</li>
+                          <li>Working of a neural network</li>
+                          <li>Forward propagation and backpropagation</li>
                           <li>Bonus Gift 🎁</li>
-                          <li><strong>World Happiness Index Project </strong> </li>
+                          <li><strong>Deep learning Project using Tensorflow </strong> </li>
                         </ul>
                       </div>
-                      <div class="cd f-3-bottom p-3">
+                      <div class="cd f-2-bottom p-3">
                           Understand ML with Project
                       </div>
                     </div>
                   </div>
                 
                 <div class="my-5 text-center">
-                    <a href="https://codekaro.in/workshop-enroll/64" class="btn btn-dark btn-lg btn-block px-5">
+                    <a href="https://codekaro.in/workshop-enroll/74" class="btn btn-dark btn-lg btn-block px-5">
                         <h2 class="fs-3 mb-1">Enroll now for free</h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
@@ -346,7 +345,7 @@
                 </div>
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/workshop-enroll/64" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/74" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -363,11 +362,11 @@
             <div class="row justify-content-center">
                 <div class="col-md-8 mt-4 text-center">
                     <div class="avatar-outer text-center">
-                        <img src="{{ asset('assets/img/team/arpit.png') }}" alt="" class="avatar" >
+                        <img src="{{ asset('assets/img/team/sahil.png') }}" alt="" class="avatar" >
 
                     </div>
-                    <h2 class="mt-3">Arpit Khare</h2>
-                    <p class="text-muted fs-5">EX- IIT Roorkee</h4>
+                    <h2 class="mt-3">Sahil Pocker</h2>
+                    <p class="text-muted fs-5">NIT Jamshedpur</h4>
                     <p class="fs-6 ">I am pursuing M.Tech CSE from NIT Jamshedpur, a passionate instructor and coder. I am on a mission to help students inculcate the thinking capabilities by making them explore more about their interested fields.</p>
                 </div>
                 
@@ -393,7 +392,7 @@
               <p id="headline"></p>
             </div>
             <div class="my-5">
-                <a href="https://codekaro.in/workshop-enroll/64" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/74" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -423,7 +422,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "feb 9, 2022 18:00:00",
+  let birthday = "mar 12, 2022 18:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 

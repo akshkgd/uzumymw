@@ -84,7 +84,7 @@
                                 @if($batch->topicId == 1)
                                     <img src="{{ asset('assets/img/wd-masterclass.png') }}" class="card-img-top course-card" alt="" >
                                 @elseif($batch->topicId == 2)
-                                    <img src="{{ asset('assets/img/ck_header.png') }}" class="card-img-top course-card" alt="" >
+                                    <img src="{{ asset('assets/img/ml masterclass.png') }}" class="card-img-top course-card" alt="" >
                                 @else
                                 <img src="{{ asset('storage/'.$batch->img) }}" loading="lazy" alt="Image"
                                     class="card-img-top" >
