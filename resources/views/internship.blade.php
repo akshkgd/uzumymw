@@ -14,6 +14,11 @@
         border-radius: 100px;
         box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px;
     }
+    .avatar-sm{
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
 </style>
 @section('content')
     {{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
@@ -58,10 +63,10 @@
                     @foreach ($users as $user)
                         <div class="card rounded-pill  d-inline-block  m-2">
                             <div class="d-flex px-2  py-1">
-                                <img src="{{$user->avatar}}" class="avatar" alt="">
+                                <img src="{{$user->user->avatar}}" class="avatar-sm" alt="">
                                 <div class="mx-3">
-                                    <h4 class="fs-5 m-0">{{$user->name}}</h4>
-                                    <p class="m-0">{{$user->college}}</p>
+                                    <h4 class="fs-5 m-0">{{$user->user->name}}</h4>
+                                    <p class="m-0">{{$user->user->college}}</p>
                                 </div>
                             </div>
                             

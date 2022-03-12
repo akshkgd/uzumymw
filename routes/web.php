@@ -46,7 +46,7 @@ Route::get('/l', function () {
     return view('l',compact('feedbacks'));
 });
 Route::get('/it', function () {
-    $users = User::whereNotNull('college')->take(50)->get();
+    $users = Feedback::where('status', 1)->take(25)->get();
     return view('internship',compact('users'));
 });
 
