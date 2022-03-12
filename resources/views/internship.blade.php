@@ -45,3 +45,29 @@
             </div>
         </div>
     </section>
+
+
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="text-center">
+                    <h1 class="fw-bold">Developers From Crio <br>
+                        Have Cracked Careers In</h1>
+                </div>
+                <div class="col-md-12">
+                    @foreach ($users as $user)
+                        <div class="card rounded-pill  d-inline-block  m-2">
+                            <div class="d-flex px-2  py-1">
+                                <img src="{{$user->avatar}}" class="avatar" alt="">
+                                <div class="mx-3">
+                                    <h4 class="fs-5 m-0">{{$user->name}}</h4>
+                                    <p class="m-0">{{$user->college}}</p>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>

@@ -40,10 +40,14 @@ Route::view('/web-development-bootcamp','wdm');
 Route::view('/wdt','wdt');
 Route::view('/love','love');
 Route::view('/teach','teach');
-Route::view('/it','internship');
+
 Route::get('/l', function () {
     $feedbacks = Feedback::all()->where('status',0);
     return view('l',compact('feedbacks'));
+});
+Route::get('/it', function () {
+    $users = User::whereNotNull('college')->take(50)->get();
+    return view('internship',compact('users'));
 });
 
 Route::get('/', function () {
@@ -171,32 +175,4 @@ Route::get('/admin/add-feedback/{id}', 'AdminController@addFeedback');
 
 
 // whatsApp test
-
-Route::get('/message', function() {
-    // show a form
-    return view('message');
-});
-
-Route::post('/message', function(Request $request) {
-    // TODO: validate incoming params first!
-
-    $url = "https://messages-sandbox.nexmo.com/v0.1/messages";
-    $params = ["to" => ["type" => "whatsapp", "number" => $request->input('number')],
-        "from" => ["type" => "whatsapp", "number" => "14157386170"],
-        "message" => [
-            "content" => [
-                "type" => "text",
-                "text" => "Hello from Vonage and Laravel :) Please reply to this message with a number between 1 and 100"
-            ]
-        ]
-    ];
-    $headers = ["Authorization" => "Basic " . base64_encode('362cc70e' . ":" . 'G26qE4CM2DG5HJ4E')];
-
-    $client = new \GuzzleHttp\Client();
-    $response = $client->request('POST', $url, ["headers" => $headers, "json" => $params]);
-    $data = $response->getBody();
-    dd($data);
-});
-
-
-
+Route::get('/msg', 'AdminController@wam');
