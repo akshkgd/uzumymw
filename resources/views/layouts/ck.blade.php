@@ -148,8 +148,8 @@
               <div class="modal-body px-lg-5 p-4  pt-0">
                 <p class="fs-6">Login to your account to see all your upcoming classes.</p>
                 <button onclick="originalLoginForm()" id="goBackBtn" class="btn ck-outline-btn">Go back</button>
-                <a href="{{ url('/redirect') }}" class="w-100 mb-3 btn btn-lg rounded-pill fw-light btn-dark " style="font-size: 16px; padding: 10px 0;" id="continue-gmail-login-button" type="submit">Continue with Google</a>
-                <button class="w-100 mb-2 btn btn-lg rounded-pill btn-outline-dark" style="font-size: 16px; padding: 10px 0;" onclick="displayLoginForm()" id="continue-email-login-button" style="border-radius: 33px;">Continue with Email</button>
+                <a href="{{ url('/redirect') }}" class="w-100 mb-3 btn btn-lg rounded-pill fw-light btn-primary " style="font-size: 16px; padding: 10px 0;" id="continue-gmail-login-button" type="submit">Continue with Google</a>
+                <button class="w-100 mb-2 btn btn-lg rounded-pill btn-outline-muted text-dark" style="font-size: 16px; padding: 10px 0;" onclick="displayLoginForm()" id="continue-email-login-button" style="border-radius: 33px;">Continue with Email</button>
                 <form method="POST" action="{{ route('login') }}" class="d-non " id="login-form">
                   @csrf
 

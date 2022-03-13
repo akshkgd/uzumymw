@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     @guest
-    <a class="navbar-brand fw-bold text-primary fs-5" href="{{url('/')}}">Codekaro</a>
+    <a class="navbar-brand fw-bold fs-5" href="{{url('/')}}">Codekaro</a>
     @endguest
     @auth  
-    <a class="navbar-brand fw-bold text-primary fs-5" href="{{url('/home')}}">Codekaro</a>
+    <a class="navbar-brand fw-bold  fs-5" href="{{url('/home')}}">Codekaro</a>
     @endauth
     <span class="ms-auto">
       @guest
