@@ -92,7 +92,7 @@
                         <div class="bg-primary-al rounded-lg">
                             <div class="mt-2">
                                 <h1 class="lead-1 mb-1 text-dark">{{ $batch->name }}</h3>
-                                    <p class="text-primary">Only {{ $batch->limit }} Seats<span class="text-dark">,
+                                    <p class="text-primary">Only 50 Seats<span class="text-dark">,
                                             available on the first come first serve basis</span></p>
                                             
                                     <div class="d-flex justify-content-aroun ">
