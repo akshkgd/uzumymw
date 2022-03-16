@@ -131,7 +131,7 @@
                     <div class="card text-center f-1">
                         <div class="p-2">
                             <img src="{{asset('assets/img/missed-class-logo-1.svg')}}" alt="">
-                            <h2 class="fs-4 mt-2">Missed a class?</h2>
+                            <h2 class="fs-5 mt-2">Missed a class?</h2>
                             <p class="">No worries, watch the recordings later at your convenience from your Archive.</p>
                         </div>
                         
@@ -141,7 +141,7 @@
                     <div class="card text-center f-3">
                         <div class="p-2">
                             <img src="{{asset('assets/img/hd.svg')}}" alt="">
-                            <h2 class="fs-4 mt-2">Have doubts?</h2>
+                            <h2 class="fs-5 mt-2">Have doubts?</h2>
                             <p class="">Fear not, peer to peer group will help you out any issue, big or small.</p>
                         </div>
                         
@@ -151,7 +151,7 @@
                     <div class="card text-center f-2">
                         <div class="p-2">
                             <img src="{{asset('assets/img/wtr.svg')}}" alt="">
-                            <h2 class="fs-4 mt-2">Get Certificate!</h2>
+                            <h2 class="fs-5 mt-2">Get Certificate!</h2>
                             <p>Receive a linkedIn shareable certificate after the completion of live classes</p>
                         </div>
                         
@@ -161,7 +161,7 @@
                     <div class="card text-center f-4">
                         <div class="p-2">
                             <img src="{{asset('assets/img/time.svg')}}" alt="">
-                            <h2 class="fs-4 mt-2">All Live classes</h2>
+                            <h2 class="fs-5 mt-2">All Live classes</h2>
                             <p class="">Watch all the classes live and clear your doubts instantly.</p>
                         </div>
                         
@@ -171,7 +171,7 @@
                     <div class="card text-center f-5">
                         <div class="p-2">
                             <img src="{{asset('assets/img/project.svg')}}" alt="" height="70">
-                            <h2 class="fs-4 mt-2">Project-based Learning</h2>
+                            <h2 class="fs-5 mt-2">Project-based Learning</h2>
                             <p class="">An immersive project-based curriculum focused on practical developer skills.</p>
                         </div>
                         
@@ -207,10 +207,10 @@
             <div class="col-md-7 text-center">
                 <div id="countdown" class="text-center">
                     <ul type="none" class="navbar">
-                      <li class="d-inlin fs-4 fw-bold"><span id="days" class="d-block display-3 fw-bold"></span>days</li>
-                      <li class="d-inlin fs-4 fw-bold"><span id="hours" class="d-block display-3 fw-bold"></span>Hours</li>
-                      <li class="d-inline fs-4 fw-bold"><span id="minutes" class="d-block display-3 fw-bold"></span>Minutes</li>
-                      <li class="d-inline fs-4 fw-bold"><span id="seconds" class="d-block display-3 fw-bold"></span>Seconds</li>
+                      <li class="d-inlin fs-5 fw-bold"><span id="days" class="d-block display-3 fw-bold"></span>days</li>
+                      <li class="d-inlin fs-5 fw-bold"><span id="hours" class="d-block display-3 fw-bold"></span>Hours</li>
+                      <li class="d-inline fs-5 fw-bold"><span id="minutes" class="d-block display-3 fw-bold"></span>Minutes</li>
+                      <li class="d-inline fs-5 fw-bold"><span id="seconds" class="d-block display-3 fw-bold"></span>Seconds</li>
                     </ul>
                   </div>
                   {{-- <div id="content" class="emoji">
