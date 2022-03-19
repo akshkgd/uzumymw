@@ -1,12 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.ck')
 
 @section('content')
-<div class="navbar-container ">
-    <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white">
-        @include('layouts.header')
-    </nav>
-</div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+@include('layouts.ck-header')
 <style>
     .fi {
     height: 160px;
@@ -15,11 +10,31 @@
     object-position: center center;
 
 }
+.bg-mute{
+    background-color: #e6e6e6 !important;
+}
+.cd {
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding-top: 16px !important;
+    padding-bottom: 16px !important;
+    font-size: 14px;
+    background-color: rgb(255, 244, 231);
+}
+.fs-small{
+    font-size: .9rem;
+    color:rgb(56, 56, 56);
+}
+.danger-alert{
+    background-color: rgb(255, 219, 219);
+    color: rgb(204, 56, 56);
+    font-size: 14px;
+}
 .bi-star-half::before {
     padding-bottom: 3px;
 }
 body{
-    /* background-color: rgb(250, 250, 250); */
+    /* background-color: rgb(246, 246, 246); */
 }
 
 </style>
@@ -28,8 +43,8 @@ body{
         {{-- <div class="col-md-4 order-sm-2 mb-5 mb-sm-0" data-aos="fade-left">
           <img src="assets/img/t.svg" alt="Image">
         </div> --}}
-        <div class="col-md-8 pr-xl-5 order-sm-1 text-center">
-            <h1 class="display-5 "> @auth
+        <div class="col-md-8 pr-xl-5 order-sm-1 text-center d-none">
+            <h2 class="display- fw-bol"> @auth
                 Hi <span>{!!strtok(Auth::user()->name, "
                          ")!!}</span>,  <br>
                  @endauth Let's learn coding with live classes</h1>
@@ -44,26 +59,45 @@ body{
    
   </section>
 <section>
-    <div class="container">
+    <div class="container ">
         <div class="row justify-content-center">
             <div class="col">
                 {{-- <h1 class="display-6 ck-font">Lets do Coding! </h1> --}}
                     <div class="row">
                         @foreach ($batches as $batch)
-                        <div class="col-md-6 col-lg-4">
+                        <div class="col-md-6 col-lg-4 mt-5">
                             <a class="card hover-shadow-sm border-none shadow"
                                 href="{{action('BatchController@details', $batch->id )}}">
-                                <img src="{{ asset('storage/'.$batch->img) }}" alt="Image" class="card-img-top">
+                                <img src="{{ asset($batch->img) }}" alt="Image" class="card-img-top course-card">
+
+                                {{-- <img src="{{ asset('storage/'.$batch->img) }}" alt="Image" class="card-img-top"> --}}
                                 <div class="card-bod d-flex flex-column">
-                                    <div class=" p-2">
-                                        <h4 class="mb-0 ck-font fw-400">{{$batch->name}}</h6>
+                                    <div class="py-2 px-3">
+                                        <div class="pills">
+                                            <span class="badge badge-pill badge-primary bg-mute text-dark fw-light">Live Classes</span>
+                                            <span class="badge badge-pill badge-primary bg-mute text-dark fw-lighter">English</span>
+                                        </div>
+                                        <h1 class="mb-0 ck-font fw-400 fs-5 mt-3">{{$batch->name}}</h1>
                                         
-                                            <p class="m-0 pt-2">From {{Carbon\Carbon::parse($batch->startDate)->format('D, d M Y')}} to {{Carbon\Carbon::parse($batch->endDate)->format('D, d M Y')}}</p> 
-                                            <p class=""> <strong>Schedule</strong> {{$batch->schedule}}</p>
+                                            <p class="mt-2 pt-2 fs-small">Starts on {{Carbon\Carbon::parse($batch->startDate)->format('D, d M Y')}}</p> 
+                                            <p class="fs-small">Late evening classes</p>
+                                            <p class="fs-small">{{$batch->teacher->name}}</p>
                                             
-                                         
+                                            <div class="mt-4 d-flex justify-content-between align-items-end">
+                                                <div class="">
+                                                    <p class="small m-0">Price</p>
+                                                    <p>Rs {{$batch->payable}}</p>
+                                                </div>
+                                                <div class="">
+                                                    <p class="badge badge-pill badge-primary bg-primary text-dar fw-light py-2 px-3">More Details</p>
+                                                </div>
+                                            </div>
+                                            
 
                                     </div>
+                                    {{-- <div class="f-3-botto cd px-3 py-2">
+                                        Lorem ipsum dolor sit amet consectetur.
+                                    </div> --}}
                                 </div>
                             </a>
                         </div>  
@@ -84,125 +118,6 @@ body{
 
     </div>
 </section>
-
-<section class="pt-5 d-none">
-    <div class="container">
-        <div class="row">
-            
-            {{-- test --}}
-            <div class="col-md-6 col-lg-3  col-xlg-3">
-                <div class="card border-non shado hover-shadow-sm border-none shadow">
-                    <a href="#1" class="stretched-link ">
-                        <img src="assets/img/course-react.jpg" alt="Image" class="card-img-top">
-                    </a>
-                    <div class="p-2 align-items-start">
-                        <div class="">
-                            <h5 class="lead m-0 p-0" style="font-weight: 500;">React Js ndkejde</h5>
-                        </div>
-                        
-                        <p>
-                            Sed ut perspiciatis unde omnis iste natus error sit 
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <p class='pt-2 mb-0 text-warning'> <i class='bi bi-star-half'></i> 4.{!!rand(0,9)!!} <span class='text-muted pl-1'> {!!rand(1,100)!!} Votes</span></h4>
-                            <p class='pt-2 mb-0 '>Rs. 499</p>
-                        </div>
-                        
-                        
-                    </div>
-                    
-                </div>
-            </div>
-
-            {{-- test --}}
-
-            <div class="col-md-6 col-lg-3  col-xlg-3" >
-                <div class="card border-non shado hover-shadow-sm border-none shadow ">
-                    <a href="#1" class="stretched-link ">
-                        <img src="assets/img/course-css.jpg" alt="Image" class="card-img-top" >
-                    </a>
-                    <div class="p-2 align-items-start">
-                        <div class="">
-                            <h5 class="lead m-0 p-0" style="font-weight: 500;">React Js ndkejde</h5>
-                        </div>
-                        
-                        <p>
-                            Sed ut perspiciatis unde omnis iste natus error sit 
-                        </p>
-                        <div class="d-flex justify-content-between">
-                            <p class='pt-2 mb-0 text-warning'> <i class='bi bi-star-half'></i> 4.{!!rand(0,9)!!} <span class='text-muted pl-1'> {!!rand(1,100)!!} Votes</span></h4>
-                            <p class='pt-2 mb-0 '>Rs. 499</p>
-                        </div>
-                        
-                        
-                    </div>
-                    
-                </div>
-            </div>
-          
-        </div>
-    </div>
-</section>
-
-
-<section>
-    <div class="container">
-        <div class="row justify-content-center">
-            <h2 class="display-5 fw-40 p-3">We have designed a <span class="text-primary">flexible program</span>   for you</h2>
-            <div class="col-md-4">
-                <div class="card card-dark p-2 text-center">
-                    <div class="text-center">
-                        <img src="{{asset('/assets/img/missed-class-logo.svg')}}" alt="" class="avatar avatar-lg ">
-                    </div>
-                    <h4 class="ck-font">Missed a class?</h4>
-                    <p class="lead">Watch the recording later, with teaching assistants available to solve your doubts
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-dark p-2 text-center">
-                    <div class="text-center">
-                        <img src="{{asset('/assets/img/office.svg')}}" alt="" class="avatar avatar-lg ">
-                    </div>
-                    <h4 class="ck-font">Jobs & class timings clash?</h4>
-                    <p class="lead">Our classes are held in the evening to make sure college schedules do not clash with our classes.</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-dark p-2 text-center">
-                    <div class="text-center">
-                        <img src="{{asset('/assets/img/revise.svg')}}" alt="" class="avatar avatar-lg ">
-                    </div>
-                    <h4 class="ck-font">Want to revise?</h4>
-                    <p class="lead">Access assignments/notes lifelong and recordings upto 6 months post course completion
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-dark p-2 text-center">
-                    <div class="text-center">
-                        <img src="{{asset('/assets/img/doubts.svg')}}" alt="" class="avatar avatar-lg ">
-                    </div>
-                    <h4 class="ck-font">Have Doubts?</h4>
-                    <p class="lead">Get them resolved over text / video by our expert teaching assistants!
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card card-dark p-2 text-center">
-                    <div class="text-center">
-                        <img src="{{asset('/assets/img/family-logo.svg')}}" alt="" class="avatar avatar-lg ">
-                    </div>
-                    <h4 class="ck-font">College / family needs time??</h4>
-                    <p class="lead">Pause your course and restart a month later with the next batch!
-                    </p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</section>
-
-
-@include('layouts.footer')
+<div class="mt-5 pt-5"></div>
+@include('layouts.ck-footer')
 @endsection
