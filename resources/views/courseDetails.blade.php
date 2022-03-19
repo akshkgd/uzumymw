@@ -13,6 +13,16 @@
         margin-top: 20px;
         top: 20 !important;
     }
+    .accordion-button:not(.collapsed) {
+    color: black;
+    background-color: white; */
+     box-shadow: 0 0 0 white !important;
+    }
+    .accordion-button {
+    color: black;
+    background-color: white; */
+     box-shadow: 0 0 0 white;
+    }
 
     @media(max-width:786px) {
         .slider-menu {
@@ -81,20 +91,19 @@
                         </div>
 
                     </div>
-                    {{-- <div class="accordion my-5" id="accordionExample"> --}}
+                    <div class="accordion my-5" id="accordionExample">
 
                     @foreach ($topics as $topic)
-                        <div class="accordion my-5" id="accordionExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading{{ $topic->id }}">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapse{{ $topic->id }}" aria-expanded="true"
                                         aria-controls="collapse{{ $topic->id }}">
                                         {{ $topic->title }}
                                     </button>
                                 </h2>
-                                <div id="collapse{{ $topic->id }}" class="accordion-collapse collapse show"
-                                    aria-labelledby="heading{{ $topic->id }}" data-bs-parent="#accordionExample">
+                                <div id="collapse{{ $topic->id }}" class="accordion-collapse collapse @if($loop->first) show @else hide @endif"
+                                    aria-labelledby="heading{{ $topic->id }}" data-bs-parent="#accordionExample" >
                                     <div class="accordion-body">
                                         <p class="mb-2 pl-2 " style="font-size:17px;">
                                             {!! str_replace('~', "  <br /><i class='bi bi-dot fs-4'></i>", $topic->modules) !!}
@@ -103,13 +112,10 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-                        </div>
+                            
                     @endforeach
 
-
+                    </div>
 
                     <div class="mentor mt-3">
                         <div class="card " style="background:#f3f3f3">
@@ -416,6 +422,10 @@
         $(window).on('load', function() {
             $('#subscribe-modal').modal('show');
         });
+
+        function show(id){
+            console.log("fc", id)
+        }
     </script>
     {{-- callback form ends --}}
     @include('layouts.ck-footer')

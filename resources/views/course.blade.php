@@ -68,9 +68,9 @@ body{
                         <div class="col-md-6 col-lg-4 mt-5">
                             <a class="card hover-shadow-sm border-none shadow"
                                 href="{{action('BatchController@details', $batch->id )}}">
-                                <img src="{{ asset('storage/'.$batch->img) }}" alt="Image" class="card-img-top course-card">
+                                {{-- <img src="{{ asset('storage/'.$batch->img) }}" alt="Image" class="card-img-top course-card"> --}}
 
-                                {{-- <img src="{{ asset('storage/'.$batch->img) }}" alt="Image" class="card-img-top"> --}}
+                                <img src="{{ asset($batch->img) }}" alt="Image" class="card-img-top">
                                 <div class="card-bod d-flex flex-column">
                                     <div class="py-2 px-3">
                                         <div class="pills">
@@ -81,7 +81,6 @@ body{
                                         
                                             <p class="mt-2 pt-2 fs-small">Starts on {{Carbon\Carbon::parse($batch->startDate)->format('D, d M Y')}}</p> 
                                             <p class="fs-small">Late evening classes</p>
-                                            <p class="fs-small">{{$batch->teacher->name}}</p>
                                             
                                             <div class="mt-4 d-flex justify-content-between align-items-end">
                                                 <div class="">
@@ -89,7 +88,7 @@ body{
                                                     <p>Rs {{$batch->payable}}</p>
                                                 </div>
                                                 <div class="">
-                                                    <p class="badge badge-pill badge-primary bg-primary text-dar fw-light py-2 px-3">More Details</p>
+                                                    <p class="badge badge-pill badge-primary bg-primary text-light fw-light  px-4 fs-7" style="padding: 10px 16px;">More Details</p>
                                                 </div>
                                             </div>
                                             
