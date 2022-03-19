@@ -11,7 +11,7 @@
                             <div class="container pt-4 pb-0">
                                 <div class="row justify-content-center">
                                     <div class="col-lg-10 col-xl-8 text-center">
-                                        <h1 class="h2 m-0 ck-font" style="color:#4eb76a;"> Student Invoice </h1>
+                                        <h1 class="h2 m-0 ck-font" style="color:#4eb76a;"> Payment Invoice </h1>
 
                                         
                                     </div>

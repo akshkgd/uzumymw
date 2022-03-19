@@ -33,6 +33,7 @@ class CourseEnrollmentObserver
      */
     public function updated(CourseEnrollment $courseEnrollment)
     {
+        
         if($courseEnrollment->isDirty('hasPaid')){
             if($courseEnrollment->hasPaid == 1){
                 $user = User::find($courseEnrollment->userId);

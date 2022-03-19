@@ -19,10 +19,28 @@
         font-family: "Google Sans Display";
         font-weight:400;
     }
+    
+    @media(min-width:992px){
+      .h-full{
+      height: 100vh;
+      }
+      .hidden-lg{
+        display: none;
+      }
+    }
+    @media(max-width:992px){
+      .btn-round{
+      display: none !important;
+      }
+      .hidden-sm{
+        display: none;
+      }
+    }
     .razorpay-payment-button{
         /* background-color: #4b2aad; */
-        background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
+        background-image: linear-gradient(99deg, rgb(48, 124, 247), rgb(50, 122, 255));
         border: 1px solid transparent;
+        width:100%;
         margin-top: 24px;
         border:none;
         color: white;
@@ -31,14 +49,14 @@
         display: inline-block;
         cursor: pointer;
         font-size: 16px;
-        border-radius: 100px;
-        box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px;
+        border-radius: 12px;
+        /* box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px; */
     }
     .login-card{
       border-radius: 20px !important;
     }
 </style>
-<nav class="navbar navbar-expand-lg navbar-dark border-bottom">
+<nav class="navbar navbar-expand-lg navbar-dark border-bottom d-none">
   <div class="container text-center">
    
     <h1 class="navbar-brand m-0 fw-bold text-primary fs-4 text-center">Codekaro</h1>
@@ -48,7 +66,7 @@
 
 {{-- batch details start --}}
 
-<section>
+<section class="d-none">
   <div class="container mt-5">
     <div class="row justify-content-center">
       <div class="col-lg-5">
@@ -86,7 +104,7 @@
                 data-prefill.name="{{Auth::user()->name}}"
                 data-prefill.email="{{Auth::user()->email}}"
                 data-prefill.contact="{{Auth::user()->mobile}}"
-                 data-theme.color="black">
+                data-theme.color="#0066ff">
             </script>
             <input type="hidden" custom="Hidden Element" name="b" value="{{$batch->id}}">
         </form>  
@@ -96,78 +114,117 @@
   </div>
 </section>
 
-<section class="p-0 d-none">
-  <div class="container pt-5 ">
-      <div class="row justify-content-center">
-        @include('layouts.alert')
-        <div class="col-lg-7">
-          <div class="card card-primary" >
-            <div class="bg-primary-alt rounded-lg">
-              <div class="card-body">
-                <h2 class="text-primary ck-font fw-400 mb-1" >{{$batch->name}}</h3>
-                <p class="text-primary">Only 50 Seats<span class="text-dark">, available on the first come first serve basis</span></p>
-                <p class="text-muted"></p>
-                <div class="d-flex justify-content-aroun ">
-                  <span class="h3 pt-1 mr-1 js-dollar-sign text-muted">Rs</span>
-                  <span class="display-4 mr-2 js-price-per-month text-muted " style="text-decoration:line-through; font-weight:400">{{$batch->price}}</span>
-                  <span class="h3 pt-1 mr-1 js-dollar-sign">Rs</span>
-                  <span class="display-4 js-price-per-month fw-400" >{{$batch->payable}}</span>
-                </div>
-                <h5 class="ck-font fw-400 m-0"> Live Classes From {{Carbon\Carbon::parse($batch->startDate)->format('D, d M')}} to {{Carbon\Carbon::parse($batch->endDate)->format('d M')}}</h6>
-                  <p class="ck-font fw-400 ">Timings: {{$batch->timing}}</h5>
-                {{-- <a class="btn  mt-2 d-block btn-primary mt- js-pricing-submit-button"
-              href="{{action('CourseEnrollmentController@checkEnroll', $batch->id)}}">Enroll Now</a> --}}
-              <form action="{{ route('payment') }}" method="POST" class="">
-                @csrf
-                <script src="https://checkout.razorpay.com/v1/checkout.js"
-                    data-key='rzp_live_YFwQzuSuorFCPM' 
-                    data-amount="100"
-                    data-order_id="{{$order->id}}"
-                    data-buttontext="Pay Now" data-name="Codekaro" 
-                    data-description="{{$batch->name}}"
-                    data-image="{{ asset('assets/img/codekaro-dark.png') }}"
-                    data-prefill.name="{{Auth::user()->name}}"
-                    data-prefill.email="{{Auth::user()->email}}"
-                    data-prefill.contact="{{Auth::user()->mobile}}"
-                     data-theme.color="#1A73E8">
-                </script>
-                <input type="hidden" custom="Hidden Element" name="b" value="{{$batch->id}}">
-            </form>  
-              </div>
+{{-- new payment page start --}}
+<section>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 h-full hidden-sm">
+        <div class="m-lg-5 p-lg-5 my-3">
+          <h1 class="fs-5 fw-600 text-muted">Codekaro</h1>
+          <div class="">
+            
+            <h3 class="fw-bol fs-5 mt-5">{{$batch->name}}</h2>
+            {{-- <h4 class="fw-bold my-3"><del class="text-muted">Rs {{$batch->price}}</del><span class="px-2">Rs {{$batch->payable}}</span></h4> --}}
+            <div class="m-">
+            <div class="d-flex justify-content-between mt-5">
+              <span class="text-muted">Fees</span>
+              <span class="text-muted">₹ {{$batch->price}}</span>
             </div>
-            <div class="card-body">
-              
-              <div class="d-flex justify-content-between">
-                
-                <!-- <h6>End Date: {{$batch->endDate}}</h6> -->
-               
-              </div>
-              <!-- <h6>67 Days live Sessions</h5> -->
-                
-                
-              <h5 class="ck-font fw-400">This Online Course Includes</h6>
-              
-              <ul>
-                <li>Lifetime Access to projects</li>
-                <li>Free Doubt Sessions</li>
-                <li>Assignments for practice</li>
-                <li>Free e-book</li>
-                <li>Certificate of Completion</li>
-                
-              </ul>
+            <div class="d-flex justify-content-between">
+              <span class="text-muted">Price Discount</span>
+              <span class="text-muted">₹ {{$batch->price - $batch->payable}}</span>
             </div>
-            <div class="border-top">
-              <div class="card-body text-center p-2">
-                <p class="ck-font m-0 lead">Have questions? <a href="" class="fw-400 text-primary">Check out our FAQs</a>
-                  </h4>
-              </div>
+            {{-- <div class="d-flex justify-content-between ">
+              <span class="">Offer price</span>
+              <span class="">₹ {{$batch->payable}}</span>
+            </div> --}}
+            <div class="d-flex justify-content-between">
+              <span class="text-muted">CGST + SGST@0%</span>
+              <span class="text-muted">₹ 0.00</span>
+            </div>
+            <div class="d-flex justify-content-between mt-2 py-3">
+              <span class="fs-4">Total</span>
+              <span class="fs-4">₹ {{$batch->payable}}</span>
             </div>
           </div>
+          </div>
+          <p class="pt-5 small text-muted">Copyright codekaro © 2022. All rights reserved by codekaro.</p>
         </div>
-        
       </div>
+      <div class="col-lg-6 shadow-lg h-full">
+        <div class="m-lg-5 p-lg-5 my-3 hidden-lg text-center">
+          <div class="d-flex justify-content-between">
+            <p class=" fw-bold text-muted text-left">Codekaro</p>
+          </div>
+          <div class="">
+            <p class="mb-0 mt-5 text-muted">Pay now</p>
+            <h1 class=""><span class="fs-4">₹ {{$batch->payable}}.00</span></h1>
+            <p class="fw-bol fs- ">{{$batch->name}}</p>
+            {{-- <h4 class="fw-bold my-3"><del class="text-muted">Rs {{$batch->price}}</del><span class="px-2">Rs {{$batch->payable}}</span></h4> --}}
+            <div class="m-">
+            <div class="d-flex justify-content-between mt-5">
+              <span class="text-muted">Fees</span>
+              <span class="text-muted">₹ {{$batch->price}}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span class="text-muted">Price Discount</span>
+              <span class="text-muted">₹ {{$batch->price - $batch->payable}}</span>
+            </div>
+            {{-- <div class="d-flex justify-content-between ">
+              <span class="">Offer price</span>
+              <span class="">₹ {{$batch->payable}}</span>
+            </div> --}}
+            <div class="d-flex justify-content-between">
+              <span class="text-muted">CGST + SGST@0%</span>
+              <span class="text-muted">₹ 0.00</span>
+            </div>
+            <div class="d-flex justify-content-between mt-2 py-3">
+              <span class="fs-4">Total</span>
+              <span class="fs-4">₹ {{$batch->payable}}</span>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="m-lg-5 p-lg-5 my-3">
+          <h1 class="fs-5 hidden-sm">Complete your payment</h1>
+
+          <div class="card mt-5">
+            <div class="p-3">
+              <p class="m-0">{{Auth::User()->name}}</p>
+            </div>
+            <div class="p-3 border-top">
+              <p class="m-0">{{Auth::User()->email}}</p>
+            </div>
+            
+          </div>
+
+          <form action="{{ route('payment') }}" method="POST" class="">
+            @csrf
+            <script src="https://checkout.razorpay.com/v1/checkout.js"
+                data-key='rzp_live_YFwQzuSuorFCPM' 
+                data-amount="100"
+                data-order_id="{{$order->id}}"
+                data-buttontext="Pay ₹ {{$batch->payable}} Now" data-name="Codekaro" 
+                data-description="{{$batch->name}}"
+                data-image="{{ asset('assets/img/codekaro-dark.png') }}"
+                data-prefill.name="{{Auth::user()->name}}"
+                data-prefill.email="{{Auth::user()->email}}"
+                data-prefill.contact="{{Auth::user()->mobile}}"
+                 data-theme.color="black">
+            </script>
+            <input type="hidden" custom="Hidden Element" name="b" value="{{$batch->id}}">
+        
+          </form> 
+
+          <p class="py-4 small text-muted hidden-lg text-center">Copyright codekaro © 2022. All rights reserved by codekaro.</p>
+
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+{{-- new payment page end --}}
 
 
 @endsection()

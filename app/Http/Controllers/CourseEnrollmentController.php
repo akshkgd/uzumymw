@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Crypt;
 use App\Batch;
+use App\User;
 use App\CourseEnrollment;
 use App\WorkshopEnrollment;
 use Razorpay\Api\Api;
@@ -15,6 +16,7 @@ use Redirect;
 use Carbon\Carbon;
 use App\Mail\EmailForQueuing;
 use Mail;
+use App\Mail\OnboardingMail;
 
 class CourseEnrollmentController extends Controller
 {
@@ -160,9 +162,11 @@ class CourseEnrollmentController extends Controller
                 return redirect('home');
             }
             $enrollment = CourseEnrollment::where('invoiceId', $response['order_id'])->update(['status' => 1, 'hasPaid' => 1, 'amountPaid'=> $response['amount'], 'paidAt'=> Carbon::now(), 'paymentMethod'=> $response['method'], 'transactionId'=> $response['id'] ]);
-            
-            $enrollment = CourseEnrollment::where('invoiceId', $response['order_id'])->first();
-            // return view('students.PaymentComplete', compact('enrollment'));
+            $enrollment = CourseEnrollment::where('invoiceID', $response['order_id'])->first();
+            $batch = Batch::find($enrollment->batchId);
+            // $user = User::find($enrollment->userId);
+            // $this->successMail($batch, $user);
+            return view('students.PaymentComplete', compact('enrollment', 'batch'));
             session()->flash('alert-success', 'Payment Completed Successfully');
             return redirect('/home');
             
@@ -189,10 +193,10 @@ class CourseEnrollmentController extends Controller
     }
 
 
-    private function successMail($enrollId, $workshop){
+    private function successMail($workshop, $user){
         $email_data = array(
-            'name' => Auth::user()->name,
-            'email' => Auth::user()->email,
+            'name' => $user->name,
+            'email' => $user->email,
             'workshopName' => $workshop['name'],
             'workshopGroup' => $workshop['groupLink'],
             'discord' => $workshop['groupLink1'],

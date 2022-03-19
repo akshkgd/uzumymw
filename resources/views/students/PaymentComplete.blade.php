@@ -19,9 +19,28 @@
         font-family: "Google Sans Display";
         font-weight:400;
     }
-    .razorpay-payment-button{
+    .ck-link{
+      text-decoration: none;
+    }
+    @media(min-width:992px){
+      .h-full{
+      height: 100vh;
+      }
+      .hidden-lg{
+        display: none;
+      }
+    }
+    @media(max-width:992px){
+      .btn-round{
+      display: none !important;
+      }
+      .hidden-sm{
+        display: none;
+      }
+    }
+    .in{
         /* background-color: #4b2aad; */
-        background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
+        background-image: linear-gradient(99deg, rgb(48, 124, 247), rgb(50, 122, 255));
         border: 1px solid transparent;
         margin-top: 24px;
         border:none;
@@ -31,14 +50,30 @@
         display: inline-block;
         cursor: pointer;
         font-size: 16px;
-        border-radius: 100px;
-        box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px;
+        border-radius: 12px;
+        /* box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px; */
+    }
+    .razorpay-payment-button{
+        /* background-color: #4b2aad; */
+        background-image: linear-gradient(99deg, rgb(48, 124, 247), rgb(50, 122, 255));
+        border: 1px solid transparent;
+        width:100%;
+        margin-top: 24px;
+        border:none;
+        color: white;
+        padding: 12px 46px !important;
+        font-weight:400;
+        display: inline-block;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 12px;
+        /* box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px; */
     }
     .login-card{
       border-radius: 20px !important;
     }
 </style>
-<nav class="navbar navbar-expand-lg navbar-dark border-bottom">
+<nav class="navbar navbar-expand-lg navbar-dark border-bottom d-none">
   <div class="container text-center">
    
     <h1 class="navbar-brand m-0 fw-bold text-primary fs-4 text-center">Codekaro</h1>
@@ -48,126 +83,118 @@
 
 {{-- batch details start --}}
 
+
+{{-- new payment page start --}}
 <section>
-  <div class="container mt-5">
-    <div class="row justify-content-center">
-      <div class="col-lg-5">
-        <div class="login-card border-none shadow p-3 text-center">
-          <img src="{{asset('assets/img/booking-congrats.4d81c4bf.svg')}}" alt="" class="img-flui" height="100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 h-full hidden-sm ">
+        <div class="m-lg-5 p-lg-5 my-3">
+          <h1 class="fs-5 fw-600 text-muted">Codekaro</h1>
           <div class="">
-            <p class="mt-3 mb-0 danger-pill">Payment Due</p>
+            
+            <h3 class="fw-bol fs-5 mt-5">{{$batch->name}}</h2>
+            {{-- <h4 class="fw-bold my-3"><del class="text-muted">Rs {{$batch->price}}</del><span class="px-2">Rs {{$batch->payable}}</span></h4> --}}
+            <div class="m-">
+            <div class="d-flex justify-content-between mt-5">
+              <span class="text-muted">Fees</span>
+              <span class="text-muted">₹ {{$batch->price}}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span class="text-muted">Price Discount</span>
+              <span class="text-muted">₹ {{$batch->price - $batch->payable}}</span>
+            </div>
+            {{-- <div class="d-flex justify-content-between ">
+              <span class="">Offer price</span>
+              <span class="">₹ {{$batch->payable}}</span>
+            </div> --}}
+            <div class="d-flex justify-content-between">
+              <span class="text-muted">CGST + SGST@0%</span>
+              <span class="text-muted">₹ 0.00</span>
+            </div>
+            <div class="d-flex justify-content-between mt-2 py-3">
+              <span class="fs-4">Total</span>
+              <span class="fs-4">₹ {{$batch->payable}}</span>
+            </div>
+            <a href="{{ action('CourseEnrollmentController@invoice', Crypt::encrypt($enrollment->id)) }}" target="_blank" class="btn btn-primary px-4 in">View Invoice</a>
+
           </div>
-          <h3 class="fw-bol fs-4 mt-3">{{$batch->name}}</h2>
-          {{-- <h4 class="fw-bold my-3"><del class="text-muted">Rs {{$batch->price}}</del><span class="px-2">Rs {{$batch->payable}}</span></h4> --}}
-          <div class="m-5">
-          <div class="d-flex justify-content-between ">
-            <span class="">Total</span>
-            <span class="">₹ {{$batch->payable}}</span>
           </div>
-          <div class="d-flex justify-content-between">
-            <span class="">Price Discount</span>
-            <span class="">₹ {{$batch->price - $batch->payable}}</span>
-          </div>
-          <div class="d-flex justify-content-between">
-            <span class="">CGST + SGST@0%</span>
-            <span class="">₹ 0.00</span>
-          </div>
+          <p class="pt-5 small text-muted">Copyright codekaro © 2022. All rights reserved by codekaro.</p>
         </div>
+      </div>
+      <div class="col-lg-6 shadow-lg h-full ">
+        <div class="d-flex justify-content-between hidden-lg pt-2">
+          <p class=" fw-bold text-muted text-left">Codekaro</p>
+          <a href="" class="btn btn-outline-primary">Dashboard</a>
+        </div>
+        <div class="m-lg-5 p-lg-5 my-3 ">
+          <div class="text-center">
+            <img src="{{asset('assets/img/booking-congrats.4d81c4bf.svg')}}" alt="">
+          <h1 class="fs-5">Payment Completed</h1>
+          <p class="text-muted">Complete all the onboarding process</p>
+
+          </div>
+
+          <div class="card mt-5">
+            <div class="p-3 d-flex justify-content-between">
+              <p class="m-0">WhatsApp Group</p>
+              <a href="" target="_blank" class="ck-link">Join Now</a>
+            </div>
+            <div class="p-3 border-top d-flex justify-content-between">
+              <p class="m-0">Discord Server</p>
+              <a href="" target="_blank" class="ck-link">Join Now</a>
+            </div>
+            
+          </div>
+
           
-          <form action="{{ route('payment') }}" method="POST" class="">
-            @csrf
-            <script src="https://checkout.razorpay.com/v1/checkout.js"
-                data-key='rzp_live_YFwQzuSuorFCPM' 
-                data-amount="100"
-                data-order_id="{{$order->id}}"
-                data-buttontext="Pay ₹ {{$batch->payable}} Now" data-name="Codekaro" 
-                data-description="{{$batch->name}}"
-                data-image="{{ asset('assets/img/codekaro-dark.png') }}"
-                data-prefill.name="{{Auth::user()->name}}"
-                data-prefill.email="{{Auth::user()->email}}"
-                data-prefill.contact="{{Auth::user()->mobile}}"
-                 data-theme.color="black">
-            </script>
-            <input type="hidden" custom="Hidden Element" name="b" value="{{$batch->id}}">
-        </form>  
+
+
+        </div>
+        <div class="m-lg-5 p-lg-5 my-3 hidden-lg text-center">
+          
+          <div class="">
+            <p class="mb-0 mt-5 text-muted px-3 py-1 ">Invoice Paid</p>
+            <h1 class=""><span class="fs-4">₹ {{$batch->payable}}.00</span></h1>
+            <p class="fw-bol fs- ">{{$batch->name}}</p>
+            {{-- <h4 class="fw-bold my-3"><del class="text-muted">Rs {{$batch->price}}</del><span class="px-2">Rs {{$batch->payable}}</span></h4> --}}
+            <div class="m-">
+            <div class="d-flex justify-content-between mt-5">
+              <span class="text-muted">Fees</span>
+              <span class="text-muted">₹ {{$batch->price}}</span>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span class="text-muted">Price Discount</span>
+              <span class="text-muted">₹ {{$batch->price - $batch->payable}}</span>
+            </div>
+            {{-- <div class="d-flex justify-content-between ">
+              <span class="">Offer price</span>
+              <span class="">₹ {{$batch->payable}}</span>
+            </div> --}}
+            <div class="d-flex justify-content-between">
+              <span class="text-muted">CGST + SGST@0%</span>
+              <span class="text-muted">₹ 0.00</span>
+            </div>
+            <div class="d-flex justify-content-between mt-2 py-3">
+              <span class="fs-4">Total</span>
+              <span class="fs-4">₹ {{$batch->payable}}</span>
+            </div>
+            
+            <a href="{{ action('CourseEnrollmentController@invoice', Crypt::encrypt($enrollment->id)) }}" target="_blank" class="btn btn-primary px-4 in">View Invoice</a>
+
+
+          </div>
+          </div>
+          <p class="py-4 small text-muted hidden-lg text-center">Copyright codekaro © 2022. All rights reserved by codekaro.</p>
+
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="p-0 d-none">
-  <div class="container pt-5 ">
-      <div class="row justify-content-center">
-        @include('layouts.alert')
-        <div class="col-lg-7">
-          <div class="card card-primary" >
-            <div class="bg-primary-alt rounded-lg">
-              <div class="card-body">
-                <h2 class="text-primary ck-font fw-400 mb-1" >{{$batch->name}}</h3>
-                <p class="text-primary">Only 50 Seats<span class="text-dark">, available on the first come first serve basis</span></p>
-                <p class="text-muted"></p>
-                <div class="d-flex justify-content-aroun ">
-                  <span class="h3 pt-1 mr-1 js-dollar-sign text-muted">Rs</span>
-                  <span class="display-4 mr-2 js-price-per-month text-muted " style="text-decoration:line-through; font-weight:400">{{$batch->price}}</span>
-                  <span class="h3 pt-1 mr-1 js-dollar-sign">Rs</span>
-                  <span class="display-4 js-price-per-month fw-400" >{{$batch->payable}}</span>
-                </div>
-                <h5 class="ck-font fw-400 m-0"> Live Classes From {{Carbon\Carbon::parse($batch->startDate)->format('D, d M')}} to {{Carbon\Carbon::parse($batch->endDate)->format('d M')}}</h6>
-                  <p class="ck-font fw-400 ">Timings: {{$batch->timing}}</h5>
-                {{-- <a class="btn  mt-2 d-block btn-primary mt- js-pricing-submit-button"
-              href="{{action('CourseEnrollmentController@checkEnroll', $batch->id)}}">Enroll Now</a> --}}
-              <form action="{{ route('payment') }}" method="POST" class="">
-                @csrf
-                <script src="https://checkout.razorpay.com/v1/checkout.js"
-                    data-key='rzp_live_YFwQzuSuorFCPM' 
-                    data-amount="100"
-                    data-order_id="{{$order->id}}"
-                    data-buttontext="Pay Now" data-name="Codekaro" 
-                    data-description="{{$batch->name}}"
-                    data-image="{{ asset('assets/img/codekaro-dark.png') }}"
-                    data-prefill.name="{{Auth::user()->name}}"
-                    data-prefill.email="{{Auth::user()->email}}"
-                    data-prefill.contact="{{Auth::user()->mobile}}"
-                     data-theme.color="#1A73E8">
-                </script>
-                <input type="hidden" custom="Hidden Element" name="b" value="{{$batch->id}}">
-            </form>  
-              </div>
-            </div>
-            <div class="card-body">
-              
-              <div class="d-flex justify-content-between">
-                
-                <!-- <h6>End Date: {{$batch->endDate}}</h6> -->
-               
-              </div>
-              <!-- <h6>67 Days live Sessions</h5> -->
-                
-                
-              <h5 class="ck-font fw-400">This Online Course Includes</h6>
-              
-              <ul>
-                <li>Lifetime Access to projects</li>
-                <li>Free Doubt Sessions</li>
-                <li>Assignments for practice</li>
-                <li>Free e-book</li>
-                <li>Certificate of Completion</li>
-                
-              </ul>
-            </div>
-            <div class="border-top">
-              <div class="card-body text-center p-2">
-                <p class="ck-font m-0 lead">Have questions? <a href="" class="fw-400 text-primary">Check out our FAQs</a>
-                  </h4>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-      </div>
-  </div>
-</section>
+{{-- new payment page end --}}
 
 
 @endsection()

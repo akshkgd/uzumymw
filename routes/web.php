@@ -46,8 +46,13 @@ Route::get('/l', function () {
     return view('l',compact('feedbacks'));
 });
 Route::get('/it', function () {
-    $users = Feedback::where('status', 1)->take(25)->get();
-    return view('internship',compact('users'));
+    // $users = Feedback::where('status', 1)->take(25)->get();
+    // return view('internship',compact('users'));
+            $enrollment = CourseEnrollment::find(13);
+            $batch = Batch::find($enrollment->batchId);
+            // $user = User::find($enrollment->userId);
+            // $this->successMail($batch, $user);
+            return view('students.PaymentComplete', compact('enrollment', 'batch'));
 });
 
 Route::get('/', function () {
