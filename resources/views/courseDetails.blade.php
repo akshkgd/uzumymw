@@ -140,7 +140,7 @@
                 <div class="col-md-4 mb-5 mb-lg-0 mb-xlg-0 ">
 
                     <div class="card card-primary sticky-lg-top border-none shadow-lg p-3">
-                        <img src="{{ asset($batch->img) }}" alt="Image" class="card-img-to course-car ck-rounded">
+                        <img src="{{ asset('storage/'.$batch->img) }}" alt="Image" class="card-img-to course-car ck-rounded">
                         <div class="pills mt-3">
                             <span class="badge badge-pill badge-primary bg-mute text-dark fw-light">Live Classes</span>
                             <span class="badge badge-pill badge-primary bg-mute text-dark fw-lighter">English</span>
@@ -150,7 +150,7 @@
 
 
                         </div>
-                        {{-- <img src="{{ asset('storage/'.$batch->img) }}" alt="" class="img-fluid rounded"> --}}
+                        {{-- <img src="{{ asset('storage/'.$batch->img) }}" alt="" class="img-fluid ck-rounded"> --}}
                         <div class="bg-primary-al rounded-lg">
                             <div class="mt-2">
                                 <h1 class="fs-5 my-3 text-dark">{{ $batch->name }}</h3>

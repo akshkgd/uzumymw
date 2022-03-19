@@ -68,7 +68,7 @@ body{
                         <div class="col-md-6 col-lg-4 mt-5">
                             <a class="card hover-shadow-sm border-none shadow"
                                 href="{{action('BatchController@details', $batch->id )}}">
-                                <img src="{{ asset($batch->img) }}" alt="Image" class="card-img-top course-card">
+                                <img src="{{ asset('storage/'.$batch->img) }}" alt="Image" class="card-img-top course-card">
 
                                 {{-- <img src="{{ asset('storage/'.$batch->img) }}" alt="Image" class="card-img-top"> --}}
                                 <div class="card-bod d-flex flex-column">
