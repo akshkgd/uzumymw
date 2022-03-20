@@ -149,8 +149,8 @@
                 <div class="col-md-4 mb-5 mb-lg-0 mb-xlg-0 ">
 
                     <div class="card card-primary sticky-lg-top border-none shadow-lg p-3">
-                        {{-- <img src="{{ asset('storage/' . $batch->img) }}" alt="Image"
-                            class="card-img-to course-car ck-rounded"> --}}
+                        <img src="{{ asset('storage/' . $batch->img) }}" alt="Image"
+                            class="card-img-to course-car ck-rounded">
                         <div class="pills mt-3">
                             <span class="badge badge-pill badge-primary bg-mute text-dark fw-light">Live Classes</span>
                             <span class="badge badge-pill badge-primary bg-mute text-dark fw-lighter">English</span>
@@ -178,7 +178,7 @@
                                     <p class="ck-font fw-400 ">Timings: {{ $batch->schedule }}
                                         </h5>
                                         @auth
-                                        <div class="card mt-5">
+                                        <div class="card ">
                                             <div class="p-3">
                                                 <p class="m-0">{{ Auth::User()->name }}</p>
                                             </div>
