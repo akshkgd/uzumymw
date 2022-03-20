@@ -13,15 +13,17 @@
         margin-top: 20px;
         top: 20 !important;
     }
+
     .accordion-button:not(.collapsed) {
-    color: black;
-    background-color: white; */
-     box-shadow: 0 0 0 white !important;
+        color: black;
+        background-color: white;
+        */ box-shadow: 0 0 0 white !important;
     }
+
     .accordion-button {
-    color: black;
-    background-color: white; */
-     box-shadow: 0 0 0 white;
+        color: black;
+        background-color: white;
+        */ box-shadow: 0 0 0 white;
     }
 
     @media(max-width:786px) {
@@ -41,7 +43,8 @@
             width: 100%;
             /* z-index: 1000; */
         }
-        .btn-round{
+
+        .btn-round {
             display: none !important;
         }
     }
@@ -93,7 +96,7 @@
                     </div>
                     <div class="accordion my-5" id="accordionExample">
 
-                    @foreach ($topics as $topic)
+                        @foreach ($topics as $topic)
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading{{ $topic->id }}">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -102,8 +105,9 @@
                                         {{ $topic->title }}
                                     </button>
                                 </h2>
-                                <div id="collapse{{ $topic->id }}" class="accordion-collapse collapse @if($loop->first) show @else hide @endif"
-                                    aria-labelledby="heading{{ $topic->id }}" data-bs-parent="#accordionExample" >
+                                <div id="collapse{{ $topic->id }}"
+                                    class="accordion-collapse collapse @if ($loop->first) show @else hide @endif"
+                                    aria-labelledby="heading{{ $topic->id }}" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <p class="mb-2 pl-2 " style="font-size:17px;">
                                             {!! str_replace('~', "  <br /><i class='bi bi-dot fs-4'></i>", $topic->modules) !!}
@@ -112,8 +116,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                    @endforeach
+                        @endforeach
 
                     </div>
 
@@ -146,7 +149,8 @@
                 <div class="col-md-4 mb-5 mb-lg-0 mb-xlg-0 ">
 
                     <div class="card card-primary sticky-lg-top border-none shadow-lg p-3">
-                        <img src="{{ asset('storage/'.$batch->img) }}" alt="Image" class="card-img-to course-car ck-rounded">
+                        <img src="{{ asset('storage/' . $batch->img) }}" alt="Image"
+                            class="card-img-to course-car ck-rounded">
                         <div class="pills mt-3">
                             <span class="badge badge-pill badge-primary bg-mute text-dark fw-light">Live Classes</span>
                             <span class="badge badge-pill badge-primary bg-mute text-dark fw-lighter">English</span>
@@ -173,7 +177,16 @@
                                         {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M') }}</p>
                                     <p class="ck-font fw-400 ">Timings: {{ $batch->schedule }}
                                         </h5>
-
+                                        @auth
+                                        <div class="card mt-5">
+                                            <div class="p-3">
+                                                <p class="m-0">{{ Auth::User()->name }}</p>
+                                            </div>
+                                            <div class="p-3 border-top">
+                                                <p class="m-0">{{ Auth::User()->email }}</p>
+                                            </div>
+                                        </div>
+                                    @endauth
                                     <div class="">
                                         <a class="btn ck-btn fw-light ck-rounded"
                                             href="{{ action('CourseEnrollmentController@checkEnroll', $batch->id) }}">Enroll
@@ -333,6 +346,7 @@
         <h3 class="ck-font ">₹{{ $batch->payable }} <span class="lead "
                 style="text-decoration: line-through;">₹{{ $batch->price }}</span> </h3>
         <br>
+
         <div class="">
             <a href="{{ action('CourseEnrollmentController@checkEnroll', $batch->id) }}"
                 class="btn btn-primary w-10 fw-light py-2 px-5 rounded-pil">Enroll Now</a>
@@ -423,7 +437,7 @@
             $('#subscribe-modal').modal('show');
         });
 
-        function show(id){
+        function show(id) {
             console.log("fc", id)
         }
     </script>
