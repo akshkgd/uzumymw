@@ -207,7 +207,7 @@
     </section>
 
 
-    <section class="d-none">
+    <section class="">
         <div class="container mb-5">
             <div class="row justify-content-center">
                 <h2 class="display-5 text-sm-center fw-400 p-3">We have designed a <span

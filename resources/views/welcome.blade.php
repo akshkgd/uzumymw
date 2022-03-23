@@ -43,10 +43,11 @@
                   There are 72M students learning to code around the world. We try to
                   make learning more accessible, equitable and more seamless for them.
                 </p>
-                <a href="{{url('/event')}}" class="btn ck-bt btn-dark btn-lg rounded-pill fw-light px-4 text-capitaliz text-white">Get started on your journey</a>
-                <!-- <img src="./img/discord.svg" alt="" class="img-fluid hidden-lg mt-5"> -->
+                <a href="{{url('/event')}}" class="btn ck-bt btn-dark btn-lg rounded-pil fw-light px-4 fs-5 text-capitali text-white">Start learning for free</a>
+                
       
               </div>
+              
     </section>
 
 
@@ -90,12 +91,12 @@
                                     class="card-img-top" >
                                 @endif
                                 <div class="card-bod d-flex flex-column">
-                                    <div class=" p-2 text-center">
-                                        <h5 class="my-2 fs- fw-500">{{ $batch->name }} </h1>
-                                            <p class="smal text-muted">{{$batch->description}}</p>
-                                            <p class="lea m-0 text-dark fw-500"> <strong> From
+                                    <div class=" p-3 text-cente">
+                                        <h5 class="my-2 fs-5">{{ $batch->name }} </h1>
+                                            {{-- <p class="smal text-muted">{{$batch->description}}</p> --}}
+                                            <p class="lea m-0 text-dark fw-500"> From
                                                     {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M') }}
-                                                </strong> <span class="text-muted">at
+                                                 <span class="text-muted">at
                                                     {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}</span>
                                             </p>
 

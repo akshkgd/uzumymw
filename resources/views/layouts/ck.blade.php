@@ -45,11 +45,21 @@
     </script>
     <link rel="stylesheet" href="{{asset('assets/css/ck.css')}}" />
     <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
-    
+    <script>
+      var myModal = document.getElementById('staticBackdrop');
+var modal = bootstrap.Modal.getOrCreateInstance(myModal)
+modal.show()
+  
+    </script>
   </head>
   <body>
     <div class="d-none m-0 alert bg-primary text-center text-white fw-light rounded-0 border-0 smal d-non">
       New masterclasses has been launched! <a href="" class="text-white stretched-link nav-link d-inline p-0">Check Now</a> Limited seats available.
+    </div>
+    <div class="loader">
+      <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
     </div>
     
 @yield('content')
@@ -135,6 +145,24 @@
     
       <!-- register modal ends -->
 
+
+      {{-- enroll for course modal --}}
+       
+    <div class="card d-none border-none shadow p-fixe p-4 " style="position: fixed;
+    z-index: 1030;
+    left: 1.5rem; bottom:1.5rem; width:400px">
+      <div class="d-md-flex align-items-center ">
+        <img src="{{asset('assets/img/clockNudge.svg')}}" height="80" alt=""> 
+      <div class="mx-2">
+        
+      <p style="font-size: 14px">Complete your payment now & kickstart your NTA-UGC-NET & SET Exams preparation</p>  
+      <a href="" class="btn btn-primary fw-lighter px-4 rounded-pil rounded" style="border-radius: 9px !important;">Enroll Now</a>
+      {{-- <a href="" class="btn btn-outline-dark">View Details</a> --}}
+      </div>  
+      </div>
+    </div>
+      {{-- enroll for course modal ends --}}
+      
       <!-- login modal -->
     <div class="modal" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -288,7 +316,13 @@
               document.getElementById('goBackBtn').style.display = "none";
             }
         </script>
-
-    <script src="{{asset('assets/js/ck.js')}}"></script>
+<button type="button" id="e" class="d-none" data-bs-toggle="modal" data-bs-target="#enroll">
+  
+</button>
+    <script src="{{asset('js/codekaro.js')}}"></script>
+    <script>
+      // document.getElementById('e').click();
+      document.getElementById('enroll').style.display = "block";
+    </script>
   </body>
 </html>
