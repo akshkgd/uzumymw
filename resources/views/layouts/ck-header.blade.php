@@ -39,8 +39,8 @@
                 <ul class="navbar-nav">
                     <li class="dropdown ms-2">
                         <a class="rounded-circle" href="#" role="button" data-bs-toggle="dropdown">
-                            <div class="avatar avatar-md avatar-indicators avatar-online">
-                                <img alt="avatar" src="{{ Auth::user()->avatar }}" class="rounded-circle mt-2"
+                            <div class="">
+                                <img alt="avatar" src="{{ Auth::user()->avatar }}" class="rounded-circle "
                                     height="40" />
                             </div>
                         </a>
@@ -61,17 +61,17 @@
                             <div class="dropdown-divider"></div>
                             <ul class="list-unstyled">
                                 <li>
-                                    <a class="dropdown-item" href="./pages/profile-edit.html">
+                                    <a class="dropdown-item" href="{{url('/home')}}">
                                         Dashboard
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="./pages/profile-edit.html">
+                                    <a class="dropdown-item" href="{{url('/my-course')}}">
                                         My Classes
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="./pages/profile-edit.html">
+                                    <a class="dropdown-item" href="{{url('/my-account')}}">
                                         My Account
                                     </a>
                                 </li>
