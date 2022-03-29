@@ -206,8 +206,70 @@
         </div>
     </section>
 
+    <section>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <h1 class="fw-bold  text-center fw-400 p-3 mt-5">We have designed a <br> <span
+                        class="text-prima wd_highlight1">flexible program</span> for you</h2>
+                    <div class="col-md-4 mt-4">
+                        <div class="card text-center f-1">
+                            <div class="p-2">
+                                <img src="{{ asset('assets/img/missed-class-logo-1.svg') }}" alt="">
+                                <h2 class="fs-4 mt-2">Missed a class?</h2>
+                                <p class="">No worries, watch the recordings later at your convenience from
+                                    your Archive.</p>
+                            </div>
 
-    <section class="">
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-4">
+                        <div class="card text-center f-3">
+                            <div class="p-2">
+                                <img src="{{ asset('assets/img/hd.svg') }}" alt="">
+                                <h2 class="fs-4 mt-2">Have doubts?</h2>
+                                <p class="">Fear not, peer to peer group will help you out any issue, big or
+                                    small.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-4">
+                        <div class="card text-center f-2">
+                            <div class="p-2">
+                                <img src="{{ asset('assets/img/wtr.svg') }}" alt="">
+                                <h2 class="fs-4 mt-2">Get Certificate!</h2>
+                                <p>Receive a linkedIn shareable certificate after the completion of live classes</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-4">
+                        <div class="card text-center f-4">
+                            <div class="p-2">
+                                <img src="{{ asset('assets/img/time.svg') }}" alt="">
+                                <h2 class="fs-4 mt-2">Timings clash?</h2>
+                                <p class="">Our classes are held in the evening to make sure college schedules
+                                    do not clash with our classes.</p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-4">
+                        <div class="card text-center f-5">
+                            <div class="p-2">
+                                <img src="{{ asset('assets/img/project.svg') }}" alt="" height="70">
+                                <h2 class="fs-4 mt-2">College needs time??</h2>
+                                <p class="">Pause your course and restart a month later with the next batch!
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </section>
+    {{-- test --}}
+    <section class="d-none">
         <div class="container mb-5">
             <div class="row justify-content-center">
                 <h2 class="display-5 text-sm-center fw-400 p-3">We have designed a <span
@@ -269,72 +331,78 @@
 
         </div>
     </section>
-    <section class="mt-5 pt-5">
+    <section class="mt-5 pt-5 d-none">
         <div class="container mb-sm-5 pt-0">
             <div class="row justify-content-center">
-                <h2 class="fw-bold text-sm-center fw-400 p-3">We built codekaro for <span class="text-prima ck-highlight">
+                <h1 class="fw-bold text-sm-center fw-400 p-3">We built codekaro for <span
+                        class="text-prima wd_highlight1">
                         college students </span> <br> and they love us</h2>
-                <div class="col-md-4 d-flex">
-                    <div class="card card-dark p-2 ">
-                        <div class=" d-flex align-items-center mb-2">
-                            <img src="{{ asset('assets/img/testimonials/bhanu-397d99374e67f29c99c907f25fe8e1bb6d8c8bdfbf3b78c780daddb3686941ef.png.gz') }}"
-                                class="avatar  mr-3">
-                            <div>
-                                <h6 class="mb-0">Bhanu Pratap Singh Rathore</h6>
-                                <p class="m-0 p-0 text-muted">Student</p>
+                    <div class="col-md-4 d-flex">
+                        <div class="card my-2 card-dark p-2 ">
+                            <div class=" d-flex align-items-center mb-2">
+                                <img src="{{ asset('assets/img/testimonials/bhanu-397d99374e67f29c99c907f25fe8e1bb6d8c8bdfbf3b78c780daddb3686941ef.png.gz') }}"
+                                    class="rounded-circle  m-" height="60">
+                                <div class="mx-2">
+                                    <h6 class="mb-0">Bhanu Pratap Singh Rathore</h6>
+                                    <p class="m-0 p-0 text-muted">Student</p>
+                                </div>
                             </div>
+                            <p class="">All the interactive live classes with experienced instructors, the
+                                sessions with veteran
+                                mentors and the rigorous mock interviews helped bridge the gap in my learning process.</p>
                         </div>
-                        <p class="">All the interactive live classes with experienced instructors, the
-                            sessions with veteran
-                            mentors and the rigorous mock interviews helped bridge the gap in my learning process.</p>
                     </div>
-                </div>
-                <div class="col-md-4 d-flex">
-                    <div class="card card-dark p-2 flex-grow-1">
-                        <div class=" d-flex align-items-center mb-2">
-                            <img src="{{ asset('assets/img/testimonials/suryakant-0a0b8726c67de8fe3464ac8ce00746a4ff6e8e61fef846f8c4c9825570fec2b4.png.gz') }}"
-                                class="avatar  mr-3">
-                            <div>
-                                <h6 class="mb-0">Suryakant Mishra</h6>
-                                <p class="m-0 p-0 text-muted">Student</p>
+                    <div class="col-md-4 d-flex">
+                        <div class="card my-2 card-dark p-2 flex-grow-1">
+                            <div class=" d-flex align-items-center mb-2">
+                                <img src="{{ asset('assets/img/testimonials/suryakant-0a0b8726c67de8fe3464ac8ce00746a4ff6e8e61fef846f8c4c9825570fec2b4.png.gz') }}"
+                                    class="avatar  mr-3">
+                                <div class="mx-2">
+                                    <h6 class="mb-0">Suryakant Mishra</h6>
+                                    <p class="m-0 p-0 text-muted">Student</p>
+                                </div>
                             </div>
+                            <p class="">The mentorship arrangement and the peer culture has helped me evolve
+                                as a
+                                coder, and I
+                                am genuinely grateful for my association with codekaro.</p>
                         </div>
-                        <p class="">The mentorship arrangement and the peer culture has helped me evolve as a
-                            coder, and I
-                            am genuinely grateful for my association with codekaro.</p>
                     </div>
-                </div>
-                <div class="col-md-4 d-flex">
-                    <div class="card card-dark p-2 d-flex">
-                        <div class=" d-flex align-items-center mb-2">
-                            <img src="{{ asset('assets/img/testimonials/suman-b8c6c6d44724e249c439ba0c7e24afa71cbcd8197f90c28d4ee776346cdbb175.png.gz') }}"
-                                class="avatar  mr-3">
-                            <div>
-                                <h6 class="m-0 p-0">Suman Mahato</h6>
-                                <p class="m-0 p-0 text-muted">Student</p>
+                    <div class="col-md-4 d-flex">
+                        <div class="card my-2 card-dark p-2 d-flex">
+                            <div class=" d-flex align-items-center mb-2">
+                                <img src="{{ asset('assets/img/testimonials/suman-b8c6c6d44724e249c439ba0c7e24afa71cbcd8197f90c28d4ee776346cdbb175.png.gz') }}"
+                                    class="avatar  mr-3">
+                                <div class="mx-2">
+                                    <h6 class="m-0 p-0">Suman Mahato</h6>
+                                    <p class="m-0 p-0 text-muted">Student</p>
+                                </div>
                             </div>
+                            <p class="">I still watch the recorded classes of Codekaro, and try to hone my
+                                skills
+                                more, codekaro
+                                has helped me gain confidence and constantly strengthen my core concepts.</p>
                         </div>
-                        <p class="">I still watch the recorded classes of Codekaro, and try to hone my skills
-                            more, codekaro
-                            has helped me gain confidence and constantly strengthen my core concepts.</p>
                     </div>
-                </div>
 
             </div>
         </div>
     </section>
 
 
-    <section class="p-0 mb-5 d-none">
-        <div class="container">
+    <section class="p-0 my-5 d-non">
+        <div class="container ">
             <div class="row justify-content-center">
-                <div class="col-md-8 text-center">
-                    <h2 class="display-5 text-sm-center fw-400 px-3">Still have doubts? <span
-                            class="text-prima ck-highlight">Request Callback</span></h2>
-                    <p class="lead">Still have doubts or query, you can simply request callback and our team will
-                        get back
-                        to you as soon as possible</p>
-                    <a href="" class="btn btn-lg btn-primary m-0 fw-400">Request Callback</a>
+                <div class="col-md-10 my-5">
+                    <div class="border shadow-3d ck-rounded p-5 d-md-flex align-items-center">
+                        <div class="text-left">
+                            <h2 class="text-left fw-bold">Still have doubts? <span
+                                    class="text-prima ck-highlight">Request Callback</span></h2>
+                            <p class="">Still have doubts or query, you can simply request callback and our team will get back to you as soon as possible</p>
+                            <a href="" class="btn btn-dark px-3 m-0 fw-400">Request Callback</a>
+                        </div>
+                        <img src="{{asset('assets/img/ttu_illustration_new.svg')}}" alt="">
+                    </div>
                 </div>
             </div>
         </div>
