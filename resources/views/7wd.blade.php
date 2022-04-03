@@ -59,11 +59,7 @@ professional work-like projects'))
                     <p>Master in-demand web development skills with real work experience of building
                         professional work-like projects. Gain the skills and experience needed to crack jobs
                         in unicorns, MNCs, & more.</p>
-                        <a href="https://codekaro.in/enroll/22" class="btn ck-btn ck-rounded btn-lg   px-5"
-                    >
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 299</h2>
-                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
-                        </a>
+                        
                         {{-- <a href="" class="btn btn-dark btn-lg px-5 rounded-pill">Enroll Now</a> --}}
                 </div>
                 
@@ -72,7 +68,13 @@ professional work-like projects'))
                 </div> --}}
                 <div class="col-lg-7 mt-5 ck-rounded">
                     <div id="player" class="ck-rounded d-inline" data-plyr-provider="youtube" data-plyr-embed-id="C_H9IHbMj4g"></div>
-
+                    <div class="text-center">
+                        <a href="https://codekaro.in/enroll/22" class="btn ck-btn ck-rounded btn-lg mt-3  px-5"
+                    >
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 299</h2>
+                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                        </a>
+                    </div>
                 </div>
                 
 
