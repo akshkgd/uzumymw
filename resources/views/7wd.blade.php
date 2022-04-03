@@ -530,35 +530,7 @@ professional work-like projects'))
 
 @include('layouts.ck-footer')
   {{-- enrollment model  starts --}}
-  <div class="modal" id="enroll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content rounded-5 shadow">
-          <div class="modal-header p-5 pb-4 border-bottom-0">
-            <!-- <h5 class="modal-title">Modal title</h5> -->
-            <h2 class="fw-bold mb-0">Select Batch</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-    
-          <div class="modal-body p-5 pt-0">
-           <div class="mb-3">
-            <div class="card border-none ck-rounded bg-primary p-3">
-                <h4 class=" fs-5 text-white m-0">6th September</h3>
-                    <p class="text-white small">Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-           </div>
-           <div class="mb-3">
-            <div class="card border-non ck-rounded bg- p-3">
-                <h4 class=" fs-5 text-whit m-0">6th September</h3>
-                    <p class="text-whit small">Lorem ipsum dolor sit amet consectetur.</p>
-            </div>
-           </div>
-            
-            <small class="text-mute text-cente mt-2">By clicking Sign up, you agree to the terms of use.</small>
-          </div>
-        </div>
-      </div>
-      </div>
-  {{-- enrollment mode ends --}}
+
   <script src="{{asset('css/plyr.min.js')}}"></script>
   <script>
     (function () {
