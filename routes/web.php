@@ -40,19 +40,20 @@ Route::view('/web-development-bootcamp','wdm');
 Route::view('/wdt','wdt');
 Route::view('/love','love');
 Route::view('/teach','teach');
+Route::view('/web-development-live-bootcamp','7wd');
 
 Route::get('/l', function () {
     $feedbacks = Feedback::all()->where('status',0);
     return view('l',compact('feedbacks'));
 });
 Route::get('/it', function () {
-    // $users = Feedback::where('status', 1)->take(25)->get();
-    // return view('internship',compact('users'));
-            $enrollment = CourseEnrollment::find(13);
-            $batch = Batch::find($enrollment->batchId);
-            // $user = User::find($enrollment->userId);
-            // $this->successMail($batch, $user);
-            return view('students.PaymentComplete', compact('enrollment', 'batch'));
+    $users = Feedback::where('status', 1)->take(25)->get();
+    return view('internship',compact('users'));
+            // $enrollment = CourseEnrollment::find(13);
+            // $batch = Batch::find($enrollment->batchId);
+            // // $user = User::find($enrollment->userId);
+            // // $this->successMail($batch, $user);
+            // return view('students.PaymentComplete', compact('enrollment', 'batch'));
 });
 
 Route::get('/', function () {
