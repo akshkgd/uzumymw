@@ -89,6 +89,7 @@
                                         <td scope="col">Email</th>
                                         <td scope="col">Mobile</th>
                                         <td scope="col">College</th>
+                                        <th scope="col">Amount paid</th>
                                         <td scope="col">Enrolled on </th>
                                         <td scope="col">Actions</th>
 
@@ -103,6 +104,7 @@
                                             <td>{{ $enrollment->students->email }}</td>
                                             <td>{{ $enrollment->students->mobile }}</td>
                                             <td>{{ $enrollment->students->college}}</td>
+                                            <td>{{ $enrollment->amountPaid}}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
                                             <td>
                                                 <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id) )}}" class="">Payment Received</a>
