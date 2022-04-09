@@ -104,7 +104,7 @@
                                             <td>{{ $enrollment->students->email }}</td>
                                             <td>{{ $enrollment->students->mobile }}</td>
                                             <td>{{ $enrollment->students->college}}</td>
-                                            <td>{{ $enrollment->amountPaid}}</td>
+                                            <td>{{ ($enrollment->amountPaid) / 100 }}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
                                             <td>
                                                 <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id) )}}" class="">Payment Received</a>
