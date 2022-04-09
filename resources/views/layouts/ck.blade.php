@@ -11,8 +11,8 @@
     <link rel="canonical" href="{{url()->current()}}"/>
     <link rel="icon" href="{{asset('/assets/img/chrome-icon.png')}}">
     <meta name="facebook-domain-verification" content="sqxnqkagio33ipi426hafktfp1x76s" />
-    <!-- Facebook Pixel Code -->
-  <script>
+<!-- Meta Pixel Code -->
+<script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -21,13 +21,13 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1180474805808058');
+  fbq('init', '438131724437018');
   fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1180474805808058&ev=PageView&noscript=1"
+  src="https://www.facebook.com/tr?id=438131724437018&ev=PageView&noscript=1"
   /></noscript>
-  <!-- End Facebook Pixel Code -->
+  <!-- End Meta Pixel Code -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC9ETJV29G"></script>
     <script>
