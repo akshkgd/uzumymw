@@ -102,7 +102,7 @@
                                             <a class="text-dark td-none" href="{{action('AdminController@studentDetails', $enrollment->students->id  )}}">{{ $enrollment->students->name }}</a></td>
                                             <td>{{ $enrollment->students->email }}</td>
                                             <td>{{ $enrollment->students->mobile }}</td>
-                                            <td>{{ $enrollment->students->college }}</td>
+                                            <td>{{ $enrollment->students->college}}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
                                             <td>
                                                 <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id) )}}" class="">Payment Received</a>
