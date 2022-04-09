@@ -149,7 +149,7 @@
 {{-- test --}}
     <section class="">
         <div class="container mb-5">
-            <div class="row d-flex">
+            <div class="row d-flex justify-content-center">
               <h2>What's inside</h2>
               <p>This course contains 18 topics spread across 3 modules.</p>
                 
