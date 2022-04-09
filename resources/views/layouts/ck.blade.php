@@ -10,7 +10,7 @@
     <meta name="og:description" content="@yield('meta_description','Codekaro try to bring latest courses to students. Not only that we provide a dedicated team to answer their doubts.')">
     <link rel="canonical" href="{{url()->current()}}"/>
     <link rel="icon" href="{{asset('/assets/img/chrome-icon.png')}}">
-    <meta name="facebook-domain-verification" content="nlndijpgith63pnf9skj942enj02m8" />
+    <meta name="facebook-domain-verification" content="sqxnqkagio33ipi426hafktfp1x76s" />
     <!-- Facebook Pixel Code -->
   <script>
   !function(f,b,e,v,n,t,s)
@@ -322,7 +322,7 @@ modal.show()
     <script src="{{asset('js/codekaro.js')}}"></script>
     <script>
       // document.getElementById('e').click();
-      document.getElementById('enroll').style.display = "block";
+      // document.getElementById('enroll').style.display = "block";
     </script>
   </body>
 </html>
