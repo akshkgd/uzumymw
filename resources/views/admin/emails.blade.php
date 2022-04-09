@@ -24,6 +24,10 @@
                                     <tr>
                                         <th scope="col">Email for Newsletter</th>
                                         <th>Name</th>
+                                        <th>mobile</th>
+                                        <th>college</th>
+                                        <th>course</th>
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -31,6 +35,9 @@
                                         <tr>
                                             <td>{{$user->email }}</td>
                                             <td>{{$user->name }}</td>
+                                            <td>{{$user->mobile }}</td>
+                                            <td>{{$user->college }}</td>
+                                            <td>{{$user->course }}</td>
                                         </tr>
                                     @endforeach
 
