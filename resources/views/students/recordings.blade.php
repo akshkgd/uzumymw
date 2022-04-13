@@ -1,5 +1,5 @@
-@extends('layouts.app')
 
+@extends('layouts.app')
 @section('content')
 <style>
   .fw-400{
@@ -32,7 +32,7 @@
     @isset($video)
         
     <div class=""></div>
-    <div id="player" class="js-player plyr" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div>
+    <div id="playe" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div>
     <h1 class="lead-1 pt-2 pb-0" id="title">{{$video->title}}</h1>
     <div class="">
         {!!$video->desc!!}
