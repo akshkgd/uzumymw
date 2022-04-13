@@ -1,12 +1,10 @@
 
 @extends('layouts.app')
+{{-- <link rel="stylesheet" href="{{asset('css/plyr.css')}}"> --}}
 @section('content')
 <style>
   .fw-400{
     font-weight: 400 !important;
-  }
-  .a{
-    color: #00bcd4;
   }
   
 </style>
@@ -32,7 +30,7 @@
     @isset($video)
         
     <div class=""></div>
-    <div id="playe" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div>
+    <div id="player" class="plyr" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div>
     <h1 class="lead-1 pt-2 pb-0" id="title">{{$video->title}}</h1>
     <div class="">
         {!!$video->desc!!}
