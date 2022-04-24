@@ -147,6 +147,9 @@
                                             <td>{{ $enrollment->created_at->format('d M')}}</td>
                                             <td>
                                                 <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id) )}}" class="">Payment Received</a>
+                                                <a target="_blank" href="{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($enrollment->id)) }}"
+                                                    class=" btn btn-outline-primary fw-400">Complete
+                                                    Payment</a>
                                             </td>
 
                                         </tr>
