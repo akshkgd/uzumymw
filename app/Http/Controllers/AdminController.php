@@ -227,6 +227,7 @@ class AdminController extends Controller
     public function updatePaymentStatus(Request $request)
     {
         $enrollment = CourseEnrollment::findorFail($request->enrollmentId);
+        $enrollment->batchId = $request->batchId;
         $enrollment->invoiceId = $request->invoiceId;
         $enrollment->transactionId = $request->transactionId;
         $enrollment->paymentMethod = $request->paymentMethod;

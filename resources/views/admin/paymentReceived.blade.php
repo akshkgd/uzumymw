@@ -13,6 +13,11 @@
                 <form action="{{ route('updatePaymentStatus') }}" method="POST" class="form-inlin ">
                     @csrf
                     {{-- <div class="row pl-0 pr-0"> --}}
+                      <div class="form-floating mt-3 mb-2 ">
+                      
+                        <input type="text" id="floatingInput"  class="form-control" name="batchId" placeholder="Password" value="{{$enrollment->batchId}}">
+                        <label for="floatingInput" >Batch Id</label>
+                      </div>
                     <div class="form-floating mt-3 mb-2 ">
                       
                       <input type="text" id="floatingInput"  class="form-control" name="invoiceId" placeholder="Password" value="{{$enrollment->invoiceId}}">
