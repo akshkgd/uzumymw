@@ -1,71 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.ck')
+<style>
+    .ck-btn{
+          
+          background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
+          border: 1px solid transparent;
+          border:none;
+          color: white !important;
+          padding: 12px 46px !important;
+          font-weight:400;
+          display: inline-block;
+          cursor: pointer;
+          font-size: 16px;
+          border-radius: 100px;
+          /* box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px; */
+      }
+      .avatar-sm{
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+      }
+      .project{
+          padding:0 40px;
+  
+      }
+      .btn-desc{
+          font-size: .825rem
+      }
+      .white{
+            color: white !important;
+      }
+      .cd{
+          border-radius: 0 0 16px 16px;
+      }
+  </style>
+@section('content')
+{{-- @include('layouts.ck-header') --}}
+    <div class="container">
+        @include('layouts.alert')
+    </div>
+    <div class="container pt-lg-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 mx-auto p-3 " style="height: 100vh">
+        
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Javascript Masterclass</title>
-    <meta name="keywords" content="Modern JavaScript from the beginning - all the way up to JS expert level! THE must-have JavaScript masterclass in 2021.">
-    <meta name="og:description" content="Modern JavaScript from the beginning - all the way up to JS expert level! THE must-have JavaScript masterclass in 2021.">
-    <link rel="canonical" href="https://codekaro.in/javascript-live-masterclass"/>
-    <link rel="icon" href="https://codekaro.in/assets/img/chrome-icon.png">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC9ETJV29G"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-HC9ETJV29G');
-    </script>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/ck_light.css')}}">
-    <style>
-
-    </style>
-</head>
-
-<body>
-    <div class="container ">
-        <div class="col-lg-12 mx-auto p-3 ">
-            {{-- <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
-                <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="32" class="me-2" viewBox="0 0 118 94"
-                        role="img">
-                        <title>Bootstrap</title>
-                        <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"
-                            fill="currentColor"></path>
-                    </svg>
-                    <span class="fs-4">Codekaro</span>
-                </a>
-            </header> --}}
-
-            <main class="text-center mt-5 pt-lg-5">
-                <h1 class="title">Get started with 2 hours  <span class="wd_highlight">Live Javascript</span> <br> Masterclass</h1>
-               
-                <div class="row justify-content-center">
-                    <p class="fs-5 text-muted col-md-10 text-center">Modern JavaScript from the beginning - all the way up to JS expert level! <br> THE must-have JavaScript masterclass in 2021. </p>
-                </div>
-
-
-                <h4 class="fw-500 py-4"> <strong>23rd October</strong>  | 05:30 PM IST</h3>
-
-                    <div class="my-5">
-                        <a href="https://codekaro.in/enroll/31" class="btn btn-dark btn-lg btn-block px-5">
-                            <h2 class="fs-3 mb-1">Enroll now for Free</h2>
-                            <p class="mb-0">Enroll now limited seats are available</p>
-                        </a>
+                <main class="text-center mt-5">
+                    <h1 class="display-5 fw-bolder">How to create <span class="wd_highlight"> Instagram Clone ?</span> 2 Hours Live Masterclass</h1>
+                   
+                    <div class="row justify-content-center">
+                        <p class="fs-5 text-muted col-md-10 text-center">Modern CSS from the beginning - all the way up to CSS expert level with real world scenarios and examples! The must-have CSS masterclass in 2022. </p>
                     </div>
-            </main>
+    
+    
+                    <h4 class="fw-500 py-4"> <strong>Sunday, 1st May</strong>  | 11:00 AM IST</h3>
+    
+                        <div class="my-3 white">
+                            <a href="https://codekaro.in/enroll/26" class="btn ck-btn ck-rounded btn-lg text-light  px-5">
+                                <h2 class="fs-3 mb-1 fw-bold white">Enroll for live masterclass now</h2>
+                                <p class="mb-0 btn-desc white">Enroll now at just Rs <del class="white">399</del> 47 only</p>
+                            </a>
+                        </div>
+                </main>
+            </div>
         </div>
 
     </div>
 
     {{-- test --}}
-    <section>
+    <section class="mb-5">
         <div class="container ">
             <div class="row justify-content-center">
                 <div class="col-md-4 mt-4">
@@ -122,103 +123,53 @@
         </div>
     </section>
 {{-- test --}}
-    <section class="">
-        <div class="container mb-5">
-            <div class="row d-flex">
-              <h2>What's inside</h2>
-              <p>This course contains 43 topics spread across 5 modules.</p>
-                <div class="col-md-4">
-                  <div class="card f-2">
-                    <div class="p-3">
-                      <h4>Module 1</h4>
-                      <ul>
-                        <li>Introduction to Javascript</li>
-                        <li>Data Types & Variables</li>
-                        <li>String Concatenation</li>
-                        <li>String Lengths & Slicing</li>
-                        <li>Conditionals</li>
-                        <li>Loops</li>
-                      </ul>
-                    </div>
-                    <div class="cd f-2-bottom p-3">
-                      Understand the Basics of JS
-                    </div>
-                   
-                  </div>
+
+<section class="mt-5 pt-5">
+    <div class="container mb-5">
+        <div class="row d-flex justify-content-center">
+          <div class="text-center">
+            <h2 class="fw-bold">What's inside</h2>
+          </div>
+            
+            
+            <div class="col-md-8 d-n">
+              <div class="card f-1 ">
+                <div class="p-3">
+                  {{-- <h4>Course Curriculam</h4> --}}
+                  <ul>
+                    <li>Introduction to CSS</li>
+                    <li>CSS Box Model</li>
+                    <li>CSS Positions</li>
+                    <li>CSS Flexbox</li>
+                    <li><strong>Project - Instagram Clone</strong> </li>
+                  </ul>
                 </div>
-                <div class="col-md-4">
-                  <div class="card f-1 ">
-                    <div class="p-3">
-                      <h4>Module 2</h4>
-                    <ul>
-                      <li>Creating and Calling Functions</li>
-                      <li>Parameters and Arguments</li>
-                      <li>Outputs & Return Values</li>
-                      <li>Arrow Functions</li>
-                      <li>Calling Function from HTML</li>
-                      <li><strong>Coin Toss Game</strong></li>
-                    </ul>
-                    </div>
-                    <div class="cd f-1-bottom p-3">
-                        Understand the Loops and Conditionals 
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 d-none">
-                  <div class="card f-3 ">
-                    <div class="p-3">
-                      <h4>Module 3</h4>
-                      <ul>
-                        <li>Promise object </li>
-                        <li>Javascript Objects</li>
-                        <li>Arrow Functions</li>
-                        <li>Working with Javascript Arrays</li>
-                        <li><strong>BMI Calculator</strong> </li>
-                      </ul>
-                    </div>
-                  <div class="cd f-3-bottom p-3">
-                    Major Project
-                  </div>
-                </div>
-                </div>
-                <div class="col-md-4">
-                  <div class="card f-4 ">
-                    <div class="p-3">
-                      <h4>Module 3</h4>
-                      <ul>
-                        <li>Introduction to API</li>
-                        <li>How to use API & JSON data</li>
-                        <li>ccepting response from API</li>
-                        <li>Creating View from Bootstrap</li>
-                        <li>Debugging</li>
-                        <li><strong>Bonus Gift🎁</strong></li>
-                      </ul>
-                    </div>
-                    <div class="cd f-4-bottom p-3">
-                        Major Project
-                    </div>
-                    
-                  </div>
-                </div>
-                
-                
-                <div class="my-5 text-center">
-                    <a href="https://codekaro.in/enroll/31" class="btn btn-dark btn-lg btn-block px-5">
-                        <h2 class="fs-3 mb-1">Enroll now for Free</h2>
-                        <p class="mb-0">Enroll now limited seats are available</p>
-                    </a>
-                </div>
-                
+              <div class="cd f-1-bottom p-3">
+                Understand CSS with Instagram Clone
+              </div>
             </div>
+            </div>
+            
+            
+            <div class="my-5 white text-center">
+                <a href="https://codekaro.in/enroll/26" class="btn ck-btn ck-rounded btn-lg text-light  px-5">
+                    <h2 class="fs-3 mb-1 fw-bold white">Enroll for live masterclass now</h2>
+                    <p class="mb-0 btn-desc white">Enroll now at just Rs <del class="white">399</del> 47 only</p>
+                </a>
+            </div>
+            
+            
         </div>
-    </section>
+    </div>
+</section>
+    
 
 
 
     <section>
         <div class="container">
             <div class="text-center">
-                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 5100+ students</h1>
+                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 15100+ students</h1>
                 <p class="lead mb-4">Here's what some of our students have to say about learning with codekaro.</p>
             </div>
             <div class="row">
@@ -288,13 +239,8 @@
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet">
-                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
-                            today I attend 1st class of this bootcamp it just awesome 🔥🔥<br>I learn so much new thinks
-                            and also eager to learn more like 👍👍</p>&mdash; Sakshi Tannirwar (@sakshitannirwa8) <a
-                            href="https://twitter.com/sakshitannirwa8/status/1414999822948442116?ref_src=twsrc%5Etfw">July
-                            13, 2021</a>
-                    </blockquote>
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">My first ever online class .Sir you were great,very clear with your concept .<a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a><br>10/10 from my side.</p>&mdash; Ritik Kumar Das (@1pieceViper) <a href="https://twitter.com/1pieceViper/status/1471850945562570753?ref_src=twsrc%5Etfw">December 17, 2021</a></blockquote> 
+            
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
@@ -315,121 +261,156 @@
                     <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> <a href="https://twitter.com/CodeKaro?ref_src=twsrc%5Etfw">@CodeKaro</a> Classes with Ashish have been so worthwhile! Ashish has an amazing way of breaking things down so that they are understandable, and always keeping it light, fun and Enjoyable.</p>&mdash; Rahul Majukar (@RahulMajukar) <a href="https://twitter.com/RahulMajukar/status/1434885297657958401?ref_src=twsrc%5Etfw">September 6, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a><br>Hats of To you sir. The best webinar ever attended. Deeply explained,all concept cleared.<br>We done sirji🔥🔥</p>&mdash; yatin (@itsyatin_21) <a href="https://twitter.com/itsyatin_21/status/1435962920379170820?ref_src=twsrc%5Etfw">September 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> thank you sir ,for having wonderful time having with us and providing much knowledge for us.<br>its great time and willing to have more time and more classes. thank you sir</p>&mdash; sudarsan (@sudarsa26414724) <a href="https://twitter.com/sudarsa26414724/status/1480915539958632454?ref_src=twsrc%5Etfw">January 11, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>
             </div>
-            <div class="my-5 text-center">
-                <a href="https://codekaro.in/enroll/31" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now </h2>
-                    <p class="mb-0">Enroll now limited seats are available</p>
+            <div class="my-5 white text-center">
+                <a href="https://codekaro.in/enroll/26" class="btn ck-btn ck-rounded btn-lg text-light  px-5">
+                    <h2 class="fs-3 mb-1 fw-bold white">Enroll for live masterclass now</h2>
+                    <p class="mb-0 btn-desc white">Enroll now at just Rs <del class="white">399</del> 47 only</p>
                 </a>
             </div>
         </div>
     </section>
 
+    
+
     <section>
-        <div class="container mt-5">
+        <div class="container my-5 pt-5">
             <div class="text-center">
                 <h1 class=" mx-xl-8 mb-0 fw-600">Meet Your Mentor</h1>
                 {{-- <p class="lead mb-4">Here's what some of our 1123 satisfied students have to say about learning with codekaro.</p> --}}
             </div>
             <div class="row justify-content-center">
                 <div class="col-md-8 mt-4 text-center">
-                    <img src="{{ asset('assets/img/team/ashish black.png') }}" alt="" class="avatar">
-                    <h2 class="mt-3">Ashish Shukla</h2>
+                    <img src="{{ asset('assets/img/team/ashish black.png') }}" alt="" class="rounded-circle" height="130px">
+                    <h2 class="mt-3 fw-bold">Ashish Shukla</h2>
                     <p class="fs-5 ">I am a freelance web developer and instructor, passionate about educating students
                         through engaging lessons. Ex AOSPL, Lido Learning</p>
                 </div>
                 
+                <div class="my-5 white text-center">
+                    <a href="https://codekaro.in/enroll/26" class="btn ck-btn ck-rounded btn-lg text-light  px-5">
+                        <h2 class="fs-3 mb-1 fw-bold white">Enroll for live masterclass now</h2>
+                        <p class="mb-0 btn-desc white">Enroll now at just Rs <del class="white">399</del> 47 only</p>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <section>
-        <div class="container text-center ct">
-            <h1 id="headlin fw-600 mb-0">Time Is Running Out. Grab Your Spot Fast!</h1>
-            <div id="countdown">
-              <ul>
-                <li><span id="days"></span>days</li>
-                <li><span id="hours"></span>Hours</li>
-                <li><span id="minutes"></span>Minutes</li>
-                <li><span id="seconds"></span>Seconds</li>
-              </ul>
-              <p class="fs-5">*Price will increase to Rs 499 after the timer hits zero
-
-            </p>
+        <div class="container text-center ct my-5 py-5  ">
+            <div class="row justify-content-center">
+            <h1 id=" my-3 " class="fw-bold my-5">Time Is Running Out. <br> Grab Your Spot Fast!</h1>
+            <div class="col-md-7 text-center">
+                <div id="countdown" class="text-center">
+                    <ul type="none" class="navbar">
+                      <li class="d-inlin fs-5 fw-bold"><span id="days" class="d-block display-3 fw-bold"></span>days</li>
+                      <li class="d-inlin fs-5 fw-bold"><span id="hours" class="d-block display-3 fw-bold"></span>Hours</li>
+                      <li class="d-inline fs-5 fw-bold"><span id="minutes" class="d-block display-3 fw-bold"></span>Minutes</li>
+                      <li class="d-inline fs-5 fw-bold"><span id="seconds" class="d-block display-3 fw-bold"></span>Seconds</li>
+                    </ul>
+                  </div>
+                  {{-- <div id="content" class="emoji">
+                    <span>🥳</span>
+                    <span>🎉</span>
+                    <span>🎂</span>
+                    <p id="headline"></p>
+                  </div> --}}
             </div>
-            <div id="content" class="emoji">
-              <span>🥳</span>
-              <span>🎉</span>
-              <span>🎂</span>
-              <p id="headline"></p>
-            </div>
-            <div class="my-5">
-                <a href="https://codekaro.in/enroll/31" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now for Free</h2>
-                    <p class="mb-0">Enroll now limited seats are available</p>
+            
+            <div class="my-5 white text-center">
+                <a href="https://codekaro.in/enroll/26" class="btn ck-btn ck-rounded btn-lg text-light  px-5">
+                    <h2 class="fs-3 mb-1 fw-bold white">Enroll for live masterclass now</h2>
+                    <p class="mb-0 btn-desc white">Enroll now at just Rs <del class="white">399</del> 47 only</p>
                 </a>
             </div>
+            <p class="mt-3 text-danger">*Price will increase to Rs 399 once the timer hits zero</p>
           </div>
+        </div>
   </section>
 
 
-  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in Javascript Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
-    <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="65">
-      </a>
+  {{-- enrollment model  starts --}}
+  <div class="modal" id="enroll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-5 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <!-- <h5 class="modal-title">Modal title</h5> -->
+            <h2 class="fw-bold mb-0">Select Batch</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+    
+          <div class="modal-body p-5 pt-0">
+           <div class="mb-3">
+            <div class="card border-none ck-rounded bg-primary p-3">
+                <h4 class=" fs-5 text-white m-0">6th September</h3>
+                    <p class="text-white small">Lorem ipsum dolor sit amet consectetur.</p>
+            </div>
+           </div>
+           <div class="mb-3">
+            <div class="card border-non ck-rounded bg- p-3">
+                <h4 class=" fs-5 text-whit m-0">6th September</h3>
+                    <p class="text-whit small">Lorem ipsum dolor sit amet consectetur.</p>
+            </div>
+           </div>
+            
+            <small class="text-mute text-cente mt-2">By clicking Sign up, you agree to the terms of use.</small>
+          </div>
+        </div>
+      </div>
+      </div>
+  {{-- enrollment mode ends --}}
 
-  <footer class="bd-footer p-3 p-md-5 mt-5 bg-light text-center text-sm-left">
-    <div class="container">
-    <ul class="bd-footer-links">
-    <li><a href="https://codekaro.in/about">About</a></li>
-    <li><a href="https://codekaro.in/contact">Contact</a></li>
-    <li><a href="https://codekaro.in/privacy">Privacy Policy</a></li>
-    </ul>
-    <p>©2020-21 Codekaro All Rights Reserved.</p>
-    </div>
-    </footer>
-    <script>
-        (function () {
-  const second = 1000,
-        minute = second * 60,
-        hour = minute * 60,
-        day = hour * 24;
-        let minutesToAdd= 30;
-        console.log(minutesToAdd)
-        let currentDate = new Date();
-        let futureDate = new Date(currentDate.getTime() + minutesToAdd*60000);
+  <script>
+    (function () {
+    const second = 1000,
+    minute = second * 60,
+    hour = minute * 60,
+    day = hour * 24;
+    
+    let offerTime = new Date();
+    let offerDate = offerTime.getDate();
+    let offerHour = offerTime.getHours();
+    
+    if(offerHour <= 22){
+        offerHour = offerHour + 1;
+    }
+    else{
+        offerHour = offerHour + 2;
+    }
 
-    let birthday = futureDate,
+
+    let birthday = "apr" + offerDate +  " 2022 " +  offerHour + ':' + ':00' + ':00';
     countDown = new Date(birthday).getTime(),
+    console.log(birthday);
     x = setInterval(function() {    
 
-        let now = new Date().getTime(),
+    let now = new Date().getTime(),
         distance = countDown - now;
 
-          document.getElementById("days").innerText = Math.floor(distance / (day)),
-          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+      document.getElementById("days").innerText = Math.floor(distance / (day)),
+      document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+      document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+      document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
 
-        //do something later when date is reached
-        if (distance < 0) {
-          let headline = document.getElementById("headline"),
-              countdown = document.getElementById("countdown"),
-              content = document.getElementById("content");
+    //do something later when date is reached
+    if (distance < 0) {
+      let headline = document.getElementById("headline"),
+          countdown = document.getElementById("countdown"),
+          content = document.getElementById("content");
 
-          headline.innerText = "Class has Started!";
-          countdown.style.display = "none";
-          content.style.display = "block";
+      headline.innerText = "Class has Started!";
+      countdown.style.display = "none";
+      content.style.display = "block";
 
-          clearInterval(x);
-        }
-        //seconds
-      }, 0)
-  }());
-    </script>
+      clearInterval(x);
+    }
+    //seconds
+  }, 0)
+}());
+</script>
     
     
-</body>
-
-</html>
+@endsection
