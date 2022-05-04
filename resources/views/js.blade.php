@@ -382,7 +382,7 @@
     }
 
 
-    let birthday = "apr" + offerDate +  " 2022 " +  offerHour + ':' + ':00' + ':00';
+    let birthday = "may" + offerDate +  " 2022 " +  offerHour + ':' + ':00' + ':00';
     countDown = new Date(birthday).getTime(),
     console.log(birthday);
     x = setInterval(function() {    
