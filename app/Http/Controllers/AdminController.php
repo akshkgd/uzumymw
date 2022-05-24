@@ -28,7 +28,7 @@ class AdminController extends Controller
         $users = User::all();
         $unpaidUsers = User::find(1);
         foreach($users as $user){
-            $isPaid = CourseEnrollment::where('user_id', $user->id)->where('is_paid', 1)->count();
+            $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
             if($isPaid > 0){
                 $unpaidUsers->push($user);
             }
