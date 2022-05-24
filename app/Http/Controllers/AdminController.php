@@ -26,14 +26,13 @@ class AdminController extends Controller
     }
     public function getUsers(){
         $users = User::all();
-        $unpaidUsers = User::find(1);
         foreach($users as $user){
             $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
             if($isPaid > 0){
-                $unpaidUsers->$user->hasPaid = 1;
+                $users->$user->hasPaid = 1;
             }
         }
-        return view('admin.emails', compact('unpaidUsers'))->with('i');
+        return view('admin.emails', compact('users'))->with('i');
     }
     public function students()
     {

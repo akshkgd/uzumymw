@@ -31,7 +31,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($unpaidUsers as $user)
+                                    @foreach ($users as $user)
                                     @if($user->hasPaid == 0)
                                         <tr>
                                             <td>{{$user->name }}</td>
