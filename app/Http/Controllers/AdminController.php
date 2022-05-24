@@ -30,7 +30,7 @@ class AdminController extends Controller
         foreach($users as $user){
             $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
             if($isPaid > 0){
-                $unpaidUsers->push($user);
+                $unpaidUsers->$user->hasPaid = 1;
             }
         }
         return view('admin.emails', compact('unpaidUsers'))->with('i');

@@ -22,22 +22,28 @@
                             <table class="table table-responsive-lg">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Email for Newsletter</th>
+                                        
                                         <th>Name</th>
-                                
+                                        <th scope="col">Email for Newsletter</th>
                                         <th>Created on</th>
+                                        <th>Created on</th>
+                                        <th>updated on on</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($unpaidUsers as $user)
+                                    @if($user->hasPaid == 0)
                                         <tr>
-                                            <td>{{$user->email }}</td>
                                             <td>{{$user->name }}</td>
+                                            <td>{{$user->email }}</td>
+                                            
                                             {{-- <td>{{$user->mobile }}</td>
                                             <td>{{$user->college }}</td>
                                             <td>{{$user->course }}</td> --}}
                                             <td>{{$user->created_at}}</td>
+                                            <td>{{$user->updated_at}}</td>
                                         </tr>
+                                        @endif
                                     @endforeach
 
                                 </tbody>
