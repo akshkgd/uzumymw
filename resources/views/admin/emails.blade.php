@@ -29,7 +29,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($users as $user)
+                                    @foreach ($unpaidUsers as $user)
                                         <tr>
                                             <td>{{$user->email }}</td>
                                             <td>{{$user->name }}</td>
