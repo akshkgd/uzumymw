@@ -86,7 +86,7 @@ professional work-like projects'))
                 <div class="col-lg-8 mt-5 ck-rounded justify-content-center">
                     <div id="js-player"  class="js-player text-white ck-rounded d-inline " s data-plyr-provider="youtube" data-plyr-embed-id="rrZlRVSsJYU" style="color:white !important; border-radius:20px;"></div>
                     <div class="text-center">
-                        <a href="https://codekaro.in/enroll/22" class="btn ck-btn ck-rounded btn-lg mt-3  px-5"
+                        <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg mt-3  px-5"
                     >
                             <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
@@ -434,7 +434,7 @@ professional work-like projects'))
     </div>
                     </div>
                     <div class="my-5 text-center">
-                        <a href="https://codekaro.in/enroll/22" class="btn ck-btn ck-rounded btn-lg   px-5">
+                        <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg   px-5">
                             <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
@@ -544,7 +544,7 @@ professional work-like projects'))
                 
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/enroll/22" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
+                <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
                         data-bs-target="#enroll">
                             <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
@@ -606,7 +606,7 @@ professional work-like projects'))
             </div>
             
             <div class="my-5">
-                <a href="https://codekaro.in/enroll/22" class="btn ck-btn ck-rounded btn-lg   px-5">
+                <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg   px-5">
                     <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                 </a>
