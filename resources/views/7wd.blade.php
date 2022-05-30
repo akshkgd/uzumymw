@@ -54,6 +54,12 @@ professional work-like projects'))
         font-weight: 400;
         margin:20px 0 0 0 ;
     }
+    .text-light{
+        color: #fff !important;
+    }
+    .white{
+            color: white !important;
+      }
 </style>
 @section('content')
     {{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
@@ -65,32 +71,44 @@ professional work-like projects'))
         @include('layouts.alert')
     </div>
 
+    <section>
+        <div class="container pt-lg-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-9 mx-auto p-3 " style="height: 100vh">
+            
     
-    <section class="pt-0 pt-md-0 pt-lg-5 pb-5 mb-5 ">
+                    <main class="text-center mt-5">
+                        <h1 class="display-5 fw-bolder">Want to master <span class="wd_highlight"> frontend dev?</span>Join 30 days live Bootcamp</h1>
+                       
+                        <div class="row justify-content-center">
+                            <p class="fs-5 text-muted col-md-10 text-center">Modern CSS from the beginning - all the way up to Javascript expert level with real world scenarios and examples! The must-have Frontend Bootcamp in 2022. </p>
+                        </div>
+        
+        
+                        <h4 class="fw-500 py-4"> Starting From <strong> 25th June</strong></h3>
+        
+                            <div class="my-3 white">
+                                <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg mt-3  px-5">
+                                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
+                                    <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                                </a>
+                            </div>
+                    </main>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+    
+    <section class=" ">
         <div class="container mt-0 hero">
             <div class="row justify-content-center align-items-center">
-                <div class="col-lg-9 text-center">
-                    <h1 class="fw-bold display-5 mt-5">Master Web Development skills with <span class="wd_highlight">30 days live Bootcamp</span></h1>
-                    <h4 class="fw-500 py-3 gray-tag"> Starting From, <b style="color: blueviolet">25th June</b></h3>
-                    
-                    <p class="fs-5 d-none">Master in-demand web development skills with real work experience of building
-                        professional work-like projects. Gain the skills and experience needed to crack jobs
-                        in unicorns, MNCs, & more.</p>
-                        
-                        {{-- <a href="" class="btn btn-dark btn-lg px-5 rounded-pill">Enroll Now</a> --}}
-                </div>
                 
-                {{-- <div class="col-lg-6">
-                    <img src="{{asset('assets/img/A.png')}}" class="img-fluid hidden-sm" alt="">
-                </div> --}}
-                <div class="col-lg-8 mt-5 ck-rounded justify-content-center">
+                
+                <div class="col-lg-8 ck-rounded justify-content-center">
                     <div id="js-player"  class="js-player text-white ck-rounded d-inline " s data-plyr-provider="youtube" data-plyr-embed-id="rrZlRVSsJYU" style="color:white !important; border-radius:20px;"></div>
                     <div class="text-center">
-                        <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg mt-3  px-5"
-                    >
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
-                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
-                        </a>
+                        
                     </div>
                 </div>
                 
