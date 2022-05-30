@@ -1,8 +1,9 @@
+<link rel="stylesheet" href="{{asset('css/ck-plyr.css')}}" />
 @extends('layouts.ck')
 @section('title', '' . e('Web Development Live Bootcamp | Codekaro'))
 @section('meta_description', '' . e('Master in-demand web development skills with real work experience of building
 professional work-like projects'))
-<link rel="stylesheet" href="{{asset('css/ck-plyr.css')}}" />
+
 
 
 <style>
