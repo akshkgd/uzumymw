@@ -2,9 +2,14 @@
 @section('title', '' . e('Web Development Live Bootcamp | Codekaro'))
 @section('meta_description', '' . e('Master in-demand web development skills with real work experience of building
 professional work-like projects'))
-<link rel="stylesheet" href="{{asset('css/plyr.css')}}" />
+<link rel="stylesheet" href="{{asset('css/ck-plyr.css')}}" />
+
 
 <style>
+.js-player{
+    color: inherit !important;
+}
+
   .ck-btn{
         
         background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
@@ -38,7 +43,16 @@ professional work-like projects'))
             text-align: left !important;
         }
     }
-    
+    .gray-tag{
+        background-color:rgb(235, 213, 255);
+        display: inline-block;
+        color: blueviolet !important;
+        font-size: 18px;
+        padding: 5px 30px;
+        border-radius: 100px;
+        font-weight: 400;
+        margin:20px 0 0 0 ;
+    }
 </style>
 @section('content')
     {{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
@@ -54,9 +68,11 @@ professional work-like projects'))
     <section class="pt-0 pt-md-0 pt-lg-5 pb-5 mb-5 ">
         <div class="container mt-0 hero">
             <div class="row justify-content-center align-items-center">
-                <div class="col-lg-8 text-center">
-                    <h1 class="fw-bold display-5 mt-5">Master Web Development skills with <span class="wd_highligh">7 days live Bootcamp</span></h1>
-                    <p>Master in-demand web development skills with real work experience of building
+                <div class="col-lg-9 text-center">
+                    <h1 class="fw-bold display-5 mt-5">Master Web Development skills with <span class="wd_highlight">30 days live Bootcamp</span></h1>
+                    <h4 class="fw-500 py-3 gray-tag"> Starting From, <b style="color: blueviolet">25th June</b></h3>
+                    
+                    <p class="fs-5 d-none">Master in-demand web development skills with real work experience of building
                         professional work-like projects. Gain the skills and experience needed to crack jobs
                         in unicorns, MNCs, & more.</p>
                         
@@ -66,12 +82,12 @@ professional work-like projects'))
                 {{-- <div class="col-lg-6">
                     <img src="{{asset('assets/img/A.png')}}" class="img-fluid hidden-sm" alt="">
                 </div> --}}
-                <div class="col-lg-7 mt-5 ck-rounded">
-                    <div id="player" class="ck-rounded d-inline" data-plyr-provider="youtube" data-plyr-embed-id="C_H9IHbMj4g"></div>
+                <div class="col-lg-8 mt-5 ck-rounded justify-content-center">
+                    <div id="js-player"  class="js-player text-white ck-rounded d-inline " s data-plyr-provider="youtube" data-plyr-embed-id="rrZlRVSsJYU" style="color:white !important; border-radius:20px;"></div>
                     <div class="text-center">
                         <a href="https://codekaro.in/enroll/22" class="btn ck-btn ck-rounded btn-lg mt-3  px-5"
                     >
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 299</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -103,26 +119,26 @@ professional work-like projects'))
                     <h1 class="fw-bold">Learn by building  <br>
                         amazing projects</h1>
                 </div>
-                <div class="col-md-4">
-                    <div class="card  border-none ck-rounded f-1 px-5 py-3 my-3 text-center">
+                <div class="col-md-4 mt-4">
+                    <div class="card h-100 mt-3 border-none ck-rounded f-1 px-5 py-3 my-3 text-center">
                         <img src="{{asset('assets/img/CardThree.webp')}}" class="project"  alt="">
                         <h2 class="fs-5">Work like frontend Developer at AirBnb</h2>
                         <p>Build a highly responsive frontend for a travel app.</p>
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <div class="card border-none ck-rounded f-4 my-3 px-5 py-3 text-center">
+                <div class="col-md-4 mt-4">
+                    <div class="card h-100 mt-3 border-none ck-rounded f-4 my-3 px-5 py-3 text-center">
                         <img src="{{asset('assets/img/CardSix.webp')}}" class="project" alt="">
-                        <h2 class="fs-5">Create Random Quotes App with Javascript</h2>
-                        <p>Understand how APIs work and how to use them with js.</p>
+                        <h2 class="fs-5">Create Movies App with Javascript & API</h2>
+                        <p>Understand how APIs work and how to use them with javascript.</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card border-none ck-rounded f-3 px-5 py-3 my-3 text-center">
+                <div class="col-md-4 mt-4">
+                    <div class="card h-100 mt-3 border-none ck-rounded f-3 px-5 py-3 my-3 text-center">
                         <img src="{{asset('assets/img/CardTwo.webp')}}" class="project" alt="">
                         <h2 class="fs-5">Solve challenges in food ordering App</h2>
-                        <p>Build a dynamic frontend for a food ordering app.</p>
+                        <p>Build a dynamic frontend for food ordering app using React.js</p>
                         
                     </div>
                 </div>
@@ -132,7 +148,7 @@ professional work-like projects'))
 
 
     <section class="py-5">
-        <div class="container my-5 pt-5">
+        <div class="container  pt-5">
             <div class="text-center my-5">
                 <h1 class="fw-bold">We have designed a <br> flexible program for you</h1>
             </div>
@@ -329,7 +345,12 @@ professional work-like projects'))
         aria-labelledby="heading92" data-bs-parent="#accordionExample">
         <div class="accordion-body">
             <p class="mb-2 pl-2 " style="font-size:17px;">
-                  <br /><i class='bi bi-dot fs-4'></i>Number guessing game   <br /><i class='bi bi-dot fs-4'></i>Control Statements: Using If-Else Conditionals & Logic Comparators and Equality   <br /><i class='bi bi-dot fs-4'></i>Combining Comparators    <br /><i class='bi bi-dot fs-4'></i>Introducing the Leap Year Code    <br /><i class='bi bi-dot fs-4'></i>Collections: Working with Javascript Arrays   <br /><i class='bi bi-dot fs-4'></i>Adding Elements and Intermediate Array Techniques   <br /><i class='bi bi-dot fs-4'></i>Control Statements: While Loops  <br /><i class='bi bi-dot fs-4'></i> Improving the game    <br /><i class='bi bi-dot fs-4'></i>Control Statements: For Loops   <br /><i class='bi bi-dot fs-4'></i>Introducing the Fibonacci Code Challenge
+                  <br /><i class='bi bi-dot fs-4'></i>Number guessing game   <br /><i class='bi bi-dot fs-4'></i>Control Statements: Using If-Else Conditionals & Logic Comparators and Equality   <br /><i class='bi bi-dot fs-4'></i>Combining Comparators    <br /><i class='bi bi-dot fs-4'></i>Introducing the Leap Year Code    <br /><i class='bi bi-dot fs-4'></i>Collections: Working with Javascript Arrays   <br /> 
+                 <i class='bi bi-dot fs-4'></i>Array Mapping <br /><i class='bi bi-dot fs-4'></i>Array Filter <br /><i class='bi bi-dot fs-4'></i>Array Reduce <br />
+                  <i class='bi bi-dot fs-4'></i>Adding Elements and Intermediate Array Techniques   <br /><i class='bi bi-dot fs-4'></i>Control Statements: While Loops  <br /><i class='bi bi-dot fs-4'></i> Improving the game    <br /><i class='bi bi-dot fs-4'></i>Control Statements: For Loops   <br /><i class='bi bi-dot fs-4'></i>Introducing the Fibonacci Code Challenge<i class='bi bi-dot fs-4'></i>Async Await <br />
+                  <i class='bi bi-dot fs-4'></i>Promises in Javascript <br />
+                  <i class='bi bi-dot fs-4'></i>Higher Order Function <br /> <i class='bi bi-dot fs-4'></i>JSON stringify <br /><i class='bi bi-dot fs-4'></i>How to Use API's <br />
+                  <i class='bi bi-dot fs-4'></i><strong>Random Quotes App : Project</strong> <br />
             </p>
 
         </div>
@@ -359,7 +380,7 @@ professional work-like projects'))
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapse94" aria-expanded="true"
             aria-controls="collapse94">
-            Random Quotes App
+            Movies App
         </button>
     </h2>
     <div id="collapse94"
@@ -373,10 +394,47 @@ professional work-like projects'))
         </div>
     </div>
 </div>
+<div class="accordion-item">
+    <h2 class="accordion-header" id="heading175">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapse175" aria-expanded="true"
+            aria-controls="collapse175">
+            Introduction to React Js
+        </button>
+    </h2>
+    <div id="collapse175"
+        class="accordion-collapse collapse  hide "
+        aria-labelledby="heading175" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <p class="mb-2 pl-2 " style="font-size:17px;">
+                  <br /><i class='bi bi-dot fs-4'></i>Learn front-end development with React.   <br /><i class='bi bi-dot fs-4'></i>Understand when and how to use React Components.   <br /><i class='bi bi-dot fs-4'></i>Learn to pass Props and work with them.   <br /><i class='bi bi-dot fs-4'></i>Learn to write JSX and understand JSX syntax.   <br /><i class='bi bi-dot fs-4'></i>Learn about the React DOM.   <br /><i class='bi bi-dot fs-4'></i>Learn State Management in React.   <br /><i class='bi bi-dot fs-4'></i>Learn about React Hooks.   <br /><i class='bi bi-dot fs-4'></i>Learn about conditional rendering in React.   <br /><i class='bi bi-dot fs-4'></i>Understand the difference between class and functional components.
+            </p>
+
+        </div>
+    </div>
+</div>
+                        <div class="accordion-item">
+    <h2 class="accordion-header" id="heading176">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapse176" aria-expanded="true"
+            aria-controls="collapse176">
+            React project
+        </button>
+    </h2>
+    <div id="collapse176"
+        class="accordion-collapse collapse  hide "
+        aria-labelledby="heading176" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <p class="mb-2 pl-2 " style="font-size:17px;">
+                Food Ordering App
+            </p>
+
+        </div>
+    </div>
                     </div>
                     <div class="my-5 text-center">
                         <a href="https://codekaro.in/enroll/22" class="btn ck-btn ck-rounded btn-lg   px-5">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 299</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -388,7 +446,7 @@ professional work-like projects'))
     <section class="mt-5">
         <div class="container mt-5">
             <div class="text-center">
-                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 15000+ students</h1>
+                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 2700+ students</h1>
                 <p class="lead mb-4">Here's what some of our students have to say about learning with codekaro.</p>
             </div>
             <div class="row">
@@ -458,7 +516,8 @@ professional work-like projects'))
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> thank you sir ,for having wonderful time having with us and providing much knowledge for us.<br>its great time and willing to have more time and more classes. thank you sir</p>&mdash; sudarsan (@sudarsa26414724) <a href="https://twitter.com/sudarsa26414724/status/1480915539958632454?ref_src=twsrc%5Etfw">January 11, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr">My first ever online class .Sir you were great,very clear with your concept .<a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a><br>10/10 from my side.</p>&mdash; Ritik Kumar Das (@1pieceViper) <a href="https://twitter.com/1pieceViper/status/1471850945562570753?ref_src=twsrc%5Etfw">December 17, 2021</a></blockquote> 
+            
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
@@ -469,13 +528,39 @@ professional work-like projects'))
                     <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> sir,realy helpfull your masterclass for learn html css js and bootstrap</p>&mdash; Aswanth M (@_YMS___) <a href="https://twitter.com/_YMS___/status/1416030098801631233?ref_src=twsrc%5Etfw">July 17, 2021</a></blockquote> 
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> thankyou Ashish sir it was an amazing Bootcamp with you. I have learned a lot from you than I have ever before. Keep on giving us these bootcamp more.</p>&mdash; mahreen ahmed (@mahreenrizwan55) <a href="https://twitter.com/mahreenrizwan55/status/1439225168795213825?ref_src=twsrc%5Etfw">September 18, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> Class was interesting..I learned lot in a very short span of time...thank you so much..keep on sharing your knowledge...</p>&mdash; Bhuvaneshwari Dinesh (@Bhuvane06893457) <a href="https://twitter.com/Bhuvane06893457/status/1435963326622679043?ref_src=twsrc%5Etfw">September 9, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> <a href="https://twitter.com/CodeKaro?ref_src=twsrc%5Etfw">@CodeKaro</a> Classes with Ashish have been so worthwhile! Ashish has an amazing way of breaking things down so that they are understandable, and always keeping it light, fun and Enjoyable.</p>&mdash; Rahul Majukar (@RahulMajukar) <a href="https://twitter.com/RahulMajukar/status/1434885297657958401?ref_src=twsrc%5Etfw">September 6, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                <div class="col-md-6">
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> thank you sir ,for having wonderful time having with us and providing much knowledge for us.<br>its great time and willing to have more time and more classes. thank you sir</p>&mdash; sudarsan (@sudarsa26414724) <a href="https://twitter.com/sudarsa26414724/status/1480915539958632454?ref_src=twsrc%5Etfw">January 11, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+                
             </div>
             <div class="my-5 text-center">
                 <a href="https://codekaro.in/enroll/22" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
                         data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 299</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
+            </div>
+        </div>
+    </section>
+    <section class="pt-0 pt-md-0 pt-lg-5 pb-5 mb-5 ">
+        <div class="container mt-0 hero">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-9 text-center">
+                    <h1 class="fw-bold display-6 mt-5">Grab your <span class="wd_highlight">Internship certificate</span> after completing 30 days live Bootcamp</span></h1>
+                    
+                        <img src="{{asset('assets/img/dummy-certificate.png')}}" class=" mt-5 img-fluid shadow-lg ck-rounded" style="padding:-20px" alt="">
+                        {{-- <a href="" class="btn btn-dark btn-lg px-5 rounded-pill">Enroll Now</a> --}}
+                </div>
+                </div>
             </div>
         </div>
     </section>
@@ -521,34 +606,48 @@ professional work-like projects'))
             
             <div class="my-5">
                 <a href="https://codekaro.in/enroll/22" class="btn ck-btn ck-rounded btn-lg   px-5">
-                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 299</h2>
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                 </a>
             </div>
-            <p>Once the timer hits zero, pricing will be increased to 2499.00/-</p>
+            <p class="text-danger">Once the timer hits zero, pricing will be increased to 2499.00/-</p>
           </div>
         </div>
   </section>
 
-@include('layouts.ck-footer')
+{{-- @include('layouts.ck-footer') --}}
   {{-- enrollment model  starts --}}
 
   <script src="{{asset('css/plyr.min.js')}}"></script>
+ 
   <script>
     (function () {
     const second = 1000,
     minute = second * 60,
     hour = minute * 60,
     day = hour * 24;
+    
+    let offerTime = new Date();
+    let offerDate = offerTime.getDate();
+    let offerHour = offerTime.getHours();
+    
+    if(offerHour <= 22){
+        offerHour = offerHour + 1;
+    }
+    else{
+        offerHour = offerHour + 2;
+    }
 
-let birthday = "apr 3, 2022 23:30:00",
-  countDown = new Date(birthday).getTime(),
-  x = setInterval(function() {    
+
+    let birthday = "may" + offerDate +  " 2022 " +  offerHour + ':' + ':00' + ':00';
+    countDown = new Date(birthday).getTime(),
+    console.log(birthday);
+    x = setInterval(function() {    
 
     let now = new Date().getTime(),
         distance = countDown - now;
 
-    document.getElementById("days").innerText = Math.floor(distance / (day)),
+      document.getElementById("days").innerText = Math.floor(distance / (day)),
       document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
       document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
       document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
@@ -569,6 +668,35 @@ let birthday = "apr 3, 2022 23:30:00",
   }, 0)
 }());
 
-const player = new Plyr('#player');
+document.addEventListener('DOMContentLoaded', () => {
+           // Controls (as seen below) works in such a way that as soon as you explicitly define (add) one control
+           // to the settings, ALL default controls are removed and you have to add them back in by defining those below.
+     
+           // For example, let's say you just simply wanted to add 'restart' to the control bar in addition to the default.
+           // Once you specify *just* the 'restart' property below, ALL of the controls (progress bar, play, speed, etc) will be removed,
+           // meaning that you MUST specify 'play', 'progress', 'speed' and the other default controls to see them again.
+     
+           const controls = [
+               'play-large', // The large play button in the center
+               'restart', // Restart playback
+               'rewind', // Rewind by the seek time (default 10 seconds)
+               'play', // Play/pause playback
+               'fast-forward', // Fast forward by the seek time (default 10 seconds)
+               'progress', // The progress bar and scrubber for playback and buffering
+               'current-time', // The current time of playback
+               'duration', // The full duration of the media
+               'mute', // Toggle mute
+               'volume', // Volume control
+               'captions', // Toggle captions
+               'settings', // Settings menu
+               'pip', // Picture-in-picture (currently Safari only)
+               'airplay', // Airplay (currently Safari only)
+               // to either the current source or a custom URL you specify in your options
+               'fullscreen' // Toggle fullscreen
+           ];
+     
+           const player = Plyr.setup('.js-player', { controls });
+     
+       });
 </script>
 @endsection
