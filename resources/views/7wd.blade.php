@@ -89,7 +89,7 @@ professional work-like projects'))
         
                             <div class="my-3 white">
                                 <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg mt-3  px-5">
-                                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
+                                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
                                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                                 </a>
                             </div>
@@ -413,47 +413,11 @@ professional work-like projects'))
         </div>
     </div>
 </div>
-<div class="accordion-item">
-    <h2 class="accordion-header" id="heading175">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapse175" aria-expanded="true"
-            aria-controls="collapse175">
-            Introduction to React Js
-        </button>
-    </h2>
-    <div id="collapse175"
-        class="accordion-collapse collapse  hide "
-        aria-labelledby="heading175" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-            <p class="mb-2 pl-2 " style="font-size:17px;">
-                  <br /><i class='bi bi-dot fs-4'></i>Learn front-end development with React.   <br /><i class='bi bi-dot fs-4'></i>Understand when and how to use React Components.   <br /><i class='bi bi-dot fs-4'></i>Learn to pass Props and work with them.   <br /><i class='bi bi-dot fs-4'></i>Learn to write JSX and understand JSX syntax.   <br /><i class='bi bi-dot fs-4'></i>Learn about the React DOM.   <br /><i class='bi bi-dot fs-4'></i>Learn State Management in React.   <br /><i class='bi bi-dot fs-4'></i>Learn about React Hooks.   <br /><i class='bi bi-dot fs-4'></i>Learn about conditional rendering in React.   <br /><i class='bi bi-dot fs-4'></i>Understand the difference between class and functional components.
-            </p>
 
-        </div>
-    </div>
-</div>
-                        <div class="accordion-item">
-    <h2 class="accordion-header" id="heading176">
-        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#collapse176" aria-expanded="true"
-            aria-controls="collapse176">
-            React project
-        </button>
-    </h2>
-    <div id="collapse176"
-        class="accordion-collapse collapse  hide "
-        aria-labelledby="heading176" data-bs-parent="#accordionExample">
-        <div class="accordion-body">
-            <p class="mb-2 pl-2 " style="font-size:17px;">
-                Food Ordering App
-            </p>
-
-        </div>
-    </div>
-                    </div>
+                        
                     <div class="my-5 text-center">
                         <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg   px-5">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -564,7 +528,7 @@ professional work-like projects'))
             <div class="my-5 text-center">
                 <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
                         data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
             </div>
@@ -625,7 +589,7 @@ professional work-like projects'))
             
             <div class="my-5">
                 <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg   px-5">
-                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 990</h2>
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -658,7 +622,7 @@ professional work-like projects'))
     }
 
 
-    let birthday = "may" + offerDate +  " 2022 " +  offerHour + ':' + ':00' + ':00';
+    let birthday = "june" + offerDate +  " 2022 " +  offerHour + ':' + ':00' + ':00';
     countDown = new Date(birthday).getTime(),
     console.log(birthday);
     x = setInterval(function() {    
