@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="{{asset('css/ck-plyr.css')}}" />
 @extends('layouts.ck')
 @section('title', '' . e('Web Development Live Bootcamp | Codekaro'))
 @section('meta_description', '' . e('Master in-demand web development skills with real work experience of building
@@ -10,12 +9,33 @@ professional work-like projects'))
 .js-player{
     color: inherit !important;
 }
+.ck-btn:focus{
+    outline: none !important;
+    box-shadow:none;
+}
 
+    .razorpay-payment-button{
+        /* background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120)); */
+        /* background-image: linear-gradient(99deg, rgb(10, 255, 2), rgb(0, 255, 153)); */
+        background-color: rgb(25, 208, 124);;
+        border:none;
+        color: white;
+        padding: 16px !important;
+        width:100%;
+        font-weight:400;
+        display: inline-block;
+        cursor: pointer;
+        font-size: 22px;
+        font-weight: bolder;
+        border-radius: 16px;
+        margin: 20px 0 0 0;
+    }
   .ck-btn{
         
         background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
         border: 1px solid transparent;
         border:none;
+        text-decoration: none;
         color: white;
         padding: 12px 46px !important;
         font-weight:400;
@@ -66,7 +86,7 @@ professional work-like projects'))
     New masterclasses has been launched 🥳 <a href="{{url('/event')}}" class="alert-link">Check Now</a>. Limited seats available.
   </div> --}}
     
-    @include('layouts.ck-header')
+    {{-- @include('layouts.ck-header') --}}
     <div class="container">
         @include('layouts.alert')
     </div>
@@ -74,101 +94,44 @@ professional work-like projects'))
     <section>
         <div class="container pt-lg-5">
             <div class="row justify-content-center">
-                <div class="col-lg-9 mx-auto p-3 " style="height: 100vh">
+                <div class="col-lg-9 mx-auto p-3 " style="height: 100vh; display:flex; align-items: center">
             
+                    
     
-                    <main class="text-center mt-5">
-                        <h1 class="display-5 fw-bolder">Want to master <span class="wd_highlight"> frontend dev?</span>Join 30 days live Bootcamp</h1>
+                    <main class="text-center">
+                        <div class="cwr my-5 border d-inline p-3 rounded-pill px-5">Inititive of Code with Random</div>
+                        <h1 class="display-5 fw-bolder mt-5">Want to master <span class="wd_highlight"> frontend dev?</span>Join 30 days live Bootcamp</h1>
                        
                         <div class="row justify-content-center">
                             <p class="fs-5 text-muted col-md-10 text-center">Modern CSS from the beginning - all the way up to Javascript expert level with real world scenarios and examples! The must-have Frontend Bootcamp in 2022. </p>
                         </div>
         
         
-                        <h4 class="fw-500 py-4"> Starting From <strong> 25th June</strong></h3>
+                        <h4 class="fw-500 py-4"> <span class="fs-6">Starting From</span> <strong> 25th June</strong></h3>
         
                             <div class="my-3 white">
-                                <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg mt-3  px-5">
-                                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
+                                <a href="" class=" ck-btn ck-rounded btn-lg mt-3  px-5" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
+                                data-bs-target="#enroll">
+                                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 199</h2>
                                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                                 </a>
                             </div>
+
+                            
                     </main>
                 </div>
             </div>
     
         </div>
     </section>
+
+
     
-    <section class=" ">
-        <div class="container mt-0 hero">
-            <div class="row justify-content-center align-items-center">
-                
-                
-                <div class="col-lg-8 ck-rounded justify-content-center">
-                    <div id="js-player"  class="js-player text-white ck-rounded d-inline " s data-plyr-provider="youtube" data-plyr-embed-id="rrZlRVSsJYU" style="color:white !important; border-radius:20px;"></div>
-                    <div class="text-center">
-                        
-                    </div>
-                </div>
-                
-
-            </div>
-        </div>
-    </section>
-
-
-    <section>
-        <div class="container d-none ">
-            <div class="row justify-content-center">
-                <div class="text-center">
-                    <h1 class="fw-bold">Learn by building  <br>
-                        amazing projects</h1>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-
-    <section>
-        <div class="container pt-5 mt-5">
-            <div class="row justify-content-center">
-                <div class="text-center mb-5">
-                    <h1 class="fw-bold">Learn by building  <br>
-                        amazing projects</h1>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card h-100 mt-3 border-none ck-rounded f-1 px-5 py-3 my-3 text-center">
-                        <img src="{{asset('assets/img/CardThree.webp')}}" class="project"  alt="">
-                        <h2 class="fs-5">Work like frontend Developer at AirBnb</h2>
-                        <p>Build a highly responsive frontend for a travel app.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mt-4">
-                    <div class="card h-100 mt-3 border-none ck-rounded f-4 my-3 px-5 py-3 text-center">
-                        <img src="{{asset('assets/img/CardSix.webp')}}" class="project" alt="">
-                        <h2 class="fs-5">Create Movies App with Javascript & API</h2>
-                        <p>Understand how APIs work and how to use them with javascript.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card h-100 mt-3 border-none ck-rounded f-3 px-5 py-3 my-3 text-center">
-                        <img src="{{asset('assets/img/CardTwo.webp')}}" class="project" alt="">
-                        <h2 class="fs-5">Solve challenges in food ordering App</h2>
-                        <p>Build a dynamic frontend for food ordering app using React.js</p>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 
     <section class="py-5">
         <div class="container  pt-5">
-            <div class="text-center my-5">
+            <div class="text-center">
                 <h1 class="fw-bold">We have designed a <br> flexible program for you</h1>
             </div>
             <div class="row justify-content-center">
@@ -416,8 +379,9 @@ professional work-like projects'))
 
                         
                     <div class="my-5 text-center">
-                        <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg   px-5">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
+                        <a href="" data-bs-toggle="modal"
+                        data-bs-target="#enroll" class="btn ck-btn ck-rounded btn-lg   px-5">
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 199</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -526,27 +490,64 @@ professional work-like projects'))
                 
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
+                <a href="" data-bs-toggle="modal"
+                data-bs-target="#enroll" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
                         data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 199</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
             </div>
         </div>
     </section>
-    <section class="pt-0 pt-md-0 pt-lg-5 pb-5 mb-5 ">
+    
+
+
+    <section>
+        <div class="container ">
+            <div class="row justify-content-center">
+                <div class="text-center mb-5">
+                    {{-- <h1 class="fw-bold">Learn by building  <br>
+                        amazing projects</h1> --}}
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card h-100 mt-3 border-none ck-rounded f-1 px-5 py-3 my-3 text-center">
+                        <img src="{{asset('assets/img/CardThree.webp')}}" class="project"  alt="">
+                        <h2 class="fs-5">Work like frontend Developer at AirBnb</h2>
+                        <p>Build a highly responsive frontend for a travel app.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 mt-4">
+                    <div class="card h-100 mt-3 border-none ck-rounded f-4 my-3 px-5 py-3 text-center">
+                        <img src="{{asset('assets/img/CardSix.webp')}}" class="project" alt="">
+                        <h2 class="fs-5">Create Movies App with Javascript & API</h2>
+                        <p>Understand how APIs work and how to use them with javascript.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card h-100 mt-3 border-none ck-rounded f-3 px-5 py-3 my-3 text-center">
+                        <img src="{{asset('assets/img/CardTwo.webp')}}" class="project" alt="">
+                        <h2 class="fs-5">Solve challenges in food ordering App</h2>
+                        <p>Build a dynamic frontend for food ordering app using React.js</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {{-- <section class="pt-0 pt-md-0 pt-lg-5 pb-5 mb-5 ">
         <div class="container mt-0 hero">
             <div class="row justify-content-center align-items-center">
                 <div class="col-lg-9 text-center">
                     <h1 class="fw-bold display-6 mt-5">Grab your <span class="wd_highlight">Internship certificate</span> after completing 30 days live Bootcamp</span></h1>
                     
                         <img src="{{asset('assets/img/dummy-certificate.png')}}" class=" mt-5 img-fluid shadow-lg ck-rounded" style="padding:-20px" alt="">
-                        {{-- <a href="" class="btn btn-dark btn-lg px-5 rounded-pill">Enroll Now</a> --}}
+                        
                 </div>
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <section>
         <div class="container my-5 pt-5">
@@ -588,20 +589,73 @@ professional work-like projects'))
             </div>
             
             <div class="my-5">
-                <a href="https://codekaro.in/enroll/23" class="btn ck-btn ck-rounded btn-lg   px-5">
-                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
+                <a href="" data-bs-toggle="modal"
+                data-bs-target="#enroll" class="btn ck-btn ck-rounded btn-lg   px-5">
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 199</h2>
                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                 </a>
             </div>
-            <p class="text-danger">Once the timer hits zero, pricing will be increased to 2499.00/-</p>
+            <p class="text-danger">Once the timer hits zero, pricing will be increased to 2199.00/-</p>
           </div>
         </div>
   </section>
 
-{{-- @include('layouts.ck-footer') --}}
-  {{-- enrollment model  starts --}}
 
-  <script src="{{asset('css/plyr.min.js')}}"></script>
+  {{-- enrollment model  starts --}}
+  <div class="modal" id="enroll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-5 shadow">
+          {{-- <div class="modal-header px-5 pb-4 border-bottom-0 text-center"> --}}
+            <!-- <h5 class="modal-title">Modal title</h5> -->
+            {{-- <h2 class=" mb-0 fs-4">Join 30 days live Bootcamp</h2> --}}
+            {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+          {{-- </div> --}}
+    
+          <div class="modal-body p-4 pt-0 text-center mt-4">
+              {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
+            <h2 class=" mb-0 fs-4 ">Join 30 days live web development bootcamp!</h2>
+            <div class="col-md-12 text-center mt-4">
+                <div id="countdown" class="">
+                    <ul type="none" class="navbar justify-content-around p-0 text-center">
+                      <li class="d-inlin fs-6"><span id="days1" class="d-block display-6 fw-bold"></span> <span>days</span> </li>
+                      <li class="d-inlin fs-6"><span id="hours1" class="d-block display-6 fw-bold "></span>Hours</li>
+                      <li class="d-inlin fs-6"><span id="minutes1" class="d-block display-6 fw-bold"></span>Minutes</li>
+                      <li class="d-inlinx fs-6"><span id="seconds1" class="d-block display-6 fw-bold"></span>Seconds</li>
+                    </ul>
+                  </div>
+            </div>
+            <form action="{{ route('course-payment') }}" method="POST" class="">
+                @csrf
+                <script src="https://checkout.razorpay.com/v1/checkout.js"
+                    data-key='rzp_live_YFwQzuSuorFCPM' 
+    
+                    data-amount="19900"
+                    data-buttontext="Pay ₹ 199 Now" data-name="Codekaro" 
+                    data-description="wd 30"
+                    data-image="{{ asset('assets/img/codekaro-dark.png') }}"
+                    data-theme.color="#0066ff">
+                    @auth
+                    data-prefill.name="{{Auth::user()->name}}"
+                    data-prefill.email="{{Auth::user()->email}}"
+                    data-prefill.contact="{{Auth::user()->mobile}}"  
+                    @endauth
+                    
+                </script>
+                <input type="hidden" name="courseId" value="23">
+            </form>
+            
+            <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-</p>
+
+           
+           </div>
+            
+          </div>
+        </div>
+      </div>
+      </div>
+  {{-- enrollment mode ends --}}
+
+
  
   <script>
     (function () {
@@ -635,6 +689,11 @@ professional work-like projects'))
       document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
       document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
 
+      document.getElementById("days1").innerText = Math.floor(distance / (day)),
+      document.getElementById("hours1").innerText = Math.floor((distance % (day)) / (hour)),
+      document.getElementById("minutes1").innerText = Math.floor((distance % (hour)) / (minute)),
+      document.getElementById("seconds1").innerText = Math.floor((distance % (minute)) / second);
+
     //do something later when date is reached
     if (distance < 0) {
       let headline = document.getElementById("headline"),
@@ -651,35 +710,5 @@ professional work-like projects'))
   }, 0)
 }());
 
-document.addEventListener('DOMContentLoaded', () => {
-           // Controls (as seen below) works in such a way that as soon as you explicitly define (add) one control
-           // to the settings, ALL default controls are removed and you have to add them back in by defining those below.
-     
-           // For example, let's say you just simply wanted to add 'restart' to the control bar in addition to the default.
-           // Once you specify *just* the 'restart' property below, ALL of the controls (progress bar, play, speed, etc) will be removed,
-           // meaning that you MUST specify 'play', 'progress', 'speed' and the other default controls to see them again.
-     
-           const controls = [
-               'play-large', // The large play button in the center
-               'restart', // Restart playback
-               'rewind', // Rewind by the seek time (default 10 seconds)
-               'play', // Play/pause playback
-               'fast-forward', // Fast forward by the seek time (default 10 seconds)
-               'progress', // The progress bar and scrubber for playback and buffering
-               'current-time', // The current time of playback
-               'duration', // The full duration of the media
-               'mute', // Toggle mute
-               'volume', // Volume control
-               'captions', // Toggle captions
-               'settings', // Settings menu
-               'pip', // Picture-in-picture (currently Safari only)
-               'airplay', // Airplay (currently Safari only)
-               // to either the current source or a custom URL you specify in your options
-               'fullscreen' // Toggle fullscreen
-           ];
-     
-           const player = Plyr.setup('.js-player', { controls });
-     
-       });
 </script>
 @endsection

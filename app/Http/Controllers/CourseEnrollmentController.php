@@ -54,8 +54,8 @@ class CourseEnrollmentController extends Controller
                     $a->status = 1;
                     $a->haspaid = 1;
                     $a->save();
-                    $enrollemnt = $a;
-                    $this->successMail($enrollemnt, $batch);
+                    $enrollmentId = $a->id;
+                    $this->successMail($enrollmentId);
                     session()->flash('alert-success', 'you have successfully enrolled in the course');
                     return redirect('/home');
                     }
@@ -131,6 +131,9 @@ class CourseEnrollmentController extends Controller
             $order  = $api->order->create(array('amount' => $amountPayable, 'currency' => 'INR', 'notes' => array('Name' => Auth::user()->name, 'Email' => Auth::user()->email, 'Phone' => Auth::user()->mobile, 'Course' => $batchId->name, )));
             $enrollment->invoiceID = $order->id;
             $enrollment->save();
+
+            
+
             return view('students.checkout', compact('enrollment', 'batch','order'));
         }
         else{
@@ -166,6 +169,7 @@ class CourseEnrollmentController extends Controller
             $batch = Batch::find($enrollment->batchId);
             // $user = User::find($enrollment->userId);
             // $this->successMail($batch, $user);
+            $this->successMail($enrollment->id);
             return view('students.PaymentComplete', compact('enrollment', 'batch'));
             session()->flash('alert-success', 'Payment Completed Successfully');
             return redirect('/home');
@@ -175,6 +179,9 @@ class CourseEnrollmentController extends Controller
         
         
     }
+
+
+    
 
     public function myCourse(){
         $courses = CourseEnrollment::where('userId', Auth::user()->id)->get();
@@ -193,24 +200,26 @@ class CourseEnrollmentController extends Controller
     }
 
 
-    private function successMail($workshop, $user){
-        $email_data = array(
-            'name' => $user->name,
-            'email' => $user->email,
-            'workshopName' => $workshop['name'],
-            'workshopGroup' => $workshop['groupLink'],
-            'discord' => $workshop['groupLink1'],
-            'nextClass' => $workshop['nextClass'],
-            'teacher' => $workshop->teacher->name,
-    
-        );
-    
-        // send email with the template
-        Mail::send('mail.coursePurchase', $email_data, function ($message) use ($email_data) {
-            $message->to($email_data['email'], $email_data['name'], $email_data['workshopName'], $email_data['workshopGroup'], $email_data['teacher'], $email_data['nextClass'])
-                ->subject('Complete the onboarding process for  '. $email_data['workshopName'])
-                ->from('info@codekaro.in', 'Codekaro');
-        });
+    private function successMail($enrollment)
+    {
+                $courseEnrollment = CourseEnrollment::find($enrollment);
+                $user = User::find($courseEnrollment->userId);
+                $workshop = Batch::find($courseEnrollment->batchId);
+                
+                $email_data = array(
+                    'name' => $user['name'],
+                    'email' => $user['email'],
+                    'workshopName' => $workshop['name'],
+                    'workshopGroup' => $workshop['groupLink'],
+                    'discord' => $workshop['groupLink1'],
+                    'nextClass' => $workshop['nextClass'],
+                    'teacher' => $workshop->teacher->name,
+            
+                );
+                
+                
+                Mail::to($user->email)->send(new OnboardingMail($email_data));
+            
     }
     
     
