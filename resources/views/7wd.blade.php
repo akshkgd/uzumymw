@@ -112,7 +112,7 @@ professional work-like projects'))
                             <div class="my-3 white">
                                 <a href="" class=" ck-btn ck-rounded btn-lg mt-3  px-5" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
                                 data-bs-target="#enroll">
-                                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 199</h2>
+                                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
                                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                                 </a>
                             </div>
@@ -381,7 +381,7 @@ professional work-like projects'))
                     <div class="my-5 text-center">
                         <a href="" data-bs-toggle="modal"
                         data-bs-target="#enroll" class="btn ck-btn ck-rounded btn-lg   px-5">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 199</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -493,7 +493,7 @@ professional work-like projects'))
                 <a href="" data-bs-toggle="modal"
                 data-bs-target="#enroll" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
                         data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 199</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
             </div>
@@ -591,7 +591,7 @@ professional work-like projects'))
             <div class="my-5">
                 <a href="" data-bs-toggle="modal"
                 data-bs-target="#enroll" class="btn ck-btn ck-rounded btn-lg   px-5">
-                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 199</h2>
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 499</h2>
                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -629,8 +629,8 @@ professional work-like projects'))
                 <script src="https://checkout.razorpay.com/v1/checkout.js"
                     data-key='rzp_live_YFwQzuSuorFCPM' 
     
-                    data-amount="19900"
-                    data-buttontext="Pay ₹ 199 Now" data-name="Codekaro" 
+                    data-amount="49900"
+                    data-buttontext="Pay ₹ 499 Now" data-name="Codekaro" 
                     data-description="wd 30"
                     data-image="{{ asset('assets/img/codekaro-dark.png') }}"
                     data-theme.color="#0066ff">
