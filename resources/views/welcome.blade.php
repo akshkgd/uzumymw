@@ -284,7 +284,7 @@
             <div class="row justify-content-center">
             <div class="col-lg-8 text-center">
               <h1 class="fw-bolder">Book your <span class="wd_highlight1">free masterclass </span>now</h1>
-              <p class="fs-5">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ipsam neque repudiandae cumque maiores tempora reiciendis.</p>
+              <p class="fs-5">More than 19000 students have attended our Masterclasses and loved them.</p>
               
               <button  class="btn btn-primary px-4 rounded-pill text-uppercas my-5 btn-lg fw-light" data-bs-toggle="modal" data-bs-target="#masterclass">Book free masterclass</a>
               <!-- <img src="./img/discord.svg" px- alt="" class="img-fluid mt-5"> -->
