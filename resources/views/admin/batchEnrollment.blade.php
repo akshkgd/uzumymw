@@ -144,7 +144,9 @@
                                             class="avatar avatar-sm"> <a class="text-dark td-none" href="{{action('AdminController@studentDetails', $enrollment->students->id  )}}">{{ $enrollment->students->name }}</a></td></td>
                                             <td>{{ $enrollment->students->email }}</td>
                                             <td>{{ $enrollment->students->mobile }}</td>
-                                            <td>{{ $enrollment->created_at->format('d M')}}</td>
+                                            <td>{{ $enrollment->created_at->format('d M')}} </td>
+                                            <td>{{ $enrollment->created_at}} </td>
+
                                             <td>
                                                 <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id) )}}" class="">Payment Received</a>
                                                 <a target="_blank" href="{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($enrollment->id)) }}"
