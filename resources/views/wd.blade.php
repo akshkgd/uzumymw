@@ -76,10 +76,10 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong>Thu, 9th August to 10th August </strong>  | 06:00 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong>Thu, 13th August to 14th August </strong>  | 06:00 PM IST</h3>
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/workshop-enroll/120" class="btn btn-dark btn-lg btn-block px-5">
+                        <a href="https://codekaro.in/workshop-enroll/121" class="btn btn-dark btn-lg btn-block px-5">
                             <h2 class="fs-3 mb-1">Enroll now for free</h2>
                             <p class="mb-0 fw-200">Enroll now limited seats are available</p>
                         </a>
@@ -213,7 +213,7 @@
                   </div>
                 
                 <div class="my-5 text-center">
-                    <a href="https://codekaro.in/workshop-enroll/120" class="btn btn-dark btn-lg btn-block px-5">
+                    <a href="https://codekaro.in/workshop-enroll/121" class="btn btn-dark btn-lg btn-block px-5">
                         <h2 class="fs-3 mb-1">Enroll now for free</h2>
                         <p class="mb-0">Enroll now limited seats are available</p>
                     </a>
@@ -311,7 +311,7 @@
                 </div>
             </div>
             <div class="my-5 text-center">
-                <a href="https://codekaro.in/workshop-enroll/120" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/121" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -355,7 +355,7 @@
               <p id="headline"></p>
             </div>
             <div class="my-5">
-                <a href="https://codekaro.in/workshop-enroll/120" class="btn btn-dark btn-lg btn-block px-5">
+                <a href="https://codekaro.in/workshop-enroll/121" class="btn btn-dark btn-lg btn-block px-5">
                     <h2 class="fs-3 mb-1">Enroll now for free</h2>
                     <p class="mb-0">Enroll now limited seats are available</p>
                 </a>
@@ -385,7 +385,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "august 9, 2022 18:00:00",
+  let birthday = "august 13, 2022 18:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
