@@ -17,6 +17,7 @@ use Razorpay\Api\Api;
 use Session;
 use Redirect;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -28,6 +29,14 @@ class AdminController extends Controller
         $users = User::all();
         foreach($users as $user){
             $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
+            $ip = \DB::table('sessions')->where('user_id', $user->id)->get();
+            // dd($ip);
+            if($ip->count() > 0){
+                $user->ip = $ip->first()->ip_address;
+            }
+            else{
+                $user->ip = "";
+            }
             if($isPaid > 0){
                 $user->hasPaid = 1;
             }

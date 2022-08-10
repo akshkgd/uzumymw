@@ -26,8 +26,8 @@
                                         <th>Name</th>
                                         <th scope="col">Email for Newsletter</th>
                                         <th>Created on</th>
-                                        <th>Created on</th>
-                                        <th>updated on on</th>
+                                        <th>updated on</th>
+                                        <th>Ip Address</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,6 +42,7 @@
                                             <td>{{$user->course }}</td> --}}
                                             <td>{{$user->created_at}}</td>
                                             <td>{{$user->updated_at}}</td>
+                                            <td>{{$user->ip}}</td>
                                         </tr>
                                         @endif
                                     @endforeach
