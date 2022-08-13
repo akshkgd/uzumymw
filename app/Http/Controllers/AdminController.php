@@ -28,7 +28,7 @@ class AdminController extends Controller
     public function getUsers(){
 
        
-        $users = User::paginate(2);
+        $users = User::paginate(200);
         
         foreach($users as $user){
             $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
