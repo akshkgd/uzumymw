@@ -28,15 +28,15 @@ class AdminController extends Controller
     public function getUsers(){
 
        
-        $users = User::select('id','name', 'email','created_at', 'updated_at')->paginate(100);
+        $users = User::select('id','name', 'email','created_at', 'updated_at')->paginate(500);
         
-        // foreach($users as $user){
-        //     $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
+        foreach($users as $user){
+            $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
         
-        //     if($isPaid > 0){
-        //         $user->hasPaid = 1;
-        //     }
-        // }
+            if($isPaid > 0){
+                $user->hasPaid = 1;
+            }
+        }
         return view('admin.emails', compact('users'))->with('i');
     }
     public function students()
