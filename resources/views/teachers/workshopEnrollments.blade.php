@@ -29,6 +29,7 @@
                                         <th scope="">College</th>
                                         <th scope="">Course</th>
                                         <th scope="">Enrolled on </th>
+                                        <th>IP</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -42,7 +43,9 @@
                                             <td>{{ $enrollment->student->college }}</td>
                                             <td>{{ $enrollment->student->course }}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
-
+                                            @isset($enrollment->student->session->ip_address)
+                                            <td>{{$enrollment->student->session->ip_address}}</td>
+                                            @endisset
                                         </tr>
                                     @endforeach
 
