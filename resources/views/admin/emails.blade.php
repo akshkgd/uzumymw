@@ -42,7 +42,9 @@
                                             <td>{{$user->course }}</td> --}}
                                             <td>{{$user->created_at}}</td>
                                             <td>{{$user->updated_at}}</td>
-                                            <td>{{$user->ip}}</td>
+                                            @isset($user->session->ip_address)
+                                            <td>{{$user->session->ip_address}}</td>
+                                            @endisset
                                         </tr>
                                         @endif
                                     @endforeach

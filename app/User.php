@@ -37,6 +37,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'lastActivity' => 'datetime',
     ];
-    
+    public function session(){
+
+        return $this->hasOne('App\Session', 'user_id', 'id');
+    }
     
 }
