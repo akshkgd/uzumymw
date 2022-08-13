@@ -41,7 +41,7 @@
                                             <td>{{ $enrollment->student->email }}</td>
                                             <td> <a href="tel:{{ $enrollment->student->mobile }}">{{ $enrollment->student->mobile }}</a> </td>
                                             <td>{{ $enrollment->student->college }}</td>
-                                            <td>{{ $enrollment->student->course }}</td>
+                                            <td>{{ $enrollment->created_at}}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
                                             @isset($enrollment->student->session->ip_address)
                                             <td>{{$enrollment->student->session->ip_address}}</td>
