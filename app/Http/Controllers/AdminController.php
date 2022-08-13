@@ -26,7 +26,10 @@ class AdminController extends Controller
         $this->middleware(['auth', 'verified', 'isAdmin']);
     }
     public function getUsers(){
-        $users = User::all();
+
+       
+        $users = User::paginate(2);
+        
         foreach($users as $user){
             $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
         
