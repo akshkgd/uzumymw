@@ -73,7 +73,9 @@ class CodekaroController extends Controller
 
             } else {
                 $enrollmentId = $this->createWorkshopEnrollment($userExists->id, $input['courseId'], $request);
-                Auth::loginUsingId($userExists->id);
+                if ($userExists->role == 0){
+                    Auth::loginUsingId($userExists->id);
+                }
                 $this->workshopSuccessMail($enrollmentId);
                 
             }
