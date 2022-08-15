@@ -1606,6 +1606,50 @@ section {
     display: inline-block;
     cursor: pointer;
     font-size: 16px;
+    border-radius: 16px;
+    box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px;
+}
+.modal-content{
+    border:none;
+    border-radius: 16px;
+}
+.enrollment-button{
+    /* background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120)); */
+    /* background-image: linear-gradient(99deg, rgb(10, 255, 2), rgb(0, 255, 153)); */
+    background-color: rgb(25, 208, 124);;
+    border:none;
+    color: white;
+    padding: 16px !important;
+    width:100%;
+    font-weight:400;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: bolder;
+    border-radius: 16px;
+    margin: 1px 0 0 0;
+}
+.form-control{
+    border-radius: 10px;
+
+}
+input:focus{
+    outline: none !important;
+    box-shadow: none !important;
+    border: 1px solid rgb(25, 208, 124) !important;
+}
+/* .ck-btn{
+        
+    background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
+    border: 1px solid transparent;
+    border:none;
+    text-decoration: none;
+    color: white;
+    padding: 12px 46px !important;
+    font-weight:400;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 16px;
     border-radius: 100px;
     /* box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px; */
-}
+} */

@@ -119,6 +119,8 @@ Route::get('/workshop-certificate/{id}', 'WorkshopEnrollmentController@certifica
 Route::get('/course-certificate/{id}', 'BatchController@certificate');
 Route::get('/explore-course/{id}', 'BatchController@details');
 Route::post('course-payment', 'CodekaroController@coursePayment')->name('course-payment');
+Route::post('workshop-enrollment-auto', 'CodekaroController@workshopEnrollemnt')->name('workshop-enrollment-auto');
+
 
 
 
