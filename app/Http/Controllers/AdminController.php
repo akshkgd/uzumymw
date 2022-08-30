@@ -34,6 +34,9 @@ class AdminController extends Controller
             if($isPaid > 0){
                 $user->hasPaid = 1;
             }
+            else{
+                $user->hasPaid = 0;
+            }
         }
         return view('admin.emails', compact('users'))->with('i');
     }
