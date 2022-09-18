@@ -26,7 +26,7 @@ class AdminController extends Controller
         $this->middleware(['auth', 'verified', 'isAdmin']);
     }
     public function getUsers(){
-        $users = User::select('id','name', 'email','created_at', 'updated_at')->get();
+        $users = User::select('id','name', 'email','created_at', 'updated_at')->paginate(5000);
         
         foreach($users as $user){
             $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
@@ -38,8 +38,7 @@ class AdminController extends Controller
                 $user->hasPaid = 0;
             }
         }
-        dd($users);
-        return view('admin.emails', compact('users'));
+        return view('admin.emails', compact('users'))->with('i');
     }
     public function students()
     {
