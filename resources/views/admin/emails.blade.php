@@ -32,7 +32,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
-                                    @if($user->haspaid == 0)
+                                    @if($user->hasPaid == 0)
                                         <tr>
                                             <td>{{$user->name }}</td>
                                             <td>{{$user->email }}</td>
