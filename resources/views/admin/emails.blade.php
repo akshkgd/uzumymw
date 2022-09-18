@@ -16,7 +16,7 @@
                     <div class="card">
                         <div class="card-boy">
                             <div class="p-3">
-                                <h3 class="ck-font">Students Newsletter</h3>
+                                <h3 class="ck-font">Students Newsletter {{$users->count()}}</h3>
                             </div>
 
                             <table class="table table-responsive-lg">
