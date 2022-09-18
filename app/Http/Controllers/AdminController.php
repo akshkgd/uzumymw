@@ -38,7 +38,7 @@ class AdminController extends Controller
                 $user->hasPaid = 0;
             }
         }
-        return view('admin.emails', compact('users'))->with('i');
+        return view('admin.emails', compact('users'));
     }
     public function students()
     {
