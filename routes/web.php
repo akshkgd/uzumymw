@@ -35,6 +35,7 @@ Route::view('/privacy','privacy');
 Route::view('/learn-git-and-github','git');
 Route::view('/instagram-live-masterclass','js');
 Route::view('/web-development-live-masterclass','wd');
+Route::view('/wd','wdSunday');
 Route::view('/cwr-live-masterclass','cwr');
 Route::view('/web-development-masterclass','instawd');
 Route::view('/python-masterclass','python');
