@@ -159,7 +159,7 @@
                                                 
                                             </td>
                                             <td><a target="_blank" href="{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($enrollment->id)) }}"
-                                                    class=" btn btn-outline-primary fw-400">Complete
+                                                    class="">Complete
                                                     Payment</a></td>
 
                                         </tr>
