@@ -158,8 +158,9 @@
                                                 <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id) )}}" class="">Payment Received</a>
                                                 
                                             </td>
-                                            <td><{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($enrollment->id)) }}
-                                                </td>
+                                            <td><a target="_blank" href="{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($enrollment->id)) }}"
+                                                    class=" btn btn-outline-primary fw-400">Complete
+                                                    Payment</a></td>
 
                                         </tr>
                                     @endforeach
