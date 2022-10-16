@@ -159,7 +159,7 @@
                                                 
                                             </td>
                                             <td><a target="_blank" href="{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($enrollment->id)) }}"
-                                                    class=""> {{url('CourseEnrollmentController@checkout', Crypt::encrypt($enrollment->id))}}  </a></td>
+                                                    class=""> {{url('checkout', Crypt::encrypt($enrollment->id))}}  </a></td>
 
                                         </tr>
                                     @endforeach
