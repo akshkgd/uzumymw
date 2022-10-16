@@ -140,6 +140,7 @@
                                         <td scope="col">Enrolled on </th>
 
                                         <td scope="col">Actions</th>
+                                            <td scope="col">Actions</th>
                                     </tr>
                                
                                 
@@ -155,10 +156,10 @@
 
                                             <td>
                                                 <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id) )}}" class="">Payment Received</a>
-                                                <a target="_blank" href="{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($enrollment->id)) }}"
-                                                    class=" btn btn-outline-primary fw-400">Complete
-                                                    Payment</a>
+                                                
                                             </td>
+                                            <td><{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($enrollment->id)) }}
+                                                </td>
 
                                         </tr>
                                     @endforeach
