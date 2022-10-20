@@ -1,17 +1,16 @@
-@extends('layouts.app')
+@extends('layouts.ck')
 @section('content')
-
-
-<div class="navbar-container pb-5">
-    <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
-      @include('layouts.header')
-    </nav>
-  </div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div class="container ">
+     
+      <a class="navbar-brand fw-bold text-primary fs-4" href="{{url('/')}}">Codekaro</a>
+    </div>
+</nav>
 <div class="container pt-5 mt-5">
     <div class="row justify-content-center">
         <div class="col-sm-10">
 
-<h2 style="text-align: center;"><b>TERMS AND CONDITIONS</b></h2>
+<h2 style="text-align: center;"><b>Privacy Policy</b></h2>
 <p>Last updated: 2020-07-01</p>
 <p>1. <b>Introduction</b></p>
 <p>Welcome to <b>Codekaro</b> (“Company”, “we”, “our”, “us”)!</p>
@@ -110,5 +109,5 @@
     </div>
 </div>
 
-@include('layouts.footer')
+@include('layouts.ck-footer')
 @endsection
