@@ -23,7 +23,7 @@
 <p>4. <b>Contests, Sweepstakes and Promotions</b></p>
 <p>Any contests, sweepstakes or other promotions (collectively, “Promotions”) made available through Service may be governed by rules that are separate from these Terms of Service. If you participate in any Promotions, please review the applicable rules as well as our Privacy Policy. If the rules for a Promotion conflict with these Terms of Service, Promotion rules will apply.</p>
 
-<p>5. <b>Refunds</b></p><p>We issue refunds for Contracts within <b>7 days</b> of the original purchase of the Contract.</p>
+<p>5. <b>Refunds</b></p><p>There is a strict no refund & no cancellation policy. You are entitled to a refund only in the case where you have not been allotted the course after payment.</p>
 <p>6. <b>Content</b></p><p>Content found on or through this Service are the property of Codekaro or used with permission. You may not distribute, modify, transmit, reuse, download, repost, copy, or use said Content, whether in whole or in part, for commercial purposes or for personal gain, without express advance written permission from us.</p>
 <p>7. <b>Prohibited Uses</b></p>
 <p>You may use Service only for lawful purposes and in accordance with Terms. You agree not to use Service:</p>
