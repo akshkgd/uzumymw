@@ -32,6 +32,8 @@ Route::view('/himanshu','team.himanshu');
 Route::view('/ashish','team.ashish');
 Route::view('/arpit','team.arpit');
 Route::view('/privacy','privacy');
+Route::view('/terms','terms');
+Route::view('/refund-policy','refund');
 Route::view('/learn-git-and-github','git');
 Route::view('/instagram-live-masterclass','js');
 Route::view('/web-development-live-masterclass','wd');
