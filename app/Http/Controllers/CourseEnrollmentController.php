@@ -88,12 +88,17 @@ class CourseEnrollmentController extends Controller
 
     }
     private function isEnrolled($id){
-        $isEnrolled = CourseEnrollment::where('batchId', $id)->where('userId', Auth::user()->id)->get();
-        if($isEnrolled->count() == 0)
-        return 'true';
+        $isEnrolled = CourseEnrollment::where('batchId', $id)->where('userId', Auth::user()->id)->first();
+        if($isEnrolled->count() > 0){
+            $enrollId = Crypt::encrypt($isEnrolled->id);
+            return redirect('checkout/'.$enrollId);
+        }
+        else{
+            return 'true';
+        }
         
-       
     }
+
     private function enroll($batch){
         
         
