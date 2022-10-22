@@ -39,7 +39,8 @@ class CourseEnrollmentController extends Controller
     public function checkEnroll($id)
     {
         $batch = Batch::findorFail($id);
-        if($this->isEnrolled($id)=='true')
+        $isEnrolled = $this->isEnrolled($id);
+        if($isEnrolled == 'true')
         {
             if($this->batchStatus($id)=='true')
             {
@@ -83,15 +84,21 @@ class CourseEnrollmentController extends Controller
         }
         else{
             session()->flash('alert-warning', 'already enrolled');
-            return redirect( '/home');
+            // dd ($isEnrolled);
+            $enrollId = Crypt::encrypt($isEnrolled->id);
+            return redirect('checkout/'.$enrollId);
+            // dd ($isEnrolled);
+            // return redirect( '/home');
         }
 
     }
     private function isEnrolled($id){
+        $isEnrolledCount = CourseEnrollment::where('batchId', $id)->where('userId', Auth::user()->id)->get();
+
         $isEnrolled = CourseEnrollment::where('batchId', $id)->where('userId', Auth::user()->id)->first();
-        if($isEnrolled->count() > 0){
-            $enrollId = Crypt::encrypt($isEnrolled->id);
-            return redirect('checkout/'.$enrollId);
+        if($isEnrolledCount->count() > 0){
+            
+            return $isEnrolled;
         }
         else{
             return 'true';
