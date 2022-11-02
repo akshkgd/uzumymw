@@ -132,7 +132,7 @@
           <div class="text-center">
             <img src="{{ asset('assets/img/hand-with-mic.svg') }}" alt="">
           <h1 class=" fw-bolder">Students Love Codekaro</h1>
-          <p class="fs-5 mb-5">Here's what {{$users}} satisfied students have to say about learning with codekaro.</p>
+          <p class="fs-5 mb-5">Here's what 30000+ satisfied students have to say about learning with codekaro.</p>
           </div>
           <div class="row" data-masonry='{"percentPosition": true }'>
             <div class="col-md-4 my-3">
