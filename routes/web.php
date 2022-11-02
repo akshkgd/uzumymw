@@ -65,8 +65,7 @@ Route::get('/', function () {
     
     $batches = Workshop::where('status',1)->latest()->take(3)->get();
     $courses = Batch::where('status',1)->latest()->take(2)->get();
-    $users = User::all()->count();
-    return view('welcome', compact('batches', 'users', 'courses'));
+    return view('welcome', compact('batches', 'courses'));
 });
 
 
