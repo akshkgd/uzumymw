@@ -42,8 +42,8 @@ class recordingAdded extends Notification implements ShouldQueue
     {
         return (new MailMessage)
                     ->subject('New Recording Available')
-                    ->line('Hi '. $this->emailData['name'])
-                    ->greeting('New recording on '. $this->emailData['title'] .' is available now.')
+                    ->greeting('Hi '. $this->emailData['name'])
+                    ->line('New recording on '. $this->emailData['title'] .' is available now.')
                     ->action('Watch the recording now', url('/home'))
                     ->line('Make sure you attend all the upcoming sessions live for the best experience!');
     }
