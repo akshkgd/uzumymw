@@ -41,5 +41,8 @@ class User extends Authenticatable
 
         return $this->hasOne('App\Session', 'user_id', 'id');
     }
-    
+    public function routeNotificationForMail()
+    {
+        return $this->email;
+    }
 }

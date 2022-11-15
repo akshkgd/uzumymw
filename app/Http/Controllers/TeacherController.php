@@ -6,11 +6,13 @@ use App\CourseEnrollment;
 use App\WorkshopEnrollment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Notification;
 use App\Batch;
 use App\Workshop;
 use App\BatchContent;
 use App\BatchTopics;
 use App\Feedback;
+use App\Notifications\recordingAdded;
 
 class TeacherController extends Controller
 {
@@ -131,6 +133,7 @@ class TeacherController extends Controller
     public function storeContent( Request $request)
     {
         $batch = Batch::findorFail($request->batchId);
+        
         if($batch->teacherId == Auth::user()->id)
         {
             $a = new BatchContent;
@@ -141,12 +144,32 @@ class TeacherController extends Controller
             $a->batchId = $batch->id;
             $a->teacherId = Auth::user()->id;
             $a->save();
+            $users = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->select('userId')->get();
+            $usersList = array();
+            foreach($users as $user){
+                $emailData = array(
+                    'title' => $request['title'],
+                    'name' =>  strtok($user->students->name, ' ') 
+                );
+                $email = array($user->students->email);
+                Notification::route('mail', $email)->notify(new recordingAdded($emailData) );
+                // $user->email = $user->students->email;
+                // $name = $user->students->name;
+                // $email = $user->students->email;
+                // array_push($usersList,  );
+                // $usersList = $user->students->email;
+            }
+            // $this->notifyRecordingAdded($request->title, $users);
+            
             session()->flash('alert-success',  'Content added Successfully!');
             return back();
 
         }
     }
 
+    private function notifyRecordingAdded($title, $users){
+        // Notification::route('mail', $users)->notify(new recordingAdded() );
+    }
     public function workshopDetails($id){
         $batch = Workshop::findorFail($id);
 

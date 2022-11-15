@@ -16,4 +16,8 @@ class CourseEnrollment extends Model
 
         return $this->belongsTo ('App\User', 'userId', 'id');
     }
+    public function routeNotificationForMail()
+    {
+        return $this->email;
+    }
 }
