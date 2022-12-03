@@ -63,10 +63,9 @@ class HomeController extends Controller
             $batches = Batch::where('status', 1)->get()->count();
             $total = CourseEnrollment::where('hasPaid', 1)->sum('amountPaid')/100;
             // $month = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', $month_date)->sum('amountPaid')/100;
-            $month = CourseEnrollment::whereMonth('created_at', '=', Carbon::now()->month)->where('hasPaid', 1)->sum('amountPaid')/100;
-            dd(Carbon::now()->month );
+            $month = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->where('hasPaid', 1)->sum('amountPaid')/100;
             // $previousMonth = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', date('m', strtotime('-1 month')))->sum('amountPaid')/100;
-            $previousMonth = CourseEnrollment::whereMonth('created_at', '=', Carbon::now()->subMonth()->month)->where('hasPaid', 1)->sum('amountPaid')/100;
+            $previousMonth = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->subMonth()->month)->where('hasPaid', 1)->sum('amountPaid')/100;
         return view('admin.index', compact('users', 'batches', 'total', 'month', 'previousMonth', 'usersThisMonth', 'usersPreviousMonth'));
         }
         
