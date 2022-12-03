@@ -58,8 +58,8 @@ class HomeController extends Controller
         elseif(Auth::User()->role == 100){
             $users = User::count();
             $month_date = date('m');
-            $usersThisMonth = User::whereMonth('created_at', $month_date)->count();
-            $usersPreviousMonth = User::whereMonth('created_at', date('m', strtotime('-1 month')))->count();
+            $usersThisMonth = User::whereMonth('created_at', $month_date)->whereYear('paidAt', '=', Carbon::now()->year)->count();
+            $usersPreviousMonth = User::whereMonth('created_at', date('m', strtotime('-1 month')))->whereYear('paidAt', '=', Carbon::now()->year)->count();
             $batches = Batch::where('status', 1)->get()->count();
             $total = CourseEnrollment::where('hasPaid', 1)->sum('amountPaid')/100;
             $month = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->sum('amountPaid')/100;
