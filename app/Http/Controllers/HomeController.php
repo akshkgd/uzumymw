@@ -55,7 +55,7 @@ class HomeController extends Controller
             return view('teachers.index', compact('batches', 'workshops'));
         }
         elseif(Auth::User()->role == 100){
-            $users = User::all()->count();
+            $users = User::count();
             $month_date = date('m');
             $usersThisMonth = User::whereMonth('created_at', $month_date)->count();
             $usersPreviousMonth = User::whereMonth('created_at', date('m', strtotime('-1 month')))->count();
