@@ -62,10 +62,9 @@ class HomeController extends Controller
             $usersPreviousMonth = User::whereMonth('created_at', date('m', strtotime('-1 month')))->count();
             $batches = Batch::where('status', 1)->get()->count();
             $total = CourseEnrollment::where('hasPaid', 1)->sum('amountPaid')/100;
-            // $month = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', $month_date)->sum('amountPaid')/100;
-            // $month = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->where('hasPaid', 1)->sum('amountPaid')/100;
             $month = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->sum('amountPaid')/100;
-
+            $montht = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->get();
+            dd($montht);
             // $previousMonth = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', date('m', strtotime('-1 month')))->sum('amountPaid')/100;
             $previousMonth = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->subMonth()->format('m'))->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->sum('amountPaid')/100;
         return view('admin.index', compact('users', 'batches', 'total', 'month', 'previousMonth', 'usersThisMonth', 'usersPreviousMonth'));
