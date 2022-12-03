@@ -64,7 +64,7 @@ class HomeController extends Controller
             $total = CourseEnrollment::where('hasPaid', 1)->sum('amountPaid')/100;
             // $month = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', $month_date)->sum('amountPaid')/100;
             // $month = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->where('hasPaid', 1)->sum('amountPaid')/100;
-            $month = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->get();
+            $month = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->sum('amountPaid')/100;
 
             // $previousMonth = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', date('m', strtotime('-1 month')))->sum('amountPaid')/100;
             $previousMonth = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->subMonth()->format('m'))->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->sum('amountPaid')/100;
