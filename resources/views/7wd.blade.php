@@ -629,7 +629,7 @@ professional work-like projects'))
                 <script src="https://checkout.razorpay.com/v1/checkout.js"
                     data-key='rzp_live_YFwQzuSuorFCPM' 
     
-                    data-amount="49900"
+                    data-amount="400"
                     data-buttontext="Pay ₹ 499 Now" data-name="Codekaro" 
                     data-description="wd 30"
                     data-image="{{ asset('assets/img/codekaro-dark.png') }}"
@@ -641,7 +641,7 @@ professional work-like projects'))
                     @endauth
                     
                 </script>
-                <input type="hidden" name="courseId" value="23">
+                <input type="hidden" name="courseId" value="1">
             </form>
             
             <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-</p>

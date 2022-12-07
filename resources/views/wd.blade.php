@@ -141,26 +141,6 @@
                     </div>
                 </div> --}}
                 <div class="col-md-4 mt-4">
-                    <div class="card text-center f-3">
-                        <div class="p-2">
-                            <img src="{{asset('assets/img/hd.svg')}}" alt="">
-                            <h2 class="fs-4 mt-2">Have doubts?</h2>
-                            <p class="">Fear not, peer to peer group will help you out any issue, big or small.</p>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card text-center f-2">
-                        <div class="p-2">
-                            <img src="{{asset('assets/img/wtr.svg')}}" alt="">
-                            <h2 class="fs-4 mt-2">Get Certificate!</h2>
-                            <p>Receive a linkedIn shareable certificate after the completion of live classes</p>
-                        </div>
-                        
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
                     <div class="card text-center f-4">
                         <div class="p-2">
                             <img src="{{asset('assets/img/time.svg')}}" alt="">
@@ -176,6 +156,36 @@
                             <img src="{{asset('assets/img/project.svg')}}" alt="" height="70">
                             <h2 class="fs-4 mt-2">Project-based Learning</h2>
                             <p class="">An immersive project-based curriculum focused on practical developer skills.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                
+                
+                
+                
+            </div>
+        </div>
+        <div class="container ">
+            <div class="row justify-content-center">
+
+                <div class="col-md-4 mt-4">
+                    <div class="card text-center f-3">
+                        <div class="p-2">
+                            <img src="{{asset('assets/img/hd.svg')}}" alt="">
+                            <h2 class="fs-4 mt-2">Have doubts?</h2>
+                            <p class="">Fear not, peer to peer group will help you out any issue, big or small.</p>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card text-center f-2">
+                        <div class="p-2">
+                            <img src="{{asset('assets/img/wtr.svg')}}" alt="">
+                            <h2 class="fs-4 mt-2">Get Certificate!</h2>
+                            <p>Receive a linkedIn shareable certificate after the completion of live classes</p>
                         </div>
                         
                     </div>
@@ -198,11 +208,11 @@
                       <h4>Day 1</h4>
                       <ul>
                         <li>Introduction to HTML,  CSS</li>
-                        <li>Selectors and Typography</li>
                         <li>CSS Box Model</li>
-                        <li>Flexbox</li>
+                        <li>CSS Flexbox</li>
+                        <li>CSS Animations</li>
                         <li>Bonus Gift 🎁</li>
-                        <li><strong>Profile Page Project </strong> </li>
+                        <li><strong>Food Ordering Application </strong> </li>
                       </ul>
                     </div>
                     <div class="cd f-1-bottom p-3">
@@ -218,9 +228,9 @@
                         <li>Introduction to Javascript</li>
                         <li>Data Types & Variables</li>
                         <li>Functions and Arrays</li>
-                        <li>Objects</li>
-                        <li>Loops & Conditionals</li>
-                        <li><strong>Toss Coin Game 🪙</strong> </li>
+                        <li>Document Object Model</li>
+                        <li>Currency Converter App</li>
+                        <li><strong>Bill Split App 🪙</strong> </li>
                       </ul>
                     </div>
                   <div class="cd f-4-bottom p-3">
@@ -266,7 +276,7 @@
     <section>
         <div class="container">
             <div class="text-center">
-                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 7100+ students</h1>
+                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 34000+ students</h1>
                 <p class="lead mb-4">Here's what some of our students have to say about learning with codekaro.</p>
             </div>
             <div class="row">
@@ -431,8 +441,9 @@
     
           <div class="modal-body p-4 pt-0 text-center mt-4">
               {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
-            <h2 class=" mb-0 fs-4 ">Join 2 days live web development bootcamp!</h2>
-            <div class="col-md-12 text-center mt-4">
+            <h2 class=" mb-0 fs-3 fw-bold">Join 2 days live web dev bootcamp!</h2>
+            <p class="my-3 " style="font-size: 14px">Starting in</p>
+            <div class="col-md-12 text-center mt-0">
                 <div id="countdown" class="">
                     <ul type="none" class="navbar justify-content-around p-0 text-center">
                       <li class="d-inlin fs-6"><span id="days1" class="d-block display-6 fw-bold"></span> <span>days</span> </li>
@@ -458,6 +469,7 @@
                   </div>
                 <input type="hidden" name="courseId" value="148">
                 <button class="enrollment-button">Enroll Now for Free</button>
+                <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's Terms & Conditions and Privacy Policy</p>
             </form>
             
             {{-- <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-</p> --}}

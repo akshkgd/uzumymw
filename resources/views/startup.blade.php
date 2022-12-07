@@ -39,7 +39,7 @@
     <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/ck_light.css')}}">
+    <link rel="stylesheet" href="{{asset('css/masterclass.css')}}">
     <style>
 
     </style>
@@ -52,7 +52,44 @@
 </head>
 
 <body>
-    <div class="container ">
+    <div class="text-center">
+        @include('layouts.alert')
+
+    </div>
+    <section>
+        <div class="container pt-lg-">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 mx-auto " style="height: 100vh; display:flex; align-items: center">
+            
+                    
+    
+                    <main class="text-center">
+                        <div class="cwr my-5 border d-inline p-3 rounded-pill px-5">Codekaro Live Masterclass</div>
+                        <h1 class="display- fw-bolder mt-5" style="font-size: calc(1.25rem + 2.1vw);">How to <span class="wd_highlight"> Bootstrap your first startup</span>Join live Masterclass</h1>
+                       
+                        <div class="row justify-content-center">
+                            <p class="fs-6 text-muted col-md-10 text-center" style="font-size: calc(0.01rem + 1.6vw);">A live masterclass for you to help you navigate through all the steps of building a successful start-up. like a GPS for your startup journey.</p>
+                        </div>
+        
+                <h4 class="fw-500 py-4"> <strong>Sunday, 6th November </strong>  | 06:00 PM IST</h3>
+                        
+        
+                            <div class="my-3 white">
+                                <a href="" class="btn ck-btn ck-rounded btn-lg mt-3  px-5" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
+                                data-bs-target="#enroll">
+                                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll Now for Free</h2>
+                                    <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                                </a>
+                            </div>
+
+                            
+                    </main>
+                </div>
+            </div>
+    
+        </div>
+    </section>
+    <div class="container d-none">
         <div class="col-lg-12 mx-auto p-3 ">
             {{-- <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
                 <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
@@ -68,7 +105,7 @@
             </header> --}}
 
             <main class="text-center mt-5 pt-lg-5">
-                <h1 class="display-5 fw-bolder">Get started with  <span class="wd_highlight">Live CSS masterclass</span> <br> for free with CWR</h1>
+                <h1 class="display-5 fw-bolder">Get started with 2 days  <span class="wd_highlight">Web Development</span> <br> Bootcamp for free</h1>
                
                 <div class="row justify-content-center">
                     <p class="fs-5 text-muted col-md-10 text-center">Get started as a front-end web developer using HTML, CSS,
@@ -76,10 +113,10 @@
                 </div>
 
 
-                <h4 class="fw-500 py-4"> <strong>24th June </strong>  | 06:00 PM IST</h3>
+                <h4 class="fw-500 py-4"> <strong>Thu, 3th August to 14th August </strong>  | 06:00 PM IST</h3>
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/workshop-enroll/108" class="btn btn-dark btn-lg btn-block px-5">
+                        <a href="https://codekaro.in/workshop-enroll/121" class="btn btn-dark btn-lg btn-block px-5">
                             <h2 class="fs-3 mb-1">Enroll now for free</h2>
                             <p class="mb-0 fw-200">Enroll now limited seats are available</p>
                         </a>
@@ -169,11 +206,11 @@
                       </ul>
                     </div>
                     <div class="cd f-1-bottom p-3">
-                        <strong>Project:</strong> Food ordering webpage
+                        Understand CSS with Project
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 d-none">
+                <div class="col-md-4 d-n">
                   <div class="card f-4 ">
                     <div class="p-3">
                       <h4>Day 2</h4>
@@ -212,10 +249,11 @@
                     </div>
                   </div>
                 
-                <div class="my-5 text-center">
-                    <a href="https://codekaro.in/workshop-enroll/108" class="btn btn-dark btn-lg btn-block px-5">
-                        <h2 class="fs-3 mb-1">Enroll now for free</h2>
-                        <p class="mb-0">Enroll now limited seats are available</p>
+                  <div class="my-3 white text-center">
+                    <a href="" class="btn ck-btn ck-rounded btn-lg mt-3  px-5" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
+                    data-bs-target="#enroll">
+                        <h2 class="fs-3 mb-1 text-white fw-bold">Enroll Now for Free</h2>
+                        <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                     </a>
                 </div>
                 
@@ -310,10 +348,11 @@
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
             </div>
-            <div class="my-5 text-center">
-                <a href="https://codekaro.in/workshop-enroll/108" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now for free</h2>
-                    <p class="mb-0">Enroll now limited seats are available</p>
+            <div class="my-3 white text-center">
+                <a href="" class="btn ck-btn ck-rounded btn-lg mt-3  px-5" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
+                data-bs-target="#enroll">
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll Now for Free</h2>
+                    <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                 </a>
             </div>
         </div>
@@ -354,10 +393,11 @@
               <span>🎂</span>
               <p id="headline"></p>
             </div>
-            <div class="my-5">
-                <a href="https://codekaro.in/workshop-enroll/108" class="btn btn-dark btn-lg btn-block px-5">
-                    <h2 class="fs-3 mb-1">Enroll now for free</h2>
-                    <p class="mb-0">Enroll now limited seats are available</p>
+            <div class="my-3 white">
+                <a href="" class="btn ck-btn ck-rounded btn-lg mt-3  px-5" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
+                data-bs-target="#enroll">
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll Now for Free</h2>
+                    <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                 </a>
             </div>
           </div>
@@ -378,6 +418,61 @@
     <p>©2020-21 Codekaro All Rights Reserved.</p>
     </div>
     </footer>
+
+{{-- enrollment model  starts --}}
+<div class="modal" id="enroll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-5 shadow">
+          {{-- <div class="modal-header px-5 pb-4 border-bottom-0 text-center"> --}}
+            <!-- <h5 class="modal-title">Modal title</h5> -->
+            {{-- <h2 class=" mb-0 fs-4">Join 30 days live Bootcamp</h2> --}}
+            {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+          {{-- </div> --}}
+    
+          <div class="modal-body p-4 pt-0 text-center mt-4">
+              {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
+            <h2 class=" mb-0 fs-4 ">Join 2 days live web development bootcamp!</h2>
+            <div class="col-md-12 text-center mt-4">
+                <div id="countdown" class="">
+                    <ul type="none" class="navbar justify-content-around p-0 text-center">
+                      <li class="d-inlin fs-6"><span id="days1" class="d-block display-6 fw-bold"></span> <span>days</span> </li>
+                      <li class="d-inlin fs-6"><span id="hours1" class="d-block display-6 fw-bold "></span>Hours</li>
+                      <li class="d-inlin fs-6"><span id="minutes1" class="d-block display-6 fw-bold"></span>Minutes</li>
+                      <li class="d-inlinx fs-6"><span id="seconds1" class="d-block display-6 fw-bold"></span>Seconds</li>
+                    </ul>
+                  </div>
+            </div>
+            <form action="{{ route('workshop-enrollment-auto') }}" method="POST" class="">
+                @csrf
+                <div class="form-floating mt-3 mb-2">
+                    <input type="text" required class="form-control" id="floatingInput" name="name" placeholder="name@example.com" @auth value="{{Auth::user()->name}}" @endauth>
+                    <label for="floatingInput">Full Name</label>
+                  </div>
+                  <div class="form-floating mb-2">
+                    <input type="text" required class="form-control" id="floatingInput" name="email" placeholder="name@example.com" @auth value="{{Auth::user()->email}}" @endauth>
+                    <label for="floatingInput">Email address</label>
+                  </div>
+                  <div class="form-floating mb-2">
+                    <input type="number" required  class="form-control" id="floatingInput" name="mobile" placeholder="name@example.com" @auth value="{{Auth::user()->mobile}}" @endauth>
+                    <label for="floatingInput">Mobile Number</label>
+                  </div>
+                <input type="hidden" name="courseId" value="137">
+                <button class="enrollment-button">Enroll Now for Free</button>
+            </form>
+            
+            {{-- <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-</p> --}}
+
+           
+           </div>
+            
+          </div>
+        </div>
+      </div>
+      </div>
+  {{-- enrollment model ends --}}
+
+
+
     <script>
         (function () {
         const second = 1000,
@@ -385,17 +480,22 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "june 24, 2022 18:00:00",
+  let birthday = "november 3, 2022 18:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
         let now = new Date().getTime(),
             distance = countDown - now;
 
-          document.getElementById("days").innerText = Math.floor(distance / (day)),
+        document.getElementById("days").innerText = Math.floor(distance / (day)),
           document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
           document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
           document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+          document.getElementById("days1").innerText = Math.floor(distance / (day)),
+      document.getElementById("hours1").innerText = Math.floor((distance % (day)) / (hour)),
+      document.getElementById("minutes1").innerText = Math.floor((distance % (hour)) / (minute)),
+      document.getElementById("seconds1").innerText = Math.floor((distance % (minute)) / second);
 
         //do something later when date is reached
         if (distance < 0) {
@@ -414,7 +514,7 @@
   }());
     </script>
     
-    
+    <script src="{{asset('/js/codekaro.js')}}"></script>
 </body>
 
 </html>

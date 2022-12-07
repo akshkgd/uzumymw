@@ -1607,27 +1607,43 @@ section {
     cursor: pointer;
     font-size: 16px;
     border-radius: 16px;
-    box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px;
+    transition: 100ms;
+    /* box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px; */
 }
+.ck-btn:hover{
+    box-shadow: rgb(247 123 155 / 91%) 0px 8px 18px 0px;
+    
+}
+@media(max-width:586px){
+    .modal-dialog-centered{
+        align-items: end;
+    }
+}
+
 .modal-content{
     border:none;
     border-radius: 16px;
 }
 .enrollment-button{
     /* background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120)); */
-    /* background-image: linear-gradient(99deg, rgb(10, 255, 2), rgb(0, 255, 153)); */
+    background-image: linear-gradient(99deg, rgb(0, 184, 46), rgb(0, 224, 134));
     background-color: rgb(25, 208, 124);;
     border:none;
     color: white;
     padding: 16px !important;
     width:100%;
-    font-weight:400;
+    font-weight:400 !important;
     display: inline-block;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: bolder;
-    border-radius: 16px;
+    border-radius: 12px;
     margin: 1px 0 0 0;
+}
+.enrollment-button:hover{
+    /* box-shadow: rgb(0 184 46 / 91%) 0px 2px 12px 0px; */
+    
+
 }
 .form-control{
     border-radius: 10px;
@@ -1636,5 +1652,5 @@ section {
 input:focus{
     outline: none !important;
     box-shadow: none !important;
-    border: 1px solid rgb(25, 208, 124) !important;
+    border: 1px solid #0066ff !important;
 }
