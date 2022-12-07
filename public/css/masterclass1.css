@@ -1625,9 +1625,9 @@ section {
     border-radius: 16px;
 }
 .enrollment-button{
-    /* background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120)); */
-    background-image: linear-gradient(99deg, rgb(0, 184, 46), rgb(0, 224, 134));
-    background-color: rgb(25, 208, 124);;
+    background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
+    /* background-image: linear-gradient(99deg, rgb(0, 184, 46), rgb(0, 224, 134)); */
+    /* background-color: rgb(25, 208, 124);; */
     border:none;
     color: white;
     padding: 16px !important;
@@ -1652,5 +1652,5 @@ section {
 input:focus{
     outline: none !important;
     box-shadow: none !important;
-    border: 1px solid #0066ff !important;
+    border: 1px solid gray !important;
 }
