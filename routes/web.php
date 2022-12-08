@@ -45,7 +45,7 @@ Route::view('/web-development-bootcamp','wdm');
 Route::view('/wdt','wdt');
 Route::view('/love','love');
 Route::view('/teach','teach');
-Route::view('/web-development-live-bootcamp','7wd');
+Route::view('/css-bootcamp','7wd');
 
 Route::get('/l', function () {
     $feedbacks = Feedback::all()->where('status',0);
