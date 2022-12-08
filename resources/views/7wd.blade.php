@@ -22,6 +22,7 @@
             /* background-image: linear-gradient(99deg, rgb(10, 255, 2), rgb(0, 255, 153)); */
             background-color: rgb(25, 208, 124);
             ;
+            text-decoration: none;
             border: none;
             color: white;
             padding: 16px !important;
@@ -34,7 +35,9 @@
             border-radius: 16px;
             margin: 20px 0 0 0;
         }
-
+        .razorpay-payment-button:hover{
+            color: white !important;
+        }
         .ck-btn {
 
             background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
@@ -111,7 +114,6 @@
 
 
                     <main class="text-center">
-                        <div class="cwr my-5 border d-inline p-3 rounded-pill px-5">Inititive of Code with Random</div>
                         <h1 class="display-5 fw-bolder mt-5">Want to master <span class="wd_highlight"> Concepts of
                                 CSS?</span>Join 6 days live Bootcamp</h1>
 
@@ -206,14 +208,41 @@
             </div>
         </div>
     </section>
+    <section>
+        <div class="container ">
+            <div class="row justify-content-center">
+                <div class="my-4">
+                    <h1 class="fw-bold text-center">Course Curriculum</h1>
+                </div>
+                <div class="text-center mb-5">
+                    {{-- <h1 class="fw-bold">Learn by building  <br>
+                        amazing projects</h1> --}}
+                </div>
+                
 
+                <div class="col-md-4 mt-4">
+                    <div class="card h-100 mt-3 border-none ck-rounded f-4 my-3 px-5 py-3 text-center">
+                        <img src="{{ asset('assets/img/CardSix.webp') }}" class="project" alt="">
+                        <h2 class="fs-5">Create Responsive Youtube Clone</h2>
+                        <p>Understand how to clone any webpage and create a complete responsive design.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mt-4">
+                    <div class="card h-100 mt-3 border-none ck-rounded f-3 px-5 py-3 my-3 text-center">
+                        <img src="{{ asset('assets/img/CardTwo.webp') }}" class="project" alt="">
+                        <h2 class="fs-5">Solve challenges in food ordering App</h2>
+                        <p>Build a complex ui of food ordering App</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section>
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    <div class="my-4">
-                        <h1 class="fw-bold">Course Curriculum</h1>
-                    </div>
+                    
                     <div class="accordion my-5" id="accordionExample">
 
                         <div class="accordion-item">
@@ -598,39 +627,7 @@
 
 
 
-    <section>
-        <div class="container ">
-            <div class="row justify-content-center">
-                <div class="text-center mb-5">
-                    {{-- <h1 class="fw-bold">Learn by building  <br>
-                        amazing projects</h1> --}}
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card h-100 mt-3 border-none ck-rounded f-1 px-5 py-3 my-3 text-center">
-                        <img src="{{ asset('assets/img/CardThree.webp') }}" class="project" alt="">
-                        <h2 class="fs-5">Work like frontend Developer at AirBnb</h2>
-                        <p>Build a highly responsive frontend for a travel app.</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4 mt-4">
-                    <div class="card h-100 mt-3 border-none ck-rounded f-4 my-3 px-5 py-3 text-center">
-                        <img src="{{ asset('assets/img/CardSix.webp') }}" class="project" alt="">
-                        <h2 class="fs-5">Create Movies App with Javascript & API</h2>
-                        <p>Understand how APIs work and how to use them with javascript.</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mt-4">
-                    <div class="card h-100 mt-3 border-none ck-rounded f-3 px-5 py-3 my-3 text-center">
-                        <img src="{{ asset('assets/img/CardTwo.webp') }}" class="project" alt="">
-                        <h2 class="fs-5">Solve challenges in food ordering App</h2>
-                        <p>Build a dynamic frontend for food ordering app using React.js</p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
     {{-- <section class="pt-0 pt-md-0 pt-lg-5 pb-5 mb-5 ">
         <div class="container mt-0 hero">
             <div class="row justify-content-center align-items-center">
@@ -729,21 +726,25 @@
                             </ul>
                         </div>
                     </div>
-
+                    @guest
                     <form action="{{ route('course-payment') }}" method="POST" class="">
                         @csrf
-                        <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="400"
+                        <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="39900"
                             data-buttontext="Pay ₹ 399 Now" data-name="Codekaro" data-description="wd 30"
                             data-image="{{ asset('assets/img/codekaro-dark.png') }}" data-theme.color="#0066ff">
                             @auth
-                            data - prefill.name = "{{ Auth::user()->name }}"
-                            data - prefill.email = "{{ Auth::user()->email }}"
-                            data - prefill.contact = "{{ Auth::user()->mobile }}"
+                            data-prefill.name = "{{ Auth::user()->name }}"
+                            data-prefill.email = "{{ Auth::user()->email }}"
+                            data-prefill.contact = "{{ Auth::user()->mobile }}"
                             @endauth
                         </script>
                         <input type="hidden" name="courseId" value="29">
                     </form>
+                    @endguest
+                    @auth
+                        <a href="{{url('/enroll/29')}}" class=" razorpay-payment-button">Pay 399 Now</a>
 
+                    @endauth
                     <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-
                     </p>
 
