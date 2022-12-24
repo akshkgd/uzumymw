@@ -173,12 +173,30 @@
                                             class="display- px-2  js-price-per-month fw-400">{{ $batch->payable }}</span>
                                     </div>
 
+                                    
+
                                     <p class="ck-font fw-400  m-0">Starts From
                                         {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M') }}</p>
                                     <p class="ck-font fw-400 ">Timings: {{ $batch->schedule }}
                                         </h5>
+                                        @if(request()->is('explore-course/28') )
+                                        <div class="card p-2 ">
+                                            
+                                            <div class="col-md-12 text-center mt-0">
+                                                offer valid till
+                                                <div id="countdown" class="">
+                                                    <ul type="none" class="navbar justify-content-around p-0 text-center">
+                                                      <li class="d-inlin fs-6"><span id="days" class="d-block display-6 fw-bold"></span> <span>days</span> </li>
+                                                      <li class="d-inlin fs-6"><span id="hours" class="d-block display-6 fw-bold "></span>Hours</li>
+                                                      <li class="d-inlin fs-6"><span id="minutes" class="d-block display-6 fw-bold"></span>Minutes</li>
+                                                      <li class="d-inlinx fs-6"><span id="seconds" class="d-block display-6 fw-bold"></span>Seconds</li>
+                                                    </ul>
+                                                  </div>
+                                            </div>
+                                        </div>
+                                        @endif
                                         @auth
-                                        <div class="card ">
+                                        <div class="card d-none">
                                             <div class="p-3">
                                                 <p class="m-0">{{ Auth::User()->name }}</p>
                                             </div>
@@ -508,6 +526,46 @@
         function show(id) {
             console.log("fc", id)
         }
+    </script>
+    <script>
+        (function () {
+        const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+  let birthday = "december 25, 2022 22:00:00",
+      countDown = new Date(birthday).getTime(),
+      x = setInterval(function() {    
+
+        let now = new Date().getTime(),
+            distance = countDown - now;
+
+        document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+          document.getElementById("days1").innerText = Math.floor(distance / (day)),
+      document.getElementById("hours1").innerText = Math.floor((distance % (day)) / (hour)),
+      document.getElementById("minutes1").innerText = Math.floor((distance % (hour)) / (minute)),
+      document.getElementById("seconds1").innerText = Math.floor((distance % (minute)) / second);
+
+        //do something later when date is reached
+        if (distance < 0) {
+          let headline = document.getElementById("headline"),
+              countdown = document.getElementById("countdown"),
+              content = document.getElementById("content");
+
+          headline.innerText = "Class has Started!";
+          countdown.style.display = "none";
+          content.style.display = "block";
+
+          clearInterval(x);
+        }
+        //seconds
+      }, 0)
+  }());
     </script>
     {{-- callback form ends --}}
     @include('layouts.ck-footer')
