@@ -180,7 +180,7 @@
                                     <p class="ck-font fw-400 ">Timings: {{ $batch->schedule }}
                                         </h5>
                                         @if(request()->is('explore-course/28') )
-                                        <div class="card p-2 ">
+                                        <div class="card p-2 d-none">
                                             
                                             <div class="col-md-12 text-center mt-0">
                                                 offer valid till
