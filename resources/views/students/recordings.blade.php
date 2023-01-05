@@ -1,6 +1,6 @@
 
 @extends('layouts.app')
-{{-- <link rel="stylesheet" href="{{asset('css/plyr.css')}}"> --}}
+<link rel="stylesheet" href="{{asset('css/ck-plyr.css')}}">
 @section('content')
 <style>
   .fw-400{
@@ -30,7 +30,7 @@
     @isset($video)
         
     <div class=""></div>
-    <div id="player" class="plyr" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div>
+    <div id="js-player" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div>
     <h1 class="lead-1 pt-2 pb-0" id="title">{{$video->title}}</h1>
     <div class="">
         {!!$video->desc!!}
@@ -92,8 +92,8 @@
 @endisset
 
 
-
-<script src="{{asset('js/plyr.js')}}"></script>
+<script src='https://cdn.plyr.io/3.5.6/plyr.js'></script>
+{{-- <script src="{{asset('js/plyr.js')}}"></script> --}}
 <script>
   document.addEventListener('DOMContentLoaded', () => {
  // Controls (as seen below) works in such a way that as soon as you explicitly define (add) one control
