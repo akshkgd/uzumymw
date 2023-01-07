@@ -55,6 +55,19 @@ class HomeController extends Controller
             
             return view('teachers.index', compact('batches', 'workshops'));
         }
+        elseif(Auth::User()->role == 10){
+            $batch = Batch::findorFail($id);
+            $paidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->get();
+            $unpaidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 0)->get();
+            $paidUsers = $paidEnrollments->count();
+            $unpaidUsers = $unpaidEnrollments->count();
+            $totalUsers = $paidUsers + $unpaidUsers;
+            $earning = (CourseEnrollment::where('batchId',$id)->where('hasPaid',1)->sum('amountPaid'))/100;
+            $teacherEarning = $earning * 0.4;
+            $profit = $earning - $teacherEarning;
+            return view('affiliates', compact('batch', 'paidEnrollments', 'unpaidEnrollments', 'totalUsers', 'paidUsers', 'unpaidUsers', 'earning', 'teacherEarning', 'profit'))->with('i');
+    
+        }
         elseif(Auth::User()->role == 100){
             $users = User::count();
             $month_date = date('m');
