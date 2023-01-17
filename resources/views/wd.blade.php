@@ -61,7 +61,7 @@
                     
                     <main class="text-center">
                         <div class="cwr my-5 border d-inline p-3 rounded-pill px-5">Codekaro Live Masterclass</div>
-                        <h1 class="display- fw-bolder mt-5" style="font-size: calc(1.25rem + 2.1vw);">Want to master <span class="wd_highlight"> full stack dev?</span>Join 2 days live Bootcamp</h1>
+                        <h1 class="display- fw-bolder mt-5" style="font-size: calc(1.25rem + 2.1vw);">Want to master <span class="wd_highlight"> frontend dev?</span>Join 2 days live Bootcamp</h1>
                        
                         <div class="row justify-content-center">
                             <p class="fs-6 text-muted col-md-10 text-center" style="font-size: calc(0.01rem + 1.6vw);">Modern CSS from the beginning - all the way up to Javascript with real world scenarios and examples! The must-have Frontend Bootcamp in 2022. </p>
