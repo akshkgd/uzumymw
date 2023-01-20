@@ -180,7 +180,7 @@
                                     <p class="ck-font fw-400 ">Timings: {{ $batch->schedule }}
                                         </h5>
                                         @if(request()->is('explore-course/28') )
-                                        <div class="card p-2 d-none">
+                                        <div class="card p-2">
                                             
                                             <div class="col-md-12 text-center mt-0">
                                                 offer valid till
@@ -534,7 +534,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "december 25, 2022 22:00:00",
+  let birthday = "january 20, 2022 22:30:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
