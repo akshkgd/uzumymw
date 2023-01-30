@@ -25,9 +25,9 @@
                                         <th scope="">#</th>
                                         <th scope="">Name</th>
                                         <th scope="">Email</th>
-                                        <th scope="">Mobile</th>
-                                        <th scope="">College</th>
-                                        <th scope="">Course</th>
+                                        <th scope="">Source</th>
+                                        <th scope="">Medium</th>
+                                        <th scope="">Campaign</th>
                                         <th scope="">Enrolled on </th>
                                         
                                     </tr>
@@ -39,10 +39,12 @@
                                             <td> <img src="{{ $enrollment->student->avatar }}" alt=""
                                             class="avatar avatar-sm"> {{ $enrollment->student->name }}</td>
                                             <td>{{ $enrollment->student->email }}</td>
-                                            <td> <a href="tel:{{ $enrollment->student->mobile }}">{{ $enrollment->student->mobile }}</a> </td>
-                                            <td>{{ $enrollment->student->college }}</td>
-                                            <td>{{ $enrollment->created_at}}</td>
+                                            <td> <a href="tel:{{ $enrollment->student->field1 }}">{{ $enrollment->student->mobile }}</a> </td>
+                                            <td>{{ $enrollment->student->field2 }}</td>
+                                            <td>{{ $enrollment->student->field3 }}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
+                                            <td>{{ $enrollment->created_at}}</td>
+                                            
                                             
                                         </tr>
                                     @endforeach
