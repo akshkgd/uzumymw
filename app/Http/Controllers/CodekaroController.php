@@ -66,13 +66,14 @@ class CodekaroController extends Controller
         $input = $request->all();
         
             $userExists = User::where('email', $request->email)->first();
-
             if (! $userExists) {
                 $userId =  $this->createUser($request);
                 $enrollmentId = $this->createWorkshopEnrollment($userId, $input['courseId'], $request);
                 $this->workshopSuccessMail($enrollmentId);
 
-            } else {
+            } 
+            else {
+                $this->updateUtm($request, $userExists->id);
                 $enrollmentId = $this->createWorkshopEnrollment($userExists->id, $input['courseId'], $request);
                 if ($userExists->role == 0){
                     Auth::loginUsingId($userExists->id);
@@ -122,7 +123,21 @@ class CodekaroController extends Controller
         Auth::loginUsingId($user->id);
         return $user->id;
     }
-
+    private function updateUtm($request, $id){
+        $user = User::findOrFail($id);
+        if($user->field1 == '' || $user->field3 == ''){
+            if($request->has('source')){
+                $user->field1 = $request->source;
+            }
+            if($request->has('medium')){
+                $user->field2 = $request->medium;
+            }
+            if($request->has('campaign')){
+                $user->field3 = $request->campaign;
+            }
+            $user->save();
+        }
+    }
     private function courseEnrollment($userId, $courseId, $response)
     {
         $enrollment = new CourseEnrollment();
