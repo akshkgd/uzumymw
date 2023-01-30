@@ -64,6 +64,7 @@ class CodekaroController extends Controller
     public function workshopEnrollemnt(Request $request)
     {
         $input = $request->all();
+        
             $userExists = User::where('email', $request->email)->first();
 
             if (! $userExists) {
