@@ -39,7 +39,7 @@
                                             <td> <img src="{{ $enrollment->student->avatar }}" alt=""
                                             class="avatar avatar-sm"> {{ $enrollment->student->name }}</td>
                                             <td>{{ $enrollment->student->email }}</td>
-                                            <td> <a href="tel:{{ $enrollment->student->field1 }}">{{ $enrollment->student->mobile }}</a> </td>
+                                            <td> {{ $enrollment->student->field1 }}</td>
                                             <td>{{ $enrollment->student->field2 }}</td>
                                             <td>{{ $enrollment->student->field3 }}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
