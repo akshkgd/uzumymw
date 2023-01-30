@@ -451,6 +451,11 @@
             </div>
             <form action="{{ route('workshop-enrollment-auto') }}" method="POST" class="">
                 @csrf
+                <input type="hidden" name="source" value="{{app('request')->input('utm_source')}}">
+                <input type="hidden" name="medium" value="{{app('request')->input('utm_medium')}}">
+                <input type="hidden" name="campaign"  value="{{app('request')->input('utm_campaign')}}">
+
+
                 <div class="form-floating mt-3 mb-2">
                     <input type="text" required class="form-control" id="floatingInput" name="name" placeholder="name@example.com" @auth value="{{Auth::user()->name}}" @endauth>
                     <label for="floatingInput">Full Name</label>

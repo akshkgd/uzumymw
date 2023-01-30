@@ -109,6 +109,15 @@ class CodekaroController extends Controller
         $user->password = bcrypt(Str::random(12));
         $user->is_verified = 1;
         $user->email_verified_at = Carbon::now();
+        if($request->has('source')){
+            $user->field1 = $request->source;
+        }
+        if($request->has('medium')){
+            $user->field2 = $request->medium;
+        }
+        if($request->has('campaign')){
+            $user->field3 = $request->campaign;
+        }
         $user->save();
         Auth::loginUsingId($user->id);
         return $user->id;
