@@ -67,7 +67,7 @@
                             <p class="fs-6 text-muted col-md-10 text-center" style="font-size: calc(0.01rem + 1.6vw);">Modern CSS from the beginning - all the way up to Javascript with real world scenarios and examples! The must-have Frontend Bootcamp in 2022. </p>
                         </div>
         
-                            <h4 class="fw-500 py-4"> <strong>Saturday, 25th February to 26th February </strong>  | 06:00 PM IST</h3>
+                            <h4 class="fw-500 py-4"> <strong>Thursday, 2nd March to 3rd March </strong>  | 06:00 PM IST</h3>
                         
         
                             <div class="my-3 white">
@@ -493,7 +493,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "february 25, 2023 18:00:00",
+  let birthday = "march 2, 2023 18:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
