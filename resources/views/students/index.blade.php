@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.ck')
 @section('title', 'Codekaro Dashboard ')
 @section('meta_keywords', 'Student Section')
 @section('meta_description', 'Student DashBoard')
@@ -8,10 +8,10 @@
 @section('content')
     <div class="navbar-container ">
         <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
-            @include('layouts.header')
+            
         </nav>
     </div>
-
+    @include('layouts.ck-header')
     {{-- <section class="bg-primary-alt header-inner o-hidden" id="test">
   <div class="container">
     <div class="row my-3">
@@ -35,14 +35,14 @@
 
 
     <section class="" style="padding-top: 5rem;">
-        <div class="container pt-5 pb-5">
+        <div class="container pb-5">
             <div class="row justify-content-center">
-                <div class="col-lg-11 col-xl-9 col-sm-10 col-md-10 ">
+                <div class="col-lg-9">
 
                     {{-- user section --}}
                     <div class="text-center ">
                         <img src="{{ Auth::user()->avatar }}" alt="" class="avatar avatar-lg">
-                        <h1 class="display lead-1 pt-2 mb-0"><span id="time"></span>  {{Auth::user()->name}}</h1>
+                        <h1 class="display fs-4  pt-2 mb-0"><span id="time"></span>  {{Auth::user()->name}}</h1>
                         <p class="lead">Eat Sleep Code repeat</p>
                     </div>
 
@@ -60,16 +60,16 @@
                         @endif
                         @forelse ($workshopEnrollments as $event)
                         @if ($event->workshop->status < 3 && $event->workshop->status > 0)
-                            <div class="card card-dark cb-card card-ico shadow-3d">
-                                <div class="card-body">
+                            <div class="card my-3 card-dark cb-card card-ico shadow-3d">
+                                <div class="card-bod p-4">
                                     <div class="flex-grow-1">
-                                        <h4 class="lead-1 mb-2">{{ $event->workshop->topic }}</h4>
+                                        <h4 class="fs-3 fw-bold mb-2">{{ $event->workshop->topic }}</h4>
                                         <span>
                                             {!! $event->workshop->desc !!}
                                         </span>
                                         <div class="d-md-flex justify-content-between pt-1">
                                             <div class="">
-                                                <h5 class="mb-0 ck-font text-primary-3">
+                                                <h5 class="fs-5 ">
                                                     {{ Carbon\Carbon::parse($event->workshop->nextClass)->format('D, d M Y') }}
                                                     </h4>
                                                     <h6 class="ck-font">
@@ -79,16 +79,16 @@
 
                                             <div class="text pt-md-2">
                                                 <a href="{{ $event->workshop->meetingLink }}"
-                                                    class=" btn btn-primary fw-400 @if ($event->workshop->meetingLink == '') disabled @endif" target="_blank">Launch Class</a>
+                                                    class=" btn btn-primary fw-400 @if ($event->workshop->meetingLink == '') d-none @endif" target="_blank">Launch Class</a>
 
                                             </div>
                                         </div>
                                     </div>
                                     <div class="border-to pt-4">
                                         <a href="{{ action('WorkshopController@workshopDetails', Crypt::encrypt($event->id)) }}"
-                                            class="btn ck-c-btn">Course Details</a>
-                                        <a href="{{ $event->workshop->groupLink}}" target="_blank" class="btn ck-c-btn">Join WhatsApp Group</a>
-                                        <p class="text-dark small pt-2 m-0">No recording for the free class will be provided,
+                                            class="btn ck-outline-btn">Course Details</a>
+                                        <a href="{{ $event->workshop->groupLink}}" target="_blank" class="btn ck-outline-btn">Join WhatsApp Group</a>
+                                        <p class="text-dark small pt-4 m-0">No recording for the free class will be provided,
                                             make sure to join the class on time. Launch class button will be active 10 minutes
                                             before the class.</p>
                                     </div>
@@ -108,16 +108,17 @@
                         @endif
                         @forelse ($Enrollments as $Enrollment)
                         @if ($Enrollment->batch->status < 3 && $Enrollment->batch->status > 0)
-                            <div class="card card-dark cb-card card-ico shadow-3d">
-                                <div class="card-body">
+                            <div class="card my-5 card-dark cb-card card-ico shadow-3d">
+                                <div class="card-bod p-4">
+                                    @if ($Enrollment->hasPaid == 1)
                                     <div class="flex-grow-1">
-                                        <h4 class="lead-1 mb-2">{{ $Enrollment->batch->topic }}</h4>
+                                        <h4 class="fs-3 fw-bold mb-4">{{ $Enrollment->batch->topic }}</h4>
                                         <span>
                                             {!! $Enrollment->batch->desc !!}
                                         </span>
                                         <div class="d-md-flex justify-content-between pt-1">
                                             <div class="">
-                                                <h5 class="mb-0 ck-font text-primary-3">
+                                                <h5 class="fs-5">
                                                     {{ Carbon\Carbon::parse($Enrollment->batch->nextClass)->format('D, d M Y') }}
                                                     </h4>
                                                     <h6 class="ck-font">
@@ -139,22 +140,30 @@
 
 
                                     </div>
+                                    @else
+                                    <div class="d-flex justify-content-between">
+                                        <div class="">
+                                        <h4 class="fs-3 fw-bold mb-4">{{ $Enrollment->batch->name}}</h4>
+                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, <br> repellat delectus laborum vitae  minus et natus repellendus voluptas!</p>
+                                            <a href="" class="btn btn-primary px-5 py-2 rounded-pill">Complete Payment</a>
+                                        </div>
+                                        <img src="{{asset('assets/img/clockNudge.svg')}}" alt="">
+                                    </div>
+                                    @endif
 
 
                                 </div>
-                                <div class="border-to px-3 py-2">
-                                    {{-- <a href="{{$Enrollment->batch->meetingLink}}" class=" btn btn-outline-primary" disabled>Launch
-              Class</a> --}}
+                                <div class="border-to px-4 py-2">
                                     <a href="{{ action('BatchController@batchDetails', Crypt::encrypt($Enrollment->id)) }}"
-                                        class="btn ck-c-btn">Course Details</a>
+                                        class="btn ck-outline-btn">Course Details</a>
                                         @if ($Enrollment->batch->type == 1)
                                         <a href="{{ action('StudentController@notes', Crypt::encrypt($Enrollment->id)) }}"
-                                            class="btn ck-c-btn">Notes & Assignments</a>
+                                            class="btn ck-outline-btn">Notes & Assignments</a>
                                         <a href="{{ action('StudentController@recordings', Crypt::encrypt($Enrollment->id)) }}"
-                                            class="btn ck-c-btn">Recording</a>
+                                            class="btn ck-outline-btn">Recording</a>
                                         @endif
                                         @if ($Enrollment->batch->type == 2)
-                                        <a  target="_blank" class="btn ck-c-btn" @if($Enrollment->hasPaid == 1) href="{{ $Enrollment->batch->groupLink}}" @endif>Join WhatsApp Group</a>
+                                        <a  target="_blank" class="btn ck-outline-btn" @if($Enrollment->hasPaid == 1) href="{{ $Enrollment->batch->groupLink}}" @endif>Join WhatsApp Group</a>
                                         @endif
                                     
                                 </div>

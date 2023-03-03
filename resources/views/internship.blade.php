@@ -298,3 +298,4 @@ let birthday = "mar 14, 2022 18:30:00",
   }, 0)
 }());
 </script>
+@endsection

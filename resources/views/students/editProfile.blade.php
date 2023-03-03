@@ -1,25 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.ck')
 @section('content')
 <style>
 
 </style>
-<div class="navbar-container ">
-    <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
-        @include('layouts.header')
-    </nav>
-</div>
+@include('layouts.ck-header')
   
 {{-- batch details start --}}
 
-<section class="pb-0">
+<section class="">
     <div class="container pt-5 ">
         <div class="row justify-content-center">
             <div class="col-lg-11 col-xl-9 col-sm-10 col-md-10 ">
                 @include('layouts.alert')
                 <form action="{{ route('updateStudentsProfile') }}" method="POST" class="">
                     @csrf
-                <div class="card card-body">
-                    <h3 class="pb-2">Personal Info</h3>
+                <div class="card card-body my-5 shadow-3d">
+                    <h3 class="pb-2 fw-bold">Personal Info</h3>
 
                     <img src="{{Auth::user()->avatar}}" alt="" class="avatar avatar-lg">
 
@@ -39,7 +35,7 @@
 
                       
                       <div>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="submit" class="btn px-3 rounded-pil btn-primary mt-3">Save Changes</button>
                       </div>
                       
                 </div>
@@ -54,8 +50,8 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-11 col-xl-9 col-sm-10 col-md-10 ">
-                <div class="card card-body">
-                    <h3 class="pb-2">Educational Details</h3>
+                <div class="card card-body my-5 shadow-3d">
+                    <h3 class="pb-2 fw-bold">Educational Details</h3>
                     <div class="form-floating mb-2">
                         <input type="text" class="form-control" id="floatingInput" name="college" placeholder="name@example.com" value="{{Auth::user()->college}}">
                         <label for="floatingInput">Your School / College</label>
@@ -72,7 +68,7 @@
                       @endif
 
                       <div>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="submit" class="btn px-3 rounded-pil btn-primary mt-3">Save Changes</button>
                       </div>   
 
                 </div>
@@ -89,10 +85,10 @@
     <div class="container  pb-5">
         <div class="row justify-content-center">
             <div class="col-lg-11 col-xl-9 col-sm-10 col-md-10 ">
-                <div class="card  card-ico shadow-3">
-                    <div class="card-body">
+                <div class="card  card-ico shadow-3d my-5">
+                    <div class="card-body ">
                         <div class="flex-grow-1 text-cente">
-                            <h3 class="mb-0">Browser Sessions</h3>
+                            <h3 class="mb-0 pb-2 fw-bold">Browser Sessions</h3>
 
                             <p class="lea">
                                 Manage and logout your active sessions on other browsers and devices.

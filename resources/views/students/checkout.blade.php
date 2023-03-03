@@ -56,7 +56,7 @@
       border-radius: 20px !important;
     }
 </style>
-<nav class="navbar navbar-expand-lg navbar-dark border-bottom d-none">
+<nav class="navbar navbar-expand-lg navbar-dark border-bottom d-non">
   <div class="container text-center">
    
     <h1 class="navbar-brand m-0 fw-bold text-primary fs-4 text-center">Codekaro</h1>
@@ -118,9 +118,9 @@
 <section>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-6 h-full hidden-sm">
+      <div class="col-lg-6 h-full hidden-sm ">
         <div class="m-lg-5 p-lg-5 my-3">
-          <h1 class="fs-5 fw-600 text-muted">Codekaro</h1>
+          {{-- <h1 class="fs-5 fw-600 text-muted">Codekaro</h1> --}}
           <div class="">
             
             <h3 class="fw-bol fs-5 mt-5">{{$batch->name}}</h2>
@@ -151,7 +151,7 @@
           <p class="pt-5 small text-muted">Copyright codekaro © 2022. All rights reserved by codekaro.</p>
         </div>
       </div>
-      <div class="col-lg-6 shadow-lg h-full">
+      <div class="col-lg-6 shadow-l border-star h-full">
         <div class="m-lg-5 p-lg-5 my-3 hidden-lg text-center">
           <div class="d-flex justify-content-between">
             <p class=" fw-bold text-muted text-left">Codekaro</p>

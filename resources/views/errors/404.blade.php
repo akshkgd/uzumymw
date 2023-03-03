@@ -26,7 +26,7 @@
               404, The page you are looking for does not exist.
             </p>
             <p></p>
-            <a href="{{url()->previous()}}" class="btn btn-dark rounded-pill fw-light px-5 text-capitalize">Go Back</a>
+            <a href="{{url()->previous()}}" class="btn btn-primary rounded-pill fw-light px-5 text-capitalize">Go Back</a>
             <!-- <img src="./img/discord.svg" alt="" class="img-fluid hidden-lg mt-5"> -->
   
           </div>
