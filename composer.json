@@ -20,7 +20,6 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^2.4",
         "livewire/livewire": "^2.8",
-        "ognjen/laravel-async-mail": "v3.0.0",
         "razorpay/razorpay": "^2.5"
     },
     "require-dev": {
