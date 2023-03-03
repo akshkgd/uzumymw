@@ -12,7 +12,7 @@
         <div class="row justify-content-center text-center">
             <div class="col-lg-8 text-center">
                 <h1 class="pt-2 pb-0 mb-0 display-3">404</h1>
-                <h2 class="display">Ruko zara ✋ Sabar Karo, Site ban rahi h...</h2>
+                <h2 class="display">We are coding...</h2>
                 @guest
                     <a href="{{url('/')}}" class="btn btn-lg btn-success">Go back to Home</a>
                 @endguest
