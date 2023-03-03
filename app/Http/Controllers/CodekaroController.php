@@ -75,16 +75,18 @@ class CodekaroController extends Controller
         if (!$userExists) {
             $userId =  $this->createUser($request);
             $enrollmentId = $this->createWorkshopEnrollment($userId, $input['courseId'], $request);
-            $this->workshopSuccessMail($enrollmentId);
             $this->apiTest();
+            $this->workshopSuccessMail($enrollmentId);
+            
         } else {
             $this->updateUtm($request, $userExists->id);
             $enrollmentId = $this->createWorkshopEnrollment($userExists->id, $input['courseId'], $request);
             if ($userExists->role == 0) {
                 Auth::loginUsingId($userExists->id);
             }
-            $this->workshopSuccessMail($enrollmentId);
             $this->apiTest();
+            $this->workshopSuccessMail($enrollmentId);
+            
         }
         if ($enrollmentId == 0) {
             session()->flash('alert-danger', 'You can not enroll in this workshop! ');
