@@ -26,6 +26,7 @@
                                 <a href="{{ action('StudentController@recordings', Crypt::encrypt($Enrollment->id)) }}" class="btn ck-c-btn">Recording sessions</a>
                                 <a href="{{ action('CourseEnrollmentController@invoice', Crypt::encrypt($Enrollment->id)) }}" target="_blank" class="btn ck-c-btn">View Invoice</a>
                         </div>
+                        
 
                         <div class="d-non card-body border-top">
                             @if ($Enrollment->hasPaid == 1 && $batch->status < 3)
@@ -43,13 +44,13 @@
                                     Class</a>
                             @else
                               @if($Enrollment->hasPaid == 0)
-                                <h4><span class="add-countdown-time" %}
+                                <h4 class="lead-1"><span class="add-countdown-time " %}
                                         data-countdown-date="{{ $Enrollment->batch->startDate->format('Y/m/d') }}"> </span>
                                     Remaining</h3>
 
 
                                     <a href="{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($Enrollment->id)) }}"
-                                        class="btn  btn-outline-primary">Complete Payment</a>
+                                        class="btn  btn-outline-primary" style="font-weight: 400">Complete Payment</a>
                               @endif
                             @endif
                             @if ($batch->status == 3 && $Enrollment->hasPaid == 1)
@@ -60,7 +61,28 @@
                         </div>
                     </div>
 
-
+                    <div class="card my-4">
+                        @if($Enrollment->hasPaid == 1)
+                        <h2 class="lead-1 mx-3 mt-3 mb-0">Important Links</h3>
+                            <p class="mx-3 mt-1">Join all the groups to make sure you do not miss any upcoming updates!!</p>
+                            
+                            <div class="mt-2">
+                                <a href="{{$batch->groupLink}}" class="list-group-item-card list-group-item-action ">Join WhatsApp Group</a>
+                                <a href="{{$batch->groupLink}}" class="list-group-item-card list-group-item-action ">Join Discussion Group</a>
+                                <a href="{{$batch->groupLink}}" class="list-group-item-card list-group-item-action ">Join Discord Community</a>
+                              
+                            </div>
+                            @else
+                            <div class="p-2">
+                                <h2 class="lead-1 mx-3 mt-3 mb-0">Important Links</h3>
+                                    <p class="mx-3 mt-1">Join all the groups to make sure you do not miss any upcoming updates!!</p>
+                                    
+                                <img src="{{asset('assets/img/default_blank_view_image.svg')}}" alt="">
+                            </div>
+                            @endif
+                        
+                        
+                      </div>
 
                     @isset($feedback)
 
@@ -83,7 +105,7 @@
                                         <input type="hidden" name="batchId" value="{{ $feedback->batch }}">
                                     </div>
                                     <div>
-                                        <button type="submit" class="btn btn-primary">Update Feedback</button>
+                                        <button type="submit" class="btn btn-primary" style="font-weight: 400">Update Feedback</button>
                                     </div>
                                 </form>
                             </div>
@@ -108,7 +130,7 @@
                                         <input type="hidden" name="batchId" value="{{ $batch->id }}">
                                     </div>
                                     <div>
-                                        <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                                        <button type="submit" class="btn btn-primary" style="font-weight: 400">Submit Feedback</button>
                                     </div>
                                 </form>
                             </div>

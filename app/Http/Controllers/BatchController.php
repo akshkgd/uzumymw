@@ -197,6 +197,6 @@ class BatchController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // this is a test
     }
 }

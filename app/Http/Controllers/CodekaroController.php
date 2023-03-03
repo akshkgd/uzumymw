@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+// require __DIR__ . '/vendor/autoload.php';
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Session;
 use App\User;
 use App\CourseEnrollment;
 use App\WorkshopEnrollment;
-use Razorpay\Api\Api;
+use Razorpay\Api\Apii;
 use Redirect;
 use Carbon\Carbon;
 use App\Mail\EmailForQueuing;
@@ -19,7 +19,15 @@ use Mail;
 use App\Mail\OnboardingMail;
 use App\Workshop;
 use App\Mail\workshopEnrollmentSuccess;
-
+use FacebookAds\Api;
+use FacebookAds\Logger\CurlLogger;
+use FacebookAds\Object\ServerSide\ActionSource;
+use FacebookAds\Object\ServerSide\Content;
+use FacebookAds\Object\ServerSide\CustomData;
+use FacebookAds\Object\ServerSide\DeliveryCategory;
+use FacebookAds\Object\ServerSide\Event;
+use FacebookAds\Object\ServerSide\EventRequest;
+use FacebookAds\Object\ServerSide\UserData;
 
 class CodekaroController extends Controller
 {
@@ -32,23 +40,22 @@ class CodekaroController extends Controller
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
         if (count($input)  && !empty($input['razorpay_payment_id'])) {
             try {
-                $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount']-$payment['fee']));
+                $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount' => $payment['amount'] - $payment['fee']));
 
                 // $response = $api->payment->fetch($input['razorpay_payment_id']);
                 // dd($response);
             } catch (\Exception $e) {
                 return  $e->getMessage();
-                
+
                 Session::put('error', $e->getMessage());
                 return redirect('home');
             }
             $userExists = User::where('email', $response->email)->first();
 
-            if (! $userExists) {
+            if (!$userExists) {
                 $userId =  $this->createUser($response);
                 $enrollmentId = $this->courseEnrollment($userId, $input['courseId'], $response);
                 $this->successMail($enrollmentId);
-
             } else {
                 $enrollmentId = $this->courseEnrollment($userExists->id, $input['courseId'], $response);
                 $this->successMail($enrollmentId);
@@ -57,51 +64,44 @@ class CodekaroController extends Controller
             $enrollment = CourseEnrollment::find($enrollmentId);
             $batch = Batch::find($enrollment->batchId);
             return view('students.PaymentComplete', compact('enrollment', 'batch'));
-
         }
     }
 
     public function workshopEnrollemnt(Request $request)
     {
         $input = $request->all();
-        
-            $userExists = User::where('email', $request->email)->first();
-            if (! $userExists) {
-                $userId =  $this->createUser($request);
-                $enrollmentId = $this->createWorkshopEnrollment($userId, $input['courseId'], $request);
-                $this->workshopSuccessMail($enrollmentId);
 
-            } 
-            else {
-                $this->updateUtm($request, $userExists->id);
-                $enrollmentId = $this->createWorkshopEnrollment($userExists->id, $input['courseId'], $request);
-                if ($userExists->role == 0){
-                    Auth::loginUsingId($userExists->id);
-                }
-                $this->workshopSuccessMail($enrollmentId);
-                
+        $userExists = User::where('email', $request->email)->first();
+        if (!$userExists) {
+            $userId =  $this->createUser($request);
+            $enrollmentId = $this->createWorkshopEnrollment($userId, $input['courseId'], $request);
+            $this->workshopSuccessMail($enrollmentId);
+            $this->apiTest();
+        } else {
+            $this->updateUtm($request, $userExists->id);
+            $enrollmentId = $this->createWorkshopEnrollment($userExists->id, $input['courseId'], $request);
+            if ($userExists->role == 0) {
+                Auth::loginUsingId($userExists->id);
             }
-            if($enrollmentId == 0){
-                session()->flash('alert-danger', 'You can not enroll in this workshop! ');
-                return redirect()->back();
-            }
-            else{
-                $enrollment = WorkshopEnrollment::find($enrollmentId);
-                $enrollId = Crypt::encrypt($enrollment->id);
-                return redirect('workshop-enrollment-success/'.$enrollId);
-            }
-            
-
+            $this->workshopSuccessMail($enrollmentId);
+            $this->apiTest();
         }
+        if ($enrollmentId == 0) {
+            session()->flash('alert-danger', 'You can not enroll in this workshop! ');
+            return redirect()->back();
+        } else {
+            $enrollment = WorkshopEnrollment::find($enrollmentId);
+            $enrollId = Crypt::encrypt($enrollment->id);
+            return redirect('workshop-enrollment-success/' . $enrollId);
+        }
+    }
     private function createUser($request)
     {
         $user = new User;
-        if($request->has('name')){
+        if ($request->has('name')) {
             $user->name = $request->name;
-        }
-        else{
+        } else {
             $user->name = substr($request->email, 0, strpos($request->email, "@"));
-
         }
         $user->email = $request->email;
         if ($request->mobile) {
@@ -110,29 +110,30 @@ class CodekaroController extends Controller
         $user->password = bcrypt(Str::random(12));
         $user->is_verified = 1;
         $user->email_verified_at = Carbon::now();
-        if($request->has('source')){
+        if ($request->has('source')) {
             $user->field1 = $request->source;
         }
-        if($request->has('medium')){
+        if ($request->has('medium')) {
             $user->field2 = $request->medium;
         }
-        if($request->has('campaign')){
+        if ($request->has('campaign')) {
             $user->field3 = $request->campaign;
         }
         $user->save();
         Auth::loginUsingId($user->id);
         return $user->id;
     }
-    private function updateUtm($request, $id){
+    private function updateUtm($request, $id)
+    {
         $user = User::findOrFail($id);
-        if($user->field1 == '' || $user->field3 == ''){
-            if($request->has('source')){
+        if ($user->field1 == '' || $user->field3 == '') {
+            if ($request->has('source')) {
                 $user->field1 = $request->source;
             }
-            if($request->has('medium')){
+            if ($request->has('medium')) {
                 $user->field2 = $request->medium;
             }
-            if($request->has('campaign')){
+            if ($request->has('campaign')) {
                 $user->field3 = $request->campaign;
             }
             $user->save();
@@ -143,16 +144,16 @@ class CodekaroController extends Controller
         $enrollment = new CourseEnrollment();
         $enrollment->userId = $userId;
         $enrollment->batchId = $courseId;
-        $enrollment->price = $response->amount-$response->fee;
+        $enrollment->price = $response->amount - $response->fee;
         $enrollment->transactionId = $response->id;
         $enrollment->status = 1;
         $enrollment->hasPaid = 1;
         $enrollment->paidAt = Carbon::now();
         $enrollment->paymentMethod = $response->method;
-        $enrollment->amountPaid = $response->amount-$response->fee;
+        $enrollment->amountPaid = $response->amount - $response->fee;
         $enrollment->save();
         $enrollmentId = $enrollment->id;
-        
+
         return $enrollmentId;
     }
 
@@ -163,10 +164,10 @@ class CodekaroController extends Controller
         if (count($isEnrolled) > 0) {
             return $isEnrolled[0]->id;
         }
-            // $enrollId = Crypt::encrypt($isEnrolled[0]->id);
-            // return redirect('workshop-enrollment-success/'.$enrollId);
-    
-        elseif($workshop->count()> 0 && $workshop->status == 1){
+        // $enrollId = Crypt::encrypt($isEnrolled[0]->id);
+        // return redirect('workshop-enrollment-success/'.$enrollId);
+
+        elseif ($workshop->count() > 0 && $workshop->status == 1) {
             $enrollment = new WorkshopEnrollment();
             $enrollment->userId = $userId;
             $enrollment->workshopId = $workshopId;
@@ -175,39 +176,38 @@ class CodekaroController extends Controller
             $enrollment->save();
             $enrollmentId = $enrollment->id;
             return $enrollmentId;
-        }
-        else{
+        } else {
             return 0;
         }
-        
+
 
 
         session()->flash('alert-danger', 'Workshop is full');
-            return redirect('/');
+        return redirect('/');
     }
 
     private function successMail($enrollment)
     {
-                $courseEnrollment = CourseEnrollment::find($enrollment);
-                $user = User::find($courseEnrollment->userId);
-                $workshop = Batch::find($courseEnrollment->batchId);
-                
-                $email_data = array(
-                    'name' => $user['name'],
-                    'email' => $user['email'],
-                    'workshopName' => $workshop['name'],
-                    'workshopGroup' => $workshop['groupLink'],
-                    'discord' => $workshop['groupLink1'],
-                    'nextClass' => $workshop['nextClass'],
-                    'teacher' => $workshop->teacher->name,
-            
-                );
-                
-                
-                Mail::to($user->email)->send(new OnboardingMail($email_data));
-            
+        $courseEnrollment = CourseEnrollment::find($enrollment);
+        $user = User::find($courseEnrollment->userId);
+        $workshop = Batch::find($courseEnrollment->batchId);
+
+        $email_data = array(
+            'name' => $user['name'],
+            'email' => $user['email'],
+            'workshopName' => $workshop['name'],
+            'workshopGroup' => $workshop['groupLink'],
+            'discord' => $workshop['groupLink1'],
+            'nextClass' => $workshop['nextClass'],
+            'teacher' => $workshop->teacher->name,
+
+        );
+
+
+        Mail::to($user->email)->send(new OnboardingMail($email_data));
     }
-    private function workshopSuccessMail($enrollId){
+    private function workshopSuccessMail($enrollId)
+    {
         $courseEnrollment = WorkshopEnrollment::find($enrollId);
         $user = User::find($courseEnrollment->userId);
         $workshop = Workshop::find($courseEnrollment->workshopId);
@@ -218,9 +218,9 @@ class CodekaroController extends Controller
             'workshopGroup' => $workshop['groupLink'],
             'nextClass' => $workshop['nextClass'],
             'teacher' => $workshop->teacher->name,
-    
+
         );
-        
+
         // send email with the template
         // Mail::send('mail.workshopEnrollmentSuccess', $email_data, function ($message) use ($email_data) {
         //     $message->to($email_data['email'], $email_data['name'], $email_data['workshopName'], $email_data['workshopGroup'], $email_data['teacher'], $email_data['nextClass'])
@@ -229,9 +229,49 @@ class CodekaroController extends Controller
         // });
         Mail::to($email_data['email'])->send(new workshopEnrollmentSuccess($email_data));
     }
-        
+
+    private function apiTest()
+    {
+        $access_token = 'EAAQ6uEmyC0kBAPKNftP2tpMtD9hHgVNptZCVJgYPUHRXrTvGemgmR2MeX6tYZC7X143e9HHZAcvJuIHNM14XlkpjRO1ZBTludZC5ZArh2xDmIHOTufbzwTYqAZCDZAVMia5HS2bVtulHKnxPppMyfATO9iN7ZCPtcQhtoUws4EFtTAdZAPikx67qgaePqb6bs8cFsZD';
+        $pixel_id = '438131724437018';
+
+        $api = Api::init(null, null, $access_token);
+        $api->setLogger(new CurlLogger());
+
+        $user_data = (new UserData())
+            ->setEmails(array('joe@eg.com'))
+            ->setPhones(array('12345678901', '14251234567'))
+            // It is recommended to send Client IP and User Agent for Conversions API Events.
+            ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
+            ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
+            ->setFbc('fb.1.1554763741205.AbCdEfGhIjKlMnOpQrStUvWxYz1234567890')
+            ->setFbp('fb.1.1558571054389.1098115397');
+
+        $content = (new Content())
+            ->setProductId('product123')
+            ->setQuantity(1)
+            ->setDeliveryCategory(DeliveryCategory::HOME_DELIVERY);
+
+        $custom_data = (new CustomData())
+            ->setContents(array($content))
+            ->setCurrency('usd')
+            ->setValue(123.45);
+
+        $event = (new Event())
+            ->setEventName('Purchase')
+            ->setEventTime(time())
+            ->setEventSourceUrl('http://codekaro.in/product/123')
+            ->setUserData($user_data)
+            ->setCustomData($custom_data)
+            ->setActionSource(ActionSource::WEBSITE);
+
+        $events = array();
+        array_push($events, $event);
+
+        $request = (new EventRequest($pixel_id))
+            ->setEvents($events);
+        $response = $request->execute();
+
+        dd($response);
+    }
 }
-
-
-
-    
