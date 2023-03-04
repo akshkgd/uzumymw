@@ -266,8 +266,7 @@ class CodekaroController extends Controller
             ->setEventSourceUrl('http://codekaro.in/product/123')
             ->setUserData($user_data)
             ->setCustomData($custom_data)
-            ->setActionSource(ActionSource::WEBSITE)
-            ->setTestEventCode('TEST13436');
+            ->setActionSource(ActionSource::WEBSITE);
 
         $events = array();
         array_push($events, $event);
