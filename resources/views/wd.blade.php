@@ -468,7 +468,7 @@
                     <input type="number" required  class="form-control" id="floatingInput" name="mobile" placeholder="name@example.com" @auth value="{{Auth::user()->mobile}}" @endauth>
                     <label for="floatingInput">Mobile Number</label>
                   </div>
-                <input type="hidden" name="courseId" value="170">
+                <input type="hidden" name="courseId" value="172">
                 <button class="enrollment-button">Enroll Now for Free</button>
                 <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's Terms & Conditions and Privacy Policy</p>
             </form>
