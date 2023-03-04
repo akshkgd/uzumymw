@@ -76,7 +76,7 @@ class CodekaroController extends Controller
         if (!$userExists) {
             $userId =  $this->createUser($request);
             $enrollmentId = $this->createWorkshopEnrollment($userId, $input['courseId'], $request);
-            $this->apiTest();
+            $this->apiTest($enrollmentId);
             $this->workshopSuccessMail($enrollmentId);
             
         } else {
@@ -85,7 +85,7 @@ class CodekaroController extends Controller
             if ($userExists->role == 0) {
                 Auth::loginUsingId($userExists->id);
             }
-            $this->apiTest();
+            $this->apiTest($enrollmentId);
             $this->workshopSuccessMail($enrollmentId);
             
         }
@@ -233,17 +233,20 @@ class CodekaroController extends Controller
         Mail::to($email_data['email'])->send(new workshopEnrollmentSuccess($email_data));
     }
 
-    private function apiTest()
+    private function apiTest($enrollId)
     {
-        $access_token = 'EAACG5pVCx7MBABpA8gEIOVYZBh0N76ZA1Wl7CvzKrSg6ZCtdiVeoEgxEB4PNaUWDeQKmn2YSswm0Nv9mWFZAs2wpWPTWx9tX3RulB9XZCAERFX5nZBjFRpOIXZCWPqx2bYGcE48ZA7lohz71PZAjnCLNZB5hKIfvsdGeZCQ4fM65JUHG6RzzFQYJpDn ';
+        
+        $courseEnrollment = WorkshopEnrollment::find($enrollId);
+        $user = User::find($courseEnrollment->userId);
+        $access_token = 'EAAQ6uEmyC0kBAGjEuZCTFOvZAHrCBqKtZBooOVbC6HAoU0Ofs5rXv2vLUkX8RsRx5mU3vZBOebkWHBl5nJj1gHjpXxCFnoOy62S60Iz2xwSm4dNizUwdw7oWz3GJ0kXE8ZBAE2gYIsJZCTbfnETfcOIaZBPnoixjwMk7PMBoA0IOQTjZCpjiOQJNWLJ34PNUco0ZD';
         $pixel_id = '438131724437018';
 
         $api = Api::init(null, null, $access_token);
         $api->setLogger(new CurlLogger());
 
         $user_data = (new UserData())
-            ->setEmails(array('joe@eg.com'))
-            ->setPhones(array('12345678901', '14251234567'))
+            ->setEmails(array($user->email))
+            ->setPhones(array($user->mobile))
             // It is recommended to send Client IP and User Agent for Conversions API Events.
             ->setClientIpAddress($_SERVER['REMOTE_ADDR'])
             ->setClientUserAgent($_SERVER['HTTP_USER_AGENT'])
@@ -251,19 +254,19 @@ class CodekaroController extends Controller
             ->setFbp('fb.1.1558571054389.1098115397');
 
         $content = (new Content())
-            ->setProductId('product123')
+            ->setProductId('ckwd1')
             ->setQuantity(1)
             ->setDeliveryCategory(DeliveryCategory::HOME_DELIVERY);
 
         $custom_data = (new CustomData())
             ->setContents(array($content))
             ->setCurrency('INR')
-            ->setValue(123.45);
+            ->setValue(0);
 
         $event = (new Event())
-            ->setEventName('Purchase')
+            ->setEventName('CompleteRegistration')
             ->setEventTime(time())
-            ->setEventSourceUrl('http://codekaro.in/product/123')
+            ->setEventSourceUrl('https://codekaro.in/web-development-live-masterclass')
             ->setUserData($user_data)
             ->setCustomData($custom_data)
             ->setActionSource(ActionSource::WEBSITE);
