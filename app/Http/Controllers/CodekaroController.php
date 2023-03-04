@@ -22,6 +22,7 @@ use App\Mail\workshopEnrollmentSuccess;
 use FacebookAds\Api;
 use FacebookAds\Logger\CurlLogger;
 use FacebookAds\Object\ServerSide\ActionSource;
+use FacebookAds\Object\ServerSide\TestEventCode;
 use FacebookAds\Object\ServerSide\Content;
 use FacebookAds\Object\ServerSide\CustomData;
 use FacebookAds\Object\ServerSide\DeliveryCategory;
@@ -234,7 +235,7 @@ class CodekaroController extends Controller
 
     private function apiTest()
     {
-        $access_token = 'EAAQ6uEmyC0kBAPKNftP2tpMtD9hHgVNptZCVJgYPUHRXrTvGemgmR2MeX6tYZC7X143e9HHZAcvJuIHNM14XlkpjRO1ZBTludZC5ZArh2xDmIHOTufbzwTYqAZCDZAVMia5HS2bVtulHKnxPppMyfATO9iN7ZCPtcQhtoUws4EFtTAdZAPikx67qgaePqb6bs8cFsZD';
+        $access_token = 'EAACG5pVCx7MBABpA8gEIOVYZBh0N76ZA1Wl7CvzKrSg6ZCtdiVeoEgxEB4PNaUWDeQKmn2YSswm0Nv9mWFZAs2wpWPTWx9tX3RulB9XZCAERFX5nZBjFRpOIXZCWPqx2bYGcE48ZA7lohz71PZAjnCLNZB5hKIfvsdGeZCQ4fM65JUHG6RzzFQYJpDn ';
         $pixel_id = '438131724437018';
 
         $api = Api::init(null, null, $access_token);
@@ -256,7 +257,7 @@ class CodekaroController extends Controller
 
         $custom_data = (new CustomData())
             ->setContents(array($content))
-            ->setCurrency('usd')
+            ->setCurrency('INR')
             ->setValue(123.45);
 
         $event = (new Event())
@@ -265,7 +266,8 @@ class CodekaroController extends Controller
             ->setEventSourceUrl('http://codekaro.in/product/123')
             ->setUserData($user_data)
             ->setCustomData($custom_data)
-            ->setActionSource(ActionSource::WEBSITE);
+            ->setActionSource(ActionSource::WEBSITE)
+            ->setTestEventCode('TEST13436');
 
         $events = array();
         array_push($events, $event);
