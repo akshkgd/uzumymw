@@ -67,7 +67,7 @@
                             <p class="fs-6 text-muted col-md-10 text-center" style="font-size: calc(0.01rem + 1.6vw);">Modern CSS from the beginning - all the way up to Javascript with real world scenarios and examples! The must-have Frontend Bootcamp in 2022. </p>
                         </div>
         
-                            <h4 class="fw-500 py-4"> <strong>Saturday,11th March to 12th March </strong>  | 06:00 PM IST</h3>
+                            <h4 class="fw-500 py-4"> <strong>Tuesday,14th March to 15th March </strong>  | 06:00 PM IST</h3>
                         
         
                             <div class="my-3 white">
@@ -468,7 +468,7 @@
                     <input type="number" required  class="form-control" id="floatingInput" name="mobile" placeholder="name@example.com" @auth value="{{Auth::user()->mobile}}" @endauth>
                     <label for="floatingInput">Mobile Number</label>
                   </div>
-                <input type="hidden" name="courseId" value="174">
+                <input type="hidden" name="courseId" value="175">
                 <button class="enrollment-button">Enroll Now for Free</button>
                 <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's Terms & Conditions and Privacy Policy</p>
             </form>
@@ -493,22 +493,22 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "march 11, 2023 18:00:00",
+  let birthday = "march 14, 2023 18:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
         let now = new Date().getTime(),
             distance = countDown - now;
 
-        document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("days").innerText = Math.floor(distance / (day)),
           document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
           document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
           document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
 
           document.getElementById("days1").innerText = Math.floor(distance / (day)),
-      document.getElementById("hours1").innerText = Math.floor((distance % (day)) / (hour)),
-      document.getElementById("minutes1").innerText = Math.floor((distance % (hour)) / (minute)),
-      document.getElementById("seconds1").innerText = Math.floor((distance % (minute)) / second);
+          document.getElementById("hours1").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes1").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds1").innerText = Math.floor((distance % (minute)) / second);
 
         //do something later when date is reached
         if (distance < 0) {
