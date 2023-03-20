@@ -32,9 +32,9 @@
                     <div class="card-body ">
                         <div class="pt-1 text-center">
                             <h5 class="ck-font m-0 lead">This is to certify that</h3>
-                            <h1 class="display-5 m-1">Ashish Kumar Shukla</h1>
+                            <h1 class="display-5 m-1">Pratik Jangid</h1>
                             
-                            <p class=" lead mx-5">From J.K. Institute of Applied Physics and Technology, UOA, has successfully completed <strong>Full Stack Development</strong> training Internship from <strong>05th May </strong>  to  <strong>18th June 2021</strong></p>
+                            <p class=" lead mx-5">From University of Kota has successfully completed <strong>Frontend Development</strong> training Internship from <strong>15th October </strong>  to  <strong>30th December 2022</strong></p>
                             <h4 class="text-s lead"></h4>
                             
                             
@@ -48,8 +48,8 @@
                         <div class="row pb-0 pt-4">
                             <div class="col-sm-4 text-md-left text-center px-5">
                 
-                                <img src="{{asset('assets/img/rf_sign.png')}}" alt="uu" >
-                                <h4 class="pt-2 m-0 ck-font" >Raj K Sharma</h4>
+                                <img src="{{asset('assets/img/ashish_sign.png')}}" alt="uu" >
+                                <h4 class="pt-2 m-0 ck-font" >Ashish Shukla</h4>
                                 <p class="text-muted">CEO - Codekaro</p>
                             </div>
                             <div class="col-sm-4 text-center  px-5 ">
