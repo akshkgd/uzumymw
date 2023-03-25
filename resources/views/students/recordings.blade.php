@@ -1,9 +1,7 @@
 @extends('layouts.app')
-<<<<<<< Updated upstream
 <link rel="stylesheet" href="{{asset('css/ck-plyr.css')}}">
-=======
 {{-- <link rel="stylesheet" href="{{asset('css/ck-plyr.css')}}"> --}}
->>>>>>> Stashed changes
+
 @section('content')
 <style>
   .fw-400{
@@ -32,13 +30,13 @@
         
     @isset($video)
         
-<<<<<<< Updated upstream
+
     <div class=""></div>
     <div id="js-player" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div>
-=======
+
     
-    <div id="player" class="plyr" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div>
->>>>>>> Stashed changes
+    {{-- <div id="player" class="plyr" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div> --}}
+
     <h1 class="lead-1 pt-2 pb-0" id="title">{{$video->title}}</h1>
     <div class="">
         {!!$video->desc!!}
