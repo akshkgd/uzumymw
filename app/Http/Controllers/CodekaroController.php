@@ -240,7 +240,7 @@ class CodekaroController extends Controller
     try {
         $courseEnrollment = WorkshopEnrollment::find($enrollId);
         $user = User::find($courseEnrollment->userId);
-        $access_token = 'EAAQ6uEmyC0kBAImxMCNIDs4T682NDAfp9sXAhpGxnqduFRjS1AqFRctg3TD86ZCNx2U8bVEDB8ZBOe4SWcr5YithealRWzgfaXVCH9CVZCr1tbk9gYa23GfeJUGpj7wOQA6TNxvZBJVUZBnzTboyECem2cc8C9tLwgrNLrtDqKvSlZBUnAidxK2MJfLooWGkEZD';
+        $access_token = 'EAAQ6uEmyC0kBACicu5mqhVxCgCSjW6b8M0Vr3J67js9swCaehGC4HLwr1f5ZCF9BdtWxwLeqZBd93HHjgoYwxZCdSZAZCK6TRxciXQyH7TJR26UAogw8WqGvCt0LDFwmT6nxvFi1TzHdfhcBCA7qSM2QoWM8458jK6HdkKa5KZAZAWrBIBvQiqiCjk1u25tZALEZD';
         $pixel_id = '438131724437018';
 
         $api = Api::init(null, null, $access_token);
@@ -281,7 +281,7 @@ class CodekaroController extends Controller
         $response = $request->execute();
     }  
     catch(\Exception $e){
-        Log::error('Facebook Conversion API Error: ' . $e->getMessage());
+        Log::error('Conversion API Error: ' . $e->getMessage());
     } 
     }
 }
