@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Crypt;
 use App\Batch;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use App\User;
 use App\CourseEnrollment;
@@ -37,7 +38,7 @@ class CodekaroController extends Controller
         $input = $request->all();
 
         // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
-        $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+        $api = new Apii('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
         if (count($input)  && !empty($input['razorpay_payment_id'])) {
             try {
@@ -76,7 +77,7 @@ class CodekaroController extends Controller
         if (!$userExists) {
             $userId =  $this->createUser($request);
             $enrollmentId = $this->createWorkshopEnrollment($userId, $input['courseId'], $request);
-            // $this->apiTest($enrollmentId);
+            $this->apiTest($enrollmentId);
             $this->workshopSuccessMail($enrollmentId);
             
         } else {
@@ -84,7 +85,7 @@ class CodekaroController extends Controller
             $enrollmentId = $this->createWorkshopEnrollment($userExists->id, $input['courseId'], $request);
             if ($userExists->role == 0) {
                 Auth::loginUsingId($userExists->id);
-                // $this->apiTest($enrollmentId);
+                $this->apiTest($enrollmentId);
             }
             
             $this->workshopSuccessMail($enrollmentId);
@@ -236,10 +237,10 @@ class CodekaroController extends Controller
 
     private function apiTest($enrollId)
     {
-        
+    try {
         $courseEnrollment = WorkshopEnrollment::find($enrollId);
         $user = User::find($courseEnrollment->userId);
-        $access_token = 'EAAQ6uEmyC0kBAGjEuZCTFOvZAHrCBqKtZBooOVbC6HAoU0Ofs5rXv2vLUkX8RsRx5mU3vZBOebkWHBl5nJj1gHjpXxCFnoOy62S60Iz2xwSm4dNizUwdw7oWz3GJ0kXE8ZBAE2gYIsJZCTbfnETfcOIaZBPnoixjwMk7PMBoA0IOQTjZCpjiOQJNWLJ34PNUco0ZD';
+        $access_token = 'EAAQ6uEmyC0kBAImxMCNIDs4T682NDAfp9sXAhpGxnqduFRjS1AqFRctg3TD86ZCNx2U8bVEDB8ZBOe4SWcr5YithealRWzgfaXVCH9CVZCr1tbk9gYa23GfeJUGpj7wOQA6TNxvZBJVUZBnzTboyECem2cc8C9tLwgrNLrtDqKvSlZBUnAidxK2MJfLooWGkEZD';
         $pixel_id = '438131724437018';
 
         $api = Api::init(null, null, $access_token);
@@ -255,30 +256,32 @@ class CodekaroController extends Controller
             ->setFbp('fb.1.1558571054389.1098115397');
 
         $content = (new Content())
-            ->setProductId('ckwd1')
-            ->setQuantity(1)
-            ->setDeliveryCategory(DeliveryCategory::HOME_DELIVERY);
+        ->setProductId('ckwd1')
+        ->setQuantity(1)
+        ->setDeliveryCategory(DeliveryCategory::HOME_DELIVERY);
 
         $custom_data = (new CustomData())
-            ->setContents(array($content))
-            ->setCurrency('INR')
-            ->setValue(0);
+        ->setContents(array($content))
+        ->setCurrency('INR')
+        ->setValue(0);
 
         $event = (new Event())
-            ->setEventName('CompleteRegistration')
-            ->setEventTime(time())
-            ->setEventSourceUrl('https://codekaro.in/web-development-live-masterclass')
-            ->setUserData($user_data)
-            ->setCustomData($custom_data)
-            ->setActionSource(ActionSource::WEBSITE);
+        ->setEventName('CompleteRegistration')
+        ->setEventTime(time())
+        ->setEventSourceUrl('https://codekaro.in/web-development-live-masterclass')
+        ->setUserData($user_data)
+        ->setCustomData($custom_data)
+        ->setActionSource(ActionSource::WEBSITE);
 
         $events = array();
         array_push($events, $event);
 
         $request = (new EventRequest($pixel_id))
-            ->setEvents($events);
+        ->setEvents($events);
         $response = $request->execute();
-
-        dd($response);
+    }  
+    catch(\Exception $e){
+        Log::error('Facebook Conversion API Error: ' . $e->getMessage());
+    } 
     }
 }
