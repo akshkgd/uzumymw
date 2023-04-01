@@ -175,7 +175,7 @@
 
                                     
 
-                                    <p class="ck-font fw-400 d-none  m-0">Starts From
+                                    <p class="ck-font fw-400  m-0">Starts From
                                         {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M') }}</p>
                                     <p class="ck-font fw-400 ">Timings: {{ $batch->schedule }}
                                         </h5>
