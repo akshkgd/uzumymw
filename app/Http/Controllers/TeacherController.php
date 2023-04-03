@@ -152,7 +152,7 @@ class TeacherController extends Controller
                     'name' =>  strtok($user->students->name, ' ') 
                 );
                 $email = array($user->students->email);
-                Notification::route('mail', $email)->notify(new recordingAdded($emailData) );
+                // Notification::route('mail', $email)->notify(new recordingAdded($emailData) );
                 // $user->email = $user->students->email;
                 // $name = $user->students->name;
                 // $email = $user->students->email;

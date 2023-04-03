@@ -240,7 +240,7 @@ class CodekaroController extends Controller
     try {
         $courseEnrollment = WorkshopEnrollment::find($enrollId);
         $user = User::find($courseEnrollment->userId);
-        $access_token = 'EAAQ6uEmyC0kBACicu5mqhVxCgCSjW6b8M0Vr3J67js9swCaehGC4HLwr1f5ZCF9BdtWxwLeqZBd93HHjgoYwxZCdSZAZCK6TRxciXQyH7TJR26UAogw8WqGvCt0LDFwmT6nxvFi1TzHdfhcBCA7qSM2QoWM8458jK6HdkKa5KZAZAWrBIBvQiqiCjk1u25tZALEZD';
+        $access_token = 'EAAQ6uEmyC0kBAPSPlsTgN8RotVhaTWNxXGCwessz0mZAHhbCAGbafqhB0Qs14nIsRfZBL36MrZBWhsn4G2TIfHFrm2GP9SgKBIa5ylWydZBsfFFE0VJANaKGmq2WUCV4zr5Ygfm1J1qJr8bc3wPKjnNFTGaVWAiRXVY941VVZAenXsR8h7dl2EvwkpBvBBicZD';
         $pixel_id = '438131724437018';
 
         $api = Api::init(null, null, $access_token);
@@ -279,8 +279,10 @@ class CodekaroController extends Controller
         $request = (new EventRequest($pixel_id))
         ->setEvents($events);
         $response = $request->execute();
+        dd($response);
     }  
     catch(\Exception $e){
+        dd($e->getMessage());
         Log::error('Conversion API Error: ' . $e->getMessage());
     } 
     }
