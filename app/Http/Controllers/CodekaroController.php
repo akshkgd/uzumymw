@@ -282,7 +282,7 @@ class CodekaroController extends Controller
         // dd($response);
     }  
     catch(\Exception $e){
-        dd($e->getMessage());
+        // dd($e->getMessage());
         Log::error('Conversion API Error: ' . $e->getMessage());
     } 
     }
