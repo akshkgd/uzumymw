@@ -279,7 +279,7 @@ class CodekaroController extends Controller
         $request = (new EventRequest($pixel_id))
         ->setEvents($events);
         $response = $request->execute();
-        dd($response);
+        // dd($response);
     }  
     catch(\Exception $e){
         dd($e->getMessage());
