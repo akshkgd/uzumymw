@@ -318,13 +318,7 @@
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
-                    <blockquote class="twitter-tweet">
-                        <p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
-                            Congrats Codekaro team.., you are doing a wonderful job and your session are helpful for my
-                            carrer..thankyou</p>&mdash; Nandhakumar (@nandhank_) <a
-                            href="https://twitter.com/nandhank_/status/1407353108187996162?ref_src=twsrc%5Etfw">June 22,
-                            2021</a>
-                    </blockquote>
+                    <blockquote class="twitter-tweet"><p lang="en" dir="ltr"><a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> my three days in masterclass with <a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a> was really great. Sir, is totally amazing teacher. Every single point , single line, single code explain very well. Thanku so much sir</p>&mdash; Vanshika (@Vanshika1408) <a href="https://twitter.com/Vanshika1408/status/1472578389038940163?ref_src=twsrc%5Etfw">December 19, 2021</a></blockquote> 
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
                 <div class="col-md-6">
@@ -468,7 +462,7 @@
                     <input type="number" required  class="form-control" id="floatingInput" name="mobile" placeholder="name@example.com" @auth value="{{Auth::user()->mobile}}" @endauth>
                     <label for="floatingInput">Mobile Number</label>
                   </div>
-                <input type="hidden" name="courseId" value="181">
+                <input type="hidden" name="courseId" value="182">
                 <button class="enrollment-button">Enroll Now for Free</button>
                 <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's Terms & Conditions and Privacy Policy</p>
             </form>
