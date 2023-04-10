@@ -78,7 +78,7 @@ class CodekaroController extends Controller
             $userId =  $this->createUser($request);
             $enrollmentId = $this->createWorkshopEnrollment($userId, $input['courseId'], $request);
             // $this->apiTest($enrollmentId);
-            $this->workshopSuccessMail($enrollmentId);
+            // $this->workshopSuccessMail($enrollmentId);
             
         } else {
             $this->updateUtm($request, $userExists->id);
@@ -87,15 +87,17 @@ class CodekaroController extends Controller
                 Auth::loginUsingId($userExists->id);
                 // $this->apiTest($enrollmentId);
             }
-            
-            $this->workshopSuccessMail($enrollmentId);
-            
+            // $this->workshopSuccessMail($enrollmentId);
         }
-        if ($enrollmentId == 0) {
-            session()->flash('alert-danger', 'You can not enroll in this workshop! ');
-            return redirect()->back();
-        } else {
+        if ($enrollmentId === 0) {
+            // session()->flash('alert-danger', 'You can not enroll in this workshop! ');
+            // return redirect()->back();
+            $enrollId = Crypt::encrypt($input['courseId']);
+            return redirect('next-steps/'.$enrollId);
+        }
+        else {
             $enrollment = WorkshopEnrollment::find($enrollmentId);
+            $this->workshopSuccessMail($enrollmentId);
             $enrollId = Crypt::encrypt($enrollment->id);
             return redirect('workshop-enrollment-success/' . $enrollId);
         }
@@ -167,11 +169,11 @@ class CodekaroController extends Controller
         $workshop = Workshop::findOrFail($workshopId);
         $isEnrolled = WorkshopEnrollment::where('workshopId', $workshopId)->where('userId', $userId)->get();
         if (count($isEnrolled) > 0) {
-            return $isEnrolled[0]->id;
-        }
+            return 0;
+        
         // $enrollId = Crypt::encrypt($isEnrolled[0]->id);
-        // return redirect('workshop-enrollment-success/'.$enrollId);
-
+        // return redirect('next-steps/'.$enrollId);
+        }
         elseif ($workshop->count() > 0 && $workshop->status == 1) {
             $enrollment = new WorkshopEnrollment();
             $enrollment->userId = $userId;

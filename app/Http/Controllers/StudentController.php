@@ -44,6 +44,11 @@ class StudentController extends Controller
         $workshop = Workshop::findorFail($enrollment->workshopId);
         return view('students.workshopEnrollmentSuccess', compact('enrollment', 'workshop'));
     }
+    public function workshopEnrollmentSuccessNS($id){
+        $id = Crypt::decrypt($id);
+        $workshop = Workshop::findorFail($id);
+        return view('students.workshopNextSteps', compact('workshop'));
+    }
 
     public function recordings($id, $videoLink = null)
     {

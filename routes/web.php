@@ -92,6 +92,8 @@ Route::get('/logout/{device_id}', 'ProfileController@logoutDevice')
 Route::get('/notes/{id}', 'StudentController@notes');
 Route::get('/recording-sessions/{id}/{key?}', 'StudentController@recordings');
 Route::get('workshop-enrollment-success/{id}', 'StudentController@workshopEnrollmentSuccess');
+Route::get('next-steps/{id}', 'StudentController@workshopEnrollmentSuccessNS');
+
 //student routes end
 Route::get('/event', 'WorkshopController@index');
 Route::resource('/faq', 'FaqController');
