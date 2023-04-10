@@ -41,7 +41,19 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/wd.css')}}">
     <style>
-        
+        .loader {
+            border: 2px solid #f3f3f3; /* Light grey */
+            border-top: 2px solid #9f9f9f; /* Blue */
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
     
     
@@ -463,7 +475,7 @@
                     <label for="floatingInput">Mobile Number</label>
                   </div>
                 <input type="hidden" name="courseId" value="182">
-                <button class="enrollment-button">Enroll Now for Free</button>
+                <button type="submit" class="enrollment-button" onclick="startLoader()">Enroll Now for Free <div id="loader"></div></button>
                 <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's Terms & Conditions and Privacy Policy</p>
             </form>
             
@@ -481,12 +493,16 @@
 
 
     <script>
+        startLoader = ()=>{
+            let loader = document.getElementById('loader');
+            loader.classlist.add('loader')
+        }
         (function () {
         const second = 1000,
         minute = second * 60,
         hour = minute * 60,
         day = hour * 24;
-
+            
   let birthday = "april 12, 2023 18:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
