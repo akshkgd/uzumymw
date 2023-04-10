@@ -42,11 +42,11 @@
     <link rel="stylesheet" href="{{asset('css/wd.css')}}">
     <style>
         .loader {
-            border: 2px solid #f3f3f3; /* Light grey */
-            border-top: 2px solid #9f9f9f; /* Blue */
+            border: 2px solid #f3f3f3a8; /* Light grey */
+            border-top: 2px solid #ffffff; /* Blue */
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 24px;
+            height: 24px;
             animation: spin 2s linear infinite;
         }
 
@@ -475,7 +475,7 @@
                     <label for="floatingInput">Mobile Number</label>
                   </div>
                 <input type="hidden" name="courseId" value="182">
-                <button type="submit" class="enrollment-button" onclick="startLoader()">Enroll Now for Free <div id="loader"></div></button>
+                <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center" onclick="startLoader()">Enroll Now for Free <div id="loader" class="loader d-inline-block ms-2"></div></button>
                 <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's Terms & Conditions and Privacy Policy</p>
             </form>
             
