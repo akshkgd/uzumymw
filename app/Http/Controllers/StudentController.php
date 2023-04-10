@@ -40,9 +40,8 @@ class StudentController extends Controller
 
     public function workshopEnrollmentSuccess($id){
         $id = Crypt::decrypt($id);
-        $enrollment = WorkshopEnrollment::findorFail($id);
-        $workshop = Workshop::findorFail($enrollment->workshopId);
-        return view('students.workshopEnrollmentSuccess', compact('enrollment', 'workshop'));
+        $workshop = Workshop::findorFail($id);
+        return view('students.workshopEnrollmentSuccess', compact('workshop'));
     }
     public function workshopEnrollmentSuccessNS($id){
         $id = Crypt::decrypt($id);

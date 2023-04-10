@@ -96,9 +96,9 @@ class CodekaroController extends Controller
             return redirect('next-steps/'.$enrollId);
         }
         else {
-            $enrollment = WorkshopEnrollment::find($enrollmentId);
+            // $enrollment = WorkshopEnrollment::find($enrollmentId);
             $this->workshopSuccessMail($enrollmentId);
-            $enrollId = Crypt::encrypt($enrollment->id);
+            $enrollId = Crypt::encrypt($input['courseId']);
             return redirect('workshop-enrollment-success/' . $enrollId);
         }
     }
