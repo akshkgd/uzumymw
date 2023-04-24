@@ -25,6 +25,9 @@
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
                             <th scope="col">Mobile</th>
+                            <th scope="col">Created On</th>
+                            <th scope="col">Enrolled On</th>
+                            <th scope="col">Campaign</th>
                             <th scope="col">Certificate</th>
                           </tr>
                         </thead>
@@ -35,6 +38,9 @@
                                 <td> <img src="{{$enrollment->students->avatar}}" alt="" class="avatar avatar-sm">  {{$enrollment->students->name}}</td>
                                 <td>{{$enrollment->students->email}}</td>
                                 <td><a href="tel:+{{$enrollment->students->mobile}}">{{$enrollment->students->mobile}}</a></td>
+                                <td>{{$enrollment->students->created_at}}</td>
+                                <td>{{$enrollment->paidAt}}</td>
+                                <td>{{$enrollment->students->field3}}</td>
                                 <td>
                                     @if ($enrollment->certificateId =='')
                                     <a href="{{action('TeacherController@generateCertificate', $enrollment->id )}}" class="card-link">generate certificate</a>
