@@ -39,7 +39,7 @@
                                 <td>{{$enrollment->students->email}}</td>
                                 <td><a href="tel:+{{$enrollment->students->mobile}}">{{$enrollment->students->mobile}}</a></td>
                                 <td>{{$enrollment->students->created_at->format('d M y')}}</td>
-                                <td>{{$enrollment->paidAt->format('d M y')}}</td>
+                                <td>{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('d M y') }}  </td>
                                 <td>{{$enrollment->students->field3}}</td>
                                 <td>
                                     @if ($enrollment->certificateId =='')
