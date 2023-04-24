@@ -38,8 +38,8 @@
                                 <td> <img src="{{$enrollment->students->avatar}}" alt="" class="avatar avatar-sm">  {{$enrollment->students->name}}</td>
                                 <td>{{$enrollment->students->email}}</td>
                                 <td><a href="tel:+{{$enrollment->students->mobile}}">{{$enrollment->students->mobile}}</a></td>
-                                <td>{{$enrollment->students->created_at}}</td>
-                                <td>{{$enrollment->paidAt}}</td>
+                                <td>{{$enrollment->students->created_at->format('d M y')}}</td>
+                                <td>{{$enrollment->paidAt->format('d M y')}}</td>
                                 <td>{{$enrollment->students->field3}}</td>
                                 <td>
                                     @if ($enrollment->certificateId =='')
