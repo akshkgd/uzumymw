@@ -79,7 +79,7 @@
                             <p class="fs-6 text-muted col-md-10 text-center" style="font-size: calc(0.01rem + 1.6vw);">Modern CSS from the beginning - all the way up to Javascript with real world scenarios and examples! The must-have Frontend Bootcamp in 2022. </p>
                         </div>
         
-                            <h4 class="fw-500 py-4"> <strong>Friday, 12th May to 13th May </strong>  | 06:00 PM IST</h3>
+                            <h4 class="fw-500 py-4"> <strong>Monday, 15th May to 16th May </strong>  | 06:00 PM IST</h3>
                         
         
                             <div class="my-3 white">
@@ -474,7 +474,7 @@
                     <input type="number" required  class="form-control" id="floatingInput" name="mobile" placeholder="name@example.com" @auth value="{{Auth::user()->mobile}}" @endauth>
                     <label for="floatingInput">Mobile Number</label>
                   </div>
-                <input type="hidden" name="courseId" value="192">
+                <input type="hidden" name="courseId" value="193">
                 <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center" onclick="startLoader()">Enroll Now for Free <div id="loader" class="loade d-inline-block ms-2"></div></button>
                 <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's Terms & Conditions and Privacy Policy</p>
             </form>
@@ -503,7 +503,7 @@
         hour = minute * 60,
         day = hour * 24;
             
-  let birthday = "may 12, 2023 18:00:00",
+  let birthday = "may 15, 2023 18:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
