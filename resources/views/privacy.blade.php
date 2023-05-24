@@ -10,7 +10,7 @@
     <div class="row justify-content-center">
         <div class="col-sm-10">
 
-<h2 style="text-align: center;"><b>Privacy Policy</b></h2>
+<p style="text-align: center;"><b>Privacy Policy</b></p>
 <p>Last updated: 2020-07-01</p>
 <p>1. <b>Introduction</b></p>
 <p>Welcome to <b>Codekaro</b> (“Company”, “we”, “our”, “us”)!</p>
@@ -101,9 +101,41 @@
 <p>22. <b>Acknowledgement</b></p>
 <p>BY USING SERVICE OR OTHER SERVICES PROVIDED BY US, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM.</p>
 <p>23. <b>Refund policy</b></p>
+<p><b>24. Terms and Conditions for Course Completion</b></p>
+
+  <p>1. Batch Completion Timeline</p>
+  <p>Batch completion may differ for a maximum of 3 months from the actual date of ending. We will make reasonable efforts to ensure timely completion, but unforeseen circumstances or logistical constraints may occasionally cause delays.</p>
+
+  <p>2. Class Cancellations</p>
+  <p>Classes may be canceled in the event of internet issues, health issues of the instructor, or important holidays. In such cases, the class will be rescheduled for the next available session. We will notify you in advance regarding any class cancellations or rescheduling.</p>
+
+  <p>3. Minimum Student Requirement</p>
+  <p>Sessions will not be conducted if there are no students available to attend the session live. We require a minimum number of participants for each session to ensure an effective learning experience.</p>
+
+  <p>4. Batch Shifting</p>
+  <p>If you wish to shift to a different batch for any reason, you may do so by paying a batch shifting fee of rs 999. Batch shifting is subject to availability and must be requested in advance. Please contact our support team for further assistance regarding batch shifting.</p>
+
+  <p>5. Student Code of Conduct</p>
+  <p>We strive to maintain a respectful and inclusive learning environment. Any student found to be violating our guidelines or sharing any form of hate speech, religious messages, or inappropriate content in the discussion group may be removed from the batch without prior notice or refund.</p>
+
+  <p>6. Intellectual Property</p>
+  <p>All course materials, including but not limited to videos, lectures, quizzes, and assignments, provided on our website are protected by copyright laws. You may access and use these materials for personal, non-commercial purposes only. Reproduction, distribution, or any other unauthorized use of these materials is strictly prohibited.</p>
+
+  <p>7. Disclaimer</p>
+  <p>While we make every effort to provide accurate and up-to-date content, we do not guarantee the completeness or accuracy of the information provided in our courses. The content is provided for educational purposes only and should not be considered as professional advice.</p>
+
+  <p>8. Limitation of Liability</p>
+  <p>We shall not be liable for any direct, indirect, incidental, consequential, or special damages arising out of or in connection with the use of our courses, whether based on contract, tort, negligence, or other legal theory. Your use of the courses is at your own risk.</p>
+
+  <p>9. Modifications to Terms and Conditions</p>
+  <p>We reserve the right to modify or update these terms and conditions at any time without prior notice. It is your responsibility to review this Agreement periodically for any changes. Your continued enrollment in the course after any modifications constitutes acceptance of the updated terms and conditions.</p>
+
+  <p>10. Governing Law</p>
+  <p>This Agreement shall be governed by and construed in accordance with the laws of [Jurisdiction].
+
 <p>Once you join the course after demo classes no refund will be made under any circumstances</p>
 {{-- <p><b>Token Amounts are non Refundable</b></p> --}}
-<p>23. <b>Contact Us</b></p>
+<p>25. <b>Contact Us</b></p>
 <p>Please send your feedback, comments, requests for technical support by email: <b>info@codekaro.in</b>.</p>
         </div>
     </div>
