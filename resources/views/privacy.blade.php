@@ -101,6 +101,9 @@
 <p>22. <b>Acknowledgement</b></p>
 <p>BY USING SERVICE OR OTHER SERVICES PROVIDED BY US, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM.</p>
 <p>23. <b>Refund policy</b></p>
+<p>Once you join the course after demo classes no refund will be made under any circumstances</p>
+<p><b>Token Amounts are non Refundable</b></p>
+
 <p><b>24. Terms and Conditions for Course Completion</b></p>
 
   <p>1. Batch Completion Timeline</p>
@@ -133,8 +136,6 @@
   <p>10. Governing Law</p>
   <p>This Agreement shall be governed by and construed in accordance with the laws of [Jurisdiction].
 
-<p>Once you join the course after demo classes no refund will be made under any circumstances</p>
-{{-- <p><b>Token Amounts are non Refundable</b></p> --}}
 <p>25. <b>Contact Us</b></p>
 <p>Please send your feedback, comments, requests for technical support by email: <b>info@codekaro.in</b>.</p>
         </div>
