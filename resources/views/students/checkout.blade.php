@@ -92,7 +92,7 @@
           </div>
         </div>
           
-          <form action="{{ route('payment-success') }}" method="POST" class="">
+          <form action="{{ route('payment') }}" method="POST" class="">
             @csrf
             <script src="https://checkout.razorpay.com/v1/checkout.js"
                 data-key='rzp_live_YFwQzuSuorFCPM' 
