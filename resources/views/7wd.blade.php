@@ -6,8 +6,13 @@
     professional work-like projects'))
 
 
-
+<link rel="stylesheet" href="{{asset('css/ck-plyr.css')}}">
     <style>
+        .bg-dark{
+            background-color: #272727 !important;
+            border-radius: 16px;
+            padding: 16px
+        }
         .js-player {
             color: inherit !important;
         }
@@ -76,7 +81,11 @@
                 text-align: left !important;
             }
         }
-
+        .card-dark{
+            background-color: #000000;
+            border-radius: 12px;
+            padding: 10px;
+        }
         .gray-tag {
             background-color: rgb(235, 213, 255);
             display: inline-block;
@@ -95,6 +104,9 @@
         .white {
             color: white !important;
         }
+        .plyr--video {
+            border-radius: 16px
+        }
     </style>
 @section('content')
     {{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
@@ -106,37 +118,84 @@
         @include('layouts.alert')
     </div>
 
-    <section>
-        <div class="container pt-lg-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-9 mx-auto p-3 " style="height: 100vh; display:flex; align-items: center">
+    <section class="" style=" background-color: black; color:aliceblue; background-color: #141414;
+    opacity: 1;
+    background-image:  linear-gradient(#111111 2.3000000000000003px, transparent 2.3000000000000003px), linear-gradient(to right, #111111 2.3000000000000003px, #000000 2.3000000000000003px);
+    background-size: 46px 46px;" >
+        <div class="container pt-5">
 
-
-
+            <div class="row justify-content-center align-items-cente">
+                <div class="col-md-8">
                     <main class="text-center">
-                        <h1 class="display-5 fw-bolder mt-5">Want to master <span class="wd_highlight"> Concepts of
-                                CSS?</span>Join 6 days live Bootcamp</h1>
+                        <h1 class="display-6 fw-bold " style=" color:aliceblue">Want to master <span class="wd_highlight1"> Concepts of
+                                CSS?</span>Join 5 days live Bootcamp</h1>
 
-                        <div class="row justify-content-center">
-                            <p class="fs-5 text-muted col-md-10 text-center">Modern CSS from the beginning - all the way up
+                        
+                            <p class="fs-5 text-muted text-center">Modern CSS bootcamp - all the way up
                                 to expert level with real world scenarios and examples! The must-have Frontend Bootcamp in
                                 2022. </p>
-                        </div>
 
-
-                        <h4 class="fw-500 py-4 fw-bold">Monday, 12th December to 17th December | 10:00 PM IST</h3>
-
-                            <div class="my-3 white">
-                                <a href="" class=" ck-btn ck-rounded btn-lg mt-3  px-5"
-                                    class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
-                                    data-bs-target="#enroll">
-                                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 399</h2>
-                                    <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
-                                </a>
-                            </div>
+                            
 
 
                     </main>
+                </div>
+
+                <div class="col-lg-5 my-5  mb-4 order-2 order-lg-1" >
+                    <div class="bg-dark container" style="background-color: #1f1f1f !important; opacity:90%">
+                        <div class="row">
+                            
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l1.svg') }}" alt="">
+                                        5 Days Live Classes
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l2.svg') }}" alt="">
+                                        Sessions on Zoom
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l3.svg') }}" alt="">
+                                        From June 17th 2023
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l1.svg') }}" alt="">
+                                        6 PM IST (2 hours live)
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class="text-white">More than 30,000 students have attended the bootcamp so far</h5>
+                            
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-lg-5 my-5 order-1 order-lg-2">
+                    <div id="js-player" style="border-radius: 16px; color:white;" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="slentvTk3gY"></div>
+                    <div class="my-3 white" >
+                        <a href="" style="width:100% !important" class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
+                            class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
+                            data-bs-target="#enroll">
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 399</h2>
+                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -729,7 +788,7 @@
                     @guest
                     <form action="{{ route('course-payment') }}" method="POST" class="">
                         @csrf
-                        <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="39900"
+                        <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="100"
                             data-buttontext="Pay ₹ 399 Now" data-name="Codekaro" data-description="wd 30"
                             data-image="{{ asset('assets/img/codekaro-dark.png') }}" data-theme.color="#0066ff">
                             @auth
@@ -757,7 +816,7 @@
     </div>
     {{-- enrollment mode ends --}}
 
-
+    <script src='https://cdn.plyr.io/3.5.6/plyr.js'></script>
 
     <script>
         (function() {
@@ -810,5 +869,29 @@
                 //seconds
             }, 0)
         }());
+
+        document.addEventListener('DOMContentLoaded', () => {
+ // Controls (as seen below) works in such a way that as soon as you explicitly define (add) one control
+ // to the settings, ALL default controls are removed and you have to add them back in by defining those below.
+
+ // For example, let's say you just simply wanted to add 'restart' to the control bar in addition to the default.
+ // Once you specify *just* the 'restart' property below, ALL of the controls (progress bar, play, speed, etc) will be removed,
+ // meaning that you MUST specify 'play', 'progress', 'speed' and the other default controls to see them again.
+
+ const controls = [
+     'play-large', // The large play button in the center
+     'play', // Play/pause playback
+     'progress', // The progress bar and scrubber for playback and buffering
+     'current-time', // The current time of playback
+     'duration', // The full duration of the media
+     'mute', // Toggle mute
+     'volume', // Volume control
+     'settings', // Settings menu
+     
+ ];
+
+ const player = Plyr.setup('.js-player', { controls });
+
+});
     </script>
 @endsection

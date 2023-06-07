@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Session;
 use App\User;
 use App\CourseEnrollment;
 use App\WorkshopEnrollment;
-use Razorpay\Api\Apii;
+use Razorpay\Api\Api;
 use Redirect;
 use Carbon\Carbon;
 use App\Mail\EmailForQueuing;
@@ -20,7 +20,7 @@ use Mail;
 use App\Mail\OnboardingMail;
 use App\Workshop;
 use App\Mail\workshopEnrollmentSuccess;
-use FacebookAds\Api;
+// use FacebookAds\Api;
 use FacebookAds\Logger\CurlLogger;
 use FacebookAds\Object\ServerSide\ActionSource;
 use FacebookAds\Object\ServerSide\TestEventCode;
@@ -38,7 +38,7 @@ class CodekaroController extends Controller
         $input = $request->all();
 
         // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
-        $api = new Apii('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+        $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
         if (count($input)  && !empty($input['razorpay_payment_id'])) {
             try {
@@ -57,15 +57,15 @@ class CodekaroController extends Controller
             if (!$userExists) {
                 $userId =  $this->createUser($response);
                 $enrollmentId = $this->courseEnrollment($userId, $input['courseId'], $response);
-                $this->successMail($enrollmentId);
+                // $this->successMail($enrollmentId);
             } else {
                 $enrollmentId = $this->courseEnrollment($userExists->id, $input['courseId'], $response);
-                $this->successMail($enrollmentId);
+                // $this->successMail($enrollmentId);
                 session()->flash('alert-success', 'Payment Completed Successfully');
             }
             $enrollment = CourseEnrollment::find($enrollmentId);
             $batch = Batch::find($enrollment->batchId);
-            return view('students.PaymentComplete', compact('enrollment', 'batch'));
+            return view('students.SuccessBootcamp', compact('enrollment', 'batch'));
         }
     }
 
