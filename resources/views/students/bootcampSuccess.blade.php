@@ -121,7 +121,7 @@
         day = hour * 24;
 
   let birthday = "02 21, 2022 18:30:00",
-      let birthday = ({{ Carbon\Carbon::parse($workshop->startDate)->format('m d, Y h:i:s') }}).toString(),
+      let birthday = ({{ Carbon\Carbon::parse($batch->startDate)->format('m d, Y h:i:s') }}).toString(),
       
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
