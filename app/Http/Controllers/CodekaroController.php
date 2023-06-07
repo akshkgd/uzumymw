@@ -65,7 +65,7 @@ class CodekaroController extends Controller
             }
             $enrollment = CourseEnrollment::find($enrollmentId);
             $batch = Batch::find($enrollment->batchId);
-            return view('students.PaymentComplete', compact('enrollment', 'batch'));
+            return view('students.bootcampSuccess', compact('enrollment', 'batch'));
         }
     }
 
