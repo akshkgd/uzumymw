@@ -160,7 +160,7 @@ class CodekaroController extends Controller
         $enrollment->amountPaid = $response->amount - $response->fee;
         $enrollment->save();
         $enrollmentId = $enrollment->id;
-
+        Auth::loginUsingId($userId);
         return $enrollmentId;
     }
 
