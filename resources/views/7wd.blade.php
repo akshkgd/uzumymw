@@ -1,4 +1,4 @@
-@extends('layouts.ck')
+@extends('layouts.ck-bootcamp')
 @section('title', '' . e('Web Development Live Bootcamp | Codekaro'))
 @section('meta_description',
     '' .
@@ -6,13 +6,14 @@
     professional work-like projects'))
 
 
-<link rel="stylesheet" href="{{asset('css/ck-plyr.css')}}">
+
     <style>
-        .bg-dark{
+        .bg-dark {
             background-color: #272727 !important;
             border-radius: 16px;
             padding: 16px
         }
+
         .js-player {
             color: inherit !important;
         }
@@ -40,9 +41,11 @@
             border-radius: 16px;
             margin: 20px 0 0 0;
         }
-        .razorpay-payment-button:hover{
+
+        .razorpay-payment-button:hover {
             color: white !important;
         }
+
         .ck-btn {
 
             background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
@@ -81,11 +84,13 @@
                 text-align: left !important;
             }
         }
-        .card-dark{
+
+        .card-dark {
             background-color: #000000;
             border-radius: 12px;
             padding: 10px;
         }
+
         .gray-tag {
             background-color: rgb(235, 213, 255);
             display: inline-block;
@@ -104,6 +109,7 @@
         .white {
             color: white !important;
         }
+
         .plyr--video {
             border-radius: 16px
         }
@@ -118,86 +124,113 @@
         @include('layouts.alert')
     </div>
 
-    <section class="" style=" background-color: black; color:aliceblue; background-color: #141414;
-    opacity: 1;
-    background-image:  linear-gradient(#111111 2.3000000000000003px, transparent 2.3000000000000003px), linear-gradient(to right, #111111 2.3000000000000003px, #000000 2.3000000000000003px);
-    background-size: 46px 46px;" >
+    <section class="pt-5" style=" background-color: #212121;>
         <div class="container pt-5">
 
-            <div class="row justify-content-center align-items-cente">
-                <div class="col-md-8">
-                    <main class="text-center">
-                        <h1 class="display-6 fw-bold " style=" color:aliceblue">Want to master <span class="wd_highlight1"> Concepts of
-                                CSS?</span>Join 5 days live Bootcamp</h1>
-
-                        
-                            <p class="fs-5 text-muted text-center">Modern CSS bootcamp - all the way up
-                                to expert level with real world scenarios and examples! The must-have Frontend Bootcamp in
-                                2022. </p>
-
-                            
+        <div class="row justify-content-center align-items-cente">
+            <div class="col-md-8">
+                <main class="text-center">
+                    <h1 class="display-6 fw-bod  pt-5" style="line-height:1.5; color:aliceblue; font-weight:600">Start <span
+                            class="wd_highligh" style="color:#efa30e;">creating websites like youtube</span> & Netflix without
+                        spending more than 5 hours a week using my 3c's formula</h1>
 
 
-                    </main>
-                </div>
+                    <p class="fs-5 text-white text-center">Modern CSS bootcamp - all the way up
+                        to expert level with real world scenarios and examples! The must-have Frontend Bootcamp in
+                        2022. </p>
 
-                <div class="col-lg-5 my-5  mb-4 order-2 order-lg-1" >
-                    <div class="bg-dark container" style="background-color: #1f1f1f !important; opacity:90%">
-                        <div class="row">
-                            
-                            <div class="col-6 mb-3">
-                                <div class="card-dark">
-                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                        <img src="{{ asset('assets/img/l1.svg') }}" alt="">
-                                        5 Days Live Classes
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="card-dark">
-                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                        <img src="{{ asset('assets/img/l2.svg') }}" alt="">
-                                        Sessions on Zoom
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="card-dark">
-                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                        <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From June 17th 2023
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="col-6 mb-3">
-                                <div class="card-dark">
-                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                        <img src="{{ asset('assets/img/l1.svg') }}" alt="">
-                                        6 PM IST (2 hours live)
-                                    </div>
+
+
+
+                </main>
+            </div>
+
+            <div class="col-lg-5 mt-5  mb-4 order-2 order-lg-1">
+                <div class="bg-dark container" style="background-color: #333333 !important; opacity:90%">
+                    <div class="row">
+
+                        <div class="col-6 mb-3">
+                            <div class="card-dark">
+                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                    <img src="{{ asset('assets/img/l1.svg') }}" alt="">
+                                    5 Days Live Bootcamp
                                 </div>
                             </div>
-                            <h5 class="text-white">More than 30,000 students have attended the bootcamp so far</h5>
-                            
+
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="card-dark">
+                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                    <img src="{{ asset('assets/img/l2.svg') }}" alt="">
+                                    All live sessions on Zoom
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="card-dark">
+                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                    <img src="{{ asset('assets/img/l3.svg') }}" alt="">
+                                    From June 17th 2023 to 21st June
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="card-dark">
+                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                    <img src="{{ asset('assets/img/l4.svg') }}" alt="">
+                                    6 PM IST (2 hours live)
+                                </div>
+                            </div>
+                        </div>
+                        {{-- <h5 class="text-white">More than 30,000 students have attended the bootcamp so far</h5> --}}
+                        <div class="d-flex align-items-center" style="gap:20px">
+                            <img src="{{ asset('assets/img/team/ashish black.png') }}" height="100" width="100"
+                                style="border-radius: 14px" alt="">
+                            <div class="text-white">
+                                <h4 class="fs-5 m-0 text-white">Ashish Shukla</h4>
+                                <p class="small m-0 mt-1 text-muted">I am a freelance web developer and instructor
+                                    passionate about educating students through engaging lessons. Ex AOSPL, Lido Learning
+                                </p>
+                            </div>
                         </div>
                     </div>
-                    
                 </div>
-                <div class="col-lg-5 my-5 order-1 order-lg-2">
-                    <div id="js-player" style="border-radius: 16px; color:white;" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="slentvTk3gY"></div>
-                    <div class="my-3 white" >
-                        <a href="" style="width:100% !important" class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
-                            class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
-                            data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 399</h2>
-                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
-                        </a>
+
+            </div>
+            <div class="col-lg-5 mt-5 order-1 order-lg-2">
+                <div class="bg-dark p-2" style="background-color: #333333 !important">
+                    <script src="https://fast.wistia.com/embed/medias/7hmcbsblzy.jsonp" async></script>
+                    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                    <div class="wistia_responsive_padding"
+                        style="padding:56.25% 0 0 0;position:relative; border-radius:14px">
+                        <div class="wistia_responsive_wrapper"
+                            style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                            <div class="wistia_embed wistia_async_7hmcbsblzy videoFoam=true"
+                                style="height:100%;position:relative;width:100%">
+                                <div class="wistia_swatch"
+                                    style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                                    <img src="https://fast.wistia.com/embed/medias/7hmcbsblzy/swatch"
+                                        style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt=""
+                                        aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                {{-- <div id="js-player" style="border-radius: 16px; color:white;" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="slentvTk3gY"></div> --}}
+
             </div>
+            <div class="col-lg-10 order-3">
+                <div class="mb-5 white">
+                    <a href="" style="width:100% !important" class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
+                        class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
+                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99! ₹6999</h2>
+                        <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                    </a>
+                </div>
+            </div>
+        </div>
 
         </div>
     </section>
@@ -209,20 +242,10 @@
     <section class="py-5">
         <div class="container  pt-5">
             <div class="text-center">
-                <h1 class="fw-bold">We have designed a <br> flexible program for you</h1>
+                <h1 class="fw-bold fs-2 " style="">We have designed a <br> flexible program for you</h1>
             </div>
             <div class="row justify-content-center">
-                <div class="col-md-4 mt-4">
-                    <div class="card text-center f-1">
-                        <div class="p-2">
-                            <img src="{{ asset('assets/img/missed-class-logo-1.svg') }}" alt="">
-                            <h2 class="fs-5 mt-2">Missed a class?</h2>
-                            <p class="">No worries, watch the recordings later at your convenience from your Archive.
-                            </p>
-                        </div>
 
-                    </div>
-                </div>
                 <div class="col-md-4 mt-4">
                     <div class="card text-center f-3">
                         <div class="p-2">
@@ -270,23 +293,23 @@
     <section>
         <div class="container ">
             <div class="row justify-content-center">
-                <div class="my-4">
-                    <h1 class="fw-bold text-center">Course Curriculum</h1>
+                <div class="">
+                    <h1 class="fw-bold fs-2 text-center">What exactly we will build?</h1>
                 </div>
                 <div class="text-center mb-5">
                     {{-- <h1 class="fw-bold">Learn by building  <br>
                         amazing projects</h1> --}}
                 </div>
-                
 
-                <div class="col-md-4 mt-4">
+
+                <div class="col-md-4 ">
                     <div class="card h-100 mt-3 border-none ck-rounded f-4 my-3 px-5 py-3 text-center">
                         <img src="{{ asset('assets/img/CardSix.webp') }}" class="project" alt="">
                         <h2 class="fs-5">Create Responsive Youtube Clone</h2>
                         <p>Understand how to clone any webpage and create a complete responsive design.</p>
                     </div>
                 </div>
-                <div class="col-md-4 mt-4">
+                <div class="col-md-4">
                     <div class="card h-100 mt-3 border-none ck-rounded f-3 px-5 py-3 my-3 text-center">
                         <img src="{{ asset('assets/img/CardTwo.webp') }}" class="project" alt="">
                         <h2 class="fs-5">Solve challenges in food ordering App</h2>
@@ -301,7 +324,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8">
-                    
+
                     <div class="accordion my-5" id="accordionExample">
 
                         <div class="accordion-item">
@@ -365,8 +388,8 @@
                                 <div class="accordion-body">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Box model <br />
-                                            <i class='bi bi-dot fs-4'></i>Box model Use cases <br />
-                                            <i class='bi bi-dot fs-4'></i>Examples <br />
+                                        <i class='bi bi-dot fs-4'></i>Box model Use cases <br />
+                                        <i class='bi bi-dot fs-4'></i>Examples <br />
                                     </p>
 
                                 </div>
@@ -384,16 +407,17 @@
                                 <div class="accordion-body">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Flexbox <br />
-                                            <i class='bi bi-dot fs-4'></i>Align Items <br />
-                                            <i class='bi bi-dot fs-4'></i>Justify Content <br />
-                                            <i class='bi bi-dot fs-4'></i>Creating Navbar <br />
-                                            <i class='bi bi-dot fs-4'></i>Creating Layouts <br />
-                                            <i class='bi bi-dot fs-4'></i>Use cases <br />
+                                        <i class='bi bi-dot fs-4'></i>Align Items <br />
+                                        <i class='bi bi-dot fs-4'></i>Justify Content <br />
+                                        <i class='bi bi-dot fs-4'></i>Creating Navbar <br />
+                                        <i class='bi bi-dot fs-4'></i>Creating Layouts <br />
+                                        <i class='bi bi-dot fs-4'></i>Use cases <br />
                                     </p>
 
                                 </div>
                             </div>
-                        </div><div class="accordion-item">
+                        </div>
+                        <div class="accordion-item">
                             <h2 class="accordion-header" id="heading89">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse89" aria-expanded="true" aria-controls="collapse89">
@@ -405,11 +429,11 @@
                                 <div class="accordion-body">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Positions <br />
-                                            <i class='bi bi-dot fs-4'></i>Fixed <br />
-                                            <i class='bi bi-dot fs-4'></i>Sticky <br />
-                                            <i class='bi bi-dot fs-4'></i>Relative <br />
-                                            <i class='bi bi-dot fs-4'></i>Absolute <br />
-                                            <i class='bi bi-dot fs-4'></i>Use cases <br />
+                                        <i class='bi bi-dot fs-4'></i>Fixed <br />
+                                        <i class='bi bi-dot fs-4'></i>Sticky <br />
+                                        <i class='bi bi-dot fs-4'></i>Relative <br />
+                                        <i class='bi bi-dot fs-4'></i>Absolute <br />
+                                        <i class='bi bi-dot fs-4'></i>Use cases <br />
                                     </p>
 
                                 </div>
@@ -427,9 +451,9 @@
                                 <div class="accordion-body">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Media Query <br />
-                                            <i class='bi bi-dot fs-4'></i>Min Width <br />
-                                            <i class='bi bi-dot fs-4'></i>Max width <br />
-                                            <i class='bi bi-dot fs-4'></i>Use cases <br />
+                                        <i class='bi bi-dot fs-4'></i>Min Width <br />
+                                        <i class='bi bi-dot fs-4'></i>Max width <br />
+                                        <i class='bi bi-dot fs-4'></i>Use cases <br />
                                     </p>
 
                                 </div>
@@ -447,9 +471,9 @@
                                 <div class="accordion-body">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Grid System <br />
-                                            <i class='bi bi-dot fs-4'></i>Creating cards <br />
-                                            <i class='bi bi-dot fs-4'></i>Creating Layouts <br />
-                                            <i class='bi bi-dot fs-4'></i>Use cases <br />
+                                        <i class='bi bi-dot fs-4'></i>Creating cards <br />
+                                        <i class='bi bi-dot fs-4'></i>Creating Layouts <br />
+                                        <i class='bi bi-dot fs-4'></i>Use cases <br />
                                     </p>
 
                                 </div>
@@ -500,7 +524,7 @@
                         <div class="my-5 text-center">
                             <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                                 class="btn ck-btn ck-rounded btn-lg   px-5">
-                                <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 399</h2>
+                                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
                                 <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                             </a>
                         </div>
@@ -677,7 +701,7 @@
             <div class="my-5 text-center">
                 <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                     class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 399</h2>
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -686,7 +710,7 @@
 
 
 
-    
+
     {{-- <section class="pt-0 pt-md-0 pt-lg-5 pb-5 mb-5 ">
         <div class="container mt-0 hero">
             <div class="row justify-content-center align-items-center">
@@ -700,7 +724,16 @@
             </div>
         </div>
     </section> --}}
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <h1 class="fs-2"></h1>
 
+                </div>
+            </div>
+        </div>
+    </section>
     <section>
         <div class="container my-5 pt-5">
             <div class="text-center">
@@ -748,13 +781,128 @@
                 <div class="my-5">
                     <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                         class="btn ck-btn ck-rounded btn-lg   px-5">
-                        <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now at just Rs 399</h2>
+                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
                         <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                     </a>
                 </div>
                 <p class="text-danger">Once the timer hits zero, pricing will be increased to 2199.00/-</p>
             </div>
         </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-centr">
+                    <h1 class="fs-2 fw-bold text-center">Frequently Asked Questions
+                    </h1>
+
+                    <div class="accordion my-3" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="heading85">
+                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapse85" aria-expanded="true" aria-controls="collapse85">
+                              How does the program work?
+                            </button>
+                          </h2>
+                          <div id="collapse85" class="accordion-collapse collapse" aria-labelledby="heading85"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <p>The program is a live bootcamp where you can attend all sessions in real-time. Support is available for any queries. The bootcamp offers an immersive learning experience to acquire knowledge and skills for web development.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="accordion my-3" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="heading86">
+                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapse86" aria-expanded="true" aria-controls="collapse86">
+                              I made the payment but didn’t receive any confirmation or email from codekaro, what do I do? 
+                            </button>
+                          </h2>
+                          <div id="collapse86" class="accordion-collapse collapse" aria-labelledby="heading86"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <p>Well, in most cases it should not happen. Make sure you give us 5-10 minutes in case you don’t receive any emails right away. Even then if you don’t receive anything from us, then please write to info@codekaro.in and our awesome support team will clarify your problems in 24-48 hours.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="accordion my-3" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="heading87">
+                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapse87" aria-expanded="true" aria-controls="collapse87">
+                              I don't know a lot about web dev but I want to become a web developer. Should I take the Program?
+                            </button>
+                          </h2>
+                          <div id="collapse87" class="accordion-collapse collapse" aria-labelledby="heading87"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <p>Definitely. You should take the program as it will help you kickstart your journey as a web developer and also pick you up from the bed and make you stop procrastinating on the idea of becoming a web developer.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div class="accordion my-3" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="heading88">
+                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapse88" aria-expanded="true" aria-controls="collapse88">
+                              I am not from computer science background. Will this program help me?
+                            </button>
+                          </h2>
+                          <div id="collapse88" class="accordion-collapse collapse" aria-labelledby="heading88"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <p>The goal of this program is to help you start your journey no matter what your situation is. It doesn't matter if you are from comouter science background or not, you'll be able to do it :)</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="accordion my-3" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="heading89">
+                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapse89" aria-expanded="true" aria-controls="collapse89">
+                              Can I get a refund?
+                            </button>
+                          </h2>
+                          <div id="collapse89" class="accordion-collapse collapse" aria-labelledby="heading89"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <p>No, currently we don’t have a refund policy.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      
+                      
+                      <div class="accordion my-3" id="accordionExample">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header" id="heading91">
+                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                              data-bs-target="#collapse91" aria-expanded="true" aria-controls="collapse91">
+                              How will I access the content?
+                            </button>
+                          </h2>
+                          <div id="collapse91" class="accordion-collapse collapse" aria-labelledby="heading91"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                              <p>After you purchase the program, you’ll receive an email with all the details.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      
+                </div>
+            </div>
     </section>
 
 
@@ -775,7 +923,8 @@
                         <div id="countdown" class="">
                             <ul type="none" class="navbar justify-content-around p-0 text-center">
                                 <li class="d-inlin fs-6"><span id="days1" class="d-block display-6 fw-bold"></span>
-                                    <span>days</span> </li>
+                                    <span>days</span>
+                                </li>
                                 <li class="d-inlin fs-6"><span id="hours1"
                                         class="d-block display-6 fw-bold "></span>Hours</li>
                                 <li class="d-inlin fs-6"><span id="minutes1"
@@ -786,22 +935,22 @@
                         </div>
                     </div>
                     @guest
-                    <form action="{{ route('course-payment') }}" method="POST" class="">
-                        @csrf
-                        <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="100"
-                            data-buttontext="Pay ₹ 399 Now" data-name="Codekaro" data-description="wd 30"
-                            data-image="{{ asset('assets/img/codekaro-dark.png') }}" data-theme.color="#0066ff">
-                            @auth
-                            data-prefill.name = "{{ Auth::user()->name }}"
-                            data-prefill.email = "{{ Auth::user()->email }}"
-                            data-prefill.contact = "{{ Auth::user()->mobile }}"
-                            @endauth
-                        </script>
-                        <input type="hidden" name="courseId" value="29">
-                    </form>
+                        <form action="{{ route('course-payment') }}" method="POST" class="">
+                            @csrf
+                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="100"
+                                data-buttontext="Pay ₹ 399 Now" data-name="Codekaro" data-description="wd 30"
+                                data-image="{{ asset('assets/img/codekaro-dark.png') }}" data-theme.color="#0066ff">
+                                @auth
+                                data - prefill.name = "{{ Auth::user()->name }}"
+                                data - prefill.email = "{{ Auth::user()->email }}"
+                                data - prefill.contact = "{{ Auth::user()->mobile }}"
+                                @endauth
+                            </script>
+                            <input type="hidden" name="courseId" value="29">
+                        </form>
                     @endguest
                     @auth
-                        <a href="{{url('/enroll/29')}}" class=" razorpay-payment-button">Pay 399 Now</a>
+                        <a href="{{ url('/enroll/29') }}" class=" razorpay-payment-button">Pay 399 Now</a>
 
                     @endauth
                     <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-
@@ -815,8 +964,6 @@
     </div>
     </div>
     {{-- enrollment mode ends --}}
-
-    <script src='https://cdn.plyr.io/3.5.6/plyr.js'></script>
 
     <script>
         (function() {
@@ -836,7 +983,7 @@
             }
 
 
-            let birthday = "december" + offerDate + " 2022 " + offerHour + ':' + ':00' + ':00';
+            let birthday = "june" + offerDate + " 2023 " + offerHour + ':' + ':00' + ':00';
             countDown = new Date(birthday).getTime(),
                 console.log(birthday);
             x = setInterval(function() {
@@ -869,29 +1016,5 @@
                 //seconds
             }, 0)
         }());
-
-        document.addEventListener('DOMContentLoaded', () => {
- // Controls (as seen below) works in such a way that as soon as you explicitly define (add) one control
- // to the settings, ALL default controls are removed and you have to add them back in by defining those below.
-
- // For example, let's say you just simply wanted to add 'restart' to the control bar in addition to the default.
- // Once you specify *just* the 'restart' property below, ALL of the controls (progress bar, play, speed, etc) will be removed,
- // meaning that you MUST specify 'play', 'progress', 'speed' and the other default controls to see them again.
-
- const controls = [
-     'play-large', // The large play button in the center
-     'play', // Play/pause playback
-     'progress', // The progress bar and scrubber for playback and buffering
-     'current-time', // The current time of playback
-     'duration', // The full duration of the media
-     'mute', // Toggle mute
-     'volume', // Volume control
-     'settings', // Settings menu
-     
- ];
-
- const player = Plyr.setup('.js-player', { controls });
-
-});
     </script>
 @endsection
