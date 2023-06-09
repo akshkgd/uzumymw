@@ -243,7 +243,7 @@
                                 style="border-radius: 14px" alt="">
                             <div class="text-white">
                                 <h4 class="fs-5 m-0 text-white">Ashish Shukla</h4>
-                                <p class="small m-0 mt-1 text-muted">I am a freelance web developer and instructor
+                                <p class="small m-0 mt-1 text-white">I am a freelance web developer and instructor
                                     passionate about educating students through engaging lessons. Ex AOSPL, Lido Learning
                                 </p>
                             </div>
@@ -279,7 +279,7 @@
                 <div class="mb-5 white">
                     <a href="" style="width:100% !important" class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
                         class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99! ₹6999</h2>
+                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99! </h2>
                         <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                     </a>
                 </div>
