@@ -113,6 +113,63 @@
         .plyr--video {
             border-radius: 16px
         }
+
+        .you-checkbox-item {
+            box-shadow: none;
+            cursor: pointer;
+            background-color: #fff;
+            border: 1px solid rgb(255 141 0 / 30%);
+            margin-bottom: 10px;
+            border-radius: 16px;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            padding-left: 15px;
+            display: flex;
+        }
+
+        .you-checkbox {
+            width: 40px;
+            height: 40px;
+            background-color: #fff;
+            background-image: linear-gradient(125deg,#fab804,#e28c19);
+            border-radius: 8px;
+            flex: none;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .you-checkbox-check {
+            width: 38px;
+            height: 36px;
+            cursor: pointer;
+            background-color: #fff;
+            border-radius: 6px;
+            flex: 0 36px;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .you-checkbox-text {
+            cursor: pointer;
+            flex: 0 auto;
+            margin-left: 10px;
+            margin-right: 20px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .you-checkbox-check-tick {
+    display: none;
+  }
+
+  .you-checkbox-item.checked .you-checkbox-check-tick {
+    display: block;
+  }
+
     </style>
 @section('content')
     {{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
@@ -124,20 +181,16 @@
         @include('layouts.alert')
     </div>
 
-    <section class="pt-5" style=" background-color: #212121;>
-        <div class="container pt-5">
-
+    <section class="pt-5" style=" background-color: #212121;">
+        <div class="container pt-5" >
         <div class="row justify-content-center align-items-cente">
             <div class="col-md-8">
                 <main class="text-center">
-                    <h1 class="display-6 fw-bod  pt-5" style="line-height:1.5; color:aliceblue; font-weight:600">Start <span
-                            class="wd_highligh" style="color:#efa30e;">creating websites like youtube</span> & Netflix without
-                        spending more than 5 hours a week using my 3c's formula</h1>
+                    <h1 class="display-6 fw-bod  " style="line-height:1.5; color:aliceblue; font-weight:600">Master <span
+                            class="wd_highligh" style="color:#efa30e;">Advance concepts of CSS</span> to create websites like YouTube, Netflix and ChatGPT in just 5 days</h1>
 
 
-                    <p class="fs-5 text-white text-center">Modern CSS bootcamp - all the way up
-                        to expert level with real world scenarios and examples! The must-have Frontend Bootcamp in
-                        2022. </p>
+                    <p class="fs-5 text-white text-center">How to CSS - kickstart your journey of full stack developer the must-have Bootcamp in 2023.</p>
 
 
 
@@ -171,7 +224,7 @@
                             <div class="card-dark">
                                 <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                     <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                    From June 17th 2023 to 21st June
+                                    From June 17th to 21st June
                                 </div>
                             </div>
 
@@ -213,7 +266,8 @@
                                     style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
                                     <img src="https://fast.wistia.com/embed/medias/7hmcbsblzy/swatch"
                                         style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt=""
-                                        aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div>
+                                        aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -327,7 +381,7 @@
 
                     <div class="accordion my-5" id="accordionExample">
 
-                        <div class="accordion-item">
+                        <div class="accordion-item" style="background-color: #efa30e">
                             <h2 class="accordion-header" id="heading84">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse84" aria-expanded="true" aria-controls="collapse84">
@@ -336,7 +390,8 @@
                             </h2>
                             <div id="collapse84" class="accordion-collapse collapse  show " aria-labelledby="heading84"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Introduction to HTML <br /><i
                                             class='bi bi-dot fs-4'></i>The Anatomy of an HTML Tag <br /><i
@@ -352,7 +407,7 @@
                             </div>
                         </div>
 
-                        <div class="accordion-item">
+                        <div class="accordion-item" style="background-color: #efa30e">
                             <h2 class="accordion-header" id="heading86">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse86" aria-expanded="true" aria-controls="collapse86">
@@ -361,7 +416,8 @@
                             </h2>
                             <div id="collapse86" class="accordion-collapse collapse  hide " aria-labelledby="heading86"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Introduction to CSS <br /><i
                                             class='bi bi-dot fs-4'></i>Inline CSS <br /><i
@@ -376,7 +432,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item" style="background-color: #efa30e">
                             <h2 class="accordion-header" id="heading87">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse87" aria-expanded="true" aria-controls="collapse87">
@@ -385,7 +441,8 @@
                             </h2>
                             <div id="collapse87" class="accordion-collapse collapse  hide " aria-labelledby="heading87"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Box model <br />
                                         <i class='bi bi-dot fs-4'></i>Box model Use cases <br />
@@ -395,7 +452,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item" style="background-color: #efa30e">
                             <h2 class="accordion-header" id="heading88">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse88" aria-expanded="true" aria-controls="collapse88">
@@ -404,7 +461,8 @@
                             </h2>
                             <div id="collapse88" class="accordion-collapse collapse  hide " aria-labelledby="heading88"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Flexbox <br />
                                         <i class='bi bi-dot fs-4'></i>Align Items <br />
@@ -417,7 +475,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item" style="background-color: #efa30e">
                             <h2 class="accordion-header" id="heading89">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse89" aria-expanded="true" aria-controls="collapse89">
@@ -426,7 +484,8 @@
                             </h2>
                             <div id="collapse89" class="accordion-collapse collapse  hide " aria-labelledby="heading89"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Positions <br />
                                         <i class='bi bi-dot fs-4'></i>Fixed <br />
@@ -439,7 +498,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item" style="background-color: #efa30e">
                             <h2 class="accordion-header" id="heading90">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse90" aria-expanded="true" aria-controls="collapse90">
@@ -448,7 +507,8 @@
                             </h2>
                             <div id="collapse90" class="accordion-collapse collapse  hide " aria-labelledby="heading90"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Media Query <br />
                                         <i class='bi bi-dot fs-4'></i>Min Width <br />
@@ -459,7 +519,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item" style="background-color: #efa30e">
                             <h2 class="accordion-header" id="heading91">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse91" aria-expanded="true" aria-controls="collapse91">
@@ -468,7 +528,8 @@
                             </h2>
                             <div id="collapse91" class="accordion-collapse collapse  hide " aria-labelledby="heading91"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Grid System <br />
                                         <i class='bi bi-dot fs-4'></i>Creating cards <br />
@@ -481,7 +542,7 @@
                         </div>
 
 
-                        <div class="accordion-item">
+                        <div class="accordion-item" style="background-color: #efa30e">
                             <h2 class="accordion-header" id="heading92">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse92" aria-expanded="true" aria-controls="collapse92">
@@ -490,7 +551,8 @@
                             </h2>
                             <div id="collapse92" class="accordion-collapse collapse  hide " aria-labelledby="heading92"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         <br /><i class='bi bi-dot fs-4'></i>Tools for unlimited SVG <br /><i
                                             class='bi bi-dot fs-4'></i>2 UI Kits <br /><i
@@ -502,7 +564,7 @@
                         </div>
 
 
-                        <div class="accordion-item">
+                        <div class="accordion-item" style="background-color: #efa30e">
                             <h2 class="accordion-header" id="heading94">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse94" aria-expanded="true" aria-controls="collapse94">
@@ -511,7 +573,8 @@
                             </h2>
                             <div id="collapse94" class="accordion-collapse collapse  hide " aria-labelledby="heading94"
                                 data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
                                     <p class="mb-2 pl-2 " style="font-size:17px;">
                                         Major Project
                                     </p>
@@ -734,6 +797,86 @@
             </div>
         </div>
     </section>
+    
+    <section>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="text-center mb-5">
+                    <h1 class="fs-2 fw-bold">Still Wondering If the Program is for YOU?</h1>
+                    <p class="m-0">Please check all boxes, where your answer is YES!</p>
+                </div>
+                <div class="col-md-5">
+                    <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
+                        <div class="you-checkbox">
+                          <div class="you-checkbox-check">
+                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                              loading="lazy" alt="" class="you-checkbox-check-tick">
+                          </div>
+                        </div>
+                        <div class="you-checkbox-text">I am a student and I want to kickstart my web dev journey.</div>
+                      </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
+                        <div class="you-checkbox">
+                          <div class="you-checkbox-check">
+                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                              loading="lazy" alt="" class="you-checkbox-check-tick">
+                          </div>
+                        </div>
+                        <div class="you-checkbox-text">I have been learning web dev for a while now but still I am confused!</div>
+                      </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
+                        <div class="you-checkbox">
+                          <div class="you-checkbox-check">
+                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                              loading="lazy" alt="" class="you-checkbox-check-tick">
+                          </div>
+                        </div>
+                        <div class="you-checkbox-text">I am an aspiring web developer but I have no clue on where to start from.</div>
+                      </div>
+                </div>
+                
+                <div class="col-md-5">
+                    <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
+                        <div class="you-checkbox">
+                          <div class="you-checkbox-check">
+                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                              loading="lazy" alt="" class="you-checkbox-check-tick">
+                          </div>
+                        </div>
+                        <div class="you-checkbox-text">I am in job and I want to switch my profile as a full stack developer</div>
+                      </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
+                        <div class="you-checkbox">
+                          <div class="you-checkbox-check">
+                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                              loading="lazy" alt="" class="you-checkbox-check-tick">
+                          </div>
+                        </div>
+                        <div class="you-checkbox-text">I am a freelancer and I want to widen my skills as a freelance developer</div>
+                      </div>
+                </div>
+                
+                <div class="col-md-5">
+                    <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
+                        <div class="you-checkbox">
+                          <div class="you-checkbox-check">
+                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                              loading="lazy" alt="" class="you-checkbox-check-tick">
+                          </div>
+                        </div>
+                        <div class="you-checkbox-text">I am from non IT background but i want to build my career in the field of web dev</div>
+                      </div>
+                </div>
+            </div>
+        </div>
+        <p class="text-center my-2">If you checked ANY of the boxes above, then you’re invited to join The How to CSS Bootcamp😁</p>
+    </section>
     <section>
         <div class="container my-5 pt-5">
             <div class="text-center">
@@ -752,7 +895,6 @@
             </div>
         </div>
     </section>
-
     <section>
         <div class="container text-center ct my-5 py-5  ">
             <div class="row justify-content-center">
@@ -798,112 +940,137 @@
                     </h1>
 
                     <div class="accordion my-3" id="accordionExample">
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="heading85">
-                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#collapse85" aria-expanded="true" aria-controls="collapse85">
-                              How does the program work?
-                            </button>
-                          </h2>
-                          <div id="collapse85" class="accordion-collapse collapse" aria-labelledby="heading85"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <p>The program is a live bootcamp where you can attend all sessions in real-time. Support is available for any queries. The bootcamp offers an immersive learning experience to acquire knowledge and skills for web development.</p>
+                        <div class="accordion-item" style="background-color: #efa30e" style="background-color: #efa30e">
+                            <h2 class="accordion-header" id="heading85">
+                                <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse85" aria-expanded="true" aria-controls="collapse85">
+                                    How does the program work?
+                                </button>
+                            </h2>
+                            <div id="collapse85" class="accordion-collapse collapse" aria-labelledby="heading85"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
+                                    <p>The program is a live bootcamp where you can attend all sessions in real-time.
+                                        Support is available for any queries. The bootcamp offers an immersive learning
+                                        experience to acquire knowledge and skills for web development.</p>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                      
-                      <div class="accordion my-3" id="accordionExample">
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="heading86">
-                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#collapse86" aria-expanded="true" aria-controls="collapse86">
-                              I made the payment but didn’t receive any confirmation or email from codekaro, what do I do? 
-                            </button>
-                          </h2>
-                          <div id="collapse86" class="accordion-collapse collapse" aria-labelledby="heading86"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <p>Well, in most cases it should not happen. Make sure you give us 5-10 minutes in case you don’t receive any emails right away. Even then if you don’t receive anything from us, then please write to info@codekaro.in and our awesome support team will clarify your problems in 24-48 hours.</p>
+                    </div>
+
+                    <div class="accordion my-3" id="accordionExample">
+                        <div class="accordion-item" style="background-color: #efa30e">
+                            <h2 class="accordion-header" id="heading86">
+                                <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse86" aria-expanded="true" aria-controls="collapse86">
+                                    I made the payment but didn’t receive any confirmation or email from codekaro, what do I
+                                    do?
+                                </button>
+                            </h2>
+                            <div id="collapse86" class="accordion-collapse collapse" aria-labelledby="heading86"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
+                                    <p>Well, in most cases it should not happen. Make sure you give us 5-10 minutes in case
+                                        you don’t receive any emails right away. Even then if you don’t receive anything
+                                        from us, then please write to info@codekaro.in and our awesome support team will
+                                        clarify your problems in 24-48 hours.</p>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                      
-                      <div class="accordion my-3" id="accordionExample">
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="heading87">
-                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#collapse87" aria-expanded="true" aria-controls="collapse87">
-                              I don't know a lot about web dev but I want to become a web developer. Should I take the Program?
-                            </button>
-                          </h2>
-                          <div id="collapse87" class="accordion-collapse collapse" aria-labelledby="heading87"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <p>Definitely. You should take the program as it will help you kickstart your journey as a web developer and also pick you up from the bed and make you stop procrastinating on the idea of becoming a web developer.</p>
+                    </div>
+
+                    <div class="accordion my-3" id="accordionExample">
+                        <div class="accordion-item" style="background-color: #efa30e">
+                            <h2 class="accordion-header" id="heading87">
+                                <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse87" aria-expanded="true" aria-controls="collapse87">
+                                    I don't know a lot about web dev but I want to become a web developer. Should I take the
+                                    Program?
+                                </button>
+                            </h2>
+                            <div id="collapse87" class="accordion-collapse collapse" aria-labelledby="heading87"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
+                                    <p>Definitely. You should take the program as it will help you kickstart your journey as
+                                        a web developer and also pick you up from the bed and make you stop procrastinating
+                                        on the idea of becoming a web developer.</p>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                      
-                      <div class="accordion my-3" id="accordionExample">
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="heading88">
-                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#collapse88" aria-expanded="true" aria-controls="collapse88">
-                              I am not from computer science background. Will this program help me?
-                            </button>
-                          </h2>
-                          <div id="collapse88" class="accordion-collapse collapse" aria-labelledby="heading88"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <p>The goal of this program is to help you start your journey no matter what your situation is. It doesn't matter if you are from comouter science background or not, you'll be able to do it :)</p>
+                    </div>
+
+                    <div class="accordion my-3" id="accordionExample">
+                        <div class="accordion-item" style="background-color: #efa30e">
+                            <h2 class="accordion-header" id="heading88">
+                                <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse88" aria-expanded="true" aria-controls="collapse88">
+                                    I am not from computer science background. Will this program help me?
+                                </button>
+                            </h2>
+                            <div id="collapse88" class="accordion-collapse collapse" aria-labelledby="heading88"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
+                                    <p>The goal of this program is to help you start your journey no matter what your
+                                        situation is. It doesn't matter if you are from comouter science background or not,
+                                        you'll be able to do it :)</p>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                      <div class="accordion my-3" id="accordionExample">
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="heading89">
-                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#collapse89" aria-expanded="true" aria-controls="collapse89">
-                              Can I get a refund?
-                            </button>
-                          </h2>
-                          <div id="collapse89" class="accordion-collapse collapse" aria-labelledby="heading89"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <p>No, currently we don’t have a refund policy.</p>
+                    </div>
+                    <div class="accordion my-3" id="accordionExample">
+                        <div class="accordion-item" style="background-color: #efa30e">
+                            <h2 class="accordion-header" id="heading89">
+                                <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse89" aria-expanded="true" aria-controls="collapse89">
+                                    Can I get a refund?
+                                </button>
+                            </h2>
+                            <div id="collapse89" class="accordion-collapse collapse" aria-labelledby="heading89"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
+                                    <p>No, currently we don’t have a refund policy.</p>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                      
-                      
-                      
-                      <div class="accordion my-3" id="accordionExample">
-                        <div class="accordion-item">
-                          <h2 class="accordion-header" id="heading91">
-                            <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
-                              data-bs-target="#collapse91" aria-expanded="true" aria-controls="collapse91">
-                              How will I access the content?
-                            </button>
-                          </h2>
-                          <div id="collapse91" class="accordion-collapse collapse" aria-labelledby="heading91"
-                            data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                              <p>After you purchase the program, you’ll receive an email with all the details.</p>
+                    </div>
+
+
+
+                    <div class="accordion my-3" id="accordionExample">
+                        <div class="accordion-item" style="background-color: #efa30e">
+                            <h2 class="accordion-header" id="heading91">
+                                <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse91" aria-expanded="true" aria-controls="collapse91">
+                                    How will I access the content?
+                                </button>
+                            </h2>
+                            <div id="collapse91" class="accordion-collapse collapse" aria-labelledby="heading91"
+                                data-bs-parent="#accordionExample">
+                                <div class="accordion-body"
+                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
+                                    <p>After you purchase the program, you’ll receive an email with all the details.</p>
+                                </div>
                             </div>
-                          </div>
                         </div>
-                      </div>
-                      
-                      
+                    </div>
+
+
                 </div>
             </div>
     </section>
+
+
+
+
+    
+      
+      
 
 
     {{-- enrollment model  starts --}}
@@ -966,6 +1133,10 @@
     {{-- enrollment mode ends --}}
 
     <script>
+
+function toggleCheckbox(checkboxItem) {
+    checkboxItem.classList.toggle('checked');
+  }
         (function() {
             const second = 1000,
                 minute = second * 60,
