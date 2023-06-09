@@ -1102,7 +1102,7 @@
                         </div>
                     </div>
                     @guest
-                        <form action="{{ route('course-payment') }}" method="POST" class="">
+                        <form action="{{ route('payment-success') }}" method="POST" class="">
                             @csrf
                             <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="100"
                                 data-buttontext="Pay ₹ 399 Now" data-name="Codekaro" data-description="wd 30"
@@ -1117,7 +1117,7 @@
                         </form>
                     @endguest
                     @auth
-                        <a href="{{ url('/enroll/29') }}" class=" razorpay-payment-button">Pay 399 Now</a>
+                        <a href="{{ url('/enroll/29') }}" class=" razorpay-payment-button">Pay 99 Now</a>
 
                     @endauth
                     <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-

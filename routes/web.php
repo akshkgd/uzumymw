@@ -122,7 +122,7 @@ Route::get('/workshop-details/{id}', 'WorkshopController@workshopDetails');
 Route::get('/workshop-certificate/{id}', 'WorkshopEnrollmentController@certificate');
 Route::get('/course-certificate/{id}', 'BatchController@certificate');
 Route::get('/explore-course/{id}', 'BatchController@details');
-Route::post('course-payment', 'CodekaroController@coursePayment')->name('course-payment');
+Route::post('payment-success', 'CodekaroController@coursePayment')->name('payment-success');
 Route::post('workshop-enrollment-auto', 'CodekaroController@workshopEnrollemnt')->name('workshop-enrollment-auto');
 
 
