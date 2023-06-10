@@ -1085,7 +1085,7 @@
 
                 <div class="modal-body p-4 pt-0 text-center mt-4">
                     {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
-                    <h2 class=" mb-0 fs-3 fw-bold ">Join 6 days live web development bootcamp!</h2>
+                    <h2 class=" mb-0 fs-3 fw-bold ">Join 5 days live web dev bootcamp!</h2>
                     <div class="col-md-12 text-center mt-4">
                         <div id="countdown" class="">
                             <ul type="none" class="navbar justify-content-around p-0 text-center">
@@ -1104,7 +1104,7 @@
                     @guest
                         <form action="{{ route('payment-success') }}" method="POST" class="">
                             @csrf
-                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="100"
+                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="9900"
                                 data-buttontext="Pay ₹ 399 Now" data-name="Codekaro" data-description="wd 30"
                                 data-image="{{ asset('assets/img/codekaro-dark.png') }}" data-theme.color="#0066ff">
                                 @auth
