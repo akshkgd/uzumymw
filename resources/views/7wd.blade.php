@@ -1,4 +1,4 @@
-@extends('layouts.ck-bootcamp')
+@extends('layouts.ck')
 @section('title', '' . e('Web Development Live Bootcamp | Codekaro'))
 @section('meta_description',
     '' .
