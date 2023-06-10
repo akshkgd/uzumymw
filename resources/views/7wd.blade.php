@@ -1105,7 +1105,7 @@
                         <form action="{{ route('payment-success') }}" method="POST" class="">
                             @csrf
                             <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="9900"
-                                data-buttontext="Kickstart your webdev journey for just ₹99" data-name="Codekaro" data-description="wd 30"
+                                data-buttontext="Join the bootcamp now" data-name="Codekaro" data-description="wd 30"
                                 data-image="{{ asset('assets/img/codekaro-dark.png') }}" data-theme.color="#0066ff">
                                 @auth
                                 data - prefill.name = "{{ Auth::user()->name }}"
@@ -1117,7 +1117,7 @@
                         </form>
                     @endguest
                     @auth
-                        <a href="{{ url('/enroll/29') }}" class=" razorpay-payment-button">Kickstart your webdev journey for just ₹99</a>
+                        <a href="{{ url('/enroll/29') }}" class=" razorpay-payment-button">Join the bootcamp now</a>
 
                     @endauth
                     <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-
