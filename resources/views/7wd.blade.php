@@ -1088,7 +1088,7 @@
                     @guest
                         <form action="{{ route('payment-success') }}" method="POST" class="">
                             @csrf
-                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="9900"
+                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="100"
                                 data-buttontext="Join the bootcamp now" data-name="Codekaro" data-description="wd 30"
                                 data-image="{{ asset('assets/img/codekaro-dark.png') }}" data-theme.color="#0066ff">
                                 @auth
