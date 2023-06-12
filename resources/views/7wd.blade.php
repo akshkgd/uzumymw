@@ -182,7 +182,7 @@
     </div>
 
     <section class="pt-5" style=" background-color: #212121;">
-        <div class="container pt-5" >
+        <div class="container" >
         <div class="row justify-content-center align-items-cente">
             <div class="col-md-8">
                 <main class="text-center">
@@ -224,7 +224,7 @@
                             <div class="card-dark">
                                 <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                     <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                    From June 17th to 21st June
+                                    From June 21st to 25th June
                                 </div>
                             </div>
 
@@ -254,23 +254,7 @@
             </div>
             <div class="col-lg-5 mt-5 order-1 order-lg-2">
                 <div class="bg-dark p-2" style="background-color: #333333 !important">
-                    <script src="https://fast.wistia.com/embed/medias/7hmcbsblzy.jsonp" async></script>
-                    <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
-                    <div class="wistia_responsive_padding"
-                        style="padding:56.25% 0 0 0;position:relative; border-radius:14px">
-                        <div class="wistia_responsive_wrapper"
-                            style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                            <div class="wistia_embed wistia_async_7hmcbsblzy videoFoam=true"
-                                style="height:100%;position:relative;width:100%">
-                                <div class="wistia_swatch"
-                                    style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
-                                    <img src="https://fast.wistia.com/embed/medias/7hmcbsblzy/swatch"
-                                        style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt=""
-                                        aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <script src="https://fast.wistia.com/embed/medias/jqqnsy9mj6.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_jqqnsy9mj6 videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/jqqnsy9mj6/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
                 </div>
                 {{-- <div id="js-player" style="border-radius: 16px; color:white;" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="slentvTk3gY"></div> --}}
 
@@ -1113,11 +1097,11 @@
                                 data - prefill.contact = "{{ Auth::user()->mobile }}"
                                 @endauth
                             </script>
-                            <input type="hidden" name="courseId" value="29">
+                            <input type="hidden" name="courseId" value="32">
                         </form>
                     @endguest
                     @auth
-                        <a href="{{ url('/enroll/29') }}" class=" razorpay-payment-button">Join the bootcamp now</a>
+                        <a href="{{ url('/enroll/32') }}" class=" razorpay-payment-button">Join the bootcamp now</a>
 
                     @endauth
                     <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-
