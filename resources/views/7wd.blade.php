@@ -237,7 +237,7 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <h5 class="text-white">More than 30,000 students have attended the bootcamp so far</h5> --}}
+                        {{-- <h5 class="text-whitbe">More than 30,000 students have attended the bootcamp so far</h5> --}}
                         <div class="d-flex align-items-center" style="gap:20px">
                             <img src="{{ asset('assets/img/team/ashish black.png') }}" height="100" width="100"
                                 style="border-radius: 14px" alt="">
