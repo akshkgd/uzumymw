@@ -45,7 +45,7 @@ class CodekaroController extends Controller
                 $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount' => $payment['amount'] - $payment['fee']));
 
                 // $response = $api->payment->fetch($input['razorpay_payment_id']);
-                // dd($response);
+                
             } catch (\Exception $e) {
                 return  $e->getMessage();
 
@@ -55,7 +55,7 @@ class CodekaroController extends Controller
             $userExists = User::where('email', $response->email)->first();
 
             if (!$userExists) {
-                $userId =  $this->createUser($response);
+                $userId =  $this->createCourseUser($response);
                 $enrollmentId = $this->courseEnrollment($userId, $input['courseId'], $response);
                 // $this->successMail($enrollmentId);
             } else {
@@ -131,7 +131,24 @@ class CodekaroController extends Controller
             $user->field3 = $request->campaign;
         }
         $user->save();
-        Auth::loginUsingId($user->id);
+        dd($user);
+        return $user->id;
+    }
+
+
+    private function createCourseUser($request)
+    {
+        $user = new User;
+        
+            $user->name = substr($request->email, 0, strpos($request->email, "@"));
+        
+        $user->email = $request->email;
+        $user->mobile = $request->contact;
+    
+        $user->password = bcrypt(Str::random(12));
+        $user->is_verified = 1;
+        $user->email_verified_at = Carbon::now();
+        $user->save();
         return $user->id;
     }
     private function updateUtm($request, $id)
