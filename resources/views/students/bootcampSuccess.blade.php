@@ -89,9 +89,9 @@
                 <div class="card f-1 text-center ">
                     <div class="p-3">
                         <h1 class="display-2">🎉</h1>
-                      <h2 class="fs-1">Hi {!! strtok(Auth::User()->name, ' ') !!}, you have successfully enrolled for the <span class="wd_highlight1">{{$batch->name}}</span> </h4>
+                      <h2 class="fs-1">Congratulations, you have successfully enrolled for the <span class="wd_highlight1">How to CSS</span> Bootcamp</h4>
                       <p class="mt-5">Next Step</p>
-                      <a href="{{$batch->groupLink}}" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
+                      <a href="https://chat.whatsapp.com/IRsDmvGPWx34CMA5cF60K8" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
                       {{-- <a href="{{url('/home')}}" class="btn btn-dark btn-lg py-3 px-4 rounded-pill my-2" style="">2. Complete your Profile</a> --}}
 
                     </div>

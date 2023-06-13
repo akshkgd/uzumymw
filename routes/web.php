@@ -7,7 +7,8 @@ use App\Workshop;
 use App\User;
 use App\Feedback;
 use App\CourseEnrollment;
- use Telegram\Bot\Laravel\Facades\Telegram;
+use App\Http\Controllers\CodekaroController;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 
 /*
@@ -123,6 +124,7 @@ Route::get('/workshop-certificate/{id}', 'WorkshopEnrollmentController@certifica
 Route::get('/course-certificate/{id}', 'BatchController@certificate');
 Route::get('/explore-course/{id}', 'BatchController@details');
 Route::post('payment-success', 'CodekaroController@coursePayment')->name('payment-success');
+Route::get('/bootcamp-success', 'CodekaroController@bootcampSuccess')->name('bootcamp-success');
 Route::post('workshop-enrollment-auto', 'CodekaroController@workshopEnrollemnt')->name('workshop-enrollment-auto');
 
 
