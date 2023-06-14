@@ -57,10 +57,10 @@ class CodekaroController extends Controller
             if (!$userExists) {
                 $userId =  $this->createCourseUser($response);
                 $enrollmentId = $this->courseEnrollment($userId, $input['courseId'], $response);
-                // $this->successMail($enrollmentId);
+                $this->successMail($enrollmentId);
             } else {
                 $enrollmentId = $this->courseEnrollment($userExists->id, $input['courseId'], $response);
-                // $this->successMail($enrollmentId);
+                $this->successMail($enrollmentId);
                 session()->flash('alert-success', 'Payment Completed Successfully');
             }
             $enrollment = CourseEnrollment::find($enrollmentId);

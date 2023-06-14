@@ -1089,7 +1089,9 @@
                         <form action="{{ route('payment-success') }}" method="POST" class="">
                             @csrf
                             <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="9900"
-                                data-buttontext="Join the bootcamp now" data-name="Codekaro" data-description="wd 30"
+                                data-buttontext="Join the bootcamp now" 
+                                data-name="Codekaro" 
+                                data-description="How to CSS"
                                 data-image="{{ asset('assets/img/codekaro-dark.png') }}" data-theme.color="#0066ff">
                                 @auth
                                 data - prefill.name = "{{ Auth::user()->name }}"
