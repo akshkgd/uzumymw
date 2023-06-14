@@ -59,7 +59,7 @@
   
     gtag('config', 'G-9323KT1W2S');
   </script>
-  <!-- Google tag (gtag.js) -->
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11206387820"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -68,6 +68,11 @@
 
   gtag('config', 'AW-11206387820');
 </script>
+<!-- Event snippet for lead form conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-11206387820/C8DRCJDK9akYEOzQz98p'});
+</script>
+
 </head>
 
 <body>
