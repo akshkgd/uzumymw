@@ -232,7 +232,9 @@ class CodekaroController extends Controller
         );
 
 
-        Mail::to($user->email)->send(new OnboardingMail($email_data));
+        // Mail::to($user->email)->send(new OnboardingMail($email_data));
+        Mail::to($user->email)->send(new workshopEnrollmentSuccess($email_data));
+
     }
     private function workshopSuccessMail($enrollId)
     {
