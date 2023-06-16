@@ -1088,7 +1088,7 @@
                     @guest
                         <form action="{{ route('payment-success') }}" method="POST" class="">
                             @csrf
-                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="9900"
+                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="14900"
                                 data-buttontext="Join the bootcamp now" 
                                 data-name="Codekaro" 
                                 data-description="How to CSS"
