@@ -1071,7 +1071,7 @@
                     {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
                     <h2 class=" mb-0 fs-3 fw-bold ">Join 5 days live web dev bootcamp!</h2>
                     <div class="col-md-12 text-center mt-4">
-                        <div id="countdown" class="">
+                        <div id="countdown" class="d-none">
                             <ul type="none" class="navbar justify-content-around p-0 text-center">
                                 <li class="d-inlin fs-6"><span id="days1" class="d-block display-6 fw-bold"></span>
                                     <span>days</span>
@@ -1123,55 +1123,56 @@
 function toggleCheckbox(checkboxItem) {
     checkboxItem.classList.toggle('checked');
   }
-        (function() {
-            const second = 1000,
-                minute = second * 60,
-                hour = minute * 60,
-                day = hour * 24;
+  function startTimer() {
+  const second = 1000,
+    minute = second * 60,
+    hour = minute * 60,
+    day = hour * 24;
 
-            let offerTime = new Date();
-            let offerDate = offerTime.getDate();
-            let offerHour = offerTime.getHours();
+  let targetDate = localStorage.getItem("targetDate");
 
-            if (offerHour <= 22) {
-                offerHour = offerHour + 1;
-            } else {
-                offerHour = offerHour + 2;
-            }
+  if (!targetDate) {
+    targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 1); // Set target date to tomorrow
+    targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
+    localStorage.setItem("targetDate", targetDate.getTime());
+  } else {
+    targetDate = new Date(parseInt(targetDate));
+  }
 
+  const daysElement = document.getElementById("days");
+  const hoursElement = document.getElementById("hours");
+  const minutesElement = document.getElementById("minutes");
+  const secondsElement = document.getElementById("seconds");
 
-            let birthday = "june" + offerDate + " 2023 " + offerHour + ':' + ':00' + ':00';
-            countDown = new Date(birthday).getTime(),
-                console.log(birthday);
-            x = setInterval(function() {
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate.getTime() - now;
 
-                let now = new Date().getTime(),
-                    distance = countDown - now;
+    const days = Math.floor(distance / day);
+    const hours = Math.floor((distance % day) / hour);
+    const minutes = Math.floor((distance % hour) / minute);
+    const seconds = Math.floor((distance % minute) / second);
 
-                document.getElementById("days").innerText = Math.floor(distance / (day)),
-                    document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-                    document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-                    document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+    daysElement.innerText = days;
+    hoursElement.innerText = hours;
+    minutesElement.innerText = minutes;
+    secondsElement.innerText = seconds;
 
-                document.getElementById("days1").innerText = Math.floor(distance / (day)),
-                    document.getElementById("hours1").innerText = Math.floor((distance % (day)) / (hour)),
-                    document.getElementById("minutes1").innerText = Math.floor((distance % (hour)) / (minute)),
-                    document.getElementById("seconds1").innerText = Math.floor((distance % (minute)) / second);
+    if (distance < 0) {
+      clearInterval(timer);
+      document.getElementById("headline").innerText = "Class has Started!";
+      document.getElementById("countdown").style.display = "none";
+      document.getElementById("content").style.display = "block";
+      localStorage.removeItem("targetDate");
+    }
+  }
 
-                //do something later when date is reached
-                if (distance < 0) {
-                    let headline = document.getElementById("headline"),
-                        countdown = document.getElementById("countdown"),
-                        content = document.getElementById("content");
+  updateCountdown();
+  const timer = setInterval(updateCountdown, 1000);
+}
 
-                    headline.innerText = "Class has Started!";
-                    countdown.style.display = "none";
-                    content.style.display = "block";
+startTimer();
 
-                    clearInterval(x);
-                }
-                //seconds
-            }, 0)
-        }());
     </script>
 @endsection
