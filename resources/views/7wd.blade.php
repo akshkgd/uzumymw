@@ -1071,7 +1071,7 @@
                     {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
                     <h2 class=" mb-0 fs-3 fw-bold ">Join 5 days live web dev bootcamp!</h2>
                     <div class="col-md-12 text-center mt-4">
-                        <div id="countdown" class="d-none">
+                        <div id="countdown" class="d-non">
                             <ul type="none" class="navbar justify-content-around p-0 text-center">
                                 <li class="d-inlin fs-6"><span id="days1" class="d-block display-6 fw-bold"></span>
                                     <span>days</span>
@@ -1130,20 +1130,19 @@ function toggleCheckbox(checkboxItem) {
     day = hour * 24;
 
   let targetDate = localStorage.getItem("targetDate");
+  let expiration = localStorage.getItem("expiration");
 
-  if (!targetDate) {
+  if (!targetDate || !expiration || new Date().getTime() > expiration) {
     targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + 1); // Set target date to tomorrow
     targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
+    expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59, 999).getTime(); // Set expiration to end of the target date
+
     localStorage.setItem("targetDate", targetDate.getTime());
+    localStorage.setItem("expiration", expiration);
   } else {
     targetDate = new Date(parseInt(targetDate));
   }
-
-  const daysElement = document.getElementById("days");
-  const hoursElement = document.getElementById("hours");
-  const minutesElement = document.getElementById("minutes");
-  const secondsElement = document.getElementById("seconds");
 
   function updateCountdown() {
     const now = new Date().getTime();
@@ -1154,10 +1153,15 @@ function toggleCheckbox(checkboxItem) {
     const minutes = Math.floor((distance % hour) / minute);
     const seconds = Math.floor((distance % minute) / second);
 
-    daysElement.innerText = days;
-    hoursElement.innerText = hours;
-    minutesElement.innerText = minutes;
-    secondsElement.innerText = seconds;
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours;
+    document.getElementById("minutes").innerText = minutes;
+    document.getElementById("seconds").innerText = seconds;
+
+    document.getElementById("days1").innerText = days;
+    document.getElementById("hours1").innerText = hours;
+    document.getElementById("minutes1").innerText = minutes;
+    document.getElementById("seconds1").innerText = seconds;
 
     if (distance < 0) {
       clearInterval(timer);
@@ -1165,6 +1169,7 @@ function toggleCheckbox(checkboxItem) {
       document.getElementById("countdown").style.display = "none";
       document.getElementById("content").style.display = "block";
       localStorage.removeItem("targetDate");
+      localStorage.removeItem("expiration");
     }
   }
 
@@ -1173,6 +1178,7 @@ function toggleCheckbox(checkboxItem) {
 }
 
 startTimer();
+
 
     </script>
 @endsection
