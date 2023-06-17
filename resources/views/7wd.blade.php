@@ -263,7 +263,7 @@
                 <div class="mb-5 white">
                     <a href="" style="width:100% !important" class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
                         class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹149! </h2>
+                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99! </h2>
                         <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                     </a>
                 </div>
@@ -571,7 +571,7 @@
                         <div class="my-5 text-center">
                             <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                                 class="btn ck-btn ck-rounded btn-lg   px-5">
-                                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹149</h2>
+                                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
                                 <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                             </a>
                         </div>
@@ -748,7 +748,7 @@
             <div class="my-5 text-center">
                 <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                     class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                    <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹149</h2>
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -907,7 +907,7 @@
                 <div class="my-5">
                     <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                         class="btn ck-btn ck-rounded btn-lg   px-5">
-                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹149</h2>
+                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
                         <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                     </a>
                 </div>
@@ -1088,7 +1088,7 @@
                     @guest
                         <form action="{{ route('payment-success') }}" method="POST" class="">
                             @csrf
-                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="14900"
+                            <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="9900"
                                 data-buttontext="Join the bootcamp now" 
                                 data-name="Codekaro" 
                                 data-description="How to CSS"
