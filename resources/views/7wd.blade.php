@@ -1146,7 +1146,20 @@ function toggleCheckbox(checkboxItem) {
 
   function updateCountdown() {
     const now = new Date().getTime();
-    const distance = targetDate.getTime() - now;
+    let distance = targetDate.getTime() - now;
+
+  if (distance <= 0) {
+    // Reset target date to the next day
+    targetDate.setDate(targetDate.getDate() + 1);
+    targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
+    expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59, 999).getTime(); // Set expiration to end of the target date
+
+    localStorage.setItem("targetDate", targetDate.getTime());
+    localStorage.setItem("expiration", expiration);
+
+    // Recalculate the distance with the updated target date
+    distance = targetDate.getTime() - now;
+  }
 
     const days = Math.floor(distance / day);
     const hours = Math.floor((distance % day) / hour);
