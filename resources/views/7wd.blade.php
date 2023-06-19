@@ -161,7 +161,25 @@
             font-size: 16px;
             font-weight: 500;
         }
-
+        .shadow-card{
+            border: 1px solid gray;
+            border-radius: 14px;
+            padding: 12px;
+            box-shadow: 6px 6px 0 -2px #000;
+        }
+        .day{
+            background-color: #fab804;
+            padding: 4px 24px;
+            display: inline-block;
+            border-radius: 40px;
+            border: 1px solid black;
+            margin-bottom: 20px;
+        }
+        .item::before{
+            content: url({{asset('assets/img/arrow2.svg')}});
+            width: 100px;
+            height: 40px;
+        }
         .you-checkbox-check-tick {
     display: none;
   }
@@ -361,220 +379,56 @@
     <section>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-8 mb-5">
+                    <div class="shadow-card mt-5">
+                        <div class="day">Day 1</div>
+                        <h3 class="fs-3 fw-bold">Introduction to CSS</h2>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> CSS Implementation</div>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Typography</div>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Box Model & Usecases</div>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating login and feedback pages</div>
+                    </div>
+                
+                    <div class="shadow-card mt-5">
+                        <div class="day">Day 2</div>
+                        <h3 class="fs-3 fw-bold">Learn use of Positions</h2>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Pseudo Elements &amp; Pseudo Classes</div>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating pages of Twitter &amp; LinkedIn</div>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating Static Blog</div>
 
-                    <div class="accordion my-5" id="accordionExample">
-
-                        <div class="accordion-item" style="background-color: #efa30e">
-                            <h2 class="accordion-header" id="heading84">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse84" aria-expanded="true" aria-controls="collapse84">
-                                    Introduction to HTML
-                                </button>
-                            </h2>
-                            <div id="collapse84" class="accordion-collapse collapse  show " aria-labelledby="heading84"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body"
-                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
-                                    <p class="mb-2 pl-2 " style="font-size:17px;">
-                                        <br /><i class='bi bi-dot fs-4'></i>Introduction to HTML <br /><i
-                                            class='bi bi-dot fs-4'></i>The Anatomy of an HTML Tag <br /><i
-                                            class='bi bi-dot fs-4'></i>What we're building - HTML Personal Site <br /><i
-                                            class='bi bi-dot fs-4'></i>What is The HTML Boilerplate? <br /><i
-                                            class='bi bi-dot fs-4'></i>How to Structure Text in HTML <br /><i
-                                            class='bi bi-dot fs-4'></i>HTML Lists <br /><i class='bi bi-dot fs-4'></i>HTML
-                                        Image Elements <br /><i class='bi bi-dot fs-4'></i>HTML Links and Anchor Tags
-                                        <br /><i class='bi bi-dot fs-4'></i>HTML advanced Tags
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="accordion-item" style="background-color: #efa30e">
-                            <h2 class="accordion-header" id="heading86">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse86" aria-expanded="true" aria-controls="collapse86">
-                                    Introduction to CSS
-                                </button>
-                            </h2>
-                            <div id="collapse86" class="accordion-collapse collapse  hide " aria-labelledby="heading86"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body"
-                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
-                                    <p class="mb-2 pl-2 " style="font-size:17px;">
-                                        <br /><i class='bi bi-dot fs-4'></i>Introduction to CSS <br /><i
-                                            class='bi bi-dot fs-4'></i>Inline CSS <br /><i
-                                            class='bi bi-dot fs-4'></i>Internal CSS <br /><i
-                                            class='bi bi-dot fs-4'></i>External CSS <br /><i
-                                            class='bi bi-dot fs-4'></i>How to Debug CSS Code <br /><i
-                                            class='bi bi-dot fs-4'></i>The Anatomy of CSS Syntax <br /><i
-                                            class='bi bi-dot fs-4'></i>CSS Selectors <br /><i
-                                            class='bi bi-dot fs-4'></i>Classes vs. Ids
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item" style="background-color: #efa30e">
-                            <h2 class="accordion-header" id="heading87">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse87" aria-expanded="true" aria-controls="collapse87">
-                                    CSS Box Model
-                                </button>
-                            </h2>
-                            <div id="collapse87" class="accordion-collapse collapse  hide " aria-labelledby="heading87"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body"
-                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
-                                    <p class="mb-2 pl-2 " style="font-size:17px;">
-                                        <br /><i class='bi bi-dot fs-4'></i>Box model <br />
-                                        <i class='bi bi-dot fs-4'></i>Box model Use cases <br />
-                                        <i class='bi bi-dot fs-4'></i>Examples <br />
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item" style="background-color: #efa30e">
-                            <h2 class="accordion-header" id="heading88">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse88" aria-expanded="true" aria-controls="collapse88">
-                                    CSS Flexbox
-                                </button>
-                            </h2>
-                            <div id="collapse88" class="accordion-collapse collapse  hide " aria-labelledby="heading88"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body"
-                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
-                                    <p class="mb-2 pl-2 " style="font-size:17px;">
-                                        <br /><i class='bi bi-dot fs-4'></i>Flexbox <br />
-                                        <i class='bi bi-dot fs-4'></i>Align Items <br />
-                                        <i class='bi bi-dot fs-4'></i>Justify Content <br />
-                                        <i class='bi bi-dot fs-4'></i>Creating Navbar <br />
-                                        <i class='bi bi-dot fs-4'></i>Creating Layouts <br />
-                                        <i class='bi bi-dot fs-4'></i>Use cases <br />
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item" style="background-color: #efa30e">
-                            <h2 class="accordion-header" id="heading89">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse89" aria-expanded="true" aria-controls="collapse89">
-                                    CSS Positions
-                                </button>
-                            </h2>
-                            <div id="collapse89" class="accordion-collapse collapse  hide " aria-labelledby="heading89"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body"
-                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
-                                    <p class="mb-2 pl-2 " style="font-size:17px;">
-                                        <br /><i class='bi bi-dot fs-4'></i>Positions <br />
-                                        <i class='bi bi-dot fs-4'></i>Fixed <br />
-                                        <i class='bi bi-dot fs-4'></i>Sticky <br />
-                                        <i class='bi bi-dot fs-4'></i>Relative <br />
-                                        <i class='bi bi-dot fs-4'></i>Absolute <br />
-                                        <i class='bi bi-dot fs-4'></i>Use cases <br />
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item" style="background-color: #efa30e">
-                            <h2 class="accordion-header" id="heading90">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse90" aria-expanded="true" aria-controls="collapse90">
-                                    Media Queries
-                                </button>
-                            </h2>
-                            <div id="collapse90" class="accordion-collapse collapse  hide " aria-labelledby="heading90"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body"
-                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
-                                    <p class="mb-2 pl-2 " style="font-size:17px;">
-                                        <br /><i class='bi bi-dot fs-4'></i>Media Query <br />
-                                        <i class='bi bi-dot fs-4'></i>Min Width <br />
-                                        <i class='bi bi-dot fs-4'></i>Max width <br />
-                                        <i class='bi bi-dot fs-4'></i>Use cases <br />
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item" style="background-color: #efa30e">
-                            <h2 class="accordion-header" id="heading91">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse91" aria-expanded="true" aria-controls="collapse91">
-                                    Grid System
-                                </button>
-                            </h2>
-                            <div id="collapse91" class="accordion-collapse collapse  hide " aria-labelledby="heading91"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body"
-                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
-                                    <p class="mb-2 pl-2 " style="font-size:17px;">
-                                        <br /><i class='bi bi-dot fs-4'></i>Grid System <br />
-                                        <i class='bi bi-dot fs-4'></i>Creating cards <br />
-                                        <i class='bi bi-dot fs-4'></i>Creating Layouts <br />
-                                        <i class='bi bi-dot fs-4'></i>Use cases <br />
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="accordion-item" style="background-color: #efa30e">
-                            <h2 class="accordion-header" id="heading92">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse92" aria-expanded="true" aria-controls="collapse92">
-                                    Bonus Gift 🎁
-                                </button>
-                            </h2>
-                            <div id="collapse92" class="accordion-collapse collapse  hide " aria-labelledby="heading92"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body"
-                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
-                                    <p class="mb-2 pl-2 " style="font-size:17px;">
-                                        <br /><i class='bi bi-dot fs-4'></i>Tools for unlimited SVG <br /><i
-                                            class='bi bi-dot fs-4'></i>2 UI Kits <br /><i
-                                            class='bi bi-dot fs-4'></i>Custom Project Allocation to everyone
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="accordion-item" style="background-color: #efa30e">
-                            <h2 class="accordion-header" id="heading94">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapse94" aria-expanded="true" aria-controls="collapse94">
-                                    Youtube Responsive Clone 👨🏻‍💻
-                                </button>
-                            </h2>
-                            <div id="collapse94" class="accordion-collapse collapse  hide " aria-labelledby="heading94"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body"
-                                    style="background-color: #fff5e0; border-radius: 0 0 12px 12px">
-                                    <p class="mb-2 pl-2 " style="font-size:17px;">
-                                        Major Project
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="my-5 text-center">
-                            <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
-                                class="btn ck-btn ck-rounded btn-lg   px-5">
-                                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
-                                <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
-                            </a>
-                        </div>
+                    </div>
+                
+                    <div class="shadow-card mt-5">
+                        <div class="day">Day 3</div>
+                        <h3 class="fs-3 fw-bold">Master Flexbox</h2>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt="">Master Flexbox</div>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt="">Responsive design using flexbox</div>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating a social media website</div>
+                    </div>
+                
+                    <div class="shadow-card mt-5">
+                        <div class="day">Day 4</div>
+                        <h3 class="fs-3 fw-bold">Creating Animations</h2>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Understanding media Queries</div>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Transitions</div>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Improving our social media website</div>
+                    </div>
+                
+                    <div class="shadow-card mt-5">
+                        <div class="day">Day 5</div>
+                        <h3 class="fs-3 fw-bold">Major Project: Create YouTube Clone</h2>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Bonus: Host your project Online</div>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Bonus: Get your linkedIn shareable certificate</div>
+                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Bonus: Full stack Roadmap</div>
+                        
+                    </div>
+                    
+                    <div class="my-5 text-center">
+                        <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
+                            class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
+                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -583,7 +437,7 @@
     <section class="mt-5">
         <div class="container mt-5">
             <div class="text-center">
-                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 2700+ students</h1>
+                <h1 class=" mx-xl-8 mb-0 fw-600">Loved by 30000+ students</h1>
                 <p class="lead mb-4">Here's what some of our students have to say about learning with codekaro.</p>
             </div>
             <div class="row">
@@ -632,17 +486,7 @@
                     </blockquote>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
-                <div class="col-md-6">
-                    <blockquote class="twitter-tweet">
-                        <p lang="en" dir="ltr"><a
-                                href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a>
-                            Congrats Codekaro team.., you are doing a wonderful job and your session are helpful for my
-                            carrer..thankyou</p>&mdash; Nandhakumar (@nandhank_) <a
-                            href="https://twitter.com/nandhank_/status/1407353108187996162?ref_src=twsrc%5Etfw">June 22,
-                            2021</a>
-                    </blockquote>
-                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
-                </div>
+                
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
                         <p lang="en" dir="ltr"><a
@@ -666,17 +510,7 @@
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
-                <div class="col-md-6">
-                    <blockquote class="twitter-tweet">
-                        <p lang="en" dir="ltr">My first ever online class .Sir you were great,very clear with
-                            your concept .<a href="https://twitter.com/akshkgd?ref_src=twsrc%5Etfw">@akshkgd</a><br>10/10
-                            from my side.</p>&mdash; Ritik Kumar Das (@1pieceViper) <a
-                            href="https://twitter.com/1pieceViper/status/1471850945562570753?ref_src=twsrc%5Etfw">December
-                            17, 2021</a>
-                    </blockquote>
-
-                    {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
-                </div>
+                
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
                         <p lang="en" dir="ltr"><a
@@ -857,9 +691,18 @@
                         <div class="you-checkbox-text">I am from non IT background but i want to build my career in the field of web dev</div>
                       </div>
                 </div>
+                
             </div>
         </div>
         <p class="text-center my-2">If you checked ANY of the boxes above, then you’re invited to join The How to CSS Bootcamp😁</p>
+        <div class="my-5 text-center">
+            <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
+                class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
+                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
+                <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+            </a>
+        </div>
+    
     </section>
     <section>
         <div class="container my-5 pt-5">
@@ -1044,7 +887,13 @@
                         </div>
                     </div>
 
-
+                    <div class="my-5 text-center">
+                        <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
+                            class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
+                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                        </a>
+                    </div>
                 </div>
             </div>
     </section>
