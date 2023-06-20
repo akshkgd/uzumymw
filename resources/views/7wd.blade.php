@@ -960,7 +960,7 @@
 
     <div class="m-cta text-light">
         <div class="">
-            <p class="m-0 fw-bold text-light">₹ 199  <span class="small text-white fw-light" style="text-decoration: line-through"> ₹ 899    </span></p>
+            <p class="m-0 fw-bold text-light">₹99  <span class="small text-white fw-light" style="text-decoration: line-through"> ₹ 899    </span></p>
             <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
         </div>
         <button data-bs-toggle="modal" data-bs-target="#enroll" class="bt button ">Join Bootcamp Now</button>
