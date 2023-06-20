@@ -8,6 +8,80 @@
 
 
     <style>
+        .button {
+            display: inline-block;
+    padding: 10px 20px;
+    background-color: #efa30e;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+    animation: gradientAnimation 3s infinite linear;
+}
+@keyframes shakeAnimation {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+.button.shake {
+    animation: shakeAnimation 0.3s linear;
+}
+
+        @media(max-width:586px) {
+            .m-cta {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 16px;
+                width: 100%;
+                background-color: #fff;
+                position: fixed;
+                bottom: 0;
+                background-color: #272727
+            }
+            .btn-floating{
+                display: none !important;
+            }
+            .ck-btn {
+                display: none;
+            }
+            .l-cta{
+                display: none;
+            }
+        }
+
+        @media(min-width:586px) {
+            .m-cta {
+                display: none;
+            }
+            .l-cta{
+                display: block;
+            }
+            .ck-btn {
+
+                background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
+                border: 1px solid transparent;
+                border: none;
+                text-decoration: none;
+                color: white;
+                padding: 12px 46px !important;
+                font-weight: 400;
+                display: inline-block;
+                cursor: pointer;
+                font-size: 16px;
+                border-radius: 100px;
+                /* box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px; */
+            }
+        }
+
         .bg-dark {
             background-color: #272727 !important;
             border-radius: 16px;
@@ -46,21 +120,7 @@
             color: white !important;
         }
 
-        .ck-btn {
-
-            background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
-            border: 1px solid transparent;
-            border: none;
-            text-decoration: none;
-            color: white;
-            padding: 12px 46px !important;
-            font-weight: 400;
-            display: inline-block;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 100px;
-            /* box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px; */
-        }
+        
 
         .avatar-sm {
             width: 50px;
@@ -277,7 +337,7 @@
                 {{-- <div id="js-player" style="border-radius: 16px; color:white;" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="slentvTk3gY"></div> --}}
 
             </div>
-            <div class="col-lg-10 order-3">
+            <div class="col-lg-10 order-3 l-cta">
                 <div class="mb-5 white">
                     <a href="" style="width:100% !important" class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
                         class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
@@ -423,7 +483,7 @@
                         
                     </div>
                     
-                    <div class="my-5 text-center">
+                    <div class="my-5 text-center l-cta">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
                             <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
@@ -579,7 +639,7 @@
                 </div>
 
             </div>
-            <div class="my-5 text-center">
+            <div class="my-5 text-center l-cta">
                 <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                     class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
                     <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
@@ -695,7 +755,7 @@
             </div>
         </div>
         <p class="text-center my-2">If you checked ANY of the boxes above, then you’re invited to join The How to CSS Bootcamp😁</p>
-        <div class="my-5 text-center">
+        <div class="my-5 text-center l-cta">
             <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                 class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
                 <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
@@ -747,14 +807,14 @@
                   </div> --}}
                 </div>
 
-                <div class="my-5">
+                <div class="my-5 l-cta">
                     <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                         class="btn ck-btn ck-rounded btn-lg   px-5">
                         <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
                         <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                     </a>
                 </div>
-                <p class="text-danger">Once the timer hits zero, pricing will be increased to 2199.00/-</p>
+                <p class="text-danger">Once the timer hits zero, pricing will be increased to 899.00/-</p>
             </div>
         </div>
     </section>
@@ -887,7 +947,7 @@
                         </div>
                     </div>
 
-                    <div class="my-5 text-center">
+                    <div class="my-5 l-cta text-center">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
                             <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
@@ -898,7 +958,13 @@
             </div>
     </section>
 
-
+    <div class="m-cta text-light">
+        <div class="">
+            <p class="m-0 fw-bold text-light">₹ 199  <span class="small text-white fw-light" style="text-decoration: line-through"> ₹ 899    </span></p>
+            <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
+        </div>
+        <button data-bs-toggle="modal" data-bs-target="#enroll" class="bt button ">Join 5 days bootcamp</button>
+    </div>
 
 
     
@@ -955,7 +1021,7 @@
                         <a href="{{ url('/enroll/32') }}" class=" razorpay-payment-button">Join the bootcamp now</a>
 
                     @endauth
-                    <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-
+                    <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 899.00/-
                     </p>
 
 
@@ -1025,6 +1091,9 @@ function toggleCheckbox(checkboxItem) {
     document.getElementById("minutes1").innerText = minutes;
     document.getElementById("seconds1").innerText = seconds;
 
+    document.getElementById("hours2").innerText = hours;
+    document.getElementById("minutes2").innerText = minutes;
+    document.getElementById("seconds2").innerText = seconds;
     if (distance < 0) {
       clearInterval(timer);
       document.getElementById("headline").innerText = "Class has Started!";
@@ -1040,7 +1109,13 @@ function toggleCheckbox(checkboxItem) {
 }
 
 startTimer();
+function addShakeAnimation() {
+        var button = document.querySelector('.button');
+        button.classList.add('shake');
+        setTimeout(function() {
+            button.classList.remove('shake');
+        }, 300);}
 
-
+        setInterval(addShakeAnimation, 3000);
     </script>
 @endsection

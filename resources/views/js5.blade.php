@@ -8,6 +8,80 @@
 
 
     <style>
+        .button {
+            display: inline-block;
+    padding: 10px 20px;
+    background-color: #efa30e;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+    animation: gradientAnimation 3s infinite linear;
+}
+@keyframes shakeAnimation {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-5px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(5px);
+    }
+}
+
+.button.shake {
+    animation: shakeAnimation 0.3s linear;
+}
+
+        @media(max-width:586px) {
+            .m-cta {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 16px;
+                width: 100%;
+                background-color: #fff;
+                position: fixed;
+                bottom: 0;
+                background-color: #272727
+            }
+            .btn-floating{
+                display: none !important;
+            }
+            .ck-btn {
+                display: none;
+            }
+            .l-cta{
+                display: none;
+            }
+        }
+
+        @media(min-width:586px) {
+            .m-cta {
+                display: none;
+            }
+            .l-cta{
+                display: block;
+            }
+            .ck-btn {
+
+                background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
+                border: 1px solid transparent;
+                border: none;
+                text-decoration: none;
+                color: white;
+                padding: 12px 46px !important;
+                font-weight: 400;
+                display: inline-block;
+                cursor: pointer;
+                font-size: 16px;
+                border-radius: 100px;
+                /* box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px; */
+            }
+        }
+
         .bg-dark {
             background-color: #272727 !important;
             border-radius: 16px;
@@ -46,21 +120,7 @@
             color: white !important;
         }
 
-        .ck-btn {
 
-            background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
-            border: 1px solid transparent;
-            border: none;
-            text-decoration: none;
-            color: white;
-            padding: 12px 46px !important;
-            font-weight: 400;
-            display: inline-block;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 100px;
-            /* box-shadow: rgb(247 123 155 / 71%) 0px 3px 16px 0px; */
-        }
 
         .avatar-sm {
             width: 50px;
@@ -133,7 +193,7 @@
             width: 40px;
             height: 40px;
             background-color: #fff;
-            background-image: linear-gradient(125deg,#fab804,#e28c19);
+            background-image: linear-gradient(125deg, #fab804, #e28c19);
             border-radius: 8px;
             flex: none;
             justify-content: center;
@@ -161,13 +221,15 @@
             font-size: 16px;
             font-weight: 500;
         }
-        .shadow-card{
+
+        .shadow-card {
             border: 1px solid gray;
             border-radius: 14px;
             padding: 12px;
             box-shadow: 6px 6px 0 -2px #000;
         }
-        .day{
+
+        .day {
             background-color: #fab804;
             padding: 4px 24px;
             display: inline-block;
@@ -175,19 +237,20 @@
             border: 1px solid black;
             margin-bottom: 20px;
         }
-        .item::before{
-            content: url({{asset('assets/img/arrow2.svg')}});
+
+        .item::before {
+            content: url({{ asset('assets/img/arrow2.svg') }});
             width: 100px;
             height: 40px;
         }
+
         .you-checkbox-check-tick {
-    display: none;
-  }
+            display: none;
+        }
 
-  .you-checkbox-item.checked .you-checkbox-check-tick {
-    display: block;
-  }
-
+        .you-checkbox-item.checked .you-checkbox-check-tick {
+            display: block;
+        }
     </style>
 @section('content')
     {{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
@@ -200,93 +263,112 @@
     </div>
 
     <section class="pt-5" style=" background-color: #212121;">
-        <div class="container" >
-        <div class="row justify-content-center align-items-cente">
-            <div class="col-md-9">
-                <main class="text-center">
-                    <h1 class="display-6 fw-bod  " style="line-height:1.5; color:aliceblue; font-weight:600">Master <span
-                            class="wd_highligh" style="color:#efa30e;">Core concepts of Javascript</span> to create amazing projects in just 5 days</h1>
+        <div class="container">
+            <div class="row justify-content-center align-items-cente">
+                <div class="col-md-9">
+                    <main class="text-center">
+                        <h1 class="display-6 fw-bod  " style="line-height:1.5; color:aliceblue; font-weight:600">Master <span
+                                class="wd_highligh" style="color:#efa30e;">Core concepts of Javascript</span> to create
+                            amazing projects in just 5 days</h1>
 
 
-                    <p class="fs-5 text-white text-center">Don't let your non-tech background or limited programming experience hold you back! Start 🚀 your Javascript programming journey with NO experience</p>
+                        <p class="fs-5 text-white text-center">Don't let your non-tech background or limited programming
+                            experience hold you back! Start 🚀 your Javascript programming journey with NO experience</p>
 
 
 
 
-                </main>
-            </div>
+                    </main>
+                </div>
 
-            <div class="col-lg-5 mt-5  mb-4 order-2 order-lg-1">
-                <div class="bg-dark container" style="background-color: #333333 !important; opacity:90%">
-                    <div class="row">
+                <div class="col-lg-5 mt-5  mb-4 order-2 order-lg-1">
+                    <div class="bg-dark container" style="background-color: #333333 !important; opacity:90%">
+                        <div class="row">
 
-                        <div class="col-6 mb-3">
-                            <div class="card-dark">
-                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                    <img src="{{ asset('assets/img/l1.svg') }}" alt="">
-                                    5 Days Live Bootcamp
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l1.svg') }}" alt="">
+                                        5 Days Live Bootcamp
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l2.svg') }}" alt="">
+                                        All live sessions on Zoom
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l3.svg') }}" alt="">
+                                        From June 28th to 2nd July
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l4.svg') }}" alt="">
+                                        6 PM IST (2 hours live)
+                                    </div>
                                 </div>
                             </div>
-
-                        </div>
-                        <div class="col-6 mb-3">
-                            <div class="card-dark">
-                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                    <img src="{{ asset('assets/img/l2.svg') }}" alt="">
-                                    All live sessions on Zoom
+                            {{-- <h5 class="text-whitbe">More than 30,000 students have attended the bootcamp so far</h5> --}}
+                            <div class="d-flex align-items-center" style="gap:20px">
+                                <img src="{{ asset('assets/img/team/ashish black.png') }}" height="100" width="100"
+                                    style="border-radius: 14px" alt="">
+                                <div class="text-white">
+                                    <h4 class="fs-5 m-0 text-white">Ashish Shukla</h4>
+                                    <p class="small m-0 mt-1 text-white">I am a full stack developer and instructor
+                                        passionate about educating students through engaging lessons. Ex AOSPL, Lido
+                                        Learning
+                                    </p>
                                 </div>
-                            </div>
-
-                        </div>
-                        <div class="col-6 mb-3">
-                            <div class="card-dark">
-                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                    <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                    From June 28th to 2nd July
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-6 mb-3">
-                            <div class="card-dark">
-                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                    <img src="{{ asset('assets/img/l4.svg') }}" alt="">
-                                    6 PM IST (2 hours live)
-                                </div>
-                            </div>
-                        </div>
-                        {{-- <h5 class="text-whitbe">More than 30,000 students have attended the bootcamp so far</h5> --}}
-                        <div class="d-flex align-items-center" style="gap:20px">
-                            <img src="{{ asset('assets/img/team/ashish black.png') }}" height="100" width="100"
-                                style="border-radius: 14px" alt="">
-                            <div class="text-white">
-                                <h4 class="fs-5 m-0 text-white">Ashish Shukla</h4>
-                                <p class="small m-0 mt-1 text-white">I am a full stack developer and instructor
-                                    passionate about educating students through engaging lessons. Ex AOSPL, Lido Learning
-                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
-            <div class="col-lg-5 mt-5 order-1 order-lg-2">
-                <div class="bg-dark p-2" style="background-color: #333333 !important">
-                    <script src="https://fast.wistia.com/embed/medias/jqqnsy9mj6.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_jqqnsy9mj6 videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/jqqnsy9mj6/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
                 </div>
-                {{-- <div id="js-player" style="border-radius: 16px; color:white;" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="slentvTk3gY"></div> --}}
+                <div class="col-lg-5 mt-5 order-1 order-lg-2">
+                    <div class="bg-dark p-2" style="background-color: #333333 !important">
+                        <script src="https://fast.wistia.com/embed/medias/jqqnsy9mj6.jsonp" async></script>
+                        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                            <div class="wistia_responsive_wrapper"
+                                style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                                <div class="wistia_embed wistia_async_jqqnsy9mj6 videoFoam=true"
+                                    style="height:100%;position:relative;width:100%">
+                                    <div class="wistia_swatch"
+                                        style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                                        <img src="https://fast.wistia.com/embed/medias/jqqnsy9mj6/swatch"
+                                            style="filter:blur(5px);height:100%;object-fit:contain;width:100%;"
+                                            alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div id="js-player" style="border-radius: 16px; color:white;" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="slentvTk3gY"></div> --}}
 
-            </div>
-            <div class="col-lg-10 order-3">
-                <div class="mb-5 white">
-                    <a href="" style="width:100% !important" class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
-                        class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199! </h2>
-                        <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
-                    </a>
+                </div>
+                <div class="col-lg-10 order-3 l-cta">
+                    <div class="mb-5 white">
+                        <a href="" style="width:100% !important"
+                            class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
+                            class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199! </h2>
+                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
         </div>
     </section>
@@ -351,7 +433,7 @@
             <div class="row justify-content-center">
                 <div class="">
                     <h1 class="fw-bold fs-2 text-center">What exactly we will learn?</h1>
-                </div> 
+                </div>
             </div>
         </div>
     </section>
@@ -362,47 +444,74 @@
                     <div class="shadow-card mt-4">
                         <div class="day">Day 1</div>
                         <h3 class="fs-3 fw-bold">Introduction to Javascript</h2>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Javascript Implementation</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Variables & Data types</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Arrays & Objects</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating winning prediction App</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Javascript Implementation
+                            </div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Variables & Data types
+                            </div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Arrays & Objects</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating winning
+                                prediction App</div>
                     </div>
-                
+
                     <div class="shadow-card mt-5">
                         <div class="day">Day 2</div>
                         <h3 class="fs-3 fw-bold">Loops and Conditionals</h2>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Advance Concepts of Arrays</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> If and Else & Usecases</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Loops & Usecases</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Advance Concepts of Arrays
+                            </div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> If and Else & Usecases
+                            </div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Loops & Usecases</div>
 
                     </div>
-                
+
                     <div class="shadow-card mt-5">
                         <div class="day">Day 3</div>
                         <h3 class="fs-3 fw-bold">Introduction to DOM</h2>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt="">Master Functions</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt="">Introduction to DOM</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating Bill split App</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Master Functions</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Introduction to DOM</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating Bill split App
+                            </div>
                     </div>
-                
+
                     <div class="shadow-card mt-5">
                         <div class="day">Day 4</div>
                         <h3 class="fs-3 fw-bold">Advance Concepts</h2>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Array mapping & Filters</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating Dynamic elements</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating user management</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Array mapping & Filters
+                            </div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating Dynamic elements
+                            </div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating user management
+                            </div>
                     </div>
-                
+
                     <div class="shadow-card mt-5">
                         <div class="day">Day 5</div>
                         <h3 class="fs-3 fw-bold">Major Project: Movie App</h2>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Understanding Promies in js</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> How to use API's</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Create Movie app using IMDB API</div>
-                        
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding Promies in
+                                js</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> How to use API's</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Create Movie app using
+                                IMDB API</div>
+
                     </div>
-                    
-                    <div class="my-5 text-center">
+
+                    <div class="my-5 text-center l-cta">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
                             <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199</h2>
@@ -465,7 +574,7 @@
                     </blockquote>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
-                
+
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
                         <p lang="en" dir="ltr"><a
@@ -489,7 +598,7 @@
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
-                
+
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
                         <p lang="en" dir="ltr"><a
@@ -558,7 +667,7 @@
                 </div>
 
             </div>
-            <div class="my-5 text-center">
+            <div class="my-5 text-center l-cta">
                 <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                     class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
                     <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199</h2>
@@ -594,7 +703,7 @@
             </div>
         </div>
     </section>
-    
+
     <section>
         <div class="container">
             <div class="row justify-content-center">
@@ -605,83 +714,89 @@
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
                         <div class="you-checkbox-text">I am a student and I want to kickstart my web dev journey.</div>
-                      </div>
+                    </div>
                 </div>
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
-                        <div class="you-checkbox-text">I have been learning web dev for a while now but still I am confused!</div>
-                      </div>
+                        <div class="you-checkbox-text">I have been learning web dev for a while now but still I am
+                            confused!</div>
+                    </div>
                 </div>
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
-                        <div class="you-checkbox-text">I am an aspiring web developer but I have no clue on where to start from.</div>
-                      </div>
+                        <div class="you-checkbox-text">I am an aspiring web developer but I have no clue on where to start
+                            from.</div>
+                    </div>
                 </div>
-                
+
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
-                        <div class="you-checkbox-text">I am in job and I want to switch my profile as a full stack developer</div>
-                      </div>
+                        <div class="you-checkbox-text">I am in job and I want to switch my profile as a full stack
+                            developer</div>
+                    </div>
                 </div>
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
-                        <div class="you-checkbox-text">I am a freelancer and I want to widen my skills as a freelance developer</div>
-                      </div>
+                        <div class="you-checkbox-text">I am a freelancer and I want to widen my skills as a freelance
+                            developer</div>
+                    </div>
                 </div>
-                
+
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
-                        <div class="you-checkbox-text">I am from non IT background but i want to build my career in the field of web dev</div>
-                      </div>
+                        <div class="you-checkbox-text">I am from non IT background but i want to build my career in the
+                            field of web dev</div>
+                    </div>
                 </div>
-                
+
             </div>
         </div>
-        <p class="text-center my-2">If you checked ANY of the boxes above, then you’re invited to join The How to CSS Bootcamp😁</p>
-        <div class="my-5 text-center">
+        <p class="text-center my-2">If you checked ANY of the boxes above, then you’re invited to join The How to CSS
+            Bootcamp😁</p>
+        <div class="my-5 text-center l-cta">
             <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                 class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
                 <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199</h2>
                 <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
             </a>
         </div>
-    
+
     </section>
     <section>
         <div class="container my-5 pt-5">
@@ -726,14 +841,14 @@
                   </div> --}}
                 </div>
 
-                <div class="my-5">
+                <div class="my-5 l-cta">
                     <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                         class="btn ck-btn ck-rounded btn-lg   px-5">
                         <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199</h2>
                         <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                     </a>
                 </div>
-                <p class="text-danger">Once the timer hits zero, pricing will be increased to 2199.00/-</p>
+                <p class="text-danger">Once the timer hits zero, pricing will be increased to 899.00/-</p>
             </div>
         </div>
     </section>
@@ -848,7 +963,7 @@
 
 
 
-                    <div class="accordion my-3" id="accordionExample">
+                    <div class="accordion my-3 mb-5" id="accordionExample">
                         <div class="accordion-item" style="background-color: #efa30e">
                             <h2 class="accordion-header" id="heading91">
                                 <button class="accordion-button fs-5 collapsed" type="button" data-bs-toggle="collapse"
@@ -866,7 +981,7 @@
                         </div>
                     </div>
 
-                    <div class="my-5 text-center">
+                    <div class="my-5 text-center l-cta l-cta">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
                             <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199</h2>
@@ -878,11 +993,17 @@
     </section>
 
 
+<div class="m-cta text-light">
+    <div class="">
+        <p class="m-0 fw-bold text-light">₹ 199  <span class="small text-white fw-light" style="text-decoration: line-through"> ₹ 899    </span></p>
+        <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
+    </div>
+    <button data-bs-toggle="modal" data-bs-target="#enroll" class="bt button ">Join 5 days bootcamp</button>
+</div>
 
 
-    
-      
-      
+
+
 
 
     {{-- enrollment model  starts --}}
@@ -913,13 +1034,11 @@
                             </ul>
                         </div>
                     </div>
-                    @guest
+                    
                         <form action="{{ route('payment-success') }}" method="POST" class="">
                             @csrf
                             <script src="https://checkout.razorpay.com/v1/checkout.js" data-key='rzp_live_YFwQzuSuorFCPM' data-amount="19900"
-                                data-buttontext="Join the bootcamp now" 
-                                data-name="Codekaro" 
-                                data-description="How to CSS"
+                                data-buttontext="Join the bootcamp now" data-name="Codekaro" data-description="How to CSS"
                                 data-image="{{ asset('assets/img/codekaro-dark.png') }}" data-theme.color="#0066ff">
                                 @auth
                                 data - prefill.name = "{{ Auth::user()->name }}"
@@ -929,12 +1048,9 @@
                             </script>
                             <input type="hidden" name="courseId" value="32">
                         </form>
-                    @endguest
-                    @auth
-                        <a href="{{ url('/enroll/32') }}" class=" razorpay-payment-button">Join the bootcamp now</a>
-
-                    @endauth
-                    <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-
+                    
+                    
+                    <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 899.00/-
                     </p>
 
 
@@ -947,79 +1063,93 @@
     {{-- enrollment mode ends --}}
 
     <script>
+        function toggleCheckbox(checkboxItem) {
+            checkboxItem.classList.toggle('checked');
+        }
 
-function toggleCheckbox(checkboxItem) {
-    checkboxItem.classList.toggle('checked');
-  }
-  function startTimer() {
-  const second = 1000,
-    minute = second * 60,
-    hour = minute * 60,
-    day = hour * 24;
+        function startTimer() {
+            const second = 1000,
+                minute = second * 60,
+                hour = minute * 60,
+                day = hour * 24;
 
-  let targetDate = localStorage.getItem("targetDate");
-  let expiration = localStorage.getItem("expiration");
+            let targetDate = localStorage.getItem("targetDate");
+            let expiration = localStorage.getItem("expiration");
 
-  if (!targetDate || !expiration || new Date().getTime() > expiration) {
-    targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 1); // Set target date to tomorrow
-    targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
-    expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59, 999).getTime(); // Set expiration to end of the target date
+            if (!targetDate || !expiration || new Date().getTime() > expiration) {
+                targetDate = new Date();
+                targetDate.setDate(targetDate.getDate() + 1); // Set target date to tomorrow
+                targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
+                expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59,
+                    999).getTime(); // Set expiration to end of the target date
 
-    localStorage.setItem("targetDate", targetDate.getTime());
-    localStorage.setItem("expiration", expiration);
-  } else {
-    targetDate = new Date(parseInt(targetDate));
-  }
+                localStorage.setItem("targetDate", targetDate.getTime());
+                localStorage.setItem("expiration", expiration);
+            } else {
+                targetDate = new Date(parseInt(targetDate));
+            }
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    let distance = targetDate.getTime() - now;
+            function updateCountdown() {
+                const now = new Date().getTime();
+                let distance = targetDate.getTime() - now;
 
-  if (distance <= 0) {
-    // Reset target date to the next day
-    targetDate.setDate(targetDate.getDate() + 1);
-    targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
-    expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59, 999).getTime(); // Set expiration to end of the target date
+                if (distance <= 0) {
+                    // Reset target date to the next day
+                    targetDate.setDate(targetDate.getDate() + 1);
+                    targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
+                    expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59,
+                        999).getTime(); // Set expiration to end of the target date
 
-    localStorage.setItem("targetDate", targetDate.getTime());
-    localStorage.setItem("expiration", expiration);
+                    localStorage.setItem("targetDate", targetDate.getTime());
+                    localStorage.setItem("expiration", expiration);
 
-    // Recalculate the distance with the updated target date
-    distance = targetDate.getTime() - now;
-  }
+                    // Recalculate the distance with the updated target date
+                    distance = targetDate.getTime() - now;
+                }
 
-    const days = Math.floor(distance / day);
-    const hours = Math.floor((distance % day) / hour);
-    const minutes = Math.floor((distance % hour) / minute);
-    const seconds = Math.floor((distance % minute) / second);
+                const days = Math.floor(distance / day);
+                const hours = Math.floor((distance % day) / hour);
+                const minutes = Math.floor((distance % hour) / minute);
+                const seconds = Math.floor((distance % minute) / second);
 
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
+                document.getElementById("days").innerText = days;
+                document.getElementById("hours").innerText = hours;
+                document.getElementById("minutes").innerText = minutes;
+                document.getElementById("seconds").innerText = seconds;
 
-    document.getElementById("days1").innerText = days;
-    document.getElementById("hours1").innerText = hours;
-    document.getElementById("minutes1").innerText = minutes;
-    document.getElementById("seconds1").innerText = seconds;
+                document.getElementById("days1").innerText = days;
+                document.getElementById("hours1").innerText = hours;
+                document.getElementById("minutes1").innerText = minutes;
+                document.getElementById("seconds1").innerText = seconds;
+                
+                
+                document.getElementById("hours2").innerText = hours;
+                document.getElementById("minutes2").innerText = minutes;
+                document.getElementById("seconds2").innerText = seconds;
 
-    if (distance < 0) {
-      clearInterval(timer);
-      document.getElementById("headline").innerText = "Class has Started!";
-      document.getElementById("countdown").style.display = "none";
-      document.getElementById("content").style.display = "block";
-      localStorage.removeItem("targetDate");
-      localStorage.removeItem("expiration");
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("headline").innerText = "Class has Started!";
+                    document.getElementById("countdown").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    localStorage.removeItem("targetDate");
+                    localStorage.removeItem("expiration");
+                }
+            }
+
+            updateCountdown();
+            const timer = setInterval(updateCountdown, 1000);
+        }
+
+        startTimer();
+        function addShakeAnimation() {
+        var button = document.querySelector('.button');
+        button.classList.add('shake');
+        setTimeout(function() {
+            button.classList.remove('shake');
+        }, 300);
     }
-  }
 
-  updateCountdown();
-  const timer = setInterval(updateCountdown, 1000);
-}
-
-startTimer();
-
-
+    setInterval(addShakeAnimation, 3000);
     </script>
 @endsection
