@@ -694,7 +694,7 @@
                     <img src="{{ asset('assets/img/team/ashish black.png') }}" alt="" class="rounded-circle"
                         height="130px">
                     <h2 class="mt-3 fw-bold">Ashish Shukla</h2>
-                    <p class="fs-5 ">I am a freelance web developer and instructor, passionate about educating students
+                    <p class="fs-5 ">I am a full stack developer and instructor, passionate about educating students
                         through engaging lessons. Ex AOSPL, Lido Learning</p>
                 </div>
 
