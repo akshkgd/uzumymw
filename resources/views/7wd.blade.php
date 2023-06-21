@@ -302,7 +302,7 @@
                             <div class="card-dark">
                                 <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                     <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                    From June 21st to 25th June
+                                    From July 5th to 9th July
                                 </div>
                             </div>
 
@@ -1014,11 +1014,11 @@
                                 data - prefill.contact = "{{ Auth::user()->mobile }}"
                                 @endauth
                             </script>
-                            <input type="hidden" name="courseId" value="32">
+                            <input type="hidden" name="courseId" value="33">
                         </form>
                     @endguest
                     @auth
-                        <a href="{{ url('/enroll/32') }}" class=" razorpay-payment-button">Join the bootcamp now</a>
+                        <a href="{{ url('/enroll/33') }}" class=" razorpay-payment-button">Join the bootcamp now</a>
 
                     @endauth
                     <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 899.00/-
