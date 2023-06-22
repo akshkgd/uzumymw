@@ -69,9 +69,40 @@ class CodekaroController extends Controller
         }
     }
     public function bootcampSuccess(){
-        return view('students.bootcampSuccess');
+        return view('students.cssSuccess');
 
     }
+    public function javascriptSuccess(){
+        return view('students.jsSuccess');
+
+    }
+
+    public function courseEnrollmentAuto(Request $request)
+    {
+        $input = $request->all();
+
+        $userExists = User::where('email', $request->email)->first();
+        if (!$userExists) {
+            $userId =  $this->createUser($request);
+            $enrollmentId = $this->courseEnrollment($userId, $input['courseId'], $request);
+            
+                Auth::loginUsingId($userId);
+            
+            // $this->apiTest($enrollmentId);
+            // $this->workshopSuccessMail($enrollmentId);
+            
+        } else {
+            $this->updateUtm($request, $userExists->id);
+            $enrollmentId = $this->courseEnrollment($userExists->id, $input['courseId'], $request);
+            if ($userExists->role == 0) {
+                Auth::loginUsingId($userExists->id);
+            }
+            // $this->workshopSuccessMail($enrollmentId);
+        }
+        $enrollId = Crypt::encrypt($enrollmentId);
+        return redirect('checkout/'.$enrollId);
+    }
+
 
     public function workshopEnrollemnt(Request $request)
     {
@@ -94,8 +125,6 @@ class CodekaroController extends Controller
             // $this->workshopSuccessMail($enrollmentId);
         }
         if ($enrollmentId === 0) {
-            // session()->flash('alert-danger', 'You can not enroll in this workshop! ');
-            // return redirect()->back();
             $enrollId = Crypt::encrypt($input['courseId']);
             return redirect('next-steps/'.$enrollId);
         }
@@ -120,6 +149,7 @@ class CodekaroController extends Controller
         }
         $user->password = bcrypt(Str::random(12));
         $user->is_verified = 1;
+        $user->role = 0;
         $user->email_verified_at = Carbon::now();
         if ($request->has('source')) {
             $user->field1 = $request->source;
@@ -131,7 +161,6 @@ class CodekaroController extends Controller
             $user->field3 = $request->campaign;
         }
         $user->save();
-        dd($user);
         return $user->id;
     }
 
@@ -167,21 +196,17 @@ class CodekaroController extends Controller
             $user->save();
         }
     }
-    private function courseEnrollment($userId, $courseId, $response)
+    private function courseEnrollment($userId, $courseId)
     {
-        $enrollment = new CourseEnrollment();
-        $enrollment->userId = $userId;
-        $enrollment->batchId = $courseId;
-        $enrollment->price = $response->amount - $response->fee;
-        $enrollment->transactionId = $response->id;
-        $enrollment->status = 1;
-        $enrollment->hasPaid = 1;
-        $enrollment->paidAt = Carbon::now();
-        $enrollment->paymentMethod = $response->method;
-        $enrollment->amountPaid = $response->amount - $response->fee;
-        $enrollment->save();
-        $enrollmentId = $enrollment->id;
-        Auth::loginUsingId($userId);
+        $batch = Batch::findOrFail($courseId);
+        $a = new CourseEnrollment;
+        $a->userId = $userId;
+        $a->batchId = $courseId;
+        $a->price = $batch->price;
+        $a->amountpayable = $batch->payable;
+        $a->certificateId = substr(md5(time()), 0, 16);
+        $a->save();
+        $enrollmentId = $a->id;
         return $enrollmentId;
     }
 

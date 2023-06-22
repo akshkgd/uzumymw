@@ -226,5 +226,14 @@
 
 {{-- new payment page end --}}
 
+<script>
+  window.addEventListener('load', function() {
+  // Find the Razorpay payment button element
+  var razorpayButton = document.querySelector('.razorpay-payment-button');
 
+  // Simulate a click event on the button
+  razorpayButton.click();
+});
+
+</script>
 @endsection()

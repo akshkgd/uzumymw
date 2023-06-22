@@ -150,7 +150,16 @@ class CourseEnrollmentController extends Controller
         }
         else{
             session()->flash('alert-warning', 'Payment Already Compleated');
+            if($batchId->topicId == 100){
+                return redirect('/bootcamp-success');
+            }
+            elseif ($batchId->topicId == 101){
+                return redirect('/javascript-success');
+            }
+            else{
             return redirect('/home');
+
+            }
         }
         
     }
@@ -182,7 +191,15 @@ class CourseEnrollmentController extends Controller
             // $user = User::find($enrollment->userId);
             // $this->successMail($batch, $user);
             $this->successMail($enrollment->id);
-            return view('students.PaymentComplete', compact('enrollment', 'batch'));
+            if($batch->topicId == 100){
+                return redirect('/bootcamp-success');
+            }
+            elseif ($batch->topicId == 101){
+                return redirect('/javascript-success');
+            }
+            else{
+                return view('students.PaymentComplete', compact('enrollment', 'batch'));
+            }
             session()->flash('alert-success', 'Payment Completed Successfully');
             return redirect('/home');
             
