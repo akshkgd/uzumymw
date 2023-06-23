@@ -348,7 +348,7 @@
                                 style="border-radius: 14px" alt="">
                             <div class="text-white">
                                 <h4 class="fs-5 m-0 text-white">Ashish Shukla</h4>
-                                <p class="small m-0 mt-1 text-white">I am a freelance web developer and instructor
+                                <p class="small m-0 mt-1 text-white">I am a full stack developer and instructor
                                     passionate about educating students through engaging lessons. Ex AOSPL, Lido Learning
                                 </p>
                             </div>
