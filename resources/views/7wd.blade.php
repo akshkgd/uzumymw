@@ -8,6 +8,10 @@
 
 
     <style>
+        input{
+            border-radius: 12px !important;
+        }
+
         .button {
             display: inline-block;
     padding: 10px 20px;
