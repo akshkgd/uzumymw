@@ -393,7 +393,7 @@
             </div>
             <div class="row justify-content-center">
 
-                <div class="col-md-4 mt-4">
+                <div class="col-md-5 mt-4">
                     <div class="card text-center f-3">
                         <div class="p-2">
                             <img src="{{ asset('assets/img/hd.svg') }}" alt="">
@@ -403,7 +403,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-4 mt-4">
+                <div class="col-md-5 mt-4">
                     <div class="card text-center f-2">
                         <div class="p-2">
                             <img src="{{ asset('assets/img/wtr.svg') }}" alt="">
@@ -413,7 +413,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-4 mt-4">
+                <div class="col-md-5 mt-4">
                     <div class="card text-center f-4">
                         <div class="p-2">
                             <img src="{{ asset('assets/img/time.svg') }}" alt="">
@@ -423,7 +423,7 @@
 
                     </div>
                 </div>
-                <div class="col-md-4 mt-4">
+                <div class="col-md-5 mt-4">
                     <div class="card text-center f-5">
                         <div class="p-2">
                             <img src="{{ asset('assets/img/project.svg') }}" alt="" height="70">
