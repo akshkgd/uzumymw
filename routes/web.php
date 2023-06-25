@@ -159,7 +159,7 @@ Route::get('/addContent/{id}', 'TeacherController@addContent');
 Route::post('/store-content', 'TeacherController@storeContent')->name('addContent');
 Route::post('/update-batch-status', 'TeacherController@updateBatchStatus')->name('updateBatchStatus');
 Route::post('/update-workshop', 'TeacherController@updateWorkshop')->name('updateWorkshop');
-
+Route::post('/generate-all-cetificates/{id}', 'TeacherController@generateAllCertificate')->name('generateAllCertificate');
 
 
 

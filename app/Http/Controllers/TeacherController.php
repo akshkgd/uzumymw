@@ -129,6 +129,26 @@ class TeacherController extends Controller
 
     }
 
+    public function generateAllCertificate($id)
+{
+    $batch = Batch::findOrFail($id);
+
+    if ($batch->teacherId == Auth::user()->id) {
+        $enrollments = CourseEnrollment::where('batchId', $id)
+            ->where('hasPaid', 1)
+            ->get();
+
+        foreach ($enrollments as $enrollment) {
+            $this->generateCertificate($enrollment->id);
+        }
+
+        session()->flash('alert-success', 'Certificates Generated Successfully!');
+        return redirect()->back();
+    } else {
+        return redirect()->back();
+    }
+}
+
 
     public function storeContent( Request $request)
     {
