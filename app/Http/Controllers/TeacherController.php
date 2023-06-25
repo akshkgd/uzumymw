@@ -49,7 +49,7 @@ class TeacherController extends Controller
         if($batch->teacherId == Auth::user()->id)
         {
         $enrollments = CourseEnrollment::where('batchId', $id)->where('hasPaid', 1)->get();
-        return view('teachers.enrollments', compact('enrollments'))->with('i');
+        return view('teachers.enrollments', compact('enrollments', 'batch'))->with('i');
         }
         else{
             return redirect()->back();

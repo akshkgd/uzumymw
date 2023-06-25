@@ -16,7 +16,7 @@
               <div class="card">
                 <div class="card-boy"><div class="p-3">
                     <h3 class="">Student Details</h3>
-                    <a href="{{ action('TeacherController@generateAllCertificate', $enrollment->id) }}" class="btn btn-primary px-5">Generate All certificates</a>
+                    <a href="{{ action('TeacherController@generateAllCertificate', $batch->id) }}" class="btn btn-primary px-5">Generate All certificates</a>
                 </div>
 
                     <table class="table table-responsive-lg">
