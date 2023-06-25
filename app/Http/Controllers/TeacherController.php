@@ -77,7 +77,7 @@ class TeacherController extends Controller
         $enrollment = CourseEnrollment::findorFail($id);
         if($enrollment->certificateId == '')
         {
-            $enrollment->certificateId = substr(md5(time()), 0, 16);
+            $enrollment->certificateId = $enrollment->id . '-' . mt_rand(1000, 9999);
             $enrollment->save();
             $name = Auth::user()->name;
             session()->flash('alert-success',  'Certificate Generated Successfully!');
