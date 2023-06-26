@@ -42,7 +42,7 @@ class WebhookController extends Controller
             $enrollment->paymentMethod = $payload['payment']['method'];
             $enrollment->transactionId = $payload['payment']['id'];
 
-            $enrollment->save();
+            
 
             // Add a comment to field2 indicating the webhook data update
             $enrollment->field2 = 'webhook access granted';

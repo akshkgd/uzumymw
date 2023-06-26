@@ -136,6 +136,7 @@
                                         <td scope="col">Name</th>
                                         <td scope="col">Email</th>
                                         <td scope="col">Mobile</th>
+                                        <td scope="col">Status</th>  
                                         <td scope="col">Enrolled on </th>
                                         <td scope="col">Enrolled on </th>
 
@@ -151,6 +152,7 @@
                                             class="avatar avatar-sm"> <a class="text-dark td-none" href="{{action('AdminController@studentDetails', $enrollment->students->id  )}}">{{ $enrollment->students->name }}</a></td></td>
                                             <td>{{ $enrollment->students->email }}</td>
                                             <td>{{ $enrollment->students->mobile }}</td>
+                                            <td>{{ $enrollment->field2 }}</td>
                                             <td>{{ $enrollment->created_at->format('d M')}} </td>
                                             <td>{{ $enrollment->created_at}} </td>
 
