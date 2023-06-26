@@ -41,7 +41,8 @@ class CodekaroController extends Controller
     }
 
     public function test1(Request $request)
-{
+{   
+    \Log::info('Webhook Request:', $request->all());
     $payload = $request->all();
     $notes = $payload['payment']['notes'];
 
