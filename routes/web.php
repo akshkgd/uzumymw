@@ -130,8 +130,8 @@ Route::get('/javascript-success', 'CodekaroController@javascriptSuccess')->name(
 Route::post('workshop-enrollment-auto', 'CodekaroController@workshopEnrollemnt')->name('workshop-enrollment-auto');
 Route::post('course-enrollment-auto', 'CodekaroController@courseEnrollmentAuto')->name('course-enrollment-auto');
 
-
-
+Route::get('/test', 'CodekaroController@test');
+Route::post('/grant-access', 'CodekaroController@test1');
 
 Route::get('/certificate', function(){
     $certificate = CourseEnrollment::first();

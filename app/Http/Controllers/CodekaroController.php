@@ -33,6 +33,45 @@ use FacebookAds\Object\ServerSide\UserData;
 
 class CodekaroController extends Controller
 {
+
+    public function test(){
+        $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+        $payment = $api->payment->fetch('pay_M6dNE9wZQqHNmv');
+        dd($payment);
+    }
+
+    public function test1(Request $request)
+{
+    $payload = $request->all();
+    $notes = $payload['payment']['notes'];
+
+    $enrollment = CourseEnrollment::where('userId', $notes['UserId'])->where('batchId', $notes['CourseId'])->first();
+
+    if ($enrollment->hasPaid == 0) {
+        $enrollment->status = 1;
+        $enrollment->hasPaid = 1;
+        $enrollment->amountPaid = $payload['payment']['amount'];
+        $enrollment->paidAt = Carbon::now();
+        $enrollment->paymentMethod = $payload['payment']['method'];
+        $enrollment->transactionId = $payload['payment']['id'];
+
+        $enrollment->save();
+
+        // Add a comment to field2 indicating the webhook data update
+        $enrollment->field2 = 'webhook access granted';
+        $enrollment->save();
+
+        return response('Webhook Handled', 200);
+    } else {
+        // Add a comment or additional handling logic for cases when the enrollment has already been paid
+        // ...
+        $enrollment->field2 = 'webhook called!!';
+        $enrollment->save();
+        return response('Webhook Handled', 200);
+    }
+}
+
+
     public function coursePayment(Request $request)
     {
         $input = $request->all();
