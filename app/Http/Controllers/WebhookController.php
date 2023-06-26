@@ -26,31 +26,40 @@ class WebhookController extends Controller
     public function grantAccess(Request $request)
 {   
     \Log::info('Webhook Request:', $request->all());
-    $payload = $request->all();
-    $notes = $payload['payment']['notes'];
+    $payload = $request->input('payload');
+    $notes = $payload['payment']['notes'] ?? null;
 
-    $enrollment = CourseEnrollment::where('userId', $notes['UserId'])->where('batchId', $notes['CourseId'])->first();
+    if ($notes) {
+        $enrollment = CourseEnrollment::where('userId', $notes['UserId'])
+                                     ->where('batchId', $notes['CourseId'])
+                                     ->first();
 
-    if ($enrollment->hasPaid == 0) {
-        $enrollment->status = 1;
-        $enrollment->hasPaid = 1;
-        $enrollment->amountPaid = $payload['payment']['amount'];
-        $enrollment->paidAt = Carbon::now();
-        $enrollment->paymentMethod = $payload['payment']['method'];
-        $enrollment->transactionId = $payload['payment']['id'];
+        if ($enrollment && $enrollment->hasPaid == 0) {
+            $enrollment->status = 1;
+            $enrollment->hasPaid = 1;
+            $enrollment->amountPaid = $payload['payment']['amount'];
+            $enrollment->paidAt = Carbon::now();
+            $enrollment->paymentMethod = $payload['payment']['method'];
+            $enrollment->transactionId = $payload['payment']['id'];
 
-        $enrollment->save();
+            $enrollment->save();
 
-        // Add a comment to field2 indicating the webhook data update
-        $enrollment->field2 = 'webhook access granted';
-        $enrollment->save();
+            // Add a comment to field2 indicating the webhook data update
+            $enrollment->field2 = 'webhook access granted';
+            $enrollment->save();
 
-        return response('Webhook Handled', 200);
+            return response('Webhook Handled', 200);
+        } else {
+            // Add a comment or additional handling logic for cases when the enrollment has already been paid
+            // ...
+            if ($enrollment) {
+                $enrollment->field2 = 'webhook called!!';
+                $enrollment->save();
+            }
+            return response('Webhook Handled', 200);
+        }
     } else {
-        // Add a comment or additional handling logic for cases when the enrollment has already been paid
-        // ...
-        $enrollment->field2 = 'webhook called!!';
-        $enrollment->save();
+        \Log::error('Payment notes not found in webhook request.');
         return response('Webhook Handled', 200);
     }
 }
