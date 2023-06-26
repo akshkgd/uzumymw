@@ -4,10 +4,6 @@
 <ol>
     <li style="font-size:16px">Join the Private WhatApp Group: <a href="{{ $email_data['workshopGroup'] }}">CLICK
             HERE</a></li>
-    <li style="font-size:16px;">Create Account on Discord: <a
-            href="https://discord.com/register">CLICK HERE</a></li>
-    <li style="font-size:16px">Join Discord Community: <a href="{{ $email_data['discord'] }}">CLICK HERE</a>
-    </li>
 
 </ol>
 <p style="font-size:16px">I want to make sure you are on-boarded into our system smoothly… :) </p>
