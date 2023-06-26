@@ -88,7 +88,7 @@
                                         <td scope="col">Name</th>
                                         <td scope="col">Email</th>
                                         <td scope="col">Mobile</th>
-                                        <td scope="col">College</th>
+                                        <td scope="col">Webhook</th>
                                         <th scope="col">Amount paid</th>
                                         <td scope="col">Enrolled on </th>
                                         <td scope="col">Enrolled on </th>
@@ -105,7 +105,7 @@
                                             <a class="text-dark td-none" href="{{action('AdminController@studentDetails', $enrollment->students->id  )}}">{{ $enrollment->students->name }}</a></td>
                                             <td>{{ $enrollment->students->email }}</td>
                                             <td>{{ $enrollment->students->mobile }}</td>
-                                            <td>{{ $enrollment->students->college}}</td>
+                                            <td>{{ $enrollment->field2}}</td>
                                             <td>{{ ($enrollment->amountPaid) / 100 }}</td>
                                             <td>{{ $enrollment->created_at->format('d M ')}}</td>
                                             <td>{{ $enrollment->created_at}} </td>
