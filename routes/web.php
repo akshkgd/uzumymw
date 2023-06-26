@@ -131,7 +131,7 @@ Route::post('workshop-enrollment-auto', 'CodekaroController@workshopEnrollemnt')
 Route::post('course-enrollment-auto', 'CodekaroController@courseEnrollmentAuto')->name('course-enrollment-auto');
 
 Route::get('/test', 'CodekaroController@test');
-Route::post('/grant-access', 'CodekaroController@test1');
+Route::post('/grant-access', 'WebhookController@grantAccess');
 
 Route::get('/certificate', function(){
     $certificate = CourseEnrollment::first();
