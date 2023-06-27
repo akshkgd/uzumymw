@@ -190,7 +190,7 @@ class CourseEnrollmentController extends Controller
             $batch = Batch::find($enrollment->batchId);
             // $user = User::find($enrollment->userId);
             // $this->successMail($batch, $user);
-            $this->successMail($enrollment->id);
+            
             if($batch->topicId == 100){
                 return redirect('/bootcamp-success');
             }
@@ -198,6 +198,7 @@ class CourseEnrollmentController extends Controller
                 return redirect('/javascript-success');
             }
             else{
+                $this->successMail($enrollment->id);
                 return view('students.PaymentComplete', compact('enrollment', 'batch'));
             }
             session()->flash('alert-success', 'Payment Completed Successfully');
