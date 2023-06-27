@@ -23,11 +23,14 @@ use App\Mail\workshopEnrollmentSuccess;
 
 class WebhookController extends Controller
 {
+
     public function grantAccess(Request $request)
 {   
     \Log::info('Webhook Request:', $request->all());
     $payload = $request->input('payload');
-    $notes = $payload['payment']['notes'] ?? null;
+    $payment = $payload['payment'] ?? null;
+    $entity = $payment['entity'] ?? null;
+    $notes = $entity['notes'] ?? null;
 
     if ($notes) {
         $enrollment = CourseEnrollment::where('userId', $notes['UserId'])
@@ -37,12 +40,10 @@ class WebhookController extends Controller
         if ($enrollment && $enrollment->hasPaid == 0) {
             $enrollment->status = 1;
             $enrollment->hasPaid = 1;
-            $enrollment->amountPaid = $payload['payment']['amount'];
+            $enrollment->amountPaid = $entity['amount'];
             $enrollment->paidAt = Carbon::now();
-            $enrollment->paymentMethod = $payload['payment']['method'];
-            $enrollment->transactionId = $payload['payment']['id'];
-
-            
+            $enrollment->paymentMethod = $entity['method'];
+            $enrollment->transactionId = $entity['id'];
 
             // Add a comment to field2 indicating the webhook data update
             $enrollment->field2 = 'webhook access granted';
