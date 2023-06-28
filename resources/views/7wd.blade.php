@@ -333,7 +333,7 @@
                             <div class="card-dark">
                                 <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                     <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                    From June 28th to 2nd July
+                                    From July 5th to 9th July
                                 </div>
                             </div>
 
@@ -1041,7 +1041,7 @@
                     <input type="number" required  class="form-control" id="floatingInput" name="mobile" placeholder="name@example.com" @auth value="{{Auth::user()->mobile}}" @endauth>
                     <label for="floatingInput">Mobile Number</label>
                   </div>
-                <input type="hidden" name="courseId" value="33">
+                <input type="hidden" name="courseId" value="34">
                 <button type="submit" class="enrollment-button  d-flex align-items-center justify-content-center" onclick="startLoader()">Join bootcamp now <div id="loader" class="loade d-inline-block ms-2"></div></button>
                 <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's Terms & Conditions and Privacy Policy</p>
             </form>
