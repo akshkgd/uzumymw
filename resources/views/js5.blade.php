@@ -388,25 +388,9 @@
                 </div>
                 <div class="col-lg-5 mt-5 order-1 order-lg-2">
                     <div class="bg-dark p-2" style="background-color: #333333 !important">
-                        <script src="https://fast.wistia.com/embed/medias/jqqnsy9mj6.jsonp" async></script>
-                        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
-                        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
-                            <div class="wistia_responsive_wrapper"
-                                style="height:100%;left:0;position:absolute;top:0;width:100%;">
-                                <div class="wistia_embed wistia_async_jqqnsy9mj6 videoFoam=true"
-                                    style="height:100%;position:relative;width:100%">
-                                    <div class="wistia_swatch"
-                                        style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
-                                        <img src="https://fast.wistia.com/embed/medias/jqqnsy9mj6/swatch"
-                                            style="filter:blur(5px);height:100%;object-fit:contain;width:100%;"
-                                            alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <script src="https://fast.wistia.com/embed/medias/xc3pvb1vae.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:100.0% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_xc3pvb1vae videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/xc3pvb1vae/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
                     </div>
-                    {{-- <div id="js-player" style="border-radius: 16px; color:white;" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="slentvTk3gY"></div> --}}
-
+                    
                 </div>
                 <div class="col-lg-10 order-3 l-cta">
                     <div class="mb-5 white">
