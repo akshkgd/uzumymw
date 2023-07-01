@@ -1,42 +1,79 @@
 @extends('layouts.ck')
-@section('title', '' . e('Web Development Live Bootcamp | Codekaro'))
+@section('title', '' . e('Javascript Live Bootcamp | Codekaro'))
 @section('meta_description',
     '' .
     e('Master in-demand web development skills with real work experience of building
     professional work-like projects'))
-
-
-
     <style>
+        input {
+            border-radius: 12px !important;
+        }
+
         .button {
             display: inline-block;
-    padding: 10px 20px;
-    background-color: #efa30e;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    position: relative;
-    overflow: hidden;
-    animation: gradientAnimation 3s infinite linear;
-}
-@keyframes shakeAnimation {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    10%, 30%, 50%, 70%, 90% {
-        transform: translateX(-5px);
-    }
-    20%, 40%, 60%, 80% {
-        transform: translateX(5px);
-    }
-}
+            padding: 10px 20px;
+            background-color: #efa30e;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            animation: gradientAnimation 3s infinite linear;
+        }
 
-.button.shake {
-    animation: shakeAnimation 0.3s linear;
-}
+        .enrollment-button {
+            background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
+            /* background-image: linear-gradient(99deg, rgb(0, 184, 46), rgb(0, 224, 134)); */
+            border: none;
+            color: white;
+            padding: 16px !important;
+            width: 100%;
+            font-weight: 400 !important;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bolder;
+            border-radius: 12px;
+            margin: 1px 0 0 0;
+        }
+
+        @keyframes shakeAnimation {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-5px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(5px);
+            }
+        }
+
+        .button.shake {
+            animation: shakeAnimation 0.3s linear;
+        }
 
         @media(max-width:586px) {
+            .modal-dialog {
+                align-items: end !important;
+            }
+
+            .modal-dialog-centered {
+                align-items: end !important;
+            }
+
             .m-cta {
                 display: flex;
                 justify-content: space-between;
@@ -47,24 +84,37 @@
                 bottom: 0;
                 background-color: #272727
             }
-            .btn-floating{
+
+            .btn-floating {
                 display: none !important;
             }
+
             .ck-btn {
                 display: none;
             }
-            .l-cta{
+
+            .l-cta {
                 display: none;
             }
         }
 
         @media(min-width:586px) {
+            .modal-dialog {
+                align-items: center !important;
+            }
+
+            .modal-dialog-centered {
+                align-items: center !important;
+            }
+
             .m-cta {
                 display: none;
             }
-            .l-cta{
+
+            .l-cta {
                 display: block;
             }
+
             .ck-btn {
 
                 background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
@@ -993,31 +1043,93 @@
     </section>
 
 
-<div class="m-cta text-light">
-    <div class="">
-        <p class="m-0 fw-bold text-light">₹ 199  <span class="small text-white fw-light" style="text-decoration: line-through"> ₹ 899    </span></p>
-        <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
+    <div class="m-cta text-light">
+        <div class="">
+            <p class="m-0 fw-bold text-light">₹ 199 <span class="small text-white fw-light"
+                    style="text-decoration: line-through"> ₹ 899 </span></p>
+            <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span
+                    class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
+        </div>
+        <button data-bs-toggle="modal" data-bs-target="#enroll" class="bt button ">Join Bootcamp Now</button>
     </div>
-    <button data-bs-toggle="modal" data-bs-target="#enroll" class="bt button ">Join Bootcamp Now</button>
-</div>
-
-
-
-
-
 
     {{-- enrollment model  starts --}}
     <div class="modal" id="enroll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content rounded-5 shadow">
-                {{-- <div class="modal-header px-5 pb-4 border-bottom-0 text-center"> --}}
-                <!-- <h5 class="modal-title">Modal title</h5> -->
-                {{-- <h2 class=" mb-0 fs-4">Join 30 days live Bootcamp</h2> --}}
-                {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
-                {{-- </div> --}}
+
 
                 <div class="modal-body p-4 pt-0 text-center mt-4">
                     {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
+                    <h2 class=" mb-0 fs-3 fw-bold">Join 5 days live Javascript bootcamp!</h2>
+                    <p class="my-3 " style="font-size: 14px">Offer valid till</p>
+                    <div class="col-md-12 text-center mt-0">
+                        <div id="countdown" class="">
+                            <ul type="none" class="navbar justify-content-around p-0 text-center">
+                                <li class="d-inlin fs-6"><span id="days1" class="d-block display-6 fw-bold"></span>
+                                    <span>days</span> </li>
+                                <li class="d-inlin fs-6"><span id="hours1"
+                                        class="d-block display-6 fw-bold "></span>Hours</li>
+                                <li class="d-inlin fs-6"><span id="minutes1"
+                                        class="d-block display-6 fw-bold"></span>Minutes</li>
+                                <li class="d-inlinx fs-6"><span id="seconds1"
+                                        class="d-block display-6 fw-bold"></span>Seconds</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form action="{{ route('course-enrollment-auto') }}" method="POST" class="">
+                        @csrf
+                        <input type="hidden" name="source" value="{{ app('request')->input('utm_source') }}">
+                        <input type="hidden" name="medium" value="{{ app('request')->input('utm_medium') }}">
+                        <input type="hidden" name="campaign" value="{{ app('request')->input('utm_campaign') }}">
+
+
+                        <div class="form-floating mt-3 mb-2">
+                            <input type="text" required class="form-control" id="floatingInput" name="name"
+                                placeholder="name@example.com" @auth value="{{ Auth::user()->name }}" @endauth>
+                            <label for="floatingInput">Full Name</label>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input type="text" required class="form-control" id="floatingInput" name="email"
+                                placeholder="name@example.com" @auth value="{{ Auth::user()->email }}" @endauth>
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input type="number" required class="form-control" id="floatingInput" name="mobile"
+                                placeholder="name@example.com" @auth value="{{ Auth::user()->mobile }}" @endauth>
+                            <label for="floatingInput">Mobile Number</label>
+                        </div>
+                        <input type="hidden" name="courseId" value="35">
+                        <button type="submit" class="enrollment-button  d-flex align-items-center justify-content-center"
+                            onclick="startLoader()">Join bootcamp now <div id="loader"
+                                class="loade d-inline-block ms-2"></div></button>
+                        <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's
+                            Terms & Conditions and Privacy Policy</p>
+                    </form>
+
+                    {{-- <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-</p> --}}
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    {{-- enrollment model ends --}}
+
+
+
+
+
+
+    {{-- enrollment model old  starts --}}
+    {{-- <div class="modal" id="enroll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-5 shadow">
+              
+
+                <div class="modal-body p-4 pt-0 text-center mt-4">
                     <h2 class=" mb-0 fs-3 fw-bold ">Join 5 days live web dev bootcamp!</h2>
                     <div class="col-md-12 text-center mt-4">
                         <div id="countdown" class="d-non">
@@ -1059,8 +1171,8 @@
             </div>
         </div>
     </div>
-    </div>
-    {{-- enrollment mode ends --}}
+    </div> --}}
+    {{-- enrollment mode old ends --}}
 
     <script>
         function toggleCheckbox(checkboxItem) {
@@ -1121,12 +1233,10 @@
                 document.getElementById("hours1").innerText = hours;
                 document.getElementById("minutes1").innerText = minutes;
                 document.getElementById("seconds1").innerText = seconds;
-                
-                
+
                 document.getElementById("hours2").innerText = hours;
                 document.getElementById("minutes2").innerText = minutes;
                 document.getElementById("seconds2").innerText = seconds;
-
                 if (distance < 0) {
                     clearInterval(timer);
                     document.getElementById("headline").innerText = "Class has Started!";
@@ -1142,14 +1252,15 @@
         }
 
         startTimer();
-        function addShakeAnimation() {
-        var button = document.querySelector('.button');
-        button.classList.add('shake');
-        setTimeout(function() {
-            button.classList.remove('shake');
-        }, 300);
-    }
 
-    setInterval(addShakeAnimation, 3000);
+        function addShakeAnimation() {
+            var button = document.querySelector('.button');
+            button.classList.add('shake');
+            setTimeout(function() {
+                button.classList.remove('shake');
+            }, 300);
+        }
+
+        setInterval(addShakeAnimation, 3000);
     </script>
 @endsection
