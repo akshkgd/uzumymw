@@ -357,7 +357,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From June 28th to 2nd July
+                                        From July 12th to 16th July
                                     </div>
                                 </div>
 
@@ -366,7 +366,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l4.svg') }}" alt="">
-                                        6 PM IST (2 hours live)
+                                        6 AM IST (2 hours live)
                                     </div>
                                 </div>
                             </div>
