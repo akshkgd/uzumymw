@@ -72,7 +72,7 @@
             
                     
                     <main class="text-center">
-                        <div class="cwr my-5 border d-inline p-3 rounded-pill px-5">Codekaro Live Masterclass</div>
+                        <div class="cwr my-5 border d-inline p-3 rounded-pill px-5">Fullstack Live Masterclass</div>
                         <h1 class="display- fw-bolder mt-5" style="font-size: calc(1.25rem + 2.1vw);">Want to master <span class="wd_highlight"> full stack dev?</span>Join 2 days live Bootcamp</h1>
                        
                         <div class="row justify-content-center">
