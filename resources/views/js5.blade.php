@@ -357,7 +357,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From July 26th to 30th July
+                                        From 9th to 13th August
                                     </div>
                                 </div>
 
@@ -1083,7 +1083,7 @@
                                 placeholder="name@example.com" @auth value="{{ Auth::user()->mobile }}" @endauth>
                             <label for="floatingInput">Mobile Number</label>
                         </div>
-                        <input type="hidden" name="courseId" value="37">
+                        <input type="hidden" name="courseId" value="41">
                         <button type="submit" class="enrollment-button  d-flex align-items-center justify-content-center"
                             onclick="startLoader()">Join bootcamp now <div id="loader"
                                 class="loade d-inline-block ms-2"></div></button>

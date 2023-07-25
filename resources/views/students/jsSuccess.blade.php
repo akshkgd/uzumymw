@@ -96,7 +96,7 @@
                         <h1 class="display-2">🎉</h1>
                       <h2 class="fs-1">Congratulations, you have successfully enrolled for the <span class="wd_highlight1">How to Javascript</span> Bootcamp</h4>
                       <p class="mt-5">Next Step</p>
-                      <a href="https://chat.whatsapp.com/Ep2xXEC4MnWDtDDM0G1IwA" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
+                      <a href="https://chat.whatsapp.com/JyJsHIpJKztIQgnpSEjSBE" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
                       {{-- <a href="{{url('/home')}}" class="btn btn-dark btn-lg py-3 px-4 rounded-pill my-2" style="">2. Complete your Profile</a> --}}
 
                     </div>
@@ -111,7 +111,7 @@
 
 
     
-    <section class="d-none">
+    <section class="">
         <div class="container text-center ct">
             <h1 id="headlin fw-600 mb-0">Live class is starting in</h1>
             <div id="countdown">
@@ -149,6 +149,46 @@
     </footer>
     
     
+    <script>
+      startLoader = ()=>{
+          let loader = document.getElementById('loader');
+          loader.classlist.add('loader')
+      }
+      (function () {
+      const second = 1000,
+      minute = second * 60,
+      hour = minute * 60,
+      day = hour * 24;
+          
+let birthday = "august 9, 2023 06:00:00",
+    countDown = new Date(birthday).getTime(),
+    x = setInterval(function() {    
+
+      let now = new Date().getTime(),
+          distance = countDown - now;
+
+        document.getElementById("days").innerText = Math.floor(distance / (day)),
+        document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+        document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+        document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+       
+      //do something later when date is reached
+      if (distance < 0) {
+        let headline = document.getElementById("headline"),
+            countdown = document.getElementById("countdown"),
+            content = document.getElementById("content");
+
+        headline.innerText = "Class has Started!";
+        countdown.style.display = "none";
+        content.style.display = "block";
+
+        clearInterval(x);
+      }
+      //seconds
+    }, 0)
+}());
+  </script>
     
 </body>
 
