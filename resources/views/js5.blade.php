@@ -357,7 +357,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From July 25th to 30th July
+                                        From July 26th to 30th July
                                     </div>
                                 </div>
 
