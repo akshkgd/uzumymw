@@ -65,6 +65,7 @@ body{
                 {{-- <h1 class="display-6 ck-font">Lets do Coding! </h1> --}}
                     <div class="row">
                         @foreach ($batches as $batch)
+                        @if($batch->topicId <20)
                         <div class="col-md-6 col-lg-4 mt-5">
                             <a class="card hover-shadow-sm border-none shadow"
                                 href="{{action('BatchController@details', $batch->id )}}">
@@ -101,7 +102,7 @@ body{
                             </a>
                         </div>  
 
-                        
+                        @endif
                         @endforeach
                         {{-- card test --}}
                         
