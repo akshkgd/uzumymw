@@ -80,7 +80,7 @@
           <div class="m-5">
           <div class="d-flex justify-content-between ">
             <span class="">Total</span>
-            <span class="">₹ {{$batch->payable}}</span>
+            <span class="">₹ {{$batch->payable + $enrollment->certificateFee}}</span>
           </div>
           <div class="d-flex justify-content-between">
             <span class="">Price Discount</span>
@@ -144,7 +144,7 @@
             </div>
             <div class="d-flex justify-content-between mt-2 py-3">
               <span class="fs-4">Total</span>
-              <span class="fs-4">₹ {{$batch->payable}}</span>
+              <span class="fs-4">₹ {{$batch->payable + $enrollment->certificateFee}}</span>
             </div>
           </div>
           </div>
@@ -158,7 +158,7 @@
           </div>
           <div class="">
             <p class="mb-0 mt-5 text-muted">Pay now</p>
-            <h1 class=""><span class="fs-4">₹ {{$batch->payable}}.00</span></h1>
+            <h1 class=""><span class="fs-4">₹ {{$batch->payable + $enrollment->certificateFee}}.00</span></h1>
             <p class="fw-bol fs- ">{{$batch->name}}</p>
             {{-- <h4 class="fw-bold my-3"><del class="text-muted">Rs {{$batch->price}}</del><span class="px-2">Rs {{$batch->payable}}</span></h4> --}}
             <div class="m-">
@@ -166,9 +166,16 @@
               <span class="text-muted">Fees</span>
               <span class="text-muted">₹ {{$batch->price}}</span>
             </div>
+            @if ($enrollment->certificateFee> 0)
+            <div class="d-flex justify-content-between">
+              <span class="text-muted">Recordings Access</span>
+              <span class="text-muted">₹ {{$enrollment->certificateFee}}</span>
+            </div>
+            @endif
             <div class="d-flex justify-content-between">
               <span class="text-muted">Price Discount</span>
               <span class="text-muted">₹ {{$batch->price - $batch->payable}}</span>
+              
             </div>
             {{-- <div class="d-flex justify-content-between ">
               <span class="">Offer price</span>
@@ -180,7 +187,7 @@
             </div>
             <div class="d-flex justify-content-between mt-2 py-3">
               <span class="fs-4">Total</span>
-              <span class="fs-4">₹ {{$batch->payable}}</span>
+              <span class="fs-4">₹ {{$batch->payable + $enrollment->certificateFee}}</span>
             </div>
           </div>
           </div>
@@ -204,7 +211,7 @@
                 data-key='rzp_live_YFwQzuSuorFCPM' 
                 data-amount="100"
                 data-order_id="{{$order->id}}"
-                data-buttontext="Pay ₹ {{$batch->payable}} Now" data-name="Codekaro" 
+                data-buttontext="Pay ₹ {{$batch->payable + $enrollment->certificateFee}} Now" data-name="Codekaro" 
                 data-description="{{$batch->name}}"
                 data-image="{{ asset('assets/img/codekaro-dark.png') }}"
                 data-prefill.name="{{Auth::user()->name}}"

@@ -5,6 +5,16 @@
     e('Master in-demand web development skills with real work experience of building
     professional work-like projects'))
     <style>
+        .recording-container {
+            padding: 1rem 0.75rem;
+            border: 1px solid lightgray;
+            display: flex;
+        }
+
+        .recording-container p {
+            margin: 0;
+        }
+
         input {
             border-radius: 12px !important;
         }
@@ -239,11 +249,38 @@
             display: flex;
         }
 
+        .green {
+            box-shadow: none;
+            cursor: pointer;
+            background-color: #fff;
+            border: 1px solid rgb(0, 255, 60 / 30%);
+            margin-bottom: 10px;
+            border-radius: 16px;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            padding-left: 15px;
+            display: flex;
+        }
+
         .you-checkbox {
             width: 40px;
             height: 40px;
             background-color: #fff;
             background-image: linear-gradient(125deg, #fab804, #e28c19);
+            border-radius: 8px;
+            flex: none;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .you-checkbox-green {
+            width: 40px;
+            height: 40px;
+            background-color: #fff !important;
+            background-image: linear-gradient(125deg, #29cf84, #00fd8b) !important;
             border-radius: 8px;
             flex: none;
             justify-content: center;
@@ -388,9 +425,24 @@
                 </div>
                 <div class="col-lg-5 mt-5 order-1 order-lg-2">
                     <div class="bg-dark p-2" style="background-color: #333333 !important">
-                        <script src="https://fast.wistia.com/embed/medias/xc3pvb1vae.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:100.0% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_xc3pvb1vae videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/xc3pvb1vae/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
+                        <script src="https://fast.wistia.com/embed/medias/xc3pvb1vae.jsonp" async></script>
+                        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                        <div class="wistia_responsive_padding" style="padding:100.0% 0 0 0;position:relative;">
+                            <div class="wistia_responsive_wrapper"
+                                style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                                <div class="wistia_embed wistia_async_xc3pvb1vae videoFoam=true"
+                                    style="height:100%;position:relative;width:100%">
+                                    <div class="wistia_swatch"
+                                        style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                                        <img src="https://fast.wistia.com/embed/medias/xc3pvb1vae/swatch"
+                                            style="filter:blur(5px);height:100%;object-fit:contain;width:100%;"
+                                            alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
+
                 </div>
                 <div class="col-lg-10 order-3 l-cta">
                     <div class="mb-5 white">
@@ -1051,7 +1103,8 @@
                         <div id="countdown" class="">
                             <ul type="none" class="navbar justify-content-around p-0 text-center">
                                 <li class="d-inlin fs-6"><span id="days1" class="d-block display-6 fw-bold"></span>
-                                    <span>days</span> </li>
+                                    <span>days</span>
+                                </li>
                                 <li class="d-inlin fs-6"><span id="hours1"
                                         class="d-block display-6 fw-bold "></span>Hours</li>
                                 <li class="d-inlin fs-6"><span id="minutes1"
@@ -1083,10 +1136,29 @@
                                 placeholder="name@example.com" @auth value="{{ Auth::user()->mobile }}" @endauth>
                             <label for="floatingInput">Mobile Number</label>
                         </div>
+                        <div class="you-checkbox-item" onclick="toggleRecordingCheckbox(this)" style="border: 1px solid #29cf84;">
+                            <div class="you-checkbox-green">
+                                <div class="you-checkbox-check">
+                                    <img height="26px"
+                                        src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/5feb5c987b9f08745a9463d2_check-mark-black-outline.svg"
+                                        loading="lazy" alt="" class="you-checkbox-check-tick">
+                                </div>
+                            </div>
+                            <div class="you-checkbox-text text-left">Add Recordings of live Bootcamp at Rs 199  <span
+                                    class="small text-success">(Most Popular)</span></div>
+                        </div>
+                        <p class="">
+                            Three months access of recording. Only available if you attend. This is <strong>EARLY Bid</strong> price, We will
+                            increase the price to ₹499 later.
+                        </p>
+
                         <input type="hidden" name="courseId" value="41">
-                        <button type="submit" class="enrollment-button  d-flex align-items-center justify-content-center"
-                            onclick="startLoader()">Join bootcamp now <div id="loader"
-                                class="loade d-inline-block ms-2"></div></button>
+                        <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
+                        <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
+                            onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"
+                                id="price">199</span>
+                            <div id="loader" class="loade d-inline-block ms-2"></div>
+                        </button>
                         <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's
                             Terms & Conditions and Privacy Policy</p>
                     </form>
@@ -1159,6 +1231,29 @@
     {{-- enrollment mode old ends --}}
 
     <script>
+        function toggleRecordingCheckbox(checkboxItem) {
+            const checkbox = document.getElementById("recordingsCheckbox");
+            const priceElement = document.getElementById("price");
+            
+
+            if (checkbox.value === "0") {
+                checkbox.value = "1";
+                checkboxItem.classList.add("checked");
+                priceElement.innerText = "398";
+                
+            } else {
+                checkbox.value = "0";
+                checkboxItem.classList.remove("checked");
+                priceElement.innerText = "199";
+                
+            }
+        }
+
+
+
+
+
+
         function toggleCheckbox(checkboxItem) {
             checkboxItem.classList.toggle('checked');
         }

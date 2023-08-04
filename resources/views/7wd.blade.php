@@ -8,60 +8,85 @@
 
 
     <style>
-        input{
+        .recording-container {
+            padding: 1rem 0.75rem;
+            border: 1px solid lightgray;
+            display: flex;
+        }
+
+        .recording-container p {
+            margin: 0;
+        }
+
+        input {
             border-radius: 12px !important;
         }
 
         .button {
             display: inline-block;
-    padding: 10px 20px;
-    background-color: #efa30e;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    position: relative;
-    overflow: hidden;
-    animation: gradientAnimation 3s infinite linear;
-}
-.enrollment-button {
-    background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
-    /* background-image: linear-gradient(99deg, rgb(0, 184, 46), rgb(0, 224, 134)); */
-    border: none;
-    color: white;
-    padding: 16px !important;
-    width: 100%;
-    font-weight: 400 !important;
-    display: inline-block;
-    cursor: pointer;
-    font-size: 18px;
-    font-weight: bolder;
-    border-radius: 12px;
-    margin: 1px 0 0 0;
-}
-@keyframes shakeAnimation {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    10%, 30%, 50%, 70%, 90% {
-        transform: translateX(-5px);
-    }
-    20%, 40%, 60%, 80% {
-        transform: translateX(5px);
-    }
-}
+            padding: 10px 20px;
+            background-color: #efa30e;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+            animation: gradientAnimation 3s infinite linear;
+        }
 
-.button.shake {
-    animation: shakeAnimation 0.3s linear;
-}
+        .enrollment-button {
+            background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
+            /* background-image: linear-gradient(99deg, rgb(0, 184, 46), rgb(0, 224, 134)); */
+            border: none;
+            color: white;
+            padding: 16px !important;
+            width: 100%;
+            font-weight: 400 !important;
+            display: inline-block;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bolder;
+            border-radius: 12px;
+            margin: 1px 0 0 0;
+        }
+
+        @keyframes shakeAnimation {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            10%,
+            30%,
+            50%,
+            70%,
+            90% {
+                transform: translateX(-5px);
+            }
+
+            20%,
+            40%,
+            60%,
+            80% {
+                transform: translateX(5px);
+            }
+        }
+
+        .button.shake {
+            animation: shakeAnimation 0.3s linear;
+        }
 
         @media(max-width:586px) {
-            .modal-dialog{
+            .modal-dialog {
                 align-items: end !important;
             }
-            .modal-dialog-centered{
+
+            .modal-dialog-centered {
                 align-items: end !important;
             }
+
             .m-cta {
                 display: flex;
                 justify-content: space-between;
@@ -72,30 +97,37 @@
                 bottom: 0;
                 background-color: #272727
             }
-            .btn-floating{
+
+            .btn-floating {
                 display: none !important;
             }
+
             .ck-btn {
                 display: none;
             }
-            .l-cta{
+
+            .l-cta {
                 display: none;
             }
         }
 
         @media(min-width:586px) {
-            .modal-dialog{
+            .modal-dialog {
                 align-items: center !important;
             }
-            .modal-dialog-centered{
+
+            .modal-dialog-centered {
                 align-items: center !important;
             }
+
             .m-cta {
                 display: none;
             }
-            .l-cta{
+
+            .l-cta {
                 display: block;
             }
+
             .ck-btn {
 
                 background-image: linear-gradient(99deg, rgb(247, 69, 48), rgb(255, 50, 120));
@@ -151,7 +183,7 @@
             color: white !important;
         }
 
-        
+
 
         .avatar-sm {
             width: 50px;
@@ -220,11 +252,38 @@
             display: flex;
         }
 
+        .green {
+            box-shadow: none;
+            cursor: pointer;
+            background-color: #fff;
+            border: 1px solid rgb(0, 255, 60 / 30%);
+            margin-bottom: 10px;
+            border-radius: 16px;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            padding-left: 15px;
+            display: flex;
+        }
+
         .you-checkbox {
             width: 40px;
             height: 40px;
             background-color: #fff;
-            background-image: linear-gradient(125deg,#fab804,#e28c19);
+            background-image: linear-gradient(125deg, #fab804, #e28c19);
+            border-radius: 8px;
+            flex: none;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+        }
+
+        .you-checkbox-green {
+            width: 40px;
+            height: 40px;
+            background-color: #fff !important;
+            background-image: linear-gradient(125deg, #29cf84, #00fd8b) !important;
             border-radius: 8px;
             flex: none;
             justify-content: center;
@@ -252,13 +311,15 @@
             font-size: 16px;
             font-weight: 500;
         }
-        .shadow-card{
+
+        .shadow-card {
             border: 1px solid gray;
             border-radius: 14px;
             padding: 12px;
             box-shadow: 6px 6px 0 -2px #000;
         }
-        .day{
+
+        .day {
             background-color: #fab804;
             padding: 4px 24px;
             display: inline-block;
@@ -266,19 +327,20 @@
             border: 1px solid black;
             margin-bottom: 20px;
         }
-        .item::before{
-            content: url({{asset('assets/img/arrow2.svg')}});
+
+        .item::before {
+            content: url({{ asset('assets/img/arrow2.svg') }});
             width: 100px;
             height: 40px;
         }
+
         .you-checkbox-check-tick {
-    display: none;
-  }
+            display: none;
+        }
 
-  .you-checkbox-item.checked .you-checkbox-check-tick {
-    display: block;
-  }
-
+        .you-checkbox-item.checked .you-checkbox-check-tick {
+            display: block;
+        }
     </style>
 @section('content')
     {{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
@@ -291,93 +353,112 @@
     </div>
 
     <section class="pt-5" style=" background-color: #212121;">
-        <div class="container" >
-        <div class="row justify-content-center align-items-cente">
-            <div class="col-md-8">
-                <main class="text-center">
-                    <h1 class="display-6 fw-bod  " style="line-height:1.5; color:aliceblue; font-weight:600">Master <span
-                            class="wd_highligh" style="color:#efa30e;">Advance concepts of CSS</span> to create websites like YouTube, Netflix and ChatGPT in just 5 days</h1>
+        <div class="container">
+            <div class="row justify-content-center align-items-cente">
+                <div class="col-md-8">
+                    <main class="text-center">
+                        <h1 class="display-6 fw-bod  " style="line-height:1.5; color:aliceblue; font-weight:600">Master <span
+                                class="wd_highligh" style="color:#efa30e;">Advance concepts of CSS</span> to create websites
+                            like YouTube, Netflix and ChatGPT in just 5 days</h1>
 
 
-                    <p class="fs-5 text-white text-center">How to CSS - kickstart your journey of full stack developer the must-have Bootcamp in 2023.</p>
+                        <p class="fs-5 text-white text-center">How to CSS - kickstart your journey of full stack developer
+                            the must-have Bootcamp in 2023.</p>
 
 
 
 
-                </main>
-            </div>
+                    </main>
+                </div>
 
-            <div class="col-lg-5 mt-5  mb-4 order-2 order-lg-1">
-                <div class="bg-dark container" style="background-color: #333333 !important; opacity:90%">
-                    <div class="row">
+                <div class="col-lg-5 mt-5  mb-4 order-2 order-lg-1">
+                    <div class="bg-dark container" style="background-color: #333333 !important; opacity:90%">
+                        <div class="row">
 
-                        <div class="col-6 mb-3">
-                            <div class="card-dark">
-                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                    <img src="{{ asset('assets/img/l1.svg') }}" alt="">
-                                    5 Days Live Bootcamp
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l1.svg') }}" alt="">
+                                        5 Days Live Bootcamp
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l2.svg') }}" alt="">
+                                        All live sessions on Zoom
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l3.svg') }}" alt="">
+                                        From 9th to 13th August
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-6 mb-3">
+                                <div class="card-dark">
+                                    <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
+                                        <img src="{{ asset('assets/img/l4.svg') }}" alt="">
+                                        6 PM IST (2 hours live)
+                                    </div>
                                 </div>
                             </div>
-
-                        </div>
-                        <div class="col-6 mb-3">
-                            <div class="card-dark">
-                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                    <img src="{{ asset('assets/img/l2.svg') }}" alt="">
-                                    All live sessions on Zoom
+                            {{-- <h5 class="text-whitbe">More than 30,000 students have attended the bootcamp so far</h5> --}}
+                            <div class="d-flex align-items-center" style="gap:20px">
+                                <img src="{{ asset('assets/img/team/ashish black.png') }}" height="100" width="100"
+                                    style="border-radius: 14px" alt="">
+                                <div class="text-white">
+                                    <h4 class="fs-5 m-0 text-white">Ashish Shukla</h4>
+                                    <p class="small m-0 mt-1 text-white">I am a full stack developer and instructor
+                                        passionate about educating students through engaging lessons. Ex AOSPL, Lido
+                                        Learning
+                                    </p>
                                 </div>
-                            </div>
-
-                        </div>
-                        <div class="col-6 mb-3">
-                            <div class="card-dark">
-                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                    <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                    From 9th to 13th August
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-6 mb-3">
-                            <div class="card-dark">
-                                <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
-                                    <img src="{{ asset('assets/img/l4.svg') }}" alt="">
-                                    6 PM IST (2 hours live)
-                                </div>
-                            </div>
-                        </div>
-                        {{-- <h5 class="text-whitbe">More than 30,000 students have attended the bootcamp so far</h5> --}}
-                        <div class="d-flex align-items-center" style="gap:20px">
-                            <img src="{{ asset('assets/img/team/ashish black.png') }}" height="100" width="100"
-                                style="border-radius: 14px" alt="">
-                            <div class="text-white">
-                                <h4 class="fs-5 m-0 text-white">Ashish Shukla</h4>
-                                <p class="small m-0 mt-1 text-white">I am a full stack developer and instructor
-                                    passionate about educating students through engaging lessons. Ex AOSPL, Lido Learning
-                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
 
-            </div>
-            <div class="col-lg-5 mt-5 order-1 order-lg-2">
-                <div class="bg-dark p-2" style="background-color: #333333 !important">
-                    <script src="https://fast.wistia.com/embed/medias/jqqnsy9mj6.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_jqqnsy9mj6 videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/jqqnsy9mj6/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
                 </div>
-                {{-- <div id="js-player" style="border-radius: 16px; color:white;" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="slentvTk3gY"></div> --}}
+                <div class="col-lg-5 mt-5 order-1 order-lg-2">
+                    <div class="bg-dark p-2" style="background-color: #333333 !important">
+                        <script src="https://fast.wistia.com/embed/medias/jqqnsy9mj6.jsonp" async></script>
+                        <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
+                        <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;">
+                            <div class="wistia_responsive_wrapper"
+                                style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                                <div class="wistia_embed wistia_async_jqqnsy9mj6 videoFoam=true"
+                                    style="height:100%;position:relative;width:100%">
+                                    <div class="wistia_swatch"
+                                        style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;">
+                                        <img src="https://fast.wistia.com/embed/medias/jqqnsy9mj6/swatch"
+                                            style="filter:blur(5px);height:100%;object-fit:contain;width:100%;"
+                                            alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- <div id="js-player" style="border-radius: 16px; color:white;" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="slentvTk3gY"></div> --}}
 
-            </div>
-            <div class="col-lg-10 order-3 l-cta">
-                <div class="mb-5 white">
-                    <a href="" style="width:100% !important" class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
-                        class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99! </h2>
-                        <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
-                    </a>
+                </div>
+                <div class="col-lg-10 order-3 l-cta">
+                    <div class="mb-5 white">
+                        <a href="" style="width:100% !important"
+                            class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
+                            class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99! </h2>
+                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
         </div>
     </section>
@@ -474,46 +555,72 @@
                     <div class="shadow-card mt-5">
                         <div class="day">Day 1</div>
                         <h3 class="fs-3 fw-bold">Introduction to CSS</h2>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> CSS Implementation</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Typography</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Box Model & Usecases</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating login and feedback pages</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> CSS Implementation</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Typography</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Box Model & Usecases</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating login and
+                                feedback pages</div>
                     </div>
-                
+
                     <div class="shadow-card mt-5">
                         <div class="day">Day 2</div>
                         <h3 class="fs-3 fw-bold">Learn use of Positions</h2>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Pseudo Elements &amp; Pseudo Classes</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating pages of Twitter &amp; LinkedIn</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating Static Blog</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Pseudo Elements &amp;
+                                Pseudo Classes</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating pages of Twitter
+                                &amp; LinkedIn</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating Static Blog</div>
 
                     </div>
-                
+
                     <div class="shadow-card mt-5">
                         <div class="day">Day 3</div>
                         <h3 class="fs-3 fw-bold">Master Flexbox</h2>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt="">Master Flexbox</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt="">Responsive design using flexbox</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Creating a social media website</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Master Flexbox</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Responsive design using
+                                flexbox</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating a social media
+                                website</div>
                     </div>
-                
+
                     <div class="shadow-card mt-5">
                         <div class="day">Day 4</div>
                         <h3 class="fs-3 fw-bold">Creating Animations</h2>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Understanding media Queries</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Transitions</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Improving our social media website</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding media
+                                Queries</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Transitions</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Improving our social media
+                                website</div>
                     </div>
-                
+
                     <div class="shadow-card mt-5">
                         <div class="day">Day 5</div>
                         <h3 class="fs-3 fw-bold">Major Project: Create YouTube Clone</h2>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Bonus: Host your project Online</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Bonus: Get your linkedIn shareable certificate</div>
-                        <div class="mt-3"> <img height="10" class="me-3" src="{{asset('assets/img/arrow2.svg')}}" alt=""> Bonus: Full stack Roadmap</div>
-                        
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Bonus: Host your project
+                                Online</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Bonus: Get your linkedIn
+                                shareable certificate</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Bonus: Full stack Roadmap
+                            </div>
+
                     </div>
-                    
+
                     <div class="my-5 text-center l-cta">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
@@ -577,7 +684,7 @@
                     </blockquote>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
-                
+
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
                         <p lang="en" dir="ltr"><a
@@ -601,7 +708,7 @@
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                     {{-- <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> --}}
                 </div>
-                
+
                 <div class="col-md-6">
                     <blockquote class="twitter-tweet">
                         <p lang="en" dir="ltr"><a
@@ -706,7 +813,7 @@
             </div>
         </div>
     </section>
-    
+
     <section>
         <div class="container">
             <div class="row justify-content-center">
@@ -717,75 +824,81 @@
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
                         <div class="you-checkbox-text">I am a student and I want to kickstart my web dev journey.</div>
-                      </div>
+                    </div>
                 </div>
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
-                        <div class="you-checkbox-text">I have been learning web dev for a while now but still I am confused!</div>
-                      </div>
+                        <div class="you-checkbox-text">I have been learning web dev for a while now but still I am
+                            confused!</div>
+                    </div>
                 </div>
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
-                        <div class="you-checkbox-text">I am an aspiring web developer but I have no clue on where to start from.</div>
-                      </div>
+                        <div class="you-checkbox-text">I am an aspiring web developer but I have no clue on where to start
+                            from.</div>
+                    </div>
                 </div>
-                
+
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
-                        <div class="you-checkbox-text">I am in job and I want to switch my profile as a full stack developer</div>
-                      </div>
+                        <div class="you-checkbox-text">I am in job and I want to switch my profile as a full stack
+                            developer</div>
+                    </div>
                 </div>
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
-                        <div class="you-checkbox-text">I am a freelancer and I want to widen my skills as a freelance developer</div>
-                      </div>
+                        <div class="you-checkbox-text">I am a freelancer and I want to widen my skills as a freelance
+                            developer</div>
+                    </div>
                 </div>
-                
+
                 <div class="col-md-5">
                     <div class="you-checkbox-item" onclick="toggleCheckbox(this)">
                         <div class="you-checkbox">
-                          <div class="you-checkbox-check">
-                            <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
-                              loading="lazy" alt="" class="you-checkbox-check-tick">
-                          </div>
+                            <div class="you-checkbox-check">
+                                <img src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/60cb9e9002293160e1b739d6_tick.svg"
+                                    loading="lazy" alt="" class="you-checkbox-check-tick">
+                            </div>
                         </div>
-                        <div class="you-checkbox-text">I am from non IT background but i want to build my career in the field of web dev</div>
-                      </div>
+                        <div class="you-checkbox-text">I am from non IT background but i want to build my career in the
+                            field of web dev</div>
+                    </div>
                 </div>
-                
+
             </div>
         </div>
-        <p class="text-center my-2">If you checked ANY of the boxes above, then you’re invited to join The How to CSS Bootcamp😁</p>
+        <p class="text-center my-2">If you checked ANY of the boxes above, then you’re invited to join The How to CSS
+            Bootcamp😁</p>
         <div class="my-5 text-center l-cta">
             <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                 class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
@@ -793,7 +906,7 @@
                 <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
             </a>
         </div>
-    
+
     </section>
     <section>
         <div class="container my-5 pt-5">
@@ -991,73 +1104,105 @@
 
     <div class="m-cta text-light">
         <div class="">
-            <p class="m-0 fw-bold text-light">₹99  <span class="small text-white fw-light" style="text-decoration: line-through"> ₹ 899    </span></p>
-            <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
+            <p class="m-0 fw-bold text-light">₹99 <span class="small text-white fw-light"
+                    style="text-decoration: line-through"> ₹ 899 </span></p>
+            <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span
+                    class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
         </div>
         <button data-bs-toggle="modal" data-bs-target="#enroll" class="bt button ">Join Bootcamp Now</button>
     </div>
 
 
     {{-- enrollment model  starts --}}
-<div class="modal" id="enroll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content rounded-5 shadow">
-          {{-- <div class="modal-header px-5 pb-4 border-bottom-0 text-center"> --}}
-            <!-- <h5 class="modal-title">Modal title</h5> -->
-            {{-- <h2 class=" mb-0 fs-4">Join 30 days live Bootcamp</h2> --}}
-            {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
-          {{-- </div> --}}
-    
-          <div class="modal-body p-4 pt-0 text-center mt-4">
-              {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
-            <h2 class=" mb-0 fs-3 fw-bold">Join 5 days live CSS bootcamp!</h2>
-            <p class="my-3 " style="font-size: 14px">Offer valid till</p>
-            <div class="col-md-12 text-center mt-0">
-                <div id="countdown" class="">
-                    <ul type="none" class="navbar justify-content-around p-0 text-center">
-                      <li class="d-inlin fs-6"><span id="days1" class="d-block display-6 fw-bold"></span> <span>days</span> </li>
-                      <li class="d-inlin fs-6"><span id="hours1" class="d-block display-6 fw-bold "></span>Hours</li>
-                      <li class="d-inlin fs-6"><span id="minutes1" class="d-block display-6 fw-bold"></span>Minutes</li>
-                      <li class="d-inlinx fs-6"><span id="seconds1" class="d-block display-6 fw-bold"></span>Seconds</li>
-                    </ul>
-                  </div>
+    <div class="modal" id="enroll" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-5 shadow">
+                {{-- <div class="modal-header px-5 pb-4 border-bottom-0 text-center"> --}}
+                <!-- <h5 class="modal-title">Modal title</h5> -->
+                {{-- <h2 class=" mb-0 fs-4">Join 30 days live Bootcamp</h2> --}}
+                {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+                {{-- </div> --}}
+
+                <div class="modal-body p-4 pt-0 text-center mt-4">
+                    {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
+                    <h2 class=" mb-0 fs-3 fw-bold">Join 5 days live CSS bootcamp!</h2>
+                    <p class="my-3 " style="font-size: 14px">Offer valid till</p>
+                    <div class="col-md-12 text-center mt-0">
+                        <div id="countdown" class="">
+                            <ul type="none" class="navbar justify-content-around p-0 text-center">
+                                <li class="d-inlin fs-6"><span id="days1" class="d-block display-6 fw-bold"></span>
+                                    <span>days</span> </li>
+                                <li class="d-inlin fs-6"><span id="hours1"
+                                        class="d-block display-6 fw-bold "></span>Hours</li>
+                                <li class="d-inlin fs-6"><span id="minutes1"
+                                        class="d-block display-6 fw-bold"></span>Minutes</li>
+                                <li class="d-inlinx fs-6"><span id="seconds1"
+                                        class="d-block display-6 fw-bold"></span>Seconds</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form action="{{ route('course-enrollment-auto') }}" method="POST" class="">
+                        @csrf
+                        <input type="hidden" name="source" value="{{ app('request')->input('utm_source') }}">
+                        <input type="hidden" name="medium" value="{{ app('request')->input('utm_medium') }}">
+                        <input type="hidden" name="campaign" value="{{ app('request')->input('utm_campaign') }}">
+
+
+                        <div class="form-floating mt-3 mb-2">
+                            <input type="text" required class="form-control" id="floatingInput" name="name"
+                                placeholder="name@example.com" @auth value="{{ Auth::user()->name }}" @endauth>
+                            <label for="floatingInput">Full Name</label>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input type="text" required class="form-control" id="floatingInput" name="email"
+                                placeholder="name@example.com" @auth value="{{ Auth::user()->email }}" @endauth>
+                            <label for="floatingInput">Email address</label>
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input type="number" required class="form-control" id="floatingInput" name="mobile"
+                                placeholder="name@example.com" @auth value="{{ Auth::user()->mobile }}" @endauth>
+                            <label for="floatingInput">Mobile Number</label>
+                        </div>
+                        <div class="you-checkbox-item" onclick="toggleRecordingCheckbox(this)"
+                            style="border: 1px solid #29cf84;">
+                            <div class="you-checkbox-green">
+                                <div class="you-checkbox-check">
+                                    <img height="26px"
+                                        src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/5feb5c987b9f08745a9463d2_check-mark-black-outline.svg"
+                                        loading="lazy" alt="" class="you-checkbox-check-tick">
+                                </div>
+                            </div>
+                            <div class="you-checkbox-text text-left">Add Recordings of live Bootcamp at Rs 199 <span
+                                    class="small text-success">(Most Popular)</span></div>
+                        </div>
+                        <p class="">
+                            Three months access of recording. Only available if you attend. This is <strong>EARLY
+                                Bid</strong> price, We will
+                            increase the price to ₹499 later.
+                        </p>
+                        <input type="hidden" name="courseId" value="43">
+                        <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
+                        <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
+                            onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"
+                                id="price">99</span>
+                            <div id="loader" class="loade d-inline-block ms-2"></div>
+                        </button>
+                        <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's
+                            Terms & Conditions and Privacy Policy</p>
+                    </form>
+
+                    {{-- <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-</p> --}}
+
+
+                </div>
+
             </div>
-            <form action="{{ route('course-enrollment-auto') }}" method="POST" class="">
-                @csrf
-                <input type="hidden" name="source" value="{{app('request')->input('utm_source')}}">
-                <input type="hidden" name="medium" value="{{app('request')->input('utm_medium')}}">
-                <input type="hidden" name="campaign"  value="{{app('request')->input('utm_campaign')}}">
-
-
-                <div class="form-floating mt-3 mb-2">
-                    <input type="text" required class="form-control" id="floatingInput" name="name" placeholder="name@example.com" @auth value="{{Auth::user()->name}}" @endauth>
-                    <label for="floatingInput">Full Name</label>
-                  </div>
-                  <div class="form-floating mb-2">
-                    <input type="text" required class="form-control" id="floatingInput" name="email" placeholder="name@example.com" @auth value="{{Auth::user()->email}}" @endauth>
-                    <label for="floatingInput">Email address</label>
-                  </div>
-                  <div class="form-floating mb-2">
-                    <input type="number" required  class="form-control" id="floatingInput" name="mobile" placeholder="name@example.com" @auth value="{{Auth::user()->mobile}}" @endauth>
-                    <label for="floatingInput">Mobile Number</label>
-                  </div>
-                <input type="hidden" name="courseId" value="43">
-                <button type="submit" class="enrollment-button  d-flex align-items-center justify-content-center" onclick="startLoader()">Join bootcamp now <div id="loader" class="loade d-inline-block ms-2"></div></button>
-                <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's Terms & Conditions and Privacy Policy</p>
-            </form>
-            
-            {{-- <p class="" style="color:red">Once the timer hits zero, pricing will be increased to 2199.00/-</p> --}}
-
-           
-           </div>
-            
-          </div>
         </div>
-      </div>
-      </div>
-  {{-- enrollment model ends --}}
-      
-      
+    </div>
+    </div>
+    {{-- enrollment model ends --}}
+
+
 
 
     {{-- enrollment model old  starts --}}
@@ -1116,87 +1261,109 @@
     {{-- enrollment mode ends --}}
 
     <script>
+        function toggleRecordingCheckbox(checkboxItem) {
+            const checkbox = document.getElementById("recordingsCheckbox");
+            const priceElement = document.getElementById("price");
 
-function toggleCheckbox(checkboxItem) {
-    checkboxItem.classList.toggle('checked');
-  }
-  function startTimer() {
-  const second = 1000,
-    minute = second * 60,
-    hour = minute * 60,
-    day = hour * 24;
 
-  let targetDate = localStorage.getItem("targetDate");
-  let expiration = localStorage.getItem("expiration");
+            if (checkbox.value === "0") {
+                checkbox.value = "1";
+                checkboxItem.classList.add("checked");
+                priceElement.innerText = "298";
 
-  if (!targetDate || !expiration || new Date().getTime() > expiration) {
-    targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 1); // Set target date to tomorrow
-    targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
-    expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59, 999).getTime(); // Set expiration to end of the target date
+            } else {
+                checkbox.value = "0";
+                checkboxItem.classList.remove("checked");
+                priceElement.innerText = "99";
 
-    localStorage.setItem("targetDate", targetDate.getTime());
-    localStorage.setItem("expiration", expiration);
-  } else {
-    targetDate = new Date(parseInt(targetDate));
-  }
+            }
+        }
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    let distance = targetDate.getTime() - now;
+        function toggleCheckbox(checkboxItem) {
+            checkboxItem.classList.toggle('checked');
+        }
 
-  if (distance <= 0) {
-    // Reset target date to the next day
-    targetDate.setDate(targetDate.getDate() + 1);
-    targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
-    expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59, 999).getTime(); // Set expiration to end of the target date
+        function startTimer() {
+            const second = 1000,
+                minute = second * 60,
+                hour = minute * 60,
+                day = hour * 24;
 
-    localStorage.setItem("targetDate", targetDate.getTime());
-    localStorage.setItem("expiration", expiration);
+            let targetDate = localStorage.getItem("targetDate");
+            let expiration = localStorage.getItem("expiration");
 
-    // Recalculate the distance with the updated target date
-    distance = targetDate.getTime() - now;
-  }
+            if (!targetDate || !expiration || new Date().getTime() > expiration) {
+                targetDate = new Date();
+                targetDate.setDate(targetDate.getDate() + 1); // Set target date to tomorrow
+                targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
+                expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59,
+                    999).getTime(); // Set expiration to end of the target date
 
-    const days = Math.floor(distance / day);
-    const hours = Math.floor((distance % day) / hour);
-    const minutes = Math.floor((distance % hour) / minute);
-    const seconds = Math.floor((distance % minute) / second);
+                localStorage.setItem("targetDate", targetDate.getTime());
+                localStorage.setItem("expiration", expiration);
+            } else {
+                targetDate = new Date(parseInt(targetDate));
+            }
 
-    document.getElementById("days").innerText = days;
-    document.getElementById("hours").innerText = hours;
-    document.getElementById("minutes").innerText = minutes;
-    document.getElementById("seconds").innerText = seconds;
+            function updateCountdown() {
+                const now = new Date().getTime();
+                let distance = targetDate.getTime() - now;
 
-    document.getElementById("days1").innerText = days;
-    document.getElementById("hours1").innerText = hours;
-    document.getElementById("minutes1").innerText = minutes;
-    document.getElementById("seconds1").innerText = seconds;
+                if (distance <= 0) {
+                    // Reset target date to the next day
+                    targetDate.setDate(targetDate.getDate() + 1);
+                    targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
+                    expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59,
+                        999).getTime(); // Set expiration to end of the target date
 
-    document.getElementById("hours2").innerText = hours;
-    document.getElementById("minutes2").innerText = minutes;
-    document.getElementById("seconds2").innerText = seconds;
-    if (distance < 0) {
-      clearInterval(timer);
-      document.getElementById("headline").innerText = "Class has Started!";
-      document.getElementById("countdown").style.display = "none";
-      document.getElementById("content").style.display = "block";
-      localStorage.removeItem("targetDate");
-      localStorage.removeItem("expiration");
-    }
-  }
+                    localStorage.setItem("targetDate", targetDate.getTime());
+                    localStorage.setItem("expiration", expiration);
 
-  updateCountdown();
-  const timer = setInterval(updateCountdown, 1000);
-}
+                    // Recalculate the distance with the updated target date
+                    distance = targetDate.getTime() - now;
+                }
 
-startTimer();
-function addShakeAnimation() {
-        var button = document.querySelector('.button');
-        button.classList.add('shake');
-        setTimeout(function() {
-            button.classList.remove('shake');
-        }, 300);}
+                const days = Math.floor(distance / day);
+                const hours = Math.floor((distance % day) / hour);
+                const minutes = Math.floor((distance % hour) / minute);
+                const seconds = Math.floor((distance % minute) / second);
+
+                document.getElementById("days").innerText = days;
+                document.getElementById("hours").innerText = hours;
+                document.getElementById("minutes").innerText = minutes;
+                document.getElementById("seconds").innerText = seconds;
+
+                document.getElementById("days1").innerText = days;
+                document.getElementById("hours1").innerText = hours;
+                document.getElementById("minutes1").innerText = minutes;
+                document.getElementById("seconds1").innerText = seconds;
+
+                document.getElementById("hours2").innerText = hours;
+                document.getElementById("minutes2").innerText = minutes;
+                document.getElementById("seconds2").innerText = seconds;
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("headline").innerText = "Class has Started!";
+                    document.getElementById("countdown").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    localStorage.removeItem("targetDate");
+                    localStorage.removeItem("expiration");
+                }
+            }
+
+            updateCountdown();
+            const timer = setInterval(updateCountdown, 1000);
+        }
+
+        startTimer();
+
+        function addShakeAnimation() {
+            var button = document.querySelector('.button');
+            button.classList.add('shake');
+            setTimeout(function() {
+                button.classList.remove('shake');
+            }, 300);
+        }
 
         setInterval(addShakeAnimation, 3000);
     </script>

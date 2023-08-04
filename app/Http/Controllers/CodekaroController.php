@@ -240,14 +240,19 @@ class CodekaroController extends Controller
             $user->save();
         }
     }
-    private function courseEnrollment($userId, $courseId)
+    private function courseEnrollment($userId, $courseId, $request)
     {
+        $request = $request->all();
         $batch = Batch::findOrFail($courseId);
         $a = new CourseEnrollment;
         $a->userId = $userId;
         $a->batchId = $courseId;
         $a->price = $batch->price;
         $a->amountpayable = $batch->payable;
+        if ($request['recordingsCheckbox'] == 1) {
+            // Add the additional amount for the certificate fee (Rs 199)
+            $a->certificateFee = 199;
+        }
         $a->certificateId = substr(md5(time()), 0, 16);
         $a->save();
         $enrollmentId = $a->id;
