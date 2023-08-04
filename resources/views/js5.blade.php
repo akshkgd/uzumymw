@@ -1147,10 +1147,9 @@
                             <div class="you-checkbox-text text-left">Add Recordings of live Bootcamp at Rs 199  <span
                                     class="small text-success">(Most Popular)</span></div>
                         </div>
-                        <p class="">
-                            Three months access of recording. Only available if you attend. This is <strong>EARLY Bid</strong> price, We will
-                            increase the price to ₹499 later.
-                        </p>
+                        <p class="">Three months access of recordings. Only available if you attend. This is <strong>EARLY
+                            Bird</strong> offer, It will increase to 499 once the timer hits zero.
+                    </p>
 
                         <input type="hidden" name="courseId" value="41">
                         <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
