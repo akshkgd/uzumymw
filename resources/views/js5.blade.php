@@ -394,7 +394,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From 9th to 13th August
+                                        From 23rd to 27th August
                                     </div>
                                 </div>
 
@@ -1151,7 +1151,7 @@
                             Bird</strong> offer, It will increase to 499 once the timer hits zero.
                     </p>
 
-                        <input type="hidden" name="courseId" value="41">
+                        <input type="hidden" name="courseId" value="44">
                         <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                         <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
                             onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"

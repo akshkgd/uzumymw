@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Crypt;
 use App\Batch;
@@ -134,7 +135,13 @@ class CourseEnrollmentController extends Controller
         $id = Crypt::decrypt($id);
         $enrollment = CourseEnrollment::findorFail($id);
         $batchId = Batch::findorFail($enrollment->batchId);
-        
+        // $zapierWebhookUrl = 'https://hooks.zapier.com/hooks/catch/15529983/31vx68q/';
+        // $data = [
+        //     'name' => 'John Doe',
+        //     'email' => 'john.doe@example.com',
+        //     // Add any other data you want to send to the Zapier webhook
+        // ];
+        // $response = Http::post($zapierWebhookUrl, $data);
         if (Auth::user()->id == $enrollment->userId && $enrollment->hasPaid == 0) {
             // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
             $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
