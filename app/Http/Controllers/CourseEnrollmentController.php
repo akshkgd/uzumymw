@@ -135,20 +135,15 @@ class CourseEnrollmentController extends Controller
         $id = Crypt::decrypt($id);
         $enrollment = CourseEnrollment::findorFail($id);
         $batchId = Batch::findorFail($enrollment->batchId);
-        // $zapierWebhookUrl = 'https://hooks.zapier.com/hooks/catch/15529983/31vx68q/';
-        // $data = [
-        //     'name' => 'John Doe',
-        //     'email' => 'john.doe@example.com',
-        //     // Add any other data you want to send to the Zapier webhook
-        // ];
-        // $response = Http::post($zapierWebhookUrl, $data);
+        $this->sendOrderIdToPabbly($enrollment, $batchId);
+        
         if (Auth::user()->id == $enrollment->userId && $enrollment->hasPaid == 0) {
             // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
             $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
             $batch = Batch::find($enrollment->batchId);
             $receiptId = Str::random(20);
             $amountPayable = $batchId->payable*100 + $enrollment->certificateFee*100;
-            $order  = $api->order->create(array('amount' => $amountPayable, 'currency' => 'INR', 'notes' => array('Name' => Auth::user()->name, 'Email' => Auth::user()->email, 'UserId'=> Auth::user()->id, 'Phone' => Auth::user()->mobile, 'Course' => $batchId->name, 'StartDate' => Carbon::parse($batch->startDate)->toDateString(), 'EndDate' =>Carbon::parse($batch->endDate)->toDateString(), 'CourseId' => $batchId->id, 'TopicId' => $batchId->topicId )));
+            $order  = $api->order->create(array('amount' => $amountPayable, 'currency' => 'INR', 'notes' => array('Name' =>strtok(Auth::user()->name, ' '), 'Email' => Auth::user()->email, 'UserId'=> Auth::user()->id, 'Phone' => Auth::user()->mobile, 'Course' => $batchId->name, 'StartDate' => Carbon::parse($batch->startDate)->toDateString(), 'EndDate' =>Carbon::parse($batch->endDate)->toDateString(), 'CourseId' => $batchId->id, 'TopicId' => $batchId->topicId )));
             $enrollment->invoiceID = $order->id;
             $enrollment->save();
 
@@ -215,12 +210,22 @@ class CourseEnrollmentController extends Controller
             session()->flash('alert-success', 'Payment Completed Successfully');
             return redirect('/home');
             
-        }
-        
-        
-        
+        }   
     }
 
+    private function sendOrderIdToPabbly($enrollment, $batch){
+        $pabblyWebhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZjMDYzZTA0MzU1MjY0NTUzZDUxMzEi_pc';
+        $name = $enrollment->students->name;
+        $email = $enrollment->students->email;
+        $data = [
+            'firstName' => strtok($name, ' '),
+            'email' => $email,
+            'topicId' => $batch['topicId'],
+
+            // Add any other data you want to send to the Zapier webhook
+        ];
+        $response = Http::post($pabblyWebhookUrl, $data);
+    }
 
     
 
