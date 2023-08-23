@@ -1172,7 +1172,7 @@
                                         loading="lazy" alt="" class="you-checkbox-check-tick">
                                 </div>
                             </div>
-                            <div class="you-checkbox-text text-left">Add Recordings of live Bootcamp at Rs 197 <span
+                            <div class="you-checkbox-text text-left">Add Recordings of live Bootcamp at Rs 199 <span
                                     class="small text-success">(Most Popular)</span></div>
                         </div>
                         <p class="">Three months access of recordings. Only available if you attend. This is <strong>EARLY
@@ -1267,7 +1267,7 @@
             if (checkbox.value === "0") {
                 checkbox.value = "1";
                 checkboxItem.classList.add("checked");
-                priceElement.innerText = "394";
+                priceElement.innerText = "396";
 
             } else {
                 checkbox.value = "0";
