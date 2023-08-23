@@ -453,7 +453,7 @@
                         <a href="" style="width:100% !important"
                             class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99! </h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197! </h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -624,7 +624,7 @@
                     <div class="my-5 text-center l-cta">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -780,7 +780,7 @@
             <div class="my-5 text-center l-cta">
                 <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                     class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                    <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197</h2>
                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -902,7 +902,7 @@
         <div class="my-5 text-center l-cta">
             <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                 class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
+                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197</h2>
                 <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
             </a>
         </div>
@@ -954,7 +954,7 @@
                 <div class="my-5 l-cta">
                     <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                         class="btn ck-btn ck-rounded btn-lg   px-5">
-                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
+                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197</h2>
                         <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                     </a>
                 </div>
@@ -1094,7 +1094,7 @@
                     <div class="my-5 l-cta text-center">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -1104,7 +1104,7 @@
 
     <div class="m-cta text-light">
         <div class="">
-            <p class="m-0 fw-bold text-light">₹99 <span class="small text-white fw-light"
+            <p class="m-0 fw-bold text-light">₹197 <span class="small text-white fw-light"
                     style="text-decoration: line-through"> ₹ 899 </span></p>
             <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span
                     class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
@@ -1172,7 +1172,7 @@
                                         loading="lazy" alt="" class="you-checkbox-check-tick">
                                 </div>
                             </div>
-                            <div class="you-checkbox-text text-left">Add Recordings of live Bootcamp at Rs 199 <span
+                            <div class="you-checkbox-text text-left">Add Recordings of live Bootcamp at Rs 197 <span
                                     class="small text-success">(Most Popular)</span></div>
                         </div>
                         <p class="">Three months access of recordings. Only available if you attend. This is <strong>EARLY
@@ -1182,7 +1182,7 @@
                         <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                         <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
                             onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"
-                                id="price">99</span>
+                                id="price">197</span>
                             <div id="loader" class="loade d-inline-block ms-2"></div>
                         </button>
                         <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's
@@ -1267,12 +1267,12 @@
             if (checkbox.value === "0") {
                 checkbox.value = "1";
                 checkboxItem.classList.add("checked");
-                priceElement.innerText = "298";
+                priceElement.innerText = "394";
 
             } else {
                 checkbox.value = "0";
                 checkboxItem.classList.remove("checked");
-                priceElement.innerText = "99";
+                priceElement.innerText = "197";
 
             }
         }
