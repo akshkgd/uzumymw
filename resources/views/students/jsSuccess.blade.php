@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Development Masterclass</title>
+    <title>Welcome to Javascript Masterclass</title>
     <meta name="keywords" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
     <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
     <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
@@ -96,7 +96,7 @@
                         <h1 class="display-2">🎉</h1>
                       <h2 class="fs-1">Congratulations, you have successfully enrolled for the <span class="wd_highlight1">How to Javascript</span> Bootcamp</h4>
                       <p class="mt-5">Next Step</p>
-                      <a href="https://chat.whatsapp.com/ICbfwmfIF5LKlKy9ItoCmS" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
+                      <a href="https://chat.whatsapp.com/Gvlb5Gjw6TsAde1buUndG5" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
                       {{-- <a href="{{url('/home')}}" class="btn btn-dark btn-lg py-3 px-4 rounded-pill my-2" style="">2. Complete your Profile</a> --}}
 
                     </div>
