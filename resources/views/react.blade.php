@@ -371,7 +371,7 @@
                                 class="wd_highligh underline" style="color:#efa30e;">by building the swiggy clone</span> using react js, <span class="underline text-white"> 3 days live bootcamp</span> </h1>
 
 
-                        <p class="fs-5 text-white text-center">How to CSS - kickstart your journey of full stack developer
+                        <p class="fs-5 text-white text-center">How to React js - kickstart your journey of full stack developer
                             the must-have Bootcamp in 2023.</p>
 
 
