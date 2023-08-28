@@ -49,7 +49,8 @@ Route::view('/teach','teach');
 Route::view('/how-to-css','7wd');
 Route::view('/start-javascript','js5');
 Route::view('/plinth','plinth');
-
+Route::view('/start-react','react');
+Route::view('/react-success','react');
 
 Route::get('/l', function () {
     $feedbacks = Feedback::all()->where('status',0);
