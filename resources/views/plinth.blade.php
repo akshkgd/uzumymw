@@ -195,13 +195,14 @@
 
                     </div>
 
-                    <div class="my-5 text-center l-cta">
-                        <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
-                            class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197</h2>
+                    <div class="my-3 white text-center">
+                        <a href="" class="btn ck-btn ck-rounded btn-lg mt-3  px-5" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
+                        data-bs-target="#enroll">
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Enroll Now for Free</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
+                    
                 </div>
             </div>
     </section>
