@@ -442,7 +442,7 @@
                     </div>
                     {{-- <div id="js-player" style="border-radius: 16px; color:white;" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="slentvTk3gY"></div> --}}
 
-                </div>
+                
                 <div class="col-lg-10 order-3 l-cta">
                     <div class="mb-5 white">
                         <a href="" style="width:100% !important"
