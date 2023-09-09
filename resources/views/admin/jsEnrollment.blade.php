@@ -48,7 +48,7 @@
                                             <td>{{$enrollment->students->field3}} </td>
                                             <td>
                                                 @if($enrollment->certificateFee > 0)
-                                                <div class="rounded-pill bg-success text-white d-inline px-2 py-1" style="font-size: 12px">Recording Access</div>
+                                                <div class="rounded-pill bg-success text-white d-inline px-2 py-1" style="font-size: 12px">Recordings</div>
                                                 @else
                                                 <div class="rounded-pill bg-danger text-white d-inline px-2 py-1" style="font-size: 12px">No Access</div>
 
