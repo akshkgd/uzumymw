@@ -40,6 +40,28 @@ class AdminController extends Controller
         }
         return view('admin.emails', compact('users'))->with('i');
     }
+    public function cssEnrollments(){
+        $enrollments = CourseEnrollment::join('batches', 'course_enrollments.batchId', '=', 'batches.id')
+    ->where('batches.topicId', 100)
+    ->select('course_enrollments.*')->latest() 
+    ->paginate(100); 
+    return view('admin.cssEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
+    }
+    public function jsEnrollments(){
+        $enrollments = CourseEnrollment::join('batches', 'course_enrollments.batchId', '=', 'batches.id')
+    ->where('batches.topicId', 101)
+    ->select('course_enrollments.*')->latest() 
+    ->paginate(100); 
+    return view('admin.jsEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
+    }
+    public function reactEnrollments(){
+        $enrollments = CourseEnrollment::join('batches', 'course_enrollments.batchId', '=', 'batches.id')
+    ->where('batches.topicId', 102)
+    ->select('course_enrollments.*')->latest() 
+    ->paginate(100); 
+    return view('admin.reactEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
+    }
+
     public function students()
     {
         $users = User::latest()->paginate(50);

@@ -88,6 +88,11 @@
                 <ul class="dropdown-menu shadow" aria-labelledby="navbarDropdown">
                   <li><a class="dropdown-item" href="{{url('admin/feedbacks')}}">Feedbacks</a></li>
                   <li><a class="dropdown-item" href="#">All Webinar</a></li>
+                  <li><a class="dropdown-item" href="{{url('admin/css-enrollments')}}">CSS Enrollments</a></li>
+                  <li><a class="dropdown-item" href="{{url('admin/js-enrollments')}}">JS Enrollments</a></li>
+                  <li><a class="dropdown-item" href="{{url('admin/react-enrollments')}}">React Enrollments</a></li>
+
+
                 </ul>
               </li>
           </ul>

@@ -169,6 +169,9 @@ Route::get('/generate-all-cetificates/{id}', 'TeacherController@generateAllCerti
 
 //admin
 Route::get('/admin/students', 'AdminController@students');
+Route::get('/admin/css-enrollments', 'AdminController@cssEnrollments');
+Route::get('/admin/js-enrollments', 'AdminController@jsEnrollments');
+Route::get('/admin/react-enrollments', 'AdminController@reactEnrollments');
 Route::get('/admin/students/{id}', 'AdminController@studentDetails');
 Route::post('/search', 'AdminController@search')->name('search');
 Route::get('/admin/ban-student/{id}', 'AdminController@banStudent');
