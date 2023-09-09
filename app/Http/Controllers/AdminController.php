@@ -43,6 +43,7 @@ class AdminController extends Controller
     public function cssEnrollments(){
         $enrollments = CourseEnrollment::join('batches', 'course_enrollments.batchId', '=', 'batches.id')
     ->where('batches.topicId', 100)
+    ->where('course_enrollments.hasPaid', 1)
     ->select('course_enrollments.*')->latest() 
     ->paginate(100); 
     return view('admin.cssEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
@@ -50,6 +51,7 @@ class AdminController extends Controller
     public function jsEnrollments(){
         $enrollments = CourseEnrollment::join('batches', 'course_enrollments.batchId', '=', 'batches.id')
     ->where('batches.topicId', 101)
+    ->where('course_enrollments.hasPaid', 1)
     ->select('course_enrollments.*')->latest() 
     ->paginate(100); 
     return view('admin.jsEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
@@ -57,6 +59,7 @@ class AdminController extends Controller
     public function reactEnrollments(){
         $enrollments = CourseEnrollment::join('batches', 'course_enrollments.batchId', '=', 'batches.id')
     ->where('batches.topicId', 102)
+    ->where('course_enrollments.hasPaid', 1)
     ->select('course_enrollments.*')->latest() 
     ->paginate(100); 
     return view('admin.reactEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
