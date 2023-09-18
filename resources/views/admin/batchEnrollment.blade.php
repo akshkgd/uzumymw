@@ -107,7 +107,7 @@
                                             <td>{{ $enrollment->students->mobile }}</td>
                                             <td>{{ $enrollment->field2}}</td>
                                             <td>{{ ($enrollment->amountPaid) / 100 }}</td>
-                                            <td>{{ $enrollment->created_at->format('d M ')}}</td>
+                                            <td>{{ $enrollment->paitAt->format('d M ')}}</td>
                                             <td>{{ $enrollment->created_at}} </td>
 
                                             <td>
