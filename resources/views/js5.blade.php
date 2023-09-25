@@ -5,6 +5,10 @@
     e('Master in-demand web development skills with real work experience of building
     professional work-like projects'))
     <style>
+        body{
+            /* -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important; */
+        }
         .recording-container {
             padding: 1rem 0.75rem;
             border: 1px solid lightgray;
