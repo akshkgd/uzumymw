@@ -96,7 +96,7 @@
                         <h1 class="display-2">🎉</h1>
                       <h2 class="fs-1">Congratulations, you have successfully enrolled for the <span class="wd_highlight1">How to CSS</span> Bootcamp</h4>
                       <p class="mt-5">Next Step</p>
-                      <a href="https://chat.whatsapp.com/GluBDMr7FnEDmiY0VwFgs6" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
+                      <a href="https://chat.whatsapp.com/Bh11X64s9pI18HXwLZqImu" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
                       {{-- <a href="{{url('/home')}}" class="btn btn-dark btn-lg py-3 px-4 rounded-pill my-2" style="">2. Complete your Profile</a> --}}
 
                     </div>
@@ -111,23 +111,24 @@
 
 
     
-    <section class="d-none">
+    <section class="">
         <div class="container text-center ct">
-            <h1 id="headlin fw-600 mb-0">Live class is starting in</h1>
+            <h1 id="headlin fw-600 mb-0">Live class will start from</h1>
+            <h2>Wednesday, 11th October at 08:00 PM</h2>
             <div id="countdown">
-              <ul>
+              {{-- <ul>
                 <li><span id="days"></span>days</li>
                 <li><span id="hours"></span>Hours</li>
                 <li><span id="minutes"></span>Minutes</li>
                 <li><span id="seconds"></span>Seconds</li>
-              </ul>
+              </ul> --}}
             </div>
-            <div id="content" class="emoji">
+            {{-- <div id="content" class="emoji">
               <span>🥳</span>
               <span>🎉</span>
               <span>🎂</span>
               <p id="headline"></p>
-            </div>
+            </div> --}}
             
           </div>
   </section>

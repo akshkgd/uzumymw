@@ -397,7 +397,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From 27th September to 1st October
+                                        From 11th October to 15th October
                                     </div>
                                 </div>
 
@@ -406,7 +406,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l4.svg') }}" alt="">
-                                        6 PM IST (2 hours live)
+                                        8 PM IST (1 hours live)
                                     </div>
                                 </div>
                             </div>
@@ -1178,7 +1178,7 @@
                         <p class="">Three months access of recordings. Only available if you attend. This is <strong>EARLY
                                 Bird</strong> offer, It will increase to 499 once the timer hits zero.
                         </p>
-                        <input type="hidden" name="courseId" value="52">
+                        <input type="hidden" name="courseId" value="54">
                         <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                         <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
                             onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"
