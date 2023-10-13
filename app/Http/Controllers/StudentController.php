@@ -56,6 +56,7 @@ class StudentController extends Controller
             // batchId is batchEnrollemnt Id
             $batchId = $id;
             $id = decrypt($id);
+            $chapterId = decrypt($videoLink);
         } catch (DecryptException $e) {
         }
         
@@ -63,13 +64,14 @@ class StudentController extends Controller
         if(Auth::User()->id == $enrollment->userId){
         if ($enrollment->hasPaid == 1) {
             if ($videoLink) {
-                $video = BatchContent::where('batchId', $enrollment->batchId)->where('type', 2)->where('videoLink', $videoLink)->first();
-                $content = BatchContent::where('batchId', $enrollment->batchId)->where('type', 2)->latest()->get();
-                return view('students.recordings', compact('content', 'batchId', 'video'));
+                $video = BatchContent::find($chapterId);
+                // $video = BatchContent::where('batchId', $enrollment->batchId)->where('videoLink', $videoLink)->first();
+                $content = BatchContent::where('batchId', $enrollment->batchId)->latest()->get();
+                return view('students.recordings', compact('content', 'batchId', 'video', 'enrollment'));
             } else {
-                $content = BatchContent::where('batchId', $enrollment->batchId)->where('type', 2)->latest()->get();
-                $video = BatchContent::where('batchId', $enrollment->batchId)->where('type', 2)->latest()->first();
-                return view('students.recordings', compact('content', 'batchId', 'video'));
+                $content = BatchContent::where('batchId', $enrollment->batchId)->latest()->get();
+                $video = BatchContent::where('batchId', $enrollment->batchId)->latest()->first();
+                return view('students.recordings', compact('content', 'batchId', 'video','enrollment'));
             }
         } else {
             session()->flash('alert-warning', 'Complete your payment to see notes and assignments');

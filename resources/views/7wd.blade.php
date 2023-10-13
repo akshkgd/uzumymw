@@ -8,6 +8,10 @@
 
 
     <style>
+        * {
+            -webkit-font-smoothing: antialiased !important;
+            -moz-osx-font-smoothing: grayscale !important;
+        }
         .recording-container {
             padding: 1rem 0.75rem;
             border: 1px solid lightgray;
@@ -355,14 +359,14 @@
     <section class="pt-5" style=" background-color: #212121;">
         <div class="container">
             <div class="row justify-content-center align-items-cente">
-                <div class="col-md-8">
+                <div class="col-md-10">
                     <main class="text-center">
-                        <h1 class="display-6 fw-bod  " style="line-height:1.5; color:aliceblue; font-weight:600">Master <span
+                        <h1 class="fs-2 fw-bod  " style="font-size: 3vmax; line-height:1.5; color:aliceblue; font-weight:600">Master <span
                                 class="wd_highligh" style="color:#efa30e;">Advance concepts of CSS</span> to create websites
                             like YouTube, Netflix and ChatGPT in just 5 days</h1>
 
 
-                        <p class="fs-5 text-white text-center">How to CSS - kickstart your journey of full stack developer
+                        <p style="font-size:1vw;" class="fs-5 text-white text-center">How to CSS - kickstart your journey of full stack developer
                             the must-have Bootcamp in 2023.</p>
 
 

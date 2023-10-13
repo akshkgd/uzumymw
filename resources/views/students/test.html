@@ -1,0 +1,463 @@
+
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/dist/output.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="">
+        <div class="grid grid-cols-12">
+        <!-- <div class="flex flex-col-reverse grid-cols-5 gap-10 pt-5 mt-0 lg:grid"> -->
+            
+            <div class="col-span-4 sticky top-0 self-start">
+                <div class="overflow-hidden  bg-white border border-t-0 border-l-0 border-bottom-0 border-r-orange-50 rounded-none lg:rounded-none">
+                    <div class="flex justify-between px-5 py-4 bg-white \">
+                        <div class="flex flex-col items-start">
+                            <h2 class="text-lg font-bold text-left">Web dev Starter Bootcamp</h2>
+                            <span class="text-sm">13 videos <small class="text-xs">(16+ Hours)</small></span>
+                        </div>
+                        <div class="flex flex-col items-end autoplay-option">
+                            <p class="mb-1 text-sm text-gray-700">Autoplay?</p>
+                            <span role="checkbox" tabindex="0" x-on:click="on = !on; window.toggleAutoPlay(on)"
+                                x-on:keydown.space.prevent="on = !on" x-on:aria-checked="on.toString()"
+                                aria-checked="true" x-data="{ on: window.autoplay }"
+                                x-bind:class="{ 'bg-gray-200': !on, 'bg-blue-500': on }"
+                                class="relative inline-flex flex-shrink-0 h-6 transition-colors duration-200 ease-in-out border-2 border-transparent rounded-full cursor-pointer w-11 focus:outline-none focus:shadow-outline">
+                                <span aria-hidden="true" x-bind:class="{ 'translate-x-5': on, 'translate-x-0': !on }"
+                                    class="inline-block w-5 h-5 transition duration-200 ease-in-out transform translate-x-5 bg-white rounded-full shadow"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div
+                        class="flex flex-col items-start justify-center w-full h-auto px-5 bg-white border-b border-orange-200">
+                        <div class="w-full h-2 overflow-hidden bg-gray-200 rounded-full">
+                            <div id="progress-bar"
+                                class="w-0 h-2 transition-all duration-150 ease-out transform bg-green-400 rounded-full"
+                                style="width: 20%"></div>
+                        </div>
+                        <div class="mt-1 mb-2 text-xs text-gray-600"><span id="progress-num">0</span>% completed</div>
+                    </div>
+                    <div wire:click="episodeClick('387')" id="episode-1" data-order="1"
+                        class="bg-orange-50 text-gray-900  hover:bg-orange-100  relative flex items-center">
+                        <div data-order="1" data-access="1"
+                            class="relative z-20 flex items-center justify-start w-full h-16 pl-4 font-medium text-gray-700 border-b border-orange-200 cursor-pointer">
+                            <div class="w-3 h-3 mr-2">
+                                <div class>
+                                    <svg class="text-gray-800 w-3 h-3 text-gray-500 fill-current" viewBox="0 0 22 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M.474.996v22.001a1 1 0 001.5.868l19.052-11.001a1 1 0 000-1.733L1.974.131c-.622-.36-1.5.053-1.5.865z" />
+                                    </svg>
+                                    
+                                </div>
+                            </div>
+                            
+                            <span class="flex items-center truncate">
+                                <span class="w-64 text-sm text-left truncate ellipses">1. Introduction to Bash
+                                    Scripting</span>
+                                
+                            </span>
+                        </div>
+                        <div class="absolute right-0 z-30 flex items-center w-6 h-6 mr-4 rounded-full">
+                            <div class=" rounded-full w-6 h-6 bg-gray-400 flex justify-center items-center cursor-pointer"
+                                wire:click.stop="toggleCompleted('387')">
+                                <svg fill="none" class="w-4 h-4 text-white" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <div wire:ignore
+                            class="absolute top-0 z-10 w-auto h-full transition-all duration-150 ease-out transform bg-gray-300"
+                            id="episode-progress"></div>
+                    </div>
+                    <div wire:click="episodeClick('373')" id="episode-2" data-order="2"
+                        class="bg-white  hover:bg-orange-100 relative flex items-center">
+                        <div data-order="2" data-access
+                            class="relative z-20 flex items-center justify-start w-full h-16 pl-4 font-medium text-gray-700 border-b border-gray-200 cursor-pointer">
+                            <div class="w-3 h-3 mr-2">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5 -mt-1 -ml-1">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="hidden absolute top-0 left-0 bg-gray-600 text-white text-xxs px-2 leading-4 rounded-br-lg">Now
+                                Playing</span>
+                            <span class="flex items-center truncate">
+                                <span class="w-64 text-sm text-left truncate ellipses">2. Getting Started</span>
+                                
+
+                            </span>
+                        </div>
+                        <div class="absolute right-0 z-30 flex items-center w-6 h-6 mr-4 rounded-full">
+                            <div class=" rounded-full w-6 h-6 bg-gray-400 flex justify-center items-center cursor-pointer"
+                                wire:click.stop="toggleCompleted('373')">
+                                <svg fill="none" class="w-4 h-4 text-white" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div wire:click="episodeClick('374')" id="episode-3" data-order="3"
+                        class=" bg-white  hover:bg-violet-200 relative flex items-center">
+                        <div data-order="3" data-access
+                            class="relative z-20 flex items-center justify-start w-full h-16 pl-4 font-medium text-gray-700 border-b border-gray-200 cursor-pointer">
+                            <div class="w-3 h-3 mr-2">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5 -mt-1 -ml-1">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="hidden absolute top-0 left-0 bg-gray-600 text-white text-xxs px-2 leading-4 rounded-br-lg">Now
+                                Playing</span>
+                            <span class="flex items-center truncate">
+                                <span class="w-64 text-sm text-left truncate ellipses">3. Hello World</span>
+                                
+                            </span>
+                        </div>
+                        <div class="absolute right-0 z-30 flex items-center w-6 h-6 mr-4 rounded-full">
+                            <div class=" rounded-full w-6 h-6 bg-gray-400 flex justify-center items-center cursor-pointer"
+                                wire:click.stop="toggleCompleted('374')">
+                                <svg fill="none" class="w-4 h-4 text-white" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div wire:click="episodeClick('375')" id="episode-4" data-order="4"
+                        class="  hover:bg-gray-200 relative flex items-center">
+                        <div data-order="4" data-access
+                            class="relative z-20 flex items-center justify-start w-full h-16 pl-4 font-medium text-gray-700 border-b border-gray-200 cursor-pointer">
+                            <div class="w-3 h-3 mr-2">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5 -mt-1 -ml-1">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="hidden absolute top-0 left-0 bg-gray-600 text-white text-xxs px-2 leading-4 rounded-br-lg">Now
+                                Playing</span>
+                            <span class="flex items-center truncate">
+                                <span class="w-64 text-sm text-left truncate ellipses">4. Variables</span>
+                                
+                            </span>
+                        </div>
+                        <div class="absolute right-0 z-30 flex items-center w-6 h-6 mr-4 rounded-full">
+                            <div class=" rounded-full w-6 h-6 bg-gray-400 flex justify-center items-center cursor-pointer"
+                                wire:click.stop="toggleCompleted('375')">
+                                <svg fill="none" class="w-4 h-4 text-white" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div wire:click="episodeClick('376')" id="episode-5" data-order="5"
+                        class="  hover:bg-gray-200 relative flex items-center">
+                        <div data-order="5" data-access
+                            class="relative z-20 flex items-center justify-start w-full h-16 pl-4 font-medium text-gray-700 border-b border-gray-200 cursor-pointer">
+                            <div class="w-3 h-3 mr-2">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5 -mt-1 -ml-1">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="hidden absolute top-0 left-0 bg-gray-600 text-white text-xxs px-2 leading-4 rounded-br-lg">Now
+                                Playing</span>
+                            <span class="flex items-center truncate">
+                                <span class="w-64 text-sm text-left truncate ellipses">5. User Input</span>
+                                
+                            </span>
+                        </div>
+                        <div class="absolute right-0 z-30 flex items-center w-6 h-6 mr-4 rounded-full">
+                            <div class=" rounded-full w-6 h-6 bg-gray-400 flex justify-center items-center cursor-pointer"
+                                wire:click.stop="toggleCompleted('376')">
+                                <svg fill="none" class="w-4 h-4 text-white" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div wire:click="episodeClick('377')" id="episode-6" data-order="6"
+                        class="  hover:bg-gray-200 relative flex items-center">
+                        <div data-order="6" data-access
+                            class="relative z-20 flex items-center justify-start w-full h-16 pl-4 font-medium text-gray-700 border-b border-gray-200 cursor-pointer">
+                            <div class="w-3 h-3 mr-2">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5 -mt-1 -ml-1">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="hidden absolute top-0 left-0 bg-gray-600 text-white text-xxs px-2 leading-4 rounded-br-lg">Now
+                                Playing</span>
+                            <span class="flex items-center truncate">
+                                <span class="w-64 text-sm text-left truncate ellipses">6. Comments</span>
+                                
+                            </span>
+                        </div>
+                        <div class="absolute right-0 z-30 flex items-center w-6 h-6 mr-4 rounded-full">
+                            <div class=" rounded-full w-6 h-6 bg-gray-400 flex justify-center items-center cursor-pointer"
+                                wire:click.stop="toggleCompleted('377')">
+                                <svg fill="none" class="w-4 h-4 text-white" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div wire:click="episodeClick('378')" id="episode-7" data-order="7"
+                        class="  hover:bg-gray-200 relative flex items-center">
+                        <div data-order="7" data-access
+                            class="relative z-20 flex items-center justify-start w-full h-16 pl-4 font-medium text-gray-700 border-b border-gray-200 cursor-pointer">
+                            <div class="w-3 h-3 mr-2">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5 -mt-1 -ml-1">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="hidden absolute top-0 left-0 bg-gray-600 text-white text-xxs px-2 leading-4 rounded-br-lg">Now
+                                Playing</span>
+                            <span class="flex items-center truncate">
+                                <span class="w-64 text-sm text-left truncate ellipses">7. Arguments</span>
+                                
+                            </span>
+                        </div>
+                        <div class="absolute right-0 z-30 flex items-center w-6 h-6 mr-4 rounded-full">
+                            <div class=" rounded-full w-6 h-6 bg-gray-400 flex justify-center items-center cursor-pointer"
+                                wire:click.stop="toggleCompleted('378')">
+                                <svg fill="none" class="w-4 h-4 text-white" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div wire:click="episodeClick('379')" id="episode-8" data-order="8"
+                        class="  hover:bg-gray-200 relative flex items-center">
+                        <div data-order="8" data-access
+                            class="relative z-20 flex items-center justify-start w-full h-16 pl-4 font-medium text-gray-700 border-b border-gray-200 cursor-pointer">
+                            <div class="w-3 h-3 mr-2">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5 -mt-1 -ml-1">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="hidden absolute top-0 left-0 bg-gray-600 text-white text-xxs px-2 leading-4 rounded-br-lg">Now
+                                Playing</span>
+                            <span class="flex items-center truncate">
+                                <span class="w-64 text-sm text-left truncate ellipses">8. Arrays</span>
+                                
+                            </span>
+                        </div>
+                        <div class="absolute right-0 z-30 flex items-center w-6 h-6 mr-4 rounded-full">
+                            <div class=" rounded-full w-6 h-6 bg-gray-400 flex justify-center items-center cursor-pointer"
+                                wire:click.stop="toggleCompleted('379')">
+                                <svg fill="none" class="w-4 h-4 text-white" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div wire:click="episodeClick('380')" id="episode-9" data-order="9"
+                        class="  hover:bg-gray-200 relative flex items-center">
+                        <div data-order="9" data-access
+                            class="relative z-20 flex items-center justify-start w-full h-16 pl-4 font-medium text-gray-700 border-b border-gray-200 cursor-pointer">
+                            <div class="w-3 h-3 mr-2">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5 -mt-1 -ml-1">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="hidden absolute top-0 left-0 bg-gray-600 text-white text-xxs px-2 leading-4 rounded-br-lg">Now
+                                Playing</span>
+                            <span class="flex items-center truncate">
+                                <span class="w-64 text-sm text-left truncate ellipses">9. Conditionals</span>
+                                
+                            </span>
+                        </div>
+                        <div class="absolute right-0 z-30 flex items-center w-6 h-6 mr-4 rounded-full">
+                            <div class=" rounded-full w-6 h-6 bg-gray-400 flex justify-center items-center cursor-pointer"
+                                wire:click.stop="toggleCompleted('380')">
+                                <svg fill="none" class="w-4 h-4 text-white" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div wire:click="episodeClick('388')" id="episode-10" data-order="10"
+                        class="  hover:bg-gray-200 relative flex items-center">
+                        <div data-order="10" data-access
+                            class="relative z-20 flex items-center justify-start w-full h-16 pl-4 font-medium text-gray-700 border-b border-gray-200 cursor-pointer">
+                            <div class="w-3 h-3 mr-2">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5 -mt-1 -ml-1">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <span
+                                class="hidden absolute top-0 left-0 bg-gray-600 text-white text-xxs px-2 leading-4 rounded-br-lg">Now
+                                Playing</span>
+                            <span class="flex items-center truncate">
+                                <span class="w-64 text-sm text-left truncate ellipses">10. Loops</span>
+                                
+                            </span>
+                        </div>
+                        <div class="absolute right-0 z-30 flex items-center w-6 h-6 mr-4 rounded-full">
+                            <div class=" rounded-full w-6 h-6 bg-gray-400 flex justify-center items-center cursor-pointer"
+                                wire:click.stop="toggleCompleted('388')">
+                                <svg fill="none" class="w-4 h-4 text-white" stroke="currentColor" stroke-linecap="round"
+                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div wire:click="episodeClick('382')" id="episode-11" data-order="11"
+                        class="  hover:bg-gray-200 relative flex items-center">
+                        <div data-order="11" data-access
+                            class="relative z-20 flex items-center justify-start w-full h-16 pl-4 font-medium text-gray-700 border-b border-gray-200 cursor-pointer">
+                            <div class="w-3 h-3 mr-2">
+                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" viewBox="0 0 24 24" class="w-5 h-5 -mt-1 -ml-1">
+                                    <path
+                                        d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        <div class="col-span-8  text-left">
+                            <div class="fle flex-col items-start justify-center p-10">
+                                <!-- <video class="rounded-lg w-auto" poster="../public/css.png" id="player" crossorigin playsinline controls>
+                                    <source src="https://player.vimeo.com/external/508113091.hd.mp4?s=f33b443bb1b14bc884441e15ac2f83ea5ce7f1a6&amp;profile_id=175&amp;oauth2_token_id=1146955538" type="video/mp4" size="1080">
+                                    <source src="https://player.vimeo.com/external/508113091.hd.mp4?s=f33b443bb1b14bc884441e15ac2f83ea5ce7f1a6&amp;profile_id=174&amp;oauth2_token_id=1146955538" type="video/mp4" size="720">
+                                    <source src="https://player.vimeo.com/external/508113091.sd.mp4?s=5b9295fb8cb63b9d35f761f118ba985e6d381bb7&amp;profile_id=165&amp;oauth2_token_id=1146955538" type="video/mp4" size="480">
+                                    <source src="https://player.vimeo.com/external/508113091.sd.mp4?s=5b9295fb8cb63b9d35f761f118ba985e6d381bb7&amp;profile_id=164&amp;oauth2_token_id=1146955538" type="video/mp4" size="360">
+                                    </video> -->
+                                    <div style="padding:60.39% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/873986620?badge=0&amp;autopause=0&amp;quality_selector=1&amp;progress_bar=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="quick time player test 1"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                                    <!-- <div style="padding:50% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/873986826?badge=0&amp;autopause=0&amp;quality_selector=1&amp;progress_bar=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Recording   Box Model Usecases   Flexbox - 650b1d1be4b0531efb10ab18"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> -->
+                                <h1 itemprop="name" class="text-3xl font-black text-gray-900 dark:text-gray-100 mt-10">Introduction to
+                                    Bootcamp </h1>
+                                <p class="text-sm text-gray-600 dark:text-gray-200 course-created">Created on February 3, 2021</p>
+                            </div>
+                            <div>
+                                
+                            </div>
+                            <article class="mt-5 p-10 prose md:prose-xl lg:prose-2xl dark:text-gray-100">
+                                <div class="video-details" itemprop="description">
+                                    <p>Hello everybody! Welcome to this Introduction to bash scripting video series, where you will
+                                        learn the basics of bash scripting and start creating some awesome scripts! </p>
+                                    <p>My name is Bobby and I've been working as a Linux system administrator for the past 7 years
+                                        and a few months ago I wrote an opensource ebook on how to get started with Bash scripting,
+                                        for more information on how to download the book for free check out the video description.
+                                    </p>
+                                    <p>In this video series, we are going to spin up a Linux server on DigitalOcean and create our
+                                        scripts on there. If you are new to this channel make sure to hit the subscribe button and I
+                                        will see you in the next video!</p>
+                                    <p>Useful links:</p>
+                                    <p>* <a href="https://github.com/bobbyiliev/introduction-to-bash-scripting" target="_blank">The
+                                            Introduction to Bash Scripting Opensource eBook</a></p>
+                                    <p><span
+                                            style="background-color: initial; font-family: &quot;Inter var&quot;, system-ui, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, &quot;Helvetica Neue&quot;, Arial, &quot;Noto Sans&quot;, sans-serif, &quot;Apple Color Emoji&quot;, &quot;Segoe UI Emoji&quot;, &quot;Segoe UI Symbol&quot;, &quot;Noto Color Emoji&quot;;">*
+                                            <a href="https://m.do.co/c/2a9bba940f39" target="_blank">Free $100 Credit For
+                                                DigitalOcean</a></span></p>
+                                    <p>* <a href="https://devdojo.com/guide/bash" target="_blank">DevDojo Bash guide</a></p>
+                                    <p>* <a href="https://ebook.bobby.sh" target="_blank">Website</a></p>
+                                    <p>* <a href="https://twitter.com/bobbyiliev_" target="_blank">Twitter</a></p>
+                                    <p>* <a href="https://www.youtube.com/channel/UCQWmdHTeAO0UvaNqve9udRw"
+                                            target="_blank">YouTube</a></p>
+                                </div>
+                            </article>
+                            <div class="relative">
+                                <section wire:id="rBiYmqr2nADU0Qg9inck"
+                                    wire:initial-data="{&quot;fingerprint&quot;:{&quot;id&quot;:&quot;rBiYmqr2nADU0Qg9inck&quot;,&quot;name&quot;:&quot;comment&quot;,&quot;locale&quot;:&quot;en&quot;,&quot;path&quot;:&quot;course\/introduction-to-bash-scripting&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;v&quot;:&quot;acj&quot;},&quot;effects&quot;:{&quot;listeners&quot;:[&quot;loadComments&quot;]},&quot;serverMemo&quot;:{&quot;children&quot;:[],&quot;errors&quot;:[],&quot;htmlHash&quot;:&quot;5c932c6d&quot;,&quot;data&quot;:{&quot;numResults&quot;:15,&quot;itemId&quot;:null,&quot;type&quot;:null,&quot;model&quot;:[],&quot;body&quot;:&quot;&quot;,&quot;loadComments&quot;:false,&quot;commentRandomId&quot;:0,&quot;limit&quot;:15},&quot;dataMeta&quot;:{&quot;models&quot;:{&quot;model&quot;:{&quot;class&quot;:&quot;App\\Models\\Course&quot;,&quot;id&quot;:96,&quot;relations&quot;:[&quot;episodes&quot;,&quot;user&quot;,&quot;tags&quot;],&quot;connection&quot;:&quot;mysql&quot;,&quot;collectionClass&quot;:null}}},&quot;checksum&quot;:&quot;51c6c55c8dba7f73624666ff725e3c9e422205bfddd522f375c5b64ddd1fd19a&quot;}}"
+                                    x-intersect.once:enter="window.livewire.emit('loadComments');"
+                                    class="relative px-5 sm:px-8 py-10 theme-bg theme-border-t">
+                                    <div id="comments">
+                                        
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        </div>
+
+
+
+                        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.0/dist/cdn.min.js"></script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+</body>
+
+</html>

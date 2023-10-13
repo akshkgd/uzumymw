@@ -9,72 +9,19 @@
         }
     </style>
 
-    
-  <nav class="navbar p-5 shadow" data-overlay>
-    {{-- <h3 class="intro-title">Web dev starter bootcamp</h3> --}}
-    <img src="{{asset('assets/img/color-1.svg')}}" height="34" alt="">
+    {{-- <div class="navbar-container ">
+  <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
+   
   </nav>
-
+</div> --}}
 
 
     @isset($content)
         @if ($content->count() > 0)
             <section>
-
-
-{{-- tailwind --}}
-<div class="">
-    <div class="player-container">
-    <!-- <div class="flex flex-col-reverse grid-cols-5 gap-10 pt-5 mt-0 lg:grid"> -->
-        
-        <div class="sidebar">
-            <div class="intro">
-                <h2 class="intro-title">{{$enrollment->batch->name}}</h2>
-                <span class="intro-desc">13 videos <small class="text-xs">(16+ Hours)</small></span>
-            </div>
-                @foreach ($content as $c)
-               
-                <a class="item" style="" href="{{ action('StudentController@recordings', [$batchId, Crypt::encrypt($c->id)]) }}">
-                    @if($c->type == 2)
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
-                        <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
-                      </svg>
-                      @else
-                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-text-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-                      </svg>
-                      @endif
-                        {{$c->title}}
-                    
-                </a>
-                @endforeach
-</div>
-<div class="col-span-8 player text-left">
-            
-        @if ($video->videoLink != '' && $video->type == 2)
-        <div id="js-player" class="js-player" data-plyr-provider={{strlen($video->videoLink)>10 ? "youtube" : "vimeo"}}
-            data-plyr-embed-id="{{ $video->videoLink }}"></div>
-    @endif
-            {{-- text --}}
-            <div class="mt-5">
-                <h1 class="lead-1 pt-2 pb-0" id="title">{{ $video->title }}</h1>
-
-                {!! $video->desc !!}
-                {{ $video->id }}
-                
-            </div>
-    
-    <div>
-
-{{-- tailwind ends --}}
-
-
-
-
-
                 <div class="container" style="padding:0 !important;">
                     <div class="row justify-content-center">
-                      <div class="col-lg-4 col-xl-4 d-none" style="display: none">
+                      <div class="col-lg-4 col-xl-4">
                         <div class=" card card-dark shadow-3 border-none border-end border-muted " style="height: 600px; overflow-y: auto;">
                             <div class="">
                                 <h4 class="px-3 py-2 m-0 ck-font fw-400">Previous Recordings</h3>
@@ -102,19 +49,17 @@
 
                                 @isset($video)
                                     <div class="mx-5">
-                                    {{-- @if ($video->videoLink != '')
+                                    @if ($video->videoLink != '')
                                         <div id="js-player" class="js-player" data-plyr-provider="youtube"
                                             data-plyr-embed-id="{{ $video->videoLink }}"></div>
-                                    @endif --}}
+                                    @endif
                                     {{-- <div id="player" class="plyr" class="js-player" data-plyr-provider="youtube" data-plyr-embed-id="{{$video->videoLink}}"></div> --}}
 
-                                    {{-- <div class="">
-                                        <h1 class="lead-1 pt-2 pb-0" id="title">{{ $video->title }}</h1>
-
+                                    <h1 class="lead-1 pt-2 pb-0" id="title">{{ $video->title }}</h1>
+                                    <div class="">
                                         {!! $video->desc !!}
                                         {{ $video->id }}
-                                        
-                                    </div> --}}
+                                    </div>
                                   </div>
                                 </div>
                             @endisset
@@ -134,15 +79,18 @@
                 </div>
             </section>
         @else
-            
-                        <div class="rec-nf">
-                            <img src="{{ asset('assets/img/nf.svg') }}" alt="" class="rec-nf-img">
-                            <h1 class="lead-1">No recordings found! </h1>
+            <section class="">
+                <div class="container mt-5 pt-5">
+
+                    <div class="row justify-content-center text-center">
+                        <div class="col-lg-5 col-md-5 d-non">
+                            <img src="{{ asset('assets/img/search_1.png') }}" alt="" class="img-fluid">
+                            <h1 class="lead-1">No recordings found, </h1>
                             <p class="lead">Recordings will be added shortly, for more details get in touch with your mentor.
                             </p>
-                            {{-- <a href="{{ url('/home') }}" class="btn btn-primary fw-400">Homepage</a> --}}
-                            {{-- <a href="{{ action('BatchController@batchDetails', $batchId) }}"
-                                class="btn btn-outline-primary fw-400">Course Details</a> --}}
+                            <a href="{{ url('/home') }}" class="btn btn-primary fw-400">Homepage</a>
+                            <a href="{{ action('BatchController@batchDetails', $batchId) }}"
+                                class="btn btn-outline-primary fw-400">Course Details</a>
 
                         </div>
                     </div>
@@ -166,7 +114,7 @@
 
             const controls = [
                 'play-large', // The large play button in the center
-                // 'restart', // Restart playback
+                'restart', // Restart playback
                 'rewind', // Rewind by the seek time (default 10 seconds)
                 'play', // Play/pause playback
                 'fast-forward', // Fast forward by the seek time (default 10 seconds)
@@ -177,7 +125,7 @@
                 'volume', // Volume control
                 'captions', // Toggle captions
                 'settings', // Settings menu
-                // 'pip', // Picture-in-picture (currently Safari only)
+                'pip', // Picture-in-picture (currently Safari only)
                 'airplay', // Airplay (currently Safari only)
                 // Show a download button with a link to either the current source or a custom URL you specify in your options
                 'fullscreen' // Toggle fullscreen
