@@ -57,7 +57,7 @@
         <div class="sidebar">
             <div class="intro">
                 <h2 class="intro-title">{{$enrollment->batch->name}}</h2>
-                <span class="intro-desc">{{ $content->where('type', 2)->count() }} Videos <small class="text-xs">({{ $content->where('type', 1)->count() }} Assignments)</small></span>
+                <span class="intro-desc">{{ $content->where('type', 2)->count() }} Videos <span class="text-xs">({{ $content->where('type', 1)->count() }} Assignments)</span></span>
             </div>
                 @foreach ($content as $c)
                 <a id="item" class="{{Str::contains($c->id, $video->id) ? 'active' : ' '}}"  href="{{ route('recordings', ['batchId' => $batchId, 'cId' => Crypt::encrypt($c->id)]) }}">
