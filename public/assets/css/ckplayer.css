@@ -24,7 +24,7 @@ h6 {
 .item{
 
 }
-.item{
+#item{
   border-top: 1px solid var(---gray);
    padding:16px; 
    display: flex; 
@@ -34,7 +34,7 @@ h6 {
    color: black;
 
 }
-.item:hover{
+#item:hover{
   cursor: pointer;
   background-color: rgb(244, 244, 244);
 }
@@ -113,8 +113,17 @@ h6 {
     position: sticky;
     top:0;
     height: 100vh;
+    overflow: scroll;
     align-self: flex-start;
     border-right:1px solid rgb(227, 227, 227);
     /* background-color: red; */
   }
+}
+.active{
+  background-color: #230050;
+  color: white !important;
+}
+.active:hover{
+  background-color: #230050 !important;
+  color: white !important;
 }

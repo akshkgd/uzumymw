@@ -95,7 +95,8 @@ Route::get('/logout/{device_id}', 'ProfileController@logoutDevice')
 		->middleware('auth');
 // student routes start
 Route::get('/notes/{id}', 'StudentController@notes');
-Route::get('/recording-sessions/{id}/{key?}', 'StudentController@recordings');
+Route::get('/recording-sessions/{batchId}/{cId?}', 'StudentController@recordings')->name('recordings');
+// Route::get('/recording-sessions/{id}/{key?}', 'StudentController@recordings');
 Route::get('workshop-enrollment-success/{id}', 'StudentController@workshopEnrollmentSuccess');
 Route::get('next-steps/{id}', 'StudentController@workshopEnrollmentSuccessNS');
 Route::get('bootcamp-success', 'CodekaroController@bootcampSuccess');
