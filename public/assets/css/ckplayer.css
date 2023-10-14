@@ -70,7 +70,7 @@ h6 {
   transition: .1s ease-in;
   font-size: 16px;
   padding: 12px 16px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   border: 1px solid #230050;
   background-color:#230050;
   color: white;
