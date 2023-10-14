@@ -47,7 +47,8 @@ h6 {
   font-size: 18px;
 }
 .intro-desc{
-  margin: 6px 0;
+  margin: 10px 0;
+  display: inline-block;
   font-size: 14px;
   color: rgb(77, 77, 77);
 }
