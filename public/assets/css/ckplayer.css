@@ -71,7 +71,9 @@ h6 {
   font-size: 16px;
   padding: 12px 16px;
   border-radius: 10px;
-  border: 1px solid #230050;;
+  border: 1px solid #230050;
+  background-color:#230050;
+  color: white;
   display: inline-block;
   text-decoration: none;
   color: #230050;
