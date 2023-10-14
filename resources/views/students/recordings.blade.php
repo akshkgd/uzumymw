@@ -1,19 +1,46 @@
 @extends('layouts.player')
 <link rel="stylesheet" href="{{ asset('css/ck-plyr.css') }}">
-{{-- <link rel="stylesheet" href="{{asset('css/ck-plyr.css')}}"> --}}
+
+
+
 
 @section('content')
     <style>
         .fw-400 {
             font-weight: 400 !important;
         }
+        .plyr__control--overlaid {
+            background: #230050e9 !important;
+            border: 0;
+            font-size: 30px;
+        }
+        .plyr__control--overlaid:hover{
+            background: #230050 !important;
+        }
+        .plyr--video{
+            background: #230050 !important;
+
+        }
+        .plyr--full-ui input[type=range] {
+            color: #ffffff !important;
+
+        }
+        .plyr__control {
+                background: transparent;
+                color: #fff;
+        }
+        .plyr__control:hover {
+                background: #2d0069 !important;
+                color: #fff;
+        }
     </style>
 
     
   <nav class="navbar p-5 shadow" data-overlay>
     {{-- <h3 class="intro-title">Web dev starter bootcamp</h3> --}}
-    <img src="{{asset('assets/img/color-1.svg')}}" height="34" alt="">
-  </nav>
+    <a href=""><img src="{{asset('assets/img/color-1.svg')}}" height="34" alt=""></a>
+    <a href="{{url('/home')}}" class="btn">Back to dashboard</a>
+</nav>
 
 
 
@@ -30,7 +57,7 @@
         <div class="sidebar">
             <div class="intro">
                 <h2 class="intro-title">{{$enrollment->batch->name}}</h2>
-                <span class="intro-desc">13 videos <small class="text-xs">(16+ Hours)</small></span>
+                <span class="intro-desc">{{ $content->where('type', 2)->count() }} Videos <small class="text-xs">({{ $content->where('type', 1)->count() }} Assignments)</small></span>
             </div>
                 @foreach ($content as $c)
                 <a id="item" class="{{Str::contains($c->id, $video->id) ? 'active' : ' '}}"  href="{{ route('recordings', ['batchId' => $batchId, 'cId' => Crypt::encrypt($c->id)]) }}">
@@ -49,8 +76,9 @@
                 @endforeach
 </div>
 <div class="col-span-8 player text-left">
-            
-        @if ($video->videoLink != '' && $video->type == 2)
+    
+    
+    @if ($video->videoLink != '' && $video->type == 2)
         <div id="js-player" class="js-player" data-plyr-provider={{strlen($video->videoLink)>10 ? "youtube" : "vimeo"}}
             data-plyr-embed-id="{{ $video->videoLink }}"></div>
     @endif
