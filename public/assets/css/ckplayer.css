@@ -123,7 +123,7 @@ h6 {
     position: sticky;
     top:0;
     height: 100vh;
-    overflow: scroll;
+    overflow: auto;
     align-self: flex-start;
     border-right:1px solid rgb(227, 227, 227);
     /* background-color: red; */

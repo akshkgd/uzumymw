@@ -48,6 +48,8 @@ Route::view('/love','love');
 Route::view('/teach','teach');
 Route::view('/how-to-css','7wd');
 Route::view('/start-javascript','js5');
+Route::view('/start-webdev','wdStarter');
+
 // Route::view('/plinth','plinth');
 // Route::view('/start-react','react');
 // Route::view('/react-success','/students/reactSuccess');
