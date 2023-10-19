@@ -175,15 +175,14 @@
 
                                     
 
-                                    <p class="ck-font fw-400  m-0">Starts From
+                                    <p class="ck-font fw-400  m-0 d-none">Starts From
                                         {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M') }}</p>
-                                    <p class="ck-font fw-400 ">Timings: {{ $batch->schedule }}
+                                    <p class="ck-font fw-400 ">Timings: Evening Classes on alternate days
                                         </h5>
-                                        @if(request()->is('explore-course/28') )
-                                        <div class="card p-2 d-none">
+                                        
+                                        <div class="car p-2 ">
                                             
-                                            <div class="col-md-12 text-center mt-0">
-                                                offer valid till
+                                            <div class="col-md-12 text-cente mt-0">
                                                 <div id="countdown" class="">
                                                     <ul type="none" class="navbar justify-content-around p-0 text-center">
                                                       <li class="d-inlin fs-6"><span id="days" class="d-block display-6 fw-bold"></span> <span>days</span> </li>
@@ -194,7 +193,7 @@
                                                   </div>
                                             </div>
                                         </div>
-                                        @endif
+                                       
                                         @auth
                                         <div class="card d-none">
                                             <div class="p-3">
@@ -206,10 +205,13 @@
                                         </div>
                                     @endauth
                                     <div class="">
-                                        <a class="btn ck-btn fw-light ck-rounded"
+                                        {{-- <a class="btn ck-btn fw-light ck-rounded"
                                             href="{{ action('CourseEnrollmentController@checkEnroll', $batch->id) }}">Enroll
-                                            Now</a>
-                                    </div>
+                                            Now</a> --}}
+                                            <a href="https://rzp.io/l/jO09VVod" class="btn ck-btn fw-light ck-rounded">Join bootcamp at 10998/-</a>
+                                            <div class="text-center">Once the timer hits zero, pricing will be increased to 2399.00/-</div>
+                                        
+                                        </div>
                             </div>
                         </div>
 
@@ -534,7 +536,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "january 20, 2023 22:30:00",
+  let birthday = "october 20, 2023 22:30:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
