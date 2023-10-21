@@ -398,7 +398,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From 19th to 23rd October
+                                        From 1st November to 5th November
                                     </div>
                                 </div>
 
