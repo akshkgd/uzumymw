@@ -345,6 +345,38 @@
         .you-checkbox-item.checked .you-checkbox-check-tick {
             display: block;
         }
+        .animate-text {
+            overflow: hidden;
+            white-space: nowrap;
+            display: flex;
+            gap: 50px;
+            align-items:center;
+            height:50px;
+            background-color: #efa30e;
+            color:#030a21;
+            /* color: white !important; */
+        }
+        .animate-text p{
+            margin: 0
+        }
+
+.animated-text {
+    /* color:  !important; */
+    animation-name: slideRightToLeft;
+    animation-duration: 8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear !important;
+}
+
+@keyframes slideRightToLeft {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
     </style>
 @section('content')
     {{-- <div class="alert bg-primary-alt text-primary m-0 text-center fw-400 ck-font" role="alert" style="border-radius:0">
@@ -355,7 +387,20 @@
     <div class="container">
         @include('layouts.alert')
     </div>
+    <div class="animate-text">
+        <p class="animated-text"> Diwali special 80% Off</p>
+        
+        <p class="animated-text">Diwali special 80% Off</p>
+        <p class="animated-text">Diwali special 80% Off</p>
+        <p class="animated-text">Diwali special 80% Off</p>
+        <p class="animated-text">Diwali special 80% Off</p>
+        <p class="animated-text">Diwali special 80% Off</p>
+        <p class="animated-text">Diwali special 80% Off</p>
+        <p class="animated-text">Diwali special 80% Off</p>
 
+
+      </div>
+      
     <section class="pt-5" style=" background-color: #212121;">
         <div class="container">
             <div class="row justify-content-center align-items-cente">
@@ -363,7 +408,7 @@
                     <main class="text-center">
                         <h1 class="fs-2 fw-bod  " style="font-size: 3vmax; line-height:1.5; color:aliceblue; font-weight:600">Master <span
                                 class="wd_highligh" style="color:#efa30e;">Advance concepts of CSS</span> to create websites
-                            like YouTube, Netflix and ChatGPT in just 5 days</h1>
+                            like YouTube, Netflix and ChatGPT in just 3 days</h1>
 
 
                         <p style="font-size:1vw;" class="fs-5 text-white text-center">How to CSS - kickstart your journey of full stack developer
@@ -383,7 +428,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l1.svg') }}" alt="">
-                                        5 Days Live Bootcamp
+                                        3 Days Live Bootcamp
                                     </div>
                                 </div>
 
@@ -401,7 +446,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From 25th October to 29th October
+                                        From 6th to 8th November
                                     </div>
                                 </div>
 
@@ -457,7 +502,7 @@
                         <a href="" style="width:100% !important"
                             class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197! </h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199! </h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -582,67 +627,46 @@
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating login and
                                 feedback pages</div>
+                                <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding Usecases</div>
                     </div>
 
+                    
                     <div class="shadow-card mt-5">
                         <div class="day">Day 2</div>
-                        <h3 class="fs-3 fw-bold">Learn use of Positions</h2>
-                            <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Pseudo Elements &amp;
-                                Pseudo Classes</div>
-                            <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating pages of Twitter
-                                &amp; LinkedIn</div>
-                            <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating Static Blog</div>
-
-                    </div>
-
-                    <div class="shadow-card mt-5">
-                        <div class="day">Day 3</div>
                         <h3 class="fs-3 fw-bold">Master Flexbox</h2>
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt="">Master Flexbox</div>
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt="">Responsive design using
                                 flexbox</div>
+                                <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding Usecases</div>
                             <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating a social media
-                                website</div>
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating a zomato clone</div>
                     </div>
 
                     <div class="shadow-card mt-5">
-                        <div class="day">Day 4</div>
-                        <h3 class="fs-3 fw-bold">Creating Animations</h2>
-                            <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding media
-                                Queries</div>
+                        <div class="day">Day 3</div>
+                        <h3 class="fs-3 fw-bold">Creating Animations & Major Project</h2>
+                            
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Transitions</div>
-                            <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Improving our social media
+                                    <div class="mt-3"> <img height="10" class="me-3"
+                                        src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Learning Animations</div>
+                                        <div class="mt-3"> <img height="10" class="me-3"
+                                            src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding Usecases</div>
+                                        <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Building our social media
                                 website</div>
                     </div>
 
-                    <div class="shadow-card mt-5">
-                        <div class="day">Day 5</div>
-                        <h3 class="fs-3 fw-bold">Major Project: Create YouTube Clone</h2>
-                            <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Bonus: Host your project
-                                Online</div>
-                            <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Bonus: Get your linkedIn
-                                shareable certificate</div>
-                            <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Bonus: Full stack Roadmap
-                            </div>
-
-                    </div>
+                    
 
                     <div class="my-5 text-center l-cta">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -798,7 +822,7 @@
             <div class="my-5 text-center l-cta">
                 <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                     class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                    <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197</h2>
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199</h2>
                     <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                 </a>
             </div>
@@ -920,7 +944,7 @@
         <div class="my-5 text-center l-cta">
             <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                 class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197</h2>
+                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199</h2>
                 <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
             </a>
         </div>
@@ -972,7 +996,7 @@
                 <div class="my-5 l-cta">
                     <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                         class="btn ck-btn ck-rounded btn-lg   px-5">
-                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197</h2>
+                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199</h2>
                         <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                     </a>
                 </div>
@@ -1112,7 +1136,7 @@
                     <div class="my-5 l-cta text-center">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹197</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹199</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -1122,7 +1146,7 @@
 
     <div class="m-cta text-light">
         <div class="">
-            <p class="m-0 fw-bold text-light">₹197 <span class="small text-white fw-light"
+            <p class="m-0 fw-bold text-light">₹199 <span class="small text-white fw-light"
                     style="text-decoration: line-through"> ₹ 899 </span></p>
             <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span
                     class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
@@ -1143,9 +1167,9 @@
 
                 <div class="modal-body p-4 pt-0 text-center mt-4">
                     {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
-                    <h2 class=" mb-0 fs-3 fw-bold">Join 5 days live CSS bootcamp!</h2>
-                    <p class="my-3 " style="font-size: 14px">Offer valid till</p>
-                    <div class="col-md-12 text-center mt-0">
+                    <h2 class=" mb-0 fs-3 fw-bold">Join 3 days live CSS bootcamp!</h2>
+                    {{-- <p class="my-3 " style="font-size: 14px">Offer valid till</p> --}}
+                    <div class="col-md-12 text-center mt-0 d-none">
                         <div id="countdown" class="">
                             <ul type="none" class="navbar justify-content-around p-0 text-center">
                                 <li class="d-inlin fs-6"><span id="days1" class="d-block display-6 fw-bold"></span>
@@ -1200,7 +1224,7 @@
                         <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                         <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
                             onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"
-                                id="price">197</span>
+                                id="price">199</span>
                             <div id="loader" class="loade d-inline-block ms-2"></div>
                         </button>
                         <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's
@@ -1285,12 +1309,12 @@
             if (checkbox.value === "0") {
                 checkbox.value = "1";
                 checkboxItem.classList.add("checked");
-                priceElement.innerText = "396";
+                priceElement.innerText = "398";
 
             } else {
                 checkbox.value = "0";
                 checkboxItem.classList.remove("checked");
-                priceElement.innerText = "197";
+                priceElement.innerText = "199";
 
             }
         }

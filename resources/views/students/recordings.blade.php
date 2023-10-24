@@ -76,9 +76,10 @@
                 @endforeach
 </div>
 <div class="col-span-8 player text-left">
-    
+    <div style="padding:50% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/874287586?autoplay=1&badge=0&amp;autopause=0&amp;quality_selector=1&amp;progress_bar=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Recording   CSS Media Queries - 651d75bfe4b0e4a748954b62 (1)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
     
     @if ($video->videoLink != '' && $video->type == 2)
+    
         <div id="js-player" class="js-player" data-plyr-provider={{strlen($video->videoLink)>10 ? "youtube" : "vimeo"}}
             data-plyr-embed-id="{{ $video->videoLink }}"></div>
     @endif
@@ -90,7 +91,9 @@
                 {{ $video->id }}
                 
             </div>
-    
+    <script>
+        
+    </script>
     <div>
 
 {{-- tailwind ends --}}
@@ -184,12 +187,7 @@
     {{-- <script src="{{asset('js/plyr.js')}}"></script> --}}
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Controls (as seen below) works in such a way that as soon as you explicitly define (add) one control
-            // to the settings, ALL default controls are removed and you have to add them back in by defining those below.
-
-            // For example, let's say you just simply wanted to add 'restart' to the control bar in addition to the default.
-            // Once you specify *just* the 'restart' property below, ALL of the controls (progress bar, play, speed, etc) will be removed,
-            // meaning that you MUST specify 'play', 'progress', 'speed' and the other default controls to see them again.
+            
 
             const controls = [
                 'play-large', // The large play button in the center
@@ -205,7 +203,7 @@
                 'captions', // Toggle captions
                 'settings', // Settings menu
                 // 'pip', // Picture-in-picture (currently Safari only)
-                'airplay', // Airplay (currently Safari only)
+                // 'airplay', // Airplay (currently Safari only)
                 // Show a download button with a link to either the current source or a custom URL you specify in your options
                 'fullscreen' // Toggle fullscreen
             ];
@@ -213,7 +211,10 @@
             const player = Plyr.setup('.js-player', {
                 controls
             });
-
+            player.play();
+                player.muted = true;
+                player.currentTime = 100;
+                
         });
     </script>
 @endsection
