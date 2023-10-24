@@ -976,7 +976,7 @@
                     <div id="countdown" class="text-center">
                         <ul type="none" class="navbar">
                             <li class="d-inlin fs-5 fw-bold"><span id="days"
-                                    class="d-block display-3 fw-bold"></span>days</li>
+                                    class="d-block display-3 d-none fw-bold"></span>days</li>
                             <li class="d-inlin fs-5 fw-bold"><span id="hours"
                                     class="d-block display-3 fw-bold"></span>Hours</li>
                             <li class="d-inline fs-5 fw-bold"><span id="minutes"
