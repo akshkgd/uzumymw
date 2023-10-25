@@ -428,7 +428,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l1.svg') }}" alt="">
-                                        5 Days Live Bootcamp
+                                        3 Days Live Bootcamp
                                     </div>
                                 </div>
 
