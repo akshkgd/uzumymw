@@ -428,7 +428,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l1.svg') }}" alt="">
-                                        3 Days Live Bootcamp
+                                        5 Days Live Bootcamp
                                     </div>
                                 </div>
 
@@ -511,22 +511,6 @@
 
         </div>
     </section>
-
-<section>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-4 p-3">
-                <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/875865938?badge=0&amp;autopause=0&amp;quality_selector=1&amp;progress_bar=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="non it how to CSS Feedback"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-            </div>
-            <div class="col-md-4 p-3">
-                <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/875865963?badge=0&amp;autopause=0&amp;quality_selector=1&amp;progress_bar=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Paramveer Feedback How to CSS"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-            </div>
-            <div class="col-md-4 p-3">
-                <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/875865905?badge=0&amp;autopause=0&amp;quality_selector=1&amp;progress_bar=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="manoj feedback how to CSS"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-            </div>
-        </div>
-    </div>
-</section>
 
 
 
