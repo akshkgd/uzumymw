@@ -408,7 +408,7 @@
                     <main class="text-center">
                         <h1 class="fs-2 fw-bod  " style="font-size: 3vmax; line-height:1.5; color:aliceblue; font-weight:600">Master <span
                                 class="wd_highligh" style="color:#efa30e;">Advance concepts of CSS</span> to create websites
-                            like YouTube, Netflix and ChatGPT in just 3 days</h1>
+                            like YouTube, Netflix and ChatGPT in just 5 days</h1>
 
 
                         <p style="font-size:1vw;" class="fs-5 text-white text-center">How to CSS - kickstart your journey of full stack developer
@@ -1174,7 +1174,7 @@
 
                 <div class="modal-body p-4 pt-0 text-center mt-4">
                     {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
-                    <h2 class=" mb-0 fs-3 fw-bold">Join 3 days live CSS bootcamp!</h2>
+                    <h2 class=" mb-0 fs-3 fw-bold">Join 5 days live CSS bootcamp!</h2>
                     {{-- <p class="my-3 " style="font-size: 14px">Offer valid till</p> --}}
                     <div class="col-md-12 text-center mt-0 d-none">
                         <div id="countdown" class="">
