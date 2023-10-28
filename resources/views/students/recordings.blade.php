@@ -76,12 +76,16 @@
                 @endforeach
 </div>
 <div class="col-span-8 player text-left">
-    <div style="padding:50% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/874287586?autoplay=1&badge=0&amp;autopause=0&amp;quality_selector=1&amp;progress_bar=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Recording   CSS Media Queries - 651d75bfe4b0e4a748954b62 (1)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
     
     @if ($video->videoLink != '' && $video->type == 2)
-    
-        <div id="js-player" class="js-player" data-plyr-provider={{strlen($video->videoLink)>10 ? "youtube" : "vimeo"}}
+        @if(strlen($video->videoLink)>10)
+        <div id="js-player" class="js-player" data-plyr-provider="youtube"
             data-plyr-embed-id="{{ $video->videoLink }}"></div>
+        @else
+        <div style="padding:50% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/{{$video->videoLink}}?autoplay=1&badge=0&amp;autopause=0&amp;quality_selector=1&amp;progress_bar=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Recording   CSS Media Queries - 651d75bfe4b0e4a748954b62 (1)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+
+        @endif
+        
     @endif
             {{-- text --}}
             <div class="mt-5">
