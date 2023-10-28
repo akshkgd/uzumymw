@@ -180,7 +180,7 @@
                                     <p class="ck-font fw-400 ">Timings: Evening Classes on alternate days
                                         </h5>
                                         
-                                        <div class="car p-2 ">
+                                        <div class="car p-2 d-none">
                                             
                                             <div class="col-md-12 text-cente mt-0">
                                                 <div id="countdown" class="">
@@ -205,11 +205,11 @@
                                         </div>
                                     @endauth
                                     <div class="">
-                                        {{-- <a class="btn ck-btn fw-light ck-rounded"
+                                        <a class="btn ck-btn fw-light ck-rounded"
                                             href="{{ action('CourseEnrollmentController@checkEnroll', $batch->id) }}">Enroll
-                                            Now</a> --}}
-                                            <a href="https://rzp.io/l/jO09VVod" class="btn ck-btn fw-light ck-rounded">Join bootcamp at 10998/-</a>
-                                            <div class="text-center">Once the timer hits zero, pricing will be increased to 2399.00/-</div>
+                                            Now</a>
+                                            {{-- <a href="https://rzp.io/l/jO09VVod" class="btn ck-btn fw-light ck-rounded">Join bootcamp at 10998/-</a>
+                                            <div class="text-center">Once the timer hits zero, pricing will be increased to 2399.00/-</div> --}}
                                         
                                         </div>
                             </div>
