@@ -428,7 +428,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l1.svg') }}" alt="">
-                                        3 Days Live Bootcamp
+                                        5 Days Live Bootcamp
                                     </div>
                                 </div>
 
@@ -446,7 +446,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From 15th to 17th November
+                                        From 15th to 19th November
                                     </div>
                                 </div>
 
@@ -614,10 +614,21 @@
                                 <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding Usecases</div>
                     </div>
-
-                    
                     <div class="shadow-card mt-5">
                         <div class="day">Day 2</div>
+                        <h3 class="fs-3 fw-bold">Learn use of Positions</h2>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Pseudo Elements &amp;
+                                Pseudo Classes</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating pages of Twitter
+                                &amp; LinkedIn</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating Static Blog</div>
+                    </div>
+                    
+                    <div class="shadow-card mt-5">
+                        <div class="day">Day 3</div>
                         <h3 class="fs-3 fw-bold">Master Flexbox</h2>
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt="">Master Flexbox</div>
@@ -629,20 +640,32 @@
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating a zomato clone</div>
                     </div>
+                    <div class="shadow-card mt-5">
+                        <div class="day">Day 4</div>
+                        <h3 class="fs-3 fw-bold">Master Responsive designs</h2>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Media Queries</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Media queries examples and usecases</div>
+                                <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Creating Animations</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Using animations in real world examples.</div>
+                    </div>
 
                     <div class="shadow-card mt-5">
-                        <div class="day">Day 3</div>
-                        <h3 class="fs-3 fw-bold">Creating Animations & Major Project</h2>
-                            
+                        <div class="day">Day 5</div>
+                        <h3 class="fs-3 fw-bold">Major Project: Create YouTube Clone</h2>
                             <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Transitions</div>
-                                    <div class="mt-3"> <img height="10" class="me-3"
-                                        src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Learning Animations</div>
-                                        <div class="mt-3"> <img height="10" class="me-3"
-                                            src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding Usecases</div>
-                                        <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Building our social media
-                                website</div>
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Bonus: Host your project
+                                Online</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Bonus: Get your linkedIn
+                                shareable certificate</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Bonus: Full stack Roadmap
+                            </div>
+
                     </div>
 
                     
