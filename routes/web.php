@@ -46,7 +46,7 @@ Route::view('/web-development-bootcamp','wdm');
 Route::view('/wdt','wdt');
 Route::view('/love','love');
 Route::view('/teach','teach');
-Route::view('/how-to-css','7wd');
+Route::view('/how-to-css','css');
 Route::view('/start-javascript','js5');
 Route::view('/start-webdev','wdStarter');
 
@@ -162,11 +162,12 @@ Route::get('teacher/workshop-details/{id}', 'TeacherController@workshopDetails')
 Route::get('/enrollments/{id}', 'TeacherController@enrollments');
 Route::get('/workshop-enrollments/{id}', 'TeacherController@workshopEnrollments');
 Route::get('/generate-certificate/{id}', 'TeacherController@generateCertificate');
-Route::get('/addContent/{id}', 'TeacherController@addContent');
+// Route::get('/addContent/{id}', 'TeacherController@addContent');
 Route::post('/store-content', 'TeacherController@storeContent')->name('addContent');
 Route::post('/update-batch-status', 'TeacherController@updateBatchStatus')->name('updateBatchStatus');
 Route::post('/update-workshop', 'TeacherController@updateWorkshop')->name('updateWorkshop');
 Route::get('/generate-all-cetificates/{id}', 'TeacherController@generateAllCertificate')->name('generateAllCertificate');
+Route::get('/addContent/{id}/{contentId?}', 'TeacherController@addContent')->name('addCourseContent');
 
 
 
