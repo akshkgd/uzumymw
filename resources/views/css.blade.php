@@ -1319,7 +1319,7 @@ iframe{border:0;}
                     <div class="bg-dark container" style="background-color: #333333 !important; opacity:90%">
                         <div class="row">
 
-                            <div class="col-6 mb-3">
+                            <div class=" col-6 mb-3">
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l1.svg') }}" alt="">
@@ -1328,7 +1328,7 @@ iframe{border:0;}
                                 </div>
 
                             </div>
-                            <div class="col-6 mb-3">
+                            <div class=" col-6 mb-3">
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l2.svg') }}" alt="">
@@ -1337,7 +1337,7 @@ iframe{border:0;}
                                 </div>
 
                             </div>
-                            <div class="col-6 mb-3">
+                            <div class="col-6  mb-3">
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
@@ -1346,7 +1346,7 @@ iframe{border:0;}
                                 </div>
 
                             </div>
-                            <div class="col-6 mb-3">
+                            <div class="col-6  mb-3">
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l4.svg') }}" alt="">

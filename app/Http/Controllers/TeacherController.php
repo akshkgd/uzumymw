@@ -85,12 +85,27 @@ class TeacherController extends Controller
         }
     }
 
-    public function addContent($id)
+    public function addContent($id, $contentId = null)
     {
-        $batch = Batch::findorFail($id);
-        $batchContent = BatchContent::where('batchId', $batch->id)->get();
-        if($batch->teacherId == Auth::user()->id)
-        return view('teachers.addContent', compact('batch', 'batchContent'));
+        
+        if($contentId){
+            $currentContent = BatchContent::findorFail($contentId);
+            $batch = Batch::findorFail($id);
+            $batchContent = BatchContent::where('batchId', $batch->id)->get();
+            if($currentContent->batchId != $id){
+                $currentContent = BatchContent::where('batchId', $batch->id)->get()->first();
+            }
+            if($batch->teacherId == Auth::user()->id)
+            return view('teachers.addContent', compact('batch', 'batchContent', 'currentContent'));
+        }
+        else{
+            $batch = Batch::findorFail($id);
+            $batchContent = BatchContent::where('batchId', $batch->id)->get();
+            $currentContent = BatchContent::where('batchId', $batch->id)->get()->first();
+            if($batch->teacherId == Auth::user()->id)
+            return view('teachers.addContent', compact('batch', 'batchContent', 'currentContent'));
+        }
+        
     }
 
     public function updateBatchStatus(Request $request)
