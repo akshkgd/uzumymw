@@ -170,7 +170,7 @@
                                         <span class="fs-3 mr-2 js-price-per-month text-muted px-2"
                                             style="text-decoration:line-through; font-weight:400">{{ $batch->price }}</span>
                                         <span
-                                            class="display- px-2  js-price-per-month fw-400">{{ $batch->payable }}</span>
+                                            class="display- px-2  js-price-per-month fw-400">10998</span>
                                     </div>
 
                                     
@@ -180,7 +180,7 @@
                                     <p class="ck-font fw-400 ">Timings: Evening Classes on alternate days
                                         </h5>
                                         
-                                        <div class="car p-2 d-none">
+                                        <div class="car p-2 d-non">
                                             
                                             <div class="col-md-12 text-cente mt-0">
                                                 <div id="countdown" class="">
@@ -205,11 +205,11 @@
                                         </div>
                                     @endauth
                                     <div class="">
-                                        <a class="btn ck-btn fw-light ck-rounded"
+                                        {{-- <a class="btn ck-btn fw-light ck-rounded"
                                             href="{{ action('CourseEnrollmentController@checkEnroll', $batch->id) }}">Enroll
-                                            Now</a>
-                                            {{-- <a href="https://rzp.io/l/jO09VVod" class="btn ck-btn fw-light ck-rounded">Join bootcamp at 10998/-</a>
-                                            <div class="text-center">Once the timer hits zero, pricing will be increased to 2399.00/-</div> --}}
+                                            Now</a> --}}
+                                            <a href="https://rzp.io/l/jO09VVod" class="btn ck-btn fw-light ck-rounded">Join bootcamp at 10998/-</a>
+                                            <div class="text-center">Once the timer hits zero, pricing will be increased to 2399.00/-</div>
                                         
                                         </div>
                             </div>
@@ -536,7 +536,7 @@
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "october 27, 2023 22:30:00",
+  let birthday = "november 4, 2023 16:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
