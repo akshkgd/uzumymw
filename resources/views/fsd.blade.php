@@ -974,7 +974,7 @@ modal.show()
 
     <div class="slider-menu mt-5">
 
-        <h3 class="ck-font ">₹10999 <span class="lead "
+        <h3 class="ck-font ">₹10998 <span class="lead "
                 style="text-decoration: line-through;">₹29999</span> </h3>
         <br>
 
