@@ -49,7 +49,7 @@ Route::view('/teach','teach');
 Route::view('/how-to-css','css');
 Route::view('/start-javascript','js5');
 Route::view('/start-webdev','wdStarter');
-
+Route::view('/join-mern','fsd');
 // Route::view('/plinth','plinth');
 // Route::view('/start-react','react');
 // Route::view('/react-success','/students/reactSuccess');
