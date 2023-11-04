@@ -974,12 +974,12 @@ modal.show()
 
     <div class="slider-menu mt-5">
 
-        <h3 class="ck-font ">₹23999 <span class="lead "
+        <h3 class="ck-font ">₹10999 <span class="lead "
                 style="text-decoration: line-through;">₹29999</span> </h3>
         <br>
 
         <div class="">
-            <a href="https://codekaro.in/enroll/39"
+            <a href="https://rzp.io/l/jO09VVod"
                 class="btn btn-primary w-10 fw-light py-2 px-5 rounded-pil">Enroll Now</a>
         </div>
     </div>
