@@ -130,8 +130,8 @@ h6 {
   }
 }
 .active{
-  background-color: #230050;
-  color: white !important;
+  background-color: var(---gray);
+  color: rgb(0, 0, 0) !important;
 }
 .active:hover{
   background-color: #230050 !important;

@@ -6,6 +6,9 @@
 
 @section('content')
     <style>
+        .ytp-chrome-top-buttons{
+                display:none;
+            }
         .fw-400 {
             font-weight: 400 !important;
         }
@@ -76,7 +79,6 @@
                 @endforeach
 </div>
 <div class="col-span-8 player text-left">
-    
     @if ($video->videoLink != '' && $video->type == 2)
         @if(strlen($video->videoLink)>10)
         <div id="js-player" class="js-player" data-plyr-provider="youtube"
@@ -220,5 +222,12 @@
                 player.currentTime = 100;
                 
         });
+    </script>
+    <script>
+        document.onload = function(){
+            .ytp-chrome-top-buttons{
+                display:none;
+            }
+        }
     </script>
 @endsection

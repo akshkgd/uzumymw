@@ -157,6 +157,7 @@ input{overflow:visible;}
                 </div>
 
                 <div class="col-span-8 player text-left">
+                    @if($currentContent)
                 <div>
                   <form action="{{ route('addContent') }}" method="POST" class="">
                     @csrf
@@ -196,6 +197,7 @@ input{overflow:visible;}
                 </div>
 
             </div>
+            @endif
         </div>
                 </div>
                 
