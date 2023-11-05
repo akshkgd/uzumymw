@@ -257,6 +257,7 @@ quill.on('text-change', function(delta, oldDelta, source) {
     document.getElementById("quill_html").value = quill.root.innerHTML;
 });
 </script> --}}
+@if($currentContent)
 <script>
   var quill = new Quill('#quill_editor', {
         theme: 'snow'
@@ -270,4 +271,5 @@ const delta = quill.clipboard.convert(value);
 
 quill.setContents(delta, 'silent')
 </script>
+@endif
 @endsection
