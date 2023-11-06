@@ -47,7 +47,7 @@ h6 {
   font-size: 18px;
 }
 .intro-desc{
-  margin: 10px 0;
+  margin: 2px 0;
   display: inline-block;
   font-size: 14px;
   color: rgb(77, 77, 77);
@@ -83,7 +83,9 @@ h6 {
   background-color:#230050;
   color: white;
 }
+.logo{
 
+}
 @media(max-width: 992px){
   .player-container{
     width: auto;
@@ -112,7 +114,7 @@ h6 {
   .player{
     width: 60%;
     flex-grow: 10;
-    padding: 3vmax;
+    padding: 2vmax 3vmax;
     user-select: none;
     font-size: 18px;
     text-rendering: optimizeLegibility;
@@ -125,7 +127,7 @@ h6 {
     height: 100vh;
     overflow: auto;
     align-self: flex-start;
-    border-right:1px solid rgb(227, 227, 227);
+    border-right:1px solid var(---gray);
     /* background-color: red; */
   }
 }
@@ -136,4 +138,16 @@ h6 {
 .active:hover{
   background-color: #230050 !important;
   color: white !important;
+}
+.test{
+  background-color: red;
+  padding: 20px;
+  border:1px solid red;
+}
+.back{
+  display: inline-block;
+  margin-top: 10px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
 }
