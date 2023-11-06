@@ -94,7 +94,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                            {{-- @forelse ($batchContent as $content)
+                            @forelse ($batchContent as $content)
                             <tr>
                                 
                                 <td>  {{$content->title}}</td>
@@ -103,7 +103,7 @@
                               </tr>  
                               @empty
                               <p>nothing</p>
-                            @endforelse --}}
+                            @endforelse
                           
                         </tbody>
                     </table>
