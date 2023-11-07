@@ -170,7 +170,7 @@ Route::get('/generate-all-cetificates/{id}', 'TeacherController@generateAllCerti
 Route::get('/addContent/{id}/{contentId?}', 'TeacherController@addContent')->name('addCourseContent');
 
 
-
+Route::get('/css-enrollments', 'TeacherController@cssEnrollments');
 //admin
 Route::get('/admin/students', 'AdminController@students');
 Route::get('/admin/css-enrollments', 'AdminController@cssEnrollments');

@@ -29,7 +29,14 @@ class TeacherController extends Controller
         return redirect()->back();
         
     }
-
+    public function cssEnrollments(){
+        $enrollments = CourseEnrollment::join('batches', 'course_enrollments.batchId', '=', 'batches.id')
+    ->where('batches.topicId', 100)
+    ->where('course_enrollments.hasPaid', 1)
+    ->select('course_enrollments.*')->latest() 
+    ->paginate(100); 
+    return view('admin.cssEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
+    }
     public function updateWorkshopClass(Request $request)
     {   
 
