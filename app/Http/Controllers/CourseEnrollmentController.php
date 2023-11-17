@@ -143,7 +143,7 @@ class CourseEnrollmentController extends Controller
             $batch = Batch::find($enrollment->batchId);
             $receiptId = Str::random(20);
             $amountPayable = $batchId->payable*100 + $enrollment->certificateFee*100;
-            $order  = $api->order->create(array('amount' => $amountPayable, 'currency' => 'INR', 'notes' => array('Name' =>strtok(Auth::user()->name, ' '), 'Email' => Auth::user()->email, 'UserId'=> Auth::user()->id, 'Phone' => Auth::user()->mobile, 'Course' => $batchId->name, 'StartDate' => Carbon::parse($batch->startDate)->toDateString(), 'EndDate' =>Carbon::parse($batch->endDate)->toDateString(), 'CourseId' => $batchId->id, 'TopicId' => $batchId->topicId )));
+            $order  = $api->order->create(array('amount' => $amountPayable, 'currency' => 'INR', 'notes' => array('Name' =>strtok(Auth::user()->name, ' '), 'Email' => Auth::user()->email, 'UserId'=> Auth::user()->id, 'Phone' => Auth::user()->mobile, 'Course' => $batchId->name, 'StartDate' => Carbon::parse($batch->startDate)->toDateString(), 'EndDate' =>Carbon::parse($batch->endDate)->toDateString(), 'CourseId' => $batchId->id, 'TopicId' => $batchId->topicId, 'enrollmentId'=> $id )));
             $enrollment->invoiceID = $order->id;
             $enrollment->save();
 
