@@ -170,7 +170,7 @@
                                         <span class="fs-3 mr-2 js-price-per-month text-muted px-2"
                                             style="text-decoration:line-through; font-weight:400">{{ $batch->price }}</span>
                                         <span
-                                            class="display- px-2  js-price-per-month fw-400">10998</span>
+                                            class="display- px-2  js-price-per-month fw-400">23999</span>
                                     </div>
 
                                     
@@ -208,7 +208,7 @@
                                         {{-- <a class="btn ck-btn fw-light ck-rounded"
                                             href="{{ action('CourseEnrollmentController@checkEnroll', $batch->id) }}">Enroll
                                             Now</a> --}}
-                                            <a href="https://rzp.io/l/jO09VVod" class="btn ck-btn fw-light ck-rounded">Join bootcamp at 10998/-</a>
+                                            <a href="https://rzp.io/l/jO09VVod" class="btn ck-btn fw-light ck-rounded">Join bootcamp at 23999/-</a>
                                             <div class="text-center">Once the timer hits zero, pricing will be increased to 2399.00/-</div>
                                         
                                         </div>
