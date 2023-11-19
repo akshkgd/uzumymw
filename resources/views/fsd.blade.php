@@ -1074,7 +1074,7 @@ modal.show()
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "november 15, 2023 16:00:00",
+  let birthday = "november 19, 2023 16:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
