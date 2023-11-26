@@ -740,7 +740,7 @@ modal.show()
                                             <div class="col-md-12 text-cente mt-0">
                                                 <div id="countdown" class="">
                                                     <ul type="none" class="navbar justify-content-around p-0 text-center">
-                                                      <li class="d-inlin fs-6"><span id="days" class="d-block display-6 fw-bold"></span> <span>days</span> </li>
+                                                      <li class="d-inlin d-none fs-6"><span id="days" class="d-block display-6 fw-bold"></span> <span>days</span> </li>
                                                       <li class="d-inlin fs-6"><span id="hours" class="d-block display-6 fw-bold "></span>Hours</li>
                                                       <li class="d-inlin fs-6"><span id="minutes" class="d-block display-6 fw-bold"></span>Minutes</li>
                                                       <li class="d-inlinx fs-6"><span id="seconds" class="d-block display-6 fw-bold"></span>Seconds</li>
@@ -1067,14 +1067,14 @@ modal.show()
             console.log("fc", id)
         }
     </script>
-    <script>
+    {{-- <script>
         (function () {
         const second = 1000,
         minute = second * 60,
         hour = minute * 60,
         day = hour * 24;
 
-  let birthday = "november 19, 2023 16:00:00",
+        let birthday = "november 19, 2023 16:00:00",
       countDown = new Date(birthday).getTime(),
       x = setInterval(function() {    
 
@@ -1091,7 +1091,7 @@ modal.show()
       document.getElementById("minutes1").innerText = Math.floor((distance % (hour)) / (minute)),
       document.getElementById("seconds1").innerText = Math.floor((distance % (minute)) / second);
 
-        //do something later when date is reached
+        
         if (distance < 0) {
           let headline = document.getElementById("headline"),
               countdown = document.getElementById("countdown"),
@@ -1103,10 +1103,10 @@ modal.show()
 
           clearInterval(x);
         }
-        //seconds
+        
       }, 0)
   }());
-    </script>
+    </script> --}}
     
     <footer>
     <div class="container my-4">
@@ -1356,6 +1356,83 @@ modal.show()
               document.getElementById('continue-gmail-login-button').style.display = "block";
               document.getElementById('goBackBtn').style.display = "none";
             }
+        </script>
+
+        <script>
+            function startTimer() {
+            const second = 1000,
+                minute = second * 60,
+                hour = minute * 60,
+                day = hour * 24;
+
+            let targetDate = localStorage.getItem("targetDate");
+            let expiration = localStorage.getItem("expiration");
+
+            if (!targetDate || !expiration || new Date().getTime() > expiration) {
+                targetDate = new Date();
+                targetDate.setDate(targetDate.getDate() + 1); // Set target date to tomorrow
+                targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
+                expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59,
+                    999).getTime(); // Set expiration to end of the target date
+
+                localStorage.setItem("targetDate", targetDate.getTime());
+                localStorage.setItem("expiration", expiration);
+            } else {
+                targetDate = new Date(parseInt(targetDate));
+            }
+
+            function updateCountdown() {
+                const now = new Date().getTime();
+                let distance = targetDate.getTime() - now;
+
+                if (distance <= 0) {
+                    // Reset target date to the next day
+                    targetDate.setDate(targetDate.getDate() + 1);
+                    targetDate.setHours(0, 0, 0, 0); // Set target time to midnight (12:00 AM)
+                    expiration = new Date(targetDate.getFullYear(), targetDate.getMonth(), targetDate.getDate(), 23, 59, 59,
+                        999).getTime(); // Set expiration to end of the target date
+
+                    localStorage.setItem("targetDate", targetDate.getTime());
+                    localStorage.setItem("expiration", expiration);
+
+                    // Recalculate the distance with the updated target date
+                    distance = targetDate.getTime() - now;
+                }
+
+                const days = Math.floor(distance / day);
+                const hours = Math.floor((distance % day) / hour);
+                const minutes = Math.floor((distance % hour) / minute);
+                const seconds = Math.floor((distance % minute) / second);
+
+                document.getElementById("days").innerText = days;
+                document.getElementById("hours").innerText = hours;
+                document.getElementById("minutes").innerText = minutes;
+                document.getElementById("seconds").innerText = seconds;
+
+                // document.getElementById("days1").innerText = days;
+                // document.getElementById("hours1").innerText = hours;
+                // document.getElementById("minutes1").innerText = minutes;
+                // document.getElementById("seconds1").innerText = seconds;
+
+                // document.getElementById("hours2").innerText = hours;
+                // document.getElementById("minutes2").innerText = minutes;
+                // document.getElementById("seconds2").innerText = seconds;
+                if (distance < 0) {
+                    clearInterval(timer);
+                    document.getElementById("headline").innerText = "Class has Started!";
+                    document.getElementById("countdown").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                    localStorage.removeItem("targetDate");
+                    localStorage.removeItem("expiration");
+                }
+            }
+
+            updateCountdown();
+            const timer = setInterval(updateCountdown, 1000);
+        }
+
+        startTimer();
+
         </script>
 <button type="button" id="e" class="d-none" data-bs-toggle="modal" data-bs-target="#enroll">
   
