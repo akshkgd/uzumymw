@@ -1285,7 +1285,7 @@ iframe{border:0;}
     <div class="container">
         @include('layouts.alert')
     </div>
-    <div class="animate-text">
+    <div class="animate-text" style="display: none">
         <p class="animated-text"> Diwali special 80% Off</p>
         
         <p class="animated-text">Diwali special 80% Off</p>
