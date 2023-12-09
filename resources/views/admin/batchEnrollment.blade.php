@@ -19,44 +19,45 @@
          <div class="row mt-4">
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-red p-2">
-                <p class="stat-cell-title">Total Users</p>
-                <p class="stat-cell-value">{{$totalUsers}}</p>
+                <p class="stat-cell-title">Total Paid Users</p>
+                <p class="stat-cell-value">{{$totalPaidUsers}} <span style="font-size: 12px" class="small fw-light">test</span></p>
+                
             </div>
 
         </div>
         
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-purple p-2">
-                <p class="stat-cell-title">Paid Users</p>
-                <p class="stat-cell-value">{{$paidUsers}}</p>
+                <p class="stat-cell-title">Total Earnings</p>
+                <p class="stat-cell-value">{{$totalEarning}}</p>
             </div>
 
         </div>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-yellow p-2">
-                <p class="stat-cell-title">Unpaid Users</p>
-                <p class="stat-cell-value">{{$unpaidUsers}}</p>
+                <p class="stat-cell-title">Live Course Earning</p>
+                <p class="stat-cell-value">{{$classEarning}} <span style="font-size: 12px" class="small fw-light">{{$classEarningPercentage}}%</span></p>
             </div>
 
         </div>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-teal p-2">
-                <p class="stat-cell-title">Earnings</p>
-                <p class="stat-cell-value">{{$earning}}</p>
+                <p class="stat-cell-title">Recordings Earnings</p>
+                <p class="stat-cell-value">{{$certificateFeeEarning}} <span style="font-size: 12px" class="small fw-light">{{$certificateFeePercentage}}%</span> </p>
             </div>
 
         </div>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-green p-2">
-                <p class="stat-cell-title">Teacher Share</p>
-                <p class="stat-cell-value">{{$teacherEarning}}</p>
+                <p class="stat-cell-title">Recordings Earning</p>
+                <p class="stat-cell-value">{{$certificateFeeEarning}}</p>
             </div>
 
         </div>
         <div class="col-6 col-md">
             <div class="stat-cell stat-cell-blue p-2">
-                <p class="stat-cell-title">Profit</p>
-                <p class="stat-cell-value">{{$profit}}</p>
+                <p class="stat-cell-title">Unpaid Users</p>
+                <p class="stat-cell-value">{{$unpaidEnrollments->count()}}</p>
             </div>
 
         </div>

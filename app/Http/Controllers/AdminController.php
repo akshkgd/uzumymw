@@ -18,6 +18,7 @@ use Session;
 use Redirect;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
 
 class AdminController extends Controller
 {
@@ -173,7 +174,7 @@ class AdminController extends Controller
     }
 
 
-    public function batchEnrollment($id)
+    public function batchEnrollmentOld($id)
     {
         $batch = Batch::findorFail($id);
         $paidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->get();
@@ -186,6 +187,41 @@ class AdminController extends Controller
         $profit = $earning - $teacherEarning;
         return view('admin.batchEnrollment', compact('batch', 'paidEnrollments', 'unpaidEnrollments', 'totalUsers', 'paidUsers', 'unpaidUsers', 'earning', 'teacherEarning', 'profit'))->with('i');
     }
+    public function batchEnrollment($id)
+{
+    $batch = Batch::findOrFail($id);
+    $paidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->get();
+    $unpaidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 0)->get();
+
+    // 1. Total paid users
+    $totalPaidUsers = $paidEnrollments->count();
+
+    // 2. Paid users count with and without certificate
+    $paidUsersWithCertificate = $paidEnrollments->where('hasCertificate', 1)->count();
+    $paidUsersWithoutCertificate = $totalPaidUsers - $paidUsersWithCertificate;
+
+    // 3. Revenue from certificate fee and total revenue
+    $total = $paidEnrollments->sum('amountPaid') / 100;
+
+    // Assuming certificate fee is stored in 'certificateFee' column
+    $certificateFeeEarning = $paidEnrollments->sum('certificateFee');
+    $totalEarning = $total + $certificateFeeEarning;
+    // 4. Earnings without certificate fee
+    $classEarning = $totalEarning - $certificateFeeEarning;
+
+    // Percentage comparison
+    $certificateFeePercentage = number_format(($certificateFeeEarning / $totalEarning) * 100, 2);
+    $classEarningPercentage = number_format(($classEarning / $totalEarning) * 100, 2);
+
+    return view('admin.batchEnrollment', compact(
+        'batch', 'paidEnrollments', 'unpaidEnrollments', 'totalPaidUsers',
+        'paidUsersWithCertificate', 'paidUsersWithoutCertificate',
+        'totalEarning', 'certificateFeeEarning', 'classEarning',
+        'certificateFeePercentage', 'classEarningPercentage'
+    ))->with('i');
+}
+
+
 
     public function storeTopic(Request $request)
     {
