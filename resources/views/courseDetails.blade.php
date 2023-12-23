@@ -205,10 +205,10 @@
                                         </div>
                                     @endauth
                                     <div class="">
-                                        {{-- <a class="btn ck-btn fw-light ck-rounded"
+                                        <a class="btn ck-btn fw-light ck-rounded"
                                             href="{{ action('CourseEnrollmentController@checkEnroll', $batch->id) }}">Enroll
-                                            Now</a> --}}
-                                            <a href="https://rzp.io/l/jO09VVod" class="btn ck-btn fw-light ck-rounded">Join bootcamp at 23999/-</a>
+                                            Now</a>
+                                            {{-- <a href="https://rzp.io/l/jO09VVod" class="btn ck-btn fw-light ck-rounded">Join bootcamp at 23999/-</a> --}}
                                             <div class="text-center">Once the timer hits zero, pricing will be increased to 2399.00/-</div>
                                         
                                         </div>
