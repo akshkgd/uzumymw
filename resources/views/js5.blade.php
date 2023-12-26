@@ -407,7 +407,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l4.svg') }}" alt="">
-                                        8 PM IST (1.5 hours live)
+                                        8 AM IST (1.5 hours live)
                                     </div>
                                 </div>
                             </div>
