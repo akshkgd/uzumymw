@@ -1,0 +1,46 @@
+body{
+    font-family: 'Poppins', sans-serif !important;
+    -webkit-font-smoothing: antialiased !important;
+}
+.navbar-container{
+    margin-top: 0 !important;
+}
+.navbar{
+    padding: 10px 0 !important;
+    background-color: #fff !important;
+}
+
+.s-main{
+    margin-top: 6vmax;
+}
+.course-card{
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+    border:1px solid rgb(231, 231, 231);
+    border-radius: 14px;
+    padding: 8px;
+
+}
+.rounded{
+    border-radius: 14px !important;
+}
+.no-enrollment{
+    margin: auto;
+    display: flex;
+    align-items:center;
+    height: 50vh;
+    color: rgb(14, 14, 14);
+}
+.btn-link{
+    transition: .2s;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid #9ec5ff5f;
+    /* color: #0a58ca; */
+    color: black;
+    font-size: 16px;
+    display: inline-block;
+}
+.btn-link:hover{
+    background-color: #0a57ca19;
+}
