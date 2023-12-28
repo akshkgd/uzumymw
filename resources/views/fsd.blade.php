@@ -204,8 +204,8 @@ modal.show()
         <div class="container pt-0 pt-lg-5 pt-xlg-5 pt-md-5 mt-5 ">
             <div class="row">
                 <div class="col-md-8">
-                    <h1 class="fw-bold m-0"> Full Stack Web Development Bootcamp (MERN)</h1>
-                    <p class="mt-2 fs-6">Welcome to the Complete Web Development Bootcamp, the only course you need to learn to code and become a full-stack web developer.</p>
+                    <h1 class="fw-bold m-0"> Full Stack Web Development Cohort (MERN)</h1>
+                    <p class="mt-2 fs-6">Welcome to the Complete Web Development cohort, the only course you need to learn to code and become a full-stack web developer.</p>
 
 
                     <div>
@@ -703,11 +703,11 @@ modal.show()
 
                 <div class="col-md-4 mb-5 mb-lg-0 mb-xlg-0 ">
 
-                    <div class="card card-primary sticky-lg-top border-none shadow-lg p-3">
-                        <img src="https://codekaro.in/storage/img/Yw7P5n4LioLXUZomUbzMlg6PzX7JNTibfoSt05n9.jpg" alt="Image"
+                    <div class="card card-primary sticky-lg-top border-none shadow-lg" style="padding: 10px">
+                        <img src="{{asset('assets/img/cmern.png')}}" alt="Image"
                             class="card-img-to course-car ck-rounded">
                         <div class="pills mt-3">
-                            <span class="badge badge-pill badge-primary bg-mute text-dark fw-light">Live Classes</span>
+                            <span class="badge badge-pill badge-primary bg-mute text-dark fw-light">On demand Videos</span>
                             <span class="badge badge-pill badge-primary bg-mute text-dark fw-lighter">English</span>
                             <span
                                 class="badge badge-pill badge-primary bg-mute text-dark fw-lighter">24
@@ -718,26 +718,25 @@ modal.show()
                         
                         <div class="bg-primary-al rounded-lg">
                             <div class="mt-2">
-                                <h1 class="fs-5 my-3 text-dark">Full Stack Web Development Bootcamp (MERN)</h3>
+                                <h1 class="fs-5 my-3 text-dark text-cente">Full Stack Web Development Cohort (MERN)</h3>
 
-                                    <div class="d-flex fs-3 justify-content-aroun ">
-                                        <span class="h3 pt-1 mr-1 js-dollar-sign text-dark ck-font">Rs</span>
-                                        <span class="fs-3 mr-2 js-price-per-month text-muted px-2"
-                                            style="text-decoration:line-through; font-weight:400">29999</span>
+                                    <div class="d-flex fs-4 justify-content-cente ">
+                                        <span class="fs-5  mr-1 js-dollar-sign text-dark ck-font">Rs</span>
+                                        <span class="fs-5 mr-2 js-price-per-month text-muted px-2"
+                                            style="text-decoration:line-through; font-weight:400">48999</span>
                                         <span
-                                            class="display- px-2  js-price-per-month fw-400">10998</span>
+                                            class="display- px-1 fs-5  js-price-per-month fw-400">17999/-</span>
                                     </div>
 
                                     
 
                                     <p class="ck-font fw-400  m-0 d-none">Starts From
                                         Mon, 04 Sep</p>
-                                    <p class="ck-font fw-400 ">Timings: Evening Classes on alternate days
-                                        </h5>
+                                    
                                         
                                         <div class="car p-2 d-non">
                                             
-                                            <div class="col-md-12 text-cente mt-0">
+                                            <div class="col-md-12 text-cente mt-2">
                                                 <div id="countdown" class="">
                                                     <ul type="none" class="navbar justify-content-around p-0 text-center">
                                                       <li class="d-inlin d-none fs-6"><span id="days" class="d-block display-6 fw-bold"></span> <span>days</span> </li>
@@ -751,8 +750,8 @@ modal.show()
                                        
                                                                             <div class="">
                                         
-                                            <a href="https://rzp.io/l/jO09VVod" class="btn ck-btn fw-light ck-rounded">Join bootcamp at 10998/-</a>
-                                            <div class="text-center">Once the timer hits zero, pricing will be increased to 2399.00/-</div>
+                                            <a href="https://rzp.io/l/mern-cohort" class="btn btn-dark w-100 py-3 fw-light ck-rounded mb-3">Join bootcamp at 17999/-</a>
+                                            <div class="text-center small">Once the timer hits zero, pricing will be increased to 48999.00/-</div>
                                         
                                         </div>
                             </div>
@@ -779,8 +778,7 @@ modal.show()
                             <div class="p-2">
                                 <img src="https://codekaro.in/assets/img/missed-class-logo-1.svg" alt="">
                                 <h2 class="fs-4 mt-2">Missed a class?</h2>
-                                <p class="">No worries, watch the recordings later at your convenience from
-                                    your Archive.</p>
+                                <p class="">No worries of missing a class, get a video on every alternate day to learn and practice at your pace.</p>
                             </div>
 
                         </div>
@@ -790,8 +788,9 @@ modal.show()
                             <div class="p-2">
                                 <img src="https://codekaro.in/assets/img/hd.svg" alt="">
                                 <h2 class="fs-4 mt-2">Have doubts?</h2>
-                                <p class="">Fear not, peer to peer group will help you out any issue, big or
-                                    small.</p>
+                                <p class="">Fear not, attend team lead doubt solving sessions from 8:00 PM live.
+                                    Or ask the questions inside the community.
+                                </p>
                             </div>
 
                         </div>
@@ -801,7 +800,7 @@ modal.show()
                             <div class="p-2">
                                 <img src="https://codekaro.in/assets/img/wtr.svg" alt="">
                                 <h2 class="fs-4 mt-2">Get Certificate!</h2>
-                                <p>Receive a linkedIn shareable certificate after the completion of live classes</p>
+                                <p>Receive a linkedIn shareable certificate after the completion of cohort and it's validated across the globe.</p>
                             </div>
 
                         </div>
@@ -811,7 +810,7 @@ modal.show()
                             <div class="p-2">
                                 <img src="https://codekaro.in/assets/img/time.svg" alt="">
                                 <h2 class="fs-4 mt-2">Timings clash?</h2>
-                                <p class="">Our classes are held in the evening to make sure college schedules
+                                <p class="">You get on demand videos to make sure college schedules or office hours
                                     do not clash with our classes.</p>
                             </div>
 
@@ -821,7 +820,7 @@ modal.show()
                         <div class="card text-center f-5">
                             <div class="p-2">
                                 <img src="https://codekaro.in/assets/img/project.svg" alt="" height="70">
-                                <h2 class="fs-4 mt-2">College needs time??</h2>
+                                <h2 class="fs-4 mt-2">College or office needs time??</h2>
                                 <p class="">Pause your course and restart a month later with the next batch!
                                 </p>
                             </div>
@@ -974,12 +973,12 @@ modal.show()
 
     <div class="slider-menu mt-5">
 
-        <h3 class="ck-font ">₹10998 <span class="lead "
-                style="text-decoration: line-through;">₹29999</span> </h3>
+        <h3 class="ck-font ">₹17999 <span class="lead "
+                style="text-decoration: line-through;">₹48999</span> </h3>
         <br>
 
         <div class="">
-            <a href="https://rzp.io/l/jO09VVod"
+            <a href="https://rzp.io/l/mern-cohort"
                 class="btn btn-primary w-10 fw-light py-2 px-5 rounded-pil">Enroll Now</a>
         </div>
     </div>
