@@ -213,13 +213,7 @@
             </div>
 
 
-            <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-            <script type="text/javascript">
-                $(window).on('load', function() {
-                    $('#subscribe-modal').modal('show');
-                });
-
-            </script>
+           
         @endif
 
 
