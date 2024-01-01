@@ -1,23 +1,27 @@
-@extends('layouts.ck')
+@extends('layouts.student')
 @section('content')
+    <div class="navbar-container ">
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
+            
+        </nav>
+    </div>
+    @include('layouts.student-nav')
 <style>
 
 </style>
-@include('layouts.ck-header')
+{{-- @include('layouts.ck-header') --}}
   
 {{-- batch details start --}}
 
 <section class="">
     <div class="container pt-5 ">
         <div class="row justify-content-center">
-            <div class="col-lg-11 col-xl-9 col-sm-10 col-md-10 ">
+            <div class="col-lg-5">
                 @include('layouts.alert')
                 <form action="{{ route('updateStudentsProfile') }}" method="POST" class="">
                     @csrf
-                <div class="card card-body my-5 shadow-3d">
-                    <h3 class="pb-2 fw-bold">Personal Info</h3>
-
-                    <img src="{{Auth::user()->avatar}}" alt="" class="avatar avatar-lg">
+                    <h4 class="mb-0 fs-5 fw-">Personal Info</h4>
+                    <p class="text-muted small">Make changes to your account here. Click save when you're done.</p>
 
                     
                       <div class="form-floating mt-3 mb-2">
@@ -35,7 +39,7 @@
 
                       
                       <div>
-                        <button type="submit" class="btn px-3 rounded-pil btn-primary mt-3">Save Changes</button>
+                        {{-- <button type="submit" class="btn px-3 rounded-pil btn-dark py-3">Save Changes</button> --}}
                       </div>
                       
                 </div>
@@ -49,9 +53,11 @@
 <section class="pb-0">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-11 col-xl-9 col-sm-10 col-md-10 ">
-                <div class="card card-body my-5 shadow-3d">
-                    <h3 class="pb-2 fw-bold">Educational Details</h3>
+            <div class="col-lg-5 ">
+                <div class="= my-5">
+                    <h4 class="mb-0 fs-5">Educational Info</h4>
+                    <p class="text-muted small">Make changes to your account here. Click save when you're done.</p>
+
                     <div class="form-floating mb-2">
                         <input type="text" class="form-control" id="floatingInput" name="college" placeholder="name@example.com" value="{{Auth::user()->college}}">
                         <label for="floatingInput">Your School / College</label>
@@ -68,8 +74,8 @@
                       @endif
 
                       <div>
-                        <button type="submit" class="btn px-3 rounded-pil btn-primary mt-3">Save Changes</button>
-                      </div>   
+                        <button type="submit" class="btn px-3 rounded-pil btn-dark py-3">Save Changes</button>
+                    </div>   
 
                 </div>
                 
@@ -82,7 +88,7 @@
 </section>
 
 <section class="">
-    <div class="container  pb-5">
+    <div class="container d-none pb-5">
         <div class="row justify-content-center">
             <div class="col-lg-11 col-xl-9 col-sm-10 col-md-10 ">
                 <div class="card  card-ico shadow-3d my-5">
@@ -130,9 +136,9 @@
 </section>
 
 
-<a href="#" class="btn btn-dark p-3 bg-dark btn-round btn-floating">
+{{-- <a href="#" class="btn btn-dark p-3 bg-dark btn-round btn-floating">
     <img class="icon " src="assets/img/icons/theme/communication/chat-4.svg" alt="twitter social icon"
         data-inject-svg />
-</a>
+</a> --}}
 {{-- <a href="" class="btn btn-dark p-3 bg-dark btn-round  btn-floating">  <img src="/assets/img/icons/communication/chat4.svg" alt=""></a> --}}
 @endsection()

@@ -121,7 +121,7 @@ h6 {
     text-rendering: optimizeLegibility;
   }
   .sidebar{
-    width: 340px;
+    width: 330px;
     flex-grow: 1;
     position: sticky;
     top:0;

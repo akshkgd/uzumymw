@@ -1,278 +1,86 @@
-@extends('layouts.ck')
-@section('title', 'Codekaro Dashboard ')
-@section('meta_keywords', 'Student Section')
-@section('meta_description', 'Student DashBoard')
-    <style>
-
-    </style>
+@extends('layouts.student')
 @section('content')
     <div class="navbar-container ">
         <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
             
         </nav>
     </div>
-    @include('layouts.ck-header')
-    {{-- <section class="bg-primary-alt header-inner o-hidden" id="test">
-  <div class="container">
-    <div class="row my-3">
-      <div class="col">
-
-      </div>
-    </div>
-    <div class="row py-6 text-center justify-content-center align-items-center layer-2">
-      <div class="col-xl-8 col-lg-10">
-        <h1 class="display-4  display-5" id="greet"><span id="time"></span> <span>{!!strtok(Auth::user()->name, "
-            ")!!}</span> </h1>
-        <p class="lead mb-0">Eat. Sleep. Code Repeat</p>
-      </div>
-    </div>
-  </div>
-  <div class="divider layer-1">
-    <img src="assets/img/dividers/divider-2.svg" alt="graphical divider" data-inject-svg />
-  </div>
-</section> --}}
+    @include('layouts.student-nav')
     <!-- student dashboard starts -->
 
 
-    <section class="" style="padding-top: 5rem;">
-        <div class="container pb-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-9">
+    <div class="container s-main mb-5">
+        <div class="row justify-content-center">
+            {{-- <div>
+                <h3 class="fw-bold mb-0">Good morning, Ashish</h3>
+                <p>Let's continue your css bootcamp!</p>
+            </div> --}}
+            @isset($enrollments)
+                @if($enrollments->count() > 0)
+                @foreach ($enrollments as $enrollment)
+                    <div class="col-md-5 h-100 mt-4">
+                        <div class="course-card h-100 shadow">
+                            <img src="{{ $enrollment->batch->topicId == 100 ? asset('assets/img/cccs.png') : ($enrollment->batch->topicId == 101 ? asset('assets/img/cjavascript.png') : ($enrollment->batch->topicId == 10 ? asset('assets/img/cmern.png') : asset('assets/img/default-course.jpg'))) }}" class="course-card-img" alt="">
+                            <div class="course-card-body">
+                                <h3 class="text-dark mt-3 mb-1 fs-5 fw-bol">{{$enrollment->batch->name}}</h3>
+                            <p class="mt-0 fs-6">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
 
-                    {{-- user section --}}
-                    <div class="text-center ">
-                        <img src="{{ Auth::user()->avatar }}" alt="" class="avatar avatar-lg">
-                        <h1 class="display fs-4  pt-2 mb-0"><span id="time"></span>  {{Auth::user()->name}}</h1>
-                        <p class="lead">Eat Sleep Code repeat</p>
-                    </div>
-
-                    {{-- user section ends --}}
-                    @include('layouts.alert')
-                    {{-- alert start --}}
-
-                    {{-- alert ends --}}
-                    @isset($workshopEnrollments)
-                        @if ($workshopEnrollments->count() > 0)
-                        <div class="text-sm-center">
-                            <span class="badge badge-pill badge-ck-primary text-center lead mb-2 mt-3 ">Upcoming Class</span>
-                        </div>
-                            
-                        @endif
-                        @forelse ($workshopEnrollments as $event)
-                        @if ($event->workshop->status < 3 && $event->workshop->status > 0)
-                            <div class="card my-3 card-dark cb-card card-ico shadow-3d">
-                                <div class="card-bod p-4">
-                                    <div class="flex-grow-1">
-                                        <h4 class="fs-3 fw-bold mb-2">{{ $event->workshop->topic }}</h4>
-                                        <span>
-                                            {!! $event->workshop->desc !!}
-                                        </span>
-                                        <div class="d-md-flex justify-content-between pt-1">
-                                            <div class="">
-                                                <h5 class="fs-5 ">
-                                                    {{ Carbon\Carbon::parse($event->workshop->nextClass)->format('D, d M Y') }}
-                                                    </h4>
-                                                    <h6 class="ck-font">
-                                                        {{ Carbon\Carbon::parse($event->workshop->nextClass)->format('h:i A') }}
-                                                </h5>
-                                            </div>
-
-                                            <div class="text pt-md-2">
-                                                <a href="{{ $event->workshop->meetingLink }}"
-                                                    class=" btn btn-primary fw-400 @if ($event->workshop->meetingLink == '') d-none @endif" target="_blank">Launch Class</a>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="border-to pt-4">
-                                        <a href="{{ action('WorkshopController@workshopDetails', Crypt::encrypt($event->id)) }}"
-                                            class="btn ck-outline-btn">Course Details</a>
-                                        <a href="{{ $event->workshop->groupLink}}" target="_blank" class="btn ck-outline-btn">Join WhatsApp Group</a>
-                                        <p class="text-dark small pt-4 m-0">No recording for the free class will be provided,
-                                            make sure to join the class on time. Launch class button will be active 10 minutes
-                                            before the class.</p>
-                                    </div>
-
-                                </div>
+                            @if($enrollment->batch->status == 1 & $enrollment->batch->type == 2)
+                            <div class="my-4">
+                                <p class="small text-muted m-0">Starting on</p>
+                                <p class="text-dark ">{{$enrollment->batch->startDate->format('D, d M Y')}}</p>
                             </div>
                             @endif
-                        @empty
-
-                        @endforelse
-                    @endisset
-
-
-                    @isset($Enrollments)
-                        @if ($Enrollments->count() > 0)
-                            {{-- <span class="badge badge-pill badge-ck-primary text-center lead mb-2">Upcoming Class</span> --}}
-                        @endif
-                        @forelse ($Enrollments as $Enrollment)
-                        @if ($Enrollment->batch->status < 3 && $Enrollment->batch->status > 0)
-                            <div class="card my-5 card-dark cb-card card-ico shadow-3d">
-                                <div class="card-bod p-4">
-                                    @if ($Enrollment->hasPaid == 1)
-                                    <div class="flex-grow-1">
-                                        <h4 class="fs-3 fw-bold mb-4">{{ $Enrollment->batch->topic }}</h4>
-                                        <span>
-                                            {!! $Enrollment->batch->desc !!}
-                                        </span>
-                                        <div class="d-md-flex justify-content-between pt-1">
-                                            <div class="">
-                                                <h5 class="fs-5">
-                                                    {{ Carbon\Carbon::parse($Enrollment->batch->nextClass)->format('D, d M Y') }}
-                                                    </h4>
-                                                    <h6 class="ck-font">
-                                                        {{ Carbon\Carbon::parse($Enrollment->batch->nextClass)->format('h:i A') }}
-                                                </h5>
-                                            </div>
-
-                                            <div class="text pt-md-2">
-                                                @if ($Enrollment->hasPaid == 1)
-                                                    <a href="{{ $Enrollment->batch->meetingLink }}"
-                                                        class=" btn btn-outline-primary" target="_blank">LaunchClass</a>
-                                                @else
-                                                    <a href="{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($Enrollment->id)) }}"
-                                                        class=" btn btn-outline-primary fw-400">Complete
-                                                        Payment</a>
-                                                @endif
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                    @else
-                                    <div class="d-flex justify-content-between">
-                                        <div class="">
-                                        <h4 class="fs-3 fw-bold mb-4">{{ $Enrollment->batch->name}}</h4>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem, <br> repellat delectus laborum vitae  minus et natus repellendus voluptas!</p>
-                                            <a href="" class="btn btn-primary px-5 py-2 rounded-pill">Complete Payment</a>
-                                        </div>
-                                        <img src="{{asset('assets/img/clockNudge.svg')}}" alt="">
-                                    </div>
-                                    @endif
-
-
-                                </div>
-                                <div class="border-to px-4 py-2">
-                                    <a href="{{ action('BatchController@batchDetails', Crypt::encrypt($Enrollment->id)) }}"
-                                        class="btn ck-outline-btn">Course Details</a>
-                                        @if ($Enrollment->batch->type == 1)
-                                        <a href="{{ action('StudentController@notes', Crypt::encrypt($Enrollment->id)) }}"
-                                            class="btn ck-outline-btn">Notes & Assignments</a>
-                                        <a href="{{ action('StudentController@recordings', Crypt::encrypt($Enrollment->id)) }}"
-                                            class="btn ck-outline-btn">Recording</a>
-                                        @endif
-                                        @if ($Enrollment->batch->type == 2)
-                                        <a  target="_blank" class="btn ck-outline-btn" @if($Enrollment->hasPaid == 1) href="{{ $Enrollment->batch->groupLink}}" @endif>Join WhatsApp Group</a>
-                                        @endif
-                                    
-                                </div>
-
-
-                            </div>
-                            @endif
-                        @empty
-                            <div class="row   o-hidden  mt-5">
-                                <div class="col-md-12 d-flex">
-                                    <div class="card card-body">
-                                        {{-- <img src="{{ asset('assets/img/starred_A.png') }}" class="img-fluid" alt="Image"> --}}
-                                        <h1 class="lead m-0">No upcoming classes for you! 😔</h1>
-                                        <p class="">Your next class will be scheduled when you enroll in a course </p>
-                                        {{-- <a href="" class="btn btn-primary">Explore all courses</a> --}}
-                                    </div>
-                                </div>
-                            </div>
-                                
                             
-                                        
-                        
-                                        <div class="row d-none justify-content-center">
-                                             @foreach ($batches as $batch)
-                        
-                                                <div class=" col-md-6  d-flex ">
-                                                    <a class="card hover-shadow-sm border-none shadow-lg shadow-3d"
-                                                        href="{{ action('WorkshopController@details', $batch->id) }}">
-                                                        <div class="flex-grow-1">
-                                                        <img src="{{ asset('storage/'.$batch->img) }}" loading="lazy" alt="Image"
-                                                            class="card-img-top">
-                                                        <div class="card-bod d-flex flex-column">
-                                                            <div class=" p-2">
-                                                                <h4 class="mb-0 ck-font fw-400">{{$batch->name}} </h1>
-                                                                    <p class="lea m-0 text-dark">Start Time: {{ Carbon\Carbon::parse($batch->nextClass)->format('h:i A') }}
-                                                                        {{ Carbon\Carbon::parse($batch->startDate)->format('D, d M Y') }}</p>
-                                                                    <p class="lad m-0 text-dark">Duration: 2 Hours</p>
-                        
-                                                            </div>
-                                                        </div>
-                                                        </div>
-                                                            <div class="d-flex flex-wrap align-items-center">
-                                                                <span class="badge badge-pill  badge-ck-primary  m-1">Python</span>
-                                                                <span class="badge badge-pill badge-ck-success  m-1">Live Session</span>
-                                                                <span class="badge badge-pill badge-ck-success  m-1">Free</span>
-                                                            </div>
-                                                    </a>
-                                                </div>
-                        
-                                                
-                                            @endforeach
-                        
-                        
-                                        </div>
-                        
-                                    {{-- </div> --}}
-                                    {{-- </div>
-                                    </div> --}}
-                        
-                                    
-                               
-                            
-                    @endforelse
-                @endisset
-                {{-- faq starts --}}
-                <h3 class="display lead-1 text-center pt-5">Frequently Asked Questions</h3>
-                <div class="card shadow-3d">
-                    <div class="border-bottom px-2 ">
-                        <div data-target="#panel-1" class="accordion-panel-title pr-2" data-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="panel-1">
-                            <span class="h5 text-dark ck-font fw-400 pt-3 px-2">How to join the upcoming class</span>
-                            <img class="icon text-dark" src="assets/img/icons/interface/plus.svg" alt="plus interface icon"
-                                data-inject-svg />
-                        </div>
-                        <div class="collapse" id="panel-1">
-                            <div class="pt-3">
-                                <p class="mb-2 pl-2">
-                                    You can join your upcoming class by clicking on the launch class button. Since these
-                                    are the live classes make sure to launch your class 5 minutes before the time to
-                                    avoid any technical glitches.
-                                </p>
+                            <div class="mt-4">
+                                @if($enrollment->batch->status == 1 & $enrollment->batch->type == 2)
+                                <a href="{{$enrollment->batch->groupLink}}" target="_blank" class="btn-link ">Join WhatsApp Group</a>
+                                @elseif ($enrollment->batch->status == 3 & $enrollment->batch->type == 2)
+                                    <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}" class="btn-link">Recordings</a>
+                                    <a href="{{ action('BatchController@certificate', $enrollment->certificateId) }}" target="_blank" class="btn-link">Certificate</a>
+                                @else
+                                    <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}" class="btn-link">Access Course</a>
+                                    <a href="{{ action('BatchController@certificate', $enrollment->certificateId) }}" target="_blank" class="btn-link">Details</a>
+                                @endif
                             </div>
+                            </div>
+                            
                         </div>
                     </div>
-                    <div class=" px-2 ">
-                        <div data-target="#panel-2" class="accordion-panel-title pr-2" data-toggle="collapse" role="button"
-                            aria-expanded="false" aria-controls="panel-1">
-                            <span class="h5 text-dark ck-font fw-400 pt-3 px-2">I missed my live class</span>
-                            <img class="icon text-dark" src="assets/img/icons/interface/plus.svg" alt="plus interface icon"
-                                data-inject-svg />
+                @endforeach
+                @else
+                <div class="no-enrollment">
+                    <div class="col-md-8 " style="margin: auto">
+                        <div class="text-center">
+                            <img src="{{asset('assets/img/nf.svg')}}" class="" height="180" alt="">
                         </div>
-                        <div class="collapse" id="panel-2">
-                            <div class="pt-3">
-                                <p class="mb-2 pl-2">
-                                    Do not worry, once the live class is over the recorded video is saved in your
-                                    dashboard and you can watch it later.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                        <p class="mt-4 text-center fs-6">You’re not enrolled in any program!</p>
 
+                        <p class="mb-1 mt-5">You can try the following things:</p>
+                        <p class="mb-1">👉 Logout and login with the email you used for making the payment</p>
+                        <p class="mb-1">👉 If you’re not sure which email it might be, try searching for “Codekaro” in your inbox</p>
+                        <p class="mb-1">👉 If these steps don’t work — reach out to support at info@codekaro.in with your payment details</p>
+                    </div>
                 </div>
-                {{-- faq ends --}}
-
-            </div>
+                
+                @endif
+            @endisset
         </div>
-        </div>
+    </div>
 
-        @include('layouts.dfooter')
+        
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    {{-- student dashboard ends --}}
+    {{-- @include('layouts.dfooter') --}}
 
 
         <script>
@@ -418,5 +226,5 @@
 
 
 
-
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     @endsection
