@@ -39,11 +39,12 @@ class HomeController extends Controller
             // $Enrollments = DB::table('course_enrollments')->where('userId', Auth::user()->id)
             // ->join('batches', 'batches.id', '=', 'course_enrollments.batchId')->orderBy('date', 'asc')->get();
             // dd($Enrollments);
-            $Enrollments = CourseEnrollment::where('userId', Auth::user()->id)->where('status', 1)->orderBy('nextClass', 'asc')->get();
-            $workshopEnrollments = WorkshopEnrollment::where('userId', Auth::user()->id)->where('status', 1)->get();
-            $batches = Workshop::where('status',1)->latest()->take(2)->get();;
-            // 
-            return view ('students.index', compact('Enrollments', 'batches', 'workshopEnrollments'));}
+            // $Enrollments = CourseEnrollment::where('userId', Auth::user()->id)->where('status', 1)->orderBy('nextClass', 'asc')->get();
+            $enrollments = CourseEnrollment::where('userId', Auth::user()->id)->where('status', 1)->where('hasPaid', 1)->get();
+            // $workshopEnrollments = WorkshopEnrollment::where('userId', Auth::user()->id)->where('status', 1)->get();
+            // $batches = Workshop::where('status',1)->latest()->take(2)->get();;
+            
+            return view ('students.index', compact('enrollments'));}
             else{
                 session()->flash('alert-danger', 'Your Acount has been terminated!');
                 return view('students.index');
