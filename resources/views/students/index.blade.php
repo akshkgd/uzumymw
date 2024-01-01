@@ -40,7 +40,7 @@
                                     <a href="{{ action('BatchController@certificate', $enrollment->certificateId) }}" target="_blank" class="btn-link">Certificate</a>
                                 @else
                                     <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}" class="btn-link">Access Course</a>
-                                    <a href="{{ action('BatchController@certificate', $enrollment->certificateId) }}" target="_blank" class="btn-link">Details</a>
+                                    {{-- <a href="{{ action('BatchController@certificate', $enrollment->certificateId) }}" target="_blank" class="btn-link">Details</a> --}}
                                 @endif
                             </div>
                             </div>
