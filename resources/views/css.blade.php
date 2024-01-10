@@ -2114,7 +2114,7 @@ iframe{border:0;}
                                     <span style="text-decoration: line-through">₹899.00</span>
                                 </div>
                                 <input type="checkbox" id="myCheckbox" name="myCheckbox" style="transform: scale(2); margin-left:6px; margin-right: 10px; margin-top:12px;" onchange="toggleRecordingCheckbox(this)">
-                                <label for="myCheckbox" style="">Yes, I will take it.</label>
+                                <label for="myCheckbox" style="">Yes, I need 2x value.</label>
 
   
                                 {{-- <div class="you-checkbox-item align-items-center p-0 m-0" style="border: 1px solid white; text-align:left; justify-content: left" onclick="toggleRecordingCheckbox(this)">
