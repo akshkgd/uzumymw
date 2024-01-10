@@ -2106,7 +2106,7 @@ iframe{border:0;}
                             <label for="floatingInput">Mobile Number</label>
                         </div>
                         <div class="text-left p-3 mb-2" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px" >
-                            <div class="py-2 small" style="color:#29cf84">57% of Learners Choose this option to get 3x value</div>    
+                            <div class="py-2" style="color:#29cf84">57% of Learners Choose this option to get 3x value</div>    
                             <div class="text-left">100+ Interview Questions, chatGPT prompts & 25+ Projects</div>
                                 <div class="text-left  text-muted my-2" style="font-size: 14px">Get access to curated list of 100+ frontend Interview questions and 25+ projects with chatGPT prompts that will increase your productivity by 10x! </div>
                                 
