@@ -2105,19 +2105,35 @@ iframe{border:0;}
                                 placeholder="name@example.com" @auth value="{{ Auth::user()->mobile }}" @endauth>
                             <label for="floatingInput">Mobile Number</label>
                         </div>
-                        <div class="you-checkbox-item" onclick="toggleRecordingCheckbox(this)"
-                            style="border: 1px solid #29cf84;">
-                            <div class="you-checkbox-green">
+                        <div class="text-left p-3 mb-2" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px" >
+                                <div class="text-left">100+ Interview Questions & 25+ Projects</div>
+                                <div class="text-left  text-muted my-2" style="font-size: 14px">Get access to curated list of 100+ frontend Interview questions and 25+ projects with chatGPT prompts that will increase your productivity by 10x! </div>
+                                
+                                <div>
+                                    <span>₹399.00</span>
+                                    <span style="text-decoration: line-through">₹899.00</span>
+                                </div>
+                                <input type="checkbox" id="myCheckbox" name="myCheckbox" style="transform: scale(2); margin-left:6px; margin-right: 10px; margin-top:12px;" onchange="toggleRecordingCheckbox(this)">
+                                <label for="myCheckbox" style="">Yes, I will take it.</label>
+
+  
+                                {{-- <div class="you-checkbox-item align-items-center p-0 m-0" style="border: 1px solid white; text-align:left; justify-content: left" onclick="toggleRecordingCheckbox(this)">
+                            
+                            
+                            <div class="you-checkbox-green" >
                                 <div class="you-checkbox-check">
                                     <img height="26px"
                                         src="https://uploads-ssl.webflow.com/5fdb2866020c200cd7fd7369/5feb5c987b9f08745a9463d2_check-mark-black-outline.svg"
                                         loading="lazy" alt="" class="you-checkbox-check-tick">
                                 </div>
                             </div>
-                            <div class="you-checkbox-text text-left">Add Recordings of live Bootcamp at Rs 99 <span
-                                    class="small text-success">(Most Popular)</span></div>
-                        </div>
-                        <p class="">Three months access of recordings. Only available if you attend. This is <strong>EARLY
+                            <div class="you-checkbox-text text-lef">
+                                <div>Yes, I will take it.<span class="small text-success">(Most Popular)</span></div>
+                                
+                            </div>
+                        </div> --}}
+                    </div>
+                        <p class="d-none">Three months access of recordings. Only available if you attend. This is <strong>EARLY
                                 Bird</strong> offer, It will increase to 499 once the timer hits zero.
                         </p>
                         <input type="hidden" name="courseId" value="66">
@@ -2209,7 +2225,7 @@ iframe{border:0;}
             if (checkbox.value === "0") {
                 checkbox.value = "1";
                 checkboxItem.classList.add("checked");
-                priceElement.innerText = "198";
+                priceElement.innerText = "498";
 
             } else {
                 checkbox.value = "0";
