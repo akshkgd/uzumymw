@@ -1341,7 +1341,7 @@ iframe{border:0;}
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From 10th January
+                                        From 17th January
                                     </div>
                                 </div>
 
@@ -2106,15 +2106,15 @@ iframe{border:0;}
                             <label for="floatingInput">Mobile Number</label>
                         </div>
                         <div class="text-left p-3 mb-2" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px" >
-                                <div class="text-left">100+ Interview Questions & 25+ Projects</div>
+                                <div class="text-left">100+ Interview Questions, chatGPT prmpts & 25+ Projects</div>
                                 <div class="text-left  text-muted my-2" style="font-size: 14px">Get access to curated list of 100+ frontend Interview questions and 25+ projects with chatGPT prompts that will increase your productivity by 10x! </div>
                                 
                                 <div>
                                     <span>₹399.00</span>
-                                    <span style="text-decoration: line-through">₹899.00</span>
+                                    <span style="text-decoration: line-through">₹2999.00</span>
                                 </div>
                                 <input type="checkbox" id="myCheckbox" name="myCheckbox" style="transform: scale(2); margin-left:6px; margin-right: 10px; margin-top:12px;" onchange="toggleRecordingCheckbox(this)">
-                                <label for="myCheckbox" style="">Yes, I need 2x value.</label>
+                                <label for="myCheckbox" style="">Yes, I need 3x value.</label>
 
   
                                 {{-- <div class="you-checkbox-item align-items-center p-0 m-0" style="border: 1px solid white; text-align:left; justify-content: left" onclick="toggleRecordingCheckbox(this)">
