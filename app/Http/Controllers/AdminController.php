@@ -17,6 +17,12 @@ use Razorpay\Api\Api;
 use Session;
 use Redirect;
 use Carbon\Carbon;
+use Illuminate\Notifications\Notifiable;
+use App\Mail\WelcomeEmail;
+use App\Mail\OnboardingMailL2;
+use App\Mail\EmailForQueuing;
+use Mail;
+use Ognjen\Laravel\AsyncMail;
 use Illuminate\Support\Facades\DB;
 use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
 
@@ -385,6 +391,17 @@ class AdminController extends Controller
                     $a->hasPaid =1;
                     $a->certificateId = substr(md5(time()), 0, 16);
                     $a->save();
+                
+                $email_data = array(
+                    'name' => $user['name'],
+                    'email' => $user['email'],
+                    'workshopName' => $batch['name'],
+                    'workshopGroup' => $batch['groupLink'],
+                    'discord' => $batch['groupLink1'],
+                    'nextClass' => $batch['nextClass'],
+                    'teacher' => $batch->teacher->name,
+                );
+                Mail::to($user->email)->send(new OnboardingMailL2($email_data));
                     session()->flash('alert-success', 'Access Granted Successfully!');
                     return redirect()->back();
                 }
