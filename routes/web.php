@@ -71,8 +71,8 @@ Route::get('/it', function () {
 Route::get('/', function () {
     
     $batches = Workshop::where('status',1)->latest()->take(3)->get();
-    // $courses = Batch::where('status',1)->latest()->take(2)->get();
-    return view('welcome', compact('batches'));
+    $courses = Batch::where('status',1)->latest()->take(2)->get();
+    return view('welcome', compact('batches', 'courses'));
 });
 
 
