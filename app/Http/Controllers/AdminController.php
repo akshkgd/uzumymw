@@ -376,7 +376,7 @@ class AdminController extends Controller
                     $a->batchId = $request->batchId;
                     $a->price = $batch->price;
                     $a->amountpayable = $batch->payable;
-                    $a->amountPaid = $request->amount;
+                    $a->amountPaid = $request->amount * 100;
                     $a->paidAt = $request->paidAt;
                     $a->paymentMethod = $request->paymentMethod;
                     $a->transactionId = $request->transactionId;
@@ -391,7 +391,7 @@ class AdminController extends Controller
                 elseif ($enrollment && $enrollment->hasPaid == 0) {
                     $enrollment->status = 1;
                     $enrollment->hasPaid = 1;
-                    $enrollment->amountPaid = $request->amount;
+                    $enrollment->amountPaid = $request->amount *100;
                     $enrollment->paidAt = $request->paidAt;
                     $enrollment->paymentMethod = $request->paymentMethod;
                     $enrollment->transactionId = $request->transactionId;
