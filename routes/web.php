@@ -71,8 +71,8 @@ Route::get('/it', function () {
 Route::get('/', function () {
     
     $batches = Workshop::where('status',1)->latest()->take(3)->get();
-    $courses = Batch::where('status',1)->latest()->take(2)->get();
-    return view('welcome', compact('batches', 'courses'));
+    // $courses = Batch::where('status',1)->latest()->take(2)->get();
+    return view('welcome', compact('batches'));
 });
 
 
@@ -168,9 +168,16 @@ Route::post('/update-batch-status', 'TeacherController@updateBatchStatus')->name
 Route::post('/update-workshop', 'TeacherController@updateWorkshop')->name('updateWorkshop');
 Route::get('/generate-all-cetificates/{id}', 'TeacherController@generateAllCertificate')->name('generateAllCertificate');
 Route::get('/addContent/{id}/{contentId?}', 'TeacherController@addContent')->name('addCourseContent');
+Route::post('/update-content', 'TeacherController@updateContent')->name('updateContent');
 
 
 Route::get('/css-enrollments', 'TeacherController@cssEnrollments');
+// Route::post('/update-course-content-order', 'TeacherController@updateCourseContentOrder');
+Route::post('/update-sort-order', 'TeacherController@updateSortOrder')->name('updateSortOrder');
+
+
+
+
 //admin
 Route::get('/admin/students', 'AdminController@students');
 Route::get('/admin/css-enrollments', 'AdminController@cssEnrollments');
@@ -197,8 +204,9 @@ Route::get('/admin/workshops', 'AdminController@workshops');
 Route::get('/admin/feedbacks', 'AdminController@feedbacks');
 Route::get('/admin/remove-feedback/{id}', 'AdminController@removeFeedback');
 Route::get('/admin/add-feedback/{id}', 'AdminController@addFeedback');
-
-
+Route::get('/admin/add-access', 'AdminController@addAccess');
+Route::post('/get-email-suggestions', 'AdminController@getUser')->name('getUser');
+Route::post('/add-access', 'AdminController@addCourseAccess')->name('addAccess');
 
 
 

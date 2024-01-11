@@ -37,7 +37,7 @@
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
       <div class="container">
-        <a class="navbar-brand text-primary fw-bolder fs-5" href="{{url('/home')}}">
+        <a class="navbar-brand text-primar fw-700 fs-4" style="color:#0066ff" href="{{url('/home')}}">
             Codekaro
         </a>
         <button

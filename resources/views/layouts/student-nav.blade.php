@@ -16,7 +16,7 @@
 <nav class="navbar navbar-expand-lg navbar-light border-botto">
   <div class="container">
      
-    <a class="navbar-brand fw-bold fs-4" href="{{url('/home')}}">Codekaro</a>
+    <a class="navbar-brand fw-bold fs-5" href="{{url('/home')}}"><img src="{{asset('assets/img/black.svg')}}" height="40" alt=""></a>
 
     <span class="ms-auto">
       
@@ -30,9 +30,9 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       
       <div class="navbar-nav">
-        <a class="nav-link ms-3" aria-current="page" href="{{url('/event')}}">Free Classes</a>
-        <a class="nav-link" href="{{url('/course')}}">Course</a>
-        <a class="nav-link" href="{{url('/about')}}">About us</a>
+        {{-- <a class="nav-link ms-3" aria-current="page" href="{{url('/event')}}">Free Classes</a> --}}
+        {{-- <a class="nav-link" href="{{url('/course')}}">Course</a> --}}
+        {{-- <a class="nav-link" href="{{url('/about')}}">About us</a> --}}
       </div>
       <div class="ms-auto">
        
@@ -68,7 +68,7 @@
                         <a class="rounded-circle" href="#" role="button" data-bs-toggle="dropdown">
                             <div class="">
                                 <img alt="avatar" src="{{ Auth::user()->avatar }}" class="rounded-circle "
-                                    height="32" />
+                                    height="42" />
                                     
                             </div>
                         </a>
@@ -78,17 +78,21 @@
                                 
                             </div>
                             <ul class="list-unstyled">
-                                <li>
-                                    <a class="dropdown-item" href="{{url('/home')}}"> Dashboard</a>
-                                </li>
+                                {{-- <li><a class="dropdown-item dropdown-flex" href="{{url('/home')}}"> <img class="d-icon" height="20" src="{{asset('assets/img/dprofile.svg')}}" alt=""> <span>Dashboard</span></a></li> --}}
+                                <li><a class="dropdown-item dropdown-flex" href="{{url('/my-account')}}"> <img class="d-icon" height="20" src="{{asset('assets/img/dprofile.svg')}}" alt=""> <span>Profile</span></a></li>
+                                <li><a class="dropdown-item dropdown-flex" href="{{url('/home')}}"> <img class="d-icon" height="20" src="{{asset('assets/img/dcourses.svg')}}" alt=""> <span>Courses</span></a></li>
+                                <li><a class="dropdown-item dropdown-flex" href="{{url('/payments')}}"> <img class="d-icon" height="20" src="{{asset('assets/img/dpayments.svg')}}" alt=""> <span>Payments History</span></a></li>
                                 
+                                {{-- <li><a class="dropdown-item" href="{{url('/my-account')}}">Profile</a></li> --}}
+                                <li><hr class="dropdown-divider"></li>
                                 <li>
-                                    <a class="dropdown-item" href="{{url('/my-account')}}">My Account</a>
-                                </li>
-
-                                <li>
-                                    <a href="{{ route('logout') }}" class="dropdown-item fw-400 text-danger" onclick="event.preventDefault();
-                                       document.getElementById('logout-form').submit();">Logout
+                                    @php
+                                        $email = Auth::user()->email;
+                                        $obfuscatedEmail = substr($email, 0, 2) . str_repeat('•', strlen($email) - 6) . substr($email, -4);
+                                    @endphp
+                                    <a href="{{ route('logout') }}" class="dropdown-item fw-400 d-logout" onclick="event.preventDefault();
+                                       document.getElementById('logout-form').submit();">Sign out
+                                       <div class="mt-1">{{$obfuscatedEmail}}</div>
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                         style="display: none;">

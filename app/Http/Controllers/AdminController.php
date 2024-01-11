@@ -71,6 +71,26 @@ class AdminController extends Controller
         $users = User::latest()->paginate(50);
         return view('admin.students', compact('users'))->with('i', (request()->input('page', 1) - 1) * 50);;
     }
+    public function addAccess()
+    {
+        return view('admin.addAccess');
+    }
+    public function getUser(Request $request)
+    {
+        $email = $request->input('email');
+        $user = User::where('email', $email)->first();
+
+        if ($user) {
+            $userDetails = [
+                'name' => $user->name,
+                'email' => $user->email,
+                // Add other user details as needed
+            ];
+            return response()->json($userDetails);
+        } else {
+            return response()->json(null);
+        }
+    }
 
     public function studentDetails($id)
     {
@@ -345,4 +365,54 @@ class AdminController extends Controller
         session()->flash('alert-danger', 'Batch Added');
         return redirect('/home');
     }
-}
+
+    public function addCourseAccess(Request $request){
+            $user = User::where('email', $request->email)->first();
+            $enrollment = CourseEnrollment::where('batchId', $request->batchId)->where('userId', $user->id)->first();
+                if(!$enrollment){
+                    $batch = Batch::findOrFail($request->batchId);
+                    $a = new CourseEnrollment;
+                    $a->userId = $user->id;
+                    $a->batchId = $request->batchId;
+                    $a->price = $batch->price;
+                    $a->amountpayable = $batch->payable;
+                    $a->amountPaid = $request->amount;
+                    $a->paidAt = $request->paidAt;
+                    $a->paymentMethod = $request->paymentMethod;
+                    $a->transactionId = $request->transactionId;
+                    $a->invoiceId = $request->invoiceId;
+                    $a->status = 1;
+                    $a->hasPaid =1;
+                    $a->certificateId = substr(md5(time()), 0, 16);
+                    $a->save();
+                    session()->flash('alert-success', 'Access Granted Successfully!');
+                    return redirect()->back();
+                }
+                elseif ($enrollment && $enrollment->hasPaid == 0) {
+                    $enrollment->status = 1;
+                    $enrollment->hasPaid = 1;
+                    $enrollment->amountPaid = $request->amount;
+                    $enrollment->paidAt = $request->paidAt;
+                    $enrollment->paymentMethod = $request->paymentMethod;
+                    $enrollment->transactionId = $request->transactionId;
+                    $enrollment->invoiceId = $request->invoiceId;
+        
+                    // Add a comment to field2 indicating the webhook data update
+                    $enrollment->field2 = 'webhook access granted';
+                    $enrollment->save();
+                    session()->flash('alert-success', 'Access updated Successfully!');
+                    
+                    return redirect()->back();
+                } 
+                else {
+                    // Add a comment or additional handling logic for cases when the enrollment has already been paid
+                    // ...
+                    if ($enrollment) {
+                        $enrollment->field2 = 'webhook called!!';
+                        $enrollment->save();
+                    }
+                    return response('Webhook Handled', 200);
+                }
+            } 
+        }
+
