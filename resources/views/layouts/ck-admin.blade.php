@@ -89,8 +89,7 @@
                   <li><a class="dropdown-item" href="{{url('admin/feedbacks')}}">Feedbacks</a></li>
                   <li><a class="dropdown-item" href="#">All Webinar</a></li>
                   <li><a class="dropdown-item" href="{{url('admin/css-enrollments')}}">CSS Enrollments</a></li>
-                  <li><a class="dropdown-item" href="{{url('admin/js-enrollments')}}">JS Enrollments</a></li>
-                  <li><a class="dropdown-item" href="{{url('admin/react-enrollments')}}">React Enrollments</a></li>
+                  <li><a class="dropdown-item" href="{{url('admin/add-access')}}">Grant Access</a></li>
 
 
                 </ul>
