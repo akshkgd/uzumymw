@@ -1341,7 +1341,7 @@ iframe{border:0;}
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From 17th January
+                                        From 24th January
                                     </div>
                                 </div>
 
@@ -2106,16 +2106,44 @@ iframe{border:0;}
                             <label for="floatingInput">Mobile Number</label>
                         </div>
                         <div class="text-left p-3 mb-2" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px" >
-                            <div class="py-2" style="color:#29cf84">57% of Learners Choose this option to get 3x value</div>    
-                            <div class="text-left">100+ Interview Questions, chatGPT prompts & 25+ Projects</div>
-                                <div class="text-left  text-muted my-2" style="font-size: 14px">Get access to curated list of 100+ frontend Interview questions and 25+ projects with chatGPT prompts that will increase your productivity by 10x! </div>
+                            {{-- <div class="py-2" style="color:green">57% of Learners Choose this option to get 3x value</div>     --}}
+                            <div class="text-left fw-600 mb-3 fs-6"> Add Bootcamp recordings + Javascript Crash course <span style="color:#29cf84; ">(Most Popular)</span></div>
+                                {{-- <div class="text-left  text-muted my-2" style="font-size: 14px">Get access to curated list of 100+ frontend Interview questions and 25+ projects with chatGPT prompts that will increase your productivity by 10x! </div> --}}
+                                <div class="d-flex align-items-center mb-2" style="gap: 8px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#29cf84" class="bi bi-check-all" viewBox="0 0 16 16">
+                                        <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/>
+                                      </svg>
+                                      <span>Get bootcamp recordings</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2" style="gap: 8px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#29cf84" class="bi bi-check-all" viewBox="0 0 16 16">
+                                        <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/>
+                                      </svg>
+                                      <span>Get Javascript Crash Course (Recorded)</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2" style="gap: 8px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#29cf84" class="bi bi-check-all" viewBox="0 0 16 16">
+                                        <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/>
+                                      </svg>
+                                      <span>Get 50+ Interview Questions</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2" style="gap: 8px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#29cf84" class="bi bi-check-all" viewBox="0 0 16 16">
+                                        <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/>
+                                      </svg>
+                                      <span>Get 25+ HTML, CSS & JS projects</span>
+                                </div>
+                                
                                 
                                 <div>
-                                    <span>₹399.00</span>
+                                    <span class="fs-6 fw-bold">₹399.00</span>
                                     <span style="text-decoration: line-through">₹2999.00</span>
                                 </div>
-                                <input type="checkbox" id="myCheckbox" name="myCheckbox" style="transform: scale(2); margin-left:6px; margin-right: 10px; margin-top:12px;" onchange="toggleRecordingCheckbox(this)">
-                                <label for="myCheckbox" style="">Yes, I need 3x value.</label>
+                                
+                                <div class="">
+                                    <input type="checkbox" id="myCheckbox" name="myCheckbox" style="transform: scale(2); margin-left:6px; margin-right: 10px; margin-top:12px;" onchange="toggleRecordingCheckbox(this)">
+                                    <label for="myCheckbox" style="">Yes, I need this.</label>
+                                </div>
 
   
                                 {{-- <div class="you-checkbox-item align-items-center p-0 m-0" style="border: 1px solid white; text-align:left; justify-content: left" onclick="toggleRecordingCheckbox(this)">
@@ -2137,7 +2165,7 @@ iframe{border:0;}
                         <p class="d-none">Three months access of recordings. Only available if you attend. This is <strong>EARLY
                                 Bird</strong> offer, It will increase to 499 once the timer hits zero.
                         </p>
-                        <input type="hidden" name="courseId" value="69">
+                        <input type="hidden" name="courseId" value="70">
                         <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                         <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
                             onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"
