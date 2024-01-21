@@ -1304,10 +1304,10 @@ iframe{border:0;}
             <div class="row justify-content-center align-items-cente">
                 <div class="col-md-10">
                     <main class="text-center">
-                        <h1 class="display-6 fw-bod  " style=" line-height:1.5; color:aliceblue; font-weight:600">Learn CSS in just 5 days to <span style="color:#efa30e;">kickstart your web development</span>  journey</h1>
+                        <h1 class="display-6 fw-bod  " style=" line-height:1.5; color:aliceblue; font-weight:600">Learn CSS in just 5 days to <span style="color:#efa30e;">kickstart your Frontend or Fullstack</span>  journey</h1>
 
 
-                        <p style="font-size:1vw;" class="fs-5 text-white text-center">Master Advance concepts of CSS to create frontend designes of websites like <span style="color:#efa30e;">YouTube, Netflix and ChatGPT</span> in just 5 days! The must have bootcamp in 2024 to become a frontend or fullstack developer. </p>
+                        <p style="font-size:1vw;" class="fs-5 text-white text-center">Master Advance concepts of CSS to create frontend designes of websites like <span style="color:#efa30e;">YouTube, Netflix and ChatGPT</span> in just 5 days! The must have bootcamp in 2024. </p>
 
 
 
@@ -1461,34 +1461,36 @@ iframe{border:0;}
         </div>
     </section>
     <section>
-        <div class="container ">
+        <div class="container">
             <div class="row justify-content-center">
-                <div class="">
-                    <h1 class="fw-bold fs-2 text-center">What exactly we will learn & build?</h1>
-                </div>
-                <div class="text-center mb-5">
-                    {{-- <h1 class="fw-bold">Learn by building  <br>
-                        amazing projects</h1> --}}
-                </div>
+            <h1 class="fw-bold fs-2 text-center mb-5">What our students are saying?</h1>
 
-
-                {{-- <div class="col-md-4 ">
-                    <div class="card h-100 mt-3 border-none ck-rounded f-4 my-3 px-5 py-3 text-center">
-                        <img src="{{ asset('assets/img/CardSix.webp') }}" class="project" alt="">
-                        <h2 class="fs-5">Create Responsive Youtube Clone</h2>
-                        <p>Understand how to clone any webpage and create a complete responsive design.</p>
+                <div class="col-md-10 mb-5">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            
+                            <script src="https://fast.wistia.com/embed/medias/899pebmzcy.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><span class="wistia_embed wistia_async_899pebmzcy popover=true" style="display:inline-block;height:215px;position:relative;width:100%; object-fit:cover; border-radius:14px">&nbsp;</span>
+                        </div> 
+                        <div class="col-md-4">
+                            <script src="https://fast.wistia.com/embed/medias/b7aqu7ig31.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><span class="wistia_embed wistia_async_b7aqu7ig31 popover=true" style="display:inline-block;height:215px;position:relative;width:100%; object-fit:cover">&nbsp;</span>
+                        </div>
+                        <div class="col-md-4">
+                            <script src="https://fast.wistia.com/embed/medias/y6fq318u8b.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><span class="wistia_embed wistia_async_y6fq318u8b popover=true" style="display:inline-block;height:215px;position:relative;width:100%; object-fit:cover">&nbsp;</span>
+                        </div>
                     </div>
-                </div> --}}
-                {{-- <div class="col-md-4">
-                    <div class="card h-100 mt-3 border-none ck-rounded f-3 px-5 py-3 my-3 text-center">
-                        <img src="{{ asset('assets/img/CardTwo.webp') }}" class="project" alt="">
-                        <h2 class="fs-5">Solve challenges in food ordering App</h2>
-                        <p>Build a complex ui of food ordering App</p>
-
-                    </div>
-                </div> --}}
+                </div>
             </div>
         </div>
+    </section>
+
+
+
+    <div class="row justify-content-center">
+        <div class="">
+            <h1 class="fw-bold fs-2 text-center">What exactly we will learn & build?</h1>
+        </div>
+    <section>
+
     </section>
     <section>
         <div class="container">
@@ -1588,7 +1590,7 @@ iframe{border:0;}
               <div class="card p-3 feedback-card">
                 <div class="d-flex mb-3 justify-content-between align-items-center" >
                     <div class="d-flex" style="align-items: center; gap:8px; ">
-                        <img loading="lazy" src="https://media.licdn.com/dms/image/D4D03AQEehG4iywPyDg/profile-displayphoto-shrink_400_400/0/1690735271454?e=1704326400&v=beta&t=NbN4gL8qktJuEGnfJzW4ZGdWCXqoUmzLEYRvSwl9_No" class="avatar-sm-sm" alt="">
+                        <img loading="lazy" src="{{asset('assets/img/cssf4.jpeg')}}" class="avatar-sm-sm" alt="">
                         <div class="">
                             <p class="m-0 text-dark ">Mayank Gupta</h4>
                             <p class="m-0 small">Student, IIT Bombay</p>
@@ -1611,7 +1613,7 @@ iframe{border:0;}
                 <div class="card p-3 feedback-card">
                   <div class="d-flex mb-3 justify-content-between align-items-center" >
                       <div class="d-flex" style="align-items: center; gap:8px; ">
-                          <img loading="lazy" src="https://media.licdn.com/dms/image/D5603AQHAcyWzM63G7g/profile-displayphoto-shrink_100_100/0/1695138954148?e=1704326400&v=beta&t=Wcp5wbEEgkKNueLEpWyC4Z0u2q_6XVSTwRHf9RaOxvY" class="avatar-sm-sm" alt="">
+                          <img loading="lazy" src="{{asset('assets/img/cssf1.jpeg')}}" class="avatar-sm-sm" alt="">
                           <div class="">
                               <p class="m-0 text-dark ">Akhila Cheryala</h4>
                               <p class="m-0 small">Passionate front-end developer...</p>
@@ -1657,7 +1659,7 @@ iframe{border:0;}
                 <div class="card p-3 feedback-card">
                   <div class="d-flex mb-3 justify-content-between align-items-center" >
                       <div class="d-flex" style="align-items: center; gap:8px; ">
-                          <img loading="lazy" src="https://media.licdn.com/dms/image/D5635AQFOWjkdhkkR7g/profile-framedphoto-shrink_100_100/0/1685881439222?e=1699282800&v=beta&t=qCU8evOuEj8XRtxiN0mO4GRksNAmuQ8fl7rSZeczyV4" class="avatar-sm-sm" alt="">
+                          <img loading="lazy" src="{{asset('assets/img/cssf2.jpeg')}}" class="avatar-sm-sm" alt="">
                           <div class="">
                               <p class="m-0 text-dark ">Snehasri Motamarri</h4>
                               <p class="m-0 small">Vice President at Pioneers club, Visakhapatnam </p>
@@ -1679,7 +1681,7 @@ iframe{border:0;}
                 <div class="card p-3 feedback-card">
                   <div class="d-flex mb-3 justify-content-between align-items-center" >
                       <div class="d-flex" style="align-items: center; gap:8px; ">
-                          <img loading="lazy" src="https://media.licdn.com/dms/image/D4D03AQHZLhHlVpmNSQ/profile-displayphoto-shrink_100_100/0/1675178449160?e=1704326400&v=beta&t=zH9f-NqNRA_LYMDjb9u0BYs1jalj1agcYwuq67GQzeY" class="avatar-sm-sm" alt="">
+                          <img loading="lazy" src="{{asset('assets/img/cssf3.jpeg')}}" class="avatar-sm-sm" alt="">
                           <div class="">
                               <p class="m-0 text-dark ">Manjiri Pund</h4>
                               <p class="m-0 small">-- </p>
@@ -1696,11 +1698,11 @@ iframe{border:0;}
                   
                 </div>
               </div>
-              <div class="col-md-4 my-3">
+              <div class="col-md-4 my-3 ">
                 <div class="card p-3 feedback-card">
                   <div class="d-flex mb-3 justify-content-between align-items-center" >
                       <div class="d-flex" style="align-items: center; gap:8px; ">
-                          <img loading="lazy" src="https://media.licdn.com/dms/image/D4E03AQFZn10diL9lcA/profile-displayphoto-shrink_100_100/0/1695124336942?e=1704326400&v=beta&t=futedDm61aBHct3ecJVO9zffPHSa2M1RcbK77v-zMhk" class="avatar-sm-sm" alt="">
+                          <img loading="lazy" src="{{asset('assets/img/cssf5.jpeg')}}" class="avatar-sm-sm" alt="">
                           <div class="">
                               <p class="m-0 text-dark ">Cherish Vuppala</h4>
                               <p class="m-0 small">Student at Sri Vasavi Engineering College </p>
@@ -2109,6 +2111,12 @@ iframe{border:0;}
                             {{-- <div class="py-2" style="color:green">57% of Learners Choose this option to get 3x value</div>     --}}
                             <div class="text-left fw-600 mb-3 fs-6"> Add Bootcamp recordings + Javascript Crash course <span style="color:#29cf84; ">(Most Loved)</span></div>
                                 {{-- <div class="text-left  text-muted my-2" style="font-size: 14px">Get access to curated list of 100+ frontend Interview questions and 25+ projects with chatGPT prompts that will increase your productivity by 10x! </div> --}}
+                                <div class="d-flex align-items-center mb-2" style="gap: 8px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#29cf84" class="bi bi-check-all" viewBox="0 0 16 16">
+                                        <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/>
+                                      </svg>
+                                      <span>1 Private zoom call(Career Guidance) from Ashish</span>
+                                </div>
                                 <div class="d-flex align-items-center mb-2" style="gap: 8px">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#29cf84" class="bi bi-check-all" viewBox="0 0 16 16">
                                         <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/>
