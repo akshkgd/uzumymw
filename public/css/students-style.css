@@ -60,3 +60,33 @@ body{
     box-shadow: inset 0 0 0 1px black, 0 0 3px 1px rgb(0, 0, 0) !important;
     outline: none !important;
 }
+.shadow-3d {
+    /* box-shadow: 0.5rem 0.5rem 0 rgb(255, 215, 156); */
+}
+.dropdown-item{
+    color: rgb(80, 80, 80);
+}
+.dropdown-item:hover{
+    background-color: white;
+    color: black;
+}
+.dropdown-menu{
+    margin-top: 10px;
+    border-radius: 12px !important;
+    border:1px solid #eee;
+    /* box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 4px, rgba(0, 0, 0, 0.15) 0px 2px 8px; */
+}
+.dropdown-divider{
+    border-top: 1px solid #eee;
+    /* padding: 0;
+    margin: 0; */
+}
+.dropdown-flex{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 15px;
+}
+.d-logout{
+    font-size: 14px;
+}
