@@ -1,4 +1,4 @@
-@extends('layouts.ck')
+@extends('layouts.dashboard')
 @section('content')
 @section('title', 'checkout for ' . e($batch->name))
 @section('meta_keywords', '' . e($batch->name))

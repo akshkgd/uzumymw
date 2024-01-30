@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Geist-Regular';
+  src: url('path/to/Geist-Regular.woff2') format('woff2');
+}
+
 :root {
   ---gray: rgb(240, 240, 240);
 }
@@ -7,7 +12,8 @@
 }
 body{
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Geist-Regular', sans-serif;
+  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
 }
 
 
@@ -32,6 +38,7 @@ h6 {
    align-items: center;
    text-decoration:none;
    color: black;
+   font-size: 16px !important;
 
 }
 #item:hover{
@@ -66,26 +73,45 @@ h6 {
   width: 100%;
 }
 .rec-nf{
+  height: 90vh;
+  display: flex;
+  align-items: center;
   width: 350px;
-  margin: 50px auto;
+  margin:auto;
 }
 .red-nf-img{
-  width: 100%;
+  height: 230px
 }
 .btn{
   transition: .1s ease-in;
   font-size: 16px;
   padding: 12px 16px;
   /* border-radius: 10px; */
-  border: 1px solid #230050;
-  background-color:#230050;
+  border: 1px solid #000000;
+  background-color:#000000;
   color: white;
   display: inline-block;
   text-decoration: none;
+  border-radius: 10px !important;
+}
+.btn-outline{
+  transition: .1s ease-in;
+  font-size: 15px;
+  padding: 12px 20px;
+  /* border-radius: 10px; */
+  border: 1px solid lightgray;
+  background-color:white;
+  color: black;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 10px !important;
 }
 .btn:hover{
-  background-color:#230050;
+  background-color:#0f0f0f;
   color: white;
+}
+input{
+  border-radius: 10px !important;
 }
 .logo{
 
@@ -134,8 +160,14 @@ h6 {
     align-self: flex-start;
     border-right:1px solid var(---gray);
     z-index: 10;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     /* background-color: red; */
   }
+  .sidebar::-webkit-scrollbar {
+    display: none;
+  }
+  
 }
 .active{
   background-color: var(---gray);
