@@ -86,7 +86,7 @@
         </div>
     </div>
 </section>
-
+{{-- 
 <section class="">
     <div class="container d-none pb-5">
         <div class="row justify-content-center">
@@ -101,14 +101,14 @@
                             </p>
                             @foreach($devices as $device)
                             <div class=" d-flex align-items-center mb-1">
-                                {{-- @if( (new \Jenssegers\Agent\Agent())->isMobile() )
+                                @if( (new \Jenssegers\Agent\Agent())->isMobile() )
                                 <img src="{{asset('assets/img/icons/theme/devices/iphone-x.svg')}}"
                                     alt="{{Auth::User()->name}}'s avatar" class="avatar border-rounde mr-3 pb-3 p" data-inject-svg>
                                 @endif
                                 @if((new \Jenssegers\Agent\Agent())->isDesktop())
                                     <img src="{{asset('assets/img/icons/theme/devices/display-2.svg')}}"
                                     alt="{{Auth::User()->name}}'s avatar" class="avatar border-rounde mr-3 mb-3" data-inject-svg>
-                                @endif --}}
+                                @endif
                                 <div class="">
                                     <h6 class="mb-0 fw-400">{{(new \Jenssegers\Agent\Agent())->device()}} -
                                         {{(new \Jenssegers\Agent\Agent())->browser()}}
@@ -133,7 +133,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 
 
 {{-- <a href="#" class="btn btn-dark p-3 bg-dark btn-round btn-floating">

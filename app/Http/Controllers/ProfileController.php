@@ -17,9 +17,10 @@ class ProfileController extends Controller
     }
 
     public function editProfile(){
-        $devices = \DB::table('sessions')->where('user_id', \Auth::user()->id)->get()->reverse();
-        return view ('students.editProfile') ->with('devices', $devices)
-        ->with('current_session_id', \Session::getId());
+        // $devices = \DB::table('sessions')->where('user_id', \Auth::user()->id)->get()->reverse();
+        // return view ('students.editProfile') ->with('devices', $devices)
+        // ->with('current_session_id', \Session::getId());
+        return view('students.editProfile');
     }
 
     public function updateStudentsProfile(Request $request){
