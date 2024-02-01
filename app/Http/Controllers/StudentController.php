@@ -129,7 +129,15 @@ class StudentController extends Controller
     ->latest('last_activity')
     ->select('id', 'ip_address', 'user_agent', 'last_activity')
     ->get();
+    foreach ($devices as $device) {
+        $agent = new Agent();
+        $agent->setUserAgent($device->user_agent);
 
+        $device->browser = $agent->browser();
+        $device->is_mobile = $agent->isMobile();
+        $device->is_desktop = $agent->isDesktop();
+        $device->device_name = $agent->device();
+    }
     return view('students.sessions')
     ->with('devices', $devices)
     ->with('current_session_id', \Session::getId());

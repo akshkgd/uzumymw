@@ -22,25 +22,25 @@
               <div class="p-4 border-b border-gray-200 v" >
                   <div class="flex items-center justify-between">
                   <div class="flex items-center gap-4">
-                    @if( (new \Jenssegers\Agent\Agent())->isMobile() )
+                    @if( $device->is_mobile )
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-phone" viewBox="0 0 16 16">
                         <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2z"/>
                         <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2"/>
                       </svg>
                                 
-                                @elseif((new \Jenssegers\Agent\Agent())->isDesktop())
+                                @elseif($device->is_desktop)
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-tv" viewBox="0 0 16 16">
                                     <path d="M2.5 13.5A.5.5 0 0 1 3 13h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5M13.991 3l.024.001a1.5 1.5 0 0 1 .538.143.76.76 0 0 1 .302.254c.067.1.145.277.145.602v5.991l-.001.024a1.5 1.5 0 0 1-.143.538.76.76 0 0 1-.254.302c-.1.067-.277.145-.602.145H2.009l-.024-.001a1.5 1.5 0 0 1-.538-.143.76.76 0 0 1-.302-.254C1.078 10.502 1 10.325 1 10V4.009l.001-.024a1.5 1.5 0 0 1 .143-.538.76.76 0 0 1 .254-.302C1.498 3.078 1.675 3 2 3zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2"/>
                                     </svg>
                                 @endif
                       
                     <div>
-                      <p class="text-md font-medium text-gray-900 mb-0 leading-none">{{(new \Jenssegers\Agent\Agent())->device()}} 
+                      <p class="text-md font-medium text-gray-900 mb-0 leading-none">{{$device->device_name}} 
                         @if ($current_session_id == $device->id)  
                         <span class="text-blue-600 font-normal text-sm">(Active)</span>
                         @endif
                         </p>
-                      <p class=" truncate text-sm text-gray-500 leading-2"> {{(new \Jenssegers\Agent\Agent())->browser()}} - {{ Carbon\Carbon::parse($device->last_activity)->diffForHumans() }}</p>
+                      <p class=" truncate text-sm text-gray-500 leading-2"> {{$device->browser}} - {{ Carbon\Carbon::parse($device->last_activity)->diffForHumans() }}</p>
   
                     </div>
                 </div>
