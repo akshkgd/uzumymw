@@ -223,9 +223,11 @@ body{
         
         <div class="sidebar" style="">
             <div class="intro">
-        <img src="{{asset('assets/img/black.svg')}}" height="36" class="mb-4" alt="">
+          <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round" style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16" aria-label="Vercel logo"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg>
 
-                <h2 class="intro-title fw-bold">{{$enrollment->batch->name}}</h2>
+        {{-- <img src="{{asset('assets/img/black.svg')}}" height="36" class="mb-4" alt=""> --}}
+
+                <h2 class="intro-title fw-bold mt-4">{{$enrollment->batch->name}}</h2>
                 <span class="intro-desc">{{ $content->where('type', 2)->count() }} Videos <span class="text-xs">({{ $content->where('type', 1)->count() }} Assignments)</span></span>
                 <div>
                     {{-- <a href="" class="d-flex align-items-center" style="gap:6px;border:1px solid rgb(147, 147, 147); padding:12px 30px; border-radius: 12px; text-decoration:none; color: black; margin: 20px 0;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">

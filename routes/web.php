@@ -8,6 +8,7 @@ use App\User;
 use App\Feedback;
 use App\CourseEnrollment;
 use App\Http\Controllers\CodekaroController;
+use App\Http\Controllers\StudentController;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 
@@ -107,7 +108,8 @@ Route::get('/event', 'WorkshopController@index');
 Route::resource('/faq', 'FaqController');
 Route::resource('/course', 'BatchController');
 Route::resource('/feedback', 'FeedbackController');
-
+Route::get('/sessions', 'StudentController@sessions');
+Route::get('/delete-session/{sessionId}', 'StudentController@deleteSession')->name('delete.session');
 Auth::routes(['verify' => true]);
 Route::get('/redirect', 'googlelogin@redirectToProvider');
 Route::get('/callback', 'googlelogin@handleProviderCallback');
@@ -124,7 +126,7 @@ Route::get('/checkout/{id}', 'CourseEnrollmentController@checkout');
 Route::post('payment', 'CourseEnrollmentController@payment')->name('payment');
 Route::get('invoice/{id}', 'CourseEnrollmentController@invoice');
 Route::get('/my-course', 'CourseEnrollmentController@myCourse');
-Route::get('/batch/{id}', 'BatchController@batchDetails');
+Route::get('/batch/{id}', 'BatchController@batchDetails')->name('details');
 Route::get('/workshop/{id}', 'WorkshopController@details');
 Route::get('/workshop-details/{id}', 'WorkshopController@workshopDetails');
 Route::get('/workshop-certificate/{id}', 'WorkshopEnrollmentController@certificate');
@@ -164,6 +166,7 @@ Route::get('/workshop-enrollments/{id}', 'TeacherController@workshopEnrollments'
 Route::get('/generate-certificate/{id}', 'TeacherController@generateCertificate');
 // Route::get('/addContent/{id}', 'TeacherController@addContent');
 Route::post('/store-content', 'TeacherController@storeContent')->name('addContent');
+Route::post('/store-section', 'TeacherController@storeSection')->name('addSection');
 Route::post('/update-batch-status', 'TeacherController@updateBatchStatus')->name('updateBatchStatus');
 Route::post('/update-workshop', 'TeacherController@updateWorkshop')->name('updateWorkshop');
 Route::get('/generate-all-cetificates/{id}', 'TeacherController@generateAllCertificate')->name('generateAllCertificate');

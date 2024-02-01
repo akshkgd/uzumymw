@@ -1,18 +1,143 @@
-@extends('layouts.student')
+@extends('layouts.t-student')
 @section('content')
-    <div class="navbar-container ">
-        <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
-            
-        </nav>
-    </div>
-    @include('layouts.student-nav')
-<style>
+@include('layouts.t-student-nav')
 
 </style>
 {{-- @include('layouts.ck-header') --}}
   
-{{-- batch details start --}}
+<main
+      class="mt-32 flex flex-col justify-center align-middle px-6 py-12 lg:px-8"
+    >
+      <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        
+        <h2 class="text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          Hey {{Auth::user()->name}}, Complete your profile!
+        </h2>
+      </div>
 
+      <div class="mt-2 sm:mx-auto sm:w-full sm:max-w-sm">
+        <div class="relative">
+          <div class="absolute flex items-center" aria-hidden="true">
+            <div class="w-full border-t border-gray-200"></div>
+          </div>
+          <div class="relative flex justify-cente text-md leading-6">
+            <span class="bg-white text-gray-500"
+              >Login to your account to see all your courses <br />
+              and upcoming classes.</span
+            >
+          </div>
+        </div>
+        <form action="{{ route('updateStudentsProfile') }}" method="POST" class="">
+          @csrf
+        <div class="relative w-full mt-2 content">
+          <div class="bg-card text-neutral-900 mt-5">
+            <div class="pt-0 space-y-2">
+              <div class="space-y-1">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for="name"
+                  >Name</label
+                ><input
+                  type="text"
+                  placeholder="Name"
+                  id="name"
+                  name="name"
+                  value="{{Auth::user()->name}}"
+                  class="flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-lg peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </div>
+              <div class="space-y-1">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for="username"
+                  >Email</label
+                ><input
+                  type="email" readonly
+                  placeholder="Username"
+                  id="username"
+                  name="email"
+                  value="{{Auth::user()->email}}"
+                  class="flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-lg peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </div>
+              <div class="space-y-1">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for="username"
+                  >WhatsApp Number</label
+                ><input
+                  type="text"
+                  placeholder="WhatsApp Number"
+                  name="mobile"
+                  value="{{Auth::user()->mobile}}"
+                  class="flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-lg peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </div>
+            </div>
+            <div class="flex items-center pt-0 mt-3">
+              <button
+                type="submit"
+                class="inline-flex items-center justify-center px-4 py-3 text-sm font-normal tracking-wide text-white transition-colors duration-200 rounded-lg bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="relative w-full mt-10 content">
+          <div class="bg-card text-neutral-900">
+            <div class="flex flex-col space-y-1.5">
+              <h3 class="text-lg font-semibold leading-none tracking-tight">
+                Educational info
+              </h3>
+              <p class="text-sm text-neutral-500">
+                Make changes to your account here. Click save when you're done.
+              </p>
+            </div>
+            <div class="pt-0 space-y-2 mt-5">
+              <div class="space-y-1">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for="name"
+                  >College / Company</label
+                ><input
+                  type="text"
+                  placeholder="i.e. IIT bombay / Zoho "
+                  id="name"
+                  name="college"
+                  value="{{Auth::user()->college}}"
+                  class="flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-lg peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </div>
+              <div class="space-y-1">
+                <label
+                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  for="username"
+                  >Current Course/ Designation</label
+                ><input
+                  type="text"
+                  placeholder="B.tech, MCA / Frontend Developer"
+                  id="username"
+                  name="course"
+                  value="{{Auth::user()->course}}"
+                  class="flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-lg peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"
+                />
+              </div>
+            </div>
+            <div class="flex items-center pt-0 mt-3">
+              <button
+                type="submit"
+                class="inline-flex items-center justify-center px-4 py-3 text-sm font-normal tracking-wide text-white transition-colors duration-200 rounded-lg bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none"
+              >
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+        </form>
+      </div>
+    </main>
+{{-- 
 <section class="">
     <div class="container pt-5 ">
         <div class="row justify-content-center">
@@ -39,7 +164,6 @@
 
                       
                       <div>
-                        {{-- <button type="submit" class="btn px-3 rounded-pil btn-dark py-3">Save Changes</button> --}}
                       </div>
                       
                 </div>
@@ -47,10 +171,10 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 {{-- batch details ends --}}
 
-<section class="pb-0">
+{{-- <section class="pb-0">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-5 ">
@@ -85,7 +209,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 {{-- 
 <section class="">
     <div class="container d-none pb-5">

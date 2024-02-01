@@ -188,14 +188,21 @@
                                         <img src="{{ asset('assets/img/nf.svg') }}" class="h-64" alt="">
                                     </div>
                                 </div>
-                                <h2 class="text-center text-2xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">Page
-                                    Not Found!</h2>
+                                <h2 class="text-center text-2xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">No active course found.</h2>
 
-                                <p class="bg-white px-6 text-gray-500 text-center">Uh-Oh! The page you're looking for seems to
-                                    be missing</p>
+                                <p class="bg-white px-6 text-gray-500 text-center">Login from the email that you have used while making the payment or mail us at info@codekaro.in! Currently you are logged in from <span class="text-black">{{Auth::user()->email}}</span></p>
+                                <p class="text-center mt-3"></p>
                                 <div class="text-center">
-                                    <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Back to
-                                        Dashboard</a>
+                                    <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="border px-5 py-3 rounded-lg inline-block mt-6 text-md">
+                                        Logout Now</a>
+                                        
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        style="display: none;">
+                                        @csrf
+                                    </form>
+
+                                        
                                 </div>
                             </div>
                         </main>

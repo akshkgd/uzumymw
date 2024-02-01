@@ -11,6 +11,7 @@ use App\Batch;
 use App\Workshop;
 use App\BatchContent;
 use App\BatchTopics;
+use App\BatchSection;
 use App\Feedback;
 use App\Notifications\recordingAdded;
 
@@ -98,19 +99,41 @@ class TeacherController extends Controller
         if($contentId){
             $currentContent = BatchContent::findorFail($contentId);
             $batch = Batch::findorFail($id);
+            $sections = BatchSection::where('batchId', $batch->id)->orderBy('order')->get();
             $batchContent = BatchContent::where('batchId', $batch->id)->get();
+            // $sortedBatchContent = $batchContent->when(
+            //     $batchContent->isNotEmpty() && $batchContent->every(fn($item) => is_numeric($item->field1)),
+            //     function ($collection) {
+            //         return $collection->sortBy('field1');
+            //     },
+            //     function ($collection) {
+            //         return $collection;
+            //     }
+            // );
+            $sortedBatchContent = $batchContent->isNotEmpty() ? $batchContent->sortBy('order') : $batchContent;
+
             if($currentContent->batchId != $id){
                 $currentContent = BatchContent::where('batchId', $batch->id)->get()->first();
             }
             if($batch->teacherId == Auth::user()->id)
-            return view('teachers.addContent', compact('batch', 'batchContent', 'currentContent'));
+            return view('teachers.addContent', compact('batch','sections', 'sortedBatchContent', 'batchContent', 'currentContent'));
         }
         else{
             $batch = Batch::findorFail($id);
+            $sections = BatchSection::where('batchId', $batch->id)->get();
             $batchContent = BatchContent::where('batchId', $batch->id)->get();
+            $sortedBatchContent = $batchContent->when(
+                $batchContent->isNotEmpty() && $batchContent->every(fn($item) => is_numeric($item->field1)),
+                function ($collection) {
+                    return $collection->sortBy('field1');
+                },
+                function ($collection) {
+                    return $collection;
+                }
+            );
             $currentContent = BatchContent::where('batchId', $batch->id)->get()->first();
             if($batch->teacherId == Auth::user()->id)
-            return view('teachers.addContent', compact('batch', 'batchContent', 'currentContent'));
+            return view('teachers.addContent', compact('batch', 'sections', 'sortedBatchContent' , 'batchContent', 'currentContent'));
         }
         
     }
@@ -171,46 +194,88 @@ class TeacherController extends Controller
     }
 }
 
-
-    public function storeContent( Request $request)
+public function updateContent( Request $request)
     {
-        $batch = Batch::findorFail($request->batchId);
-        
-        if($batch->teacherId == Auth::user()->id)
-        {
-            $a = new BatchContent;
-            $a->title = $request->title;
-            $a->type = $request->type;
-            $a->desc  = $request->desc;
-            $a->videoLink = $request->videoLink;
-            $a->batchId = $batch->id;
-            $a->teacherId = Auth::user()->id;
-            $a->save();
-            $users = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->select('userId')->get();
-            $usersList = array();
-            foreach($users as $user){
-                $emailData = array(
-                    'title' => $request['title'],
-                    'name' =>  strtok($user->students->name, ' ') 
-                );
-                $email = array($user->students->email);
-                // Notification::route('mail', $email)->notify(new recordingAdded($emailData) );
-                // $user->email = $user->students->email;
-                // $name = $user->students->name;
-                // $email = $user->students->email;
-                // array_push($usersList,  );
-                // $usersList = $user->students->email;
-            }
-            // $this->notifyRecordingAdded($request->title, $users);
-            
-            session()->flash('alert-success',  'Content added Successfully!');
-            return back();
+        // dd($request);
+    $batch = Batch::findorFail($request->batchId);
+    $a = BatchContent::findorFail($request->contentId);
+    if($batch->teacherId == Auth::user()->id) {
+        $a->title = $request->title;
+        $a->type = $request->type;
+        $a->desc  = $request->desc;
+        $a->videoLink = $request->videoLink;
+        $a->batchId = $batch->id;
+        $a->teacherId = Auth::user()->id;
+        $a->accessOn = $request->accessOn;
+        $a->save();
+        return redirect()->back();
+    }
+    else{
+        return redirect()->back();
+    }
+}
 
+    public function storeSection(Request $request){
+        $batch = Batch::findorFail($request->batchId);
+        $sectionCount = BatchSection::where('batchID', $request->batchId)->get()->count();
+        if($batch->teacherId == Auth::user()->id) {
+            $a = new BatchSection();
+            $a->name = $request->name;
+            $a->batchid = $batch->id;
+            $a->order = $sectionCount + 1;
+            $a->save();
+            return redirect()->back();
         }
     }
 
+    public function storeContent( Request $request)
+    {
+    $batch = Batch::findorFail($request->batchId);
+    $contentCount = BatchContent::where('sectionID', $request->sectionId)->get()->count();
+    if($batch->teacherId == Auth::user()->id) {
+
+        $a = new BatchContent();
+        $a->title = $request->title;
+        $a->type = $request->type;
+        // $a->desc  = $request->desc;
+        // $a->videoLink = $request->videoLink;
+        $a->batchId = $batch->id;
+        $a->sectionId = $request->sectionId;
+        $a->order = $contentCount + 1;
+        $a->teacherId = Auth::user()->id;
+        // Save the BatchContent instance
+        $saveResult = $a->save();
+        return redirect()->back();
+        // Check if save was successful
+
+
+        // $a->save();
+        // $users = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->select('userId')->get();
+        // $usersList = array();
+        // foreach($users as $user){
+        //     $emailData = array(
+        //         'title' => $request['title'],
+        //         'name' =>  strtok($user->students->name, ' ')
+        //     );
+        //     $email = array($user->students->email);
+        // Notification::route('mail', $email)->notify(new recordingAdded($emailData) );
+        // $user->email = $user->students->email;
+        // $name = $user->students->name;
+        // $email = $user->students->email;
+        // array_push($usersList,  );
+        // $usersList = $user->students->email;
+        // }
+        // $this->notifyRecordingAdded($request->title, $users);
+
+        // session()->flash('alert-success',  'Content added Successfully!');
+
+
+    }
+}
+    
+
     private function notifyRecordingAdded($title, $users){
-        // Notification::route('mail', $users)->notify(new recordingAdded() );
+        Notification::route('mail', $users)->notify(new recordingAdded() );
     }
     public function workshopDetails($id){
         $batch = Workshop::findorFail($id);
@@ -229,4 +294,103 @@ class TeacherController extends Controller
         return view('teachers.myWorkshops',compact('workshops'));
         
     }
+
+    public function updateCourseContentOrder(Request $request)
+    {
+        $order = $request->input('order');
+
+        foreach ($order as $index => $value) {
+            BatchContent::where('id', $value)->update(['field1' => $index + 1]);
+        }
+        
+            
+        return response()->json(['message' => 'Order updated successfully']);
+    }
+
+//     public function updateSortOrder(Request $request)
+//     {
+//         $type = $request->input('type');
+//         $sortedOrder = $request->input('sortedOrder');
+
+//         if ($type === 'section') {
+//             $this->updateSectionOrder($sortedOrder);
+//         } elseif ($type === 'content') {
+//             $this->updateContentOrder($sortedOrder);
+//         }
+
+//         return response()->json(['success' => true, $type]);
+//     }
+
+//     private function updateSectionOrder($sortedOrder)
+//     {
+//         foreach ($sortedOrder as $index => $order) {
+//             BatchSection::where('batchId', $order['batchId'])
+//                 ->where('id', $order['sectionId'])
+//                 ->update(['order' => $index]);
+//         }
+//     }
+
+//     private function updateContentOrder($sortedOrder)
+// {
+//     foreach ($sortedOrder as $sectionId => $contentOrder) {
+//         foreach ($contentOrder as $index => $contentId) {
+//             echo "<script>console.log('Updating Content Order - Section ID: $sectionId, Content ID: $contentId, Order: $index');</script>";
+
+            
+//             $content = BatchContent::where('section_id', $sectionId)->find($contentId);
+
+//             if ($content) {
+//                 echo "<script>console.log('Updating Order for Content ID: $contentId, New Order: $index');</script>";
+
+                
+//                 $content->update(['order' => $index]);
+
+//                 echo "<script>console.log('Order Updated for Content ID: $contentId, New Order: $index');</script>";
+//             }
+//         }
+//     }
+// }
+
+
+public function updateSortOrder(Request $request)
+    {
+        $sortedOrder = $request->input('sortedOrder');
+        $type = $request->input('type');
+
+        try {
+            \DB::beginTransaction();
+
+            if ($type === 'section') {
+                $this->updateSectionOrder($sortedOrder);
+            } elseif ($type === 'content') {
+                $this->updateContentOrder($sortedOrder);
+            }
+
+            \DB::commit();
+
+            return response()->json(['success' => true]);
+        } catch (\Exception $e) {
+            \DB::rollback();
+
+            return response()->json(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    private function updateSectionOrder($sortedOrder)
+    {
+        foreach ($sortedOrder as $index => $sectionData) {
+            $sectionId = $sectionData['sectionId'];
+
+            BatchSection::where('id', $sectionId)->update(['order' => $index + 1]);
+        }
+    }
+
+    private function updateContentOrder($sortedOrder)
+    {
+        foreach ($sortedOrder as $index => $contentId) {
+            BatchContent::where('id', $contentId)->update(['order' => $index + 1]);
+        }
+    }
+    
 }
+
