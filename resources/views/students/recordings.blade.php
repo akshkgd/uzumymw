@@ -198,6 +198,12 @@ body{
             width: 5.6em !important;
             height:5.6em !important;
         }
+        .vp-center{
+            display: flex !important;
+            justify-content: start !important;
+        }
+        .player .vp-video-wrapper.transparent {
+            border-radius: 10px !important}
     </style>
 {{-- <div class="navbar bg-white px-2" style="border-bottom:1px solid #eee; background-color:white">
     <div class="d-flex align-items-center">
@@ -298,16 +304,6 @@ body{
 </div>
 <div class=" player text-left">
     
-    {{-- <div class="intro">
-        <h2 class="intro-title">{{$enrollment->batch->name}}</h2>
-        <span class="intro-desc">{{ $content->where('type', 2)->count() }} Videos <span class="text-xs">({{ $content->where('type', 1)->count() }} Assignments)</span></span>
-        <div>
-            <a href="{{url('/home')}}" class="back"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-arrow-left-short" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
-              </svg>  Back to dashboard</a>
-        </div>
-    </div> 
-    {{-- <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/172626/fa5c6137-c453-4195-bebd-d8c951fc3c32?autoplay=true&loop=true&muted=true&preload=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div> --}}
     @if($video->type == 3)
     <div class="text-cente">
         <h2 class="fs-4 fw-bold mt-5">{{$video->title}}</h2>
@@ -322,76 +318,28 @@ body{
         </form>
     </div>
     @elseif ($video->videoLink != '' && $video->type == 2)
-        @if(strlen($video->videoLink)>10)
+        @if(strlen($video->videoLink)<12)
         <div id="js-player" class="js-player" data-plyr-provider="youtube"
             data-plyr-embed-id="{{ $video->videoLink }}"></div>
         
 
         @else
-        {{-- <div style="padding:50% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/{{$video->videoLink}}?autoplay=1&badge=0&amp;autopause=0&amp;quality_selector=1&amp;progress_bar=1&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Recording   CSS Media Queries - 651d75bfe4b0e4a748954b62 (1)"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script> --}}
         <div class="video-container">
-            <iframe id="vimeoPlayer" src="https://player.vimeo.com/video/{{$video->videoLink}}?autoplay=1&badge=0&amp;autopause=0&amp;quality=720p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Recording CSS Media Queries - 651d75bfe4b0e4a748954b62 (1)"></iframe>
-            {{-- <div class="custom-controls">
-                <button id="fastBackwardButton" class="icon-backward"><i class="bi bi-arrow-counterclockwise"></i></button>
-                <button id="playPauseButton" class="icon-play"><i class="bi bi-play"></i></button>
-                <button id="fastForwardButton" class="icon-forward"><i class="bi bi-arrow-clockwise"></i></button>
-            </div> --}}
+            {{-- <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/20ccfbaf-7651-407d-b12b-a6c072178b35?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div> --}}
+            {{-- <iframe id="vimeoPlayer" src="https://player.vimeo.com/video/{{$video->videoLink}}?autoplay=1&badge=0&amp;autopause=0&amp;quality=720p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Recording CSS Media Queries - 651d75bfe4b0e4a748954b62 (1)"></iframe> --}}
+            <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/{{$video->videoLink}}?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
         </div>
     
         {{-- <script src="https://player.vimeo.com/api/player.js"></script> --}}
-        <script>
-            const iframe = document.getElementById('vimeoPlayer');
-            const player = new Vimeo.Player(iframe);
-            let isPlaying = false;
         
-            function updatePlayButton() {
-                const playPauseButton = document.getElementById('playPauseButton');
-                if (isPlaying) {
-                    playPauseButton.innerHTML = '<i class="bi bi-pause"></i>';
-                } else {
-                    playPauseButton.innerHTML = '<i class="bi bi-play"></i>';
-                }
-            }
-        
-            document.getElementById('fastBackwardButton').addEventListener('click', function() {
-                player.getCurrentTime().then(function(seconds) {
-                    player.setCurrentTime(seconds - 10);
-                });
-            });
-        
-            document.getElementById('playPauseButton').addEventListener('click', function() {
-                if (isPlaying) {
-                    player.pause();
-                } else {
-                    player.play();
-                }
-            });
-        
-            document.getElementById('fastForwardButton').addEventListener('click', function() {
-                player.getCurrentTime().then(function(seconds) {
-                    player.setCurrentTime(seconds + 10);
-                });
-            });
-        
-            player.on('play', function() {
-                isPlaying = true;
-                updatePlayButton();
-            });
-        
-            player.on('pause', function() {
-                isPlaying = false;
-                updatePlayButton();
-            });
-        </script>
         
           
         @endif
         
     @endif
             {{-- text --}}
-            <div class="mt-5">
-                {{-- <h1 class="lead-1 pt-2 pb-0" id="title">{{ $video->title }}</h1> --}}
-
+            <div class="mt-3">
+                <h1 class="fw-bold fs-3 pt-2 pb-0" id="title">{{ $video->title }}</h1>
                 {!! $video->desc !!}
                 {{-- {{ $video->id }} --}}
                 
