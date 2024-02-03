@@ -251,7 +251,7 @@ class CodekaroController extends Controller
         $a->amountpayable = $batch->payable;
         if ($request['recordingsCheckbox'] == 1) {
             // Add the additional amount for the certificate fee (Rs 199)
-            $a->certificateFee = 399;
+            $a->certificateFee = 199;
         }
         $a->certificateId = substr(md5(time()), 0, 16);
         $a->save();
