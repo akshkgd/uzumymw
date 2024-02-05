@@ -2048,12 +2048,12 @@ iframe{border:0;}
 
     <div class="m-cta text-light">
         <div class="">
-            <p class="m-0 fw-bold text-light"> ₹99 <span class="small text-white fw-light"
-                    style="text-decoration: line-through"> ₹ 899 </span></p>
+            <p class="m-0 fw-bold text-light"> Free <span class="small text-white fw-light"
+                    style="text-decoration: line-through"> USD 47 </span></p>
             <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span
                     class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
         </div>
-        <button data-bs-toggle="modal" data-bs-target="#enroll" class="bt button ">Join Bootcamp Now</button>
+        <button data-bs-toggle="modal" data-bs-target="#enroll" class="bt button ">Join Bootcamp Now for Free</button>
     </div>
 
 
@@ -2107,7 +2107,7 @@ iframe{border:0;}
                                 placeholder="name@example.com" @auth value="{{ Auth::user()->mobile }}" @endauth>
                             <label for="floatingInput">Mobile Number</label>
                         </div>
-                        <div class="text-left p-3 mb-2" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px" >
+                        <div class="text-left p-3 mb-2 d-none" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px" >
                             {{-- <div class="py-2" style="color:green">57% of Learners Choose this option to get 3x value</div>     --}}
                             <div class="text-left fw-600 mb-3 fs-6">VIP upgrade <span style="color:#29cf84; ">(Most Loved)</span></div>
                                 {{-- <div class="text-left  text-muted my-2" style="font-size: 14px">Get access to curated list of 100+ frontend Interview questions and 25+ projects with chatGPT prompts that will increase your productivity by 10x! </div> --}}
@@ -2182,7 +2182,7 @@ iframe{border:0;}
                         <input type="hidden" name="courseId" value="72">
                         <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                         <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
-                            onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"
+                            onclick="startLoader()">Join bootcamp now for Free<span class="text-white"
                                 id="price">99</span>
                             <div id="loader" class="loade d-inline-block ms-2"></div>
                         </button>
