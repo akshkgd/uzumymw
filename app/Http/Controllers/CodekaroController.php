@@ -143,8 +143,17 @@ class CodekaroController extends Controller
             }
             // $this->workshopSuccessMail($enrollmentId);
         }
-        $enrollId = Crypt::encrypt($enrollmentId);
-        return redirect('checkout/'.$enrollId);
+        $enrollment = CourseEnrollment::find($enrollmentId);
+        if($enrollment->batch->payable == 0){
+                $enrollment->hasPaid = 1;
+                $enrollment->paidAt = Carbon::now();
+                $enrollment->save();
+        }
+        else{
+            $enrollId = Crypt::encrypt($enrollmentId);
+            return redirect('checkout/'.$enrollId);
+        }
+        
     }
 
 
