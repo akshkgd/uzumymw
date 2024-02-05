@@ -182,6 +182,7 @@
                                 <div class="card  card-ico shadow-3d">
                                     <div class="card-body">
                                         <div class="flex-grow-1">
+                                            <div class="my-3 text-danger">{{$batch->name}}</div>
                                             <div class="h3">{{ $batch->topic }}</div>
                                             <p>
                                                 {!! $batch->desc !!}
