@@ -48,6 +48,7 @@ Route::view('/wdt','wdt');
 Route::view('/love','love');
 Route::view('/teach','teach');
 Route::view('/how-to-css','css');
+Route::view('/start-css','css1');
 Route::view('/start-javascript','js5');
 Route::view('/start-webdev','wdStarter');
 Route::view('/join-mern','fsd');
