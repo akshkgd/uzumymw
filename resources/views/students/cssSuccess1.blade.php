@@ -114,7 +114,7 @@
     <section class="">
         <div class="container text-center ct">
             <h1 id="headlin fw-600 mb-0">Live class will start from</h1>
-            <h2>Wednesday, 7th february at 08:00 PM</h2>
+            <h2>Wednesday, 7th february at 08:00 PM IST</h2>
             <div id="countdown">
               {{-- <ul>
                 <li><span id="days"></span>days</li>
