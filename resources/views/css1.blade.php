@@ -1341,7 +1341,7 @@ iframe{border:0;}
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From 6th February
+                                        From 21st February
                                     </div>
                                 </div>
 
