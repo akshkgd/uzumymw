@@ -72,6 +72,55 @@ class CodekaroController extends Controller
     }
 }
 
+    public function upgradeCss(){
+        if(Auth::check()){
+            $user = Auth::user();
+            $auth = Auth::check();
+            $enrollment = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->whereHas('batch', function ($query) {
+                $query->where('status', 1)
+                    ->where('topicId', 100);
+            })->first();
+            return view('students.cssUpgrade', compact('enrollment', 'auth'));
+        }
+        else{
+            $auth = false;
+            return view('students.cssUpgrade', compact('auth'));
+        }
+        
+    }
+
+    public function upgradeCssCheckout(Request $request)
+    {
+        if($request->auth == 'true'){
+            $user = Auth::user();
+            $enrollment = CourseEnrollment::findorFail($request->id);
+        }
+        elseif($request->auth == 'false'){
+                $user = User::where('email', $request->email)->first();
+                if($user){
+                    $enrollment = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->whereHas('batch', function ($query) {
+                        $query->where('status', 1)
+                            ->where('topicId', 100);
+                    })->first();
+                }
+            }
+            if($user && $enrollment){
+                Auth::loginUsingId($user->id);
+                $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+                $batch = Batch::find($enrollment->batchId);
+                $receiptId = Str::random(20);
+                $amountPayable = 19900;
+                $order  = $api->order->create(array('amount' => $amountPayable, 'currency' => 'INR', 'notes' => array('Name' =>strtok($user->name, ' '), 'purpose'=> 5,  'Email' => $user->email, 'Phone' => $user->mobile, 'Course' => $batch->name, 'StartDate' => Carbon::parse($batch->startDate)->toDateString(), 'EndDate' =>Carbon::parse($batch->endDate)->toDateString(), 'CourseId' => $batch->id, 'TopicId' => 105, 'enrollmentId'=> $enrollment->id )));
+                $enrollment->invoiceID = $order->id;
+                $enrollment->save();
+                return view('students.checkout', compact('enrollment', 'batch','order'));
+            }
+            else{
+                return view('students.noUpgrade');
+            }
+            
+        }
+
 
     public function coursePayment(Request $request)
     {

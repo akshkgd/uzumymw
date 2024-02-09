@@ -106,6 +106,12 @@ Route::get('/recording-sessions/{batchId}/{cId?}', 'StudentController@recordings
 Route::get('workshop-enrollment-success/{id}', 'StudentController@workshopEnrollmentSuccess');
 Route::get('next-steps/{id}', 'StudentController@workshopEnrollmentSuccessNS');
 Route::get('bootcamp-success', 'CodekaroController@bootcampSuccess');
+Route::get('/css-upgrade', 'CodekaroController@upgradeCss');
+Route::post('/css-upgrade-checkout', 'CodekaroController@upgradeCssCheckout')->name('cssUpgrade');
+
+
+
+
 //student routes end
 Route::get('/event', 'WorkshopController@index');
 Route::resource('/faq', 'FaqController');
