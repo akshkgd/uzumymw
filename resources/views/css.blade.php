@@ -1304,7 +1304,7 @@ iframe{border:0;}
             <div class="row justify-content-center align-items-cente">
                 <div class="col-md-10">
                     <main class="text-center">
-                        <h1 class="display-6 fw-bod  " style=" line-height:1.5; color:aliceblue; font-weight:600">Learn CSS in just 5 days to <span style="color:#efa30e;">kickstart your Frontend or Fullstack</span>  journey</h1>
+                        <h1 class="display-6 fw-bod  " style=" line-height:1.5; color:aliceblue; font-weight:600">Learn CSS in just 5 days to create <span style="color:#efa30e;">Netflix, chatgpt and Youtube</span>Like Designs.</h1>
 
 
                         <p style="font-size:1vw;" class="fs-5 text-white text-center">Master Advance concepts of CSS to create frontend designes of websites like <span style="color:#efa30e;">YouTube, Netflix and ChatGPT</span> in just 5 days! The must have bootcamp in 2024. </p>
@@ -1341,7 +1341,7 @@ iframe{border:0;}
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From 21st February
+                                        From 19th February
                                     </div>
                                 </div>
 
