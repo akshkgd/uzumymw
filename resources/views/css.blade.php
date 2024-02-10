@@ -1323,7 +1323,7 @@ iframe{border:0;}
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l1.svg') }}" alt="">
-                                        5 Days Live (Lang: Hinglish) 
+                                        5 Days Live <br> (Lang: Hinglish) 
                                     </div>
                                 </div>
 
