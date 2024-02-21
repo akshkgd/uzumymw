@@ -69,11 +69,11 @@
   <div class="container-fluid">
     <div class="row justify-content-center mt-5 pt-5">
       <div class="col-lg-8 h-full hidden-sm ">
-        <div style="padding:50% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/914505788?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="CSS Bootcamp replay day 1"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+        <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/20e7426b-ce21-485f-a369-f6d6a352a813?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
         <p class="mt-4">
-            <p class="text-danger">This is areplay video and only for reference. The replay will only be available till 10:00 AM</p>
+            <p class="text-danger">This is a replay video and only for reference. The replay will only be available till 6:00 PM</p>
             
-            <p><stron>Complete your day 1 Assignment:</strong> <a href="https://docs.google.com/document/d/1Oomd_qbPVyyJlpe7Hy0nSlKtQI1hO17agbIGhnWbOTc/edit?usp=sharing">here</a></p>
+            <p><stron>Complete your day 2 Assignment:</strong> <a href="https://docs.google.com/document/d/1OjIh7jb8v1mGhnV33sACgscI9ids0wpaCvwE64ujDEs/edit?usp=sharing">here</a></p>
       <p><stron>Join the discussion group to submit your assignment:</strong> <a href="https://chat.whatsapp.com/Hu0179u2QvQ7Qn0fl52Uec">Discussion Group</a></p>
       <p><stron>The discussion group will be open tomorrow at 05:00 PM to 07:00 PM to Submit Assignments.</strong></p>
   </p>
