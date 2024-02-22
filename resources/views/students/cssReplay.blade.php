@@ -1,6 +1,7 @@
 @extends('layouts.dashboard')
 @section('content')
 @section('title', 'CSS Bootcamp replay')
+<link rel='stylesheet' href='https://cdn.plyr.io/3.5.6/plyr.css'>
 <style>
     .form-control{
         border:1px solid lightgrey;
@@ -69,7 +70,8 @@
   <div class="container-fluid">
     <div class="row justify-content-center mt-5 pt-5">
       <div class="col-lg-8 h-full hidden-sm ">
-        <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/20e7426b-ce21-485f-a369-f6d6a352a813?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
+        <div class="js-player" id="plyr" data-plyr-provider="youtube" data-plyr-embed-id="fVjq35B4UJ4"></div>
+        {{-- <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/20e7426b-ce21-485f-a369-f6d6a352a813?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div> --}}
         <p class="mt-4">
             <p class="text-danger">This is a replay video and only for reference. The replay will only be available till 6:00 PM</p>
             
@@ -81,6 +83,35 @@
       
     </div>
   </div>
+  <script src='https://cdn.plyr.io/3.5.6/plyr.js'></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const player = new Plyr('.js-player', {
+                controls: [
+                    'play-large',
+                    'restart',
+                    'rewind',
+                    'play',
+                    'fast-forward',
+                    'progress',
+                    'current-time',
+                    'duration',
+                    'mute',
+                    'volume',
+                    'settings',
+                    'pip',
+                    'airplay',
+                    'fullscreen',
+                    'quality' // Ensure quality control is included
+                ],
+                quality: {
+                    default: 1080, // Set 1080p as the default quality
+                    options: [1080, 720, 480, 360] // Add available quality options here
+                }
+            });
+        });
+    </script>
 </section>
 
 
