@@ -286,7 +286,7 @@ modal.show()
                                     aria-labelledby="heading87" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <p class="mb-2 pl-2 " style="font-size:17px;">
-                                              <br /><i class='bi bi-dot fs-4'></i>Project - Stylised Personal Site   <br /><i class='bi bi-dot fs-4'></i>What Are Favicons?   <br /><i class='bi bi-dot fs-4'></i>HTML Divs   <br /><i class='bi bi-dot fs-4'></i>The Box Model of Website   <br /><i class='bi bi-dot fs-4'></i>Styling CSS   <br /><i class='bi bi-dot fs-4'></i>Display Property   <br /><i class='bi bi-dot fs-4'></i>Learn More About Web Design   <br /><i class='bi bi-dot fs-4'></i>CSS Static and Relative Positioning   <br /><i class='bi bi-dot fs-4'></i>Absolute positioning   <br /><i class='bi bi-dot fs-4'></i>The Dark Art of Centering Elements with CSS   <br /><i class='bi bi-dot fs-4'></i>Font Styling in Our Personal Site   <br /><i class='bi bi-dot fs-4'></i>Learn More About Typography   <br /><i class='bi bi-dot fs-4'></i>Adding Content to Our Website   <br /><i class='bi bi-dot fs-4'></i>CSS Sizing   <br /><i class='bi bi-dot fs-4'></i>CSS Font Property    <br /><i class='bi bi-dot fs-4'></i>CSS Float and Clear    <br /><i class='bi bi-dot fs-4'></i>More Practice HTML and CSS
+                                              <br /><i class='bi bi-dot fs-4'></i>Project - Stylised Personal Site   <br /><i class='bi bi-dot fs-4'></i>What Are Favicons?   <br /><i class='bi bi-dot fs-4'></i>CSS Flexbox<br /><i class='bi bi-dot fs-4'></i>Grid System   <br /><i class='bi bi-dot fs-4'></i>Positions and overflow  <br /><i class='bi bi-dot fs-4'></i>Display Property   <br /><i class='bi bi-dot fs-4'></i>Learn More About Web Design   <br /><i class='bi bi-dot fs-4'></i>CSS animations  <br /><i class='bi bi-dot fs-4'></i>Pseudo elements and classes   <br /><i class='bi bi-dot fs-4'></i>Advance Selectors   <br /><i class='bi bi-dot fs-4'></i>Font Styling in Our Personal Site   <br /><i class='bi bi-dot fs-4'></i>Learn More About Typography   <br /><i class='bi bi-dot fs-4'></i>Adding Content to Our Website   <br /><i class='bi bi-dot fs-4'></i>CSS Sizing & Responsive designs   <br /><i class='bi bi-dot fs-4'></i>CSS Float and Clear    <br /><i class='bi bi-dot fs-4'></i>More Practice HTML and CSS
                                         </p>
 
                                     </div>
@@ -425,6 +425,84 @@ modal.show()
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading104">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse104" aria-expanded="true"
+                                        aria-controls="collapse104">
+                                        REACT.JS
+                                    </button>
+                                </h2>
+                                <div id="collapse104"
+                                    class="accordion-collapse collapse  hide "
+                                    aria-labelledby="heading104" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p class="mb-2 pl-2 " style="font-size:17px;">
+                                              <br /><i class='bi bi-dot fs-4'></i>Learn front-end development with React.   <br /><i class='bi bi-dot fs-4'></i>Understand when and how to use React Components.   <br /><i class='bi bi-dot fs-4'></i>Learn to pass Props and work with them.   <br /><i class='bi bi-dot fs-4'></i>Learn to write JSX and understand JSX syntax.   <br /><i class='bi bi-dot fs-4'></i>Learn about the React DOM.   <br /><i class='bi bi-dot fs-4'></i>Learn State Management in React.   <br /><i class='bi bi-dot fs-4'></i>Learn about React Hooks.   <br /><i class='bi bi-dot fs-4'></i>Learn about conditional rendering in React.   <br /><i class='bi bi-dot fs-4'></i>Understand the difference between class and functional components.
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                                                    <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading105">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse105" aria-expanded="true"
+                                        aria-controls="collapse105">
+                                        React Project
+                                    </button>
+                                </h2>
+                                <div id="collapse105"
+                                    class="accordion-collapse collapse  hide "
+                                    aria-labelledby="heading105" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p class="mb-2 pl-2 " style="font-size:17px;">
+                                              <br /><i class='bi bi-dot fs-4'></i>Meet application using react and Firebase <br>
+                                              <i class='bi bi-dot fs-4'></i>Personal Portfolio <br>
+                                              <i class='bi bi-dot fs-4'></i>Hosing portfolio and linking with Domain name <br>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading105n">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse105n" aria-expanded="true" aria-controls="collapse105">
+                                        Next.js (Bonus)
+                                    </button>
+                                </h2>
+                                <div id="collapse105n" class="accordion-collapse collapse hide" aria-labelledby="heading105"
+                                    data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p class="mb-2 pl-2" style="font-size:17px;">
+                                            <br /><i class='bi bi-dot fs-4'></i>What is Next.js  <br /><i class='bi bi-dot fs-4'></i>Working with App Router  <br /><i class='bi bi-dot fs-4'></i>React Client vs Server Components  <br /><i class='bi bi-dot fs-4'></i>How and When to Use Server Components  <br /><i class='bi bi-dot fs-4'></i>Server Component Streaming  <br /><i class='bi bi-dot fs-4'></i>App Router Features  <br /><i class='bi bi-dot fs-4'></i>Server Component Data Fetching  <br /><i class='bi bi-dot fs-4'></i>Static Site Generation and Dynamic Site Generation  <br /><i class='bi bi-dot fs-4'></i>Build Time vs Runtime Data Caching  <br /><i class='bi bi-dot fs-4'></i>Cache Revalidation  <br /><i class='bi bi-dot fs-4'></i>Static and Dynamic SEO Image Generation
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="heading105np">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapse105np" aria-expanded="true"
+                                        aria-controls="collapse105">
+                                        Next js Project
+                                    </button>
+                                </h2>
+                                <div id="collapse105np"
+                                    class="accordion-collapse collapse  hide "
+                                    aria-labelledby="heading105" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <p class="mb-2 pl-2 " style="font-size:17px;">
+                                              <br /><i class='bi bi-dot fs-4'></i>AI Chatbot using ChatGpt API<br>
+                                              
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            
                                                     <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading95">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -506,7 +584,7 @@ modal.show()
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                         data-bs-target="#collapse99" aria-expanded="true"
                                         aria-controls="collapse99">
-                                        Major Project E-commerce Website
+                                        Major Project Telegram Chatbot
                                     </button>
                                 </h2>
                                 <div id="collapse99"
@@ -514,7 +592,7 @@ modal.show()
                                     aria-labelledby="heading99" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
                                         <p class="mb-2 pl-2 " style="font-size:17px;">
-                                            Complete E-commerce Website frontend and backend
+                                            Complete Telegram chatbot - Sass Based Application
                                         </p>
 
                                     </div>
@@ -596,44 +674,7 @@ modal.show()
                                     </div>
                                 </div>
                             </div>
-                                                    <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading104">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse104" aria-expanded="true"
-                                        aria-controls="collapse104">
-                                        REACT.JS
-                                    </button>
-                                </h2>
-                                <div id="collapse104"
-                                    class="accordion-collapse collapse  hide "
-                                    aria-labelledby="heading104" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="mb-2 pl-2 " style="font-size:17px;">
-                                              <br /><i class='bi bi-dot fs-4'></i>Learn front-end development with React.   <br /><i class='bi bi-dot fs-4'></i>Understand when and how to use React Components.   <br /><i class='bi bi-dot fs-4'></i>Learn to pass Props and work with them.   <br /><i class='bi bi-dot fs-4'></i>Learn to write JSX and understand JSX syntax.   <br /><i class='bi bi-dot fs-4'></i>Learn about the React DOM.   <br /><i class='bi bi-dot fs-4'></i>Learn State Management in React.   <br /><i class='bi bi-dot fs-4'></i>Learn about React Hooks.   <br /><i class='bi bi-dot fs-4'></i>Learn about conditional rendering in React.   <br /><i class='bi bi-dot fs-4'></i>Understand the difference between class and functional components.
-                                        </p>
-
-                                    </div>
-                                </div>
-                            </div>
-                                                    <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading105">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse105" aria-expanded="true"
-                                        aria-controls="collapse105">
-                                        React Project
-                                    </button>
-                                </h2>
-                                <div id="collapse105"
-                                    class="accordion-collapse collapse  hide "
-                                    aria-labelledby="heading105" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p class="mb-2 pl-2 " style="font-size:17px;">
-                                              <br /><i class='bi bi-dot fs-4'></i>Todo list using react and Firebase
-                                        </p>
-
-                                    </div>
-                                </div>
-                            </div>
+                                                    
                                                     <div class="accordion-item">
                                 <h2 class="accordion-header" id="heading106">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -725,7 +766,7 @@ modal.show()
                                         <span class="fs-5 mr-2 js-price-per-month text-muted px-2"
                                             style="text-decoration:line-through; font-weight:400">48999</span>
                                         <span
-                                            class="display- px-1 fs-5  js-price-per-month fw-400">17999/-</span>
+                                            class="display- px-1 fs-5  js-price-per-month fw-400">14999/-</span>
                                     </div>
 
                                     
@@ -973,13 +1014,13 @@ modal.show()
 
     <div class="slider-menu mt-5">
 
-        <h3 class="ck-font ">₹17999 <span class="lead "
+        <h3 class="ck-font fs-4">₹14999 <span class="fs-6"
                 style="text-decoration: line-through;">₹48999</span> </h3>
         <br>
 
         <div class="">
             <a href="https://rzp.io/l/mern-cohort"
-                class="btn btn-primary w-10 fw-light py-2 px-5 rounded-pil">Enroll Now</a>
+                class="btn btn-dark w-10 fw-light py-2 px-5 rounded-pil" style="border-radius: 8px">Enroll Now</a>
         </div>
     </div>
 
