@@ -3,6 +3,9 @@
       <div class="row">
         <div class="col-lg-6">
           <ul class="nav justify-content-center align-items-center h-100 justify-content-lg-start text-dark text-center mx-0 p-0" type="none">
+            <li class="nav-item text-left">
+              <div class="text-left " style="text-decoration: underline">Efslon coding School</div>
+            </li>
             <li class="nav-item">
               <a class="nav-link text-dark active" aria-current="page" href="{{url('/about')}}">About Us</a>
             </li>
@@ -14,9 +17,9 @@
             <li class="nav-item">
               <a class="nav-link text-dark"  href="{{url('/privacy')}}">Privacy Policy</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link text-dark"  href="{{url('/teach')}}">Start Teaching</a>
-            </li>
+            </li> --}}
             
           </ul>
         </div>
