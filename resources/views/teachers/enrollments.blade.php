@@ -43,7 +43,7 @@
                                 <td><a href="tel:+{{$enrollment->students->mobile}}">{{$enrollment->students->mobile}}</a></td>
                                 <td>{{$enrollment->students->created_at->format('d M y')}}</td>
                                 <td>{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('d M y') }}  </td>
-                                <td>{{$enrollment->amountPaid}}</td>
+                                <td>{{$enrollment->amountPaid / 100}}</td>
         
                                 <td>{{$enrollment->students->field1}}</td>
                                 <td>
