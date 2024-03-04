@@ -1,8 +1,12 @@
-@extends('layouts.dashboard')
+@extends('layouts.student')
 @section('content')
 @section('title', 'CSS Bootcamp replay')
-<link rel='stylesheet' href='https://cdn.plyr.io/3.5.6/plyr.css'>
+{{-- <link rel='stylesheet' href='https://cdn.plyr.io/3.5.6/plyr.css'> --}}
+<link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
 <style>
+  *{
+
+  }
     .form-control{
         border:1px solid lightgrey;
         border-right: none;
@@ -69,15 +73,15 @@
 <section>
   <div class="container-fluid">
     <div class="row justify-content-center mt-5 pt-5">
-      <div class="col-lg-8 h-full hidden-sm ">
-        <div class="js-player" id="plyr" data-plyr-provider="youtube" data-plyr-embed-id="fVjq35B4UJ4"></div>
+      <div class="col-lg-8 h-full ">
+        <div class="js-player" id="plyr" data-plyr-provider="youtube" data-plyr-embed-id="gRx2aQVmP30"></div>
         {{-- <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/20e7426b-ce21-485f-a369-f6d6a352a813?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div> --}}
         <p class="mt-4">
-            <p class="text-danger">This is a replay video and only for reference. The replay will only be available till 6:00 PM</p>
+            <p class="text-danger">This is a replay video and only for reference. The replay will only be available till 12:00 PM</p>
             
-            <p><stron>Complete your day 2 Assignment:</strong> <a href="https://docs.google.com/document/d/1OjIh7jb8v1mGhnV33sACgscI9ids0wpaCvwE64ujDEs/edit?usp=sharing">here</a></p>
-      <p><stron>Join the discussion group to submit your assignment:</strong> <a href="https://chat.whatsapp.com/Hu0179u2QvQ7Qn0fl52Uec">Discussion Group</a></p>
-      <p><stron>The discussion group will be open tomorrow at 05:00 PM to 07:00 PM to Submit Assignments.</strong></p>
+            <p><stron>Complete your day 1 Assignment:</strong> <a href="https://docs.google.com/document/d/1Oomd_qbPVyyJlpe7Hy0nSlKtQI1hO17agbIGhnWbOTc/edit?usp=sharing">here</a></p>
+      <p><stron>Join the discussion group to submit your assignment:</strong> <a href="https://chat.whatsapp.com/HdAhnQwukAS5L3pZudNuHk">Discussion Group</a></p>
+      <p><stron>The discussion group will be open from 05:00 PM to 07:00 PM to Submit Assignments.</strong></p>
   </p>
     </div>
       
@@ -90,7 +94,7 @@
             const player = new Plyr('.js-player', {
                 controls: [
                     'play-large',
-                    'restart',
+                    
                     'rewind',
                     'play',
                     'fast-forward',
@@ -100,7 +104,7 @@
                     'mute',
                     'volume',
                     'settings',
-                    'pip',
+                    
                     'airplay',
                     'fullscreen',
                     'quality' // Ensure quality control is included
