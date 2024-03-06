@@ -74,7 +74,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center mt-5 pt-5">
       <div class="col-lg-8 h-full ">
-        <div class="js-player" id="plyr" data-plyr-provider="youtube" data-plyr-embed-id="gRx2aQVmP30"></div>
+        <div class="js-player" id="plyr" data-plyr-provider="youtube" data-plyr-embed-id="VtXlkrvzb3A"></div>
         {{-- <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/20e7426b-ce21-485f-a369-f6d6a352a813?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div> --}}
         <p class="mt-4">
             <p class="text-danger">This is a replay video and only for reference. The replay will only be available till 12:00 PM</p>
