@@ -77,9 +77,9 @@
         <div class="js-player" id="plyr" data-plyr-provider="youtube" data-plyr-embed-id="fVjq35B4UJ4"></div>
         {{-- <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/20e7426b-ce21-485f-a369-f6d6a352a813?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div> --}}
         <p class="mt-4">
-            <p class="text-danger">This is a replay video and only for reference. The replay will only be available till 12:00 PM</p>
+            <p class="text-danger">This is a replay video and only for reference. The replay will only be available till 8:00 PM</p>
             
-            <p><stron>Complete your day 1 Assignment:</strong> <a href="https://docs.google.com/document/d/1Oomd_qbPVyyJlpe7Hy0nSlKtQI1hO17agbIGhnWbOTc/edit?usp=sharing">here</a></p>
+            {{-- <p><stron>Complete your day 1 Assignment:</strong> <a href="https://docs.google.com/document/d/1Oomd_qbPVyyJlpe7Hy0nSlKtQI1hO17agbIGhnWbOTc/edit?usp=sharing">here</a></p> --}}
       <p><stron>Join the discussion group to submit your assignment:</strong> <a href="https://chat.whatsapp.com/HdAhnQwukAS5L3pZudNuHk">Discussion Group</a></p>
       <p><stron>The discussion group will be open from 05:00 PM to 07:00 PM to Submit Assignments.</strong></p>
   </p>
