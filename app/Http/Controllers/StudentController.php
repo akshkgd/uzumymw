@@ -52,6 +52,7 @@ class StudentController extends Controller
         $workshop = Workshop::findorFail($id);
         return view('students.workshopNextSteps', compact('workshop'));
     }
+    
 
     // public function recordings($id, $videoLink = null)
     // {

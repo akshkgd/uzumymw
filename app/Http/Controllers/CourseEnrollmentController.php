@@ -162,6 +162,12 @@ class CourseEnrollmentController extends Controller
             elseif ($batchId->topicId == 102){
                 return redirect('/react-success');
             }
+            elseif ($batchId->topicId == 103){
+                return redirect('/css-success');
+            }
+            elseif ($batchId->topicId == 105){
+                return redirect('/css-upgrade-success');
+            }
             else{
             return redirect('/home');
 
@@ -183,7 +189,7 @@ class CourseEnrollmentController extends Controller
                 
                 // $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount'])); 
                 $response = $api->payment->fetch($input['razorpay_payment_id']);
-                // dd($response);
+                dd($response);
             } 
             catch (\Exception $e) {
                 return  $e->getMessage();
@@ -205,6 +211,9 @@ class CourseEnrollmentController extends Controller
             }
             elseif ($batch->topicId == 102){
                 return redirect('/react-success');
+            }
+            elseif ($batch->topicId == 105){
+                return redirect('/css-upgrade-success');
             }
             elseif ($batch->topicId == 10){
                 return redirect('/mern-success');

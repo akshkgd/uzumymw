@@ -47,7 +47,7 @@ class WebhookController extends Controller
                     $a->status = 1;
                     $a->hasPaid =1;
                     $a->certificateId = substr(md5(time()), 0, 16);
-                    $a->save();
+                    $a->save();            
     }
     else{
     if ($notes) {
@@ -65,12 +65,16 @@ class WebhookController extends Controller
             $enrollment->paymentMethod = $entity['method'];
             $enrollment->transactionId = $entity['id'];
 
-            // Add a comment to field2 indicating the webhook data update
+            // Add a comment to field2 indicating the w hjh jhjjjhj jjhjhj jj jhjhjhh hjhjhj uyuyu yuyuyu uy
             $enrollment->field2 = 'webhook access granted';
             $enrollment->save();
 
             return response('Webhook Handled', 200);
         } 
+        elseif($notes['purpose'] == 5){
+            $enrollment->certificateFee == $entity['amount'];
+            $enrollment->save();
+        }
         else {
             // Add a comment or additional handling logic for cases when the enrollment has already been paid
             // ...
@@ -86,8 +90,4 @@ class WebhookController extends Controller
     }
     }
 }
-
-
-
-
 }

@@ -1,7 +1,11 @@
-@extends('layouts.app')
-
+@extends('layouts.student')
 @section('content')
-
+    <div class="navbar-container ">
+        <nav class="navbar navbar-expand-lg navbar-light border-bottom-0" data-overlay>
+            
+        </nav>
+    </div>
+    @include('layouts.student-nav')
 
 
 <section class="">
