@@ -189,7 +189,7 @@ class CourseEnrollmentController extends Controller
                 
                 // $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount'])); 
                 $response = $api->payment->fetch($input['razorpay_payment_id']);
-                dd($response);
+                
             } 
             catch (\Exception $e) {
                 return  $e->getMessage();
