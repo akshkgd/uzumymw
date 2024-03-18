@@ -56,7 +56,7 @@ class WebhookController extends Controller
         //                              ->first();
 
         $enrollment = CourseEnrollment::findorFail($notes['enrollmentId']);
-
+        $sendPabbly = $this->sendPabbly($notes['enrollmentId']);
         if ($enrollment && $enrollment->hasPaid == 0) {
             $enrollment->status = 1;
             $enrollment->hasPaid = 1;
@@ -90,4 +90,23 @@ class WebhookController extends Controller
     }
     }
 }
+
+private function sendPabbly($id){
+    $pabblyWebhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzNDA0M2M1MjZlNTUzNDUxM2Ei_pc';
+        $enrollment = CourseEnrollment::findOrFail($id);
+        $name = $enrollment->students->name;
+        $email = $enrollment->students->email;
+        $batchName = $enrollment->batch->name; 
+        $batchStartDate = Carbon::parse($enrollment->batch->startDate);
+        $formattedStartDate = $batchStartDate->format('d-M-Y');
+        $data = [
+            'firstName' => strtok($name, ' '),
+            'email' => $email,
+            'topicId' => $batch['topicId'],
+
+            // Add any other data you want to send to the Zapier webhook
+        ];
+        $response = Http::post($pabblyWebhookUrl, $data);
+}
+
 }

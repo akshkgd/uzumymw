@@ -137,9 +137,14 @@ input{
 }
 @media(min-width: 992px){
   .player-container{
-    width: auto;
+    width: 1100px !important;
+    margin: auto;
     display: flex;
+    border: 1px solid #eee;
+    border-top: none;
+    border-bottom: none;
     justify-content: center;
+    /* margin-top: 570px; */
   }
   .player{
     width: 60%;
@@ -148,7 +153,6 @@ input{
     user-select: none;
     font-size: 18px;
     text-rendering: optimizeLegibility;
-   
   }
   .sidebar{
     width: 330px;

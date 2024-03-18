@@ -205,7 +205,7 @@ body{
         .player .vp-video-wrapper.transparent {
             border-radius: 10px !important}
     </style>
-{{-- <div class="navbar bg-white px-2" style="border-bottom:1px solid #eee; background-color:white">
+{{-- <div class="navbar bg-white px-2" style="border-bottom:1px solid #eee; background-color:white; height:70px">
     <div class="d-flex align-items-center">
         <img src="{{asset('assets/img/black.svg')}}" height="42" alt="">
     </div>
@@ -306,16 +306,24 @@ body{
     
     @if($video->type == 3)
     <div class="text-cente">
-        <h2 class="fs-4 fw-bold mt-5">{{$video->title}}</h2>
+        <h2 class="fs-4 fw-bold mt-3">{{$video->title}}</h2>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate fuga reprehenderit eius! Fugit suscipit dolor molestias error nesciunt, fuga iste eius molestiae maxime aliquam, in, accusamus quis voluptates soluta cupiditate obcaecati itaque. Corrupti laboriosam perspiciatis, deserunt cumque facilis asperiores labore excepturi accusamus enim omnis in fugit hic unde voluptate, earum velit animi a ipsam porro?</p>
-        <form action="">
-            <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Email address</label>
-              </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="border border-danger mb-2" style="border-radius: 12px">
+                    <p class="small p-2" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto ab nihil odio!</p>
+                </div>
+                <form action="">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                      </div>
+        
+                      <a href="" class="btn btn-dark">Submit Assignment</a>
+                </form>
 
-              <a href="" class="btn btn-dark">Submit Assignment</a>
-        </form>
+            </div>
+        </div>
     </div>
     @elseif ($video->videoLink != '' && $video->type == 2)
         @if(strlen($video->videoLink)<12)
@@ -329,6 +337,11 @@ body{
             {{-- <iframe id="vimeoPlayer" src="https://player.vimeo.com/video/{{$video->videoLink}}?autoplay=1&badge=0&amp;autopause=0&amp;quality=720p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Recording CSS Media Queries - 651d75bfe4b0e4a748954b62 (1)"></iframe> --}}
             <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/{{$video->videoLink}}?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
         </div>
+        <div class="mt-3">
+            <h1 class="fw-bold fs-3 pt-2 pb-0" id="title">{{ $video->title }}</h1>
+            {!! $video->desc !!}
+            {{-- {{ $video->id }} --}}
+        </div>
     
         {{-- <script src="https://player.vimeo.com/api/player.js"></script> --}}
         
@@ -338,12 +351,7 @@ body{
         
     @endif
             {{-- text --}}
-            <div class="mt-3">
-                <h1 class="fw-bold fs-3 pt-2 pb-0" id="title">{{ $video->title }}</h1>
-                {!! $video->desc !!}
-                {{-- {{ $video->id }} --}}
-                
-            </div>
+            
     <script>
         
     </script>
