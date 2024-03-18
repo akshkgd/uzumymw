@@ -13,6 +13,7 @@ use App\User;
 use App\CourseEnrollment;
 use App\WorkshopEnrollment;
 use Razorpay\Api\Api;
+use Illuminate\Support\Facades\Http;
 use Redirect;
 use Carbon\Carbon;
 use App\Mail\EmailForQueuing;
@@ -56,7 +57,7 @@ class WebhookController extends Controller
         //                              ->first();
 
         $enrollment = CourseEnrollment::findorFail($notes['enrollmentId']);
-        $sendPabbly = $this->sendPabbly($notes['enrollmentId']);
+        $sendPabbly = $this->sendPabbly($enrollment->id);
         if ($enrollment && $enrollment->hasPaid == 0) {
             $enrollment->status = 1;
             $enrollment->hasPaid = 1;
@@ -102,7 +103,7 @@ private function sendPabbly($id){
         $data = [
             'firstName' => strtok($name, ' '),
             'email' => $email,
-            'topicId' => $batch['topicId'],
+            'batchName' => $batchName
 
             // Add any other data you want to send to the Zapier webhook
         ];
