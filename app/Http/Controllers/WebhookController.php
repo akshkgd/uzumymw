@@ -102,7 +102,7 @@ private function sendPabbly($id, $p){
         $formattedStartDate = $batchStartDate->format('d-M-Y');
         $paidOn = Carbon::parse($enrollment->paidOn);
         $formattedPaidOn = $paidOn->format('d-M-Y');
-        $amount = $p;
+        $amount = $p/100;
         $user = $enrollment->students;
         $data = [
             'firstName' => strtok($name, ' '),
