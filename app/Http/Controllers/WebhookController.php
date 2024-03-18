@@ -57,7 +57,7 @@ class WebhookController extends Controller
         //                              ->first();
 
         $enrollment = CourseEnrollment::findorFail($notes['enrollmentId']);
-        $sendPabbly = $this->sendPabbly($enrollment->id);
+        $sendPabbly = $this->sendPabbly($enrollment->id, $entity['amount']);
         if ($enrollment && $enrollment->hasPaid == 0) {
             $enrollment->status = 1;
             $enrollment->hasPaid = 1;
@@ -92,7 +92,7 @@ class WebhookController extends Controller
     }
 }
 
-private function sendPabbly($id){
+private function sendPabbly($id, $p){
     $pabblyWebhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzNDA0M2M1MjZlNTUzNDUxM2Ei_pc';
         $enrollment = CourseEnrollment::findOrFail($id);
         $name = $enrollment->students->name;
@@ -102,7 +102,7 @@ private function sendPabbly($id){
         $formattedStartDate = $batchStartDate->format('d-M-Y');
         $paidOn = Carbon::parse($enrollment->paidOn);
         $formattedPaidOn = $paidOn->format('d-M-Y');
-        $amount = $enrollment->amountPaid + $enrollment->certificateFee;
+        $amount = $p;
         $user = $enrollment->students;
         $data = [
             'firstName' => strtok($name, ' '),
