@@ -110,8 +110,8 @@ private function sendPabbly($id){
             'phone' => $user->mobile,
             'batchName' => $batchName,
             'utm' =>$user->field1,
-            'paidOn' =>$enrollment->paidOn,
-            'paid' => $enrollment->amountPaid,
+            'paidOn' =>$formattedPaidOn,
+            'paid' => $enrollment->amountPaid / 100,
             'batchId' => $enrollment->batchId,
 
             // Add any other data you want to send to the Zapier webhook
