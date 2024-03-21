@@ -791,7 +791,7 @@ modal.show()
                                        
                                                                             <div class="">
                                         
-                                            <a href="https://rzp.io/l/mern-cohort" class="btn btn-dark w-100 py-3 fw-light ck-rounded mb-3">Join bootcamp at 17999/-</a>
+                                            <a href="https://rzp.io/l/mern-cohort" class="btn btn-dark w-100 py-3 fw-light ck-rounded mb-3">Join bootcamp at 14999/-</a>
                                             <div class="text-center small">Once the timer hits zero, pricing will be increased to 48999.00/-</div>
                                         
                                         </div>
