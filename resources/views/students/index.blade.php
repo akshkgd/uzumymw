@@ -44,7 +44,7 @@
                                                 <a href="{{ action('BatchController@batchDetails', Crypt::encrypt($enrollment->id)) }}"
                                                     class="inline-block  items-center justify-center px-[30px] py-[12px] text-[15px] transition-colors duration-200 bg-white border rounded-[10px] border-neutral-300 text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline">Details</a>
                                             @elseif($enrollment->batch->status == 3)
-                                                <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}"
+                                                <a href="{{$enrollment->batch->grouplink2}}"
                                                     class="inline-block  items-center justify-center px-[30px] py-[12px] text-[15px] transition-colors duration-200 bg-white border rounded-[10px] border-neutral-300 text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline">Access
                                                     Recordings</a>
                                                 <a href="{{ action('BatchController@batchDetails', Crypt::encrypt($enrollment->id)) }}"
