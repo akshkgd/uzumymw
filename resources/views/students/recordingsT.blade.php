@@ -330,7 +330,7 @@
 
 {{-- player --}}
 
-<!-- player -->
+@if($intro == 'false')
 <main class=" flex gap-4 justify-center align-middle py-12 ">
     <!-- <div class="sm:w-[370px] bg-violet bg-neutral-50 h-screen fixed top-0 left-0 self-start" >
       fjdkjfdk
@@ -360,7 +360,7 @@
     </div>
     
   </main>
-    
+  @endif
   <!-- Code injected by live-server -->
 <script>
 	// <![CDATA[  <-- For SVG support
