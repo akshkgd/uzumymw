@@ -6,18 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
+    
+    <!-- Include the Alpine library on your page -->
+    <script src="https://unpkg.com/alpinejs" defer></script>
+    <!-- Include the TailwindCSS library on your page -->
+    <link href="{{asset('assets/css/tailwind.css')}}" rel="stylesheet" />
     <style>
       [x-cloak] {
         display: none;
       }
       a{
-        color: rgb(0, 128, 255);
+        color: rgb(0, 128, 255) !important;
       }
     </style>
-    <!-- Include the Alpine library on your page -->
-    <script src="https://unpkg.com/alpinejs" defer></script>
-    <!-- Include the TailwindCSS library on your page -->
-    <link href="{{asset('assets/css/tailwind.css')}}" rel="stylesheet" />
   </head>
   <body class="font-geist">
     <header
