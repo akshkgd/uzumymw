@@ -348,7 +348,7 @@
                 <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/{{$video->videoLink}}?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
             </div>
             <div class="my-5">
-                <h1 class="text-3xl font-extrabold" id="title">{{ $video->title }}</h1>
+                <h1 class="text-3xl mt-5 font-extrabold" id="title">{{ $video->title }}</h1>
                 <div class="desc mt-5">
                   {!! $video->desc !!}
                 </div>
