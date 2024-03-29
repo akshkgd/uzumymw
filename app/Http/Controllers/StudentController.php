@@ -104,6 +104,7 @@ class StudentController extends Controller
             if ($enrollment->hasPaid == 1) {
                 $content = BatchContent::where('batchId', $enrollment->batchId)->latest()->get();
                 $video = $videoLink ? BatchContent::find($chapterId) : $content->first();
+                $intro = $videoLink ? "false" : "true";
                 $accessTill = Carbon::now()->diffInDays(Carbon::parse($enrollment->paidAt));
                 $sections = BatchSection::where('batchId', $enrollment->batchId)->orderBy('order')->get();
 
@@ -112,7 +113,7 @@ class StudentController extends Controller
                     return view('students.recordings', compact('content', 'batchId', 'video', 'enrollment', 'accessTill'));
                 } else {
                     // Pass sections and contents
-                    return view('students.recordings', compact('sections', 'content', 'batchId', 'video', 'enrollment', 'accessTill'));
+                    return view('students.recordingsT', compact('sections', 'content', 'batchId', 'video', 'intro', 'enrollment', 'accessTill'));
                 }
             } else {
                 session()->flash('alert-warning', 'Complete your payment to see notes and assignments');
