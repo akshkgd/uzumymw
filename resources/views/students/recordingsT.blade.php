@@ -266,7 +266,7 @@
       <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
         
         <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">Full stack cohort</h2>
-        <p class="bg-white text-sm px-6 text-gray-500 text-center">Uh-Oh! The page you're looking for seems to be missing</p>
+        <p class="bg-white text-sm px-6 text-gray-500 text-center">The new player is still under development and may behave differently! It will be resolved by 2nd April.</p>
         <div class="flex justify-center gap-2">
           <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Complete your onboarding</a>
           <!-- <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Important Links</a> -->
