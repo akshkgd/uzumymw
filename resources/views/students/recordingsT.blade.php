@@ -15,7 +15,7 @@
       [x-cloak] {
         display: none;
       }
-      a{
+      .desc a{
         color: rgb(0, 128, 255) !important;
       }
     </style>
@@ -347,7 +347,7 @@
                 {{-- <iframe id="vimeoPlayer" src="https://player.vimeo.com/video/{{$video->videoLink}}?autoplay=1&badge=0&amp;autopause=0&amp;quality=720p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Recording CSS Media Queries - 651d75bfe4b0e4a748954b62 (1)"></iframe> --}}
                 <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/{{$video->videoLink}}?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
             </div>
-            <div class="mt-3">
+            <div class="mt-3 desc">
                 <h1 class="text-3xl font-extrabold" id="title">{{ $video->title }}</h1>
                 {!! $video->desc !!}
                 {{-- {{ $video->id }} --}}
