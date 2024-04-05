@@ -52,6 +52,7 @@ Route::view('/start-css','css1');
 Route::view('/start-javascript','js5');
 Route::view('/start-webdev','wdStarter');
 Route::view('/join-mern','fsd');
+Route::view('/join-fsd','fsd1');
 Route::view('/css-success','students/cssSuccess1');
 Route::view('/css-replay','students/cssReplay');
 

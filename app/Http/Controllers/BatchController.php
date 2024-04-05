@@ -85,7 +85,7 @@ class BatchController extends Controller
             
             if ($nextClassDateTime->isPast()) {
                 $timeDifference = $nextClassDateTime->diffForHumans();
-                $message = "<b>Live class started</b>\n\n" ."The live session on " . $request->topic . "has started.\n\n" ."Click and login on the link below to join the class." . $request->meetingLink . "\n\n" ."Keep coding!";
+                $message = "<b>Live class started</b>\n\n" ."The live session on " . $request->topic . "has started. \n\n" ."Click and login on the link below to join the class." . $request->meetingLink . "\n\n" ."Keep coding!";
             }
             else if ($timeDifferenceMinutes < 60) {
                 $timeDifference = $nextClassDateTime->diffForHumans();
