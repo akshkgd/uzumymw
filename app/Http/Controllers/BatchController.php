@@ -70,8 +70,6 @@ class BatchController extends Controller
 
     public function updateClass(Request $request)
     {   
-
-        
         $batch = Batch::findorFail($request->batchId);
         $batch->topic = $request->topic;
         $batch->nextClass = $request->nextClass;
@@ -79,24 +77,31 @@ class BatchController extends Controller
         $batch->meetingLink = $request->meetingLink;
         $batch->save();
         // telegram 
-        $nextClassDateTime = strtotime($request->nextClass);
-        $nextClassDate = date('l, jS F Y \a\t h:i A', $nextClassDateTime); // Format time in AM/PM
-        $link = "https://codekaro.in/access/1";
-        $chatId = '-1002084397850'; 
-        $course = "React Revision II";
-        $time = 15; // Time in minutes
-        $message = "<u>Live class Update</u>\n\n" .
-           "Live class on React Revision is scheduled on " . $nextClassDate . ".\n\n" .
-           "Meeting link: " . $link . "\n\n" .
-           "Keep coding!";
+        if($batch->telegramBroadcast){
+            
+            $nextClassDateTime = \Carbon\Carbon::parse($request->nextClass);
+            $currentTime = \Carbon\Carbon::parse($request->currentTime);
+            $timeDifferenceMinutes = $nextClassDateTime->diffInMinutes($currentTime);
+            dd([
+                'Next Class Time' => $nextClassDateTime->format('Y-m-d H:i:s'),
+                'Current Time' => $currentTime->format('Y-m-d H:i:s'),
+                'Time Difference (Minutes)' => $timeDifferenceMinutes
+            ]);
+            if ($timeDifferenceMinutes < 60) {
+                $timeDifference = $nextClassDateTime->diffForHumans();
+                $message = "<u>Live class starting in " . $timeDifference . "</u>\n\n" ."Live session on " . $request->topic . " is starting in " . $timeDifference . ".\n\n" ."Click and login on the link below to join the class." . $request->meetingLink . "\n\n" ."Keep coding!";
+            } else {
+                $timeDifference = $nextClassDateTime->diffForHumans();
+                $message = "<u>Live class Update</u>\n\n" ."Live class on " . $request->topic . " is scheduled on " . $nextClassDateTime->format('l, jS F Y \a\t h:i A') . ".\n\n" ."The class will start " . $timeDifference . ".\n\n" ."Meeting link: " . $request->meetingLink . "\n\n" ."Keep coding!";
+            }
 
-
-
-        Telegram::sendMessage([
-            'chat_id' => $chatId,
-            'text' => $message,
-            'parse_mode' => 'HTML', 
-        ]);
+            dd($timeDifferenceMinutes);
+            Telegram::sendMessage([
+                'chat_id' => $batch->telegramBroadcast,
+                'text' => $message,
+            ]);
+        }
+        
         return redirect()->back();
         
     }

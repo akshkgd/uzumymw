@@ -243,6 +243,14 @@
                                                             data-enable-time="true" data-date-format="Y-m-d H:i">
                                                         <label for="inputPassword2">Date and time</label>
                                                         <input type="hidden" value="{{ $batch->id }}" name="batchId">
+                                                        <input type="hidden" id="currentTime" name="currentTime">
+
+                                                        <script>
+                                                            var currentTime = new Date();
+                                                            var currentTimeString = currentTime.toISOString();
+                                                            document.getElementById("currentTime").value = currentTimeString;
+                                                        </script>
+
                                                     </div>
                                                     <div class="form-floating mt-3 mb-2">
                                                         <input type="text" class="form-control"
