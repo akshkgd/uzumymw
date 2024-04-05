@@ -97,7 +97,7 @@ class BatchController extends Controller
 
             dd($timeDifferenceMinutes);
             Telegram::sendMessage([
-                'chat_id' => $batch->telegramBroadcast,
+                'chat_id' => '-1002084397850',
                 'text' => $message,
             ]);
         }
