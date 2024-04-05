@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "23b79712ea1f13290b78a499613ac44d",
+    "content-hash": "7f05429a62726b39a0d89a32f96e0470",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1081,23 +1081,23 @@
         },
         {
             "name": "irazasyed/telegram-bot-sdk",
-            "version": "dev-develop",
+            "version": "v3.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/irazasyed/telegram-bot-sdk.git",
-                "reference": "f29f527f4167b455a98bd9e470ba9b5543cfd7bf"
+                "reference": "c4c8250e334e94aab7b6b4a67850e39fd5a9384b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/irazasyed/telegram-bot-sdk/zipball/f29f527f4167b455a98bd9e470ba9b5543cfd7bf",
-                "reference": "f29f527f4167b455a98bd9e470ba9b5543cfd7bf",
+                "url": "https://api.github.com/repos/irazasyed/telegram-bot-sdk/zipball/c4c8250e334e94aab7b6b4a67850e39fd5a9384b",
+                "reference": "c4c8250e334e94aab7b6b4a67850e39fd5a9384b",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "guzzlehttp/guzzle": "^6.5.8 || ^7.4.5",
                 "guzzlehttp/psr7": "^1.9 || ^2.2",
-                "illuminate/support": "5.8 - 10",
+                "illuminate/support": "5.8 - 9",
                 "league/event": "^2.1",
                 "php": ">=7.3"
             },
@@ -1109,7 +1109,6 @@
                 "illuminate/container": "Hold dependencies to be injected in commands constructors",
                 "irazasyed/larasupport": "Allows you to use any Laravel Package in Lumen by adding support!"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1153,9 +1152,9 @@
             ],
             "support": {
                 "issues": "https://github.com/irazasyed/telegram-bot-sdk/issues",
-                "source": "https://github.com/irazasyed/telegram-bot-sdk/tree/develop"
+                "source": "https://github.com/irazasyed/telegram-bot-sdk/tree/v3.9"
             },
-            "time": "2023-03-03T13:47:04+00:00"
+            "time": "2022-08-02T19:46:39+00:00"
         },
         {
             "name": "jaybizzle/crawler-detect",
@@ -8180,9 +8179,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "irazasyed/telegram-bot-sdk": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

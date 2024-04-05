@@ -10,6 +10,7 @@ use App\BatchTopics;
 use App\Batch;
 use App\User;
 use App\Feedback;
+use Telegram\Bot\Laravel\Facades\Telegram;
 
 class BatchController extends Controller
 {
@@ -70,13 +71,32 @@ class BatchController extends Controller
     public function updateClass(Request $request)
     {   
 
-    
+        
         $batch = Batch::findorFail($request->batchId);
         $batch->topic = $request->topic;
         $batch->nextClass = $request->nextClass;
         $batch->desc = $request->desc;
         $batch->meetingLink = $request->meetingLink;
         $batch->save();
+        // telegram 
+        $nextClassDateTime = strtotime($request->nextClass);
+        $nextClassDate = date('l, jS F Y \a\t h:i A', $nextClassDateTime); // Format time in AM/PM
+        $link = "https://codekaro.in/access/1";
+        $chatId = '-1002084397850'; 
+        $course = "React Revision II";
+        $time = 15; // Time in minutes
+        $message = "<u>Live class Update</u>\n\n" .
+           "Live class on React Revision is scheduled on " . $nextClassDate . ".\n\n" .
+           "Meeting link: " . $link . "\n\n" .
+           "Keep coding!";
+
+
+
+        Telegram::sendMessage([
+            'chat_id' => $chatId,
+            'text' => $message,
+            'parse_mode' => 'HTML', 
+        ]);
         return redirect()->back();
         
     }
