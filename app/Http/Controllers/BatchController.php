@@ -77,7 +77,7 @@ class BatchController extends Controller
         $batch->meetingLink = $request->meetingLink;
         $batch->save();
         // telegram 
-        if($batch->telegramBroadcast){
+        if(true){
             
             $nextClassDateTime = \Carbon\Carbon::parse($request->nextClass);
             $currentTime = \Carbon\Carbon::parse($request->currentTime);
