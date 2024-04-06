@@ -89,10 +89,13 @@
                                         <td scope="col">Name</th>
                                         <td scope="col">Email</th>
                                         <td scope="col">Mobile</th>
-                                        <td scope="col">Webhook</th>
                                         <th scope="col">Amount paid</th>
                                         <td scope="col">Enrolled on </th>
-                                        <td scope="col">Enrolled on </th>
+                                        <td scope="col">Source</th>
+                                        <td scope="col">Medium</th>
+                                        <td scope="col">Campaign</th>
+                                        
+                                        
 
                                         <td scope="col">Actions</th>
 
@@ -106,10 +109,13 @@
                                             <a class="text-dark td-none" href="{{action('AdminController@studentDetails', $enrollment->students->id  )}}">{{ $enrollment->students->name }}</a></td>
                                             <td>{{ $enrollment->students->email }}</td>
                                             <td>{{ $enrollment->students->mobile }}</td>
-                                            <td>{{ $enrollment->field2}}</td>
                                             <td>{{ ($enrollment->amountPaid) / 100 }}</td>
                                             <td>{{ Carbon\Carbon::parse($enrollment->paidAt)->format('D, d M Y') }}</td>
-                                            <td>{{ $enrollment->created_at}} </td>
+                                            <td>{{ $enrollment->students->field1 }}</td>
+                                            <td>{{ $enrollment->students->field2 }}</td>
+                                            <td>{{ $enrollment->students->field3 }}</td>
+
+                                            
 
                                             <td>
                                                 <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id) )}}" class="">Payment Received</a>
