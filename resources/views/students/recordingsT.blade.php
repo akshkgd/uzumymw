@@ -8,7 +8,7 @@
     <title>Dashboard</title>
     
     <!-- Include the Alpine library on your page -->
-    <script src="https://unpkg.com/alpinejs" defer></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <!-- Include the TailwindCSS library on your page -->
     <link href="{{asset('assets/css/tailwind.css')}}" rel="stylesheet" />
     <style>
