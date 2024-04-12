@@ -230,3 +230,10 @@ Route::post('/add-access', 'AdminController@addCourseAccess')->name('addAccess')
 
 // whatsApp test
 Route::get('/msg', 'AdminController@wam');
+
+
+Route::get('/sub', function () {
+    return view('payment');
+});
+Route::post('/create-payment', 'SubscriptionController@create')->name('create');
+Route::post('/store-payment', 'SubscriptionController@payment')->name('payment');

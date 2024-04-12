@@ -766,7 +766,7 @@ modal.show()
                                         <span class="fs-5 mr-2 js-price-per-month text-muted px-2"
                                             style="text-decoration:line-through; font-weight:400">48999</span>
                                         <span
-                                            class="display- px-1 fs-5  js-price-per-month fw-400">17999/-</span>
+                                            class="display- px-1 fs-5  js-price-per-month fw-400">14999/-</span>
                                     </div>
 
                                     
@@ -791,7 +791,7 @@ modal.show()
                                        
                                                                             <div class="">
                                         
-                                            <a href="https://rzp.io/l/mern-cohort" class="btn btn-dark w-100 py-3 fw-light ck-rounded mb-3">Join bootcamp at 17999/-</a>
+                                            <a href="https://rzp.io/l/mern-cohort" class="btn btn-dark w-100 py-3 fw-light ck-rounded mb-3">Join bootcamp at 14999/-</a>
                                             <div class="text-center small">Once the timer hits zero, pricing will be increased to 48999.00/-</div>
                                         
                                         </div>
@@ -1014,7 +1014,7 @@ modal.show()
 
     <div class="slider-menu mt-5">
 
-        <h3 class="ck-font fs-4">₹17999 <span class="fs-6"
+        <h3 class="ck-font fs-4">₹14999 <span class="fs-6"
                 style="text-decoration: line-through;">₹48999</span> </h3>
         <br>
 
