@@ -10,7 +10,9 @@ class SubscriptionController extends Controller
     {
        // this function creates order id send options data in response
        if(!empty($request->amount)){
-        $api = new Api(('rzp_live_wf6UKrUf1TKxEA'),('4gKPS8aQrVZASJpc9tO49f1x'));
+        $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+
+        // $api = new Api(('rzp_live_wf6UKrUf1TKxEA'),('4gKPS8aQrVZASJpc9tO49f1x'));
         $planName = 'Codekaro Test';
         $amount = $request->amount * 100;
         ;
