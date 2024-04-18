@@ -111,6 +111,8 @@
                                             <td>{{ $enrollment->students->mobile }}</td>
                                             <td>{{ ($enrollment->amountPaid) / 100 }}</td>
                                             <td>{{ Carbon\Carbon::parse($enrollment->paidAt)->format('D, d M Y') }}</td>
+                                            <td>{{ $enrollment->field1 }}</td>
+                                            
                                             <td>{{ $enrollment->students->field1 }}</td>
                                             <td>{{ $enrollment->students->field2 }}</td>
                                             <td>{{ $enrollment->students->field3 }}</td>
