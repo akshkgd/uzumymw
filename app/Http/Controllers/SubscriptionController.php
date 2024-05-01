@@ -79,6 +79,7 @@ class SubscriptionController extends Controller
         if($paymentInfo->status == 'captured'){
                 // dd($paymentInfo);
                $enrollment =  $this->createSubscription($paymentInfo);
+               return response('Webhook Handled', 200);
         }
     }
 
