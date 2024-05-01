@@ -46,19 +46,26 @@ trait SubscriptionManagement
         return $user;
     }
     private function grantSubscriptionAccess($user, $paymentInfo){
-        $a = new CourseEnrollment();
-        $a->userId = $user->id;
-        $a->batchId = 67;
-        $a->price = 32000;
-        $a->haspaid = 1;
-        $a->subscriptionActiveOn = Carbon::now();
-        $a->accessTill = Carbon::now()->addMonth();
-        $a->subscriptionStatus = 1;
-        $a->type = 1;
-        $a->subscriptionId = $paymentInfo->notes->subscriptionId;
-        $a->paymentMethod = $paymentInfo->method;
-        $a->save();
-        return $a;
+        $activeEnrollment = CourseEnrollment::where('userId', $user->id)
+            ->where('batchId', 67)
+            ->where('hasPaid', 1)
+            ->first();
+        if ($activeEnrollment) {
+            return $activeEnrollment;
+        } else {
+            $a = new CourseEnrollment();
+            $a->userId = $user->id;
+            $a->batchId = 67;
+            $a->price = 32000;
+            $a->haspaid = 1;
+            $a->subscriptionActiveOn = Carbon::now();
+            $a->accessTill = Carbon::now()->addMonth();
+            $a->subscriptionStatus = 1;
+            $a->type = 1;
+            $a->subscriptionId = $paymentInfo->notes->subscriptionId;
+            $a->paymentMethod = $paymentInfo->method;
+            $a->save();
+            return $a;
     }
 
 }
