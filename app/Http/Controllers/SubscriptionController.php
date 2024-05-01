@@ -73,14 +73,12 @@ class SubscriptionController extends Controller
         }
     }
     public function startSubscriptionWebhook(Request $request){
-        \Log::info('Webhook Request:', $request->all());
-        $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
-        $paymentInfo = $api->payment->fetch($request->razorpay_payment_id);
-        if($paymentInfo->status == 'captured'){
-                // dd($paymentInfo);
-               $enrollment =  $this->createSubscription($paymentInfo);
-               return response('Webhook Handled', 200);
-        }
+        $webhookData = $request->all();
+        $paymentInfo = $webhookData['payload']['payment']['entity'];
+        $paymentInfo['notes'] = ['subscriptionId' => $webhookData['payload']['subscription']['entity']['id']];
+        \Log::info('Modified Payment Info:', $paymentInfo);
+        $enrollment = $this->createSubscription($paymentInfo);
+        return response('Webhook Handled', 200);
     }
 
     
