@@ -27,7 +27,7 @@ class SubscriptionController extends Controller
        // this function creates order id send options data in response
        if(true){
         $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
-        $planID = 'plan_NtgSLcsG2elEcL'; 
+        $planID = 'plan_O1K1sb26jttLY1'; 
         $createRzpsubscription = $api->subscription->create(array('plan_id' => $planID, 'customer_notify' => 1, 'quantity' => 1, 'total_count' => 24,
         'notes' => array('email' => $request->email, 'phone' => $request->phone),'notify_info'=>array('notify_phone' => $request->phone,'notify_email'=> $request->email)));
 
