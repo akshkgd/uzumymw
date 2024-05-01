@@ -25,13 +25,13 @@
       @auth
       <div class="border rounded-xl mt-4">
             <div class="p-4">
-                <p class="m-0">Ashish Shukla</p>
+                <p class="m-0">{{Auth::user()->name}}</p>
             </div>
             <div class="borde border-t p-4">
-                <p class="m-0">akshkgd@gmail.com</p>
+                <p class="m-0">{{Auth::user()->email}}</p>
             </div>
             <div class="borde border-t p-4">
-              <p class="m-0">8563939301</p>
+              <p class="m-0">{{Auth::user()->phone}}</p>
           </div>
       </div>
       <input placeholder="your name"  name="name" class="" type="hidden" value="{{Auth::user()->name}}"/>
