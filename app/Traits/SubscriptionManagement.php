@@ -67,5 +67,6 @@ trait SubscriptionManagement
             $a->save();
             return $a;
     }
+}
 
 }
