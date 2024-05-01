@@ -25,7 +25,7 @@ trait SubscriptionManagement
         $user = User::where('email', $email)->first();
         if (!$user) {
             $user = $this->createUser($paymentInfo);
-            Auth::loginUsingId($user->id);
+            
         }
         $subscription = $this->grantSubscriptionAccess($user, $paymentInfo);
         return $subscription;

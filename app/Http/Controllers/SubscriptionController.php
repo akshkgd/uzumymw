@@ -67,6 +67,7 @@ class SubscriptionController extends Controller
         if($paymentInfo->status == 'captured'){
                 // dd($paymentInfo);
                $enrollment =  $this->createSubscription($paymentInfo);
+               Auth::loginUsingId($enrollment->userId);
                return view('students.subscriptionActive', compact('enrollment'));
         }
     }
