@@ -34,9 +34,9 @@
               <p class="m-0">8563939301</p>
           </div>
       </div>
-      <input placeholder="your name" id="name" name="name" class="" type="hidden" value="{{Auth::user()->name}}"/>
-      <input  placeholder="youremail@gmail.com" id="name" name="email" type="hidden" value="{{Auth::user()->email}}" />
-      <input  placeholder="phone number" id="name" name="phone" type="hidden" value="{{Auth::user()->phone}}"/>
+      <input placeholder="your name"  name="name" class="" type="hidden" value="{{Auth::user()->name}}"/>
+      <input  placeholder="youremail@gmail.com"  name="email" type="hidden" value="{{Auth::user()->email}}" />
+      <input  placeholder="phone number" name="phone" type="hidden" value="{{Auth::user()->phone}}"/>
       
       @else
       <input type="text" placeholder="your name" id="name" name="name" class="mt-2 flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-xl peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"/>
