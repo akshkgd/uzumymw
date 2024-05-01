@@ -45,7 +45,7 @@
       @endauth
 
       <div class="text-center">
-        <button type="submit" class="bg-black text-white w-full px-5 py-4 rounded-xl inline-block mt-4">Subscribe now </a>
+        <button type="submit" class="bg-black text-white w-full px-5 py-4 rounded-xl inline-block mt-4" id="joinBtn" onclick="join()" >Subscribe now </a>
       </div>
       </form>
       
@@ -57,68 +57,6 @@
     </div>
   </main>
 
-
-    <div class="hidden">
-
-        <h1 class="text-center"> Razorpay Subscription Plan Integration </h1>
-
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="panel panel-primary credit-card-box">
-                    <div class="panel-heading display-table">
-                        <h3 class="panel-title ">Razorpay Subscription Plan Integration </h3>
-                    </div>
-                    <div class="panel-body">
-
-                        @if(Session::has('success'))
-                            <div class="alert alert-success text-center">
-                                <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                                <p>{{ Session::get('success') }}</p>
-                            </div>
-                        @endif
-
-
-                        {{-- <form class="contribution-form mt-5" id="contribution-form" method="POST"
-                            enctype="multipart/form-data">
-                               @csrf --}}
-                               <div class="form-group">
-                                <label >Amount</label>
-                                <input type="text" class="form-control" placeholder="Amount" name="amount">
-                               
-                              </div>
-                              <div class="form-group">
-                                <label >Subscription Plan</label>
-                                <select class="form-control select3" name="period" id="period">
-                                   
-                                    <option value="daily" selected>Daily</option>
-                                    <option value="weekly">Weekly</option>
-                                    <option value="monthly" selected>Monthly</option>
-                                    <option value="yearly">yearly</option>
-                                                                    
-                                </select>
-                               
-                              </div>
-                              <div class="form-group">
-                                <label >Payment Cycle</label>
-                                <select class="form-control select3" name="total_count" id="total_count">
-                                    
-                                   
-                                    <option value="1" selected>1 time</option>
-                                    <option value="2">2 time</option>
-                                    <option value="6" selected>6 time</option>
-                                                                    
-                                </select>
-                               
-                              </div>
-                           <button id="createSubscription" class="btn btn-dark" type="submit">Checkout</button>
-                        </form>
-                     
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
     <form class="contribution-form" name="contribution_form" method="POST"
                             enctype="multipart/form-data" action="{{route('store-subscription')}}">
                                @csrf 
@@ -176,7 +114,12 @@
         }
         Razorpay.open(options);
         }
-     
+        
+
+        function join(){
+          let btn = document.getElementById('joinBtn');
+          btn.innerText = 'please wait...'
+        }
       </script>
 
 </body>
