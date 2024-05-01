@@ -163,11 +163,9 @@ class CodekaroController extends Controller
     }
     public function javascriptSuccess(){
         return view('students.jsSuccess');
-
     }
     public function mernSuccess(){
         return view('students.mernSuccess');
-
     }
 
     public function courseEnrollmentAuto(Request $request)

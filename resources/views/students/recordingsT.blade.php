@@ -103,7 +103,7 @@
                                                 <svg class="w-5 h-5 duration-300 ease-out" :class="{ '-rotate-[45deg]': activeAccordion==id }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" /></svg>
                                             </button>
                                             @foreach ($section->chapters as $c)
-                                            @if($accessTill >=  $c->accessOn )
+                                            {{-- @if($accessTill >=  $c->accessOn ) --}}
                                             <div x-show="activeAccordion==id" class="" x-collapse x-cloak>
                                                 <a id="item" style=" display: flex" class="w-full items-center gap-2 flex bg-neutral-100 my-2 p-3 rounded-md text-left  {{ $c->id == $video->id ? 'bg-orange-50' : ' ' }}"  href="{{ route('recordings', ['batchId' => $batchId, 'cId' => Crypt::encrypt($c->id)]) }}">
                                                     @if($c->type == 2)
@@ -124,7 +124,7 @@
                                                 
                                                 
                                             </div>
-                                            @endif
+                                            {{-- @endif --}}
                                             @endforeach
                                             
                                         </div>
@@ -262,6 +262,7 @@
     </header>
 
     <!-- intro -->
+    @if($subStatus == true)
     @if($intro == 'true')
     <main class="min-h-screen flex flex-col justify-center align-middle px-6 py-12 lg:px-8">
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -331,6 +332,7 @@
 {{-- player --}}
 
 @if($intro == 'false')
+@if($isVideoUnlocked)
 <main class=" flex gap-4 justify-center align-middle py-12 ">
     <!-- <div class="sm:w-[370px] bg-violet bg-neutral-50 h-screen fixed top-0 left-0 self-start" >
       fjdkjfdk
@@ -359,6 +361,57 @@
       </div>
     </div>
     
+  </main>
+  @endif
+  @if($isVideoUnlocked == false)
+  <main class="min-h-screen flex flex-col justify-center align-middle px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    </div>
+
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+      <div class="mt-1 flex justify-center">
+        <div class="inline-flex w-64 items-center justify-center "
+        >
+          
+          <img src="{{asset('assets/img/clockNudge.svg')}}" height="32px" alt="">
+      </div>
+      </div>
+      <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900 mt-4">{{$video->title}} will be unlocked on {{ \Carbon\Carbon::now()->addDays($daysUntilVideoUnlocks)->isoFormat('MMMM Do, YYYY') }}</h2>
+
+      <p class="bg-white px-6 text-gray-500 text-center">Content will keep on unlocking on scheduled manner. Meanwhile you can watch the unlocked content and complete your assignments.</p>
+      {{-- <div class="text-center">
+        <button onclick="openConte" class="inline-flex items-center justify-center  transition-colors text-sm text-black bg-neutral-100 px-4 rounded-lg py-2  hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none">Course content</button>
+
+      </div>  --}}
+    </div>
+  </main>
+  {{-- <h1 class="text-red-500 text-2xl mt-32">Video will be unlocked on {{ \Carbon\Carbon::now()->addDays($daysUntilVideoUnlocks)->isoFormat('MMMM Do, YYYY') }}</h1> --}}
+  @endif
+  @endif
+  {{-- subscription not active --}}
+  @else
+  <main class="min-h-screen flex flex-col justify-center align-middle px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    </div>
+
+    <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
+      
+      <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">{{$enrollment->batch->name}}</h2>
+      <p class="bg-white text-md px-6 text-red-600 text-center">Your Subscription for full stack is not active! Contact the support team at <span class="text-blue-600">info@codekaro.in</span> for more details.</p>
+      <div class="flex justify-center gap-2">
+        <a href="" class="bg-black text-white px-5 py-3 rounded-xl inline-block mt-6">Resume subscription</a>
+        <!-- <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Important Links</a> -->
+        
+      </div>
+      
+      
+      
+      
+      <div class="text-center flex gap-2 absolute left-1/2 translate-x-[-50%] bottom-0 mb-5">
+        <a href="" class=" py-3 px-4 text-neutral-500 rounded-lg inline-block mt-6">Continue watching: Javascript Foundation</a>
+        <a href="" class=" py-3 px-4 text-neutral-500  rounded-lg inline-block mt-6">Back to Dashboard</a>
+      </div>
+    </div>
   </main>
   @endif
   <!-- Code injected by live-server -->

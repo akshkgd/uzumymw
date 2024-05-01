@@ -42,17 +42,19 @@ class StudentController extends Controller
         }
     }
 
-    public function workshopEnrollmentSuccess($id){
+    public function workshopEnrollmentSuccess($id)
+    {
         $id = Crypt::decrypt($id);
         $workshop = Workshop::findorFail($id);
         return view('students.workshopEnrollmentSuccess', compact('workshop'));
     }
-    public function workshopEnrollmentSuccessNS($id){
+    public function workshopEnrollmentSuccessNS($id)
+    {
         $id = Crypt::decrypt($id);
         $workshop = Workshop::findorFail($id);
         return view('students.workshopNextSteps', compact('workshop'));
     }
-    
+
 
     // public function recordings($id, $videoLink = null)
     // {
@@ -62,7 +64,7 @@ class StudentController extends Controller
     //         $chapterId = decrypt($videoLink);
     //     } catch (DecryptException $e) {
     //     }
-        
+
     //     $enrollment = CourseEnrollment::findorFail($id);
     //     if(Auth::User()->id == $enrollment->userId){
     //     if ($enrollment->hasPaid == 1) {
@@ -97,23 +99,48 @@ class StudentController extends Controller
         } catch (DecryptException $e) {
             // Handle decryption exception if needed
         }
-        
+
         $enrollment = CourseEnrollment::findOrFail($id);
 
         if (Auth::user()->id == $enrollment->userId) {
             if ($enrollment->hasPaid == 1) {
                 $content = BatchContent::where('batchId', $enrollment->batchId)->latest()->get();
                 $video = $videoLink ? BatchContent::find($chapterId) : $content->first();
-                $intro = $videoLink ? "false" : "true";
+                // $intro = $videoLink ? "false" : "true";
+                $intro = ($videoLink) ? "false" : "true";
+                $subStatus = true;
+                if ($enrollment->subscriptionId != null) {
+                    if ($enrollment->subscriptionStatus == 1 && $enrollment->accessTill > now()) {
+                        $subStatus = true;
+                    } else {
+                        $subStatus = false;
+                    }
+                }
                 $accessTill = Carbon::now()->diffInDays(Carbon::parse($enrollment->paidAt));
                 $sections = BatchSection::where('batchId', $enrollment->batchId)->orderBy('order')->get();
+                $accessOn = true;
+                if ($videoLink) {
+                    $isVideoUnlocked = ($accessTill >=  $video->accessOn) ? true : false;
+                    $enrollmentDate = Carbon::parse($enrollment->paidAt);  // Example date
 
+                    // Calculate the date when the video will unlock
+                    $videoUnlockedOn = $enrollmentDate->copy()->addDays($video->accessOn);
+
+                    // Check if the current date/time is greater than or equal to the video unlock date
+                    // $isVideoUnlockedT = Carbon::now()->gte($videoUnlockedOn);
+
+                    // Days until the video unlocks from today (positive if future, zero or negative if past or today)
+                    $daysUntilVideoUnlocks = Carbon::now()->diffInDays($videoUnlockedOn, false);
+                } else {
+                    $isVideoUnlocked = false;
+                    $daysUntilVideoUnlocks = Carbon::now()->addDays(7);
+                }
                 if ($sections->isEmpty()) {
                     // No sections, pass contents directly
-                    return view('students.recordings', compact('content', 'batchId', 'video', 'enrollment', 'accessTill'));
+                    return view('students.recordings', compact('content', 'subStatus', 'batchId', 'video', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
                 } else {
                     // Pass sections and contents
-                    return view('students.recordingsT', compact('sections', 'content', 'batchId', 'video', 'intro', 'enrollment', 'accessTill'));
+                    return view('students.recordingsT', compact('sections', 'subStatus', 'content', 'batchId', 'video', 'intro', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
                 }
             } else {
                 session()->flash('alert-warning', 'Complete your payment to see notes and assignments');
@@ -125,31 +152,36 @@ class StudentController extends Controller
         }
     }
 
-    public function sessions(){
-        $devices = \DB::table('sessions')
-    ->where('user_id', \Auth::user()->id)
-    ->latest('last_activity')
-    ->select('id', 'ip_address', 'user_agent', 'last_activity')
-    ->get();
-    foreach ($devices as $device) {
-        $agent = new Agent();
-        $agent->setUserAgent($device->user_agent);
+    public function joinClass(){
 
-        $device->browser = $agent->browser();
-        $device->is_mobile = $agent->isMobile();
-        $device->is_desktop = $agent->isDesktop();
-        $device->device_name = $agent->device();
     }
-    return view('students.sessions')
-    ->with('devices', $devices)
-    ->with('current_session_id', \Session::getId());
+
+    public function sessions()
+    {
+        $devices = \DB::table('sessions')
+            ->where('user_id', \Auth::user()->id)
+            ->latest('last_activity')
+            ->select('id', 'ip_address', 'user_agent', 'last_activity')
+            ->get();
+        foreach ($devices as $device) {
+            $agent = new Agent();
+            $agent->setUserAgent($device->user_agent);
+
+            $device->browser = $agent->browser();
+            $device->is_mobile = $agent->isMobile();
+            $device->is_desktop = $agent->isDesktop();
+            $device->device_name = $agent->device();
+        }
+        return view('students.sessions')
+            ->with('devices', $devices)
+            ->with('current_session_id', \Session::getId());
     }
 
     public function deleteSession(Request $request, $sessionId)
     {
         DB::table('sessions')->where('id', $sessionId)->delete();
         // Add your logic to check if the session should be deleted (e.g., based on user agent or any other condition)
-        
+
         // Delete the session
         // Replace 'your_session_key' with the actual session key you want to delete
         session()->forget($sessionId);

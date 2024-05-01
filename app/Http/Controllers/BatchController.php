@@ -52,12 +52,12 @@ class BatchController extends Controller
     public function batchDetails($id){
         
         $id = Crypt::decrypt($id);
-        $Enrollment = CourseEnrollment::findorFail($id);
-        $batch = Batch::findorFail($Enrollment->batchId);
-        $feedback = Feedback::where('batchId', $Enrollment->batchId)->where('userId', Auth::user()->id)->first();
+        $enrollment = CourseEnrollment::findorFail($id);
+        $batch = Batch::findorFail($enrollment->batchId);
+        $feedback = Feedback::where('batchId', $enrollment->batchId)->where('userId', Auth::user()->id)->first();
         // dd($feedback);
-        if ($Enrollment->userId == Auth::user()->id) {
-            return view('students.batchDetails', compact('batch', 'Enrollment', 'feedback'));
+        if ($enrollment->userId == Auth::user()->id) {
+            return view('students.batchDetailsT', compact('batch', 'enrollment', 'feedback'));
         }
         else{
             session()->flash('alert-danger', 'Error');

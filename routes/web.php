@@ -153,7 +153,7 @@ Route::post('course-enrollment-auto', 'CodekaroController@courseEnrollmentAuto')
 
 Route::get('/test', 'CodekaroController@test');
 Route::post('/grant-access', 'WebhookController@grantAccess');
-
+Route::get('/join-class/{id}', 'StudentController@joinClass');
 Route::get('/certificate', function(){
     $certificate = CourseEnrollment::first();
     // $students = CourseEnrollment::where('teacher_id', $ck_user->id)->count();
@@ -232,8 +232,8 @@ Route::post('/add-access', 'AdminController@addCourseAccess')->name('addAccess')
 Route::get('/msg', 'AdminController@wam');
 
 
-Route::get('/sub', function () {
-    return view('payment');
+Route::get('/start-fsd', function () {
+    return view('startFsd');
 });
-// Route::post('/create-payment', 'SubscriptionController@create')->name('create');
-// Route::post('/store-payment', 'SubscriptionController@payment')->name('payment');
+Route::post('/create-subscription', 'SubscriptionController@create')->name('create-subscription');
+Route::post('/store-subscription', 'SubscriptionController@payment')->name('store-subscription');

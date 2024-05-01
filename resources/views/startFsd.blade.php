@@ -1,15 +1,62 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.t-student')
+@section('content')
+@auth
+@include('layouts.t-student-nav')
+@endauth
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<head>
-    <title> Razorpay Payment Gateway Integration Example </title>
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-</head>
 
 <body>
+
+  <main class="min-h-screen flex flex-col justify-center align-middle px-6 py-12 lg:px-8">
+    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    </div>
+
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+      <div class="mt-1 flex justify-center">
+        
+      </div>
+      <h2 class="text-center text-2xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">Subscribe for full stack cohort.</h2>
+
+      <p class="bg-white px-6 text-gray-500 text-center">Full access to cohort's on demand videos, weekend live sessions and Interview prepration.</p>
+      <form class="contribution-form mt-5" id="contribution-form" method="POST"
+                            enctype="multipart/form-data">
+                               @csrf
+      @auth
+      <div class="border rounded-xl mt-4">
+            <div class="p-4">
+                <p class="m-0">Ashish Shukla</p>
+            </div>
+            <div class="borde border-t p-4">
+                <p class="m-0">akshkgd@gmail.com</p>
+            </div>
+            <div class="borde border-t p-4">
+              <p class="m-0">8563939301</p>
+          </div>
+      </div>
+      <input type="text" placeholder="your name" id="name" name="name" class="" type="hidden" value="{{Auth::user()->name}}"/>
+      <input type="text" placeholder="youremail@gmail.com" id="name" name="email" type="hidden" value="{{Auth::user()->email}}" />
+      <input type="text" placeholder="phone number" id="name" name="phone" type="hidden" value="{{Auth::user()->phone}}"/>
+      
+      @else
+      <input type="text" placeholder="your name" id="name" name="name" class="mt-2 flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-xl peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"/>
+      <input type="text" placeholder="youremail@gmail.com" id="name" name="email" class="mt-2 flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-xl peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"/>
+      <input type="text" placeholder="phone number" id="name" name="phone" class="mt-2 flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-xl peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"/>
+      @endauth
+
+      <div class="text-center">
+        <button type="submit" class="bg-black text-white w-full px-5 py-4 rounded-xl inline-block mt-4">Subscribe now </a>
+      </div>
+      </form>
+      
+      <div class="">
+      <!-- <p class="bg-white px-6 text-gray-500 text-center">Uh-Oh! The page you're looking for seems to be missing</p> -->
+
+        <p class="text-sm text-gray-600 mt-3">By subscribing, you agree to our Terms of Use. Codekaro will automatically charge the membership fee <span class="text-blue-500">(currently 1999/month)</span> to your payment method until you cancel. You may cancel at any time to avoid future charges.</p>
+      </div>
+    </div>
+  </main>
+
 
     <div class="container">
 
@@ -31,9 +78,9 @@
                         @endif
 
 
-                        <form class="contribution-form mt-5" id="contribution-form" method="POST"
+                        {{-- <form class="contribution-form mt-5" id="contribution-form" method="POST"
                             enctype="multipart/form-data">
-                               @csrf
+                               @csrf --}}
                                <div class="form-group">
                                 <label >Amount</label>
                                 <input type="text" class="form-control" placeholder="Amount" name="amount">
@@ -63,7 +110,7 @@
                                 </select>
                                
                               </div>
-                           <button  class="btn btn-primary" type="submit">Checkout</button>
+                           <button id="createSubscription" class="btn btn-dark" type="submit">Checkout</button>
                         </form>
                      
                     </div>
@@ -73,7 +120,7 @@
 
     </div>
     <form class="contribution-form" name="contribution_form" method="POST"
-                            enctype="multipart/form-data" action="{{route('payment')}}">
+                            enctype="multipart/form-data" action="{{route('store-subscription')}}">
                                @csrf 
       <input type="hidden" name="razorpay_payment_id" id="razorpay_payment_id"/>
       
@@ -89,7 +136,7 @@
           e.preventDefault();
           var form = $('#contribution-form')[0];
           var data = new FormData(form);
-          var URL = "{{route('create')}}";
+          var URL = "{{route('create-subscription')}}";
           $.ajax({
           url:URL,
           data:data,
