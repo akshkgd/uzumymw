@@ -153,6 +153,7 @@ Route::post('course-enrollment-auto', 'CodekaroController@courseEnrollmentAuto')
 
 Route::get('/test', 'CodekaroController@test');
 Route::post('/grant-access', 'WebhookController@grantAccess');
+Route::post('/start-subscription', 'SubscriptionController@startSubscriptionWebhook');
 Route::get('/join-class/{id}', 'StudentController@joinClass');
 Route::get('/certificate', function(){
     $certificate = CourseEnrollment::first();

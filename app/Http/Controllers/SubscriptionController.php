@@ -26,7 +26,7 @@ class SubscriptionController extends Controller
        // this function creates order id send options data in response
        if(true){
         $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
-        $planID = 'plan_O1K1sb26jttLY1'; 
+        $planID = 'plan_NtgSLcsG2elEcL'; 
         $createRzpsubscription = $api->subscription->create(array('plan_id' => $planID, 'customer_notify' => 1, 'quantity' => 1, 'total_count' => 24,
         'notes' => array('email' => $request->email, 'phone' => $request->phone),'notify_info'=>array('notify_phone' => $request->phone,'notify_email'=> $request->email)));
 
@@ -69,6 +69,14 @@ class SubscriptionController extends Controller
                $enrollment =  $this->createSubscription($paymentInfo);
                Auth::loginUsingId($enrollment->userId);
                return view('students.subscriptionActive', compact('enrollment'));
+        }
+    }
+    public function startSubscriptionWebhook(Request $request){
+        $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
+        $paymentInfo = $api->payment->fetch($request->razorpay_payment_id);
+        if($paymentInfo->status == 'captured'){
+                // dd($paymentInfo);
+               $enrollment =  $this->createSubscription($paymentInfo);
         }
     }
 
