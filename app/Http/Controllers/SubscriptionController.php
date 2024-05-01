@@ -16,6 +16,7 @@ use Redirect;
 use Carbon\Carbon;
 use App\Mail\EmailForQueuing;
 use Mail;
+use Illuminate\Support\Facades\Log;
 use App\Mail\OnboardingMail;
 use App\Traits\SubscriptionManagement;
 class SubscriptionController extends Controller
@@ -72,6 +73,7 @@ class SubscriptionController extends Controller
         }
     }
     public function startSubscriptionWebhook(Request $request){
+        \Log::info('Webhook Request:', $request->all());
         $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
         $paymentInfo = $api->payment->fetch($request->razorpay_payment_id);
         if($paymentInfo->status == 'captured'){
