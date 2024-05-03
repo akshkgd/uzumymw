@@ -92,7 +92,7 @@ class StudentController extends Controller
     public function recordings($id, $videoLink = null)
     {
         try {
-            // batchId is batchEnrollment Id
+            // batchId is batch Enrollment Id
             $batchId = $id;
             $id = decrypt($id);
             $chapterId = decrypt($videoLink);
@@ -121,25 +121,16 @@ class StudentController extends Controller
                 $accessOn = true;
                 if ($videoLink) {
                     $isVideoUnlocked = ($accessTill >=  $video->accessOn) ? true : false;
-                    $enrollmentDate = Carbon::parse($enrollment->paidAt);  // Example date
-
-                    // Calculate the date when the video will unlock
+                    $enrollmentDate = Carbon::parse($enrollment->paidAt);
                     $videoUnlockedOn = $enrollmentDate->copy()->addDays($video->accessOn);
-
-                    // Check if the current date/time is greater than or equal to the video unlock date
-                    // $isVideoUnlockedT = Carbon::now()->gte($videoUnlockedOn);
-
-                    // Days until the video unlocks from today (positive if future, zero or negative if past or today)
                     $daysUntilVideoUnlocks = Carbon::now()->diffInDays($videoUnlockedOn, false);
                 } else {
                     $isVideoUnlocked = false;
                     $daysUntilVideoUnlocks = Carbon::now()->addDays(7);
                 }
                 if ($sections->isEmpty()) {
-                    // No sections, pass contents directly
                     return view('students.recordings', compact('content', 'subStatus', 'batchId', 'video', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
                 } else {
-                    // Pass sections and contents
                     return view('students.recordingsT', compact('sections', 'subStatus', 'content', 'batchId', 'video', 'intro', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
                 }
             } else {

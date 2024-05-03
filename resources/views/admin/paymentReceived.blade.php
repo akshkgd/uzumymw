@@ -43,6 +43,11 @@
                         <input type="text" id="floatingInput"  class="form-control" name="hasPaid" placeholder="Password" value="{{$enrollment->hasPaid}}">
                         <label for="floatingInput" >Has Paid</label>
                       </div>
+                      <div class="form-floating mt-3 mb-2 ">
+                      
+                        <input type="date" id="floatingInput"  class="form-control" name="paidAt" placeholder="Password" value="{{$enrollment->paidAt}}">
+                        <label for="floatingInput" >Paid At</label>
+                      </div>
                       <input type="hidden" name="enrollmentId" value="{{$enrollment->id}}">
                     <button type="submit" class="btn btn-outline-primary ">Update Payment Details</button>
   

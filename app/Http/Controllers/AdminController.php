@@ -332,6 +332,7 @@ class AdminController extends Controller
         $enrollment->paymentMethod = $request->paymentMethod;
         $enrollment->amountPaid = $request->amountPaid;
         $enrollment->hasPaid = $request->hasPaid;
+        $enrollment->paidAt = $request->paidAt;
         $enrollment->paidAt = Carbon::now();
         $enrollment->save();
         session()->flash('alert-success', 'Payment Details Updated Successfully!');
