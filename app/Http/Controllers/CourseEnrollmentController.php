@@ -139,7 +139,9 @@ class CourseEnrollmentController extends Controller
         
         if (Auth::user()->id == $enrollment->userId && $enrollment->hasPaid == 0) {
             // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
-            $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+            // $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+            $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
+
             $batch = Batch::find($enrollment->batchId);
             $receiptId = Str::random(20);
             $amountPayable = $batchId->payable*100 + $enrollment->certificateFee*100;
@@ -181,7 +183,9 @@ class CourseEnrollmentController extends Controller
         $input = $request->all();
 
         // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
-        $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+        // $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+        $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
+
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
         
         if(count($input)  && !empty($input['razorpay_payment_id'])) {

@@ -35,7 +35,9 @@ class CodekaroController extends Controller
 {
 
     public function test(){
-        $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+        // $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+        $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
+
         $payment = $api->payment->fetch('pay_M6dNE9wZQqHNmv');
         dd($payment);
     }
@@ -106,7 +108,9 @@ class CodekaroController extends Controller
             }
             if($user && $enrollment){
                 Auth::loginUsingId($user->id);
-                $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+                // $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+                $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
+
                 $batch = Batch::find($enrollment->batchId);
                 $receiptId = Str::random(20);
                 $amountPayable = 19900;
@@ -127,7 +131,9 @@ class CodekaroController extends Controller
         $input = $request->all();
 
         // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
-        $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+        // $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
+        $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
+
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
         if (count($input)  && !empty($input['razorpay_payment_id'])) {
             try {
