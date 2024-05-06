@@ -25,52 +25,97 @@ use App\Mail\workshopEnrollmentSuccess;
 class WebhookController extends Controller
 {
 
-    public function grantAccess(Request $request)
+//     public function grantAccess(Request $request)
+//     {   
+//     \Log::info('Webhook Request:', $request->all());
+//     $payload = $request->input('payload');
+//     $payment = $payload['payment'] ?? null;
+//     $entity = $payment['entity'] ?? null;
+//     $notes = $entity['notes'] ?? null;
+//     if ($notes) {
+//         // $enrollment = CourseEnrollment::where('userId', $notes['UserId'])
+//         //                              ->where('batchId', $notes['CourseId'])
+//         //                              ->first();
+//         $enrollment = CourseEnrollment::findorFail($notes['enrollmentId']);
+//         $sendPabbly = $this->sendPabbly($enrollment->id, $entity['amount']);
+//         if ($enrollment && $enrollment->hasPaid == 0) {
+//             $enrollment->status = 1;
+//             $enrollment->hasPaid = 1;
+//             $enrollment->amountPaid = $entity['amount'];
+//             $enrollment->paidAt = Carbon::now();
+//             $enrollment->paymentMethod = $entity['method'];
+//             $enrollment->transactionId = $entity['id'];
+
+//             // Add a comment to field2 indicating the w hjh jhjjjhj jjhjhj jj jhjhjhh hjhjhj uyuyu yuyuyu uy
+//             $enrollment->field2 = 'webhook access granted';
+//             $enrollment->save();
+
+//             return response('Webhook Handled', 200);
+//         } 
+//         else {
+//             // Add a comment or additional handling logic for cases when the enrollment has already been paid
+//             // ...
+//             if ($enrollment) {
+//                 $enrollment->field2 = 'webhook called!!';
+//                 $enrollment->save();
+//             }
+//             return response('Webhook Handled', 200);
+//         }
+//     } else {
+//         \Log::error('Payment notes not found in webhook request.');
+//         return response('Webhook Handled', 200);
+//     }
+    
+// }
+
+public function grantAccess(Request $request)
 {   
-    \Log::info('Webhook Request:', $request->all());
-    $payload = $request->input('payload');
-    $payment = $payload['payment'] ?? null;
-    $entity = $payment['entity'] ?? null;
-    $notes = $entity['notes'] ?? null;
-    if ($notes) {
-        $enrollment = CourseEnrollment::where('userId', $notes['UserId'])
-                                     ->where('batchId', $notes['CourseId'])
-                                     ->first();
-        // $enrollment = CourseEnrollment::findorFail($notes['enrollmentId']);
-        $sendPabbly = $this->sendPabbly($enrollment->id, $entity['amount']);
-        if ($enrollment && $enrollment->hasPaid == 0) {
+    try {
+        \Log::info('Webhook Request:', $request->all());
+
+        // Extract payload data
+        $payload = $request->input('payload');
+        $paymentData = data_get($payload, 'payment.entity');
+        $notes = data_get($paymentData, 'notes');
+
+        // Check if required data is present
+        if (!$paymentData || !$notes) {
+            throw new \Exception('Payment data or notes not found in webhook request.');
+        }
+        $enrollment = CourseEnrollment::findorFail($notes['enrollmentId']);
+        $sendPabbly = $this->sendPabbly($enrollment->id, $paymentData['amount']);
+
+        if (!$enrollment) {
+            throw new \Exception('Course enrollment not found.');
+        }
+
+        // Check if the enrollment has already been paid
+        if ($enrollment->hasPaid == 1) {
+            // Add additional handling logic for cases when the enrollment has already been paid
+            $enrollment->field2 = 'Satus is paid!!';
+            $enrollment->save();
+        } else {
+            // Update enrollment with payment details
             $enrollment->status = 1;
             $enrollment->hasPaid = 1;
-            $enrollment->amountPaid = $entity['amount'];
+            $enrollment->amountPaid = $paymentData['amount'];
             $enrollment->paidAt = Carbon::now();
-            $enrollment->paymentMethod = $entity['method'];
-            $enrollment->transactionId = $entity['id'];
-
-            // Add a comment to field2 indicating the w hjh jhjjjhj jjhjhj jj jhjhjhh hjhjhj uyuyu yuyuyu uy
+            $enrollment->paymentMethod = $paymentData['method'];
+            $enrollment->transactionId = $paymentData['id'];
             $enrollment->field2 = 'webhook access granted';
             $enrollment->save();
 
-            return response('Webhook Handled', 200);
-        } 
-        elseif($notes['purpose'] == 5){
-            $enrollment->certificateFee == $entity['amount'];
-            $enrollment->save();
+            // Call the sendPabbly function
+            $sendPabbly = $this->sendPabbly($enrollment->id, $paymentData['amount']);
+            \Log::info('Webhook handled successfully.');
         }
-        else {
-            // Add a comment or additional handling logic for cases when the enrollment has already been paid
-            // ...
-            if ($enrollment) {
-                $enrollment->field2 = 'webhook called!!';
-                $enrollment->save();
-            }
-            return response('Webhook Handled', 200);
-        }
-    } else {
-        \Log::error('Payment notes not found in webhook request.');
         return response('Webhook Handled', 200);
+    } catch (\Exception $e) {
+        \Log::error('Error processing webhook request: ' . $e->getMessage());
+        return response('Error processing webhook request', 500);
     }
-    
 }
+
 
 private function sendPabbly($id, $p){
     $pabblyWebhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzNDA0M2M1MjZlNTUzNDUxM2Ei_pc';
