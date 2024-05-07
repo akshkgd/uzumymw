@@ -122,7 +122,7 @@ class StudentController extends Controller
                 if ($videoLink) {
                     $isVideoUnlocked = ($accessTill >=  $video->accessOn) ? true : false;
                     $enrollmentDate = Carbon::parse($enrollment->paidAt);
-                    $videoUnlockedOn = $enrollmentDate->copy()->addDays($video->accessOn);
+                    $videoUnlockedOn = $enrollmentDate->copy()->addDays($video->accessOn)+1;
                     $daysUntilVideoUnlocks = Carbon::now()->diffInDays($videoUnlockedOn, false);
                 } else {
                     $isVideoUnlocked = false;
