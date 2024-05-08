@@ -412,6 +412,11 @@
         <a href="" class=" py-3 px-4 text-neutral-500  rounded-lg inline-block mt-6">Back to Dashboard</a>
       </div>
     </div>
+    <script
+    id="663b0b5e26765530b786a559"
+    src="https://app.droxy.ai/chat.min.js"
+    defer>
+    </script>
   </main>
   @endif
   <!-- Code injected by live-server -->
