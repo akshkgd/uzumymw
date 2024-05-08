@@ -458,7 +458,7 @@
 	// chatbot fix
   window.onload = function () {
       // Hide element with class 'mantine-n6j944' on page load
-      const element = document.querySelector('.mantine-n6j944');
+      const element = document.querySelector('.mantine-1gnwfpi');
       if (element) {
         element.style.display = 'none';
       }
