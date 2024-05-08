@@ -455,7 +455,14 @@
 	else {
 		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
 	}
-	// ]]>
+	// chatbot fix
+  window.onload = function () {
+      // Hide element with class 'mantine-n6j944' on page load
+      const element = document.querySelector('.mantine-n6j944');
+      if (element) {
+        element.style.display = 'none';
+      }
+    };
 </script>
 </body>
 </html>
