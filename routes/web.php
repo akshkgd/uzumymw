@@ -111,7 +111,9 @@ Route::get('next-steps/{id}', 'StudentController@workshopEnrollmentSuccessNS');
 Route::get('bootcamp-success', 'CodekaroController@bootcampSuccess');
 Route::get('/css-upgrade', 'CodekaroController@upgradeCss');
 Route::post('/css-upgrade-checkout', 'CodekaroController@upgradeCssCheckout')->name('cssUpgrade');
-
+Route::get('/gpt', function () {
+    return view('students.gpt');
+});
 
 
 
