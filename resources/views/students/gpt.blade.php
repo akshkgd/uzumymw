@@ -3,10 +3,10 @@
     @include('layouts.t-student-nav')
     <!-- student dashboard starts -->
 
-    <main style="height: 100vh" class="mt-32 ">
+    <main  class="mt-32 ">
         
 
-        <div class="sm:mx-auto sm:w-full sm:max-w-6xl">
+        <div style="height: 100vh" class="sm:mx-auto sm:w-full sm:max-w-6xl">
             <iframe
     src="https://app.droxy.ai/guest-chatbot/663b1ac65951e055ab050f75"
     width="100%"
