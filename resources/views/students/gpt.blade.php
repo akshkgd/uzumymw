@@ -7,9 +7,12 @@
         
 
         <div class="sm:mx-auto sm:w-full sm:max-w-6xl">
-            <iframe src="https://app.droxy.ai/guest-chatbot/663b0b5e26765530b786a559" width="100%" height="100%"
-                frameborder="0">
-            </iframe>
+            <iframe
+    src="https://app.droxy.ai/guest-chatbot/663b1ac65951e055ab050f75"
+    width="100%"
+    height="100%"
+    frameborder="0">
+</iframe>
 
         </div>
     </main>
