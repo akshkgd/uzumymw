@@ -3,7 +3,7 @@
     @include('layouts.t-student-nav')
     <!-- student dashboard starts -->
 
-    <main class=" flex flex-col justify-center align-bottom px-6 py-12 lg:px-8">
+    <main class="h-full flex flex-col justify-center align-bottom px-6 py-12 lg:px-8">
         
 
         <div class="sm:mx-auto sm:w-full sm:max-w-6xl">
