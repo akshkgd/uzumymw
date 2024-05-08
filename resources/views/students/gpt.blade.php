@@ -154,5 +154,9 @@
         document.getElementById("test").style.background = "#d2e3fc";
         document.getElementById("greet").style.color = "#4185f4";
     }
+    window.addEventListner('load', ()=>{
+        let a = document.querySelector('.mantine-n6j944');
+        console.log(a);
+    })
 </script>
 @endsection
