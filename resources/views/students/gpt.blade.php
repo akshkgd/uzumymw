@@ -3,7 +3,7 @@
     @include('layouts.t-student-nav')
     <!-- student dashboard starts -->
 
-    <main style="height: 100vh" class=" ">
+    <main style="height: 100vh" class="mt-32 ">
         
 
         <div class="sm:mx-auto sm:w-full sm:max-w-6xl">
