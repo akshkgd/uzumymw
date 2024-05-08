@@ -156,7 +156,7 @@
     }
     window.addEventListner('load', ()=>{
         let a = document.querySelector('.mantine-n6j944');
-        console.log(a);
+        console.log('test: ' +a);
     })
 </script>
 @endsection
