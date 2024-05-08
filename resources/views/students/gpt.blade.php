@@ -14,8 +14,7 @@
 
         </div>
     </main>
-    @endif
-@endisset
+  
 </div>
 <!-- <div class="mt-4 px-4">
                 <div
