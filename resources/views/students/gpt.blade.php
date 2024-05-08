@@ -2,7 +2,11 @@
 @section('content')
     @include('layouts.t-student-nav')
     <!-- student dashboard starts -->
-
+    <style>
+        .mantine-n6j944{
+            display: none !important;
+        }
+    </style>
     <main  class="mt-32 ">
         
 
