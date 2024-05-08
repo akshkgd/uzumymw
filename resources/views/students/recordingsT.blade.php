@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    
+    <script
+    id="663b0b5e26765530b786a559"
+    src="https://app.droxy.ai/chat.min.js"
+    defer>
+    </script>
     <!-- Include the Alpine library on your page -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <!-- Include the TailwindCSS library on your page -->
@@ -412,11 +416,7 @@
         <a href="" class=" py-3 px-4 text-neutral-500  rounded-lg inline-block mt-6">Back to Dashboard</a>
       </div>
     </div>
-    <script
-    id="663b0b5e26765530b786a559"
-    src="https://app.droxy.ai/chat.min.js"
-    defer>
-    </script>
+    
   </main>
   @endif
   <!-- Code injected by live-server -->
