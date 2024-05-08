@@ -3,11 +3,10 @@
     @include('layouts.t-student-nav')
     <!-- student dashboard starts -->
 
-    <main class="min-h-screen flex flex-col justify-center align-middle px-6 py-12 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        </div>
+    <main class=" flex flex-col justify-center align-bottom px-6 py-12 lg:px-8">
+        
 
-        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+        <div class="sm:mx-auto sm:w-full sm:max-w-6xl">
             <iframe src="https://app.droxy.ai/guest-chatbot/663b0b5e26765530b786a559" width="100%" height="100%"
                 frameborder="0">
             </iframe>
