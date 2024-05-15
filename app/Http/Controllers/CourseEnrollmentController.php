@@ -226,6 +226,9 @@ class CourseEnrollmentController extends Controller
             elseif ($batch->topicId == 10){
                 return redirect('/mern-success');
             }
+            elseif ($batchId->topicId == 200){
+                return redirect('/demo-success');
+            }
             else{
                 $this->successMail($enrollment->id);
                 return view('students.PaymentComplete', compact('enrollment', 'batch'));
