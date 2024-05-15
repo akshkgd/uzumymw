@@ -685,7 +685,7 @@
 
                 </div>
                     
-                    <input type="hidden" name="courseId" value="1">
+                    <input type="hidden" name="courseId" value="80">
                     <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                     <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
                         onclick="startLoader()">Join bootcamp now for <span class="text-white"

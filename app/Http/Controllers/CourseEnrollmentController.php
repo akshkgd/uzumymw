@@ -170,6 +170,10 @@ class CourseEnrollmentController extends Controller
             elseif ($batchId->topicId == 105){
                 return redirect('/css-upgrade-success');
             }
+            elseif ($batchId->topicId == 200){
+                return redirect('/demo-success');
+            }
+
             else{
             return redirect('/home');
 
