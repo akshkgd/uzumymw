@@ -197,11 +197,11 @@ class CodekaroController extends Controller
             // $this->workshopSuccessMail($enrollmentId);
         }
         $enrollment = CourseEnrollment::find($enrollmentId);
-        if($enrollment->batch->payable == 0){
+        if(($enrollment->amountPayable + $enrollment->certificateFee) == 0){
                 $enrollment->hasPaid = 1;
                 $enrollment->paidAt = Carbon::now();
                 $enrollment->save();
-                return redirect('/css-success');
+                return redirect('/demo-success');
         }
         else{
             $enrollId = Crypt::encrypt($enrollmentId);
