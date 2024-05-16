@@ -316,7 +316,7 @@ class CodekaroController extends Controller
             // Add the additional amount for the certificate fee (Rs 199)
             $a->certificateFee = 199;
         }
-        $a->certificateId = substr(md5(time()), 0, 16);
+        $a->certificateId = substr(md5(time()), 0, 17);
         $a->save();
         $enrollmentId = $a->id;
         return $enrollmentId;
