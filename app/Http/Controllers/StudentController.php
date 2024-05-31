@@ -129,8 +129,10 @@ class StudentController extends Controller
                     $daysUntilVideoUnlocks = Carbon::now()->addDays(7);
                 }
                 if ($sections->isEmpty()) {
+                   
                     return view('students.recordings', compact('content', 'subStatus', 'batchId', 'video', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
                 } else {
+                   
                     return view('students.recordingsT', compact('sections', 'subStatus', 'content', 'batchId', 'video', 'intro', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
                 }
             } else {
