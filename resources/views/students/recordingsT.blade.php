@@ -309,9 +309,9 @@
                     </button>
                 </div>
                 <div class="relative w-auto">
-                    <a href="{{$enrollment->batch->groupLink}}" style="display: block" class="p-3 bg-neutral-100 my-2 block w-full rounded-lg  hover:bg-neutral-50 cursor-pointer">Join telegram group</a>
-                    <a href="{{$enrollment->batch->groupLink1}}"style="display: block" class="p-3 bg-neutral-100 my-2 block w-full rounded-lg hover:bg-neutral-50 cursor-pointer">Join discussion channel</a>
-                    <a style="display: block" href="https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish" class="block w-full p-3 bg-neutral-100 my-2 rounded-lg hover:bg-neutral-50 cursor-pointer">Book one on one Session</a>
+                    <a target="_blank" href="{{$enrollment->batch->groupLink}}" style="display: block" class="p-3 bg-neutral-100 my-2 block w-full rounded-lg  hover:bg-neutral-50 cursor-pointer">Join telegram group</a>
+                    <a target="_blank" href="{{$enrollment->batch->groupLink1}}"style="display: block" class="p-3 bg-neutral-100 my-2 block w-full rounded-lg hover:bg-neutral-50 cursor-pointer">Join discussion channel</a>
+                    <a target="_blank" style="display: block" href="https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish" class="block w-full p-3 bg-neutral-100 my-2 rounded-lg hover:bg-neutral-50 cursor-pointer">Book one on one Session</a>
                     
 
                 </div>
