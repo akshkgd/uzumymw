@@ -1268,7 +1268,7 @@
             } else {
                 checkbox.value = "0";
                 checkboxItem.classList.remove("checked");
-                priceElement.innerText = "99";
+                priceElement.innerText = "799";
                 
             }
         }
