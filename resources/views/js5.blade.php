@@ -1122,7 +1122,7 @@
 
                 <div class="modal-body p-4 pt-0 text-center mt-4">
                     {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
-                    <h2 class=" mb-0 fs-3 fw-bold">Join 5 days live Javascript bootcamp!</h2>
+                    <h2 class=" mb-0 fs-3 fw-bold">Join 7 days live Javascript bootcamp!</h2>
                     <p class="my-3 " style="font-size: 14px">Offer valid till</p>
                     <div class="col-md-12 text-center mt-0">
                         <div id="countdown" class="">
@@ -1161,7 +1161,7 @@
                                 placeholder="name@example.com" @auth value="{{ Auth::user()->mobile }}" @endauth>
                             <label for="floatingInput">Mobile Number</label>
                         </div>
-                        <div class="you-checkbox-item" onclick="toggleRecordingCheckbox(this)" style="border: 1px solid #29cf84;">
+                        {{-- <div class="you-checkbox-item" onclick="toggleRecordingCheckbox(this)" style="border: 1px solid #29cf84;">
                             <div class="you-checkbox-green">
                                 <div class="you-checkbox-check">
                                     <img height="26px"
@@ -1171,16 +1171,16 @@
                             </div>
                             <div class="you-checkbox-text text-left">Add Recordings of live Bootcamp at Rs 99  <span
                                     class="small text-success">(Most Popular)</span></div>
-                        </div>
-                        <p class="">Three months access of recordings. Only available if you attend. This is <strong>EARLY
-                            Bird</strong> offer, It will increase to 499 once the timer hits zero.
+                        </div> --}}
+                        <p class="">With this you get one year access of recordings. Only available if you join now. This is <strong>EARLY
+                            Bird</strong> offer, You have to pay additional 399 Rs for recordings after 8:00 PM.
                     </p>
 
                         <input type="hidden" name="courseId" value="64">
                         <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                         <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
                             onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"
-                                id="price">99</span>
+                                id="price">799</span>
                             <div id="loader" class="loade d-inline-block ms-2"></div>
                         </button>
                         <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's
