@@ -360,7 +360,7 @@
                     <main class="text-center">
                         <h1 class="display-6 fw-bod  " style="line-height:1.5; color:aliceblue; font-weight:600">Master <span
                                 class="wd_highligh" style="color:#efa30e;">Core concepts of Javascript</span> to create
-                            amazing projects in just 5 days</h1>
+                            amazing projects in just 7 days</h1>
 
 
                         <p class="fs-5 text-white text-center">Don't let your non-tech background or limited programming
@@ -380,7 +380,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l1.svg') }}" alt="">
-                                        5 Days Live Bootcamp
+                                        7 Days Live Bootcamp
                                     </div>
                                 </div>
 
@@ -398,7 +398,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From 3rd January
+                                        From 15th June
                                     </div>
                                 </div>
 
@@ -407,7 +407,7 @@
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l4.svg') }}" alt="">
-                                        8 AM IST (1.5 hours live)
+                                        8 PM IST (1 hours live)
                                     </div>
                                 </div>
                             </div>
@@ -586,9 +586,19 @@
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating user management
                             </div>
                     </div>
-
                     <div class="shadow-card mt-5">
                         <div class="day">Day 5</div>
+                        <h3 class="fs-3 fw-bold">Async Javascript</h2>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding Async JS</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> How to use API's</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Event loops and promises</div>
+
+                    </div>
+                    <div class="shadow-card mt-5">
+                        <div class="day">Day 6</div>
                         <h3 class="fs-3 fw-bold">Major Project: Movie App</h2>
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding Promies in
@@ -598,6 +608,17 @@
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Create Movie app using
                                 IMDB API</div>
+
+                    </div>
+                    <div class="shadow-card mt-5">
+                        <div class="day">Day 7</div>
+                        <h3 class="fs-3 fw-bold">Major Project: Book my show app clone</h2>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding DOM in next level</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Create Complex Logics</div>
+                            <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Create fully fuctional booking app</div>
 
                     </div>
 
