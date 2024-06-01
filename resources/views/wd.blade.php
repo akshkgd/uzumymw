@@ -688,7 +688,7 @@
                     <input type="hidden" name="courseId" value="80">
                     <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                     <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
-                        onclick="startLoader()">Join bootcamp now for <span class="text-white"
+                        onclick="startLoader()">Join bootcamp now for <span> </span> <span class="text-white"
                             id="price"> Free</span>
                         <div id="loader" class="loade d-inline-block ms-2"></div>
                     </button>
@@ -763,12 +763,12 @@
             if (checkbox.value === "0") {
                 checkbox.value = "1";
                 checkboxItem.classList.add("checked");
-                priceElement.innerText = "298";
+                priceElement.innerText = "199";
 
             } else {
                 checkbox.value = "0";
                 checkboxItem.classList.remove("checked");
-                priceElement.innerText = "99";
+                priceElement.innerText = "Free";
 
             }
         }
