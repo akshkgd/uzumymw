@@ -96,7 +96,7 @@
                         <h1 class="display-2">🎉</h1>
                       <h2 class="fs-1">Congratulations, you have successfully enrolled for the <span class="wd_highlight1">How to Javascript</span> Bootcamp</h4>
                       <p class="mt-5">Next Step</p>
-                      <a href="https://chat.whatsapp.com/ERNCvHtvKxUIkuEDaL3DKM" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
+                      <a href="https://chat.whatsapp.com/HfhOb27nmr81mPbDXq1oMG" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
                       {{-- <a href="{{url('/home')}}" class="btn btn-dark btn-lg py-3 px-4 rounded-pill my-2" style="">2. Complete your Profile</a> --}}
 
                     </div>
@@ -114,7 +114,7 @@
     <section class="">
         <div class="container text-center ct">
           <h1 id="headlin fw-600 mb-0">Live class will start from</h1>
-          <h2>Thursday, 3rd January at 08:00 AM</h2>
+          <h2>Saturday, 15th June at 08:00 PM</h2>
             {{-- <h1 id="headlin fw-600 mb-0">Live class is starting in</h1>
             <div id="countdown">
               <ul>
