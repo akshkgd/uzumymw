@@ -453,8 +453,8 @@
                         <a href="" style="width:100% !important"
                             class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your Javascript journey for just ₹799! </h2>
-                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Dominate javascript for just ₹799 </h2>
+                            <p class="mb-0 text-white fw-lighter small">Enroll now 100 seats are available</p>
                         </a>
                     </div>
                 </div>
@@ -625,8 +625,8 @@
                     <div class="my-5 text-center l-cta">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your javascript journey for just ₹799</h2>
-                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Dominate javascript for just ₹799</h2>
+                            <p class="mb-0 text-white fw-lighter small">Enroll now 100 seats are available</p>
                         </a>
                     </div>
                 </div>
@@ -781,8 +781,8 @@
             <div class="my-5 text-center l-cta">
                 <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                     class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                    <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
-                    <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Dominate javascript for just ₹799</h2>
+                    <p class="mb-0 text-white fw-lighter small">Enroll now 100 seats are available</p>
                 </a>
             </div>
         </div>
@@ -903,8 +903,8 @@
         <div class="my-5 text-center l-cta">
             <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                 class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
-                <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                <h2 class="fs-3 mb-1 text-white fw-bold">Dominate javascript for just ₹799</h2>
+                <p class="mb-0 text-white fw-lighter small">Enroll now 100 seats are available</p>
             </a>
         </div>
 
@@ -955,8 +955,8 @@
                 <div class="my-5 l-cta">
                     <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                         class="btn ck-btn ck-rounded btn-lg   px-5">
-                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
-                        <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                        <h2 class="fs-3 mb-1 text-white fw-bold">Dominate javascript for just ₹799</h2>
+                        <p class="mb-0 text-white fw-lighter small">Enroll now 100 seats are available</p>
                     </a>
                 </div>
                 <p class="text-danger">Once the timer hits zero, pricing will be increased to 899.00/-</p>
@@ -1095,8 +1095,8 @@
                     <div class="my-5 text-center l-cta l-cta">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
-                            <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Dominate javascript for just ₹799</h2>
+                            <p class="mb-0 text-white fw-lighter small">Enroll now 100 seats are available</p>
                         </a>
                     </div>
                 </div>
@@ -1176,7 +1176,7 @@
                             Bird</strong> offer, You have to pay additional 399 Rs for recordings after 8:00 PM.
                     </p>
 
-                        <input type="hidden" name="courseId" value="64">
+                        <input type="hidden" name="courseId" value="81">
                         <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                         <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
                             onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"
@@ -1269,7 +1269,7 @@
                 checkbox.value = "0";
                 checkboxItem.classList.remove("checked");
                 priceElement.innerText = "799";
-                
+            
             }
         }
 
