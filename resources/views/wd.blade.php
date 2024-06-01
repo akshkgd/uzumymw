@@ -89,7 +89,7 @@
                             <p class="fs-6 text-muted col-md-10 text-center" style="font-size: calc(0.01rem + 1.6vw);">Learn what matters - all the way up to react and node js with real world scenarios and examples! The must-have Bootcamp in 2024. </p>
                         </div>
         
-                            <h4 class="fw-500 py-4"> <strong>Saturday, 25th May to 26th May </strong>  | 07:00 PM to 08:00 PM IST</h3>
+                            <h4 class="fw-500 py-4"> <strong>Saturday, 8th June to 9th June </strong>  | 07:00 PM to 08:30 PM IST</h3>
                         
         
                             <div class="my-3 white">
@@ -605,7 +605,7 @@
 
             <div class="modal-body p-4 pt-0 text-center mt-4">
                 {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
-                <h2 class=" mb-0 fs-3 fw-bold">Join 5 days live CSS bootcamp!</h2>
+                <h2 class=" mb-0 fs-3 fw-bold">Join Full stack bootcamp demo!</h2>
                 {{-- <p class="my-3 " style="font-size: 14px">Offer valid till</p> --}}
                 
                 <form action="{{ route('course-enrollment-auto') }}" method="POST" class="">
