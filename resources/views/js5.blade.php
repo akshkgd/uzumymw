@@ -625,7 +625,7 @@
                     <div class="my-5 text-center l-cta">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your javascript journey for just ₹799</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -1106,8 +1106,8 @@
 
     <div class="m-cta text-light">
         <div class="">
-            <p class="m-0 fw-bold text-light">₹ 99 <span class="small text-white fw-light"
-                    style="text-decoration: line-through"> ₹ 899 </span></p>
+            <p class="m-0 fw-bold text-light">₹ 799 <span class="small text-white fw-light"
+                    style="text-decoration: line-through"> ₹ 1899 </span></p>
             <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span
                     class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
         </div>
