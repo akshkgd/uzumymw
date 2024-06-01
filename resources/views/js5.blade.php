@@ -453,7 +453,7 @@
                         <a href="" style="width:100% !important"
                             class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹99! </h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your Javascript journey for just ₹799! </h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
