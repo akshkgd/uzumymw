@@ -1106,7 +1106,7 @@
 
     <div class="m-cta text-light">
         <div class="">
-            <p class="m-0 fw-bold text-light">₹ 799 <span class="small text-white fw-light"
+            <p class="m-0 fw-bold text-light">₹ 499 <span class="small text-white fw-light"
                     style="text-decoration: line-through"> ₹ 1899 </span></p>
             <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span
                     class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
@@ -1180,7 +1180,7 @@
                         <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                         <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
                             onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"
-                                id="price">799</span>
+                                id="price">499</span>
                             <div id="loader" class="loade d-inline-block ms-2"></div>
                         </button>
                         <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's
@@ -1268,7 +1268,7 @@
             } else {
                 checkbox.value = "0";
                 checkboxItem.classList.remove("checked");
-                priceElement.innerText = "799";
+                priceElement.innerText = "499";
             
             }
         }
