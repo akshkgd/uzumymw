@@ -333,6 +333,7 @@ class AdminController extends Controller
         $enrollment->amountPaid = $request->amountPaid;
         $enrollment->hasPaid = $request->hasPaid;
         $enrollment->paidAt = $request->paidAt;
+        $enrollment->accessTill = $request->accessTill;
         $enrollment->save();
         session()->flash('alert-success', 'Payment Details Updated Successfully!');
         return redirect('/admin/batch-enrollment/'.$enrollment->batchId);

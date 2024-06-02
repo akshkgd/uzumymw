@@ -48,6 +48,11 @@
                         <input type="date" id="floatingInput"  class="form-control" name="paidAt" placeholder="Password" value="{{$enrollment->paidAt}}">
                         <label for="floatingInput" >Paid At</label>
                       </div>
+                      <div class="form-floating mt-3 mb-2 ">
+                      
+                        <input type="date" id="floatingInput"  class="form-control" name="accessTill" placeholder="Password" value="{{$enrollment->accessTill}}">
+                        <label for="floatingInput" >Access Till</label>
+                      </div>
                       <input type="hidden" name="enrollmentId" value="{{$enrollment->id}}">
                     <button type="submit" class="btn btn-outline-primary ">Update Payment Details</button>
   
