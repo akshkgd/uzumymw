@@ -105,6 +105,9 @@ class StudentController extends Controller
         if (Auth::user()->id == $enrollment->userId) {
             if ($enrollment->hasPaid == 1) {
                 $content = BatchContent::where('batchId', $enrollment->batchId)->latest()->get();
+                if (!isset($chapterId)) {
+                    $chapterId = null; 
+                }
                 $video = $videoLink ? BatchContent::find($chapterId) : $content->first();
                 // $intro = $videoLink ? "false" : "true";
                 $intro = ($videoLink) ? "false" : "true";
