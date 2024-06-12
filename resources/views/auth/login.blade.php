@@ -27,7 +27,7 @@
                         </div>
                         <a href="{{ url('/redirect') }}" id="continue-google-login-button"
                             class="btn btn-primary-3 py-2 mb-2 fw-400 rounded-pill w-100">Continue with Google</a>
-                        <button class="btn btn-outline-primary-3 py-2 mb-2 fw-400 rounded-pill w-100"
+                        <button class="btn btn-outline-primary-3 py-2 mb-2 fw-400 rounded-pill w-100 d-none"
                             style="border:1px solid black" onclick="displayLoginForm()" id="continue-email-login-button"
                             style="border-radius: 33px;">Continue with Email</button>
 
