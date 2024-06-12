@@ -25,7 +25,6 @@ trait SubscriptionManagement
         $user = User::where('email', $email)->first();
         if (!$user) {
             $user = $this->createUser($paymentInfo);
-            
         }
         $subscription = $this->grantSubscriptionAccess($user, $paymentInfo);
         return $subscription;
@@ -58,6 +57,7 @@ trait SubscriptionManagement
             $a->batchId = 67;
             $a->price = 32000;
             $a->haspaid = 1;
+            $a->paidAt = Carbon::now();
             $a->subscriptionActiveOn = Carbon::now();
             $a->accessTill = Carbon::now()->addMonth();
             $a->subscriptionStatus = 1;

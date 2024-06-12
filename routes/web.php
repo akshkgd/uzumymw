@@ -241,5 +241,8 @@ Route::get('/msg', 'AdminController@wam');
 Route::get('/start-fsd', function () {
     return view('startFsd');
 });
+Route::get('/membership', function () {
+    return view('membership');
+});
 Route::post('/create-subscription', 'SubscriptionController@create')->name('create-subscription');
 Route::post('/store-subscription', 'SubscriptionController@payment')->name('store-subscription');
