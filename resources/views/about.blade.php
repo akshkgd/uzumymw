@@ -109,7 +109,7 @@
                               </div>
                             </div>
 
-                            <div class="col-6 col-md-3 my-4">
+                            <div class="col-6 col-md-3 my-4 d-none">
                               <div class="text-cente">
                                   <img src="{{ asset('assets/img/team/arpit.png') }}" class="use my-3 ck-rounded" height="140" alt="">
                                   <h2 class="fs-5 m-0">Arpit Khare</h2>
