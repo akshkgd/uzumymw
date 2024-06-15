@@ -33,7 +33,12 @@ class googlelogin extends Controller
 
             if($existUser) {
                 Auth::loginUsingId($existUser->id);
-                $existUser->avatar = $googleUser->avatar;
+                // $existUser->avatar = $googleUser->avatar;
+                if (strlen($existUser->avatar) <= $maxAvatarLength) {
+                    $existUser->avatar = $defaultAvatar;
+                } else {
+                    $existUser->avatar = $googleUser->avatar;
+                }
                 $existUser->save();
             }
             else {
