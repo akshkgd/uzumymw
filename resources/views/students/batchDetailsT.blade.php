@@ -35,7 +35,7 @@
                       
                       <div>
                           <h1 class="text-md font-mediu text-gray-900 mb-0 leading-none">Certificate not generated!</h1>
-                          <p class="truncate text-sm text-gray-500 leading-2 mt-1">Certificate will be generated after the submission of major project!</p>
+                          <p class=" text-sm text-gray-500 leading-2 mt-1">Certificate will be generated after the submission of major project!</p>
                       </div>
                       <!-- <span class="text-5xl">🥇</span> -->
                   </div>
