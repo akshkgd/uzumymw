@@ -44,7 +44,7 @@ class googlelogin extends Controller
                 $user->email_verified_at = Carbon::now();
                 $user->google_id = $googleUser->id;
                 $user->password = md5(rand(1,10000));
-                if (strlen($googleUser->avatar) < $maxAvatarLength) {
+                if (strlen($googleUser->avatar) <= $maxAvatarLength) {
                     $user->avatar = $defaultAvatar;
                 } else {
                     $user->avatar = $googleUser->avatar;
