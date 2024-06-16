@@ -54,7 +54,7 @@
     </div>
   @yield('content')
  
-    <script src="/js/app.js" defer></script>
+    <script src="{{asset('js/appB.js')}}" defer></script>
     <script>
       console.log('hi');
       function loadVideo(){
