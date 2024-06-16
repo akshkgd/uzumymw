@@ -63,7 +63,7 @@ class googlelogin extends Controller
                     }
                     else{
                         $user->avatar = $defaultAvatar;
-                    }
+                    }}
                 $user->user_name = substr($googleUser->email, 0, strpos($googleUser->email, "@"));
                
                
