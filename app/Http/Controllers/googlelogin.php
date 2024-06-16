@@ -38,13 +38,12 @@ class googlelogin extends Controller
                     $existUser->avatar = $googleUser->avatar;
                     $existUser->save();
                 } catch (\PDOException $e) {
-                    if ($e->getCode() == '22001') { // SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column
-                        
+                    if ($e->getCode() == '22001') { 
                         $existUser->avatar = $defaultAvatar;
                         $existUser->save();
                     }
                     else{
-
+                        $existUser->avatar = $defaultAvatar;
                     }
                 $existUser->save();
             }}
@@ -58,9 +57,13 @@ class googlelogin extends Controller
                 $user->password = md5(rand(1,10000));
                 try {
                     $user->avatar = $googleUser->avatar;
-                } catch (\Exception $e) {
-                    $user->avatar = $defaultAvatar;
-                }
+                } catch (\PDOException $e) {
+                    if ($e->getCode() == '22001') { 
+                        $user->avatar = $defaultAvatar;
+                    }
+                    else{
+                        $user->avatar = $defaultAvatar;
+                    }
                 $user->user_name = substr($googleUser->email, 0, strpos($googleUser->email, "@"));
                
                
