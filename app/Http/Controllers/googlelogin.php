@@ -34,10 +34,10 @@ class googlelogin extends Controller
             if($existUser) {
                 Auth::loginUsingId($existUser->id);
                 // $existUser->avatar = $googleUser->avatar;
-                if (strlen($existUser->avatar) <= $maxAvatarLength) {
-                    $existUser->avatar = $defaultAvatar;
-                } else {
+                try {
                     $existUser->avatar = $googleUser->avatar;
+                } catch (\Exception $e) {
+                    $existUser->avatar = $defaultAvatar;
                 }
                 $existUser->save();
             }
@@ -49,10 +49,10 @@ class googlelogin extends Controller
                 $user->email_verified_at = Carbon::now();
                 $user->google_id = $googleUser->id;
                 $user->password = md5(rand(1,10000));
-                if (strlen($googleUser->avatar) <= $maxAvatarLength) {
-                    $user->avatar = $defaultAvatar;
-                } else {
+                try {
                     $user->avatar = $googleUser->avatar;
+                } catch (\Exception $e) {
+                    $user->avatar = $defaultAvatar;
                 }
                 $user->user_name = substr($googleUser->email, 0, strpos($googleUser->email, "@"));
                

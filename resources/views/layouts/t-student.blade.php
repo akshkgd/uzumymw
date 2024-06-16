@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/alpinejs" defer></script>
     <!-- Include the TailwindCSS library on your page -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet" />
-    <link rel="stylesheet" rel="preload" type="text/css" href="{{asset('assets/fonts/Geist-Regular.woff2')}}" />
+    {{-- <link rel="stylesheet" rel="preload" type="text/css" href="{{asset('assets/fonts/Geist-Regular.woff2')}}" /> --}}
     <style>
       [x-cloak] {
         display: none;
