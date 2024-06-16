@@ -36,11 +36,18 @@ class googlelogin extends Controller
                 // $existUser->avatar = $googleUser->avatar;
                 try {
                     $existUser->avatar = $googleUser->avatar;
-                } catch (\Exception $e) {
-                    $existUser->avatar = $defaultAvatar;
-                }
+                    $existUser->save();
+                } catch (\PDOException $e) {
+                    if ($e->getCode() == '22001') { // SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column
+                        Log::error('Avatar too long, falling back to default: ' . $e->getMessage());
+                        $existUser->avatar = $defaultAvatar;
+                        $existUser->save();
+                    }
+                    else{
+
+                    }
                 $existUser->save();
-            }
+            }}
             else {
                 $user = new User;
                 $user->name = $googleUser->name;
