@@ -38,7 +38,7 @@
                                     @if ($enrollment->batch->type == 2)
                                         <div class="mt-5">
                                             @if ($enrollment->batch->status < 3)
-                                                <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}"
+                                                <a target="_blank" href="{{$enrollment->batch->meetingLink}}"
                                                     class="inline-block  items-center justify-center px-[30px] py-[12px] text-[15px] transition-colors duration-200 bg-white border rounded-[10px] border-neutral-300 text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline">Join
                                                     WhatsApp</a>
                                                 <a href="{{ action('BatchController@batchDetails', Crypt::encrypt($enrollment->id)) }}"
