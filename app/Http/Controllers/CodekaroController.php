@@ -164,7 +164,7 @@ class CodekaroController extends Controller
         }
     }
     public function bootcampSuccess(){
-        return view('students.cssSuccess');
+        return view('students.cssSuccess1');
 
     }
     public function javascriptSuccess(){

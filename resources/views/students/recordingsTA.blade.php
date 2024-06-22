@@ -6,21 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <script
-    id="663b0b5e26765530b786a559"
-    src="https://app.droxy.ai/chat.min.js"
-    defer>
-    </script>
-    <!-- Include the Alpine library on your page -->
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <!-- Include the TailwindCSS library on your page -->
-    <link href="{{asset('assets/css/tailwind.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/app.css')}}" rel="stylesheet" />
     <style>
       [x-cloak] {
         display: none;
       }
       .desc a{
         color: rgb(0, 128, 255) !important;
+      }
+      @font-face {
+      font-family: 'Geist-Regular';
+      src: url('path/to/Geist-Regular.woff2') format('woff2');
+      }
+      body{
+        font-family: 'Geist-Regular', sans-serif !important;
       }
     </style>
   </head>
@@ -56,9 +56,7 @@
             <div class="flex items-center">
               <!-- <a href="" class="btn text-sm text-black bg-neutral-100 px-4 rounded-lg py-2">Back to dashboard</a> -->
               <!-- <a href="" class="btn text-sm text-black bg-neutral-100 px-4 rounded-lg py-2">Course Content</a> -->
-              <div x-data="{ 
-                slideOverOpen: false 
-            }"
+              <div x-data="{slideOverOpen: false}"
             class="relative z-50 w-auto h-auto">
             <button @click="slideOverOpen=true" class="inline-flex items-center justify-center  transition-colors text-sm text-black bg-neutral-100 px-4 rounded-lg py-2  hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none">Course content</button>
             <template x-teleport="body">
@@ -66,10 +64,10 @@
                     x-show="slideOverOpen"
                     @keydown.window.escape="slideOverOpen=false"
                     class="relative z-[99]">
-                    <div x-show="slideOverOpen" x-transition.opacity.duration.600ms @click="slideOverOpen = false" class="fixed inset-0 bg-black bg-opacity-10"></div>
+                    <div x-show="slideOverOpen" x-transition.opacity.duration.300ms @click="slideOverOpen="false" class="fixed inset-0 bg-black bg-opacity-20  backdrop-blur-s"></div>
                     <div class="fixed inset-0 overflow-hidden">
                         <div class="absolute inset-0 overflow-hidden">
-                            <div class="fixed inset-y-0 right-0 flex max-w-full pl-10">
+                            <div class="fixed inset-y-0 right-0 flex max-w-full pl-">
                                 <div 
                                     x-show="slideOverOpen" 
                                     @click.away="slideOverOpen = false"
@@ -79,8 +77,8 @@
                                     x-transition:leave="transform transition ease-in-out duration-200 sm:duration-200" 
                                     x-transition:leave-start="translate-x-0" 
                                     x-transition:leave-end="translate-x-full" 
-                                    class="w-screen max-w-96">
-                                    <div class="flex flex-col h-full py-5 overflow-y-scroll bg-white border-l shadow-lg border-neutral-100/70">
+                                    class="w-screen max-w-80">
+                                    <div class="flex flex-col h-full py-5 overflow-y-scroll bg-white border-r border-neutral-100">
                                         <div class="px-4 sm:px-5">
                                             <div class="flex items-start justify-between pb-1">
                                                 <h2 class="text-base font-semibold leading-6 text-gray-900" id="slide-over-title">Course Content</h2>
@@ -110,7 +108,7 @@
                                             @foreach ($section->chapters as $c)
                                             {{-- @if($accessTill >=  $c->accessOn ) --}}
                                             <div x-show="activeAccordion==id" class="" x-collapse x-cloak>
-                                                <a id="item" style=" display: flex" class="w-full items-center gap-2 flex bg-neutral-100 my-2 p-3 rounded-md text-left  {{ $c->id == $video->id ? 'bg-orange-50' : ' ' }}"  href="{{ route('recordings', ['batchId' => $batchId, 'cId' => Crypt::encrypt($c->id)]) }}">
+                                                <a id="item" style=" display: flex" class="w-full items-center gap-2 flex bg-neutral-100 my-2 p-3 rounded-md text-left  {{ $c->id == $video->id ? 'bg-orange-100' : ' ' }}"  href="{{ route('recordings', ['batchId' => $batchId, 'cId' => Crypt::encrypt($c->id)]) }}">
                                                     @if($c->type == 2)
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
                                                 <path d="M10.804 8 5 4.633v6.734L10.804 8zm.792-.696a.802.802 0 0 1 0 1.392l-6.363 3.692C4.713 12.69 4 12.345 4 11.692V4.308c0-.653.713-.998 1.233-.696l6.363 3.692z"/>
@@ -340,12 +338,10 @@
 
 @if($intro == 'false')
 @if($isVideoUnlocked)
+@if($video->type == 2)
 <main class=" flex gap-4 justify-center align-middle py-12 ">
-    <!-- <div class="sm:w-[370px] bg-violet bg-neutral-50 h-screen fixed top-0 left-0 self-start" >
-      fjdkjfdk
-    </div> -->
     <div class="2xl:px-0 max-w-6xl mt-16 ml-[370p">
-      <div class="sm:w-[740px] px-4 md:px-0">
+      <div class="sm:w-[740px] px-2 sm:px-4 md:px-0">
           {{-- <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/ccbb79fa-76a0-47ee-88d1-00c545f43e74?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
           <div class="mt-8">
                   <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero unde possimus voluptate tenetur laboriosam omnis voluptatibus.</p>
@@ -358,9 +354,9 @@
                 <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/{{$video->videoLink}}?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
             </div>
             <div class="my-5">
-              <h1 class="text-2xl mt-5 mb-5 font-extrabold" id="title">{{ $video->title }}</h1>
+              <h1 class="text-2xl mt-5  font-extrabold" id="title">{{ $video->title }}</h1>
 
-                <div class="desc mt-5">
+                <div class="desc mt-0">
                   {!! $video->desc !!}
                 </div>
                 {{-- {{ $video->id }} --}}
@@ -369,6 +365,26 @@
     </div>
     
   </main>
+  @else
+  <main class=" flex gap-4 justify-center py-12 ">
+    <div class="2xl:px-0 max-w-6xl mt-16 ml-[370p">
+      <div class="sm:w-[740px] px-2 sm:px-4 md:px-0">
+          
+
+            
+            <div class="my-5">
+              <h1 class="text-2xl mt-5  font-extrabold" id="title">{{ $video->title }}</h1>
+
+                <div class="desc mt-0">
+                  {!! $video->desc !!}
+                </div>
+                {{-- {{ $video->id }} --}}
+            </div>
+      </div>
+    </div>
+    
+  </main>
+  @endif
   @endif
   @if($isVideoUnlocked == false)
   <main class="min-h-screen flex flex-col justify-center align-middle px-6 py-12 lg:px-8">

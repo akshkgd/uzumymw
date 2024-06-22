@@ -93,10 +93,10 @@
             <div class="col-lg-7">
                 <div class="card f-1 text-center ">
                     <div class="p-3">
-                        <h1 class="display-2">🎉</h1>
+                      <h1 class="display-2">🎉</h1>
                       <h2 class="fs-1">Congratulations, you have successfully enrolled for the <span class="wd_highlight1">How to CSS</span> Bootcamp</h4>
                       <p class="mt-5">Next Step</p>
-                      <a href="https://chat.whatsapp.com/C0cqGCDI1834EbyHfexnAGgit " class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
+                      <a href="https://chat.whatsapp.com/G3PPA2NFHVqAq3JD0FJa5H" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
                       {{-- <a href="{{url('/home')}}" class="btn btn-dark btn-lg py-3 px-4 rounded-pill my-2" style="">2. Complete your Profile</a> --}}
 
                     </div>
@@ -113,8 +113,8 @@
     
     <section class="">
         <div class="container text-center ct">
-            <h1 id="headlin fw-600 mb-0">Live class will start from</h1>
-            <h2>Wednesday, 21st february at 08:00 PM IST</h2>
+            <h1 id="headlin fw-600 mb-0">Live class will start from tailwind</h1>
+            <h2>Monday, 24th June at 08:00 PM IST</h2>
             <div id="countdown">
               {{-- <ul>
                 <li><span id="days"></span>days</li>
