@@ -46,9 +46,9 @@
     
           <p class="bg-white px-6 text-gray-800 text-center">You've started your membership and we emailed the details to <span class="text-blue-600">{{Auth::user()->email}}</span>.</p>
           <div class="text-center flex gap-2 justify-center">
-            {{-- <a href="" class="border border-gray-300 px-5 py-3 rounded-lg inline-block mt-6">Complete your onboarding</a> --}}
-            <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}" class="border border-gray-300 px-5 py-3 rounded-lg inline-block mt-6">Access Course</a>
-
+            <a target="_blank" href="https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish" class="border border-gray-300 px-5 py-3 rounded-lg inline-block mt-6">Complete your onboarding</a>
+            {{-- <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}" class="border border-gray-300 px-5 py-3 rounded-lg inline-block mt-6">Access Course</a> --}}
+            {{-- <a class="px-5 py-3 rounded-xl bg-black text-white mt-6" target="_blank" href="https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish">Book 1:1 Onboarding call with Ashish</a> --}}
           </div>
           <!-- <div class="text-center">
             <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Back to Dashboard</a>
