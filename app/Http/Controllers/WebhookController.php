@@ -128,6 +128,7 @@ private function sendPabbly($id, $p){
         $paidOn = Carbon::parse($enrollment->paidOn);
         $formattedPaidOn = $paidOn->format('d-M-Y');
         $amount = $p/100;
+        $link = $enrollment->batch->groupLink;
         $user = $enrollment->students;
         $data = [
             'firstName' => strtok($name, ' '),
@@ -139,6 +140,7 @@ private function sendPabbly($id, $p){
             'utm' =>$user->field1,
             'paidOn' =>$formattedPaidOn,
             'paid' => $enrollment->amountPaid / 100,
+            'link' => $link,
             'batchId' => $enrollment->batchId,
 
             // Add any other data you want to send to the Zapier webhook
