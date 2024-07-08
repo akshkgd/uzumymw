@@ -56,9 +56,9 @@
                                         </div>
                                     @else
                                         <div class="flex flex-col sm:flex-row gap-3 mt-5">
-                                            <div class="h-full grid grid-cols-2 gap-3 sm:flex">
+                                            <div class=" sm:flex">
                                                 <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}"
-                                                    class="inline-block  items-center justify-center px-[30px] py-[12px] text-[15px] transition-colors duration-200 bg-white border rounded-[10px] border-neutral-300 text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline">Access
+                                                    class="inline-block  sm:items-center sm:justify-center sm:px-[30px] sm:py-[12px] sm:text-[15px] transition-colors duration-200 bg-white border px-2  sm:rounded-[10px] sm:border-neutral-300 sm:text-neutral-700 sm:hover:text-neutral-950 sm:hover:bg-neutral-100 sm:active:bg-white sm:focus:bg-white sm:focus:outline-none sm:focus:ring-2 sm:focus:ring-offset-2 sm:focus:ring-neutral-200/60 sm:focus:shadow-outline">Access
                                                     Course</a>
                                                 {{-- <a href="{{ action('BatchController@batchDetails', Crypt::encrypt($enrollment->id)) }}"
                                                     class="inline-block  items-center justify-center px-[30px] py-[12px] text-[15px] transition-colors duration-200 bg-white border rounded-[10px] border-neutral-300 text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline">Details</a> --}}
@@ -141,7 +141,7 @@
                                                 {{ Carbon\Carbon::parse($enrollment->batch->nextClass)->format('h:i A') }} </p>
                                         </div>
                                         <div class="flex flex-col sm:flex-row gap-3">
-                                            <div class="h-full grid sm:flex">
+                                            <div class="  sm:flex">
                                                 <a href="{{ $enrollment->batch->meetingLink }}"
                                                     class="inline-block items-center justify-center px-[30px] py-[12px] text-[15px] transition duration-200 bg-neutral-200 border rounded-[10px] border-transparent text-neutral-950 hover:text-neutral-950 hover:bg-white hover:border-neutral-300 active:bg-white focus:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline">
                                                     Join Live Session
@@ -164,7 +164,7 @@
                                                 {{ Carbon\Carbon::parse($enrollment->batch->nextClass)->format('h:i A') }} </p>
                                         </div>
                                         <div class="flex flex-col sm:flex-row gap-3">
-                                            <div class="h-full grid sm:flex">
+                                            <div class=" sm:flex">
                                                 <a href="{{ $enrollment->batch->meetingLink }}"
                                                     class="inline-block items-center justify-center px-[30px] py-[12px] text-[15px] transition duration-200 bg-neutral-200 border rounded-[10px] border-transparent text-neutral-950 hover:text-neutral-950 hover:bg-white hover:border-neutral-300 active:bg-white focus:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline">
                                                     Join Live Session
