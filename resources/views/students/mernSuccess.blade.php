@@ -1,155 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="h-full bg-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auth</title>
+    <link href="https://codekaro.in/css/app.css" rel="stylesheet" />
+    <!-- Include the Alpine library on your page -->
+    <!-- Include the TailwindCSS library on your page -->
+  </head>
+  <body class="relative h-full font-geist">
+    <!-- Header Section -->
+    <header
+      id="sticky-header"
+      class="fixed top-0 z-[60] flex items-center justify-center w-full h-16 duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-300 border-opacity-20"
+    >
+      <div
+        class="flex items-center justify-between w-full px-4 mx-auto 2xl:px-0 max-w-5xl"
+      >
+        <div
+          class="relative z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left"
+        >
+          <a
+            href="/"
+            class="inline-flex sm:mr-8 items-end font-sans text-2xl font-extrabold text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round" style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16" aria-label="Vercel logo"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mern enrollment success</title>
-    <meta name="keywords" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
-    <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
-    <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
-    <link rel="icon" href="https://codekaro.in/assets/img/chrome-icon.png">
-    <meta name="facebook-domain-verification" content="nlndijpgith63pnf9skj942enj02m8" />
-   <!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '606378664796034');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=606378664796034&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC9ETJV29G"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-HC9ETJV29G');
-    </script>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/ck_light.css')}}">
-    <style>
-
-    </style>
-        <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-K8B392D');</script>
-    <!-- End Google Tag Manager -->
-    <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9323KT1W2S"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-9323KT1W2S');
-  </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11206387820"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-11206387820');
-</script>
-<!-- Event snippet for lead form conversion page -->
-<script>
-  gtag('event', 'conversion', {'send_to': 'AW-11206387820/C8DRCJDK9akYEOzQz98p'});
-</script>
-
-</head>
-
-<body>
-   <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8B392D"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-          <a class="navbar-brand fw-bold" href="{{url('/home')}}">Codekaro</a>
-          
-          
+          </a>
+          <nav
+            class="items-center hidden space-x-5 text-sm font-medium lg:flex"
+          >
+            
+            
+          </nav>
         </div>
-      </nav>  
-<section>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="card f-1 text-center ">
-                    <div class="p-3">
-                        <h1 class="display-2">🎉</h1>
-                      <h2 class="fs-1">Congratulations, you have successfully enrolled for the <span class="wd_highlight1">Mern Stack</span> Bootcamp</h4>
-                      <p class="mt-5">Next Step</p>
-                      <a href="https://chat.whatsapp.com/LD9b94vCaynF5cO7vTKlXf" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
-                      {{-- <a href="{{url('/home')}}" class="btn btn-dark btn-lg py-3 px-4 rounded-pill my-2" style="">2. Complete your Profile</a> --}}
 
-                    </div>
-                    <div class="cd f-1-bottom p-3">
-                        you will get all the updates of assignments, upcoming classes on  the WhatsApp group, so make sure you join this without fail!
-                    </div>
-                  </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    
-    <section class="d-none">
-        <div class="container text-center ct">
-            <h1 id="headlin fw-600 mb-0">Live class is starting in</h1>
-            <div id="countdown">
-              <ul>
-                <li><span id="days"></span>days</li>
-                <li><span id="hours"></span>Hours</li>
-                <li><span id="minutes"></span>Minutes</li>
-                <li><span id="seconds"></span>Seconds</li>
-              </ul>
-            </div>
-            <div id="content" class="emoji">
-              <span>🥳</span>
-              <span>🎉</span>
-              <span>🎂</span>
-              <p id="headline"></p>
+        <div class="relative">
+          <div x-data="{ dropdownOpen: false }" class="relative">
+            <div class="flex items-center">
+              <button
+              :class="{ 'hover:bg-white' : !dropdownOpen, 'bg-white' : dropdownOpen }"
+              @click="dropdownOpen=true"
+              class="inline-flex items-center justify-center h-12 py-2 pl-3 pr-0 text-sm font-medium transition-colors bg-white border-0 rounded-md text-neutral-700 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
+            >
+              <img
+                src="https://cdn.devdojo.com/users/default.png"
+                class="object-cover w-8 h-8 border rounded-full border-neutral-200"
+              />
+              <span
+                class="flex flex-col items-start flex-shrink-0 h-full ml-2 leading-none translate-y-px"
+              >
+                <!-- Replace with your button content -->
+              </span>
+            </button>
             </div>
             
+            
+              
+                
+            </div>
           </div>
-  </section>
-
-
-  {{-- <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
-    <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="50" width="50">
-      </a> --}}
-
-  <footer class="bd-footer p-3 p-md-5 mt-5 bg-light text-center text-sm-left">
-    <div class="container">
-    <ul class="bd-footer-links">
-    <li><a href="https://codekaro.in/about">About</a></li>
-    <li><a href="https://codekaro.in/contact">Contact</a></li>
-    <li><a href="https://codekaro.in/privacy">Privacy Policy</a></li>
-    </ul>
-    <p>©2020-23 Codekaro All Rights Reserved.</p>
-    </div>
-    </footer>
+        </div>
+      </div>
+    </header>
+    <!-- Sign in Section  -->
+    <main class="min-h-screen flex flex-col justify-center align-middle px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        </div>
     
+        <div class="sm:mx-auto sm:w-full sm:max-w-md">
+          <div class="mt-1 flex justify-center">
+            <div class="inline-flex w-64 items-center justify-center "
+            >
+              
+              <img src="learner-welcome.svg" class="max-h-36" alt="">
+          </div>
+          </div>
+          <h2 class="text-center text-2xl mt-3 font-bold leading-9 tracking-tight text-gray-900">Welcome to the frontend cohort!</h2>
     
-    
-</body>
+          
+          <p class="bg-white text-sm px-6 text-gray-700 text-center">Congratulations on joining the frontend cohort. The classes will start from 3rd August. <span class="text-blue-600">Book your 1:1 intensive discovery call to see if we can help you achieve your goals faster.</span></p>
+          <div class="text-center flex gap-2 justify-center">
+            <a href="https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish" class="bg-black text-white px-5 py-3 rounded-lg inline-block mt-6">Book 1:1 Intensive Discovery Call</a>
+            
 
+          </div>
+        </div>
+      </main>
+
+    <!-- Footer Section -->
+    <!-- <section class="bg-white">
+        <p class="mt-8 text-base leading-6 text-center text-gray-400">
+          &copy; 2024 Codekaro All rights reserved.
+        </p>
+      </div>
+    </section> -->
+  </body>
 </html>
