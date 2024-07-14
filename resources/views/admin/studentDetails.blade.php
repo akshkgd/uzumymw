@@ -33,7 +33,7 @@
         <tr>
             <th>Email</th>
             <th>Mobile</th>
-            <th>College</th>
+            <th>Mobile</th>
             <th>Level</th>
             <th width="280px">Action</th>
         </tr>
@@ -69,9 +69,9 @@
                    <tr>
                 @endif
                 
-                   <td>{{$enrollment->batchId}}</td>
-                   <td>{{$enrollment->userId}} </td>
-                   <td>{{$user->mobile}}</td>
+                   <td>{{$enrollment->batch->name}}</td>
+                   <td>{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('Y-m-d H:i:s') }}</td>
+                   <td>{{$enrollment->amountPaid}}</td>
                    <td>{{$user->college}}</td>
                    <td>Begginer</td>    
                 </tr>  
