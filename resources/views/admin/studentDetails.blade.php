@@ -56,7 +56,7 @@
         <div class="card p-0">
             <table class="table pl-0 pr-0">
                 <tr>
-                    <th>#</th>
+                    
                     <th>Course</th>
                     <th>Enrolled On</th>
                     <th>Fees</th>
@@ -70,8 +70,8 @@
                 @endif
                 
                    <td>{{$enrollment->batch->name}}</td>
-                   <td>{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('Y-m-d H:i:s') }}</td>
-                   <td>{{$enrollment->amountPaid}}</td>
+                   <td>{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('D d M y') }}</td>
+                   <td>{{$enrollment->amountPaid}}/100</td>
                    <td>{{$user->college}}</td>
                    <td>Begginer</td>    
                 </tr>  
