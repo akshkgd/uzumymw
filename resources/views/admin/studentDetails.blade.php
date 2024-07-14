@@ -71,7 +71,7 @@
                 
                    <td>{{$enrollment->batch->name}}</td>
                    <td>{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('D d M y') }}</td>
-                   <td>{{$enrollment->amountPaid}}/100</td>
+                   <td>{{$enrollment->amountPaid > 0 ? $enrollment->amountPaid/100 : 0}}</td>
                    <td>{{$user->college}}</td>
                    <td>Begginer</td>    
                 </tr>  
