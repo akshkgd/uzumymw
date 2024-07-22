@@ -164,7 +164,7 @@ class CodekaroController extends Controller
         }
     }
     public function bootcampSuccess(){ 
-        $batch = Batch::where('topicId', 100)->latest()->first();
+        $batch = Batch::where('topicId', 100)->where('status', 1)->latest()->first();
         return view('students.cssSuccess1', compact('batch'));
 
     }
