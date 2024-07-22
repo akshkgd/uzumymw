@@ -83,8 +83,8 @@
 @endauth
 <section>
   <div class="max-w-xl mx-auto mt-44 text-cente shadow-l p-5 sm:p-16 text-center sm:text-left rounded-xl">
-    <h1 class="text-2xl font-semibold">Congratulations @auth {{Auth::user()->name}} @endauth <span class="text-2xl">🎉</span></h1>
-    <p class=" font-ligh text-gray-700 text-lg mt-3">You have successfully enrolled for the <span class="underlin text-blac">How to CSS Bootcamp</span>. Live classes will start from <span class="underlin font-semibold text-black">{{ \Carbon\Carbon::parse($batch->nextClass)->format('D, d M H:i a') }} IST</span> </p>
+    <h1 class="text-xl font-semibold">Congratulations @auth {{Auth::user()->name}} @endauth <span class="text-2xl">🎉</span></h1>
+    <p class=" font-ligh text-gray-700 text- mt-3">You have successfully enrolled for the <span class="underlin text-blac">How to CSS Bootcamp</span>. Live classes will start from <span class="underlin font-semibold text-black">{{ \Carbon\Carbon::parse($batch->nextClass)->format('D, d M h:i a') }} IST</span> </p>
     <p class="   text-gray-700 "></p>
 
     <a href="{{$batch->meetingLink}}" class="text-white bg-green-600 py-2 px-6 mt-4 inline-block rounded-full transition-all hover:bg-green-700 hover:text-white">Join WhatsApp Group</a>
