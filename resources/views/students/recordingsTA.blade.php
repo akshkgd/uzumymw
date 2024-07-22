@@ -78,10 +78,10 @@
                                     x-transition:leave-start="translate-x-0" 
                                     x-transition:leave-end="translate-x-full" 
                                     class="w-screen max-w-80">
-                                    <div class="flex flex-col h-full py-5 overflow-y-scroll bg-white border-r border-neutral-100">
+                                    <div class="flex flex-col h-full py-5 overflow-y-auto bg-white border-r border-neutral-100">
                                         <div class="px-4 sm:px-5">
                                             <div class="flex items-start justify-between pb-1">
-                                                <h2 class="text-base font-semibold leading-6 text-gray-900" id="slide-over-title">Course Content</h2>
+                                                <h2 class="text-base font-normal leading-6 text-gray-900" id="slide-over-title">Course Content</h2>
                                                 <div class="flex items-center h-auto ml-3">
                                                     <button @click="slideOverOpen=false" class="absolute top-0 right-0 z-30 flex  bg-white items-center justify-center px-3 py-2 mt-4 mr-5 space-x-1 text-xs font-medium uppercase border rounded-md border-neutral-200 text-neutral-600 hover:bg-neutral-100">
                                                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -99,7 +99,7 @@
                                         }" class="relative w-full max-w-md mx-auto text-sm font-normal">
                                         @if (isset($sections) && !$sections->isEmpty())
                                         @foreach($sections as $section)
-                                        <div x-data="{ id: $id('accordion') }" :class="{ 'text-neutral-900': activeAccordion==id, 'text-neutral-600 hover:text-neutral-900': activeAccordion!=id }" class="cursor-pointer group">
+                                        <div x-data="{ id: $id('accordion') }" :class="{ 'text-neutral-900': activeAccordion==id, 'text-neutral-600 hover:text-blue-600': activeAccordion!=id }" class="cursor-pointer group">
                                             
                                             <button @click="setActiveAccordion(id)" class="flex items-center justify-between text-md w-full py-4 px-2 pb-1 text-left select-none">
                                                 <span style="font-size: 16px">{{ $section->name }}</span>
@@ -122,7 +122,7 @@
                                                 <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
                                               </svg>
                                               @endif
-                                                    <span style="font-size: 15px">{{$c->title}}</span>
+                                                    <span class="text-">{{$c->title}}</span>
                                                 </a>
                                                 
                                                 
@@ -273,11 +273,23 @@
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
       </div>
   
-      <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
+      <div class="sm:mx-auto sm:w-full sm:max-w-md text-cente">
         
-        <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">{{$enrollment->batch->name}}</h2>
-        <p class="bg-white text-sm px-6 text-gray-500 text-center">The new player is still under development and may behave differently! It will be resolved by 2nd April.</p>
-        <div class="flex justify-center gap-2">
+        <h2 class="text-cente text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">Welcome to {{$enrollment->batch->name}}</h2>
+        <p class="bg-white text-sm  text-gray-500">The new player is still under development and may behave differently! It will be resolved by 2nd April.</p>
+        <div class="mt-12 text-center">
+          
+          <div class="flex gap-2 items-center justify-cente">
+          
+            
+          <div class="text-left">
+            <div class="bg-blue-100 inline-block text-blue-600 px-2 py-1 text-sm mb-3">Upcoming live class</div>
+            <h2 class="font-semibold text-lg text-gray-800 m-0 ">Onboarding Call</h2>
+            <p class="text-sm text-neutral-600 font-light">Sat, 3rd Aug 2024 at 07:00 PM GMT+05:30</p>
+          </div>
+          {{-- <a href="" class="bg-violet-600 py-2 px-5 rounded text-white">Join Now</a> --}}
+        </div>
+        <div class="flex justify-center gap-2 hidden">
           <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Complete your onboarding</a>
           <!-- <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Important Links</a> -->
           <div x-data="{ modalOpen: false }"
@@ -325,14 +337,14 @@
         
         
         
-        <div class="text-center flex gap-2 absolute left-1/2 translate-x-[-50%] bottom-0 mb-5">
+        {{-- <div class="text-center flex gap-2 absolute left-1/2 translate-x-[-50%] bottom-0 mb-5">
           <a href="" class=" py-3 px-4 text-neutral-500 rounded-lg inline-block mt-6">Continue watching: Javascript Foundation</a>
           <a href="" class=" py-3 px-4 text-neutral-500  rounded-lg inline-block mt-6">Back to Dashboard</a>
-        </div>
+        </div> --}}
       </div>
     </main>
 @endif
-{{-- intro ends --}}
+
 
 {{-- player --}}
 

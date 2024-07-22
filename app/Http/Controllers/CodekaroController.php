@@ -163,8 +163,9 @@ class CodekaroController extends Controller
             return redirect('/bootcamp-success');
         }
     }
-    public function bootcampSuccess(){
-        return view('students.cssSuccess1');
+    public function bootcampSuccess(){ 
+        $batch = Batch::where('topicId', 100)->latest()->first();
+        return view('students.cssSuccess1', compact('batch'));
 
     }
     public function javascriptSuccess(){

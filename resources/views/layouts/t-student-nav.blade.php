@@ -10,8 +10,10 @@
         >
           <a
             href="{{url('/home')}}"
-            class="inline-flex sm:mr-8 items-end font-sans text-2xl font-extrabold text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
+            class="inline-flex sm:mr-8 items-end font-sans text-xl flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
           >
+          {{-- <img style="height: 32px" src="{{asset('assets/img/js.png')}}" alt=""> --}}
+           {{-- Codekaro --}}
           <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round" style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16" aria-label="Vercel logo"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg>
 
           </a>
@@ -32,8 +34,8 @@
               class="inline-flex items-center justify-center h-12 py-2 pl-3 pr-0 text-sm font-medium transition-colors bg-white border-0 rounded-md text-neutral-700 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
             >
               <img
-                src="https://cdn.devdojo.com/users/default.png"
-                class="object-cover w-8 h-8 border rounded-full border-neutral-200"
+                src="{{Auth::user()->avatar}}"
+                class="object-cover w-10 h-10 border rounded-full border-neutral-200"
               />
               <span
                 class="flex flex-col items-start flex-shrink-0 h-full ml-2 leading-none translate-y-px"

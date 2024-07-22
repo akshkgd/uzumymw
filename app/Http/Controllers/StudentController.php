@@ -109,7 +109,7 @@ class StudentController extends Controller
                     $chapterId = null; 
                 }
                 $video = $videoLink ? BatchContent::find($chapterId) : $content->first();
-                // $intro = $videoLink ? "false" : "true";
+                // $intro = false;
                 $intro = ($videoLink) ? "false" : "true";
                 $subStatus = true;
                 if ($enrollment->subscriptionId != null) {
