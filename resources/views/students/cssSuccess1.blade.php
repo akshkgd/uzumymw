@@ -87,7 +87,7 @@
     <p class=" font-ligh text-gray-700 text- mt-3">You have successfully enrolled for the <span class="underlin text-blac">How to CSS Bootcamp</span>. Live classes will start from <span class="underlin font-semibold text-black">{{ \Carbon\Carbon::parse($batch->nextClass)->format('D, d M h:i a') }} IST</span> </p>
     <p class="   text-gray-700 "></p>
 
-    <a href="{{$batch->groupLink}}" class="text-white bg-green-600 py-2 px-6 mt-4 inline-block rounded-full transition-all hover:bg-green-700 hover:text-white">Join WhatsApp Group</a>
+    <a target="_blank" href="{{$batch->groupLink}}" class="text-white bg-green-600 py-2 px-6 mt-4 inline-block rounded-full transition-all hover:bg-green-700 hover:text-white">Join WhatsApp Group</a>
   </div>
 </section>
 
