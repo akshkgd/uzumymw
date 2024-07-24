@@ -57,6 +57,8 @@ Route::view('/css-success','students/cssSuccess1');
 Route::view('/css-replay','students/cssReplay');
 Route::view('/demo-success','students/demoSuccess');
 Route::view('/frontend-cohort','frontend');
+Route::view('/join-frontend','joinFrontend');
+
 
 
 

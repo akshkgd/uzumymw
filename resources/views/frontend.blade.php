@@ -630,7 +630,7 @@ modal.show()
                                        
                                                                             <div class="">
                                         
-                                            <a href="https://rzp.io/l/mern-cohort" class="btn btn-dark w-100 py-3 fw-light ck-rounded mb-3">Join bootcamp at 4999/-</a>
+                                            <a href="{{url('/enroll/86')}}" id="" class="btn btn-dark w-100 py-3 fw-light ck-rounded mb-3">Join bootcamp at 4999/-</a>
                                             <div class="text-center small" style="color: red">Once the timer hits zero, pricing will be increased to 24999.00/-</div>
                                         
                                         </div>
@@ -838,12 +838,12 @@ modal.show()
                 <div class="col-md-10 my-5">
                     <div class="border shadow-3d ck-rounded p-5 d-md-flex align-items-center">
                         <div class="text-left">
-                            <h2 class="text-left fw-bold">Still have doubts? <span
-                                    class="text-prima ck-highlight">Request Callback</span></h2>
-                            <p class="">Still have doubts or query, you can simply request callback and our team will get back to you as soon as possible</p>
-                            <a href="" class="btn btn-dark px-3 m-0 fw-400">Request Callback</a>
+                            <h2 class="text-left fw-bold fs-2">Still have doubts? <span
+                                    class="text-prima ck-highlight">Ask our Support Team</span></h2>
+                            <p class="">Still have doubts or query, you can simply ask us and our team will get back to you as soon as possible!</p>
+                            <a href="#" target="_blank" id="whatsappBtn" class="btn btn-dark px-3 m-0 fw-400 rounded-pill">Request Callback</a>
                         </div>
-                        <img src="https://codekaro.in/assets/img/ttu_illustration_new.svg" alt="">
+                        <img src="{{asset('assets/img/ask-phone.svg')}}" alt="">
                     </div>
                 </div>
             </div>
@@ -858,7 +858,7 @@ modal.show()
         <br>
 
         <div class="">
-            <a href="https://rzp.io/l/mern-cohort"
+            <a href="{{url('/enroll/86')}}"
                 class="btn btn-dark w-10 fw-light py-2 px-5 rounded-pil" style="border-radius: 8px">Enroll Now</a>
         </div>
     </div>
@@ -937,7 +937,7 @@ modal.show()
 
 
     
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $(window).on('load', function() {
             $('#subscribe-modal').modal('show');
         });
@@ -945,7 +945,7 @@ modal.show()
         function show(id) {
             console.log("fc", id)
         }
-    </script>
+    </script> --}}
     {{-- <script>
         (function () {
         const second = 1000,
@@ -1235,6 +1235,26 @@ modal.show()
               document.getElementById('continue-gmail-login-button').style.display = "block";
               document.getElementById('goBackBtn').style.display = "none";
             }
+            document.getElementById('whatsappBtn').addEventListener('click', function() {
+            // Get user details from Laravel
+            let userName = "{{ auth()->user() ? auth()->user()->name : '' }}";
+            let userEmail = "{{ auth()->user() ? auth()->user()->email : '' }}";
+
+            // Construct the message
+            let message = "Hey! I have a query about the frontend Cohort.";
+            if (userName && userEmail) {
+                message += ` My name is ${userName} and my email is ${userEmail}.`;
+            }
+
+            // Encode the message
+            let encodedMessage = encodeURIComponent(message);
+
+            // Create the WhatsApp URL
+            let whatsappURL = `https://wa.me/9451849553?text=${encodedMessage}`;
+
+            // Redirect to WhatsApp
+            window.location.href = whatsappURL;
+        });
         </script>
 
         <script>
