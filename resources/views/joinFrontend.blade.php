@@ -17,7 +17,7 @@
       </div>
       <h2 class="text-center text-2xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">Join frontend cohort.</h2>
 
-      <p class="bg-white px-6 text-gray-500 text-center">Full access to cohort's on demand videos, weekend live sessions and Interview prepration.</p>
+      <p class="bg-white px-6 text-gray-500 text-center">Full access to cohort's starting on 3rd Aug, live sessions and Interview prepration.</p>
       
       @auth
       <div class="border rounded-xl mt-4">
@@ -42,14 +42,14 @@
       @endauth
 
       <div class="text-center">
-        <button type="submit" class="bg-black text-white w-full px-5 py-4 rounded-xl inline-block mt-4" id="joinBtn" onclick="initiateCheckout()" >Subscribe now </a>
+        <button type="submit" class="bg-black text-white w-full px-5 py-4 rounded-xl inline-block mt-4" id="joinBtn" onclick="initiateCheckout()" >Join now at 4999/-</a>
       </div>
       </form>
       
       <div class="">
       <!-- <p class="bg-white px-6 text-gray-500 text-center">Uh-Oh! The page you're looking for seems to be missing</p> -->
 
-        <p class="text-sm text-gray-600 mt-3">By subscribing, you agree to our Terms of Use. Codekaro will automatically charge the membership fee <span class="text-blue-500">(currently 1999/month)</span> to your payment method until you cancel. You may cancel at any time to avoid future charges.</p>
+        <p class="text-sm text-gray-600 mt-3">By joining, you agree to our Terms of Use. </p>
       </div>
     </div>
   </main>
