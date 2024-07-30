@@ -116,7 +116,8 @@
   <p>Sessions will not be conducted if there are no students available to attend the session live. We require a minimum number of participants for each session to ensure an effective learning experience.</p>
 
   <p>4. Batch Shifting</p>
-  <p>If you wish to shift to a different batch for any reason, you may do so by paying a batch shifting fee of rs 999. Batch shifting is subject to availability and must be requested in advance. Please contact our support team for further assistance regarding batch shifting.</p>
+  <p>Once your course is active, you can pause your course and join any upcoming batches for free of cost for the next two years. Multiple batch shifting will not be possible under any circumstances once a batch shift is being made. </p>
+
 
   <p>5. Student Code of Conduct</p>
   <p>We strive to maintain a respectful and inclusive learning environment. Any student found to be violating our guidelines or sharing any form of hate speech, religious messages, or inappropriate content in the discussion group may be removed from the batch without prior notice or refund.</p>
