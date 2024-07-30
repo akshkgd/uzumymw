@@ -31,6 +31,9 @@
 <p>Upon successful cancellation, you will receive a confirmation email acknowledging the termination of your subscription.</p>
 <p> You may cancel your subscription at any time. However, no refunds will be provided for the remaining period of your subscription term.</p>
 <p>If you cancel your subscription or Codekaro suspends or terminates your account due to breach of terms and condtions, you understand and agree that you shall receive no refund or exchange for any Codekaro courses, any unused time on a subscription, any license or subscription fees for any portion of the Service, any content or data associated with your account, or for anything else.</p>
+<p><b>5.2 Batch Shifting </b> </p>
+<p>Once your course is active, you can pause your course and join any upcoming batches for free of cost for the next two years. Multiple batch shifting will not be possible under any circumstances once a batch shift is being made. </p>
+
 <p>6. <b>Content</b></p><p>Content found on or through this Service are the property of Codekaro or used with permission. You may not distribute, modify, transmit, reuse, download, repost, copy, or use said Content, whether in whole or in part, for commercial purposes or for personal gain, without express advance written permission from us.</p>
 <p>7. <b>Prohibited Uses</b></p>
 <p>You may use Service only for lawful purposes and in accordance with Terms. You agree not to use Service:</p>
