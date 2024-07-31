@@ -32,16 +32,16 @@
                     <div class="card-body ">
                         <div class="pt-1 text-center">
                             <h5 class="ck-font m-0 lead">This is to certify that</h3>
-                            <h1 class="display-5 m-1">Pratik Jangid</h1>
+                            <h1 class="display-5 m-1">Harman Arora</h1>
                             
-                            <p class=" lead mx-5">From University of Kota has successfully completed <strong>Backend Development (MERN)</strong> training Internship from <strong>1st Jan </strong>  to  <strong>20th March 2023</strong></p>
+                            <p class=" lead mx-5">From Chandigarh group of colleges has successfully completed <strong>Frontend Development (React js & Next js)</strong> Internship from <strong>20th March </strong>  to  <strong>20th june 2024</strong></p>
                             <h4 class="text-s lead"></h4>
                             
                             
                             
                             
                                     <h5 class="lead">
-                                        20th March 2023
+                                        20th June 2024
                                         </p>
                             {{-- <p class="lead">4th Aug 2020</p> --}}
                         </div>
