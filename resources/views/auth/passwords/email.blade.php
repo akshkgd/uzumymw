@@ -1,65 +1,66 @@
-@extends('layouts.app')
-
+@extends('layouts.t-student')
 @section('content')
-<div class="navbar-container">
-    <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white" data-sticky="top">
-        @include('layouts.header2')
-    </nav>
+
+<header
+      id="sticky-header"
+      class="fixed top-0 z-[60] flex items-center justify-center w-full h-16 duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-400 border-opacity-20"
+    >
+      <div
+        class="flex items-center justify-between w-full px-4 mx-auto 2xl:px-0 max-w-5xl"
+      >
+        <div
+          class="relative z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left"
+        >
+          <a
+            href="{{url('/home')}}"
+            class="inline-flex sm:mr-8 items-end font-sans text-2xl font-extrabold text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round" style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16" aria-label="Vercel logo"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg>
+          </a>
+          
+        </div>
+
+        <div class="relative">
+            
+          <a href="{{url('/home')}}" class="btn border px-4 py-3 rounded-lg text-sm">Back to Dashboard</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="min-h-screen flex flex-col justify-center align-middle px-6 py-12 lg:px-8">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+        </div>
     
-</div>
-
-
-
-
-<section class="">
-    <div class="container pt-5">
-      <div class="row justify-content-center">
-        <div class="col-md-10 col-lg-10 col-xlg-10">
+        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+          <div class="">
+            <div class="space-y-1">
+                <p class="text-neutral-700 mb-5 text-center">You can change your password for security reasons or reset it if you forget it by entering registered mail id.</p>
+                <form method="POST" action="{{ route('password.email') }}">
+                    @csrf
+                <input type="text" placeholder="Email Address" id="email" name="email" class="flex w-full h-10 px-3 py-6 text-md bg-white border rounded-lg peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50"/>
+                <button class="bg-black text-white py-4 px-5 mt-2 w-full rounded-lg" type="submit">Send password reset link</button>
+                </form>
+            </div>
+          </div>
+        <div class="mt-5 text-center">
+            @error('email')
+                                <span class="invalid-feedback font-ligh text-sm text-red-600" role="alert">
+                                    <div>{{ $message }}</div>
+                                </span>
+                            @enderror
             @if (session('status'))
-                        <div class="alert alert-success" role="alert">
+                        <div class="text-sm text-green-600" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
-            <div class="row align-items-center justify-content-between o-hidden">
-              <div class="col-md-6 order-sm-2 mb-5 mb-sm-0" >
-                <img src="{{asset('assets/img/forgot-your-password@2x.png')}}" alt="Image">
-              </div>
-              <div class="col-md-6 pr-xl-5 order-sm-1">
-                <h1 class="display-5 pb-3">Change or reset your password</h1>
-                <p class="lead">You can change your password for security reasons or reset it if you forget it by entering registered mail id.</p>
-                {{-- <a href="https://mail.google.com/mail/#search/from%3Acodekaro+in%3Aanywhere" class="btn btn-primary">Open Inbox</a> --}}
-                <form method="POST" action="{{ route('password.email') }}">
-                    @csrf
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                          <div class="form-floating ">
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="full name">
-                            @error('email')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                            <label for="email">Email</label>
-                          </div>
-                          <button type="submit" class="btn btn-primary mt-2">
-                            {{ __('Send Password Reset Link') }}
-                        </button>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group row mb-0">
-                        <div class="">
-                            
-                        </div>
-                    </div>
-                </form>
-                      
-                </div>
-              </div>
-            </div>
         </div>
-      </div>
-    </div>
-  </section>
-  
+          </div>
+          
+        </div>
+      </main>
+
+</section>
 @endsection
