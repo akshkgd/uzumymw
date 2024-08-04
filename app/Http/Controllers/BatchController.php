@@ -10,6 +10,7 @@ use App\BatchTopics;
 use App\Batch;
 use App\User;
 use App\Feedback;
+use Illuminate\Support\Facades\Http;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 class BatchController extends Controller
@@ -76,6 +77,13 @@ class BatchController extends Controller
         $batch->desc = $request->desc;
         $batch->meetingLink = $request->meetingLink;
         $batch->save();
+        // whatsApp
+        $enrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->get();
+        foreach ($enrollments as $enrollment) {
+            if($enrollment->students->mobile != null)
+            $this->sendLiveclassWhatsappReminder($enrollment, $batch);
+        }
+    
         // telegram 
         if($batch->telegramBroadcast){
             
@@ -105,6 +113,28 @@ class BatchController extends Controller
         
         return redirect()->back();
         
+    }
+
+    private function sendLiveclassWhatsappReminder($id, $batch){
+            $pabblyWebhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTY0MDYzMjA0MzQ1MjY0NTUzZDUxM2Ii_pc';
+            $enrollment = CourseEnrollment::findOrFail($id);
+            $name = $enrollment->students->name;
+            $email = $enrollment->students->email;
+            $batchName = $enrollment->batch->name; 
+            $user = $enrollment->students;
+            $topic = $batch->topic;
+            $link = $batch->link;
+            $data = [
+                'firstName' => strtok($name, ' '),
+                'email' => $email,
+                'phone' => $user->mobile,
+                'batchName' => $batchName,
+                'link' => $link,
+                'topic'=> $topic,
+    
+                // Add any other data you want to send to the Zapier webhook
+            ];
+            $response = Http::post($pabblyWebhookUrl, $data);
     }
     public function myClasses()
     {
