@@ -135,7 +135,7 @@ class CourseEnrollmentController extends Controller
         $id = Crypt::decrypt($id);
         $enrollment = CourseEnrollment::findorFail($id);
         $batchId = Batch::findorFail($enrollment->batchId);
-        $this->sendOrderIdToPabbly($enrollment, $batchId);
+        // $this->sendOrderIdToPabbly($enrollment, $batchId);
         
         if (Auth::user()->id == $enrollment->userId && $enrollment->hasPaid == 0) {
             // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
