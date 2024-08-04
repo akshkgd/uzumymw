@@ -81,7 +81,7 @@ class BatchController extends Controller
         $enrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->get();
         foreach ($enrollments as $enrollment) {
             if($enrollment->students->mobile != null)
-            $this->sendLiveclassWhatsappReminder($enrollment, $batch);
+            $this->sendLiveclassWhatsappReminder($enrollment->id, $batch);
         }
     
         // telegram 
