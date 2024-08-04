@@ -83,7 +83,7 @@ public function grantAccess(Request $request)
             throw new \Exception('Payment data or notes not found in webhook request.');
         }
         $enrollment = CourseEnrollment::findorFail($notes['enrollmentId']);
-        $sendPabbly = $this->sendPabbly($enrollment->id, $paymentData['amount']);
+        // $sendPabbly = $this->sendPabbly($enrollment->id, $paymentData['amount']);
 
         if (!$enrollment) {
             throw new \Exception('Course enrollment not found.');
