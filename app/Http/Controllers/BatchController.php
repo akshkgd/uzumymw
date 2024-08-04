@@ -123,7 +123,7 @@ class BatchController extends Controller
             $batchName = $enrollment->batch->name; 
             $user = $enrollment->students;
             $topic = $batch->topic;
-            $link = $batch->link;
+            $link = $batch->meetingLink;
             $data = [
                 'firstName' => strtok($name, ' '),
                 'email' => $email,
