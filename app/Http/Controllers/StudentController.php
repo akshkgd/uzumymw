@@ -153,9 +153,7 @@ class StudentController extends Controller
     }
     public function fff(){
         $session = \DB::table('sessions')
-        ->where('ip_address', '223.233.84.0')
-        ->latest('last_activity')
-        ->first(['user_id', 'last_activity']);
+        ->where('ip_address', '223.233.84.0')->get();
         dd($session);
     }
     public function sessions()
