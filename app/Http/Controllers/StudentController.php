@@ -151,7 +151,13 @@ class StudentController extends Controller
     public function joinClass(){
 
     }
-
+    public function fff(){
+        $session = \DB::table('sessions')
+        ->where('ip_address', '223.233.84.0')
+        ->latest('last_activity')
+        ->first(['user_id', 'last_activity']);
+        dd($session);
+    }
     public function sessions()
     {
         $devices = \DB::table('sessions')

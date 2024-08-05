@@ -39,13 +39,14 @@ width: 100% !important;
 {{ Illuminate\Mail\Markdown::parse($slot) }}
 
 {{ $subcopy ?? '' }}
+{{ $footer ?? '' }}
 </td>
 </tr>
 </table>
 </td>
 </tr>
 
-{{ $footer ?? '' }}
+{{-- {{ $footer ?? '' }} --}}
 </table>
 </td>
 </tr>

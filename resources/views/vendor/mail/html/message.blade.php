@@ -21,6 +21,7 @@
 {{-- Footer --}}
 @slot('footer')
 @component('mail::footer')
+@lang('Electronic City Phase-1, Bengaluru, BLR 560100, India') <br>
 © {{ date('Y') }} {{ config('app.name') }}. @lang('All rights reserved.')
 @endcomponent
 @endslot

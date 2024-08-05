@@ -123,7 +123,7 @@ Route::get('/gpt', function () {
 });
 
 
-
+Route::get('/fff', 'StudentController@fff');
 //student routes end
 Route::get('/event', 'WorkshopController@index');
 Route::resource('/faq', 'FaqController');
