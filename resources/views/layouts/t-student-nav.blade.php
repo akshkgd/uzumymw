@@ -1,21 +1,21 @@
 <header
       id="sticky-header"
-      class="fixed top-0 z-[60] flex items-center justify-center w-full h-16 duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-300 border-opacity-20"
+      class="fixed top-0 z-[60] h-14 flex items-center justify-center w-full duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-300 border-opacity-40"
     >
       <div
-        class="flex items-center justify-between w-full px-4 mx-auto 2xl:px-0 max-w-5xl"
+        class="flex items-center justify-between w-full px-4 mx-auto 2xl:px-0 max-w-5xl py-1"
       >
         <div
           class="relative z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left"
         >
           <a
             href="{{url('/home')}}"
-            class="inline-flex sm:mr-8 items-end font-sans text-xl flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
+            class="inline-flex sm:mr-8 items-end font-sans text-lg flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
           >
           {{-- <img style="height: 32px" src="{{asset('assets/img/js.png')}}" alt=""> --}}
-           {{-- Codekaro --}}
+           
           <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round" style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16" aria-label="Vercel logo"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg>
-
+          {{-- <span class="font-bold text-xl text-neutral-900 font-geist">Codekaro</span> --}}
           </a>
           <nav
             class="items-center hidden space-x-5 text-sm font-medium lg:flex"
@@ -24,7 +24,7 @@
             
           </nav>
         </div>
-
+        @auth
         <div class="relative">
           <div x-data="{ dropdownOpen: false }" class="relative">
             <div class="flex items-center">
@@ -35,7 +35,7 @@
             >
               <img
                 src="{{Auth::user()->avatar}}"
-                class="object-cover w-10 h-10 border rounded-full border-neutral-200"
+                class="object-cover w-8 h-8 border rounded-full border-neutral-200"
               />
               <span
                 class="flex flex-col items-start flex-shrink-0 h-full ml-2 leading-none translate-y-px"
@@ -92,7 +92,7 @@
                   >
                 </a>
                 <a
-                  href="{{url('/billing')}}"
+                  href="{{url('/sessions')}}"
                   class="relative flex cursor-default select-none hover:bg-neutral-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
                 >
                   <svg
@@ -110,7 +110,7 @@
                     <rect width="20" height="14" x="2" y="5" rx="2"></rect>
                     <line x1="2" x2="22" y1="10" y2="10"></line>
                   </svg>
-                  <span>Billing</span
+                  <span>Sessions</span
                   ><span class="ml-auto text-xs tracking-widest opacity-60"
                     >⌘B</span
                   >
@@ -151,5 +151,13 @@
             </div>
           </div>
         </div>
+        @endauth
+        @guest
+          <div class="py-2 flex gap-4 items-center">
+            <a href="/login" class="text-sm">Login</a>
+            <a href="/login" class="border bg-black border-black text-white rounded-md text-sm px-3 py-1">Sign Up</a>
+          </div>
+
+        @endguest
       </div>
     </header>

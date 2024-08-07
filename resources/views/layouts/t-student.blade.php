@@ -15,16 +15,16 @@
       [x-cloak] {
         display: none;
       }
-      @font-face {
+      /* @font-face {
       font-family: 'Geist-Regular';
       src: url('path/to/Geist-Regular.woff2') format('woff2');
-      }
+      } */
       body{
         font-family: 'Geist-Regular', sans-serif !important;
       }
     </style>
   </head>
-  <body class="font-geist">
+  <body class="font-sans">
     
     @yield('content')
 
@@ -35,7 +35,7 @@
       >
         
         
-        <p class="mt-8 text-base leading-6 text-center text-gray-400">
+        <p class="mt-8 text-base leading-6 text-center text-neutral-600">
           &copy; 2024 Codekaro All rights reserved.
         </p>
       </div>

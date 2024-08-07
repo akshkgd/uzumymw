@@ -28,7 +28,7 @@
     <div id="main">
     <header
       id="sticky-header"
-      class="fixed top-0 z-[60] flex items-center justify-center w-full h-16 duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-300 border-opacity-20"
+      class="fixed top-0 z-[60] flex items-center justify-center w-full h-14 duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-300 border-opacity-20"
     >
       <div
         class="flex items-center justify-between w-full px-4 mx-auto 2xl:px-0 max-w-5xl"
@@ -275,19 +275,33 @@
   
       <div class="sm:mx-auto sm:w-full sm:max-w-md text-cente">
         
-        <h2 class="text-cente text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">Welcome to {{$enrollment->batch->name}}</h2>
-        <p class="bg-white text-sm  text-gray-500">The new player is still under development and may behave differently! It will be resolved by 2nd April.</p>
+        <h2 class="text-cente text-xl -mt-1 font-semibold leading-9 tracking-tight text-gray-900">Welcome to {{$enrollment->batch->name}}</h2>
+        <p class="bg-white text-s  text-gray-800">The new player is still under development and may behave differently! It will be resolved by 2nd April.</p>
         <div class="mt-12 text-center">
           
           <div class="flex gap-2 items-center justify-cente">
           
             
-          <div class="text-left">
+          
+          @php
+            $nextClassDate = \Carbon\Carbon::parse($enrollment->batch->nextClass);
+            $today = \Carbon\Carbon::today();
+          @endphp
+          @if($nextClassDate->lessThanOrEqualTo($today))
+            <div class="sm:flex text-left  items-center gap-2">
+            <div class="mt-2 sm:mt-0">
+            <p class="text-red-600 ">No upcoming live class</p>
+            <p class="text-neutral-700 text-s">You will be notified via email and WhatsApp when the new live class is scheduled.</p>
+            </div>
+            </div>
+            @else
+{{-- <div class="text-left">
             <div class="bg-blue-100 inline-block text-blue-600 px-2 py-1 text-sm mb-3">Upcoming live class</div>
             <h2 class="font-semibold text-lg text-gray-800 m-0 ">Onboarding Call</h2>
             <p class="text-sm text-neutral-600 font-light">Sat, 3rd Aug 2024 at 07:00 PM GMT+05:30</p>
-          </div>
-          {{-- <a href="" class="bg-violet-600 py-2 px-5 rounded text-white">Join Now</a> --}}
+          </div> --}}
+            @endif
+         
         </div>
         <div class="flex justify-center gap-2 hidden">
           <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Complete your onboarding</a>

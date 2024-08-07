@@ -14,21 +14,21 @@
                         <h2 class="text-2xl font-semibold leading-9 tracking-tight text-gray-900">
                             <span id="time"></span> <span>{{ Auth::user()->name }}!</span>
                         </h2>
-                        <p class="text-neutral-500">Continue your full stack cohort.</p>
+                        <p class="text-neutral-500 -mt-1">Continue your learning</p>
                     </div>
                     <div class="mt-8 px-4">
                         @foreach ($enrollments as $enrollment)
-                            <div class="sm:w-[750px] w-full mx-auto border border-gray-200 rounded-2xl mb-8">
+                            <div class="sm:w-[750px] bg-orang-50 w-full mx-auto border border-neutral-200 rounded-2xl mb-8">
                                 <div class="p-4">
                                     <div class="flex-auto">
-                                        <p class="text-xl font-medium leading-6 text-gray-900">
+                                        <p class="text-lg font-medium leading-6 text-gray-900">
                                             {{ $enrollment->batch->name }}
                                         </p>
                                         <p class="mt- truncate text-sm leading-5 text-gray-500">
-                                            By Ashish Shukla
+                                            1 year access
                                         </p>
 
-                                        <p class="mt-3">1 year access</p>
+                                        {{-- <p class="mt-3">1 year access</p> --}}
                                     </div>
 
                                     <!-- <div class="flex flex-col sm:flex-row gap-x-5 my-2">
@@ -63,72 +63,13 @@
                                                 {{-- <a href="{{ action('BatchController@batchDetails', Crypt::encrypt($enrollment->id)) }}"
                                                     class="inline-block  items-center justify-center px-[30px] py-[12px] text-[15px] transition-colors duration-200 bg-white border rounded-[10px] border-neutral-300 text-neutral-700 hover:text-neutral-950 hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline">Details</a> --}}
                                             </div>
-                                            <!-- <button @click="modalOpen=true" class="inline-flex items-center justify-center gap-x-2 px-[30px] py-[10px] text-[15px] transition-colors duration-200 bg-orange-50 border rounded-[10px] border-orange-400 text-neutral-950 hover:text-neutral-950 hover:bg-orange-100 active:bg-white focus:bg-orange-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-200/60 focus:shadow-outline"><img src="fsd.svg" class="h-5" alt="" />
-                            <span>Upgrade to Fullstack</span></button> -->
-                                            @if ($enrollment->batch->topicId == 11)
-                                                <div x-data="{ modalOpen: false }" @keydown.escape.window="modalOpen = false"
-                                                    :class="{ 'z-40': modalOpen }" class="relative w-auto h-auto">
-                                                    <button @click="modalOpen=true"
-                                                        class="inline-flex items-center justify-center gap-x-2 px-[30px] py-[12px] text-[15px] transition-colors duration-200 bg-orange-50 border rounded-[10px] border-orange-400 text-neutral-950 hover:text-neutral-950 hover:bg-orange-100 active:bg-white focus:bg-orange-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-200/60 focus:shadow-outline"><img
-                                                            src="fsd.svg" class="h-5" alt="" />
-                                                        <span>Upgrade to Fullstack</span></button>
-                                                    <template x-teleport="body">
-                                                        <div x-show="modalOpen"
-                                                            class="fixed top-0 left-0 z-[99] flex items-center justify-center w-screen h-screen"
-                                                            x-cloak>
-                                                            <div x-show="modalOpen" x-transition:enter="ease-out duration-300"
-                                                                x-transition:enter-start="opacity-0"
-                                                                x-transition:enter-end="opacity-100"
-                                                                x-transition:leave="ease-in duration-300"
-                                                                x-transition:leave-start="opacity-100"
-                                                                x-transition:leave-end="opacity-0" @click="modalOpen=false"
-                                                                class="absolute inset-0 w-full h-full bg-white backdrop-blur-sm bg-opacity-70">
-                                                            </div>
-                                                            <div x-show="modalOpen" x-trap.inert.noscroll="modalOpen"
-                                                                x-transition:enter="ease-out duration-300"
-                                                                x-transition:enter-start="opacity-0 -translate-y-2 sm:scale-95"
-                                                                x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                                                                x-transition:leave="ease-in duration-200"
-                                                                x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
-                                                                x-transition:leave-end="opacity-0 -translate-y-2 sm:scale-95"
-                                                                class="relative w-full py-6 bg-white border shadow-lg px-7 border-neutral-200 sm:max-w-lg sm:rounded-xl">
-                                                                <div class="flex items-center justify-between pb-3 text-center">
-                                                                    <!-- <h3 class="text-lg font-semibold">Upgrade to fullstack!</h3> -->
-                                                                    <!-- <button @click="modalOpen=false" class="absolute top-0 right-0 flex items-center justify-center w-8 h-8 mt-5 mr-5 text-gray-600 rounded-full hover:text-gray-800 hover:bg-gray-50">
-                                  <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
-                              </button> -->
-                                                                </div>
-                                                                <div class="flex justify-center">
-                                                                    <img src="{{ asset('assets/img/fsd.svg') }}"
-                                                                        class="h-16 mb-3" alt="">
-                                                                </div>
-                                                                <div class="relative w-auto pb-8 text-center">
-                                                                    <p class="text-lg font-semibold">Upgrade to fullstack today
-                                                                        at Rs 5999/-</p>
-                                                                    <p class="font-light text-neutral-600 text-sm mt-3">This is
-                                                                        a one time offer valid till 5th of February. The same
-                                                                        offer will not be available under any circumstances.</p>
-                                                                </div>
-                                                                <div
-                                                                    class="flex flex-col-reverse sm:flex-row sm:justify-center sm:space-x-2 text-center">
-                                                                    <button @click="modalOpen=false" type="button"
-                                                                        class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-medium transition-colors border rounded-md focus:outline-none focus:ring-2 focus:ring-neutral-100 focus:ring-offset-2">No
-                                                                        thanks</button>
-                                                                    <button @click="modalOpen=false" type="button"
-                                                                        class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-medium text-white transition-colors border border-transparent rounded-md focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2 bg-neutral-950 hover:bg-neutral-900">Upgrade
-                                                                        Now</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </template>
-                                                </div>
-                                            @endif
+                                            
                                         </div>
                                     @endif
                                 </div>
                                 @if ($enrollment->batch->type == 2 && $enrollment->batch->status < 2)
                                     <div class="border-t border-gray-200"></div>
-                                    <div class="p-4">
+                                    <div class="p-4 ">
                                         <div class="flex-auto">
                                             <p class="text-lg font-medium leading-6 text-gray-900">
                                                 Upcoming: {{ $enrollment->batch->topic }}
@@ -151,27 +92,43 @@
                                     </div>
                                 @elseif($enrollment->batch->type == 1)
                                     <div class="border-t border-gray-200"></div>
-                                    <div class="p-4">
-                                        <div class="flex-auto">
-                                            <p class="text-lg font-medium leading-6 text-gray-900">
-                                                Upcoming: {{ $enrollment->batch->topic }}
-                                            </p>
+                                    @php
+                                        $nextClassDate = \Carbon\Carbon::parse($enrollment->batch->nextClass);
+                                        $today = \Carbon\Carbon::today();
+                                    @endphp
+                                    @if($nextClassDate->lessThanOrEqualTo($today))
+                                    <div class="p-4 sm:flex  items-center gap-2">
+                                        <svg data-testid="geist-icon" fill="none" height="40" viewBox="0 0 36 36" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M32.5 19V18V8.5C32.5 5.73858 30.2614 3.5 27.5 3.5H8.5C5.73858 3.5 3.5 5.73858 3.5 8.5V27.5C3.5 30.2614 5.73858 32.5 8.5 32.5H20.5" fill="var(--store-kv-tertiary)" stroke="var(--store-kv-secondary)" stroke-linecap="round" stroke-width="1.25"></path><rect fill="var(--store-kv-secondary)" fill-opacity="0.15" height="7.55235" rx="0.5" stroke="var(--store-kv-secondary)" stroke-width="1.15" transform="rotate(13.8524 20.67 7.67203)" width="7.55235" x="20.67" y="7.67203"></rect><path d="M9.98777 11.9827C10.0546 11.6036 10.5067 11.439 10.8016 11.6865L17.4357 17.2532C17.7306 17.5006 17.647 17.9744 17.2853 18.106L9.14735 21.068C8.78566 21.1997 8.4171 20.8904 8.48394 20.5113L9.98777 11.9827Z" fill="var(--store-kv-secondary)" fill-opacity="0.1" stroke="var(--store-kv-secondary)" stroke-width="1.15"></path><path clip-rule="evenodd" d="M21.6581 20.1504C21.0631 20.502 20.7235 20.908 20.7235 21.3405V28.9945C20.6495 28.9982 20.5749 29 20.5 29C18.0147 29 16 26.9853 16 24.5C16 22.0147 18.0147 20 20.5 20C20.9004 20 21.2886 20.0523 21.6581 20.1504Z" fill="var(--store-kv-secondary)" fill-opacity="0.1" fill-rule="evenodd" stroke="var(--store-kv-secondary)" stroke-width="1.15"></path><path d="M28.0265 18.9C24.0078 18.9 20.75 19.9859 20.75 21.3255V26.985V32.6445C20.75 33.9866 23.984 35.07 28.0265 35.07C32.069 35.07 35.303 33.9866 35.303 32.6445V26.985V21.3255C35.303 19.9859 32.0452 18.9 28.0265 18.9Z" fill="var(--geist-background)"></path><path d="M35.303 21.3255C35.303 22.6651 32.0452 23.751 28.0265 23.751C24.0078 23.751 20.75 22.6651 20.75 21.3255M35.303 21.3255C35.303 19.9859 32.0452 18.9 28.0265 18.9C24.0078 18.9 20.75 19.9859 20.75 21.3255M35.303 21.3255V32.6445M35.303 21.3255V26.985M20.75 21.3255V32.6445M20.75 21.3255V26.985M35.303 26.985C35.303 28.3271 32.069 29.4105 28.0265 29.4105C23.984 29.4105 20.75 28.3271 20.75 26.985M35.303 26.985V32.6445M20.75 26.985V32.6445M20.75 32.6445C20.75 33.9866 23.984 35.07 28.0265 35.07C32.069 35.07 35.303 33.9866 35.303 32.6445" stroke="var(--store-kv-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"></path></svg>
+                                        <div class="mt-2 sm:mt-0">
+                                            <p class="text-red-600">No upcoming live class</p>
+                                        <p class="text-neutral-600 text-sm -mt-1">You will be notified via email and WhatsApp when the new live class is scheduled.</p>
                                         </div>
-
-                                        <div class="mb-5">
-                                            <p class="">
-                                                {{ Carbon\Carbon::parse($enrollment->batch->nextClass)->format('D, d M Y') }}
-                                                {{ Carbon\Carbon::parse($enrollment->batch->nextClass)->format('h:i A') }} </p>
-                                        </div>
-                                        <div class="flex flex-col sm:flex-row gap-3">
-                                            <div class=" sm:flex">
-                                                <a href="{{ $enrollment->batch->meetingLink }}"
-                                                    class="inline-block items-center justify-center px-[30px] py-[12px] text-[15px] transition duration-200 bg-neutral-200 border rounded-[10px] border-transparent text-neutral-950 hover:text-neutral-950 hover:bg-white hover:border-neutral-300 active:bg-white focus:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline">
-                                                    Join Live Session
-                                                </a>
+                                    </div>
+                                    @else
+                                    <div>
+                                        <div class="p-4">
+                                            <div class="flex-auto">
+                                                <p class="text-lg font-medium leading-6 text-gray-900">
+                                                    Upcoming: {{ $enrollment->batch->topic }}
+                                                </p>
+                                            </div>
+    
+                                            <div class="mb-5">
+                                                <p class="">
+                                                    {{ Carbon\Carbon::parse($enrollment->batch->nextClass)->format('D, d M Y') }}
+                                                    {{ Carbon\Carbon::parse($enrollment->batch->nextClass)->format('h:i A') }} </p>
+                                            </div>
+                                            <div class="flex flex-col sm:flex-row gap-3">
+                                                <div class=" sm:flex">
+                                                    <a href="{{ $enrollment->batch->meetingLink }}"
+                                                        class="inline-block items-center justify-center px-[30px] py-[12px] text-[15px] transition duration-200 bg-neutral-200 border rounded-[10px] border-transparent text-neutral-950 hover:text-neutral-950 hover:bg-white hover:border-neutral-300 active:bg-white focus:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-200/60 focus:shadow-outline">
+                                                        Join Live Session
+                                                    </a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    @endif
                                 @endif
                             </div>
                         @endforeach
