@@ -92,6 +92,7 @@
                                     </div>
                                 @elseif($enrollment->batch->type == 1)
                                     <div class="border-t border-gray-200"></div>
+                                   
                                     @php
                                         $nextClassDate = \Carbon\Carbon::parse($enrollment->batch->nextClass);
                                         $today = \Carbon\Carbon::today();
@@ -100,8 +101,8 @@
                                     <div class="p-4 sm:flex  items-center gap-2">
                                         <svg data-testid="geist-icon" fill="none" height="40" viewBox="0 0 36 36" width="40" xmlns="http://www.w3.org/2000/svg"><path d="M32.5 19V18V8.5C32.5 5.73858 30.2614 3.5 27.5 3.5H8.5C5.73858 3.5 3.5 5.73858 3.5 8.5V27.5C3.5 30.2614 5.73858 32.5 8.5 32.5H20.5" fill="var(--store-kv-tertiary)" stroke="var(--store-kv-secondary)" stroke-linecap="round" stroke-width="1.25"></path><rect fill="var(--store-kv-secondary)" fill-opacity="0.15" height="7.55235" rx="0.5" stroke="var(--store-kv-secondary)" stroke-width="1.15" transform="rotate(13.8524 20.67 7.67203)" width="7.55235" x="20.67" y="7.67203"></rect><path d="M9.98777 11.9827C10.0546 11.6036 10.5067 11.439 10.8016 11.6865L17.4357 17.2532C17.7306 17.5006 17.647 17.9744 17.2853 18.106L9.14735 21.068C8.78566 21.1997 8.4171 20.8904 8.48394 20.5113L9.98777 11.9827Z" fill="var(--store-kv-secondary)" fill-opacity="0.1" stroke="var(--store-kv-secondary)" stroke-width="1.15"></path><path clip-rule="evenodd" d="M21.6581 20.1504C21.0631 20.502 20.7235 20.908 20.7235 21.3405V28.9945C20.6495 28.9982 20.5749 29 20.5 29C18.0147 29 16 26.9853 16 24.5C16 22.0147 18.0147 20 20.5 20C20.9004 20 21.2886 20.0523 21.6581 20.1504Z" fill="var(--store-kv-secondary)" fill-opacity="0.1" fill-rule="evenodd" stroke="var(--store-kv-secondary)" stroke-width="1.15"></path><path d="M28.0265 18.9C24.0078 18.9 20.75 19.9859 20.75 21.3255V26.985V32.6445C20.75 33.9866 23.984 35.07 28.0265 35.07C32.069 35.07 35.303 33.9866 35.303 32.6445V26.985V21.3255C35.303 19.9859 32.0452 18.9 28.0265 18.9Z" fill="var(--geist-background)"></path><path d="M35.303 21.3255C35.303 22.6651 32.0452 23.751 28.0265 23.751C24.0078 23.751 20.75 22.6651 20.75 21.3255M35.303 21.3255C35.303 19.9859 32.0452 18.9 28.0265 18.9C24.0078 18.9 20.75 19.9859 20.75 21.3255M35.303 21.3255V32.6445M35.303 21.3255V26.985M20.75 21.3255V32.6445M20.75 21.3255V26.985M35.303 26.985C35.303 28.3271 32.069 29.4105 28.0265 29.4105C23.984 29.4105 20.75 28.3271 20.75 26.985M35.303 26.985V32.6445M20.75 26.985V32.6445M20.75 32.6445C20.75 33.9866 23.984 35.07 28.0265 35.07C32.069 35.07 35.303 33.9866 35.303 32.6445" stroke="var(--store-kv-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.25"></path></svg>
                                         <div class="mt-2 sm:mt-0">
-                                            <p class="text-red-600">No upcoming live class</p>
-                                        <p class="text-neutral-600 text-sm -mt-1">You will be notified via email and WhatsApp when the new live class is scheduled.</p>
+                                            <p class="text-neutral-800">No upcoming live class</p>
+                                        <p class="text-neutral-600 text-sm -mt-1">You will be notified when class is scheduled.</p>
                                         </div>
                                     </div>
                                     @else

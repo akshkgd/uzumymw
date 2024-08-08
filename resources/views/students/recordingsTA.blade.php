@@ -276,7 +276,7 @@
       <div class="sm:mx-auto sm:w-full sm:max-w-md text-cente">
         
         <h2 class="text-cente text-xl -mt-1 font-semibold leading-9 tracking-tight text-gray-900">Welcome to {{$enrollment->batch->name}}</h2>
-        <p class="bg-white text-s  text-gray-800">The new player is still under development and may behave differently! It will be resolved by 2nd April.</p>
+        <p class="bg-white text-s  text-gray-800">{{$enrollment->batch->desc}}</p>
         <div class="mt-12 text-center">
           
           <div class="flex gap-2 items-center justify-cente">
@@ -295,11 +295,11 @@
             </div>
             </div>
             @else
-{{-- <div class="text-left">
+            <div class="text-left">
             <div class="bg-blue-100 inline-block text-blue-600 px-2 py-1 text-sm mb-3">Upcoming live class</div>
             <h2 class="font-semibold text-lg text-gray-800 m-0 ">Onboarding Call</h2>
             <p class="text-sm text-neutral-600 font-light">Sat, 3rd Aug 2024 at 07:00 PM GMT+05:30</p>
-          </div> --}}
+          </div>
             @endif
          
         </div>
