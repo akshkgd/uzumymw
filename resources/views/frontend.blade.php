@@ -630,7 +630,7 @@ modal.show()
                                        
                                                                             <div class="">
                                         
-                                            <a href="{{url('/enroll/86')}}" id="" class="btn btn-dark w-100 py-3 fw-light ck-rounded mb-3">Join bootcamp at 4999/-</a>
+                                            <a href="{{url('/enroll/86')}}" id="" class="btn btn-dark w-100 py-3 fw-light ck-rounded mb-3">Join bootcamp at 14999/-</a>
                                             <div class="text-center small" style="color: red">Once the timer hits zero, pricing will be increased to 24999.00/-</div>
                                         
                                         </div>
