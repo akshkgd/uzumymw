@@ -102,7 +102,7 @@
                                         <div x-data="{ id: $id('accordion') }" :class="{ 'text-neutral-900': activeAccordion==id, 'text-neutral-600 hover:text-blue-600': activeAccordion!=id }" class="cursor-pointer group">
                                             
                                             <button @click="setActiveAccordion(id)" class="flex items-center justify-between text-md w-full py-4 px-2 pb-1 text-left select-none">
-                                                <span style="font-size: 16px">{{ $section->name }}</span>
+                                                <span class="text-md text-black font-normal">{{ $section->name }}</span>
                                                 <svg class="w-5 h-5 duration-300 ease-out" :class="{ '-rotate-[45deg]': activeAccordion==id }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" /></svg>
                                             </button>
                                             @foreach ($section->chapters as $c)
