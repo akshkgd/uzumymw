@@ -80,9 +80,10 @@
           <h2 class="text-center text-2xl mt-3 font-bold leading-9 tracking-tight text-gray-900">Welcome to the frontend cohort!</h2>
     
           
-          <p class="bg-white text-sm px-6 text-gray-700 text-center">Congratulations on joining the frontend cohort. The classes will start from 3rd August. <span class="text-blue-600">Book your 1:1 intensive discovery call to see if we can help you achieve your goals faster.</span></p>
+          <p class="bg-white text-sm px-6 text-gray-700 text-center">Congratulations on joining the frontend cohort. The classes will start from 21st September.
+           <div class="text-blue-600">Apply for Alpha club (1:1 mentorship program) to see if we can help you achieve your goals faster.</div></p>
           <div class="text-center flex gap-2 justify-center">
-            <a href="https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish" class="bg-black text-white px-5 py-3 rounded-lg inline-block mt-6">Book 1:1 Intensive Discovery Call</a>
+            <a href="https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish" class="bg-black text-white px-5 py-3 rounded-lg inline-block mt-6">Apply forAlpha Club</a>
             
 
           </div>
