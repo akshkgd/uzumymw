@@ -83,7 +83,7 @@
           <p class="bg-white text-sm px-6 text-gray-700 text-center">Congratulations on joining the frontend cohort. The classes will start from 21st September.
            <div class="text-blue-600 text-center mt-3">Apply for Alpha club (1:1 mentorship program) to see if we can help you achieve your goals faster.</div></p>
           <div class="text-center flex gap-2 justify-center">
-            <a href="https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish" class="bg-black text-white px-5 py-3 rounded-lg inline-block mt-6">Apply forAlpha Club</a>
+            <a href="https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish" class="bg-black text-white px-5 py-3 rounded-lg inline-block mt-6">Apply for Alpha Club</a>
             
 
           </div>
