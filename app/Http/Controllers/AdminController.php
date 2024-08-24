@@ -11,6 +11,7 @@ use App\User;
 use App\Workshop;
 use App\Feedback;
 use App\BatchTopics;
+use App\CourseProgress;
 use App\CourseEnrollment;
 use App\WorkshopEnrollment;
 use Razorpay\Api\Api;
@@ -372,7 +373,10 @@ class AdminController extends Controller
         session()->flash('alert-danger', 'Batch Added');
         return redirect('/home');
     }
-
+    public function fetchCourseProgress(){
+        $courseProgress = CourseProgress::orderBy('lastAccess', 'desc')->get();
+        return view('admin.courseProgressTable', compact('courseProgress'));
+    }
     public function addCourseAccess(Request $request){
             $user = User::where('email', $request->email)->first();
             $enrollment = CourseEnrollment::where('batchId', $request->batchId)->where('userId', $user->id)->first();
