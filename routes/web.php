@@ -172,6 +172,7 @@ Route::get('/certificate', function(){
 
     return view('students.certificate', compact('certificate', 'batch'));
 });
+Route::post('/update-time-spent', 'StudentController@updateTimeSpent')->name('update.timeSpent');
 
 
 // Route::get('payment-razorpay', 'PaymentController@create')->name('paywithrazorpay');
@@ -234,6 +235,7 @@ Route::get('/admin/add-access', 'AdminController@addAccess');
 Route::post('/get-email-suggestions', 'AdminController@getUser')->name('getUser');
 Route::post('/add-access', 'AdminController@addCourseAccess')->name('addAccess');
 Route::get('/admin/course-progress', 'AdminController@fetchCourseProgress');
+
 
 
 

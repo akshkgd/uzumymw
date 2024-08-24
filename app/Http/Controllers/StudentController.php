@@ -170,11 +170,56 @@ class StudentController extends Controller
             $progress->batchId = $enrollment->batchId;
             $progress->contentId = $chapterId;
             $progress->visited = 1;
+            $progress->timespent = 0;
             $progress->firstAccess = now();
             $progress->lastAccess = now();
             $progress->save();
         }
     }
+    // In VideoController.php
+public function updateTimeSpent(Request $request)
+{
+    $videoId = intval($request->input('videoId'));
+    $batchId = intval($request->input('batchId'));
+
+    \Log::info('Incoming request to update time spent', [
+        'videoId' => $request->input('videoId'),
+        'batchId' => $request->input('batchId'),
+    ]);
+
+    // Find or create the course progress record for the user and video
+    try {
+    // $courseProgress = CourseProgress::where('userId', $userId)
+    //     ->where('contentId', $videoId)->where('batchId', $batchId)
+    //     ->first();
+
+        $courseProgress = CourseProgress::where('userId', Auth::user()->id)
+        ->where('batchId', $batchId)
+        ->where('contentId', $videoId)
+        ->first();
+
+    if ($courseProgress) {
+        // $courseProgress->timeSpent = $courseProgress->timeSpent ?? 0;
+        $courseProgress->timeSpent += 1;
+        $courseProgress->lastAccess = now();
+        $courseProgress->save();
+    } 
+
+    \Log::info('Incoming request to update time spent', [
+        'videoId' => $request->input('videoId'),
+        'batchId' => $request->input('batchId'),
+        'courseProgress' => $courseProgress
+    ]);
+    
+
+    return response()->json(['status' => 'success']);
+} catch (\Exception $e) {
+    // Log the error for debugging
+    \Log::error('Error updating time spent: ' . $e->getMessage());
+    return response()->json(['status' => 'error', 'message' => 'Failed to update time spent'], 500);
+}
+}
+
 
     public function joinClass(){
 

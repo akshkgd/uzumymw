@@ -25,6 +25,7 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">Course</th>
                                         <th scope="col">Video Watching</th>
+                                        <th scope="col">Time Spent</th>
                                         <th scope="col">Times Visited</th>
                                         <th scope="col">First Access</th>
                                         <th scope="col">Last Access</th>    
@@ -46,6 +47,8 @@
                                             
                                             
                                             <td>{{ $progress->content->title }}</td>
+                                            <td>{{ $progress->timeSpent }}m</td>
+
                                             <td>{{ $progress->visited }}</td>
                                             <td>{{ \Carbon\Carbon::parse($progress->firstAccess)->format('l, h:i A, d F Y') }}</td>
                                             <td>{{ \Carbon\Carbon::parse($progress->lastAccess)->format('l, h:i A, d F Y') }}</td>

@@ -290,8 +290,8 @@
           @if($nextClassDate->lessThanOrEqualTo($today))
             <div class="sm:flex text-left  items-center gap-2">
             <div class="mt-2 sm:mt-0">
-            <p class="text-red-600 ">No upcoming live class</p>
-            <p class="text-neutral-700 text-s">You will be notified via email and WhatsApp when the new live class is scheduled.</p>
+            {{-- <p class="text-red-600 ">No upcoming live class</p>
+            <p class="text-neutral-700 text-s">You will be notified via email and WhatsApp when the new live class is scheduled.</p> --}}
             </div>
             </div>
             @else
@@ -391,6 +391,36 @@
     </div>
     
   </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Function to send AJAX request to the backend
+        function updateTimeSpent() {
+            fetch('{{ route('update.timeSpent') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({
+                    videoId: '{{ $video->id }}',
+                    batchId: '{{ $video->batchId}}' // Include batchId if necessary
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    console.log('Time spent updated successfully.');
+                } else {
+                    console.error('Failed to update time spent.');
+                }
+            })
+            
+        }
+
+        // Call updateTimeSpent every 1 minute (60,000 milliseconds)
+        setInterval(updateTimeSpent, 60000);
+    });
+    </script>
   @else
   <main class=" flex gap-4 justify-center py-12 ">
     <div class="2xl:px-0 max-w-6xl mt-16 ml-[370p">

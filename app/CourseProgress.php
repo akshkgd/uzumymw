@@ -6,6 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseProgress extends Model
 {
+    protected $fillable = [
+        'userId',
+        'batchId',
+        'contentId',
+        'visited',
+        'timeSpent',
+        'progress',
+        'firstAccess',
+        'lastAccess',
+        'status'
+    ];
     Protected $dates = ['firstAccess', 'lastAccess'];
     public function batch(){
 
