@@ -7,6 +7,7 @@ use App\CourseEnrollment;
 use App\BatchContent;
 use App\BatchSection;
 use App\WorkshopEnrollment;
+use App\CourseProgress;
 use Carbon\Carbon;
 use App\Workshop;
 use Illuminate\Support\Facades\Auth;
@@ -101,8 +102,10 @@ class StudentController extends Controller
         }
 
         $enrollment = CourseEnrollment::findOrFail($id);
+        $progress =  $this->updateCourseProgress($enrollment, $chapterId);
 
         if (Auth::user()->id == $enrollment->userId) {
+            
             if ($enrollment->hasPaid == 1) {
                 $content = BatchContent::where('batchId', $enrollment->batchId)->latest()->get();
                 if (!isset($chapterId)) {
@@ -145,6 +148,29 @@ class StudentController extends Controller
         } else {
             session()->flash('alert-danger', 'You are not authorized to view the recordings');
             return redirect()->back();
+        }
+    }
+
+    private function updateCourseProgress($enrollment, $chapterId){
+        $courseProgress = CourseProgress::where('userId', Auth::user()->id)
+        ->where('batchId', $enrollment->batchId)
+        ->where('contentId', $chapterId)
+        ->first();
+
+        if ($courseProgress) {
+            // Update existing progress
+            $courseProgress->visited += 1; // or $courseProgress->visited = $visited; based on your requirement
+            $courseProgress->lastAccess = now();
+            $courseProgress->save();
+        } else {
+            $progress = new CourseProgress;
+            $progress->userId = Auth::user()->id;
+            $progress->batchId = $enrollment->batchId;
+            $progress->contentId = $chapterId;
+            $progress->visited = 1;
+            $progress->firstAccess = now();
+            $progress->lastAccess = now();
+            $progress->save();
         }
     }
 
