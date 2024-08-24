@@ -102,7 +102,9 @@ class StudentController extends Controller
         }
 
         $enrollment = CourseEnrollment::findOrFail($id);
-        $progress =  $this->updateCourseProgress($enrollment, $chapterId);
+        if (!empty($chapterId)) {
+            $progress = $this->updateCourseProgress($enrollment, $chapterId);
+        }
 
         if (Auth::user()->id == $enrollment->userId) {
             
