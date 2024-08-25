@@ -181,10 +181,13 @@ public function updateTimeSpent(Request $request)
 {
     $videoId = intval($request->input('videoId'));
     $batchId = intval($request->input('batchId'));
-
+    $progressPercentage = intval($request->input('progress'));
+    $totalVideoDuration = intval($request->input('duration'));
     \Log::info('Incoming request to update time spent', [
         'videoId' => $request->input('videoId'),
         'batchId' => $request->input('batchId'),
+        'p' => $request->input('progress'),
+        'duration' => $totalVideoDuration,
     ]);
 
     // Find or create the course progress record for the user and video
@@ -200,16 +203,22 @@ public function updateTimeSpent(Request $request)
 
     if ($courseProgress) {
         // $courseProgress->timeSpent = $courseProgress->timeSpent ?? 0;
-        $courseProgress->timeSpent += 1;
-        $courseProgress->lastAccess = now();
+        $courseProgress->timeSpent = ($courseProgress->timeSpent ?? 0) + 1;
+        if($courseProgress->timeSpent > 0 && $totalVideoDuration > 0){
+            $progressPercentage = ($courseProgress->timeSpent / $totalVideoDuration) * 100;
+        }
+        $courseProgress->progress = $progressPercentage;
+        if ($progressPercentage >= 70) {
+            $courseProgress->status = 1;
+        }
         $courseProgress->save();
     } 
 
-    \Log::info('Incoming request to update time spent', [
-        'videoId' => $request->input('videoId'),
-        'batchId' => $request->input('batchId'),
-        'courseProgress' => $courseProgress
-    ]);
+    // \Log::info('Incoming request to update time spent', [
+    //     'videoId' => $request->input('videoId'),
+    //     'batchId' => $request->input('batchId'),
+    //     'courseProgress' => $courseProgress
+    // ]);
     
 
     return response()->json(['status' => 'success']);

@@ -374,10 +374,11 @@
             </div> --}}
 
             <div class="video-containe">
+              <script type="text/javascript" src="//assets.mediadelivery.net/playerjs/player-0.1.0.min.js"></script>
 
                 {{-- <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/20ccfbaf-7651-407d-b12b-a6c072178b35?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div> --}}
                 {{-- <iframe id="vimeoPlayer" src="https://player.vimeo.com/video/{{$video->videoLink}}?autoplay=1&badge=0&amp;autopause=0&amp;quality=720p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Recording CSS Media Queries - 651d75bfe4b0e4a748954b62 (1)"></iframe> --}}
-                <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/{{$video->videoLink}}?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
+                <div style="position:relative;padding-top:56.25%;"><iframe id="bunny-stream-embed" src="https://iframe.mediadelivery.net/embed/200867/{{$video->videoLink}}?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
             </div>
             <div class="my-5">
               <h1 class="text-2xl mt-5  font-extrabold" id="title">{{ $video->title }}</h1>
@@ -392,35 +393,116 @@
     
   </main>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Function to send AJAX request to the backend
-        function updateTimeSpent() {
-            fetch('{{ route('update.timeSpent') }}', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                },
-                body: JSON.stringify({
-                    videoId: '{{ $video->id }}',
-                    batchId: '{{ $video->batchId}}' // Include batchId if necessary
-                })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === 'success') {
-                    console.log('Time spent updated successfully.');
-                } else {
-                    console.error('Failed to update time spent.');
-                }
-            })
-            
+    const player = new playerjs.Player('bunny-stream-embed');
+    
+    let totalDuration = 0;
+    let totalVideoDuration = 0;
+    let lastProgress = 0;
+    let isPlaying = false;
+    let videoProgress = 0;
+    let hasResumed = false;
+    let percentageWatched = {{ $video->userProgress(Auth::user()->id)->progress ?? 0 }};
+    
+    function startVideoAtPercentage(percentageWatched) {
+      console.log('rec', percentageWatched)
+      player.getDuration((duration) => {
+        
+        if (totalDuration > 0) {
+            const startTime =Math.floor((totalDuration* percentageWatched)/100) ;
+            player.setCurrentTime(startTime);
+        } else {
+            console.error('Unable to get video duration.');
         }
+    });
+}
+    
+    
+    player.on('ready', () => {
+        console.log('Ready');
+    });
+    
+    player.on('play', () => {
+        isPlaying = true;
+        if (!hasResumed) {
+          player.getDuration((duration) => {
+          totalDuration = duration;
+          console.log('td', duration)
+        });
+        startVideoAtPercentage(percentageWatched);
 
+        hasResumed = true;
+    }
+    });
+    
+    player.on('pause', () => {
+        isPlaying = false;
+    });
+    
+    player.on('ended', () => {
+        isPlaying = false;
+    });
+    
+    // player.getDuration((duration) => {
+    //     totalDuration = duration;
+    //     totalVideoDuration = duration;
+    // });
+    
+    // Event handler for time updates when the player is playing
+    player.on('timeupdate', (timingData) => {
+        // Get current seconds
+        const currentTime = timingData.seconds;
+    
+        // Calculate progress percentage and round to the nearest 25%
+        const progressPercentage = (currentTime / timingData.duration) * 100;
+        const progressRounded = Math.floor(progressPercentage / 25) * 25;
+    
+        // Log the progress percentage
+        // console.log('Progress Percentage: ' + Math.floor(progressPercentage) + "%");
+        videoProgress = Math.floor(progressPercentage);
+        // Check if progress reached a new 25% milestone and update the progress bar
+        if (progressRounded > lastProgress) {
+            // console.log(`Video progress: ${progressRounded}%`);
+            lastProgress = progressRounded;
+        }
+    });
+    
+    document.addEventListener('DOMContentLoaded', function () {
+        
+        function updateTimeSpent() {
+          if (isPlaying) { // Only send the request if the video is currently playing
+              
+              fetch('{{ route('update.timeSpent') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: JSON.stringify({
+                        videoId: '{{ $video->id }}',
+                        batchId: '{{ $video->batchId }}',
+                        progress: videoProgress,
+                        duration: totalDuration,
+                         // Include batchId if necessary
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'success') {
+                        console.log('Time spent updated successfully.');
+                    } else {
+                        console.error('Failed to update time spent.');
+                    }
+                })
+            }
+        }
+    
         // Call updateTimeSpent every 1 minute (60,000 milliseconds)
-        setInterval(updateTimeSpent, 60000);
+        setInterval(updateTimeSpent, 6000);
     });
     </script>
+    
+    
+    
   @else
   <main class=" flex gap-4 justify-center py-12 ">
     <div class="2xl:px-0 max-w-6xl mt-16 ml-[370p">
