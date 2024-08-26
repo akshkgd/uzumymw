@@ -486,7 +486,7 @@
         }
     
         // Call updateTimeSpent every 1 minute (60,000 milliseconds)
-        setInterval(updateTimeSpent, 600);
+        setInterval(updateTimeSpent, 60000);
     });
     </script>
     
