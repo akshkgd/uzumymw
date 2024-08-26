@@ -397,24 +397,16 @@
     
     let totalDuration = 0;
     let totalVideoDuration = 0;
+    let currentDuration = 0;
     let lastProgress = 0;
     let isPlaying = false;
     let videoProgress = 0;
     let hasResumed = false;
-    let percentageWatched = {{ $video->userProgress(Auth::user()->id)->progress ?? 0 }};
+    let resumeFrom = {{ $video->userProgress(Auth::user()->id)->progress ?? 0 }};
+    function resumeVideo(time){
+      player.setCurrentTime(time);
+    }
     
-    function startVideoAtPercentage(percentageWatched) {
-      console.log('rec', percentageWatched)
-      player.getDuration((duration) => {
-        
-        if (totalDuration > 0) {
-            const startTime =Math.floor((totalDuration* percentageWatched)/100) ;
-            player.setCurrentTime(startTime);
-        } else {
-            console.error('Unable to get video duration.');
-        }
-    });
-}
     
     
     player.on('ready', () => {
@@ -424,15 +416,11 @@
     player.on('play', () => {
         isPlaying = true;
         if (!hasResumed) {
-          player.getDuration((duration) => {
-          totalDuration = duration;
-          console.log('td', duration)
-        });
-        startVideoAtPercentage(percentageWatched);
-
+        resumeVideo(resumeFrom);
         hasResumed = true;
     }
     });
+
     
     player.on('pause', () => {
         isPlaying = false;
@@ -470,6 +458,7 @@
         
         function updateTimeSpent() {
           if (isPlaying) { // Only send the request if the video is currently playing
+          player.getCurrentTime(value => {currentDuration = value});
               
               fetch('{{ route('update.timeSpent') }}', {
                     method: 'POST',
@@ -480,7 +469,7 @@
                     body: JSON.stringify({
                         videoId: '{{ $video->id }}',
                         batchId: '{{ $video->batchId }}',
-                        progress: videoProgress,
+                        progress: currentDuration,
                         duration: totalDuration,
                          // Include batchId if necessary
                     })
@@ -497,7 +486,7 @@
         }
     
         // Call updateTimeSpent every 1 minute (60,000 milliseconds)
-        setInterval(updateTimeSpent, 60000);
+        setInterval(updateTimeSpent, 600);
     });
     </script>
     
