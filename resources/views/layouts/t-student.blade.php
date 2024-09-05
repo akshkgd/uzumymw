@@ -29,14 +29,14 @@
     @yield('content')
 
     <!-- Footer Section -->
-    <section class="bg-white">
+    <section class="bg-white hidden">
       <div
         class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8"
       >
         
         
         <p class="mt-8 text-base leading-6 text-center text-neutral-600">
-          &copy; 2024 Codekaro All rights reserved.
+          {{-- &copy; 2024 Codekaro All rights reserved. --}}
         </p>
       </div>
     </section>
