@@ -1,55 +1,93 @@
-@extends('layouts.t-student')
+@extends('layouts.app')
+
 @section('content')
-
-<header
-      id="sticky-header"
-      class="fixed top-0 z-[60] flex items-center justify-center w-full h-16 duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-400 border-opacity-20"
-    >
-      <div
-        class="flex items-center justify-between w-full px-4 mx-auto 2xl:px-0 max-w-5xl"
-      >
-        <div
-          class="relative z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left"
-        >
-          <a
-            href="{{url('/home')}}"
-            class="inline-flex sm:mr-8 items-end font-sans text-2xl font-extrabold text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
-          >
-          <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round" style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16" aria-label="Vercel logo"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg>
-          </a>
-          
+<div class="navbar-container">
+    <nav class="navbar navbar-expand-lg justify-content-between navbar-light border-bottom-0 bg-white" data-sticky="top">
+        @include('layouts.header2')
+    </nav>
+    
+</div>
+<section class="">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-lg-10 col-xlg-10">
+            @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+            <div class="row align-items-center justify-content-between o-hidden">
+              <div class="col-md-6 order-sm-2 mb-5 mb-sm-0" data-aos="fade-left">
+                <img src="{{asset('assets/img/forgot-your-password@2x.png')}}" class="img-fluid">
         </div>
+              <div class="col-md-6 pr-xl-5 order-sm-1">
+                <h1 class="display-5 pb-3">Change your password</h1>
+                {{-- <p class="lead">You can change your password for security reasons or reset it if you forget it by entering registered mail id.</p> --}}
+                {{-- <a href="https://mail.google.com/mail/#search/from%3Acodekaro+in%3Aanywhere" class="btn btn-primary">Open Inbox</a> --}}
+                <form method="POST" action="{{ route('password.update') }}">
+                    @csrf
+                    <input type="hidden" name="token" value="{{ $token }}">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                          <div class="form-floating mt-2">
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="full name">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <label for="email">Email Address</label>
+                          </div>
 
-        <div class="relative">
-            
-          <a href="{{url('/home')}}" class="btn border px-4 py-3 rounded-lg text-sm">Back to Dashboard</a>
+                          <div class="form-floating mt-2">
+                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  required name="password" required autocomplete="new-password" placeholder="full name">
+                            @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            <label for="email">Password</label>
+                          </div>
+
+                          <div class="form-floating mt-2">
+                            <input id="password-confirm" type="password" class="form-control"  name="password_confirmation" required autocomplete="new-password" placeholder="confirm password">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                            <label for="email">Confirm Password</label>
+                          </div>
+                          
+                          <button type="submit" class="btn btn-primary mt-2">
+                            {{ __('Reset Password ') }}
+                        </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row mb-0">
+                        <div class="">
+                            
+                        </div>
+                    </div>
+                </form>
+                      
+                </div>
               </div>
             </div>
-          </div>
         </div>
       </div>
-    </header>
+    </div>
+  </section>
+  
 
-    <main class="min-h-screen flex flex-col justify-center align-middle px-6 py-12 lg:px-8">
-        <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        </div>
-    
-        <div class="sm:mx-auto sm:w-full sm:max-w-md">
-          <div class="mt-1 flex justify-center">
-            <div class="inline-flex w-64 items-center justify-center "
-            >
-              
-              <img src="{{asset('assets/img/nf.svg')}}" class="h-64" alt="">
-          </div>
-          </div>
-          <h2 class="text-center text-2xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">Page Not Found!</h2>
-    
-          <p class="bg-white px-6 text-gray-500 text-center">Uh-Oh! The page you're looking for seems to be missing</p>
-          <!-- <div class="text-center">
-            <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Back to Dashboard</a>
-          </div> -->
-        </div>
-      </main>
 
-</section>
+
+
+
+
+
+
+
+
 @endsection
