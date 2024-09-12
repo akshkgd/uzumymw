@@ -2,19 +2,14 @@
       id="sticky-header"
       class="fixed top-0 z-[60] h-14 flex items-center justify-center w-full duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-300 border-opacity-40"
     >
-      <div class="flex items-center justify-between w-full px-4  mx-auto 2xl:px-0 max-w-7xl py-1">
+      <div class="flex items-center justify-between w-full px-5  mx-auto 2xl:px-0  py-1">
         <div
-          class="relative z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left"
+          class="relative z-10 flex items-center max-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left"
         >
-          <a
-            href="{{url('/home')}}"
-            class="inline-flex sm:mr-8 items-end font-sans text-lg flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
-          >
-          {{-- <img style="height: 32px" src="{{asset('assets/img/js.png')}}" alt=""> --}}
-           
-          <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round" style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16" aria-label="Vercel logo"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg>
-          {{-- <span class="font-bold text-xl text-neutral-900 font-geist">Codekaro</span> --}}
-          </a>
+        <a href="{{url('/home')}}" class="sm:mr-8 font-sans text-lg flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline">
+          <svg class="text-white rotate-90" fill="black" width="24" height="24" viewBox="0 0 32 32" version="1.1" aria-labelledby="unsplash-home" aria-hidden="false" style="flex-shrink:0"><desc lang="en-US">Unsplash logo</desc><title id="unsplash-home">Codekaro</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg>
+     </a>
+          
           <nav
             class="items-center hidden space-x-5 text-sm font-medium lg:flex"
           >
