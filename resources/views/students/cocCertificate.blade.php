@@ -46,8 +46,8 @@
                             @endif
                             @else
                             <p class=" lead mx-5">@if(isset($certificate->student) && $certificate->student->college)
-                                from {{$certificate->student->college}}
-                            @endif, is hearby awarded the certificate of achievement for the successful completion of <strong>{{$batch->name}}</strong></p>
+                                from {{$certificate->student->college}},
+                            @endif is hearby awarded the certificate of achievement for the successful completion of <strong>{{$batch->name}}</strong></p>
                             <h4 class="text-s lead"></h4>
                             @if($batch->association !="")
                             <p style="font-size: 18px; ">in association with {{$batch->association}}</p>

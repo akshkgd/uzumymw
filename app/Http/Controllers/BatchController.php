@@ -138,16 +138,19 @@ class BatchController extends Controller
     }
     public function myClasses()
     {
-        $batches = Batch::where('teacherId', Auth::User()->id)->get();
-        foreach($batches as $batch){
-            $count = 0;
-            $total = CourseEnrollment::where('batchId',$batch->id)->where('hasPaid',1)->sum('amountPaid');
-            $enrollments = CourseEnrollment::where('batchId',$batch->id)->where('hasPaid',1)->get();
-            $count = $enrollments->count();
-            $total = round(($total *40)/100,0); 
-            $batch->count = $count;
-            $batch->earning = $total;
-        }
+        // $batches = Batch::where('teacherId', Auth::User()->id)->get();
+        $batches = Batch::where('teacherId', Auth::user()->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
+        // foreach($batches as $batch){
+        //     $count = 0;
+        //     $total = CourseEnrollment::where('batchId',$batch->id)->where('hasPaid',1)->sum('amountPaid');
+        //     $enrollments = CourseEnrollment::where('batchId',$batch->id)->where('hasPaid',1)->get();
+        //     $count = $enrollments->count();
+        //     $total = round(($total *40)/100,0); 
+        //     $batch->count = $count;
+        //     $batch->earning = $total;
+        // }
         // dd($batches);
         return view('teachers.myClasses',compact('batches'));
         
