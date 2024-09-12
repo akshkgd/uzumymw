@@ -14,7 +14,7 @@
         </h1>
        <h1>Status: Active</h1>
     </div>
-    <a href="{{ url()->previous() }}" class="my-3 bg-violet-100 inline-block border border-violet-700 text-violet-700 rounded-full py-2 px-4 ">Back to Search</a>
+    <a href="{{ url('/home') }}" class="my-3 bg-violet-100 inline-block border border-violet-700 text-violet-700 rounded-full py-2 px-4 ">Back to Search</a>
 
     @if($enrollments->count() > 0)
         <div class="flex flex-col mt-8 border rounded-xl">
@@ -36,7 +36,7 @@
                                 <tr class="text-neutral-800">
                                     <td class="px-5 py-4 font-medium whitespace-nowrap">{{ $enrollment->batch->name }}</td>
                                     <td class="px-5 py-4 whitespace-nowrap">{{ \Carbon\Carbon::parse($enrollment->batch->startDate)->format('d M Y') }} - {{ \Carbon\Carbon::parse($enrollment->batch->endDate)->format('d M Y') }}</td>
-                                    <td class="px-5 py-4 whitespace-nowrap">{{ $enrollment->amountPaid}} - {{ $enrollment->paymentMethod}}</td>
+                                    <td class="px-5 py-4 whitespace-nowrap">{{ $enrollment->amountPaid / 100}} - {{ $enrollment->paymentMethod}}</td>
                                     <td class="px-5 py-4 whitespace-nowrap">{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('d M Y') }}</td>
 
                                 </tr> 

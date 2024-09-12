@@ -72,10 +72,15 @@ class TeacherController extends Controller
         $query = $request->input('query');
 
         // Search users by name, email, or phone number
-        $users = User::where('name', 'like', "%{$query}%")
-                    ->orWhere('email', 'like', "%{$query}%")
-                    ->orWhere('mobile', 'like', "%{$query}%")->where('role', 0)
-                    ->get();
+        $users = User::where(function($queryBuilder) use ($query) {
+            $queryBuilder->where('name', 'like', "%{$query}%")
+                         ->orWhere('email', 'like', "%{$query}%")
+                         ->orWhere('mobile', 'like', "%{$query}%");
+        })
+        ->where('role', 0)
+        ->orderBy('created_at', 'desc') // Order by the latest created users first
+        ->get();
+
 
         // Return view with the search results
         return view('teachers.userResult', compact('users', 'query'));
