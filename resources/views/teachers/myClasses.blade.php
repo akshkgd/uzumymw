@@ -16,7 +16,7 @@
         </div>
         
         <div class="flex my-3 gap-3">
-            <a href="{{url()->previous()}}" class=" bg-neutral-100 inline-block border  text-neutral-900 hover:border-neutral-300 hover:bg-white rounded-full py-2 px-4 ">Back to enrollments</a>
+            <a href="{{url()->previous()}}" class=" bg-neutral-100 inline-block border  text-neutral-900 hover:border-neutral-300 hover:bg-white rounded-full py-2 px-4 ">Back to dashboard</a>
 
             {{-- <a href="{{ action('TeacherController@generateAllCertificate', $batch->id) }}" class="bg-violet-100 inline-block border border-violet-300 text-violet-700 rounded-full py-2 px-4">Generate All Certificates</a> --}}
 
