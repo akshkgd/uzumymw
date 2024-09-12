@@ -68,23 +68,25 @@
 
 <script>
 function searchTable() {
-   
+    // Declare variables
     var input, filter, table, tr, td, i, txtValue;
     input = document.getElementById("searchInput");
     filter = input.value.toLowerCase();
     table = document.getElementById("enrollmentTable");
     tr = table.getElementsByTagName("tr");
 
-    for (i = 1; i < tr.length; i++) 
-        tr[i].style.display = "none"; 
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) { // start from 1 to skip the header row
+        tr[i].style.display = "none"; // hide the row initially
         td = tr[i].getElementsByTagName("td");
         
+        // Search through Name, Email, and Mobile columns
         for (var j = 1; j <= 3; j++) {
             if (td[j]) {
                 txtValue = td[j].textContent || td[j].innerText;
                 if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                    tr[i].style.display = ""; 
-                    break; 
+                    tr[i].style.display = ""; // show the row if match found
+                    break; // stop searching once we find a match
                 }
             }
         }
