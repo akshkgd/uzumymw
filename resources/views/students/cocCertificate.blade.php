@@ -45,7 +45,9 @@
         
                             @endif
                             @else
-                            <p class=" lead mx-5">From {{$certificate->students->college}}, is hearby awarded the certificate of achievement for the successful completion of <strong>{{$batch->name}}</strong></p>
+                            <p class=" lead mx-5">@if($certificate->student->college)
+                                from {{$certificate->student->college}}
+                            @endif, is hearby awarded the certificate of achievement for the successful completion of <strong>{{$batch->name}}</strong></p>
                             <h4 class="text-s lead"></h4>
                             @if($batch->association !="")
                             <p style="font-size: 18px; ">in association with {{$batch->association}}</p>
@@ -55,7 +57,7 @@
                             @endif
                             
                                     <h5 class="lead">
-                                        {{$certificate->updated_at->format('d M Y')}}
+                                        {{$batch->endDate->format('d M Y')}}
                                         </p>
                             {{-- <p class="lead">4th Aug 2020</p> --}}
                         </div>
