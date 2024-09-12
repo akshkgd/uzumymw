@@ -3,14 +3,14 @@
 @include('layouts.t-teacher-nav')
 
 <section>
-    <div class="sm:max-w-3xl mx-auto mt-32 px-5 sm:px-0">
+    <div class="sm:max-w-4xl mx-auto mt-32 px-5 sm:px-0">
         <h1 class="font-semibold text-2xl"><span id="time"></span> <span>{!! strtok(Auth::user()->name, ' ') !!}</span> </h1>
         <p>Manage all your active courses here!</p>  <a class="text-violet-600" href="{{url('/my-classes')}}">See all batches</a>
     </div>
 </section>
 
 <section>
-    <div class="sm:max-w-3xl mb-32 px-5 sm:px-0 mx-auto mt-12 flex flex-wrap gap-5">
+    <div class="sm:max-w-4xl mb-32 px-5 sm:px-0 mx-auto mt-12 flex flex-wrap gap-5">
         @foreach ($batches as $batch)
         <div class="w-80 mt-3 sm:mt-0">
             <div class="relative">
