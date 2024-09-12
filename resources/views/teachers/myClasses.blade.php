@@ -47,18 +47,18 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ \Carbon\Carbon::parse($batch->startDate)->format('d M y') }} - {{ \Carbon\Carbon::parse($batch->endDate)->format('d M y') }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-violet-700">
                                         @if($batch->status == 0)
-                                            <span class="bg-gray-100 text-gray-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Private</span>
+                                            <span class="bg-red-100 text-red-800 text-xs font-normal px-2.5 py-0.5 rounded-full">Private</span>
                                         @elseif($batch->status == 1)
-                                            <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Active</span>
+                                            <span class="bg-green-100 text-green-800 text-xs font-normal px-2.5 py-0.5 rounded-full">Active</span>
                                         @elseif($batch->status == 2)
-                                            <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">In Progress</span>
+                                            <span class="bg-yellow-100 text-yellow-800 text-xs font-normal px-2.5 py-0.5 rounded-full">In Progress</span>
                                         @elseif($batch->status == 3)
-                                            <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">Completed</span>
+                                            <span class="bg-violet-100 text-violet-800 text-xs font-normal px-2.5 py-0.5 rounded-full">Completed</span>
                                         @endif
                                     </td>
                                     
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <div class="flex-gap-2">
+                                        <div class="flex gap-4">
                                             <a href="{{ action('TeacherController@enrollments', $batch->id) }}"
                                                 class="btn ck-c-btn text-violet-700 hover:text-violet-800">Enrollments</a>
                                             <a href="{{ action('TeacherController@addContent', $batch->id) }}"
