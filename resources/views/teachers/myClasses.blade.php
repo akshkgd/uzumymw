@@ -59,7 +59,7 @@
                                     
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                         <div class="flex gap-4">
-                                            <a href="{{ {{ action('BatchController@classDetails', $batch->id) }} }}"
+                                            <a href="{{ action('BatchController@classDetails', $batch->id)  }}"
                                                 class="text-violet-700 hover:text-violet-800">Details</a>
                                             <a href="{{ action('TeacherController@enrollments', $batch->id) }}"
                                                 class="btn ck-c-btn text-violet-700 hover:text-violet-800">Enrollments</a>
