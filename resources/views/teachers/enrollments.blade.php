@@ -21,14 +21,15 @@
             <a href="{{ action('TeacherController@generateAllCertificate', $batch->id) }}" class="bg-violet-100 inline-block border border-violet-300 text-violet-700 rounded-full py-2 px-4">Generate All Certificates</a>
 
         </div>
-                <div class="p-5">
-                    
-                </div>
-                <div class="bg-white border rounded-lg">
-                    
+        
+        <!-- Search Bar -->
+        <div class="my-4">
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search by name, email, or phone number" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
+        </div>
 
+                <div class="bg-white border rounded-lg">
                     <div class="overflow-x-auto ">
-                        <table class="min-w-full divide-y divide-neutral-200">
+                        <table id="enrollmentTable" class="min-w-full divide-y divide-neutral-200">
                             <thead class="">
                                 <tr class="text-neutral-800">
                                     <th class="px-5 py-3  font-medium text-left ">#</th>
@@ -54,7 +55,6 @@
                                             {{ $enrollment->certificateId }}
                                         @endif
                                     </td>
-                                    {{-- <td class="px-6 py-4 whitespace-nowrap text-sm"><a href="{{ url('/progress/' . $enrollment->id) }}" class="text-violet-700 hover:text-violet-800">Progress</a></td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -65,4 +65,33 @@
         </div>
     </div>
 </section>
+
+<script>
+function searchTable() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toLowerCase();
+    table = document.getElementById("enrollmentTable");
+    tr = table.getElementsByTagName("tr");
+
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) { // start from 1 to skip the header row
+        tr[i].style.display = "none"; // hide the row initially
+        td = tr[i].getElementsByTagName("td");
+        
+        // Search through Name, Email, and Mobile columns
+        for (var j = 1; j <= 3; j++) {
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    tr[i].style.display = ""; // show the row if match found
+                    break; // stop searching once we find a match
+                }
+            }
+        }
+    }
+}
+</script>
+
 @endsection
