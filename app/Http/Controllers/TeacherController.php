@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Notification;
 use App\Batch;
+use App\User;
 use App\CourseProgress;
 use App\Workshop;
 use App\BatchContent;
@@ -65,6 +66,35 @@ class TeacherController extends Controller
         }
     }
 
+    public function searchUser(Request $request){
+        
+        // Get the search query from the request
+        $query = $request->input('query');
+
+        // Search users by name, email, or phone number
+        $users = User::where('name', 'like', "%{$query}%")
+                    ->orWhere('email', 'like', "%{$query}%")
+                    ->orWhere('mobile', 'like', "%{$query}%")->where('role', 0)
+                    ->get();
+
+        // Return view with the search results
+        return view('teachers.userResult', compact('users', 'query'));
+
+    }
+    public function showEnrollments($id)
+    {
+        // Find the user by ID
+        $user = User::findOrFail($id);
+        
+        $enrollments = CourseEnrollment::where('userId', $id)
+                                ->where('hasPaid', 1)
+                                ->orderBy('created_at', 'desc') // or 'updated_at' if you prefer
+                                ->get();
+
+
+        // Pass the user and enrollments to the view
+        return view('teachers.userEnrollments', compact('user', 'enrollments'));
+    }
     public function workshopEnrollments($id)
     {
         $batch = Workshop::findorFail($id);

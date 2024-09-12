@@ -4,7 +4,7 @@
 
 {{-- Enrollment details --}}
 
-<section class="mt-32  sm:max-w-5xl w-full mx-auto">
+<section class="mt-32 mb-12  sm:max-w-5xl w-full mx-auto">
     <div class="container mx-auto px-4">
         @include('layouts.alert')
         <div class="flex justify-center">

@@ -203,6 +203,8 @@ Route::get('/css-enrollments', 'TeacherController@cssEnrollments');
 // Route::post('/update-course-content-order', 'TeacherController@updateCourseContentOrder');
 Route::post('/update-sort-order', 'TeacherController@updateSortOrder')->name('updateSortOrder');
 Route::get('/progress/{enrollmentId}', 'TeacherController@courseprogress');
+Route::post('/search-user', 'TeacherController@searchUser')->name('users.search');
+Route::get('/user/{id}/enrollments', 'TeacherController@showEnrollments')->name('user.enrollments');
 
 
 

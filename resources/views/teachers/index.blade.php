@@ -50,6 +50,13 @@
             </button>
           </div> --}}
                     {{-- alert ends --}}
+            {{-- search user --}}
+            <form method="post" action="{{ route('users.search') }}" class="mb-4">
+                <input type="text" name="query" placeholder="Search user by name, email, or phone number" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
+                <button style="border: none; background-color:black" type="submit" class="bt text-white px-4 py-2 rounded-lg mt-2">Search</button>
+            </form>
+
+
                     @if ($batches->count() == 0 && $workshops->count() == 0)
                         {{-- no course card --}}
                         <div class="card  card-ico shadow-3">
