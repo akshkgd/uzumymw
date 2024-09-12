@@ -24,7 +24,7 @@
         
         <!-- Search Bar -->
         <div class="my-4">
-            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search by name, email, or phone number" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
+            <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search by batch id or batch name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
         </div>
 
                 <div class="bg-white border rounded-lg">
