@@ -32,7 +32,7 @@
                         <table id="enrollmentTable" class="min-w-full divide-y divide-neutral-200">
                             <thead class="">
                                 <tr class="text-neutral-800">
-                                    <th class="px-5 py-3  font-medium text-left ">#</th>
+                                    <th class="px-5 py-3  font-medium text-left ">Batch Id</th>
                                     <th class="px-5 py-3  font-medium text-left ">Name</th>
                                     <th class="px-5 py-3  font-medium text-left">Schedule</th>
                                     <th class="px-5 py-3  font-medium text-left">Status</th>
@@ -42,7 +42,7 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($batches as $batch)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ ++$i }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">B-{{ $batch->id }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm"><a href="{{ action('BatchController@classDetails', $batch->id) }}" class="text-violet-700 hover:text-violet-800">{{ $batch->name }}</a></td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ \Carbon\Carbon::parse($batch->startDate)->format('d M y') }} - {{ \Carbon\Carbon::parse($batch->endDate)->format('d M y') }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-violet-700">
