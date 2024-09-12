@@ -33,7 +33,9 @@
                         <div class="pt-1 text-center">
                             <h5 class="ck-font m-0 lead">This is to certify that</h3>
                             <h1 class="display-5 m-1">{{$certificate->student->name}}</h1>
-                            <p class=" lead mx-5">from {{$certificate->student->college}}, has participated in  <strong>{{$batch->name}}</strong></p>
+                            <p class=" lead mx-5">@if($certificate->student->college)
+                                from {{$certificate->student->college}}
+                            @endif, has participated in  <strong>{{$batch->name}}</strong></p>
                                 <h4 class="text-s lead"></h4>
                                 @if($batch->association !="")
                                 <p style="font-size: 18px; ">in association with {{$batch->association}}</p>
@@ -41,7 +43,7 @@
             
                                 @endif
                                     <h5 class="lead">
-                                        {{$batch->updated_at->format('d M Y')}}
+                                        {{$batch->endDate->format('d M Y')}}
                                         </p>
                             {{-- <p class="lead">4th Aug 2020</p> --}}
                         </div>
