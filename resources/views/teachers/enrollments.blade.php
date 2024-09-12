@@ -1,6 +1,6 @@
 @extends('layouts.t-student')
 @section('content')
-@include('layouts.t-student-nav')
+@include('layouts.t-teacher-nav')
 
 {{-- Enrollment details --}}
 

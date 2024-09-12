@@ -1,7 +1,7 @@
 @extends('layouts.t-student')
 
 @section('content')
-@include('layouts.t-student-nav')
+@include('layouts.t-teacher-nav')
 
 <section class="mt-32 sm:max-w-3xl w-full mx-auto">
     <h1 class="text-xl font-bold">Enrollments for {{ $user->name }}</h1>
