@@ -53,7 +53,7 @@
                                         @elseif($batch->status == 2)
                                             <span class="bg-yellow-100 text-yellow-800 text-xs font-normal px-2.5 py-0.5 rounded-full">In Progress</span>
                                         @elseif($batch->status == 3)
-                                            <span class="bg-violet-100 text-violet-800 text-xs font-normal px-2.5 py-0.5 rounded-full">Completed</span>
+                                            <span class="bg-red-100 text-red-800 text-xs font-normal px-2.5 py-0.5 rounded-full">Completed</span>
                                         @endif
                                     </td>
                                     
