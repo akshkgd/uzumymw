@@ -3,7 +3,7 @@
 @include('layouts.t-student-nav')
 <section>
     <div class="mt-32 sm:max-w-3xl w-full mx-auto">
-        <h1 class="text-xl font-bold">Course Progress</h1>
+        <h1 class="text-xl font-bold">{{$enrollment->batch->name}}</h1>
         <div class="flex gap-5">
             <h1>{{$enrollment->students->name}}</h1>
             <h1>{{$enrollment->students->email}}</h1>
