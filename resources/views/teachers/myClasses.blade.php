@@ -77,6 +77,7 @@
     </div>
 </section>
 
+
 <script>
 function searchTable() {
     // Declare variables
@@ -91,8 +92,8 @@ function searchTable() {
         tr[i].style.display = "none"; // hide the row initially
         td = tr[i].getElementsByTagName("td");
         
-        // Search through Name, Email, and Mobile columns
-        for (var j = 1; j <= 3; j++) {
+        // Search through Batch Id (first column) and Batch Name (second column)
+        for (var j = 0; j <= 1; j++) { 
             if (td[j]) {
                 txtValue = td[j].textContent || td[j].innerText;
                 if (txtValue.toLowerCase().indexOf(filter) > -1) {
@@ -104,5 +105,7 @@ function searchTable() {
     }
 }
 </script>
+
+
 
 @endsection
