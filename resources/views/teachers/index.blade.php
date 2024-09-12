@@ -43,7 +43,9 @@
     </div>
 </section>
 
-<section class="mt-32"></section>
+<section class="mt-32">
+    <p class="text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex.</p>
+</section>
 
 <script>
     function timeOfDay() {
