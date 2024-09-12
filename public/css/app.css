@@ -727,6 +727,10 @@ video {
   margin-top: 1.25rem;
   margin-bottom: 1.25rem;
 }
+.my-32 {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+}
 .-mt-1 {
   margin-top: -0.25rem;
 }
