@@ -45,7 +45,7 @@
         
                             @endif
                             @else
-                            <p class=" lead mx-5">@if($certificate->student->college)
+                            <p class=" lead mx-5">@if(isset($certificate->student) && $certificate->student->college)
                                 from {{$certificate->student->college}}
                             @endif, is hearby awarded the certificate of achievement for the successful completion of <strong>{{$batch->name}}</strong></p>
                             <h4 class="text-s lead"></h4>
