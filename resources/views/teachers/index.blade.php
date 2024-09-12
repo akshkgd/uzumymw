@@ -10,7 +10,7 @@
 </section>
 
 <section>
-    <div class="sm:max-w-3xl px-5 sm:px-0 mx-auto mt-12 flex flex-wrap sm:flex-nowrap gap-5">
+    <div class="sm:max-w-3xl px-5 sm:px-0 mx-auto mt-12 flex flex-wrap gap-5">
         @foreach ($batches as $batch)
         <div class="w-80 mt-3 sm:mt-0">
             <div class="relative">
