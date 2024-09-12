@@ -37,14 +37,13 @@
                                     <th class="px-5 py-3  font-medium text-left">Mobile</th>
                                     <th class="px-5 py-3  font-medium text-left">Date</th>
                                     <th class="px-5 py-3  font-medium text-left">Certificate</th>
-                                    <th class="px-5 py-3  font-medium text-left">Progress</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($enrollments as $enrollment)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ ++$i }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enrollment->students->name }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm"><a href="{{ url('/progress/' . $enrollment->id) }}" class="text-violet-700 hover:text-violet-800">{{ $enrollment->students->name }}</a></td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enrollment->students->email }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-violet-700"><a href="tel:+{{$enrollment->students->mobile}}">{{ $enrollment->students->mobile }}</a></td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('d M y') }}  {{$enrollment->amountPaid / 100}}Rs</td>
@@ -55,7 +54,7 @@
                                             {{ $enrollment->certificateId }}
                                         @endif
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm"><a href="{{ url('/progress/' . $enrollment->id) }}" class="text-violet-700 hover:text-violet-800">Progress</a></td>
+                                    {{-- <td class="px-6 py-4 whitespace-nowrap text-sm"><a href="{{ url('/progress/' . $enrollment->id) }}" class="text-violet-700 hover:text-violet-800">Progress</a></td> --}}
                                 </tr>
                                 @endforeach
                             </tbody>
