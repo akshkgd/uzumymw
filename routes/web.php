@@ -9,6 +9,7 @@ use App\Feedback;
 use App\CourseEnrollment;
 use App\Http\Controllers\CodekaroController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 
@@ -201,7 +202,7 @@ Route::post('/update-content', 'TeacherController@updateContent')->name('updateC
 Route::get('/css-enrollments', 'TeacherController@cssEnrollments');
 // Route::post('/update-course-content-order', 'TeacherController@updateCourseContentOrder');
 Route::post('/update-sort-order', 'TeacherController@updateSortOrder')->name('updateSortOrder');
-
+Route::get('/progress/{enrollmentId}', 'TeacherController@courseprogress');
 
 
 

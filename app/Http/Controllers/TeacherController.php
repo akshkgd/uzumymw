@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Notification;
 use App\Batch;
+use App\CourseProgress;
 use App\Workshop;
 use App\BatchContent;
 use App\BatchTopics;
@@ -78,7 +79,11 @@ class TeacherController extends Controller
         }
     }
 
-
+    public function courseProgress($enrollmentId){
+        $enrollment = CourseEnrollment::findorFail($enrollmentId);
+        $courseProgress = CourseProgress::where('userId', $enrollment->userId)->where('batchId', $enrollment->batchId)->get();
+        return view('teachers.progress', compact('courseProgress', 'enrollment'));
+    }
 
     public function generateCertificate($id)
     {

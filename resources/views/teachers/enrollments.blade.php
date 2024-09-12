@@ -19,33 +19,34 @@
                     <a href="{{ action('TeacherController@generateAllCertificate', $batch->id) }}" class="btn btn-primary px-5">Generate All certificates</a>
                 </div>
 
-                    <table class="table table-responsive-lg">
+                    <table class="table table-responsive">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
-                            <th scope="col">Email</th>
+                            <th scope="col" class="text-small">Email</th>
                             <th scope="col">Mobile</th>
-                            <th scope="col">Created On</th>
-                            <th scope="col">Enrolled On</th>
-                            <th scope="col">Amount Paid</th>
-
-                            <th scope="col">Campaign</th>
+                            <th scope="col">Date</th>
                             <th scope="col">Certificate</th>
+                            <th scope="col">Progress</th>
+
                           </tr>
                         </thead>
                         <tbody>
                             @foreach ($enrollments as $enrollment)
                             <tr>
                                 <th scope="row">{{++$i}}</th>
-                                <td> <img src="{{$enrollment->students->avatar}}" alt="" class="avatar avatar-sm">  {{$enrollment->students->name}}</td>
-                                <td>{{$enrollment->students->email}}</td>
-                                <td><a href="tel:+{{$enrollment->students->mobile}}">{{$enrollment->students->mobile}}</a></td>
-                                <td>{{$enrollment->students->created_at->format('d M y')}}</td>
-                                <td>{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('d M y') }}  </td>
-                                <td>{{$enrollment->amountPaid / 100}}</td>
+                                <td> {{$enrollment->students->name}}</td>
+                                <td class="">{{$enrollment->students->email}}</td>
+                                <td class=""><a href="tel:+{{$enrollment->students->mobile}}">{{$enrollment->students->mobile}}</a></td>
+                                <td>
+                                    <div>
+                                        {{ \Carbon\Carbon::parse($enrollment->paidAt)->format('d M y') }}  {{$enrollment->amountPaid / 100}}Rs
+                                    </div>
+                                </td>
+                                
         
-                                <td>{{$enrollment->students->field1}}</td>
+                                
                                 <td>
                                     @if ($enrollment->certificateId =='')
                                     <a href="{{action('TeacherController@generateCertificate', $enrollment->id )}}" class="card-link">generate certificate</a>
@@ -53,7 +54,9 @@
                                     {{$enrollment->certificateId}}    
                                     @endif
                                 </td>
-                              </tr>  
+                                <td><a href="{{ url('/progress/' . $enrollment->id) }}">Progress</a></td>
+
+                                </tr>  
                             @endforeach
                           
                         </tbody>
