@@ -878,6 +878,9 @@ video {
 .-ml-2 {
   margin-left: -0.5rem;
 }
+.mb-32 {
+  margin-bottom: 8rem;
+}
 .box-border {
   box-sizing: border-box;
 }
