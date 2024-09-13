@@ -29,7 +29,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
         
         
@@ -70,17 +70,52 @@ class HomeController extends Controller
     
         }
         elseif(Auth::User()->role == 100){
-            $users = User::count();
-            $month_date = date('m');
-            $usersThisMonth = User::whereMonth('created_at', $month_date)->whereYear('created_at', '=', Carbon::now()->year)->count();
-            $usersPreviousMonth = User::whereMonth('created_at', date('m', strtotime('-1 month')))->whereYear('created_at', '=', Carbon::now()->year)->count();
+            // $users = User::count();
+            // $month_date = date('m');
+            // $usersThisMonth = User::whereMonth('created_at', $month_date)->whereYear('created_at', '=', Carbon::now()->year)->count();
+            // $usersPreviousMonth = User::whereMonth('created_at', date('m', strtotime('-1 month')))->whereYear('created_at', '=', Carbon::now()->year)->count();
+            // $batches = Batch::where('status', 1)->get()->count();
+            // $total = CourseEnrollment::where('hasPaid', 1)->sum('amountPaid')/100;
+            // $month = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->sum('amountPaid')/100;
+            // $montht = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->get();
+            // $previousMonth = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', date('m', strtotime('-1 month')))->sum('amountPaid')/100;
+            // $previousMonth = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->subMonth()->format('m'))->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->sum('amountPaid')/100;
+            // return view('admin.index', compact('users', 'batches', 'total', 'month', 'previousMonth', 'usersThisMonth', 'usersPreviousMonth'));
+            $range = $request->input('range', '7'); // Default to last 7 days if no range is selected
+    
+            // Default to last 7 days
+            $startDate = Carbon::now()->subDays($range);
+            $endDate = Carbon::now();
+        
+            // Check for custom date range
+            if ($request->input('start_date') && $request->input('end_date')) {
+                $startDate = Carbon::parse($request->input('start_date'));
+                $endDate = Carbon::parse($request->input('end_date'));
+            }
+        
+            // Fetch data for users in the selected range
+            $usersThisPeriod = User::whereBetween('created_at', [$startDate, $endDate])->count();
+            
+            // Fetch data for comparison (previous period)
+            $previousStartDate = $startDate->copy()->subDays($range);
+            $previousEndDate = $endDate->copy()->subDays($range);
+            $usersPreviousPeriod = User::whereBetween('created_at', [$previousStartDate, $previousEndDate])->count();
+        
+            // Fetch batch data and enrollment data
             $batches = Batch::where('status', 1)->get()->count();
             $total = CourseEnrollment::where('hasPaid', 1)->sum('amountPaid')/100;
-            $month = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->sum('amountPaid')/100;
-            $montht = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->get();
-            // $previousMonth = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', date('m', strtotime('-1 month')))->sum('amountPaid')/100;
-            $previousMonth = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->subMonth()->format('m'))->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->sum('amountPaid')/100;
-        return view('admin.index', compact('users', 'batches', 'total', 'month', 'previousMonth', 'usersThisMonth', 'usersPreviousMonth'));
+            
+            // Payments in the selected period
+            $totalThisPeriod = CourseEnrollment::where('hasPaid', 1)
+                ->whereBetween('paidAt', [$startDate, $endDate])
+                ->sum('amountPaid') / 100;
+        
+            // Payments in the previous period
+            $totalPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
+                ->whereBetween('paidAt', [$previousStartDate, $previousEndDate])
+                ->sum('amountPaid') / 100;
+        
+            return view('admin.index', compact('usersThisPeriod', 'usersPreviousPeriod', 'batches', 'total', 'totalThisPeriod', 'totalPreviousPeriod', 'range', 'startDate', 'endDate'));
         }
         
         else{

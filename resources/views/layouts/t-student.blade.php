@@ -20,7 +20,7 @@
       src: url('path/to/Geist-Regular.woff2') format('woff2');
       } */
       body{
-        font-family: 'Geist-Regular', sans-serif !important;
+        /* font-family: 'Geist-Regular', sans-serif !important; */
       }
     </style>
   </head>

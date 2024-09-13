@@ -162,7 +162,7 @@ class BatchController extends Controller
         $enrollments = CourseEnrollment::where('batchId', $id)->where('hasPaid', 1)->get();
         $total = CourseEnrollment::where('batchId',$id)->where('hasPaid',1)->sum('amountPayable');
         $total = round(($total *40)/100,0); 
-        return view('teachers.classDetails', compact('batch', 'enrollments', 'total'));
+        return view('teachers.classDetailsT', compact('batch', 'enrollments', 'total'));
 
     }
     /**

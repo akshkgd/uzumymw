@@ -1,94 +1,87 @@
-@extends('layouts.ck-admin')
-
+@extends('layouts.t-student')
 @section('content')
+    @include('layouts.t-admin-nav')
 
     <!-- main dashboard -->
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-6 col-md">
-                <div class="stat-cell stat-cell-red p-2">
-                    <p class="stat-cell-title">Total Users</p>
-                    <p class="stat-cell-value">{{ $users }}</p>
-                </div>
-
+    <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold mb-4">Admin Dashboard</h1>
+        
+        <!-- Filter Form -->
+        <form method="GET" action="{{ url('/home') }}" class="mb-6">
+            <div class="mb-4">
+                <label for="range" class="block text-gray-700 font-medium mb-2">Select Date Range:</label>
+                <select name="range" id="range" class="block w-full border border-gray-300 rounded-md p-2">
+                    <option value="7" {{ request('range') == '7' ? 'selected' : '' }}>Last 7 Days</option>
+                    <option value="30" {{ request('range') == '30' ? 'selected' : '' }}>Last 30 Days</option>
+                    <option value="365" {{ request('range') == '365' ? 'selected' : '' }}>Last 1 Year</option>
+                    <option value="custom" {{ request('range') == 'custom' ? 'selected' : '' }}>Custom Range</option>
+                </select>
             </div>
-            <div class="col-6 col-md">
-                <div class="stat-cell stat-cell-purple p-2">
-                    <p class="stat-cell-title">Users (This Month)</p>
-                    <p class="stat-cell-value">{{ $usersThisMonth }}</p>
+    
+            <!-- Custom Date Range Fields -->
+            <div id="custom-range-fields" class="mb-4" style="display: none;">
+                <div class="mb-4">
+                    <label for="start_date" class="block text-gray-700 font-medium mb-2">Start Date:</label>
+                    <input type="date" name="start_date" class="block w-full border border-gray-300 rounded-md p-2" value="{{ request('start_date') }}">
                 </div>
-
+                <div class="mb-4">
+                    <label for="end_date" class="block text-gray-700 font-medium mb-2">End Date:</label>
+                    <input type="date" name="end_date" class="block w-full border border-gray-300 rounded-md p-2" value="{{ request('end_date') }}">
+                </div>
             </div>
-            <div class="col-6 col-md">
-                <div class="stat-cell stat-cell-yellow p-2">
-                    <p class="stat-cell-title">Previous Month</p>
-                    <p class="stat-cell-value">{{ $usersPreviousMonth }}</p>
-                </div>
-
+    
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">
+                Filter
+            </button>
+        </form>
+    
+        <!-- Dashboard Statistics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="bg-white shadow-md rounded-md p-4">
+                <h3 class="text-xl font-bold mb-2">Users This Period</h3>
+                <p class="text-gray-600">{{ $usersThisPeriod }}</p>
             </div>
-            <div class="col-6 col-md">
-                <div class="stat-cell stat-cell-teal p-2">
-                    <p class="stat-cell-title">Total Earnings</p>
-                    <p class="stat-cell-value">{{ $total }}</p>
-                </div>
-
+    
+            <div class="bg-white shadow-md rounded-md p-4">
+                <h3 class="text-xl font-bold mb-2">Users Previous Period</h3>
+                <p class="text-gray-600">{{ $usersPreviousPeriod }}</p>
             </div>
-            <div class="col-6 col-md">
-                <div class="stat-cell stat-cell-green p-2">
-                    <p class="stat-cell-title">Earnings This Month</p>
-                    <p class="stat-cell-value">{{$month}}</p>
-                </div>
-
+    
+            <div class="bg-white shadow-md rounded-md p-4">
+                <h3 class="text-xl font-bold mb-2">Total Batches</h3>
+                <p class="text-gray-600">{{ $batches }}</p>
             </div>
-            <div class="col-6 col-md">
-                <div class="stat-cell stat-cell-yellow p-2">
-                    <p class="stat-cell-title">Previous Month</p>
-                    <p class="stat-cell-value">{{$previousMonth}}</p>
-                </div>
-
+    
+            <div class="bg-white shadow-md rounded-md p-4">
+                <h3 class="text-xl font-bold mb-2">Total Revenue This Period</h3>
+                <p class="text-gray-600">{{ $totalThisPeriod }}</p>
+            </div>
+    
+            <div class="bg-white shadow-md rounded-md p-4">
+                <h3 class="text-xl font-bold mb-2">Total Revenue Previous Period</h3>
+                <p class="text-gray-600">{{ $totalPreviousPeriod }}</p>
             </div>
         </div>
     </div>
+    
+    <script>
+        // JavaScript to toggle the visibility of custom date range fields
+        function toggleCustomRange() {
+            var range = document.getElementById('range').value;
+            var customRangeFields = document.getElementById('custom-range-fields');
+            if (range === 'custom') {
+                customRangeFields.style.display = 'block';
+            } else {
+                customRangeFields.style.display = 'none';
+            }
+        }
+    
+        // Call function on page load to ensure proper state
+        window.onload = toggleCustomRange;
+    </script>
 
 
 
-
-    <!-- main dashboard ends -->
-
-    <!-- First row (equally spaced) -->
-    <div class="row row-eq-spacing d-none">
-        <div class="col-6 col-xl-3">
-            <div class="card">
-                <h2 class="card-title">Users</h2>
-                <h4>{{ $users }}</h3>
-                    <a href="{{ url('/admin/students') }}" class="btn btn-outline-primary d-block">Students</a>
-            </div>
-        </div>
-        <div class="col-6 col-xl-3">
-            <div class="card">
-                <h2 class="card-title">Live Batches</h2>
-                <h4>{{ $batches }}</h3>
-                    <a href="{{ url('/admin/batches') }}" class="btn btn-outline-primary d-block"> </i>Details</a>
-            </div>
-        </div>
-        <!-- Overflow occurs here on large screens (and down) -->
-        <!-- Therefore, a v-spacer is added at this point -->
-        <div class="v-spacer d-xl-none"></div> <!-- d-xl-none = display: none only on extra large screens (> 1200px) -->
-        <div class="col-6 col-xl-3">
-            <div class="card">
-                <h2 class="card-title">Users</h2>
-                <h4>345</h3>
-
-                    <a href="{{ url('/user') }}" class="btn btn-outline-primary d-block"> </i>Details</a>
-            </div>
-        </div>
-        <div class="col-6 col-xl-3">
-            <div class="card">
-                <h2 class="card-title">Suppliers</h2>
-                <h4>1</h3>
-                    <a href="{{ url('/supplier') }}" class="btn btn-outline-primary d-block"> </i>Details</a>
-            </div>
-        </div>
-    </div>
+    
 @endsection
