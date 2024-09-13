@@ -110,50 +110,46 @@ class HomeController extends Controller
             break;
     }
 
-    // Fetch data for users in the selected range
+    // Fetch data for users (new signups) in the selected range
     $usersThisPeriod = User::whereBetween('created_at', [$startDate, $endDate])->count();
+    $usersPreviousPeriod = User::whereBetween('created_at', [$startDate->copy()->subDays($endDate->diffInDays($startDate)), $endDate->copy()->subDays($endDate->diffInDays($startDate))])->count();
 
-    // Fetch data for comparison (previous period)
-    $previousStartDate = $startDate->copy()->subDays($endDate->diffInDays($startDate));
-    $previousEndDate = $endDate->copy()->subDays($endDate->diffInDays($startDate));
-    $usersPreviousPeriod = User::whereBetween('created_at', [$previousStartDate, $previousEndDate])->count();
+    // Fetch data for enrollments (paid members) in the selected period
+    $enrollmentsThisPeriod = CourseEnrollment::where('hasPaid', 1)
+        ->whereBetween('paidAt', [$startDate, $endDate])
+        ->count();
+    $enrollmentsPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
+        ->whereBetween('paidAt', [$startDate->copy()->subDays($endDate->diffInDays($startDate)), $endDate->copy()->subDays($endDate->diffInDays($startDate))])
+        ->count();
 
-    // Fetch batch data
-    $batches = Batch::where('status', 1)->count();
-
-    // Ensure that amountPaid is numeric
-    $total = CourseEnrollment::where('hasPaid', 1)
-        ->whereNotNull('amountPaid')
-        ->where('amountPaid', '>', 0)
-        ->sum('amountPaid') / 100;
-
-    // Payments in the selected period
+    // Total revenue for the selected period
     $totalThisPeriod = CourseEnrollment::where('hasPaid', 1)
         ->whereBetween('paidAt', [$startDate, $endDate])
-        ->whereNotNull('amountPaid')
-        ->where('amountPaid', '>', 0)
         ->sum('amountPaid') / 100;
-
-    // Payments in the previous period
     $totalPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
-        ->whereBetween('paidAt', [$previousStartDate, $previousEndDate])
-        ->whereNotNull('amountPaid')
-        ->where('amountPaid', '>', 0)
+        ->whereBetween('paidAt', [$startDate->copy()->subDays($endDate->diffInDays($startDate)), $endDate->copy()->subDays($endDate->diffInDays($startDate))])
         ->sum('amountPaid') / 100;
 
-    // Calculate percentage change for users and revenue
-    $userChangePercent = $usersPreviousPeriod > 0 
-        ? (($usersThisPeriod - $usersPreviousPeriod) / $usersPreviousPeriod) * 100
-        : 100; // If no users in previous period, assume 100% growth
-    
-    $revenueChangePercent = $totalPreviousPeriod > 0
-        ? (($totalThisPeriod - $totalPreviousPeriod) / $totalPreviousPeriod) * 100
-        : 100; // If no revenue in previous period, assume 100% growth
+    // Calculate percentage change for users, enrollments, and revenue
+    $userChangePercent = $usersPreviousPeriod > 0 ? (($usersThisPeriod - $usersPreviousPeriod) / $usersPreviousPeriod) * 100 : ($usersThisPeriod > 0 ? 100 : 0);
+    $enrollmentChangePercent = $enrollmentsPreviousPeriod > 0 ? (($enrollmentsThisPeriod - $enrollmentsPreviousPeriod) / $enrollmentsPreviousPeriod) * 100 : ($enrollmentsThisPeriod > 0 ? 100 : 0);
+    $revenueChangePercent = $totalPreviousPeriod > 0 ? (($totalThisPeriod - $totalPreviousPeriod) / $totalPreviousPeriod) * 100 : ($totalThisPeriod > 0 ? 100 : 0);
+
+    // Fetch failed payments in the selected period
+    $failedPaymentsThisPeriod = CourseEnrollment::where('hasPaid', 0)
+        ->whereBetween('paidAt', [$startDate, $endDate])
+        ->count();
+    $failedRevenueThisPeriod = CourseEnrollment::where('hasPaid', 0)
+        ->whereBetween('paidAt', [$startDate, $endDate])
+        ->sum('amountPaid') / 100; // Failed revenue
 
     return view('admin.index', compact(
-        'usersThisPeriod', 'usersPreviousPeriod', 'batches', 
-        'total', 'totalThisPeriod', 'totalPreviousPeriod', 
-        'userChangePercent', 'revenueChangePercent', 'range', 'startDate', 'endDate'
+        'usersThisPeriod', 'usersPreviousPeriod', 
+        'enrollmentsThisPeriod', 'enrollmentsPreviousPeriod',
+        'totalThisPeriod', 'totalPreviousPeriod',
+        'userChangePercent', 'enrollmentChangePercent', 'revenueChangePercent',
+        'failedPaymentsThisPeriod', 'failedRevenueThisPeriod',
+        'range', 'startDate', 'endDate'
     ));
         }
         

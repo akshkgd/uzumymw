@@ -2,14 +2,13 @@
 @section('content')
     @include('layouts.t-admin-nav')
 
-    <div class="container mx-auto p-4">
-        <h1 class="text-3xl font-bold mb-4">Admin Dashboard</h1>
+    <div class="container max-w-5xl mx-auto p-4 mt-12">
+    
         
         <!-- Filter Form -->
-        <form method="GET" action="{{ url('/home') }}" class="mb-6">
-            <div class="mb-4">
-                <label for="range" class="block text-gray-700 font-medium mb-2">Select Date Range:</label>
-                <select name="range" id="range" class="block w-full border border-gray-300 rounded-md p-2" onchange="this.form.submit()">
+        <form method="GET" action="{{ url('/home') }}" class="mb- flex justify-end ">
+            <div class="mb-4 w-60">
+                <select name="range" id="range" class="block w-full text-sm text-violet-700 bg-violet-100 rounded-md p-2 focus:outline-none" onchange="this.form.submit()">
                     <option value="7" {{ request('range') == '7' ? 'selected' : '' }}>Last 7 Days</option>
                     <option value="30" {{ request('range') == '30' ? 'selected' : '' }}>Last 30 Days</option>
                     <option value="365" {{ request('range') == '365' ? 'selected' : '' }}>Last 1 Year</option>
@@ -21,37 +20,65 @@
         </form>
     
         <!-- Dashboard Statistics -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            <!-- Users This Period -->
-            <div class="bg-white shadow-md rounded-md p-4">
-                <h3 class="text-xl font-bold mb-2">Users This Period</h3>
-                <p class="text-gray-600">{{ $usersThisPeriod }}</p>
-                <p class="text-sm">
-                    @if ($userChangePercent > 0)
-                        <span class="text-green-500">Up {{ number_format($userChangePercent, 2) }}%</span>
-                    @else
-                        <span class="text-red-500">Down {{ number_format(abs($userChangePercent), 2) }}%</span>
-                    @endif
-                </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Users (New Signups) -->
+            <div class="bg-white border rounded-xl p-4">
+                <h3 class="text-sm font- mb-2 text-neutral-700">New Signups</h3>
+                <p class="text-black text-xl mb-2">{{ $usersThisPeriod }} users</p>
+                @if ($usersThisPeriod > 0 || $usersPreviousPeriod > 0)
+                    <p class="text-sm">
+                        @if ($userChangePercent > 0)
+                            <span class="text-green-500">Up {{ round($userChangePercent) }}% ({{ $usersThisPeriod - $usersPreviousPeriod }} more)</span>
+                        @elseif ($userChangePercent < 0)
+                            <span class="text-red-500">Down {{ round(abs($userChangePercent)) }}% ({{ abs($usersThisPeriod - $usersPreviousPeriod) }} fewer)</span>
+                        @else
+                            <span>No Change</span>
+                        @endif
+                    </p>
+                @else
+                    <p class="text-sm text-neutral-700 mb-0">No signups.</p>
+                @endif
+            </div>
+    
+            <!-- Enrollments (Paid Members) -->
+            <div class="bg-white border rounded-xl p-4">
+                <h3 class="text-sm font- mb-2 text-neutral-700">New Enrollments</h3>
+                <p class="text-black text-xl mb-2">{{ $enrollmentsThisPeriod }} enrollments</p>
+                @if ($enrollmentsThisPeriod > 0 || $enrollmentsPreviousPeriod > 0)
+                    <p class="text-sm">
+                        @if ($enrollmentChangePercent > 0)
+                            <span class="text-green-500">Up {{ round($enrollmentChangePercent) }}% ({{ $enrollmentsThisPeriod - $enrollmentsPreviousPeriod }} more)</span>
+                        @elseif ($enrollmentChangePercent < 0)
+                            <span class="text-red-500">Down {{ round(abs($enrollmentChangePercent)) }}% ({{ abs($enrollmentsThisPeriod - $enrollmentsPreviousPeriod) }} fewer)</span>
+                        @else
+                            <span>No Change</span>
+                        @endif
+                    </p>
+                @else
+                    <p class="text-sm text-neutral-700">No enrollments.</p>
+                @endif
             </div>
     
             <!-- Revenue This Period -->
-            <div class="bg-white shadow-md rounded-md p-4">
-                <h3 class="text-xl font-bold mb-2">Revenue This Period</h3>
-                <p class="text-gray-600">${{ number_format($totalThisPeriod, 2) }}</p>
+            <div class="bg-white border rounded-xl p-4">
+                <h3 class="text-sm font- mb-2 text-neutral-700">Revenue This Period</h3>
+                <p class="text-black text-xl mb-2">${{ number_format($totalThisPeriod, 2) }}</p>
                 <p class="text-sm">
                     @if ($revenueChangePercent > 0)
-                        <span class="text-green-500">Up {{ number_format($revenueChangePercent, 2) }}%</span>
+                        <span class="text-green-500">Up {{ round($revenueChangePercent) }}% (${{ number_format($totalThisPeriod - $totalPreviousPeriod, 2) }} more)</span>
+                    @elseif ($revenueChangePercent < 0)
+                        <span class="text-red-500">Down {{ round(abs($revenueChangePercent)) }}% (${{ number_format(abs($totalThisPeriod - $totalPreviousPeriod), 2) }} less)</span>
                     @else
-                        <span class="text-red-500">Down {{ number_format(abs($revenueChangePercent), 2) }}%</span>
+                        <span>No Change</span>
                     @endif
                 </p>
             </div>
     
-            <!-- Total Batches -->
-            <div class="bg-white shadow-md rounded-md p-4">
-                <h3 class="text-xl font-bold mb-2">Total Batches</h3>
-                <p class="text-gray-600">{{ $batches }}</p>
+            <!-- Failed Payments -->
+            <div class="bg-white border rounded-xl p-4">
+                <h3 class="text-sm font- mb-2 text-neutral-700">Failed Payments</h3>
+                <p class="text-black text-xl mb-2">{{ $failedPaymentsThisPeriod }} failed payments</p>
+                <p class="text-sm text-neutral-700">Failed Revenue: ${{ number_format($failedRevenueThisPeriod, 2) }}</p>
             </div>
         </div>
     </div>
