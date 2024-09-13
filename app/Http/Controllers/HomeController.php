@@ -70,52 +70,91 @@ class HomeController extends Controller
     
         }
         elseif(Auth::User()->role == 100){
-            // $users = User::count();
-            // $month_date = date('m');
-            // $usersThisMonth = User::whereMonth('created_at', $month_date)->whereYear('created_at', '=', Carbon::now()->year)->count();
-            // $usersPreviousMonth = User::whereMonth('created_at', date('m', strtotime('-1 month')))->whereYear('created_at', '=', Carbon::now()->year)->count();
-            // $batches = Batch::where('status', 1)->get()->count();
-            // $total = CourseEnrollment::where('hasPaid', 1)->sum('amountPaid')/100;
-            // $month = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->sum('amountPaid')/100;
-            // $montht = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->month)->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->get();
-            // $previousMonth = CourseEnrollment::where('hasPaid', 1)->whereMonth('paidAt', date('m', strtotime('-1 month')))->sum('amountPaid')/100;
-            // $previousMonth = CourseEnrollment::whereMonth('paidAt', '=', Carbon::now()->subMonth()->format('m'))->whereYear('paidAt', '=', Carbon::now()->year)->where('hasPaid', 1)->sum('amountPaid')/100;
-            // return view('admin.index', compact('users', 'batches', 'total', 'month', 'previousMonth', 'usersThisMonth', 'usersPreviousMonth'));
-            $range = $request->input('range', '7'); // Default to last 7 days if no range is selected
-    
-            // Default to last 7 days
-            $startDate = Carbon::now()->subDays($range);
+            $range = $request->input('range', '7'); // Default to '7 days' if no range is selected
+
+    // Determine date range based on filter
+    switch ($range) {
+        case '7':
+            $startDate = Carbon::now()->subDays(7);
             $endDate = Carbon::now();
-        
-            // Check for custom date range
-            if ($request->input('start_date') && $request->input('end_date')) {
-                $startDate = Carbon::parse($request->input('start_date'));
-                $endDate = Carbon::parse($request->input('end_date'));
-            }
-        
-            // Fetch data for users in the selected range
-            $usersThisPeriod = User::whereBetween('created_at', [$startDate, $endDate])->count();
-            
-            // Fetch data for comparison (previous period)
-            $previousStartDate = $startDate->copy()->subDays($range);
-            $previousEndDate = $endDate->copy()->subDays($range);
-            $usersPreviousPeriod = User::whereBetween('created_at', [$previousStartDate, $previousEndDate])->count();
-        
-            // Fetch batch data and enrollment data
-            $batches = Batch::where('status', 1)->get()->count();
-            $total = CourseEnrollment::where('hasPaid', 1)->sum('amountPaid')/100;
-            
-            // Payments in the selected period
-            $totalThisPeriod = CourseEnrollment::where('hasPaid', 1)
-                ->whereBetween('paidAt', [$startDate, $endDate])
-                ->sum('amountPaid') / 100;
-        
-            // Payments in the previous period
-            $totalPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
-                ->whereBetween('paidAt', [$previousStartDate, $previousEndDate])
-                ->sum('amountPaid') / 100;
-        
-            return view('admin.index', compact('usersThisPeriod', 'usersPreviousPeriod', 'batches', 'total', 'totalThisPeriod', 'totalPreviousPeriod', 'range', 'startDate', 'endDate'));
+            break;
+
+        case '30':
+            $startDate = Carbon::now()->subDays(30);
+            $endDate = Carbon::now();
+            break;
+
+        case '365':
+            $startDate = Carbon::now()->subDays(365);
+            $endDate = Carbon::now();
+            break;
+
+        case 'this_month':
+            $startDate = Carbon::now()->startOfMonth();
+            $endDate = Carbon::now()->endOfMonth();
+            break;
+
+        case 'last_month':
+            $startDate = Carbon::now()->subMonth()->startOfMonth();
+            $endDate = Carbon::now()->subMonth()->endOfMonth();
+            break;
+
+        case 'last_3_months':
+            $startDate = Carbon::now()->subMonths(3)->startOfMonth();
+            $endDate = Carbon::now()->endOfMonth();
+            break;
+
+        default:
+            $startDate = Carbon::now()->subDays(7); // Default to last 7 days
+            $endDate = Carbon::now();
+            break;
+    }
+
+    // Fetch data for users in the selected range
+    $usersThisPeriod = User::whereBetween('created_at', [$startDate, $endDate])->count();
+
+    // Fetch data for comparison (previous period)
+    $previousStartDate = $startDate->copy()->subDays($endDate->diffInDays($startDate));
+    $previousEndDate = $endDate->copy()->subDays($endDate->diffInDays($startDate));
+    $usersPreviousPeriod = User::whereBetween('created_at', [$previousStartDate, $previousEndDate])->count();
+
+    // Fetch batch data
+    $batches = Batch::where('status', 1)->count();
+
+    // Ensure that amountPaid is numeric
+    $total = CourseEnrollment::where('hasPaid', 1)
+        ->whereNotNull('amountPaid')
+        ->where('amountPaid', '>', 0)
+        ->sum('amountPaid') / 100;
+
+    // Payments in the selected period
+    $totalThisPeriod = CourseEnrollment::where('hasPaid', 1)
+        ->whereBetween('paidAt', [$startDate, $endDate])
+        ->whereNotNull('amountPaid')
+        ->where('amountPaid', '>', 0)
+        ->sum('amountPaid') / 100;
+
+    // Payments in the previous period
+    $totalPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
+        ->whereBetween('paidAt', [$previousStartDate, $previousEndDate])
+        ->whereNotNull('amountPaid')
+        ->where('amountPaid', '>', 0)
+        ->sum('amountPaid') / 100;
+
+    // Calculate percentage change for users and revenue
+    $userChangePercent = $usersPreviousPeriod > 0 
+        ? (($usersThisPeriod - $usersPreviousPeriod) / $usersPreviousPeriod) * 100
+        : 100; // If no users in previous period, assume 100% growth
+    
+    $revenueChangePercent = $totalPreviousPeriod > 0
+        ? (($totalThisPeriod - $totalPreviousPeriod) / $totalPreviousPeriod) * 100
+        : 100; // If no revenue in previous period, assume 100% growth
+
+    return view('admin.index', compact(
+        'usersThisPeriod', 'usersPreviousPeriod', 'batches', 
+        'total', 'totalThisPeriod', 'totalPreviousPeriod', 
+        'userChangePercent', 'revenueChangePercent', 'range', 'startDate', 'endDate'
+    ));
         }
         
         else{
