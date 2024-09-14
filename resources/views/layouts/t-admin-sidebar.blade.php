@@ -8,9 +8,9 @@
     
     <!-- Include the Alpine library on your page -->
     <script src="https://unpkg.com/alpinejs" defer></script>
-    <link href="{{asset('css/app.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/tailwind.css')}}" rel="stylesheet" />
     {{-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script> --}}
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    {{-- <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" /> --}}
     <style>
       input:-webkit-autofill,
 input:-webkit-autofill:hover,
