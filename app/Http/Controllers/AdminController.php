@@ -199,8 +199,7 @@ class AdminController extends Controller
     }
 
     public function liveBatches(){
-        $batches = Batch::where('teacherId', Auth::user()->id)
-                ->orderBy('created_at', 'desc')
+        $batches = Batch::orderBy('created_at', 'desc')
                 ->get();
         return view ('admin.batch', compact('batches'))->with('i');
     }
