@@ -34,7 +34,7 @@ class AdminController extends Controller
         $this->middleware(['auth', 'verified', 'isAdmin']);
     }
     public function getUsers(){
-        $users = User::select('id','name', 'email','created_at', 'updated_at')->paginate(5000);
+        $users = User::select('id','name', 'email','created_at', 'updated_at')->paginate(500);
         
         foreach($users as $user){
             $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
@@ -75,8 +75,18 @@ class AdminController extends Controller
 
     public function students()
     {
-        $users = User::latest()->paginate(50);
-        return view('admin.students', compact('users'))->with('i', (request()->input('page', 1) - 1) * 50);;
+        $users = User::latest()->paginate(100);
+        foreach($users as $user){
+            $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
+        
+            if($isPaid > 0){
+                $user->hasPaid = 1;
+            }
+            else{
+                $user->hasPaid = 0;
+            }
+        }
+        return view('admin.students', compact('users'))->with('i', (request()->input('page', 1) - 1) * 100);;
     }
     public function addAccess()
     {
@@ -189,18 +199,9 @@ class AdminController extends Controller
     }
 
     public function liveBatches(){
-        $batches = Batch::where('status', 1)->get();
-        foreach($batches as $batch){
-            $enrollments = CourseEnrollment::where('batchId', $batch->id)->get()->count();
-            $unpaidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 0)->count();
-            $paidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->count();
-            $earnings = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->sum('amountPayable');
-            $batch->enrollments = $enrollments;
-            $batch->unpaidEnrollments = $unpaidEnrollments;
-            $batch->paidEnrollments = $paidEnrollments;
-            $batch->earnings = $earnings;
-
-        }
+        $batches = Batch::where('teacherId', Auth::user()->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
         return view ('admin.batch', compact('batches'))->with('i');
     }
 
@@ -391,20 +392,27 @@ class AdminController extends Controller
             $enrollment = CourseEnrollment::where('batchId', $request->batchId)->where('userId', $user->id)->first();
                 if(!$enrollment){
                     $batch = Batch::findOrFail($request->batchId);
-                    $a = new CourseEnrollment;
-                    $a->userId = $user->id;
-                    $a->batchId = $request->batchId;
-                    $a->price = $batch->price;
-                    $a->amountpayable = $batch->payable;
-                    $a->amountPaid = $request->amount * 100;
-                    $a->paidAt = $request->paidAt;
-                    $a->paymentMethod = $request->paymentMethod;
-                    $a->transactionId = $request->transactionId;
-                    $a->invoiceId = $request->invoiceId;
-                    $a->status = 1;
-                    $a->hasPaid =1;
-                    $a->certificateId = substr(md5(time()), 0, 16);
-                    $a->save();
+        $a = new CourseEnrollment;
+        $a->userId = $user->id;
+        $a->batchId = $request->batchId;
+        $a->price = $batch->price;
+        $a->amountpayable = $batch->payable;
+        $a->amountPaid = $request->amount * 100;
+
+        // Set paidAt to current date if not provided
+        $a->paidAt = $request->paidAt ?? Carbon::now();
+
+        // Set paymentMethod to 'upi' if not provided
+        $a->paymentMethod = $request->paymentMethod ?? 'upi';
+
+        // Generate random transactionId and invoiceId if not provided
+        $a->transactionId = $request->transactionId ?? 'TXN-' . strtoupper(uniqid());
+        $a->invoiceId = $request->invoiceId ?? 'INV-' . strtoupper(uniqid());
+
+        $a->status = 1;
+        $a->hasPaid = 1;
+        $a->certificateId = substr(md5(time()), 0, 16);
+        $a->save();
                 
                 $email_data = array(
                     'name' => $user['name'],

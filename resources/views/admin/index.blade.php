@@ -1,30 +1,34 @@
-@extends('layouts.t-admin')
+@extends('layouts.t-admin-sidebar')
 @section('content')
-    @include('layouts.t-admin-nav')
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
-    <div class="container max-w-5xl mx-auto p-4 mt-24">
+    {{-- @include('layouts.t-admin-nav') --}}
+    <div class="container max- mx-auto p-4 mt-">
     
         
         <!-- Filter Form -->
-        <form method="GET" action="{{ url('/home') }}" class="mb- flex justify-end ">
-            <div class="mb-4 w-60">
-                <select name="range" id="range" class="block w-full text-sm text-violet-700 bg-violet-100 border-none focus:ring-0 focus:border-none rounded-m p-2 pr-8 focus:outline-none" onchange="this.form.submit()">
-                    <option value="7" {{ request('range') == '7' ? 'selected' : '' }}>Last 7 Days</option>
-                    <option value="30" {{ request('range') == '30' ? 'selected' : '' }}>Last 30 Days</option>
-                    <option value="365" {{ request('range') == '365' ? 'selected' : '' }}>Last 1 Year</option>
-                    <option value="this_month" {{ request('range') == 'this_month' ? 'selected' : '' }}>This Month</option>
-                    <option value="last_month" {{ request('range') == 'last_month' ? 'selected' : '' }}>Last Month</option>
-                    <option value="last_3_months" {{ request('range') == 'last_3_months' ? 'selected' : '' }}>Last 3 Months</option>
-                </select>
-                
+        <div class="flex justify-between items-center mb-4">
+            <div class="">
+                <h1 class="">Analytics</h1>
             </div>
-        </form>
+            <form method="GET" action="{{ url('/home') }}" class=" flex justify-end ">
+                <div class="mb- w-60">
+                    <select name="range" id="range" class="block w-full text-sm text-violet-700 bg-violet-100 border-none focus:ring-0 focus:border-none rounded-m p-2 pr-8 focus:outline-none" onchange="this.form.submit()">
+                        <option value="7" {{ request('range') == '7' ? 'selected' : '' }}>Last 7 Days</option>
+                        <option value="30" {{ request('range') == '30' ? 'selected' : '' }}>Last 30 Days</option>
+                        <option value="365" {{ request('range') == '365' ? 'selected' : '' }}>Last 1 Year</option>
+                        <option value="this_month" {{ request('range') == 'this_month' ? 'selected' : '' }}>This Month</option>
+                        <option value="last_month" {{ request('range') == 'last_month' ? 'selected' : '' }}>Last Month</option>
+                        <option value="last_3_months" {{ request('range') == 'last_3_months' ? 'selected' : '' }}>Last 3 Months</option>
+                    </select>
+                    
+                </div>
+            </form>
+        </div>
+        
     
         <!-- Dashboard Statistics -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <!-- Users (New Signups) -->
-            <div class="bg-white border rounded-x p-4">
+            <div class="bg-white border w-full rounded-x p-4 ">
                 <h3 class="text-sm font- mb-2 text-neutral-700">New Signups</h3>
                 <p class="text-black text-xl mb-2">{{ $usersThisPeriod }} users</p>
                 @if ($usersThisPeriod > 0 || $usersPreviousPeriod > 0)
@@ -43,7 +47,7 @@
             </div>
     
             <!-- Enrollments (Paid Members) -->
-            <div class="bg-white border rounded-x p-4">
+            <div class="bg-white border w-full rounded-x p-4">
                 <h3 class="text-sm font- mb-2 text-neutral-700">New Enrollments</h3>
                 <p class="text-black text-xl mb-2">{{ $enrollmentsThisPeriod }} enrollments</p>
                 @if ($enrollmentsThisPeriod > 0 || $enrollmentsPreviousPeriod > 0)
@@ -62,7 +66,7 @@
             </div>
     
             <!-- Revenue This Period -->
-            <div class="bg-white border rounded-x p-4">
+            <div class="bg-white border w-full rounded-x p-4">
                 <h3 class="text-sm font- mb-2 text-neutral-700">Revenue This Period</h3>
                 <p class="text-black text-xl mb-2">₹{{ number_format($totalThisPeriod, 0) }}</p>
                 <p class="text-sm">
@@ -77,13 +81,13 @@
             </div>
     
             <!-- Failed Payments -->
-            <div class="bg-white border rounded-x p-4">
+            <div class="bg-white border w-full rounded-x p-4">
                 <h3 class="text-sm font- mb-2 text-neutral-700">Failed Payments</h3>
                 <p class="text-black text-xl mb-2">{{ $failedPaymentsThisPeriod }} </p>
                 <p class="text-sm text-neutral-700">Failed Revenue: ₹{{ number_format($failedRevenueThisPeriod, 0) }}</p>
             </div>
 
-            <div class="bg-white border rounded-x p-4">
+            <div class="bg-white border w-full rounded-x p-4">
                 <h3 class="text-sm font- mb-2 text-neutral-700">Learning Time</h3>
                 <p class="text-black text-xl mb-2">{{ $totalLearningTimeThisPeriod }} Hrs</p>
                 @if ($totalLearningTimeThisPeriod > 0 || $totalLearningTimePreviousPeriod > 0)
@@ -124,5 +128,7 @@
         // Call function on page load to ensure proper state
         window.onload = toggleCustomRange;
     </script>
+    
+
     
 @endsection

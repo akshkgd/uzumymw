@@ -9,14 +9,16 @@
     <!-- Include the Alpine library on your page -->
     <script src="https://unpkg.com/alpinejs" defer></script>
     <link href="{{asset('css/app.css')}}" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
-    <style>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" /> --}}
+    {{-- <style>
       input:focus{
         border:1px solid gray !important;
-
       }
-    </style>
+      td{
+        color: black !important;
+      }
+    </style> --}}
   </head>
   <body class="font-sans">
     

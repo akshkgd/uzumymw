@@ -1,4 +1,4 @@
-<header id="sticky-header" class="fixed top-0 z-[60] h-14 flex items-center justify-center w-full duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-300 border-opacity-40">
+<header id="sticky-header" class="fixed top-0 z-[10] h-14 flex items-center justify-center w-full duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-300 border-opacity-40">
       <div class="flex items-center justify-between w-full px-5  mx-auto 2xl:px-5  py-1">
         <div class="relative z-10 flex gap-4 items-center max-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left">
         <a href="#" class="sm:mr-8 font-sans text-lg flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline">
@@ -12,6 +12,8 @@
         
         <a href="" class="">Create Course</a>
         <a href="" class="">Batches</a>
+        <a href="" class="">Learners</a>
+
 
 
           
@@ -167,7 +169,7 @@
     </header>
 
     {{-- add user modal --}}
-    <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+    <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="hidden z-50 absolute overflow-y-auto bg-neutral-5 bg-opacity-50 overflow-x-hidden fixe top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
       <div class="relative p-4 w-full max-w-md max-h-full">
           <!-- Modal content -->
           <div class="relative bg-white  dark:bg-gray-700">
@@ -230,7 +232,7 @@
               </button>
           </div>
           <!-- Modal body -->
-          <div class="p-4 md:p-5">
+          <div class="px-4 pb-4  md:px-5 md:pb-5">
               <form class="space-y-4" action="{{ route('addAccess') }}" method="POST" id="accessForm">
                   @csrf
                   <div>
@@ -245,14 +247,14 @@
                       
                       <div id="batchSuggestions" class="absolut  z-10 bg-neutral-50 borde w-full max-h-40 overflow-y-auto box-border"></div> <!-- Container for batch suggestions -->
                     </div>
-                  <div>
+                  {{-- <div>
                       <label for="invoiceId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Invoice ID*</label>
                       <input type="text" name="invoiceId" id="invoiceId" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter invoice ID" required />
                   </div>
                   <div>
                       <label for="transactionId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Transaction ID*</label>
                       <input type="text" name="transactionId" id="transactionId" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter transaction ID" required />
-                  </div>
+                  </div> --}}
                   <div>
                       <label for="paymentMethod" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment Method*</label>
                       <input type="text" name="paymentMethod" id="paymentMethod" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter payment method" required />
@@ -261,10 +263,10 @@
                       <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount Paid*</label>
                       <input type="text" name="amount" id="amount" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter amount paid" required />
                   </div>
-                  <div>
+                  {{-- <div>
                       <label for="paidAt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Paid At*</label>
                       <input type="date" name="paidAt" id="paidAt" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" required />
-                  </div>
+                  </div> --}}
                   <div class="flex justify-end">
                       <button type="submi" class="w-ful ml-auto text-white bg-black hover:bg-neutral-800 focus:ring-0 focus:outline-none font-normal text-sm px-5 py-3 text-center">Grant Access</button>
                   </div>      

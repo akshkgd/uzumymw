@@ -1,4 +1,65 @@
+@extends('layouts.t-admin')
+@section('content')
+@include('layouts.t-admin-nav')
 
+{{-- Enrollment details --}}
+
+<section class="mt-32  sm:max-w-6xl w-full mx-auto">
+    <div class="container mx-auto px-4">
+        @include('layouts.alert')
+        <div class="flex justify-center">
+            <div class="w-full">
+                <h1 class="text-xl font-bold">Learners</h1>
+                <p class="text-sm text-neutral-700">Manage your learners</p>
+        
+        
+        
+        
+        <!-- Search Bar -->
+        <div class="my-4">
+            <input type="tex" id="searchInput" onkeyup="searchTable()" placeholder="Search by name, email, or phone number" class="w-full px-4 py-2 border border-neutral-200 rounded-lg focus:outline-none focus:ring-0">
+        </div>
+
+                <div class="bg-white border rounded-lg">
+                    <div class="overflow-x-auto ">
+                        <div class="content mt-8">
+                            <h3 class="text-xl font-semibold mb-4">Enrollments</h3>
+                            <div class="card p-0">
+                                <table class="min-w-full divide-y divide-neutral-200">
+                                    <thead class="">
+                                        <tr class="text-black">
+                                            <th class="px-5 py-3 font-medium text-left">Course</th>
+                                            <th class="px-5 py-3 font-medium text-left">Enrolled On</th>
+                                            <th class="px-5 py-3 font-medium text-left">Fees</th>
+                                            <th class="px-5 py-3 font-medium text-left">College</th>
+                                            <th class="px-5 py-3 font-medium text-left" width="280px">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                        @foreach ($enrollments as $enrollment)
+                                        <tr class="{{ $enrollment->hasPaid == 1 ? 'table-success bg-green-50' : '' }}">
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{$enrollment->batch->name}}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('D d M y') }}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{$enrollment->amountPaid > 0 ? $enrollment->amountPaid / 100 : 0}}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{$user->college}}</td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm">Beginner</td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+{{-- 
 @extends('layouts.admin')
 
 @section('content')
@@ -81,4 +142,4 @@
             </table>
         </div>
 </div>
-@endsection
+@endsection --}}
