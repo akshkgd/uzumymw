@@ -1,14 +1,15 @@
-@extends('layouts.t-student')
+@extends('layouts.t-admin')
 @section('content')
     @include('layouts.t-admin-nav')
-
-    <div class="container max-w-5xl mx-auto p-4 mt-12">
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <div class="container max-w-5xl mx-auto p-4 mt-24">
     
         
         <!-- Filter Form -->
         <form method="GET" action="{{ url('/home') }}" class="mb- flex justify-end ">
             <div class="mb-4 w-60">
-                <select name="range" id="range" class="block w-full text-sm text-violet-700 bg-violet-100 rounded-m p-2 focus:outline-none" onchange="this.form.submit()">
+                <select name="range" id="range" class="block w-full text-sm text-violet-700 bg-violet-100 border-none focus:ring-0 focus:border-none rounded-m p-2 pr-8 focus:outline-none" onchange="this.form.submit()">
                     <option value="7" {{ request('range') == '7' ? 'selected' : '' }}>Last 7 Days</option>
                     <option value="30" {{ request('range') == '30' ? 'selected' : '' }}>Last 30 Days</option>
                     <option value="365" {{ request('range') == '365' ? 'selected' : '' }}>Last 1 Year</option>
@@ -16,6 +17,7 @@
                     <option value="last_month" {{ request('range') == 'last_month' ? 'selected' : '' }}>Last Month</option>
                     <option value="last_3_months" {{ request('range') == 'last_3_months' ? 'selected' : '' }}>Last 3 Months</option>
                 </select>
+                
             </div>
         </form>
     
@@ -101,6 +103,13 @@
         </div>
     </div>
         
+
+
+
+
+
+
+
     <script>
         function toggleCustomRange() {
             var range = document.getElementById('range').value;

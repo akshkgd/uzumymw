@@ -91,6 +91,7 @@ class AdminController extends Controller
             $userDetails = [
                 'name' => $user->name,
                 'email' => $user->email,
+                'mobile' => $user->mobile,
                 // Add other user details as needed
             ];
             return response()->json($userDetails);
@@ -168,6 +169,14 @@ class AdminController extends Controller
         $user->save();
         session()->flash('alert-success', 'Account Updated Successfully!');
         return redirect()->back();
+    }
+    public function batchSuggestions(Request $request){
+        $batchName = $request->query('batchName');
+        $batches = Batch::where('name', 'LIKE', '%' . $batchName . '%')
+        ->orderBy('created_at', 'desc')  // Order by most recent
+        ->limit(50)
+        ->get(['id', 'name']);
+        return response()->json($batches);
     }
 
     public function addTopics($id)

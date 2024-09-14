@@ -238,6 +238,7 @@ Route::get('/admin/add-access', 'AdminController@addAccess');
 Route::post('/get-email-suggestions', 'AdminController@getUser')->name('getUser');
 Route::post('/add-access', 'AdminController@addCourseAccess')->name('addAccess');
 Route::get('/admin/course-progress', 'AdminController@fetchCourseProgress');
+Route::get('/admin/batch-suggestions', 'AdminController@batchSuggestions')->name('getBatchSuggestions');;
 
 
 
