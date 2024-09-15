@@ -132,7 +132,7 @@ class AdminController extends Controller
 
     // Fetch the sessions for the student (use the user_id as the student)
     $devices = \DB::table('sessions')
-        ->where('user_id', $student->user_id) // Assuming there's a user_id column in students
+        ->where('user_id', $student->id) // Assuming there's a user_id column in students
         ->latest('last_activity')
         ->select('id', 'ip_address', 'user_agent', 'last_activity')
         ->get();
