@@ -265,7 +265,7 @@ class AdminController extends Controller
     }
     public function editBatch($id){
         $batch = Batch::findOrFail($id);
-        $teachers = User::where('role', 'teacher')->get();
+        $teachers = User::where('role', 1)->get();
         return view('admin.editBatch', compact('batch', 'teachers'));
     }
     public function updateBatch(Request $request, $id){
