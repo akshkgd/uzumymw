@@ -136,6 +136,9 @@ class AdminController extends Controller
     ->select('id', 'ip_address', 'user_agent', 'last_activity')
     ->cursor();
 
+    $deviceList = [];
+
+
     // Process each session (using Jenssegers\Agent for device and browser details)
     foreach ($devices as $device) {
         $agent = new \Jenssegers\Agent\Agent();
@@ -146,10 +149,11 @@ class AdminController extends Controller
         $device->is_desktop = $agent->isDesktop();
         $device->device_name = $agent->device();
         $device->last_activity = \Carbon\Carbon::createFromTimestamp($device->last_activity)->format('d M Y h:i A');
+        $deviceList[] = $device;
     }
 
     return response()->json([
-        'devices' => $devices,
+        'devices' => $deviceList,
         'current_session_id' => \Session::getId()
     ]);
 }
