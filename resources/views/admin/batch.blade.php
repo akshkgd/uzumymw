@@ -1,6 +1,6 @@
 @extends('layouts.t-admin-sidebar')
 @section('content')
-<section class="mt-2 mb-12  sm:max-w-5xl w-full mx-auto">
+<section class="mt-2 mb-12  sm:max-w-9xl w-full mx-auto">
     <div class="container mx-auto px-4">
         @include('layouts.alert')
         <div class="flex justify-center">
@@ -34,7 +34,7 @@
                                 @foreach ($batches as $batch)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">B-{{ $batch->id }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm"><a href="{{ action('BatchController@classDetails', $batch->id) }}" class="text-violet-700 hover:text-violet-800">{{ $batch->name }}</a></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm"><a href="{{ action('AdminController@editBatch', $batch->id) }}" class="text-violet-700 hover:text-violet-800">{{ $batch->name }}</a></td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ \Carbon\Carbon::parse($batch->startDate)->format('d M y') }} - {{ \Carbon\Carbon::parse($batch->endDate)->format('d M y') }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-violet-700">
                                         @if($batch->status == 0)
@@ -49,13 +49,15 @@
                                     </td>
                                     
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                        <div class="flex gap-4">
-                                            <a href="{{ action('BatchController@classDetails', $batch->id)  }}"
-                                                class="text-violet-700 hover:text-violet-800">Details</a>
+                                        <div class="flex gap-4 ">
+                                            <a href="{{ action('AdminController@addLiveClass', $batch->id) }}"
+                                                class="text-neutral-700 hover:text-violet-800"><svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="currentColor" viewBox="0 0 16 16"><path d="M3.05 3.05a7 7 0 0 0 0 9.9.5.5 0 0 1-.707.707 8 8 0 0 1 0-11.314.5.5 0 0 1 .707.707m2.122 2.122a4 4 0 0 0 0 5.656.5.5 0 1 1-.708.708 5 5 0 0 1 0-7.072.5.5 0 0 1 .708.708m5.656-.708a.5.5 0 0 1 .708 0 5 5 0 0 1 0 7.072.5.5 0 1 1-.708-.708 4 4 0 0 0 0-5.656.5.5 0 0 1 0-.708m2.122-2.12a.5.5 0 0 1 .707 0 8 8 0 0 1 0 11.313.5.5 0 0 1-.707-.707 7 7 0 0 0 0-9.9.5.5 0 0 1 0-.707zM10 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0"/></svg>
+                                             </a>
+                                             
                                             <a href="{{ action('AdminController@batchEnrollment', $batch->id) }}"
-                                                class="btn ck-c-btn text-violet-700 hover:text-violet-800">Enrollments</a>
+                                                class="btn ck-c-btn text-neutral-700 hover:text-violet-800"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></a>
                                             <a target="_blank" href="{{ action('TeacherController@addContent', $batch->id) }}"
-                                                class="text-violet-700 hover:text-violet-800">Add Content</a>
+                                                class="text-neutral-700 hover:text-violet-800"><svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="16"></line><line x1="8" x2="16" y1="12" y2="12"></line></svg></a>
 
                                                 
                                         </div>

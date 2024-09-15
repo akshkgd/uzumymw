@@ -8,7 +8,7 @@
     
     <!-- Include the Alpine library on your page -->
     <script src="https://unpkg.com/alpinejs" defer></script>
-    <link href="{{asset('css/tailwind.css')}}" rel="stylesheet" />
+    <link href="{{asset('css/app.css')}}" rel="stylesheet" />
     {{-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script> --}}
     {{-- <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" /> --}}
     <style>
@@ -29,10 +29,16 @@ input:-webkit-autofill:focus {
           {{-- <span class="tex text-neutral-800">codekaro.in</span> --}}
         </a>
         <div class="mt-4 text-neutral-800 text-sm ">
-          <div class="flex px-2 items-center">
-            <svg class=" w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg>
-            <input type="text" placeholder="Search user" class="mx- focus:outline-none focus:border-0 w-full p-1.5 px-2 bg-transparent">
-          </div>
+          <form action="{{ route('search') }}" method="POST">
+            @csrf
+            <div class="flex px-2 items-center">
+                <svg class=" w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                </svg>
+                <input type="text" name="search_value" placeholder="Search user" class="mx- focus:outline-none focus:border-0 w-full p-1.5 px-2 bg-transparent" required>
+                {{-- <button type="submit" class="ml-2">Search</button> --}}
+            </div>
+        </form>
         
           <!-- Home link -->
           <a href="{{ url('/home') }}" class="flex gap-2 items-center py-1.5 px-2 hover:bg-neutral-200 {{ Request::is('home') ? 'bg-neutral-200' : '' }}">
@@ -45,7 +51,7 @@ input:-webkit-autofill:focus {
           </a>
         
           <!-- Create Batch link -->
-          <a href="{{ url('/admin/students') }}" class="flex gap-2 items-center py-1.5 px-2  hover:bg-neutral-200 {{ Request::is('admin/students') ? 'bg-neutral-200' : '' }}">
+          <a href="{{ url('/admin/create/batch') }}" class="flex gap-2 items-center py-1.5 px-2  hover:bg-neutral-200 {{ Request::is('admin/students') ? 'bg-neutral-200' : '' }}">
             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="16"></line><line x1="8" x2="16" y1="12" y2="12"></line></svg> Create Batch
           </a>
         
@@ -80,6 +86,31 @@ input:-webkit-autofill:focus {
         </div>
       </div>
       <div id="dashboard " class="w-[calc(100vw-256px)] ml-64">
+        @if(session('success'))
+        <div class="bg-white shadow transition-all text-green-700 px-4 py-3 absolute bottom-5 right-2" role="alert" id="successAlert">
+          <span class="block sm:inline">{{ session('success') }}</span>
+      </div>
+      
+      <script>
+          document.addEventListener('DOMContentLoaded', function () {
+              const alertBox = document.getElementById('successAlert');
+              
+              // Automatically hide the alert after 3 seconds (3000 milliseconds)
+              setTimeout(function () {
+                  alertBox.style.display = 'none'
+              }, 4000);
+      
+              // If you also have a close button in the future, add this logic to close manually
+              const closeButton = document.querySelector('[role="button"]');
+              if (closeButton) {
+                  closeButton.addEventListener('click', function () {
+                      alertBox.style.display = 'none';
+                  });
+              }
+          });
+      </script>
+      
+        @endif
         @yield('content')
       </div>
     </section>

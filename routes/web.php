@@ -221,6 +221,10 @@ Route::get('/admin/make-teacher/{id}', 'AdminController@makeTeacher');
 Route::get('/admin/downgrade-teacher/{id}', 'AdminController@downgradeTeacher');
 Route::get('/admin/batches', 'AdminController@liveBatches');
 Route::get('/admin/create/batch', 'AdminController@createBatch');
+Route::get('/admin/edit/batch/{id}', 'AdminController@editBatch')->name('editBatch');
+Route::put('/admin/update/batch/{id}', 'AdminController@updateBatch')->name('updateBatch');
+
+
 Route::get('/admin/create/batch/topics/{id}', 'AdminController@addTopics');
 Route::post('/storeTopic', 'AdminController@storeTopic')->name('storeTopic');
 Route::get('/delete-topic/{id}', 'AdminController@deleteTopic');
@@ -239,6 +243,9 @@ Route::post('/get-email-suggestions', 'AdminController@getUser')->name('getUser'
 Route::post('/add-access', 'AdminController@addCourseAccess')->name('addAccess');
 Route::get('/admin/course-progress', 'AdminController@fetchCourseProgress');
 Route::get('/admin/batch-suggestions', 'AdminController@batchSuggestions')->name('getBatchSuggestions');;
+Route::get('/admin/update-live-class/{id}', 'AdminController@addLiveClass');
+Route::post('/admin/update-live-class', 'AdminController@updateLiveClass')->name('updateLiveClass');
+Route::get('/api/students/{id}/sessions', 'AdminController@getStudentSessions')->name('students.sessions');
 
 
 

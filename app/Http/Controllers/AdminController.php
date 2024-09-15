@@ -23,8 +23,10 @@ use App\Mail\WelcomeEmail;
 use App\Mail\OnboardingMailL2;
 use App\Mail\EmailForQueuing;
 use Mail;
+use Illuminate\Support\Facades\Http;
 use Ognjen\Laravel\AsyncMail;
 use Illuminate\Support\Facades\DB;
+use Jenssegers\Agent\Agent;
 use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
 
 class AdminController extends Controller
@@ -114,20 +116,69 @@ class AdminController extends Controller
     {
         $user = User::findorFail($id);
         $enrollments = CourseEnrollment::where('userId', $id)->get();
+        $recentVideos = CourseProgress::where('userId', $id)
+        ->orderBy('updated_at', 'desc') // Assuming 'updated_at' tracks the most recent activity
+        ->limit(3)
+        ->get();
         return view('admin.studentDetails', compact('user', 'enrollments'))->with('i');
     }
-
-    public function search(Request $request)
-    {
-        $search = $request->search_value;
-        $users = User::where('email', 'LIKE', '%' . $search . '%')->orWhere('mobile', 'LIKE', '%' . $search . '%')->orderBy('created_at', 'desc')->get();
-        if ($users->count() > 0){
-        return view('admin.search', compact('users'))->with('i');}
-        else{
-            session()->flash('alert-danger', 'not found!');
-        return  redirect()->back();
-        }
+    public function getStudentSessions($id)
+{
+    // Ensure the user (student) exists
+    $student = User::find($id);
+    if (!$student) {
+        return response()->json(['error' => 'Student not found'], 404);
     }
+
+    // Fetch the sessions for the student (use the user_id as the student)
+    $devices = \DB::table('sessions')
+        ->where('user_id', $student->user_id) // Assuming there's a user_id column in students
+        ->latest('last_activity')
+        ->select('id', 'ip_address', 'user_agent', 'last_activity')
+        ->get();
+
+    // Process each session (using Jenssegers\Agent for device and browser details)
+    foreach ($devices as $device) {
+        $agent = new \Jenssegers\Agent\Agent();
+        $agent->setUserAgent($device->user_agent);
+
+        $device->browser = $agent->browser();
+        $device->is_mobile = $agent->isMobile();
+        $device->is_desktop = $agent->isDesktop();
+        $device->device_name = $agent->device();
+        $device->last_activity = \Carbon\Carbon::createFromTimestamp($device->last_activity)->format('d M Y h:i A');
+    }
+
+    return response()->json([
+        'devices' => $devices,
+        'current_session_id' => \Session::getId()
+    ]);
+}
+
+    public function search(Request $request){
+    $search = $request->search_value;
+    $users = User::where('email', 'LIKE', '%' . $search . '%')
+                ->orWhere('mobile', 'LIKE', '%' . $search . '%')
+                ->orderBy('created_at', 'desc')
+                ->get();
+    
+    if ($users->count() > 0) {
+        // If only one user is found, redirect to the user details page
+        if ($users->count() === 111) {
+            $user = $users->first();
+            return redirect()->route('admin.user.details', ['id' => $user->id]);
+        } 
+        // If more than one user is found, show the list of users
+        else {
+            return view('admin.search', compact('users', 'search'))->with('i');
+        }
+    } else {
+        // If no users are found, show a flash message and redirect back
+        session()->flash('success', 'User not found!');
+        return redirect()->back();
+    }
+    }
+
     public function banStudent($id)
     {
         $user  = User::findorFail($id);
@@ -206,9 +257,96 @@ class AdminController extends Controller
 
     public function createBatch()
     {
-        return view('admin.createBatch');
+        $teachers = User::where('role', 1)->get();
+        return view('admin.createBatch', compact('teachers'));
+    }
+    public function editBatch($id){
+        $batch = Batch::findOrFail($id);
+        $teachers = User::where('role', 'teacher')->get();
+        return view('admin.editBatch', compact('batch', 'teachers'));
+    }
+    public function updateBatch(Request $request, $id){
+        $a = Batch::findOrFail($id);
+        $a->topicId = $request->courseId;
+        $a->name = $request->name;
+        $a->description = $request->description;
+        $a->price = $request->price;
+        $a->payable = $request->payable ;
+        $a->offerId = $request->offerId ;
+        $a->limit = $request->limit;
+        $a->img = $request->img ;
+        if($request->hasFile('img')){
+            // $a->association = $request->association;
+            $path = $request->file('img')->store('img', 'public');
+            $a->img = $path;}
+        $a->type = $request->type ;
+        $a->startDate = $request->startDate ;
+        $a->endDate = $request->endDate ;
+        $a->schedule = $request->timing ;
+        $a->about = $request->about ;
+        $a->learn = $request->learn;
+        $a->benefits = $request->benefits ;
+        $a->groupLink = $request->groupLink ;
+        $a->groupLink2 = $request-> groupLink2;
+        $a->teacherId = $request->teacherId ;
+        $a->meetingLink = $request->meetingLink ;
+        $a->topic = $request->topic ;
+        $a->desc = $request->desc ;
+        $a->nextClass = $request->nextClass ;
+        $a->status = $request->status;
+        $a->save();
+        session()->flash('success', 'Batch updated');
+        return redirect('/admin/batches');
     }
 
+    public function addLiveClass($id)
+    {
+        $batch = Batch::findorFail($id);
+        return view('admin.updateLiveClass', compact('batch'));
+    }
+    public function updateLiveClass(Request $request)
+    {
+        $batch = Batch::findOrFail($request->batchId);
+        
+        // Update batch details
+        $batch->topic = $request->topic;
+        $batch->nextClass = $request->nextClass;
+        $batch->meetingLink = $request->meetingLink;
+        $batch->save();
+
+        // If 'sendWhatsApp' is checked, send WhatsApp notifications
+        if ($request->has('sendWhatsApp')) {
+            $enrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->get();
+            foreach ($enrollments as $enrollment) {
+                if ($enrollment->students->mobile) {
+                    $this->sendLiveclassWhatsappReminder($enrollment->id, $batch);
+                }
+            }
+        }
+
+        return redirect()->back()->with('success', 'Live class scheduled.');
+    }
+    private function sendLiveclassWhatsappReminder($id, $batch){
+        $pabblyWebhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTY0MDYzMjA0MzQ1MjY0NTUzZDUxM2Ii_pc';
+        $enrollment = CourseEnrollment::findOrFail($id);
+        $name = $enrollment->students->name;
+        $email = $enrollment->students->email;
+        $batchName = $enrollment->batch->name; 
+        $user = $enrollment->students;
+        $topic = $batch->topic;
+        $link = $batch->meetingLink;
+        $data = [
+            'firstName' => strtok($name, ' '),
+            'email' => $email,
+            'phone' => $user->mobile,
+            'batchName' => $batchName,
+            'link' => $link,
+            'topic'=> $topic,
+
+            // Add any other data you want to send to the Zapier webhook
+        ];
+        $response = Http::post($pabblyWebhookUrl, $data);
+}
 
     public function batchEnrollmentOld($id)
     {

@@ -8,7 +8,7 @@ use App\Course;
 
 class Batch extends Model
 {
-    Protected $dates = ['date', 'startDate', 'created_at'];
+    Protected $dates = ['date', 'created_at'];
 
 
     public function teacher(){

@@ -1,7 +1,7 @@
 @extends('layouts.t-admin-sidebar')
 @section('content')
     {{-- @include('layouts.t-admin-nav') --}}
-    <div class="container max- mx-auto p-4 mt-">
+    <div class="container mx-auto p-4 mt-">
     
         
         <!-- Filter Form -->

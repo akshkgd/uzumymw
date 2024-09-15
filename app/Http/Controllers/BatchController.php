@@ -200,6 +200,7 @@ class BatchController extends Controller
         $a->topic = $request->topic ;
         $a->desc = $request->desc ;
         $a->nextClass = $request->nextClass ;
+        $a->status = $request->status;
         $a->save();
         session()->flash('alert-danger', 'Batch Added');
         return redirect('/home');
