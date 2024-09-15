@@ -131,11 +131,10 @@ class AdminController extends Controller
     }
 
     // Fetch the sessions for the student (use the user_id as the student)
-    $devices = \DB::table('sessions')
-        ->where('user_id', $student->id) // Assuming there's a user_id column in students
-        ->latest('last_activity')
-        ->select('id', 'ip_address', 'user_agent', 'last_activity')
-        ->get();
+    $devices = \DB::table('sessions')->where('user_id', $student->id)
+    ->latest('last_activity')
+    ->select('id', 'ip_address', 'user_agent', 'last_activity')
+    ->cursor();
 
     // Process each session (using Jenssegers\Agent for device and browser details)
     foreach ($devices as $device) {
