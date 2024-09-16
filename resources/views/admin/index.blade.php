@@ -12,7 +12,7 @@
             <form method="GET" action="{{ url('/home') }}" class=" flex justify-end ">
                 <div class="mb- w-60">
                     <select name="range" id="range" class="block w-full text-sm text-violet-700 bg-violet-100 border-none focus:ring-0 focus:border-none rounded-m p-2 pr-8 focus:outline-none" onchange="this.form.submit()">
-                        <option value="today" {{ request('range') == 'today' ? 'selected' : '' }}>Today</option>
+                        <option value="today" {{ request('range', 'today') == 'today' ? 'selected' : '' }}>Today</option>
                         <option value="yesterday" {{ request('range') == 'yesterday' ? 'selected' : '' }}>Yesterday</option>
                         <option value="7" {{ request('range') == '7' ? 'selected' : '' }}>Last 7 Days</option>
                         <option value="30" {{ request('range') == '30' ? 'selected' : '' }}>Last 30 Days</option>
@@ -21,6 +21,7 @@
                         <option value="last_month" {{ request('range') == 'last_month' ? 'selected' : '' }}>Last Month</option>
                         <option value="last_3_months" {{ request('range') == 'last_3_months' ? 'selected' : '' }}>Last 3 Months</option>
                     </select>
+                    
                     
                     
                 </div>
