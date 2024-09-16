@@ -9,8 +9,26 @@
         @include('layouts.alert')
         <div class="flex justify-center">
             <div class="w-full">
-                <h1 class="text-xl font-bold">Learners</h1>
-                <p class="text-sm text-neutral-700">Manage your learners</p>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-xl font-bold">Learners</h1>
+                        <p class="text-sm text-neutral-700">Manage your learners</p>
+                    </div>
+                    <form action="{{ route('admin.students') }}" method="GET">
+                        <select name="filter" onchange="this.form.submit()">
+                            <option value="">Last 30 days</option>
+                            <option value="today" {{ request('filter') == 'today' ? 'selected' : '' }}>Today</option>
+                            <option value="yesterday" {{ request('filter') == 'yesterday' ? 'selected' : '' }}>Yesterday</option>
+                            <option value="last_7_days" {{ request('filter') == 'last_7_days' ? 'selected' : '' }}>Last 7 Days</option>
+                            <option value="this_month" {{ request('filter') == 'this_month' ? 'selected' : '' }}>This Month</option>
+                            <option value="last_month" {{ request('filter') == 'last_month' ? 'selected' : '' }}>Last Month</option>
+                            <option value="last_30_days" {{ request('filter') == 'last_30_days' ? 'selected' : '' }}>Last 30 Days</option>
+                            <option value="last_3_months" {{ request('filter') == 'last_3_months' ? 'selected' : '' }}>Last 3 Months</option>
+                            <option value="last_6_months" {{ request('filter') == 'last_6_months' ? 'selected' : '' }}>Last 6 Months</option>
+                        </select>
+                    </form>
+                </div>
+                
         
         
         

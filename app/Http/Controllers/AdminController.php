@@ -75,20 +75,43 @@ class AdminController extends Controller
     return view('admin.reactEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
     }
 
-    public function students()
+    public function students(Request $request)
     {
-        $users = User::latest()->paginate(100);
-        foreach($users as $user){
-            $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
-        
-            if($isPaid > 0){
-                $user->hasPaid = 1;
-            }
-            else{
-                $user->hasPaid = 0;
-            }
+        $query = User::query();
+        $filter = $request->input('filter');
+        switch ($filter) {
+        case 'today':
+            $query->whereDate('created_at', Carbon::today());
+            break;
+        case 'yesterday':
+            $query->whereDate('created_at', Carbon::yesterday());
+            break;
+        case 'last_7_days':
+            $query->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()]);
+            break;
+        case 'this_month':
+            $query->whereMonth('created_at', Carbon::now()->month)
+                  ->whereYear('created_at', Carbon::now()->year);
+            break;
+        case 'last_month':
+            $query->whereMonth('created_at', Carbon::now()->subMonth()->month)
+                  ->whereYear('created_at', Carbon::now()->subMonth()->year);
+            break;
+        case 'last_30_days':
+            $query->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()]);
+            break;
+        case 'last_3_months':
+            $query->whereBetween('created_at', [Carbon::now()->subMonths(3), Carbon::now()]);
+            break;
+        case 'last_6_months':
+            $query->whereBetween('created_at', [Carbon::now()->subMonths(6), Carbon::now()]);
+            break;
+        default:
+            $query->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()]);
+            break;
         }
-        return view('admin.students', compact('users'))->with('i', (request()->input('page', 1) - 1) * 100);;
+        $users = $query->latest()->get();
+        return view('admin.students', compact('users', 'query'))->with('i', 0); // No pagination, so index starts from 0
     }
     public function addAccess()
     {

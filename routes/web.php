@@ -209,7 +209,7 @@ Route::get('/user/{id}/enrollments', 'TeacherController@showEnrollments')->name(
 
 
 //admin
-Route::get('/admin/students', 'AdminController@students');
+Route::get('/admin/students', 'AdminController@students')->name('admin.students');;
 Route::get('/admin/css-enrollments', 'AdminController@cssEnrollments');
 Route::get('/admin/js-enrollments', 'AdminController@jsEnrollments');
 Route::get('/admin/react-enrollments', 'AdminController@reactEnrollments');
