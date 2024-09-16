@@ -71,7 +71,7 @@ class HomeController extends Controller
     
         }
         elseif(Auth::User()->role == 100){
-            $range = $request->input('range', '7'); // Default to '7 days' if no range is selected
+            $range = $request->input('range', 'today'); // Default to '7 days' if no range is selected
 
 // Determine date range based on filter
 switch ($range) {
