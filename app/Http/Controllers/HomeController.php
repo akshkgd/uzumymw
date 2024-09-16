@@ -73,105 +73,116 @@ class HomeController extends Controller
         elseif(Auth::User()->role == 100){
             $range = $request->input('range', '7'); // Default to '7 days' if no range is selected
 
-            // Determine date range based on filter
-            switch ($range) {
-                case '7':
-                    $startDate = Carbon::now()->subDays(7);
-                    $endDate = Carbon::now();
-                    break;
-        
-                case '30':
-                    $startDate = Carbon::now()->subDays(30);
-                    $endDate = Carbon::now();
-                    break;
-        
-                case '365':
-                    $startDate = Carbon::now()->subDays(365);
-                    $endDate = Carbon::now();
-                    break;
-        
-                case 'this_month':
-                    $startDate = Carbon::now()->startOfMonth();
-                    $endDate = Carbon::now()->endOfMonth();
-                    break;
-        
-                case 'last_month':
-                    $startDate = Carbon::now()->subMonth()->startOfMonth();
-                    $endDate = Carbon::now()->subMonth()->endOfMonth();
-                    break;
-        
-                case 'last_3_months':
-                    $startDate = Carbon::now()->subMonths(3)->startOfMonth();
-                    $endDate = Carbon::now()->endOfMonth();
-                    break;
-        
-                default:
-                    $startDate = Carbon::now()->subDays(7); // Default to last 7 days
-                    $endDate = Carbon::now();
-                    break;
-            }
-        
-            // Fetch data for users (new signups) in the selected range
-            $usersThisPeriod = User::whereBetween('created_at', [$startDate, $endDate])->count();
-            $usersPreviousPeriod = User::whereBetween('created_at', [$startDate->copy()->subDays($endDate->diffInDays($startDate)), $endDate->copy()->subDays($endDate->diffInDays($startDate))])->count();
-        
-            // Fetch data for enrollments (paid members) in the selected period
-            $enrollmentsThisPeriod = CourseEnrollment::where('hasPaid', 1)
-                ->whereBetween('paidAt', [$startDate, $endDate])
-                ->count();
-            $enrollmentsPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
-                ->whereBetween('paidAt', [$startDate->copy()->subDays($endDate->diffInDays($startDate)), $endDate->copy()->subDays($endDate->diffInDays($startDate))])
-                ->count();
-        
-            // Total revenue for the selected period
-            $totalThisPeriod = CourseEnrollment::where('hasPaid', 1)
-                ->whereBetween('paidAt', [$startDate, $endDate])
-                ->sum('amountPaid') / 100;
-            $totalPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
-                ->whereBetween('paidAt', [$startDate->copy()->subDays($endDate->diffInDays($startDate)), $endDate->copy()->subDays($endDate->diffInDays($startDate))])
-                ->sum('amountPaid') / 100;
-        
-            // Calculate percentage change for users, enrollments, and revenue
-            $userChangePercent = $usersPreviousPeriod > 0 ? (($usersThisPeriod - $usersPreviousPeriod) / $usersPreviousPeriod) * 100 : ($usersThisPeriod > 0 ? 100 : 0);
-            $enrollmentChangePercent = $enrollmentsPreviousPeriod > 0 ? (($enrollmentsThisPeriod - $enrollmentsPreviousPeriod) / $enrollmentsPreviousPeriod) * 100 : ($enrollmentsThisPeriod > 0 ? 100 : 0);
-            $revenueChangePercent = $totalPreviousPeriod > 0 ? (($totalThisPeriod - $totalPreviousPeriod) / $totalPreviousPeriod) * 100 : ($totalThisPeriod > 0 ? 100 : 0);
-        
-            // Fetch failed payments in the selected period
-            $failedPaymentsThisPeriod = CourseEnrollment::where('hasPaid', 0)
-                ->whereBetween('paidAt', [$startDate, $endDate])
-                ->count();
-            $failedRevenueThisPeriod = CourseEnrollment::where('hasPaid', 0)
-                ->whereBetween('paidAt', [$startDate, $endDate])
-                ->sum('amountPaid') / 100; // Failed revenue
-        
-            // Fetch total learning time in the selected period (in minutes)
-            $totalLearningTimeThisPeriod = CourseProgress::whereBetween('firstAccess', [$startDate, $endDate])
-                ->sum('timeSpent') / 60; // Assuming timeSpent is stored in minutes, adjust if needed
-        
-            // Fetch total learning time in the previous period
-            $previousStartDate = $startDate->copy()->subDays($endDate->diffInDays($startDate));
-            $previousEndDate = $endDate->copy()->subDays($endDate->diffInDays($startDate));
-            $totalLearningTimePreviousPeriod = CourseProgress::whereBetween('firstAccess', [$previousStartDate, $previousEndDate])
-                ->sum('timeSpent') / 60;
-        
-            // Round learning time to the nearest whole hour
-            $totalLearningTimeThisPeriod = floor($totalLearningTimeThisPeriod);
-            $totalLearningTimePreviousPeriod = floor($totalLearningTimePreviousPeriod);
-        
-            // Calculate percentage change in learning time
-            $learningTimeChangePercent = $totalLearningTimePreviousPeriod > 0
-                ? (($totalLearningTimeThisPeriod - $totalLearningTimePreviousPeriod) / $totalLearningTimePreviousPeriod) * 100
-                : ($totalLearningTimeThisPeriod > 0 ? 100 : 0);
-        
-            return view('admin.index', compact(
-                'usersThisPeriod', 'usersPreviousPeriod', 
-                'enrollmentsThisPeriod', 'enrollmentsPreviousPeriod',
-                'totalThisPeriod', 'totalPreviousPeriod',
-                'userChangePercent', 'enrollmentChangePercent', 'revenueChangePercent',
-                'failedPaymentsThisPeriod', 'failedRevenueThisPeriod',
-                'totalLearningTimeThisPeriod', 'totalLearningTimePreviousPeriod', 'learningTimeChangePercent',
-                'range', 'startDate', 'endDate'
-            ));    
+// Determine date range based on filter
+switch ($range) {
+    case 'today':
+        $startDate = Carbon::today();
+        $endDate = Carbon::now();
+        break;
+
+    case 'yesterday':
+        $startDate = Carbon::yesterday()->startOfDay();
+        $endDate = Carbon::yesterday()->endOfDay();
+        break;
+
+    case '7':
+        $startDate = Carbon::now()->subDays(7);
+        $endDate = Carbon::now();
+        break;
+
+    case '30':
+        $startDate = Carbon::now()->subDays(30);
+        $endDate = Carbon::now();
+        break;
+
+    case '365':
+        $startDate = Carbon::now()->subDays(365);
+        $endDate = Carbon::now();
+        break;
+
+    case 'this_month':
+        $startDate = Carbon::now()->startOfMonth();
+        $endDate = Carbon::now()->endOfMonth();
+        break;
+
+    case 'last_month':
+        $startDate = Carbon::now()->subMonth()->startOfMonth();
+        $endDate = Carbon::now()->subMonth()->endOfMonth();
+        break;
+
+    case 'last_3_months':
+        $startDate = Carbon::now()->subMonths(3)->startOfMonth();
+        $endDate = Carbon::now()->endOfMonth();
+        break;
+
+    default:
+        $startDate = Carbon::now()->subDays(7); // Default to last 7 days
+        $endDate = Carbon::now();
+        break;
+}
+
+// Fetch data for users (new signups) in the selected range
+$usersThisPeriod = User::whereBetween('created_at', [$startDate, $endDate])->count();
+$usersPreviousPeriod = User::whereBetween('created_at', [$startDate->copy()->subDays($endDate->diffInDays($startDate)), $endDate->copy()->subDays($endDate->diffInDays($startDate))])->count();
+
+// Fetch data for enrollments (paid members) in the selected period
+$enrollmentsThisPeriod = CourseEnrollment::where('hasPaid', 1)
+    ->whereBetween('paidAt', [$startDate, $endDate])
+    ->count();
+$enrollmentsPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
+    ->whereBetween('paidAt', [$startDate->copy()->subDays($endDate->diffInDays($startDate)), $endDate->copy()->subDays($endDate->diffInDays($startDate))])
+    ->count();
+
+// Total revenue for the selected period
+$totalThisPeriod = CourseEnrollment::where('hasPaid', 1)
+    ->whereBetween('paidAt', [$startDate, $endDate])
+    ->sum('amountPaid') / 100;
+$totalPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
+    ->whereBetween('paidAt', [$startDate->copy()->subDays($endDate->diffInDays($startDate)), $endDate->copy()->subDays($endDate->diffInDays($startDate))])
+    ->sum('amountPaid') / 100;
+
+// Calculate percentage change for users, enrollments, and revenue
+$userChangePercent = $usersPreviousPeriod > 0 ? (($usersThisPeriod - $usersPreviousPeriod) / $usersPreviousPeriod) * 100 : ($usersThisPeriod > 0 ? 100 : 0);
+$enrollmentChangePercent = $enrollmentsPreviousPeriod > 0 ? (($enrollmentsThisPeriod - $enrollmentsPreviousPeriod) / $enrollmentsPreviousPeriod) * 100 : ($enrollmentsThisPeriod > 0 ? 100 : 0);
+$revenueChangePercent = $totalPreviousPeriod > 0 ? (($totalThisPeriod - $totalPreviousPeriod) / $totalPreviousPeriod) * 100 : ($totalThisPeriod > 0 ? 100 : 0);
+
+// Fetch failed payments in the selected period
+$failedPaymentsThisPeriod = CourseEnrollment::where('hasPaid', 0)
+    ->whereBetween('paidAt', [$startDate, $endDate])
+    ->count();
+$failedRevenueThisPeriod = CourseEnrollment::where('hasPaid', 0)
+    ->whereBetween('paidAt', [$startDate, $endDate])
+    ->sum('amountPaid') / 100; // Failed revenue
+
+// Fetch total learning time in the selected period (in minutes)
+$totalLearningTimeThisPeriod = CourseProgress::whereBetween('firstAccess', [$startDate, $endDate])
+    ->sum('timeSpent') / 60; // Assuming timeSpent is stored in minutes, adjust if needed
+
+// Fetch total learning time in the previous period
+$previousStartDate = $startDate->copy()->subDays($endDate->diffInDays($startDate));
+$previousEndDate = $endDate->copy()->subDays($endDate->diffInDays($startDate));
+$totalLearningTimePreviousPeriod = CourseProgress::whereBetween('firstAccess', [$previousStartDate, $previousEndDate])
+    ->sum('timeSpent') / 60;
+
+// Round learning time to the nearest whole hour
+$totalLearningTimeThisPeriod = floor($totalLearningTimeThisPeriod);
+$totalLearningTimePreviousPeriod = floor($totalLearningTimePreviousPeriod);
+
+// Calculate percentage change in learning time
+$learningTimeChangePercent = $totalLearningTimePreviousPeriod > 0
+    ? (($totalLearningTimeThisPeriod - $totalLearningTimePreviousPeriod) / $totalLearningTimePreviousPeriod) * 100
+    : ($totalLearningTimeThisPeriod > 0 ? 100 : 0);
+
+return view('admin.index', compact(
+    'usersThisPeriod', 'usersPreviousPeriod', 
+    'enrollmentsThisPeriod', 'enrollmentsPreviousPeriod',
+    'totalThisPeriod', 'totalPreviousPeriod',
+    'userChangePercent', 'enrollmentChangePercent', 'revenueChangePercent',
+    'failedPaymentsThisPeriod', 'failedRevenueThisPeriod',
+    'totalLearningTimeThisPeriod', 'totalLearningTimePreviousPeriod', 'learningTimeChangePercent',
+    'range', 'startDate', 'endDate'
+));    
+
         }
         
         else{
