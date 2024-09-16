@@ -84,12 +84,7 @@
                 </p>
             </div>
     
-            <!-- Failed Payments -->
-            <div class="bg-white border w-full rounded-x p-4">
-                <h3 class="text-sm font- mb-2 text-neutral-700">Failed Payments</h3>
-                <p class="text-black text-xl mb-2">{{ $failedPaymentsThisPeriod }} </p>
-                <p class="text-sm text-neutral-700">Failed Revenue: ₹{{ number_format($failedRevenueThisPeriod, 0) }}</p>
-            </div>
+            
 
             <div class="bg-white border w-full rounded-x p-4">
                 <h3 class="text-sm font- mb-2 text-neutral-700">Learning Time</h3>
