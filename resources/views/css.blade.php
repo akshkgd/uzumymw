@@ -1341,7 +1341,7 @@ iframe{border:0;}
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From 16th September
+                                        From {{ \Carbon\Carbon::parse($batch->startDate)->format('jS F') }}
                                     </div>
                                 </div>
 
@@ -1397,7 +1397,7 @@ iframe{border:0;}
                         <a href="" style="width:100% !important"
                             class="text-center ck-btn ck-rounded btn-lg mt-3  px-5"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹49! </h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹149! </h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -1570,7 +1570,7 @@ iframe{border:0;}
                     <div class="my-5 text-center l-cta">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹49</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹149</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -1846,7 +1846,7 @@ iframe{border:0;}
         <div class="my-5 text-center l-cta">
             <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                 class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹49</h2>
+                <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹149</h2>
                 <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
             </a>
         </div>
@@ -1898,7 +1898,7 @@ iframe{border:0;}
                 <div class="my-5 l-cta">
                     <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                         class="btn ck-btn ck-rounded btn-lg   px-5">
-                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹49</h2>
+                        <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹149</h2>
                         <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                     </a>
                 </div>
@@ -2038,7 +2038,7 @@ iframe{border:0;}
                     <div class="my-5 l-cta text-center">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
-                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹49</h2>
+                            <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹149</h2>
                             <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
                         </a>
                     </div>
@@ -2048,7 +2048,7 @@ iframe{border:0;}
 
     <div class="m-cta text-light">
         <div class="">
-            <p class="m-0 fw-bold text-light"> ₹49 <span class="small text-white fw-light"
+            <p class="m-0 fw-bold text-light"> ₹149 <span class="small text-white fw-light"
                     style="text-decoration: line-through"> ₹ 899 </span></p>
             <p class="small m-0 text-light">Offer ends in <span class="text-light" id="hours2"></span> : <span
                     class="text-light" id="minutes2"></span> : <span class="text-light" id="seconds2"></span> </p>
@@ -2179,11 +2179,11 @@ iframe{border:0;}
                         <p class="d-none">Three months access of recordings. Only available if you attend. This is <strong>EARLY
                                 Bird</strong> offer, It will increase to 499 once the timer hits zero.
                         </p>
-                        <input type="hidden" name="courseId" value="94">
+                        <input type="hidden" name="courseId" value="{{$batch->id}}">
                         <input type="hidden" id="recordingsCheckbox" name="recordingsCheckbox" value="0">
                         <button type="submit" class="enrollment-button d-flex align-items-center justify-content-center"
                             onclick="startLoader()">Join bootcamp now at Rs.<span class="text-white"
-                                id="price">49</span>
+                                id="price">149</span>
                             <div id="loader" class="loade d-inline-block ms-2"></div>
                         </button>
                         <p style="font-size: 12px;" class="mt-3 mb-0 text-left">By registering here, I agree to Codekaro's
@@ -2268,12 +2268,12 @@ iframe{border:0;}
             if (checkbox.value === "0") {
                 checkbox.value = "1";
                 checkboxItem.classList.add("checked");
-                priceElement.innerText = "248";
+                priceElement.innerText = "348";
 
             } else {
                 checkbox.value = "0";
                 checkboxItem.classList.remove("checked");
-                priceElement.innerText = "49";
+                priceElement.innerText = "149";
 
             }
         }

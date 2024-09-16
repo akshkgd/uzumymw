@@ -48,7 +48,7 @@ Route::view('/web-development-bootcamp','wdm');
 Route::view('/wdt','wdt');
 Route::view('/love','love');
 Route::view('/teach','teach');
-Route::view('/how-to-css','css');
+// Route::view('/how-to-css','css');
 Route::view('/start-css','css1');
 Route::view('/start-javascript','js5');
 Route::view('/start-webdev','wdStarter');
@@ -117,7 +117,8 @@ Route::get('/recording-sessions/{batchId}/{cId?}', 'StudentController@recordings
 // Route::get('/recording-sessions/{id}/{key?}', 'StudentController@recordings');
 Route::get('workshop-enrollment-success/{id}', 'StudentController@workshopEnrollmentSuccess');
 Route::get('next-steps/{id}', 'StudentController@workshopEnrollmentSuccessNS');
-Route::get('bootcamp-success', 'CodekaroController@bootcampSuccess');
+Route::get('/how-to-css', 'CodekaroController@css');
+Route::get('/bootcamp-success', 'CodekaroController@bootcampSuccess');
 Route::get('/css-upgrade', 'CodekaroController@upgradeCss');
 Route::post('/css-upgrade-checkout', 'CodekaroController@upgradeCssCheckout')->name('cssUpgrade');
 Route::get('/gpt', function () {
