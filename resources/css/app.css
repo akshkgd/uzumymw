@@ -5,6 +5,13 @@
 .player-container{
     width: calc(100vw - 288px);
 }
+.tooltip {
+    @apply invisible absolute;
+  }
+  
+  .has-tooltip:hover .tooltip {
+    @apply visible z-50 -ml-6;
+  }
 :root{
     --store-kv-primary: #a91414;
     --store-kv-secondary: #e85b5b;

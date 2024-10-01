@@ -200,7 +200,7 @@ public function updateTimeSpent(Request $request)
         ->where('batchId', $batchId)
         ->where('contentId', $videoId)
         ->first();
-
+        $enrollment = CourseEnrollment::where()
     if ($courseProgress) {
         // $courseProgress->timeSpent = $courseProgress->timeSpent ?? 0;
         $courseProgress->timeSpent = ($courseProgress->timeSpent ?? 0) + 1;
