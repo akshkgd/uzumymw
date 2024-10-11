@@ -156,6 +156,10 @@ $enrollmentsThisPeriod = CourseEnrollment::where('hasPaid', 1)
     ->whereDate('paidAt', '<=', $endDate)
     ->count();
 
+    $enrollmentsDetailsThisPeriod = CourseEnrollment::where('hasPaid', 1)
+    ->whereDate('paidAt', '>=', $startDate)
+    ->whereDate('paidAt', '<=', $endDate)->latest()->get();
+
 $enrollmentsPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
     ->whereDate('paidAt', '>=', $previousStartDate)
     ->whereDate('paidAt', '<=', $previousEndDate)
@@ -195,14 +199,14 @@ $totalLearningTimePreviousPeriod = floor($totalLearningTimePreviousPeriod);
 $learningTimeChangePercent = $totalLearningTimePreviousPeriod > 0
     ? (($totalLearningTimeThisPeriod - $totalLearningTimePreviousPeriod) / $totalLearningTimePreviousPeriod) * 100
     : ($totalLearningTimeThisPeriod > 0 ? 100 : 0);
-
+    // dd($enrollmentsDetailsThisPeriod);
 return view('admin.index', compact(
     'usersThisPeriod', 'usersPreviousPeriod', 
     'enrollmentsThisPeriod', 'enrollmentsPreviousPeriod',
     'totalThisPeriod', 'totalPreviousPeriod',
     'userChangePercent', 'enrollmentChangePercent', 'revenueChangePercent',
     'totalLearningTimeThisPeriod', 'totalLearningTimePreviousPeriod', 'learningTimeChangePercent',
-    'range', 'startDate', 'endDate'
+    'range', 'startDate', 'endDate', 'enrollmentsDetailsThisPeriod'
 ));  
 
 

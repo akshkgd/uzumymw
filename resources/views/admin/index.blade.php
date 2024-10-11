@@ -109,6 +109,50 @@
             @endif
             </div>
         </div>
+        {{-- enrolled users data --}}
+        <div class="mt-12 mb-5">
+            <h1 class="text-xl font-bold">Enrolled Learners</h1>
+            <p class="text-sm text-neutral-700">Manage learners</p>
+        </div>
+        <div class="bg-white border rounded-l m">
+           
+            <div class="overflow-x-auto ">
+                <table class="min-w-full table-auto borde rounded-xl border-gray-300">
+                    <thead class="bg-gray-10 border-b">
+                        <tr>
+                            
+                            <th class="px-5 py-3  font-medium text-left">Name</th>
+                            <th class="px-5 py-3  font-medium text-left">Email</th>
+                            {{-- <th class="px-5 py-3  font-medium text-left">Mobile</th> --}}
+                            <th class="px-5 py-3  font-medium text-left">Amount</th>
+                            <th class="px-5 py-3  font-medium text-left">Date</th>
+                            
+                            <th class="px-5 py-3  font-medium text-left">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        @foreach ($enrollmentsDetailsThisPeriod as $enrollment)
+                        <tr class="text-sm">
+                            <td class="px-4 py-4">
+                                
+                                <a href="{{action('AdminController@studentDetails', $enrollment->students->id)}}" class="text-violet-600">{{ $enrollment->students->name }}</a>
+                            </td>
+                            <td class="px-4 py-4">{{ $enrollment->students->email }}</td>
+                            {{-- <td class="px-4 py-2">{{ $enrollment->students->mobile }}</td> --}}
+                            <td class="px-4 py-4">{{ number_format($enrollment->amountPaid / 100, 0) }} - {{$enrollment->paymentMethod}}</td>
+                            <td class="px-4 py-4">{{ Carbon\Carbon::parse($enrollment->paidAt)->format('D, d M Y') }}</td>
+                            {{-- <td class="px-4 py-2">{{ $enrollment->field2 }}</td>
+                            <td class="px-4 py-2">{{ $enrollment->students->field1 }}</td>
+                            <td class="px-4 py-2">{{ $enrollment->students->field2 }}</td> --}}
+                            <td class="px-4 py-4">
+                                <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id))}}" class="text-neutral-600">Edit</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
         
 
