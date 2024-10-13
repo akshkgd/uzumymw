@@ -13,9 +13,9 @@
         <div class="flex justify-center">
             <div class="w-full">
                 <h1 class="text-xl font-bold">{{$user->name}} Profile</h1>
-                <p class="text-sm text-neutral-700">Manage your learners</p>
-
-                <div class="border rounded-lg p-5 my-8">
+                <p class="text-sm text-neutral-700">Manage profile</p>
+                <div class="">
+                <div class="border border-neutral-5 bg-green-5 rounded-lg p-5 my-8 w-">
                     <div class="my-4 flex items-center gap-4">
                         <img src="{{$imageUrl}}" class="h-16 w-16 rounded-full inline-block object-cover " alt="">
                         <div class="">
@@ -43,23 +43,25 @@
 
                     </div>
                 </div>
-                
+            </div>
         
         
         
-        <!-- Search Bar -->
-        <div class="my-4">
-            <input type="tex" id="searchInput" onkeyup="searchTable()" placeholder="Search by name, email, or phone number" class="w-full px-4 py-2 border border-neutral-200 rounded-lg focus:outline-none focus:ring-0">
-        </div>  
+        
 
 
 
                 <div class="bg-whit border rounded-lg">
-                    <div class="py-4">
-                        <h2 class="text-lg font-semibold mb- px-4">Courses</h2>
-                        <h1 class="text-neutral-70 px-4 -mt-1">Courses enrolled {{$enrollments->count()}}</h1>
-        
+                    <div class="flex justify-between items-center py-4">
+                        <div class="px-0">
+                            <h2 class="text-lg font-semibold mb- px-4">Courses</h2>
+                            <h1 class="text-neutral-70 px-4 -mt-1">Courses enrolled {{$enrollments->count()}}</h1>
+                        </div>
+                        <div class="mr-4">
+                            <input type="tex" id="searchInput" onkeyup="searchTable()" placeholder="Search course" class="w-full px-4 mr-4 inline-block py-2 border border-neutral-200 rounded-lg focus:outline-none focus:ring-0">
+                        </div>
                     </div>
+                    
                     <div class="overflow-x-auto ">
                         <table id="enrollmentTable" class="min-w-full divide-y divide-neutral-200">
                             <thead class="">
@@ -68,11 +70,12 @@
                                     <th class="px-5 py-3  font-medium text-left ">Course</th>
                                     <th class="px-5 py-3  font-medium text-left">Enrolled On</th>
                                     <th class="px-5 py-3  font-medium text-left">Amount</th>
-                                    <th class="px-5 py-3  font-medium text-left">Status</th>
+                                    <th class="px-5 py-3  font-medium text-left">Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="bg-whit divide-y divide-gray-200">
                                 @foreach ($enrollments as $enrollment)
+                                @if($enrollment->hasPaid == 1)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ ++$i }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enrollment->batch->name }}</td>
@@ -81,14 +84,20 @@
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enrollment->amountPaid / 100 }} - {{$enrollment->paymentMethod}}</td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                        @if ($enrollment->hasPaid == 1)
-                                        <span class="bg-green-100 text-green-800 text-xs font-normal px-2.5 py-0.5 rounded-full">Paid</span>
-                                            
-                                        @else
-                                        <span class="bg-red-100 text-red-800 text-xs font-normal px-2.5 py-0.5 rounded-full">Not paid</span>
-                                        @endif
+                                        <div class="flex gap-2">
+                                            <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id))}}" class="text-neutral-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+                                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
+                                              </svg></a>
+                                              @if($enrollment->batch->type == 1)
+                                              <a href=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
+                                                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"/>
+                                              </svg></a>
+                                              @endif
+                                        </div>
+                                        
                                     </td>
                                 </tr>
+                                @endif
                                 @endforeach
                             </tbody>
                         </table>
