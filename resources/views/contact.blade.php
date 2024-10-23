@@ -15,12 +15,6 @@
     
     <div class="mt-12">
       <h2
-        class="text-lg font-medium leading-9 tracking-tight text-gray-900">
-        Codekaro
-      </h2>
-      <p class="text-neutral-500 -mt-1">585/9 Gaughat, Prayagraj, 211003</p>
-
-      <h2
         class="text-lg mt-5 font-medium leading-9 tracking-tight text-gray-900">
         WhatsApp
       </h2>
