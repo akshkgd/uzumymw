@@ -2030,7 +2030,7 @@ video {
     <!-- hero section -->
     <section class="h-screen flex items-center justify-center text-center md:p-0 p-5">
         <div class="max-w-3xl l-16 text-center">
-            <h1 class="text-white 2xl:text-8xl sm:text-5xl text-4xl font-black">Frontend <span class="key-highlight text-whit bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">Domination <img class="absolute bottom-0 left-0" src="../green-highlight.sv" alt=""> </span></h1>
+            <h1 class="text-white 2xl:text-8xl sm:text-5xl text-4xl font-black">Frontend <span class="key-highlight text-whit bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">Domination </span></h1>
             <p class="text-neutral-600 sm:px-5 text-xl sm:text-2xl mt-4 text-center">Learn exactly what matters to become a highly skilled frontend developer & build production grade web apps!</p>
             <!-- <h1 class="text-white text-4xl fot-bold">Create anything with code</h1> -->
             <!-- stats -->
