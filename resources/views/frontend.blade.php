@@ -2035,12 +2035,12 @@ video {
             <!-- <h1 class="text-white text-4xl fot-bold">Create anything with code</h1> -->
             <!-- stats -->
              <div class="flex flex-col md:flex-row justify-center gap-4 mt-10">
-                <div class="inline-block  bg-neutral-800 py-2 px-4 sm:text-2xl text-xl font-medium text-neutral-200 rounded-lg ring-4 ring-neutral-800">From 16th November</div>
+                <div class="inline-block  bg-neutral-800 py-2 px-4 sm:text-2xl text-xl font-medium text-neutral-200 rounded-lg ring-4 ring-neutral-800">From 10th November</div>
                 <div class="inline-block  bg-neutral-800 py-2 px-4 sm:text-2xl text-xl font-medium text-neutral-200 rounded-lg ring-4 ring-neutral-800">8 Weeks Cohort</div>
                 <div class="inline-block  bg-neutral-800 py-2 px-4 sm:text-2xl text-xl font-medium text-neutral-200 rounded-lg ring-4 ring-neutral-800">Only Rs 3999/-</div>
             
              </div>
-             <img src="../fr-placed.svg" alt="" class="inline-block w-96 mt-10 text-center">
+             {{-- <img src="../fr-placed.svg" alt="" class="inline-block w-96 mt-10 text-center"> --}}
              <!-- <a href="" class="inline-block py-2 w-full bg-green-600">Join now & Dominate Frontend</a> -->
         </div>
     </section>
@@ -2284,7 +2284,7 @@ video {
                 }, 1000);
               </script>
               
-            <a href="" class="inline-block text-white bg-gradient-to-r from-green-600 to-green-500 bg-clip-tex mt-3 mb-12 sm:px-12 w-full sm:w-auto text-center py-4 sm:rounded-xl rounded-full sm:text-3xl text-xl font-bold shado shado-xl shadow-neutral-500">Join frontend cohort now at 3999/-</a>
+            <a href="https://codekaro.in/enroll/97" class="inline-block text-white bg-gradient-to-r from-green-600 to-green-500 bg-clip-tex mt-3 mb-12 sm:px-12 w-full sm:w-auto text-center py-4 sm:rounded-xl rounded-full sm:text-3xl text-xl font-bold shado shado-xl shadow-neutral-500">Join frontend cohort now at 3999/-</a>
         </div>
      </section>
      
