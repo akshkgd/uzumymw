@@ -32,12 +32,12 @@
             <h1 class="font-bold text-xl text-cente">₹4999</h1> --}}
 
         <div class="mt-4 flex justify-between">
-            <p class="text-neutral-600">Frontend Cohort B-66</p>
-            <h1 class="font-bo">₹4999</h1>
+            <p class="text-neutral-600">{{$batch->name}}</p>
+            <h1 class="font-bo">{{$batch->payable}}</h1>
         </div>
         <div class="my-2 flex justify-between border-t border-neutral-200 border-dashed">
             <p class="text-neutral-600 mt-2">Total payable <br></p>
-            <h1 class="font-bo mt-2">₹4999</h1>
+            <h1 class="font-bo mt-2">{{$batch->payable}}</h1>
         </div>
         </div>
         
