@@ -137,7 +137,7 @@
                         <li class="my-4">Event Listeners</li>
                         <li class="my-4">Local storage & Session Storage</li>
                         <li class="my-4">Asynchronous JS & API's</li>
-                        <li class="my-4">Todo App</li>
+                        <li class="my-4">Movie App</li>
                         <li class="my-4">Javascript ES6</li>
                         <li class="my-4">Book My show clone</li>
 
@@ -304,8 +304,13 @@
                   document.getElementById('seconds').textContent = `${seconds} sec`;
                 }, 1000);
               </script>
-              
-            <a href="https://rzp.io/rzp/frontend-cohort" class="inline-block text-white bg-gradient-to-r from-green-600 to-green-500 bg-clip-tex mt-3 mb-12 sm:px-12 w-full sm:w-auto text-center py-4 sm:rounded-xl rounded-full sm:text-3xl text-xl font-bold shado shado-xl shadow-neutral-500">Join frontend cohort now at 3999/-</a>
+              @auth
+              <a href="https://codekaro.in/enroll/97" class="inline-block text-white bg-gradient-to-r from-green-600 to-green-500 bg-clip-tex mt-3 mb-12 sm:px-12 w-full sm:w-auto text-center py-4 sm:rounded-xl rounded-full sm:text-3xl text-xl font-bold shado shado-xl shadow-neutral-500">Join frontend cohort now at 3999/-</a>
+                
+              @endauth
+              @guest
+              <a href="https://rzp.io/rzp/frontend-cohort" class="inline-block text-white bg-gradient-to-r from-green-600 to-green-500 bg-clip-tex mt-3 mb-12 sm:px-12 w-full sm:w-auto text-center py-4 sm:rounded-xl rounded-full sm:text-3xl text-xl font-bold shado shado-xl shadow-neutral-500">Join frontend cohort now at 3999/-</a>
+              @endguest
         </div>
      </section>
      
