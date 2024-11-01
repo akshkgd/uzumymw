@@ -43,7 +43,7 @@
         
         <form action="{{ route('payment') }}" method="POST" class="">
             @csrf
-            <script src="https://checkout.razorpay.com/v1/checkout.js"
+            <script async src="https://checkout.razorpay.com/v1/checkout.js"
                 data-key='rzp_live_je6jCwL5udOnN0' 
                 data-amount="100"
                 data-order_id="{{$order->id}}"
