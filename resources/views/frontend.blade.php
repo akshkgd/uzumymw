@@ -262,7 +262,9 @@
             <h1 class="hidden sm:block text-white lg:text-8xl sm:text-7xl text-4xl font-bold">More Value,<br> Less cost.</h1>
             <h1 class="sm:hidden text-white lg:text-9xl sm:text-7xl text-4xl text-center  font-bold">More Value, Less cost.</h1>
 
-            <p class="text-neutral-600 text-xl sm:text-2xl mt-4 text-center sm:text-left">If anything is considered part of frontend dev, we’re covering it in this course! With <span class="key-highlight text-whit bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">Diwali's special </span> unbeatable Price.</p>
+            <p class="text-neutral-600 text-xl sm:text-2xl mt-4 text-center sm:text-left">If anything is considered part of frontend dev, we’re covering it in this course! 
+                {{-- With <span class="key-highlight text-whit bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">Diwali's special </span> unbeatable Price. --}}
+            </p>
             <!-- <p class="text-xs text-neutral-600 mt-3 text-center sm:text-left">*Course validity is for 1 year from date of batch start.</p> -->
             <div class="flex gap-4 my-5 items-center justify-center sm:justify-start text-whit text-2xl text-neutral-600 ">
                 <p id="hours" class="ring- ring-neutral-700  py-1 rounded-full">8 hrs</p>
