@@ -164,7 +164,7 @@ Route::post('workshop-enrollment-auto', 'CodekaroController@workshopEnrollemnt')
 Route::post('course-enrollment-auto', 'CodekaroController@courseEnrollmentAuto')->name('course-enrollment-auto');
 
 Route::get('/test', 'CodekaroController@test');
-Route::get('/grant-access', 'WebhookController@grantAccess');
+Route::post('/grant-access', 'WebhookController@grantAccess');
 Route::post('/start-subscription', 'SubscriptionController@startSubscriptionWebhook');
 Route::get('/join-class/{id}', 'StudentController@joinClass');
 Route::get('/certificate', function(){
