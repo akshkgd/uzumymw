@@ -112,7 +112,12 @@ public function grantAccess(Request $request)
         return response('Webhook Handled', 200);
     } catch (\Exception $e) {
         \Log::error('Error processing webhook request: ' . $e->getMessage());
-        return response('Error processing webhook request', 500);
+        // return response('Error processing webhook request', 500);
+        return response()->json([
+            "status" => "success",
+            "message" => "Response Accepted"
+        ], 200);
+        
     }
 }
 
