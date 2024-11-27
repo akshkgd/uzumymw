@@ -137,7 +137,7 @@
         <h4 class="text-lg font-bold text-gray-800 mb-4">Students with Pending Payment</h4>
         <div class="overflow-x-auto border rounded-xl">
             <table class="min-w-full table-auto border border-gray-300">
-                <thead class="bg-gray-100 border-b">
+                <thead class="bg-gray-10 border-b">
                     <tr>
                         <th class="px-5 py-3 font-medium text-left text-gray-600">#</th>
                         <th class="px-5 py-3 font-medium text-left text-gray-600">Name</th>
@@ -154,8 +154,7 @@
                     <tr class="text-sm">
                         <td class="px-5 py-4">{{ $unpaidIndex++ }}</td> <!-- Increment index -->
                         <td class="px-5 py-4 flex items-center">
-                            <img src="{{ $enrollment->students->avatar }}" alt="" class="w-8 h-8 rounded-full mr-2">
-                            <a href="{{action('AdminController@studentDetails', $enrollment->students->id)}}" class="text-blue-600">
+                            <a href="{{action('AdminController@studentDetails', $enrollment->students->id)}}" class="text-violet-600">
                                 {{ $enrollment->students->name }}
                             </a>
                         </td>
