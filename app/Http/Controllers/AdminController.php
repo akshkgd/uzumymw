@@ -423,7 +423,7 @@ return view('admin.batchEnrollment', compact(
     'paidUsersWithCertificate', 'paidUsersWithoutCertificate',
     'totalEarning', 'certificateFeeEarning', 'classEarning',
     'certificateFeePercentage', 'classEarningPercentage'
-));
+))->with('i');
 
 }
 
