@@ -396,7 +396,11 @@ $enrollments = CourseEnrollment::where('batchId', $batch->id)->get();
 
 // Separate paid and unpaid enrollments
 $paidEnrollments = $enrollments->where('hasPaid', 1);
-$unpaidEnrollments = $enrollments->where('hasPaid', 0)->unique('userId');
+$paidUserIds = $paidEnrollments->pluck('userId')->toArray();
+$unpaidEnrollments = $enrollments
+    ->where('hasPaid', 0)
+    ->whereNotIn('userId', $paidUserIds)
+    ->unique('userId');
 
 // Total paid users
 $totalPaidUsers = $paidEnrollments->count();
