@@ -131,6 +131,53 @@
             </table>
         </div>
     </div>
+
+    {{-- test --}}
+    <div class="bg-white shadow rounded-lg p-6 mt-5">
+        <h4 class="text-lg font-bold text-gray-800 mb-4">Students with Pending Payment</h4>
+        <div class="overflow-x-auto border rounded-xl">
+            <table class="min-w-full table-auto border border-gray-300">
+                <thead class="bg-gray-100 border-b">
+                    <tr>
+                        <th class="px-5 py-3 font-medium text-left text-gray-600">#</th>
+                        <th class="px-5 py-3 font-medium text-left text-gray-600">Name</th>
+                        <th class="px-5 py-3 font-medium text-left text-gray-600">Email</th>
+                        <th class="px-5 py-3 font-medium text-left text-gray-600">Mobile</th>
+                        <th class="px-5 py-3 font-medium text-left text-gray-600">Status</th>
+                        <th class="px-5 py-3 font-medium text-left text-gray-600">Enrolled On</th>
+                        <th class="px-5 py-3 font-medium text-left text-gray-600">Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200">
+                    @php $unpaidIndex = 1; @endphp <!-- Initialize unpaid index -->
+                    @foreach ($unpaidEnrollments as $enrollment)
+                    <tr class="text-sm">
+                        <td class="px-5 py-4">{{ $unpaidIndex++ }}</td> <!-- Increment index -->
+                        <td class="px-5 py-4 flex items-center">
+                            <img src="{{ $enrollment->students->avatar }}" alt="" class="w-8 h-8 rounded-full mr-2">
+                            <a href="{{action('AdminController@studentDetails', $enrollment->students->id)}}" class="text-blue-600">
+                                {{ $enrollment->students->name }}
+                            </a>
+                        </td>
+                        <td class="px-5 py-4">{{ $enrollment->students->email }}</td>
+                        <td class="px-5 py-4">{{ $enrollment->students->mobile }}</td>
+                        <td class="px-5 py-4">{{ $enrollment->field2 }}</td>
+                        <td class="px-5 py-4">{{ $enrollment->created_at->format('D, d M Y') }}</td>
+                        <td class="px-5 py-4">
+                            <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id))}}" class="text-green-600">
+                                Payment Received
+                            </a>
+                            <a target="_blank" href="{{ action('CourseEnrollmentController@checkout', Crypt::encrypt($enrollment->id)) }}" class="text-blue-600">
+                                Checkout
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
 </section>
 @endsection
 
