@@ -390,35 +390,41 @@ class AdminController extends Controller
     public function batchEnrollment($id)
 {
     $batch = Batch::findOrFail($id);
-    $paidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 1)->get();
-    $unpaidEnrollments = CourseEnrollment::where('batchId', $batch->id)->where('hasPaid', 0)->get();
 
-    // 1. Total paid users
-    $totalPaidUsers = $paidEnrollments->count();
+// Fetch all enrollments for the batch in one query
+$enrollments = CourseEnrollment::where('batchId', $batch->id)->get();
 
-    // 2. Paid users count with and without certificate
-    $paidUsersWithCertificate = $paidEnrollments->where('hasCertificate', 1)->count();
-    $paidUsersWithoutCertificate = $totalPaidUsers - $paidUsersWithCertificate;
+// Separate paid and unpaid enrollments
+$paidEnrollments = $enrollments->where('hasPaid', 1);
+$unpaidEnrollments = $enrollments->where('hasPaid', 0)->unique('userId');
 
-    // 3. Revenue from certificate fee and total revenue
-    $total = $paidEnrollments->sum('amountPaid') / 100;
+// Total paid users
+$totalPaidUsers = $paidEnrollments->count();
 
-    // Assuming certificate fee is stored in 'certificateFee' column
-    $certificateFeeEarning = $paidEnrollments->sum('certificateFee');
-    $totalEarning = $total + $certificateFeeEarning;
-    // 4. Earnings without certificate fee
-    $classEarning = $totalEarning - $certificateFeeEarning;
+// Paid users with and without certificates
+$paidUsersWithCertificate = $paidEnrollments->where('hasCertificate', 1)->count();
+$paidUsersWithoutCertificate = $totalPaidUsers - $paidUsersWithCertificate;
 
-    // Percentage comparison
+// Revenue calculations (ensure consistency in monetary units)
+$totalEarning = $paidEnrollments->sum('amountPaid') / 100;
+$certificateFeeEarning = $paidEnrollments->sum('certificateFee');
+$classEarning = $totalEarning - $certificateFeeEarning;
+
+// Percentage calculations
+if ($totalEarning > 0) {
     $certificateFeePercentage = number_format(($certificateFeeEarning / $totalEarning) * 100, 2);
     $classEarningPercentage = number_format(($classEarning / $totalEarning) * 100, 2);
+} else {
+    $certificateFeePercentage = $classEarningPercentage = 0;
+}
 
-    return view('admin.batchEnrollment', compact(
-        'batch', 'paidEnrollments', 'unpaidEnrollments', 'totalPaidUsers',
-        'paidUsersWithCertificate', 'paidUsersWithoutCertificate',
-        'totalEarning', 'certificateFeeEarning', 'classEarning',
-        'certificateFeePercentage', 'classEarningPercentage'
-    ))->with('i');
+return view('admin.batchEnrollment', compact(
+    'batch', 'paidEnrollments', 'unpaidEnrollments', 'totalPaidUsers',
+    'paidUsersWithCertificate', 'paidUsersWithoutCertificate',
+    'totalEarning', 'certificateFeeEarning', 'classEarning',
+    'certificateFeePercentage', 'classEarningPercentage'
+));
+
 }
 
 
