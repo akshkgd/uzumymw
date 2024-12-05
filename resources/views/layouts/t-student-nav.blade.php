@@ -3,7 +3,7 @@
       class="fixed top-0 z-[60] h-14 flex items-center justify-center w-full duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-300 border-opacity-40"
     >
       <div
-        class="flex items-center justify-between w-full px-4  mx-auto 2xl:px-0 max-w-7xl py-1"
+        class="flex items-center justify-between w-full px-4  mx-auto 2xl:px-0 max-w-6xl py-1"
       >
         <div
           class="relative z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left"

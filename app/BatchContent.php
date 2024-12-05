@@ -10,7 +10,10 @@ class BatchContent extends Model
     {
         return $this->hasMany(CourseProgress::class, 'contentId');
     }
-
+    public function batch()
+{
+    return $this->belongsTo(Batch::class, 'batchId');
+}
     // Method to get the progress of a specific user for this content
     public function userProgress($userId)
     {

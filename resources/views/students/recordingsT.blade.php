@@ -60,7 +60,7 @@
                 slideOverOpen: false 
             }"
             class="relative z-50 w-auto h-auto">
-            <button @click="slideOverOpen=true" class="inline-flex items-center justify-center  transition-colors text-sm text-black bg-neutral-100 px-4 rounded-lg py-2  hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none">Course content</button>
+            <button @click="slideOverOpen=true" class="inline-flex items-center justify-center  transition-colors text-sm text-black bg-neutral-100 px-4 rounded-lg py-2  hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none">Chapters</button>
             <template x-teleport="body">
                 <div 
                     x-show="slideOverOpen"

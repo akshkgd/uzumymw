@@ -25,7 +25,7 @@ input:-webkit-autofill:focus {
     <section class="flex w-full">
       <div id="sidebar" class="w-64 fixed top-0 box-border p-3 h-screen bg-neutral-100">
         <a href="#" class="sm:mr-8 px-2 font-sans text-lg flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline">
-          <svg class="text-white rotate-90" fill="black" width="24" height="24" viewBox="0 0 32 32" version="1.1" aria-labelledby="unsplash-home" aria-hidden="false" style="flex-shrink:0"><desc lang="en-US">Unsplash logo</desc><title id="unsplash-home">Codekaro</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg>
+          <svg class="text-white rotate-90" fill="black" width="24" height="24" viewBox="0 0 32 32" version="1.1" aria-labelledby="codekaro" aria-hidden="false" style="flex-shrink:0"><desc lang="en-US">Codekaro logo</desc><title id="unsplash-home">Codekaro</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg>
           {{-- <span class="tex text-neutral-800">codekaro.in</span> --}}
         </a>
         <div class="mt-4 text-neutral-800 text-sm ">

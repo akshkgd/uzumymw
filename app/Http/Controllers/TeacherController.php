@@ -133,7 +133,7 @@ class TeacherController extends Controller
         }
     }
 
-    public function addContent($id, $contentId = null)
+    public function addContentOld($id, $contentId = null)
     {
         
         if($contentId){
@@ -177,6 +177,68 @@ class TeacherController extends Controller
         }
         
     }
+    public function addContent($id, $contentId = null, $sectionId = null)
+{
+    $batch = Batch::findorFail($id);
+
+    if ($batch->teacherId != Auth::user()->id) {
+        abort(403, 'Unauthorized action.');
+    }
+
+    $sections = BatchSection::where('batchId', $batch->id)->orderBy('order')->get();
+    $batchContent = BatchContent::where('batchId', $batch->id)->get();
+
+    // Sort batch content by 'order' or leave as-is if empty
+    $sortedBatchContent = $batchContent->isNotEmpty() ? $batchContent->sortBy('order') : $batchContent;
+
+    $currentContent = null;
+    $currentSection = null;
+
+    // If sectionId is provided
+    if ($sectionId) {
+        $currentSection = BatchSection::findorFail($sectionId);
+
+        if ($contentId) {
+            // Edit content within the given section
+            $currentContent = BatchContent::where('batchId', $batch->id)
+                ->where('id', $contentId)
+                ->first();
+        } else {
+            // No contentId passed, handle section editing only
+            $currentContent = BatchContent::where('batchId', $batch->id)
+                ->where('sectionId', $sectionId)
+                ->first();
+        }
+    } else { 
+        // Default behavior without sectionId
+        if ($contentId) {
+            $currentContent = BatchContent::find($contentId);
+            if (!$currentContent || $currentContent->batchId != $id) {
+                $currentContent = BatchContent::where('batchId', $batch->id)->first();
+            }
+        } else {
+            $currentContent = BatchContent::where('batchId', $batch->id)->first();
+        }
+    }
+
+    // Handle no content scenario
+    if (!$currentContent) {
+        $currentContent = (object)[
+            'id' => 0,
+            'title' => 'No Content',
+            'desc' => '',
+            'type' => 1,
+            'accessOn' => 0,
+            'videoLink' => '',
+            'sectionId' => $sectionId,
+            'batchId' => $batch->id,
+            'order' => 0
+        ];
+    }
+
+    return view('teachers.addContent', compact('batch', 'sections', 'sortedBatchContent', 'batchContent', 'currentContent', 'currentSection'));
+}
+
 
     public function updateBatchStatus(Request $request)
     {
@@ -254,6 +316,24 @@ public function updateContent( Request $request)
         return redirect()->back();
     }
 }
+public function deleteContent($id)
+{
+    $content = BatchContent::findOrFail($id);
+    $batch = Batch::findOrFail($content->batchId);
+    if ($batch->teacherId == Auth::user()->id) {
+        $content->delete();
+        return redirect()->route('addCourseContent', [
+            'id' => $batch->id, // Match the required 'id' parameter
+            'contentId' => null, // Optional, set to null if not applicable
+            'sectionId' => null  // Optional, set to null if not applicable
+        ])->with('success', 'Section and its content deleted successfully!');
+        
+        } else {
+        // Redirect to addContent/{batchId} with an error message
+        return redirect()->route('addCourseContent', ['batchId' => $batch->id])
+        ->with('error', 'You are not authorized to delete this section.');
+        }
+    }
 
     public function storeSection(Request $request){
         $batch = Batch::findorFail($request->batchId);
@@ -267,6 +347,59 @@ public function updateContent( Request $request)
             return redirect()->back();
         }
     }
+    public function deleteSection($id)
+{
+    $section = BatchSection::findOrFail($id);
+    $batch = Batch::findOrFail($section->batchId);
+   
+    if ($batch->teacherId == Auth::user()->id) {
+        // Delete all content associated with the section
+        BatchContent::where('sectionId', $section->id)->delete();
+
+        // Delete the section itself
+        $section->delete();
+
+        return redirect()->route('addCourseContent', [
+            'id' => $batch->id, // Match the required 'id' parameter
+            'contentId' => null, // Optional, set to null if not applicable
+            'sectionId' => null  // Optional, set to null if not applicable
+        ])->with('success', 'Section and its content deleted successfully!');
+        
+        } else {
+        // Redirect to addContent/{batchId} with an error message
+        return redirect()->route('addCourseContent', ['batchId' => $batch->id])
+        ->with('error', 'You are not authorized to delete this section.');
+        }
+    }
+public function updateSection(Request $request)
+{
+    $batch = Batch::findOrFail($request->batchId);
+    $section = BatchSection::findOrFail($request->sectionId);
+
+    if ($batch->teacherId == Auth::user()->id) {
+        $section->name = $request->name; // Update only the name
+        $section->save();
+
+        return redirect()->back()->with('success', 'Section name updated successfully!');
+    } else {
+        return redirect()->back()->with('error', 'You are not authorized to update this section.');
+    }
+}
+
+
+    public function searchBatchContent(Request $request)
+    {
+    $query = $request->input('query');
+    $results = BatchContent::where('title', 'LIKE', "%{$query}%")
+                ->get();
+                $results->each(function ($item) {
+                    $item->batchName = $item->batch->name ?? null; // Add batch name if available
+                });
+            
+                return response()->json($results);
+
+    return response()->json($results);
+    }
 
     public function storeContent( Request $request)
     {
@@ -276,13 +409,14 @@ public function updateContent( Request $request)
 
         $a = new BatchContent();
         $a->title = $request->title;
-        $a->type = $request->type;
-        // $a->desc  = $request->desc;
-        // $a->videoLink = $request->videoLink;
+        $a->type = $request->has('type') ? $request->input('type') : 1;
+        $a->desc = ($request->has('desc') && !empty($request->desc)) ? $request->desc : $a->desc;
+        $a->videoLink = ($request->has('videoLink') && !empty($request->videoLink)) ? $request->videoLink : $a->videoLink;
         $a->batchId = $batch->id;
         $a->sectionId = $request->sectionId;
         $a->order = $contentCount + 1;
         $a->teacherId = Auth::user()->id;
+        $a->accessOn = $request->accessOn;
         // Save the BatchContent instance
         $saveResult = $a->save();
         return redirect()->back();

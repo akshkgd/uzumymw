@@ -145,6 +145,7 @@ route::post('/edit-profile', 'ProfileController@updateStudentsProfile')->name('u
 route::post('/complete-profile', 'ProfileController@completeStudentsProfile')->name('completeStudentsProfile');
 
 Route::get('/enroll/{id}', 'CourseEnrollmentController@checkEnroll');
+Route::get('/join/{id}', 'CourseEnrollmentController@checkEnroll');
 Route::get('/workshop-enroll/{id}', 'WorkshopEnrollmentController@checkEnroll')->middleware('auth');
 Route::get('/checkout/{id}', 'CourseEnrollmentController@checkout');
 Route::post('payment', 'CourseEnrollmentController@payment')->name('payment');
@@ -191,13 +192,18 @@ Route::get('/enrollments/{id}', 'TeacherController@enrollments');
 Route::get('/workshop-enrollments/{id}', 'TeacherController@workshopEnrollments');
 Route::get('/generate-certificate/{id}', 'TeacherController@generateCertificate');
 // Route::get('/addContent/{id}', 'TeacherController@addContent');
+Route::get('/search-batch-content', 'TeacherController@searchBatchContent')->name('searchBatchContent');
 Route::post('/store-content', 'TeacherController@storeContent')->name('addContent');
 Route::post('/store-section', 'TeacherController@storeSection')->name('addSection');
 Route::post('/update-batch-status', 'TeacherController@updateBatchStatus')->name('updateBatchStatus');
 Route::post('/update-workshop', 'TeacherController@updateWorkshop')->name('updateWorkshop');
 Route::get('/generate-all-cetificates/{id}', 'TeacherController@generateAllCertificate')->name('generateAllCertificate');
-Route::get('/addContent/{id}/{contentId?}', 'TeacherController@addContent')->name('addCourseContent');
+Route::get('/addContent/{id}/{contentId?}/{sectionId?}', 'TeacherController@addContent')->name('addCourseContent');
 Route::post('/update-content', 'TeacherController@updateContent')->name('updateContent');
+Route::get('/section-delete/{id}', 'TeacherController@deleteSection')->name('deleteSection');
+Route::get('/content-delete/{id}', 'TeacherController@deleteContent')->name('deleteContent');
+
+Route::post('/section/update', 'TeacherController@updateSection')->name('updateSection');
 
 
 Route::get('/css-enrollments', 'TeacherController@cssEnrollments');
