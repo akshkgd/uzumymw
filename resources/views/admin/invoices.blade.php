@@ -67,7 +67,7 @@
                         <td class="px-4 py-3">{{ $enrollment->invoiceId }}</td>
                         <td class="px-4 py-3">{{ $enrollment->students->name ?? 'N/A' }}</td>
                         <td class="px-4 py-3">{{ $enrollment->batch->name ?? 'N/A' }}</td>
-                        <td class="px-4 py-3">{{ $enrollment->amountPaid }}</td>
+                        <td class="px-4 py-3">{{ $enrollment->amountPaid / 100}}</td>
                         <td class="px-4 py-3">{{ $enrollment->paidAt }}</td>
                         <td class="px-4 py-3">
                             <a href="{{ route('admin.invoices.download', $enrollment->invoiceId) }}" class="text-violet-600 hover:underline">Download</a>

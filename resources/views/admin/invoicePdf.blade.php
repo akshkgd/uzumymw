@@ -45,7 +45,7 @@
         <div style="margin-top:30px;">
           <p class="font-medium">Transaction Id: <span class="text-gray-500">{{ $enrollment->transactionId }}</span></p>
           <p class="font-medium">Payment Method: <span class="text-gray-500">{{ $enrollment->paymentMethod }}</span></p>
-          <p class="font-medium">Amount Paid: <span class="text-gray-500">{{ $enrollment->amountPaid }}</span></p>
+          <p class="font-medium">Amount Paid: <span class="text-gray-500">{{ $enrollment->amountPaid / 100 }}</span></p>
           <p class="font-medium">Paid On: <span class="text-gray-500">{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('d-M-Y') }}</span></p>
         </div>
 
@@ -61,14 +61,14 @@
             <tbody>
               <tr style="border-bottom:1px solid #eee;">
                 <td style="padding:12px 0;">{{ $enrollment->batch->name ?? 'Course' }}</td>
-                <td style="text-align:right; padding:12px 0;">{{ $enrollment->amountPaid }}</td>
-                <td style="text-align:right; padding:12px 0;">{{ $enrollment->amountPaid }}</td>
+                <td style="text-align:right; padding:12px 0;">{{ $enrollment->amountPaid / 100 }}</td>
+                <td style="text-align:right; padding:12px 0;">{{ $enrollment->amountPaid / 100 }}</td>
               </tr>
             </tbody>
             <tfoot>
               <tr>
                 <td colspan="2" style="text-align:right; padding:8px 0;">Total</td>
-                <td style="text-align:right; padding:8px 0;">{{ $enrollment->amountPaid }}</td>
+                <td style="text-align:right; padding:8px 0;">{{ $enrollment->amountPaid / 100 }}</td>
               </tr>
             </tfoot>
           </table>
