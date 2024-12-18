@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.5||^8.0",
         "aws/aws-sdk-php": "^3.209",
+        "barryvdh/laravel-dompdf": "^2.2",
         "facebook/php-business-sdk": "^16.0",
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",

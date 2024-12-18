@@ -60,6 +60,8 @@ Route::view('/demo-success','students/demoSuccess');
 Route::view('/frontend-cohort','frontend');
 Route::view('/join-frontend','joinFrontend');
 Route::view('/t','students/learn');
+Route::view('/inv','admin/invoicePdf');
+
 
 
 
@@ -73,6 +75,10 @@ Route::view('/t','students/learn');
 Route::get('/l', function () {
     $feedbacks = Feedback::all()->where('status',0);
     return view('l',compact('feedbacks'));
+});
+Route::get('/i', function () {
+    $enrollment = CourseEnrollment::first();
+    return view('admin/invoicePdf',compact('enrollment'));
 });
 Route::get('/it', function () {
     $users = Feedback::where('status', 1)->take(25)->get();
@@ -254,7 +260,9 @@ Route::get('/admin/update-live-class/{id}', 'AdminController@addLiveClass');
 Route::post('/admin/update-live-class', 'AdminController@updateLiveClass')->name('updateLiveClass');
 Route::get('/api/students/{id}/sessions', 'AdminController@getStudentSessions')->name('students.sessions');
 
-
+// admin manage invoices
+Route::get('/admin/invoices', 'AdminController@listInvoices')->name('admin.invoices.list');
+Route::get('/admin/invoices/download/{invoiceId}','AdminController@downloadInvoices' )->name('admin.invoices.download');
 
 
 

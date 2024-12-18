@@ -14,6 +14,7 @@ use App\BatchTopics;
 use App\CourseProgress;
 use App\CourseEnrollment;
 use App\WorkshopEnrollment;
+use PDF;
 use Razorpay\Api\Api;
 use Session;
 use Redirect;
@@ -560,6 +561,43 @@ return view('admin.batchEnrollment', compact(
         $courseProgress = CourseProgress::orderBy('lastAccess', 'desc')->get();
         return view('admin.courseProgressTable', compact('courseProgress'));
     }
+
+    public function listInvoices(Request $request)
+    {
+        // If no month is selected, default to last month
+        $month = $request->query('month', Carbon::now()->subMonth()->format('m'));
+        $year = $request->query('year', Carbon::now()->format('Y')); 
+        // You can also let user pick year if needed, or just default to current year
+
+        // Fetch all paid enrollments for the selected month
+        // Assuming 'paidAt' column stores date/time in a format recognized by MySQL (e.g., Y-m-d H:i:s)
+        $enrollments = CourseEnrollment::whereYear('paidAt', $year)
+                      ->whereMonth('paidAt', $month)
+                      ->where('hasPaid', 1)
+                      ->get();
+
+        // Pass the currently selected month and year, and the enrollments
+        return view('admin.invoices', compact('enrollments', 'month', 'year'));
+    }
+
+    public function downloadInvoices($invoiceId)
+    {
+        // Find the specific enrollment (invoice) by its invoiceId
+        $enrollment = CourseEnrollment::where('invoiceId', $invoiceId)->firstOrFail();
+
+        // Prepare any data needed for the invoice PDF
+        $data = [
+            'enrollment' => $enrollment,
+            // Include any other relevant info, such as user data, course details, etc.
+        ];
+
+        // Load your invoice blade file
+        $pdf = PDF::loadView('admin.invoicePdf', $data);
+
+        // Return the PDF as a download
+        return $pdf->download('invoice_'.$invoiceId.'.pdf');
+    }
+
     public function addCourseAccess(Request $request){
             $user = User::where('email', $request->email)->first();
             $enrollment = CourseEnrollment::where('batchId', $request->batchId)->where('userId', $user->id)->first();
