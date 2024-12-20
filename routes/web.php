@@ -280,3 +280,7 @@ Route::get('/membership', function () {
 });
 Route::post('/create-subscription', 'SubscriptionController@create')->name('create-subscription');
 Route::post('/store-subscription', 'SubscriptionController@payment')->name('store-subscription');
+
+// Add this new route
+Route::post('/admin/batch/update-all-progress/{batchId}', 'AdminController@updateAllProgress')->name('admin.updateAllProgress');
+Route::post('/mark-video-complete', 'StudentController@markVideoComplete')->name('mark.video.complete');

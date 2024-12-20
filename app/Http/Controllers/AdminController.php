@@ -29,6 +29,7 @@ use Ognjen\Laravel\AsyncMail;
 use Illuminate\Support\Facades\DB;
 use Jenssegers\Agent\Agent;
 use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
+use App\Jobs\UpdateBatchProgressJob;
 
 class AdminController extends Controller
 {
@@ -392,44 +393,45 @@ class AdminController extends Controller
 {
     $batch = Batch::findOrFail($id);
 
-// Fetch all enrollments for the batch in one query
-$enrollments = CourseEnrollment::where('batchId', $batch->id)->get();
+    // Fetch all enrollments for the batch in one query
+    $enrollments = CourseEnrollment::where('batchId', $batch->id)->get();
 
-// Separate paid and unpaid enrollments
-$paidEnrollments = $enrollments->where('hasPaid', 1);
-$paidUserIds = $paidEnrollments->pluck('userId')->toArray();
-$unpaidEnrollments = $enrollments
-    ->where('hasPaid', 0)
-    ->whereNotIn('userId', $paidUserIds)
-    ->unique('userId');
+    // Separate paid and unpaid enrollments
+    $paidEnrollments = $enrollments->where('hasPaid', 1);
+    $paidUserIds = $paidEnrollments->pluck('userId')->toArray();
+    $unpaidEnrollments = $enrollments
+        ->where('hasPaid', 0)
+        ->whereNotIn('userId', $paidUserIds)
+        ->unique('userId');
 
-// Total paid users
-$totalPaidUsers = $paidEnrollments->count();
+    // Total paid users
+    $totalPaidUsers = $paidEnrollments->count();
+    $totalUnpaidUsers = $unpaidEnrollments->count();
 
-// Paid users with and without certificates
-$paidUsersWithCertificate = $paidEnrollments->where('hasCertificate', 1)->count();
-$paidUsersWithoutCertificate = $totalPaidUsers - $paidUsersWithCertificate;
+    // Paid users with and without certificates
+    $paidUsersWithCertificate = $paidEnrollments->where('hasCertificate', 1)->count();
+    $paidUsersWithoutCertificate = $totalPaidUsers - $paidUsersWithCertificate;
 
-// Revenue calculations (ensure consistency in monetary units)
-$totalEarning = $paidEnrollments->sum('amountPaid') / 100;
-$certificateFeeEarning = $paidEnrollments->sum('certificateFee');
-$classEarning = $totalEarning - $certificateFeeEarning;
+    // Revenue calculations (ensure consistency in monetary units)
+    $totalEarning = $paidEnrollments->sum('amountPaid') / 100;
+    $certificateFeeEarning = $paidEnrollments->sum('certificateFee');
+    $classEarning = $totalEarning - $certificateFeeEarning;
 
-// Percentage calculations
-if ($totalEarning > 0) {
-    $certificateFeePercentage = number_format(($certificateFeeEarning / $totalEarning) * 100, 2);
-    $classEarningPercentage = number_format(($classEarning / $totalEarning) * 100, 2);
-} else {
-    $certificateFeePercentage = $classEarningPercentage = 0;
-}
+    // Percentage calculations
+    if ($totalEarning > 0) {
+        $certificateFeePercentage = number_format(($certificateFeeEarning / $totalEarning) * 100, 2);
+        $classEarningPercentage = number_format(($classEarning / $totalEarning) * 100, 2);
+    } else {
+        $certificateFeePercentage = $classEarningPercentage = 0;
+    }
 
-return view('admin.batchEnrollment', compact(
-    'batch', 'paidEnrollments', 'unpaidEnrollments', 'totalPaidUsers',
-    'paidUsersWithCertificate', 'paidUsersWithoutCertificate',
-    'totalEarning', 'certificateFeeEarning', 'classEarning',
-    'certificateFeePercentage', 'classEarningPercentage'
-))->with('i');
-
+    return view('admin.batchEnrollment', compact(
+        'batch', 'paidEnrollments', 'unpaidEnrollments', 'totalPaidUsers',
+        'paidUsersWithCertificate', 'paidUsersWithoutCertificate',
+        'totalEarning', 'certificateFeeEarning', 'classEarning',
+        'certificateFeePercentage', 'classEarningPercentage',
+        'totalPaidUsers', 'totalUnpaidUsers'
+    ))->with('i');
 }
 
 
@@ -664,5 +666,23 @@ return view('admin.batchEnrollment', compact(
                     return response('Webhook Handled', 200);
                 }
             } 
-        }
+        
 
+    public function updateAllProgress($batchId)
+    {
+        try {
+            // Queue the batch progress update job
+            dispatch(new UpdateBatchProgressJob($batchId));
+            
+            return response()->json([
+                'success' => true,
+                'message' => 'Progress update has been queued and will be processed shortly'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
+}
