@@ -181,52 +181,46 @@ public function updateTimeSpent(Request $request)
 {
     $videoId = intval($request->input('videoId'));
     $batchId = intval($request->input('batchId'));
-    $progressPercentage = intval($request->input('progress'));
+    $currentProgress = floatval($request->input('progress')); // Get current video timestamp
     $totalVideoDuration = intval($request->input('duration'));
-    \Log::info('Incoming request to update time spent', [
-        'videoId' => $request->input('videoId'),
-        'batchId' => $request->input('batchId'),
-        'p' => $request->input('progress'),
-        'duration' => $totalVideoDuration,
-    ]);
 
-    // Find or create the course progress record for the user and video
     try {
-    // $courseProgress = CourseProgress::where('userId', $userId)
-    //     ->where('contentId', $videoId)->where('batchId', $batchId)
-    //     ->first();
-
         $courseProgress = CourseProgress::where('userId', Auth::user()->id)
-        ->where('batchId', $batchId)
-        ->where('contentId', $videoId)
-        ->first();
+            ->where('batchId', $batchId)
+            ->where('contentId', $videoId)
+            ->first();
         
-    if ($courseProgress) {
-        // $courseProgress->timeSpent = $courseProgress->timeSpent ?? 0;
-        $courseProgress->timeSpent = ($courseProgress->timeSpent ?? 0) + 1;
-        if($courseProgress->timeSpent > 0 && $totalVideoDuration > 0){
-            $progressPercentage = ($courseProgress->timeSpent / $totalVideoDuration) * 100;
-        }
-        $courseProgress->progress = $progressPercentage;
-        if ($progressPercentage >= 70) {
-            $courseProgress->status = 1;
-        }
-        $courseProgress->save();
-    } 
+        if ($courseProgress) {
+            // Update both time spent and progress
+            $courseProgress->timeSpent = ($courseProgress->timeSpent ?? 0) + 1;
+            $courseProgress->progress = $currentProgress; // Save current video timestamp
+            $courseProgress->save();
 
-    // \Log::info('Incoming request to update time spent', [
-    //     'videoId' => $request->input('videoId'),
-    //     'batchId' => $request->input('batchId'),
-    //     'courseProgress' => $courseProgress
-    // ]);
-    
+            // Update course enrollment time spent
+            $courseEnrollment = CourseEnrollment::where('userId', Auth::user()->id)
+                ->where('batchId', $batchId)
+                ->first();
 
-    return response()->json(['status' => 'success']);
-} catch (\Exception $e) {
-    // Log the error for debugging
-    \Log::error('Error updating time spent: ' . $e->getMessage());
-    return response()->json(['status' => 'error', 'message' => 'Failed to update time spent'], 500);
-}
+            if ($courseEnrollment) {
+                $courseEnrollment->time_spent = ($courseEnrollment->time_spent ?? 0) + 1;
+                $courseEnrollment->save();
+            }
+        } else {
+            // Create new progress record if it doesn't exist
+            $courseProgress = new CourseProgress();
+            $courseProgress->userId = Auth::user()->id;
+            $courseProgress->batchId = $batchId;
+            $courseProgress->contentId = $videoId;
+            $courseProgress->timeSpent = 1;
+            $courseProgress->progress = $currentProgress;
+            $courseProgress->save();
+        }
+
+        return response()->json(['status' => 'success']);
+    } catch (\Exception $e) {
+        \Log::error('Error updating time spent: ' . $e->getMessage());
+        return response()->json(['status' => 'error', 'message' => 'Failed to update time spent'], 500);
+    }
 }
 
 
@@ -318,6 +312,62 @@ public function updateTimeSpent(Request $request)
             }
         } else {
             return response()->json(['message' => 'Course enrollment not found.']);
+        }
+    }
+
+    public function markVideoComplete(Request $request)
+    {
+        try {
+            $videoId = $request->input('videoId');
+            $batchId = $request->input('batchId');
+
+            // Find or create progress record
+            $courseProgress = CourseProgress::firstOrNew([
+                'userId' => Auth::user()->id,
+                'batchId' => $batchId,
+                'contentId' => $videoId,
+            ]);
+
+            // Update status
+            $courseProgress->status = 1;
+            if (!$courseProgress->exists) {
+                $courseProgress->timeSpent = 0;
+                $courseProgress->visited = 1;
+                $courseProgress->firstAccess = now();
+            }
+            $courseProgress->lastAccess = now();
+            $courseProgress->save();
+
+            // Calculate overall course progress
+            $totalVideos = BatchContent::where('batchId', $batchId)
+                ->where('type', 2) // Assuming 2 is for video type
+                ->count();
+
+            $completedVideos = CourseProgress::where('userId', Auth::user()->id)
+                ->where('batchId', $batchId)
+                ->where('status', 1)
+                ->count();
+
+            $progressPercentage = ($totalVideos > 0) ? 
+                round(($completedVideos / $totalVideos) * 100) : 0;
+
+            // Update course enrollment progress
+            CourseEnrollment::where('userId', Auth::user()->id)
+                ->where('batchId', $batchId)
+                ->update(['progress' => $progressPercentage]);
+
+            return response()->json([
+                'status' => 'success',
+                'progress' => $progressPercentage,
+                'message' => 'Video marked as complete'
+            ]);
+
+        } catch (\Exception $e) {
+            \Log::error('Error marking video complete: ' . $e->getMessage());
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to mark video as complete'
+            ], 500);
         }
     }
 }

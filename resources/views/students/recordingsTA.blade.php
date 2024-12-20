@@ -29,7 +29,7 @@
           <a href="/home" class="inline-flex items-center sm:mr-8 font-sans text-2xl  text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline">
             <svg class=" rotate-90" fill="black" width="24" height="24" viewBox="0 0 32 32" version="1.1" aria-labelledby="codekaro-home" aria-hidden="false" style="flex-shrink:0"><desc lang="en-US">Unsplash logo</desc><title id="codekaro">Codekaro</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg>
             {{-- <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round" style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16" aria-label="Vercel logo"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg> --}}
-    <span class="ml-3 text-base font-mediu border-l pl-3 ">Full stack cohort</span> 
+    <span class="ml-3 text-base font-mediu border-l pl-3 "></span> 
           </a>
           <nav
             class="items-center hidden space-x-5 text-sm font-medium lg:flex"
@@ -41,9 +41,17 @@
 
         <div class="relative">
           <div x-data="{ dropdownOpen: false }" class="relative">
-            <div class="flex items-center">
-              <!-- <a href="" class="btn text-sm text-black bg-neutral-100 px-4 rounded-lg py-2">Back to dashboard</a> -->
-              <!-- <a href="" class="btn text-sm text-black bg-neutral-100 px-4 rounded-lg py-2">Course Content</a> -->
+            <div class="flex gap-3 items-center">
+              @if($intro == 'false' && $video->type == 2)
+                <button id="markComplete" 
+                    class="text-sm px-5 rounded-full py-2 border hover:bg-violet-200 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 disabled:pointer-events-none
+                    {{ optional($video->userProgress(Auth::user()->id))->status 
+                        ? 'bg-green-50 border-green-50 text-green-700 disabled:opacity-100' 
+                        : 'bg-violet-100 border-violet-300 text-violet-600' }}"
+                    {{ optional($video->userProgress(Auth::user()->id))->status ? 'disabled' : '' }}>
+                    {{ optional($video->userProgress(Auth::user()->id))->status ? 'Lesson Completed' : 'Mark as Complete' }}
+                </button>
+              @endif
               <div x-data="{slideOverOpen: false}"
             class="relative z-50 w-auto h-auto">
             <button @click="slideOverOpen=true" class="inline-flex items-center justify-center  transition-colors text-sm text-black bg-neutral-50 px-5 rounded-full py-2 border  hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none">Chapters</button>
@@ -264,7 +272,15 @@
         
         <h2 class="text-cente text-lg -mt-1 font-semibold leading-9  text-gray-900">{{$enrollment->batch->name}}</h2>
 
-        <p class="bg-white text-s  text-gray-800">68% completed in 8Hrs 46Mins</p>
+        <p class="bg-white text-s text-gray-800">
+            {{ optional($enrollment)->progress ?? 0 }}% completed in
+            @php
+                $timeSpent = optional($enrollment)->time_spent ?? 0; // Time spent in minutes
+                $hours = floor($timeSpent / 60);
+                $minutes = $timeSpent % 60;
+            @endphp
+            {{ $hours }}Hrs {{ $minutes }}Mins
+        </p>
         {{-- links --}}
         <div class="flex gap-3 mt-5">
           <a href="" class="inline-block border rounded-lg bg-violet-10 text-violet-60 py-2  px-5 ">Invoice</a>
@@ -379,22 +395,67 @@
             <div class="video-containe">
               <script type="text/javascript" src="//assets.mediadelivery.net/playerjs/player-0.1.0.min.js"></script>
 
-                {{-- <div style="position:relative;padding-top:56.25%;"><iframe src="https://iframe.mediadelivery.net/embed/200867/20ccfbaf-7651-407d-b12b-a6c072178b35?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div> --}}
-                {{-- <iframe id="vimeoPlayer" src="https://player.vimeo.com/video/{{$video->videoLink}}?autoplay=1&badge=0&amp;autopause=0&amp;quality=720p" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" title="Recording CSS Media Queries - 651d75bfe4b0e4a748954b62 (1)"></iframe> --}}
                 <div style="position:relative;padding-top:56.25%;"><iframe id="bunny-stream-embed" src="https://iframe.mediadelivery.net/embed/200867/{{$video->videoLink}}?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
             </div>
             <div class="my-5">
-              <h1 class="text-2xl mt-5  font-extrabold" id="title">{{ $video->title }}</h1>
-
+              
+              <h1 class="text-2xl  font-extrabold" id="title">{{ $video->title }}</h1>
+                
+            
+              
                 <div class="desc mt-0">
                   {!! $video->desc !!}
                 </div>
+                
                 {{-- {{ $video->id }} --}}
             </div>
       </div>
     </div>
     
   </main>
+  <script>
+    // ... existing player code ...
+    
+    document.getElementById('markComplete').addEventListener('click', function() {
+        const button = this;
+        button.disabled = true; // Prevent double-clicks
+        
+        fetch('{{ route('mark.video.complete') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify({
+                videoId: {{ $video->id }},
+                batchId: {{ $video->batchId }}
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === 'success') {
+                // Update button appearance
+                button.classList.remove('bg-green-100', 'text-green-700', 'hover:bg-green-200');
+                button.classList.add('bg-neutral-100', 'text-neutral-700');
+                button.textContent = 'Completed';
+                button.disabled = true;
+                
+                // Optional: Update progress display if you have one
+                if (data.progress) {
+                    // Update any progress indicators here
+                    console.log(`Course progress: ${data.progress}%`);
+                }
+            } else {
+                button.disabled = false; // Re-enable button on failure
+                console.error('Failed to mark video as complete');
+            }
+        })
+        .catch(error => {
+            button.disabled = false; // Re-enable button on error
+            console.error('Error:', error);
+        });
+    });
+    </script>
   <script>
     const player = new playerjs.Player('bunny-stream-embed');
     
@@ -405,9 +466,14 @@
     let isPlaying = false;
     let videoProgress = 0;
     let hasResumed = false;
-    let resumeFrom = {{ $video->userProgress(Auth::user()->id)->progress ?? 0 }};
+    let resumeFrom = {{ optional($video->userProgress(Auth::user()->id))->progress ?? 0 }};
     function resumeVideo(time){
-      player.setCurrentTime(time);
+      if (typeof time === 'number' && time >= 0) {
+          player.setCurrentTime(time);
+      } else {
+          console.warn('Invalid resume time:', time);
+          player.setCurrentTime(0); // fallback to start
+      }
     }
     
     
@@ -460,31 +526,32 @@
     document.addEventListener('DOMContentLoaded', function () {
         
         function updateTimeSpent() {
-          if (isPlaying) { // Only send the request if the video is currently playing
-          player.getCurrentTime(value => {currentDuration = value});
-              
-              fetch('{{ route('update.timeSpent') }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({
-                        videoId: '{{ $video->id }}',
-                        batchId: '{{ $video->batchId }}',
-                        progress: currentDuration,
-                        duration: totalDuration,
-                         // Include batchId if necessary
+            if (isPlaying) {
+                player.getCurrentTime(value => {
+                    currentDuration = value;
+                    
+                    fetch('{{ route('update.timeSpent') }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                        },
+                        body: JSON.stringify({
+                            videoId: '{{ $video->id }}',
+                            batchId: '{{ $video->batchId }}',
+                            progress: currentDuration, // Send current video timestamp
+                            duration: totalDuration
+                        })
                     })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.status === 'success') {
-                        console.log('Time spent updated successfully.');
-                    } else {
-                        console.error('Failed to update time spent.');
-                    }
-                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            console.log('Time spent and progress updated successfully.');
+                        } else {
+                            console.error('Failed to update time spent and progress.');
+                        }
+                    });
+                });
             }
         }
     
@@ -503,6 +570,7 @@
 
             
             <div class="my-5">
+
               <h1 class="text-2xl mt-5  font-extrabold" id="title">{{ $video->title }}</h1>
 
                 <div class="desc mt-0">
