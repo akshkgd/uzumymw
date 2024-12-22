@@ -158,6 +158,10 @@
                             </tbody>
                         </table>
                     </div>
+                    <!-- Add pagination links below the table -->
+                    <div class="px-6 py-4">
+                        {{ $users->links() }}
+                    </div>
                 </div>
             </div>
         </div>
