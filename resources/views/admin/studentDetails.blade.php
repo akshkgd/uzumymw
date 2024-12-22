@@ -1,19 +1,167 @@
 @extends('layouts.t-admin-sidebar')
 @section('content')
-{{-- @include('layouts.t-admin-nav') --}}
+@include('layouts.t-alert')
 
-{{-- Enrollment details --}}
-                @php
-                $imageUrl = (filter_var($user->avatar, FILTER_VALIDATE_URL) && preg_match('/^http(s)?:\/\//', $user->avatar)) 
-                ? $user->avatar
-                : 'https://plus.unsplash.com/premium_vector-1722167430275-348e8d11d82e?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWFufGVufDB8fDB8fHww';
-                @endphp
-<section class="mt-2  sm:max-w-9xl w-full mx-auto">
+<!-- Add Alpine.js initialization -->
+<div x-data="{ 
+    showEditModal: false,
+    name: '{{$user->name}}',
+    email: '{{$user->email}}',
+    mobile: '{{$user->mobile}}',
+    originalEmail: '{{$user->email}}',
+    emailExists: false,
+    errors: {},
+    async checkEmail() {
+        if (this.email !== this.originalEmail) {
+            const response = await fetch('/api/check-email?email=' + this.email);
+            const data = await response.json();
+            this.emailExists = data.exists;
+        } else {
+            this.emailExists = false;
+        }
+    },
+    validateMobile() {
+        return /^[0-9]{10}$/.test(this.mobile);
+    },
+    async submitForm() {
+        try {
+            this.errors = {};
+            
+            if (!this.validateMobile()) {
+                this.errors.mobile = ['Phone number must be exactly 10 digits'];
+                return;
+            }
+
+            const response = await fetch('/admin/update-user-profile/{{$user->id}}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({
+                    name: this.name,
+                    email: this.email,
+                    mobile: this.mobile
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok && data.success) {
+                window.location.reload();
+            } else {
+                this.errors = data.errors || {};
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+}">
+
+<!-- Add Modal HTML -->
+<div 
+    x-show="showEditModal"
+    class="fixed inset-0 z-[60] overflow-y-auto"
+    style="display: none;"
+>
+    <!-- Modal Backdrop -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-[60]"></div>
+
+    <!-- Modal Content -->
+    <div class="flex items-center justify-center min-h-screen p-4">
+        <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full mx-4 z-[70]">
+            <div class="p-6">
+                <h3 class="text-lg font-bold ">Edit Profile</h3>
+                <p class="text-sm text-neutral-600 mb-4">Make changes to account here. Click save when you're done.</p>
+                <form @submit.prevent="submitForm()">
+                    <!-- Name Input -->
+                    <div class="mb-4">
+                        <input 
+                            type="text" 
+                            x-model="name"
+                            class="w-full px-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:border-neutral-500"
+                            :class="{'border-red-500': errors.name}"
+                            required
+                            placeholder="Enter name"
+                        >
+                        <template x-if="errors.name">
+                            <div class="text-red-500 text-sm mt-1" x-text="errors.name[0]"></div>
+                        </template>
+                    </div>
+
+                    <!-- Email Input -->
+                    <div class="mb-4">
+                        <input 
+                            type="email" 
+                            x-model="email"
+                            @blur="checkEmail()"
+                            class="w-full px-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:border-neutral-500"
+                            :class="{'border-red-500': errors.email || emailExists}"
+                            required
+                            placeholder="Enter email"
+                        >
+                        <template x-if="emailExists">
+                            <div class="text-red-500 text-sm mt-1">This email is already in use</div>
+                        </template>
+                        <template x-if="errors.email">
+                            <div class="text-red-500 text-sm mt-1" x-text="errors.email[0]"></div>
+                        </template>
+                    </div>
+
+                    <!-- Mobile Input -->
+                    <div class="mb-4">
+                        <input 
+                            type="tel" 
+                            x-model="mobile"
+                            class="w-full px-3 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-300 focus:border-neutral-500"
+                            :class="{'border-red-500': errors.mobile}"
+                            required
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            placeholder="Enter mobile"
+                        >
+                        <template x-if="errors.mobile">
+                            <div class="text-red-500 text-sm mt-1" x-text="errors.mobile[0]"></div>
+                        </template>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="flex justify-end gap-2">
+                        <button 
+                            type="button"
+                            @click="showEditModal = false"
+                            class="px-4 py-2 text-neutral-700 hover:text-neutral-800"
+                        >
+                            Cancel
+                        </button>
+                        <button 
+                            type="submit"
+                            class="px-4 py-3 bg-black text-white rounded-lg"
+                            :disabled="emailExists || !validateMobile()"
+                        >
+                            Update Profile
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Rest of your existing content -->
+@php
+$imageUrl = (filter_var($user->avatar, FILTER_VALIDATE_URL) && preg_match('/^http(s)?:\/\//', $user->avatar)) 
+? $user->avatar
+: 'https://plus.unsplash.com/premium_vector-1722167430275-348e8d11d82e?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWFufGVufDB8fDB8fHww';
+@endphp
+<section class="mt-4  sm:max-w-4xl w-full mx-auto ">
     <div class="container mx-auto px-4">
         <div class="flex justify-center">
             <div class="w-full">
                 <h1 class="text-xl font-bold">{{$user->name}} Profile</h1>
-                <p class="text-sm text-neutral-700">Manage profile</p>
+                <p class="text-sm">Joined on {{ $user->created_at->format('F j, Y g:i A') }}</p>
+
                 <div class="">
                 <div class="border border-neutral-5 bg-green-5 rounded-lg p-5 my-8 w-">
                     <div class="my-4 flex items-center gap-4">
@@ -21,21 +169,30 @@
                         <div class="">
                             <h1>{{$user->name}}</h1>
                             <h1 class="">{{$user->email}}</h1>
-                            <p class="text-sm">{{ $user->created_at->format('F j, Y g:i A') }}</p>
+                            <p class="text-sm">{{$user->mobile}}</p>
 
                         </div>
                     </div>
                     <div class="my-">
+                        <button 
+                            @click="showEditModal = true" 
+                            class="bg-neutral-100 text-black text-sm py-2 px-4 hover:bg-neutral-200"
+                        >
+                            Edit Profile
+                        </button>
                         @if ($user->status == 1)
-                            <a href="{{ action('AdminController@banStudent', $user->id) }}" class="bg-red-100 text-red-800 text-sm py-2 px-4 hover:bg-red-200">Ban Account</a>
+                            <a href="{{ action('AdminController@banStudent', $user->id) }}" class="bg-neutral-100 text-black text-sm py-2 px-4 hover:bg-red-100 hover:text-red-800">Ban Account</a>
                         @else
                             <a href="{{ action('AdminController@activateStudent', $user->id) }}" class="bg-green-100 text-green-900 text-sm py-2 px-4  hover:bg-green-200">Activate Account</a>
                         @endif
-                    
+
+                        <!-- Add Edit Profile Button -->
+                        
+
                         @if ($user->role == 0)
                             <a href="{{ action('AdminController@makeTeacher', $user->id) }}" class="bg-violet-100 text-violet-800 py-2 px-4 rounde text-sm hover:bg-violet-200">Change role to teacher</a>
                         @else
-                            <a href="{{ action('AdminController@downgradeTeacher', $user->id) }}" class="bg-orange-100 text-orange-700 py-2 px-4 rounde text-sm hover:bg-orange-200">Change role to student</a>
+                            <a href="{{ action('AdminController@downgradeTeacher', $user->id) }}" class="bg-neutral-100 text-black py-2 px-4 rounde text-sm hover:bg-orange-100 hover:text-orange-800">Change role to student</a>
                         @endif
                     </div>
                     <div class="mt-5">
@@ -151,14 +308,14 @@
                     sessions.forEach(session => {
                         const row = document.createElement('tr');
                         row.innerHTML = `
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${session.ip_address}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm">${session.browser}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm">${session.device_name}</td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm">${session.last_activity}</td>
+                            <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-900">${session.ip_address}</td>
+                            <td class="px-6 py-3 whitespace-nowrap text-sm">${session.browser}</td>
+                            <td class="px-6 py-3 whitespace-nowrap text-sm">${session.device_name}</td>
+                            <td class="px-6 py-3 whitespace-nowrap text-sm">${session.last_activity}</td>
                         `;
                         // Highlight the current session
                         if (session.id === currentSessionId) {
-                            row.classList.add('bg-yellow-100');
+                            row.classList.add('bg-neutral-100');
                         }
                         tableBody.appendChild(row);
                     });
@@ -201,8 +358,30 @@ function searchTable() {
 }
 </script>
 
-@endsection
+<script>
+function submitForm() {
+    fetch('/admin/update-user-profile/{{$user->id}}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({
+            name: this.name,
+            email: this.email,
+            mobile: this.mobile
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.reload();
+        }
+    });
+}
+</script>
 
+@endsection
 
 
 {{-- 

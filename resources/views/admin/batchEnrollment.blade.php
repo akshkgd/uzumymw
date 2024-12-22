@@ -1,86 +1,118 @@
 @extends('layouts.t-admin-sidebar')
-
 @section('content')
-
-<div class="container mx-auto mt5 hidde">
-    <div class="p-6">
-        <div class="flex justify-between items-center">
-            <div class="">
-                <h2 class="text-xl font-bold text-gray-800">{{$batch->name}}</h2>
-                <p class="mt-1 text-gray-600">From {{Carbon\Carbon::parse($batch->startDate)->format('d M Y')}} to {{ Carbon\Carbon::parse($batch->endDate)->format('d M Y') }} 
-                    <span class="text-green-600"> {{$batch->payable}} </span> 
-                </p>   
-            </div>
-            @if($batch->type == 1)
-            <button onclick="updateAllProgress({{ $batch->id }})" 
-                    class="px-4 py-2 bg-violet-100 text-violet-600  rounded-lg hover:bg-violet-200 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
-                    <path d="M3 3v18h18"></path>
-                    <path d="m19 9-5 5-4-4-3 3"></path>
-                </svg>
-                Update course Progress
-            </button>
-            @endif
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
-            <div class="p-4 border rounded-lg">
-                <p class="text-sm font- mb-2 text-neutral-700">Users</p>
-                <p class="text-2xl">{{ $totalPaidUsers }} <span class="text-xs text-green-600">paid</span>  {{ $totalUnpaidUsers }} <span class="text-xs text-red-600">unpaid</span></p>
-            </div>
-
-            <div class="p-4 border rounded-lg">
-                <p class="text-sm font- mb-2 text-neutral-700">Total Earnings</p>
-                <p class="text-2xl">{{ $totalEarning }}</p>
-            </div>
-
-            <div class="p-4 border rounded-lg">
-                <p class="text-sm font- mb-2 text-neutral-700">Live Course Earning</p>
-                <p class="text-2xl">{{ $classEarning }} <span class="text-xs">{{ $classEarningPercentage }}%</span></p>
-            </div>
-
-            <div class="p-4 border rounded-lg">
-                <p class="text-sm font- mb-2 text-neutral-700">Recordings Earnings</p>
-                <p class="text-2xl">{{ $certificateFeeEarning }} <span class="text-xs">{{ $certificateFeePercentage }}%</span></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="w-full">
-    <!-- Search Bar -->
-    
-</div>
+@include('layouts.t-alert')
 
 {{-- Enrollment details --}}
 
-<section class="container mx-auto mt-5">
-    <div class=" p-6">
-        <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search by name, email, or phone number" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500">
-    </div>
-    @include('layouts.alert')
-    <div class=" p-6">
-        <h3 class="text-lg font-bold text-gray-800 mb-4">Students Enrolled</h3>
-        <div class="overflow-x-auto border rounded-xl">
-            <table class="min-w-full table-auto borde rounded-xl border-gray-300" id="enrollmentTable">
-                <thead class="bg-gray-10 border-b">
-                    <tr>
-                        <th class="px-5 py-3  font-medium text-left">#</th>
-                        <th class="px-5 py-3  font-medium text-left">Name</th>
-                        <th class="px-5 py-3  font-medium text-left">Email</th>
-                        <th class="px-5 py-3  font-medium text-left">Mobile</th>
-                        <th class="px-5 py-3  font-medium text-left">Source</th>
-                        <th class="px-5 py-3  font-medium text-left">Amount</th>
-                        @if($batch->type == 1)
-                        <th class="px-5 py-3  font-medium text-left">Time Spent</th>
-                        <th class="px-5 py-3  font-medium text-left">Progress</th>
-                        @endif
+<section class="mt-6  sm:max-w-8xl w-full mx-auto">
+    <div class="container mx-auto px-4">
+       
+        <div class="flex justify-center">
+            <div class="w-full">
+                <h1 class="text-xl font-bold">{{$batch->name}} Enrollments - B{{$batch->id}}</h1>
+        <div class="">
+            <h1>Schedule: {{ \Carbon\Carbon::parse($batch->startDate)->format('d M Y') }} - {{ \Carbon\Carbon::parse($batch->endDate)->format('d M Y') }}</h1>
+            <h1>Total users: {{$paidEnrollments->count()}} - ₹{{ number_format($totalEarning, 0, '', ',') }}</h1>
+        </div>
+        
+        <div class="flex my-3 gap-3">
+            
+            <div class="">
+                <div class="relative inline-block">
+                    <button id="columnToggleBtn" class="bg-white border rounded-lg px-4 py-2 inline-flex items-center gap-2 text-sm">
+                        <span>Toggle Columns</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m6 9 6 6 6-6"/>
+                        </svg>
+                    </button>
+                    <div id="columnToggleDropdown" class="hidden absolute z-10 mt-2 w-56 bg-white border rounded-lg shadow-lg">
+                        <div class="p-2 space-y-2">
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="1" checked> 
+                                <span class="ml-2">Name</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="2" checked> 
+                                <span class="ml-2">Email</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="3" checked> 
+                                <span class="ml-2">Mobile</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="4" checked> 
+                                <span class="ml-2">Amount</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="5"> 
+                                <span class="ml-2">Certificate</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="6"> 
+                                <span class="ml-2">Source</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="7"> 
+                                <span class="ml-2">Medium</span>
+                            </label>
+                            @if($batch->type == 1)
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="8"> 
+                                <span class="ml-2">Progress</span>
+                            </label>
+                            @endif
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="9" checked> 
+                                <span class="ml-2">Date</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="{{ action('TeacherController@generateAllCertificate', $batch->id) }}" class="bg-white border rounded-lg px-4 py-2 inline-flex items-center gap-2 text-sm">Generate All Certificates</a>
+
+        </div>
+        
+        <!-- Add this before the search bar -->
+        
+
+        <!-- Search Bar -->
+        <div class="my-4">
+            {{-- <input type="text" id="searchInput" onkeyup="searchTable()" placeholder="Search by name, email, or phone number" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500"> --}}
+        </div>
+
+                <div class="bg-white border rounded-lg">
+                    <div class="flex justify-between items-center py-4">
+                        <div class="px-0">
+                            <h2 class="text-lg font-semibold mb- px-4">Courses</h2>
+                            <h1 class="text-neutral-70 px-4 -mt-1">Courses enrolled 1</h1>
+                        </div>
+                        <div class="mr-4">
+                            <input type="tex" id="searchInput" onkeyup="searchTable()" placeholder="Search user" class="w-full px-4 mr-4 inline-block py-2 border border-neutral-200 rounded-lg focus:outline-none focus:ring-0">
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto ">
+                        <table id="enrollmentTable" class="min-w-full divide-y divide-neutral-200">
+                            <thead class="">
+                                <tr class="text-neutral-800">
+                                    <th class="px-5 py-3  font-medium text-left">#</th>
+                                    <th class="px-5 py-3  font-medium text-left">Name</th>
+                                    <th class="px-5 py-3  font-medium text-left">Email</th>
+                                    <th class="px-5 py-3  font-medium text-left">Mobile</th>
+                                    <th class="px-5 py-3  font-medium text-left">Amount</th>
+                                    <th class="px-5 py-3  font-medium text-left">Certificate</th>
+                                    <th class="px-5 py-3  font-medium text-left">Source</th>
+                                    <th class="px-5 py-3  font-medium text-left">Medium</th>
+                                    @if($batch->type == 1)
+                                    <th class="px-5 py-3  font-medium text-left">Progress</th>
+                                    @endif
                         <th class="px-5 py-3  font-medium text-left">Date</th>
                         <th class="px-5 py-3  font-medium text-left">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    @foreach ($paidEnrollments as $enrollment)
+                                    
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                @foreach ($paidEnrollments as $enrollment)
                     <tr class="text-sm">
                         <td class="px-4 py-4">{{ ++$i }}</td>
                         <td class="px-4 py-4">
@@ -88,33 +120,52 @@
                         </td>
                         <td class="px-4 py-4">{{ $enrollment->students->email }}</td>
                         <td class="px-4 py-4">{{ $enrollment->students->mobile }}</td>
-                        <td class="px-4 py-4">{{ $enrollment->students->field1 ?: 'organic' }}</td>
                         <td class="px-4 py-4">{{ number_format($enrollment->amountPaid / 100, 2) }}</td>
-                        @if($batch->type == 1)
                         <td class="px-4 py-4">
+                            @if($enrollment->certificateId)
+                                <div class="flex items-center gap-2">
+                                    <span>{{ $enrollment->certificateId }}</span>
+                                    <button onclick="copyCertificateUrl('{{ url('/course-certificate/' . $enrollment->certificateId) }}')" 
+                                            class="text-neutral-500 hover:text-violet-600">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            @else
+                                <a href="{{ action('TeacherController@generateCertificate', $enrollment->id) }}" 
+                                   class="text-violet-600 hover:text-violet-800">
+                                    Generate Certificate
+                                </a>
+                            @endif
+                        </td>
+                        <td class="px-4 py-4">{{ $enrollment->students->field1 ?: 'organic' }}</td>
+                        <td class="px-4 py-4">{{ $enrollment->students->field2 ?: '-' }}</td>
+
+                        @if($batch->type == 1)
+                        
+                        <td class="px-4 py-4 flex gap-2 items-center">
+                            @if($enrollment->progress)
+                                <div class="flex items-center gap-2">
+                                    
+                                    <span class="text-red-60">{{ round($enrollment->progress) }}%</span>
+                                </div>
+                            @else
+                                0%
+                            @endif
+                            <span> in </span>
                             @if($enrollment->time_spent)
                                 @if($enrollment->time_spent >= 60)
-                                    {{ floor($enrollment->time_spent / 60) }}h 
+                                    {{ floor($enrollment->time_spent / 60) }}H 
                                     @if($enrollment->time_spent % 60 > 0)
-                                        {{ $enrollment->time_spent % 60 }}m
+                                        {{ $enrollment->time_spent % 60 }}M
                                     @endif
                                 @else
                                     {{ $enrollment->time_spent }}m
                                 @endif
                             @else
-                                -
-                            @endif
-                        </td>
-                        <td class="px-4 py-4">
-                            @if($enrollment->progress)
-                                <div class="flex items-center gap-2">
-                                    <div class="w-16 bg-gray-200 rounded-full h-1.5">
-                                        <div class="bg-violet-600 h-1.5 rounded-full" style="width: {{ $enrollment->progress }}%"></div>
-                                    </div>
-                                    <span>{{ round($enrollment->progress) }}%</span>
-                                </div>
-                            @else
-                                -
+                                0M
                             @endif
                         </td>
                         @endif
@@ -135,7 +186,7 @@
                                 </div>
                                 @if($batch->type == 1)
                                 <div class='has-tooltip'>
-                                    <span class='tooltip rounded shadow-lg p-1 px-2 bg-black text-white -mt-8'>Track Progress</span>
+                                    <span class='tooltip rounded shadow-lg p-1 px-2 bg-black text-white -mt-8'>Progress</span>
                                     <a href="#" class="text-neutral-700 hover:text-violet-800">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
                                             <path d="M3 3v18h18"></path>
@@ -148,127 +199,165 @@
                         </td>
                     </tr>
                     @endforeach
-                </tbody>
-            </table>
-        </div>
-    </div>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-    {{-- Students with Pending Payment --}}
-    
-    <div class="bg-white p-6 mt-5">
-        <h4 class="text-lg font-bold text-gray-800 mb-4">Students with Pending Payment</h4>
-        <div class="overflow-x-auto border rounded-xl">
-            <table class="min-w-full table-auto borde border-gray-300" id="enrollmentTable2">
-                <thead class="bg-gray-10 border-b">
-                    <tr>
-                        <th class="px-5 py-3 font-medium text-left text-gray-600">#</th>
-                        <th class="px-5 py-3 font-medium text-left text-gray-600">Name</th>
-                        <th class="px-5 py-3 font-medium text-left text-gray-600">Email</th>
-                        <th class="px-5 py-3 font-medium text-left text-gray-600">Mobile</th>
-                        <th class="px-5 py-3 font-medium text-left text-gray-600">Source</th>
-                        <th class="px-5 py-3 font-medium text-left text-gray-600">Enrolled On</th>
-                        <th class="px-5 py-3 font-medium text-left text-gray-600">Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-200">
-                    @php $unpaidIndex = 1; @endphp
-                    @foreach ($unpaidEnrollments as $enrollment)
-                    <tr class="text-sm">
-                        <td class="px-5 py-4">{{ $unpaidIndex++ }}</td>
-                        <td class="px-5 py-4 flex items-center">
-                            <a href="{{action('AdminController@studentDetails', $enrollment->students->id)}}" class="text-violet-600">
-                                {{ $enrollment->students->name }}
-                            </a>
-                        </td>
-                        <td class="px-5 py-4">{{ $enrollment->students->email }}</td>
-                        <td class="px-5 py-4">{{ $enrollment->students->mobile }}</td>
-                        <td class="px-5 py-4">{{ $enrollment->students->field1 ?: 'organic' }}</td>
-                        <td class="px-5 py-4">{{ $enrollment->created_at->format('D, d M Y') }}</td>
-                        <td class="px-5 py-4">
-                            <div class="flex gap-4">
-                                <div class='has-tooltip'>
-                                    <span class='tooltip rounded shadow-lg p-1 px-2 bg-black text-white -mt-8'>Payment Received</span>
-                                    <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id))}}"
-                                        class="text-neutral-700 hover:text-violet-800">
-                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
-                                        </svg>
-                                    </a>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                {{-- Unpaid Enrollments Section --}}
+                <div class="mt-8">
+                    <h2 class="text-xl font-bold ">Unpaid Enrollments</h2>
+                    <p class="mb-4">Total unpaid users: {{$unpaidEnrollments->count()}}</p>
+                    <div class="bg-white border rounded-lg">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-neutral-200">
+                                <thead>
+                                    <tr class="text-neutral-800">
+                                        <th class="px-5 py-3 font-medium text-left">#</th>
+                                        <th class="px-5 py-3 font-medium text-left">Name</th>
+                                        <th class="px-5 py-3 font-medium text-left">Email</th>
+                                        <th class="px-5 py-3 font-medium text-left">Mobile</th>
+                                        <th class="px-5 py-3 font-medium text-left">Source</th>
+                                        <th class="px-5 py-3 font-medium text-left">Date</th>
+                                        <th class="px-5 py-3 font-medium text-left">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    @foreach ($unpaidEnrollments as $enrollment)
+                                    <tr class="text-sm">
+                                        <td class="px-4 py-4">{{ $loop->iteration }}</td>
+                                        <td class="px-4 py-4">
+                                            <a href="{{action('AdminController@studentDetails', $enrollment->students->id)}}" class="text-violet-600">
+                                                {{ $enrollment->students->name }}
+                                            </a>
+                                        </td>
+                                        <td class="px-4 py-4">{{ $enrollment->students->email }}</td>
+                                        <td class="px-4 py-4">{{ $enrollment->students->mobile }}</td>
+                                        <td class="px-4 py-4">{{ $enrollment->students->field1 ?: 'organic' }}</td>
+                                        <td class="px-4 py-4">{{ Carbon\Carbon::parse($enrollment->created_at)->format('D, d M Y') }}</td>
+                                        <td class="px-4 py-4">
+                                            <div class="flex gap-4">
+                                                <div class='has-tooltip'>
+                                                    <span class='tooltip rounded shadow-lg p-1 px-2 bg-black text-white -mt-8'>Mark as Paid</span>
+                                                    <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id))}}" 
+                                                        class="text-neutral-700 hover:text-violet-800">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                                                            <path d="M20 7h-9"></path>
+                                                            <path d="M14 17H5"></path>
+                                                            <circle cx="17" cy="17" r="3"></circle>
+                                                            <circle cx="7" cy="7" r="3"></circle>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
-    
 </section>
-@endsection
+
+<div id="notification" class="fixed top-2 z-[100] right-4 bg-black text-white px-4 py-2 rounded-lg transform transition-transform duration-300 translate-y-[-100px]">
+    URL copied to clipboard
+</div>
 
 <script>
 function searchTable() {
-    var input = document.getElementById("searchInput");
-    var filter = input.value.toLowerCase();
-    var tables = document.querySelectorAll("#enrollmentTable, #enrollmentTable2");
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue;
+    input = document.getElementById("searchInput");
+    filter = input.value.toLowerCase();
+    table = document.getElementById("enrollmentTable");
+    tr = table.getElementsByTagName("tr");
 
-    tables.forEach(function(table) {
-        var rows = table.getElementsByTagName("tr");
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 1; i < tr.length; i++) { // start from 1 to skip the header row
+        tr[i].style.display = "none"; // hide the row initially
+        td = tr[i].getElementsByTagName("td");
         
-        // Skip header row (index 0)
-        for (var i = 1; i < rows.length; i++) {
-            var row = rows[i];
-            var cells = row.getElementsByTagName("td");
-            
-            if (cells.length > 0) {
-                var nameCell = cells[1].textContent || cells[1].innerText;
-                var emailCell = cells[2].textContent || cells[2].innerText;
-                var phoneCell = cells[3].textContent || cells[3].innerText;
-                
-                if (nameCell.toLowerCase().includes(filter) || 
-                    emailCell.toLowerCase().includes(filter) || 
-                    phoneCell.toLowerCase().includes(filter)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
+        // Search through Name, Email, and Mobile columns
+        for (var j = 1; j <= 3; j++) {
+            if (td[j]) {
+                txtValue = td[j].textContent || td[j].innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                    tr[i].style.display = ""; // show the row if match found
+                    break; // stop searching once we find a match
+                }
+            }
+        }
+    }
+}
+
+function copyCertificateUrl(url) {
+    navigator.clipboard.writeText(url).then(function() {
+        // Show notification
+        const notification = document.getElementById('notification');
+        notification.style.transform = 'translateY(0)';
+        
+        // Hide notification after 3 seconds
+        setTimeout(() => {
+            notification.style.transform = 'translateY(-100px)';
+        }, 3000);
+    }).catch(function(err) {
+        console.error('Failed to copy URL: ', err);
+    });
+}
+
+// Column toggle functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('columnToggleBtn');
+    const dropdown = document.getElementById('columnToggleDropdown');
+    const checkboxes = document.querySelectorAll('.column-toggle');
+
+    // Toggle dropdown
+    toggleBtn.addEventListener('click', function() {
+        dropdown.classList.toggle('hidden');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!toggleBtn.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.add('hidden');
+        }
+    });
+
+    // Handle column visibility
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const columnIndex = this.getAttribute('data-column');
+            const table = document.getElementById('enrollmentTable');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let row of rows) {
+                const cell = row.cells[columnIndex];
+                if (cell) {
+                    cell.style.display = this.checked ? '' : 'none';
+                }
+            }
+        });
+
+        // Initial column visibility
+        const columnIndex = checkbox.getAttribute('data-column');
+        const table = document.getElementById('enrollmentTable');
+        const rows = table.getElementsByTagName('tr');
+
+        if (!checkbox.checked) {
+            for (let row of rows) {
+                const cell = row.cells[columnIndex];
+                if (cell) {
+                    cell.style.display = 'none';
                 }
             }
         }
     });
-}
-
-function updateAllProgress(batchId) {
-    // Get CSRF token
-    const csrfToken = document.querySelector('meta[name="csrf-token"]')?.content;
-    
-    if (!csrfToken) {
-        alert('CSRF token not found. Please refresh the page.');
-        return;
-    }
-
-    if (confirm('Are you sure you want to update progress for all users? This will run in the background.')) {
-        fetch(`/admin/batch/update-all-progress/${batchId}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': csrfToken
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                alert(data.message);
-                // Optionally reload the page after a delay
-                setTimeout(() => location.reload(), 1000);
-            } else {
-                alert('Error: ' + data.message);
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Error updating progress');
-        });
-    }
-}
+});
 </script>
+
+@endsection

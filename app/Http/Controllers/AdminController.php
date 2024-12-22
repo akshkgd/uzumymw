@@ -81,39 +81,60 @@ class AdminController extends Controller
     {
         $query = User::query();
         $filter = $request->input('filter');
+        
+        // Apply date filters
         switch ($filter) {
-        case 'today':
-            $query->whereDate('created_at', Carbon::today());
-            break;
-        case 'yesterday':
-            $query->whereDate('created_at', Carbon::yesterday());
-            break;
-        case 'last_7_days':
-            $query->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()]);
-            break;
-        case 'this_month':
-            $query->whereMonth('created_at', Carbon::now()->month)
-                  ->whereYear('created_at', Carbon::now()->year);
-            break;
-        case 'last_month':
-            $query->whereMonth('created_at', Carbon::now()->subMonth()->month)
-                  ->whereYear('created_at', Carbon::now()->subMonth()->year);
-            break;
-        case 'last_30_days':
-            $query->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()]);
-            break;
-        case 'last_3_months':
-            $query->whereBetween('created_at', [Carbon::now()->subMonths(3), Carbon::now()]);
-            break;
-        case 'last_6_months':
-            $query->whereBetween('created_at', [Carbon::now()->subMonths(6), Carbon::now()]);
-            break;
-        default:
-            $query->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()]);
-            break;
+            case 'today':
+                $query->whereDate('created_at', Carbon::today());
+                break;
+            case 'yesterday':
+                $query->whereDate('created_at', Carbon::yesterday());
+                break;
+            case 'last_7_days':
+                $query->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()]);
+                break;
+            case 'this_month':
+                $query->whereMonth('created_at', Carbon::now()->month)
+                      ->whereYear('created_at', Carbon::now()->year);
+                break;
+            case 'last_month':
+                $query->whereMonth('created_at', Carbon::now()->subMonth()->month)
+                      ->whereYear('created_at', Carbon::now()->subMonth()->year);
+                break;
+            case 'last_30_days':
+                $query->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()]);
+                break;
+            case 'last_3_months':
+                $query->whereBetween('created_at', [Carbon::now()->subMonths(3), Carbon::now()]);
+                break;
+            case 'last_6_months':
+                $query->whereBetween('created_at', [Carbon::now()->subMonths(6), Carbon::now()]);
+                break;
+            default:
+                $query->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()]);
+                break;
         }
-        $users = $query->latest()->get();
-        return view('admin.students', compact('users', 'query'))->with('i', 0); // No pagination, so index starts from 0
+
+        // Eager load payment status using a subquery to improve performance
+        $users = $query->select('users.*')
+            ->selectSub(
+                CourseEnrollment::selectRaw('COUNT(*)')
+                    ->whereColumn('userId', 'users.id')
+                    ->where('hasPaid', 1)
+                    ->limit(1),
+                'has_paid'
+            )
+            ->latest()
+            ->paginate(100);
+
+        // Convert the payment status to boolean
+        $users->transform(function ($user) {
+            $user->hasPaid = (bool)$user->has_paid;
+            return $user;
+        });
+
+        return view('admin.students', compact('users'))
+            ->with('i', ($request->input('page', 1) - 1) * 100);
     }
     public function addAccess()
     {
@@ -683,6 +704,70 @@ class AdminController extends Controller
                 'success' => false,
                 'message' => $e->getMessage()
             ]);
+        }
+    }
+
+    public function updateUserProfile(Request $request, $id)
+    {
+        try {
+            $user = User::findOrFail($id);
+            
+            // Validate email uniqueness excluding current user
+            $emailExists = User::where('email', $request->email)
+                              ->where('id', '!=', $id)
+                              ->exists();
+            
+            if ($emailExists) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Email already exists',
+                    'errors' => ['email' => ['This email is already registered']]
+                ], 422);
+            }
+
+            // Validate request
+            $validated = $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255',
+                'mobile' => [
+                    'required',
+                    'string',
+                    'regex:/^[0-9]{10}$/' // Ensures exactly 10 digits
+                ]
+            ], [
+                'mobile.regex' => 'Phone number must be exactly 10 digits'
+            ]);
+
+            // Only update if data has changed
+            if ($user->email !== $request->email) {
+                $user->email = $request->email;
+            }
+            
+            if ($user->mobile !== $request->mobile) {
+                $user->mobile = $request->mobile;
+            }
+            
+            if ($user->name !== $request->name) {
+                $user->name = $request->name;
+            }
+
+            $user->save();
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Profile updated successfully'
+            ]);
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Validation error',
+                'errors' => $e->errors()
+            ], 422);
+        } catch (\Exception $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Error updating profile: ' . $e->getMessage()
+            ], 500);
         }
     }
 }

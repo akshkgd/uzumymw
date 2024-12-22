@@ -123,14 +123,13 @@ class TeacherController extends Controller
     public function generateCertificate($id)
     {
         $enrollment = CourseEnrollment::findorFail($id);
-        if($enrollment->certificateId == '')
+        if(!$enrollment->certificateId)
         {
             $enrollment->certificateId = $enrollment->id . '-' . mt_rand(1000, 9999);
             $enrollment->save();
-            $name = Auth::user()->name;
-            session()->flash('alert-success',  'Certificate Generated Successfully!');
-            return back();
+            session()->flash('alert-success', 'Certificate Generated Successfully!');
         }
+        return back();
     }
 
     public function addContentOld($id, $contentId = null)

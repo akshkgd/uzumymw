@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="h-full bg-white">
+<html class="h-full bg-white overflow-x-hidden">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -23,8 +23,51 @@ input:-webkit-autofill:focus {
     </style>
   </head>
   <body class="font-sans">
+    <!-- Mobile Navigation Menu -->
+    <div class="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-neutral-200 w-full">
+      <div class="flex justify-center gap-6 py-2">
+          <a href="{{ url('/home') }}" class="flex flex-col items-center text-xs {{ Request::is('home') ? 'text-violet-600' : 'text-gray-600' }}">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              </svg>
+              <span>Home</span>
+          </a>
+          <a href="{{ url('/admin/batches') }}" class="flex flex-col items-center text-xs {{ Request::is('admin/batches') ? 'text-violet-600' : 'text-gray-600' }}">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect width="20" height="14" x="2" y="5" rx="2"></rect>
+                  <line x1="2" x2="22" y1="10" y2="10"></line>
+              </svg>
+              <span>Batches</span>
+          </a>
+          <a href="{{ url('/admin/students') }}" class="flex flex-col items-center text-xs {{ Request::is('admin/students') ? 'text-violet-600' : 'text-gray-600' }}">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M22 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>Learners</span>
+          </a>
+          <a href="{{ url('/admin/add-learner') }}" class="flex flex-col items-center text-xs {{ Request::is('admin/add-learner') ? 'text-violet-600' : 'text-gray-600' }}">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <line x1="19" x2="19" y1="8" y2="14"></line>
+                  <line x1="22" x2="16" y1="11" y2="11"></line>
+              </svg>
+              <span>Add</span>
+          </a>
+          <a href="{{ url('/admin/add-access') }}" class="flex flex-col items-center text-xs {{ Request::is('admin/add-access') ? 'text-violet-600' : 'text-gray-600' }}">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <span>Access</span>
+          </a>
+      </div>
+  </div>
     <section class="flex w-full">
-      <div id="sidebar" class="w-64 fixed top-0 box-border p-3 h-screen bg-neutral-100">
+      <div id="sidebar" class="w-64 fixed top-0 box-border p-3 h-screen bg-neutral-100 hidden lg:block">
         <a href="#" class="sm:mr-8 px-2 font-sans text-lg flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline">
           <svg class="text-white rotate-90" fill="black" width="24" height="24" viewBox="0 0 32 32" version="1.1" aria-labelledby="codekaro" aria-hidden="false" style="flex-shrink:0"><desc lang="en-US">Codekaro logo</desc><title id="unsplash-home">Codekaro</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg>
           {{-- <span class="tex text-neutral-800">codekaro.in</span> --}}
@@ -90,7 +133,7 @@ input:-webkit-autofill:focus {
                                     </form>
         </div>
       </div>
-      <div id="dashboard " class="w-[calc(100vw-256px)] ml-64">
+      <div id="dashboard " class="w-full lg:w-[calc(100vw-256px)] lg:ml-64">
         @if(session('success'))
         <div class="bg-white shadow transition-all text-green-700 px-4 py-3 absolute bottom-5 right-2" role="alert" id="successAlert">
           <span class="block sm:inline">{{ session('success') }}</span>
