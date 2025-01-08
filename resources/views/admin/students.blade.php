@@ -160,8 +160,11 @@
                     </div>
                     <!-- Add pagination links below the table -->
                     <div class="px-6 py-4">
-                        {{ $users->links() }}
+                        <div class="flex w-full justify-center items-center gap-5">
+                            {{ $users->appends(request()->query())->links('pagination::tailwind') }}
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -245,6 +248,46 @@ document.addEventListener('click', function(event) {
 // Load saved preferences when page loads
 document.addEventListener('DOMContentLoaded', loadColumnPreferences);
 </script>
+
+<style>
+ nav[aria-label="Pagination Navigation"] {
+    display: flex;
+    align-items: center; /* Vertically align elements */
+    gap: 16px; /* Add 16px space between elements */
+}
+
+nav[aria-label="Pagination Navigation"] .relative {
+    display: flex;
+    align-items: center; /* Ensure numbers inside are also vertically aligned */
+    justify-content: center; /* Center text horizontally */
+    box-shadow: 0 0 0 0 transparent !important;
+}
+
+nav[aria-label="Pagination Navigation"] span,
+nav[aria-label="Pagination Navigation"] a {
+    padding: ; /* Adjust padding for better alignment */
+    border: none !important;
+}
+.hidden.sm\:flex-1.sm\:flex.sm\:items-center.sm\:justify-between {
+    /* Your custom styles here */
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 10px !important;
+}
+
+
+span[aria-current="page"] .relative {
+    color: blueviolet; /* Changes text color to violet */
+    border-color: blueviolet; /* Optional: Change border color to violet */
+    background-color: #f9f5ff; /* Optional: Add a light violet background */
+    cursor: pointer;
+}
+
+span[aria-current="page"] .relative:hover {
+    background-color: #eae2ff; /* Optional: Add a hover effect for better interaction */
+}
+
+</style>
 
 @endsection
 
