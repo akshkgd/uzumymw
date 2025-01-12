@@ -65,20 +65,17 @@
                                     
                                         <div class="flex flex-col sm:flex-row gap-3 mt-">
                                             <div class="sm:flex flex-wrap gap-2">
-                                                @php
-                                                $timeSpent = optional($enrollment)->time_spent ?? 0; // Time spent in minutes
-                                                $hours = floor($timeSpent / 60);
-                                                $minutes = $timeSpent % 60;
-
-                                                // Calculate progress percentage (assuming you have total_duration in minutes)
-                                                $totalDuration = $enrollment->batch->total_duration ?? 1; // Prevent division by zero
-                                                $progress = min(round(($timeSpent / $totalDuration) * 100), 100);
-
-                                                $timeDisplay = $hours > 0 
-                                                    ? "{$progress}% completed in {$hours} hours {$minutes} mins" 
-                                                    : "{$progress}% completed in {$minutes} mins";
-                                                @endphp
-                                                {{ $timeDisplay }}
+                                                <p class="mb text-s text-gray-700">{{ optional($enrollment)->progress ?? 0 }}% completed in
+                                                    @php
+                                                    $timeSpent = optional($enrollment)->time_spent ?? 0; // Time spent in minutes
+                                                    $hours = floor($timeSpent / 60);
+                                                    $minutes = $timeSpent % 60;
+                                                    @endphp
+                                                    @if($hours > 0)
+                                                        {{ $hours }}Hrs {{ $minutes }}Mins
+                                                    @else
+                                                        {{ $minutes }}Mins
+                                                    @endif</p>
                                                 {{-- <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}" class="">Access Course</a> --}}
                                             </div>
                                             
