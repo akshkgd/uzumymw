@@ -65,13 +65,16 @@
                                     
                                         <div class="flex flex-col sm:flex-row gap-3 mt-">
                                             <div class="sm:flex flex-wrap gap-2">
-                                                <p class="mb text-s text-gray-700">{{ optional($enrollment)->progress ?? 0 }}% completed in
-                                                    @php
-                                                    $timeSpent = optional($enrollment)->time_spent ?? 0; // Time spent in minutes
-                                                    $hours = floor($timeSpent / 60);
-                                                    $minutes = $timeSpent % 60;
-                                                    @endphp
-                                                    {{ $hours }}Hrs {{ $minutes }}Mins</p>
+                                                @php
+                                                $timeSpent = optional($enrollment)->time_spent ?? 0; // Time spent in minutes
+                                                $hours = floor($timeSpent / 60);
+                                                $minutes = $timeSpent % 60;
+
+                                                $timeDisplay = $hours > 0 
+                                                    ? "{$hours}Hrs {$minutes}Mins" 
+                                                    : "{$minutes}Mins";
+                                                @endphp
+                                                {{ $timeDisplay }}
                                                 {{-- <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}" class="">Access Course</a> --}}
                                             </div>
                                             
