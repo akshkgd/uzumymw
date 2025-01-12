@@ -72,9 +72,9 @@
                                                     $minutes = $timeSpent % 60;
                                                     @endphp
                                                     @if($hours > 0)
-                                                        {{ $hours }}Hrs {{ $minutes }}Mins
+                                                        {{ $hours }} Hrs {{ $minutes }} Mins
                                                     @else
-                                                        {{ $minutes }}Mins
+                                                        {{ $minutes }} Mins
                                                     @endif</p>
                                                 {{-- <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}" class="">Access Course</a> --}}
                                             </div>
