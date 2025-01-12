@@ -60,7 +60,7 @@ Route::view('/demo-success','students/demoSuccess');
 Route::view('/frontend-cohort','frontend');
 Route::view('/join-frontend','joinFrontend');
 Route::view('/t','students/learn');
-Route::view('/inv','admin/invoicePdf');
+Route::view('/c','students/certificatePdf');
 
 
 
@@ -149,6 +149,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/my-account', 'ProfileController@editProfile');
 route::post('/edit-profile', 'ProfileController@updateStudentsProfile')->name('updateStudentsProfile');
 route::post('/complete-profile', 'ProfileController@completeStudentsProfile')->name('completeStudentsProfile');
+Route::get('/complete-profile', 'ProfileController@completeProfile')->name('profile.complete');
 
 Route::get('/enroll/{id}', 'CourseEnrollmentController@checkEnroll');
 Route::get('/join/{id}', 'CourseEnrollmentController@checkEnroll');
@@ -162,6 +163,7 @@ Route::get('/workshop/{id}', 'WorkshopController@details');
 Route::get('/workshop-details/{id}', 'WorkshopController@workshopDetails');
 Route::get('/workshop-certificate/{id}', 'WorkshopEnrollmentController@certificate');
 Route::get('/course-certificate/{id}', 'BatchController@certificate');
+Route::get('/download-certificate/{certificateId}', 'StudentController@certificate')->name('student.certificate');
 Route::get('/explore-course/{id}', 'BatchController@details');
 Route::post('payment-success', 'CodekaroController@coursePayment')->name('payment-success');
 Route::get('/bootcamp-success', 'CodekaroController@bootcampSuccess')->name('bootcamp-success');

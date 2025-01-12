@@ -33,7 +33,7 @@
             <div class="w-full border-t border-gray-200"></div>
           </div>
           <div class="relative flex justify-cente text-md leading-6">
-            <span class="bg-white text-gray-500"
+            <span class="bg-white text-gray-500 hidden"
               >Login to your account to see all your courses <br />
               and upcoming classes.</span
             >
@@ -96,7 +96,7 @@
             </div>
           </div>
         </div>
-        <div class="relative w-full mt-10 content">
+        <div class="relative w-full mt-10 content hidden">
           <div class="bg-card text-neutral-900">
             <div class="flex flex-col space-y-1.5">
               <h3 class="text-lg font-semibold leading-none tracking-tight">

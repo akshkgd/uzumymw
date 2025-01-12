@@ -25,29 +25,57 @@ class ProfileController extends Controller
 
     public function updateStudentsProfile(Request $request){
         $validator = Validator::make($request->all(), [
-            'email' => 'email:rfc,dns,filter',
-            'name'=> 'required|max:40', 
-            'mobile'=> 'required|regex:/^[6-9]\d{9}$/',
-            'college'=> 'required|min:10', 
-            'course'=> 'required|min:2', 
-            
+            'email' => 'nullable|email:rfc,dns,filter',
+            'name'=> 'nullable|max:40', 
+            'mobile'=> 'nullable|regex:/^[6-9]\d{9}$/',
+            'college'=> 'nullable|min:2', 
+            'course'=> 'nullable|min:2', 
         ]);
+
         if ($validator->fails()) {
             Session()->flash('alert-danger', $validator->messages()->first());
             return redirect()->back()->withInput();
-       }
+        }
+
         $user = User::findorfail(Auth::user()->id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->mobile = $request->mobile;
-        $user->college = $request->college;
-        $user->course = $request->course;
-        $user->bio = $request->bio;
+        
+        // Only update fields if they are provided in the request
+        if ($request->filled('name')) {
+            $user->name = $request->name;
+        }
+        if ($request->filled('email')) {
+            $user->email = $request->email;
+        }
+        if ($request->filled('mobile')) {
+            $user->mobile = $request->mobile;
+        }
+        if ($request->filled('college')) {
+            $user->college = $request->college;
+        }
+        if ($request->filled('course')) {
+            $user->course = $request->course;
+        }
+        if ($request->filled('bio')) {
+            $user->bio = $request->bio;
+        }
+
         $user->save();
         session()->flash('alert-success', 'Profile Successfully Updated!');
         return redirect()->back();
     }
 
+    public function completeProfile()
+    {
+        $user = Auth::user();
+        
+       
+        if ($user->mobile && $user->course && $user->college) {
+            session()->flash('alert-success', 'Your profile is already complete!');
+            return redirect('/home');
+        }
+        
+        return view('students.completeProfile');
+    }
     public function completeStudentsProfile(Request $request){
         $validator = Validator::make($request->all(), [
             

@@ -36,20 +36,49 @@ class HomeController extends Controller
         
         // return view('home');
         if(Auth::User()->role == 0){
-            if(Auth::user()->status == 1){
-            // $Enrollments = DB::table('course_enrollments')->where('userId', Auth::user()->id)
-            // ->join('batches', 'batches.id', '=', 'course_enrollments.batchId')->orderBy('date', 'asc')->get();
-            // dd($Enrollments);
-            // $Enrollments = CourseEnrollment::where('userId', Auth::user()->id)->where('status', 1)->orderBy('nextClass', 'asc')->get();
-            $enrollments = CourseEnrollment::where('userId', Auth::user()->id)->where('status', 1)->where('hasPaid', 1)->latest()->get();;
-            // $workshopEnrollments = WorkshopEnrollment::where('userId', Auth::user()->id)->where('status', 1)->get();
-            // $batches = Workshop::where('status',1)->latest()->take(2)->get();;
+            $user = Auth::user();
             
-            return view ('students.index', compact('enrollments'));}
-            else{
-                session()->flash('alert-danger', 'Your Acount has been terminated!');
-                return view('students.index');
+            // Check for incomplete profile - only college and course
+            if (!$user->college || !$user->course || !$user->mobile) {
+                session()->flash('alert-warning', 'Please complete your educational information to continue');
+                return redirect()->route('profile.complete');
             }
+            
+            if($user->status == 1){
+                $enrollments = CourseEnrollment::where('userId', $user->id)
+                    ->where('status', 1)
+                    ->where('hasPaid', 1)
+                    ->with(['batch' => function($query) {
+                        $query->select('id', 'topicId', 'name', 'type', 'status');
+                    }])
+                    ->latest()
+                    ->get();
+
+                foreach($enrollments as $enrollment) {
+                    switch($enrollment->batch->topicId) {
+                        case 10:
+                            $enrollment->img = "assets/img/backend.webp";
+                            break;
+                        case 11:
+                            $enrollment->img = "assets/img/frontend.webp";
+                            break;
+                        case 100:
+                            $enrollment->img = "assets/img/css.webp";
+                            break;
+                            case 101:
+                                $enrollment->img = "assets/img/js.webp";
+                                break;
+                        default:
+                            $enrollment->img = "assets/img/fullstack.webp";
+                            break;
+                    }
+                }
+                
+                return view('students.index', compact('enrollments'));
+            }
+            
+            session()->flash('alert-danger', 'Your Account has been terminated!');
+            return view('students.index');
         }
         elseif(Auth::User()->role == 1){
             $batches = Batch::where('TeacherId', Auth::User()->id)->where('status', '<', 3)->orderBy('nextClass', 'asc')->get();

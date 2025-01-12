@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Jenssegers\Agent\Agent;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class StudentController extends Controller
 {
@@ -125,7 +126,15 @@ class StudentController extends Controller
                     }
                 }
                 $accessTill = Carbon::now()->diffInDays(Carbon::parse($enrollment->paidAt));
-                $sections = BatchSection::where('batchId', $enrollment->batchId)->orderBy('order')->get();
+                $sections = BatchSection::where('batchId', $enrollment->batchId)
+                    ->with(['chapters' => function($query) {
+                        $query->with(['progress' => function($query) {
+                            $query->where('userId', Auth::id())
+                                ->select(['contentId', 'status', 'id']);
+                        }]);
+                    }])
+                    ->orderBy('order')
+                    ->get();
                 $accessOn = true;
                 if ($videoLink) {
                     $isVideoUnlocked = ($accessTill >=  $video->accessOn) ? true : false;
@@ -368,6 +377,51 @@ public function updateTimeSpent(Request $request)
                 'status' => 'error',
                 'message' => 'Failed to mark video as complete'
             ], 500);
+        }
+    }
+
+    public function certificate($certificateId)
+    {
+        try {
+            $enrollment = CourseEnrollment::where('certificateId', $certificateId)
+                ->where('userId', Auth::user()->id)
+                ->firstOrFail();
+
+            if ($enrollment->batch->status != 3) {
+                session()->flash('alert-warning', 'Certificate is only available for completed courses');
+                return redirect()->back();
+            }
+
+            $data = [
+                'user' => Auth::user(),
+                'enrollment' => $enrollment,
+                'date' => Carbon::parse($enrollment->batch->endDate)->format('F d, Y')
+            ];
+
+            // Custom dimensions in points (1 inch = 72 points)
+            // Adjust these values based on your certificate's actual dimensions
+            $width = 1024;  // Example width
+            $height = 768;  // Example height
+            
+            $pdf = PDF::loadView('students.certificatePdf', $data)
+                ->setPaper([0, 0, $width, $height])  // Custom dimensions
+                ->setOptions([
+                    'isHtml5ParserEnabled' => true,
+                    'isRemoteEnabled' => true,
+                    'defaultFont' => 'Poppins',
+                    'margin_left' => 0,
+                    'margin_right' => 0,
+                    'margin_top' => 0,
+                    'margin_bottom' => 0
+                ]);
+            
+            $filename = 'certificate-' . $certificateId . '.pdf';
+            return $pdf->download($filename);
+            // return view('students.certificatePdf', $data);
+        } catch (\Exception $e) {
+            \Log::error('Certificate generation error: ' . $e->getMessage());
+            session()->flash('alert-danger', 'Error generating certificate. Please try again.');
+            return redirect()->back();
         }
     }
 }

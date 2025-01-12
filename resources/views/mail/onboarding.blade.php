@@ -1,19 +1,15 @@
-<p style="font-size:16px">{!! strtok($email_data['name'], ' ') !!} you are awesome! :)</p>
-<p style="font-size:16px">You have just now enrolled for the <strong>{{ $email_data['workshopName'] }}</strong> . I'm super excited about having you on board. Your class will start from {{ Carbon\Carbon::parse($email_data['nextClass'])->format('D, d M') }} at {{ Carbon\Carbon::parse($email_data['nextClass'])->format('h:i A') }} (IST). </p>
-<p style="font-size:16px; font-weight:bold;">Next Steps:</p>
-<ol>
-    <li style="font-size:16px">Join the Private Telegram Group: <a href="{{ $email_data['workshopGroup'] }}">CLICK
-            HERE</a></li>
+<p style="font-size:16px">Hey {!! strtok($email_data['name'], ' ') !!}! 👋</p>
 
-</ol>
-<p style="font-size:16px">I want to make sure you are on-boarded into our system smoothly… :) </p>
-<p style="font-size:16px">Because I care for you. I would like you to get the best value out of this investment that you have just made.</p>
+<p style="font-size:16px">Great news! You now have access to <strong>{{ $email_data['workshopName'] }}</strong>. You can start learning right away at <a href="https://codekaro.in/home">codekaro.in/home</a>.</p>
 
-<p style="font-size:16px">Besides the course, please ensure you attend all the Hackathons, and complete all the assignments on time.</p>
-<p style="font-size:16px; font-weight:bold">Reply to me if you have completed all the on-boarding steps.</p>
+<p style="font-size:16px">To make the most of your course:</p>
+<ul style="font-size:16px">
+    <li>Be consistent!</li>
+    <li>Complete all assignments!</li>
+</ul>
 
-</p>
+<p style="font-size:16px">Need help? Just reply to this email!</p>
 
 <br>
-<p style="font-size:16px; margin-bottom:0">All the best,</p>
+<p style="font-size:16px; margin-bottom:0">Happy learning!</p>
 <p style="font-size:16px; margin:0">{{ $email_data['teacher'] }}</p>

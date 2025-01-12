@@ -9,7 +9,7 @@
 <p style="font-size:16px">I want to make sure you are on-boarded into our system smoothly… :) </p>
 <p style="font-size:16px">Because I care for you. I would like you to get the best value out of this investment that you have just made.</p>
 
-<p style="font-size:16px">Besides the course, please ensure you attend all the Hackathons, and complete all the assignments on time.</p>
+<p style="font-size:16px">Besides the course, please ensure you attend all the sessions live, and complete all the assignments on time.</p>
 <p style="font-size:16px; font-weight:bold">Reply to me if you have completed all the on-boarding steps.</p>
 
 </p>
