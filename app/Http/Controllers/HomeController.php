@@ -62,6 +62,12 @@ class HomeController extends Controller
                         case 11:
                             $enrollment->img = "assets/img/frontend.webp";
                             break;
+                        case 15:
+                                $enrollment->img = "assets/img/python.webp";
+                                break;
+                        case 700:
+                            $enrollment->img = "assets/img/intensive.webp";
+                            break;
                         case 100:
                             $enrollment->img = "assets/img/css.webp";
                             break;
