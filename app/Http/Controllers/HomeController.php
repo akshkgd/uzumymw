@@ -52,6 +52,7 @@ class HomeController extends Controller
                         $query->select('id', 'topicId', 'name', 'type', 'status', 'groupLink', 'groupLink2');
                     }])
                     ->latest()
+                    ->take(3)
                     ->get();
 
                 foreach($enrollments as $enrollment) {
