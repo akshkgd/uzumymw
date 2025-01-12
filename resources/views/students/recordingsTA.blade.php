@@ -382,8 +382,6 @@
         {{-- links --}}
         <div class="flex gap-3 mt-5">
           <a href="" class="inline-block border rounded-lg bg-violet-10 text-violet-60 py-2  px-5 ">Invoice</a>
-          <a href="" class="inline-block border rounded-lg bg-violet-10 text-violet-60 py-2  px-5 ">Join Community</a>
-          {{-- <a href="" class="inline-block border rounded-lg bg-violet-10 text-violet-60 py-2  px-5 ">Get Certificate</a> --}}
           <a href="" class="inline-block border rounded-lg bg-violet-10 text-violet-60 py-2  px-5 ">Invite your Friend</a>
 
         </div>
