@@ -49,7 +49,7 @@ class HomeController extends Controller
                     ->where('status', 1)
                     ->where('hasPaid', 1)
                     ->with(['batch' => function($query) {
-                        $query->select('id', 'topicId', 'name', 'type', 'status');
+                        $query->select('id', 'topicId', 'name', 'type', 'status', 'groupLink', 'groupLink2');
                     }])
                     ->latest()
                     ->get();
