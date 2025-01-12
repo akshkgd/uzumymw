@@ -56,6 +56,9 @@
                         class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5">
                 </div>
 
+                <!-- Simplified Bonus Checkbox -->
+                
+
                 <div class="mb-4">
                     <label for="hasPaid" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Has Paid</label>
                     <input type="text" id="hasPaid" name="hasPaid" value="{{$enrollment->hasPaid}}"
@@ -73,7 +76,17 @@
                     <input type="date" id="accessTill" name="accessTill" value="{{$enrollment->accessTill}}"
                         class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5">
                 </div>
-
+                @if($batch->type == 2)
+                <div class="mb-4">
+                    <label class="inline-flex items-center">
+                        <input type="checkbox" name="certificateFee" class="form-checkbox" 
+                            {{ $enrollment->certificateFee > 1 ? 'checked' : '' }}
+                            onchange="updateBonusAmount(this.checked)">
+                        <span class="ml-2 text-sm font-medium text-gray-900 dark:text-white">Grant Bonuses</span>
+                    </label>
+                    <input type="hidden" name="certificateFee" id="bonusAmount" value="{{ $enrollment->certificateFeee ?? 0 }}">
+                </div>
+                @endif
                 <input type="hidden" name="enrollmentId" value="{{$enrollment->id}}">
 
                 <!-- Submit Button -->
@@ -85,5 +98,11 @@
         </div>
     </div>
 </section>
+
+<script>
+    function updateBonusAmount(checked) {
+        document.getElementById('bonusAmount').value = checked ? '199' : '0';
+    }
+</script>
 
 @endsection
