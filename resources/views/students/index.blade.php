@@ -75,8 +75,8 @@
                                                 $progress = min(round(($timeSpent / $totalDuration) * 100), 100);
 
                                                 $timeDisplay = $hours > 0 
-                                                    ? "{$hours}Hrs {$minutes}Mins • {$progress}% Complete" 
-                                                    : "{$minutes}Mins • {$progress}% Complete";
+                                                    ? "{$progress}% completed in {$hours} hours {$minutes} mins" 
+                                                    : "{$progress}% completed in {$minutes} mins";
                                                 @endphp
                                                 {{ $timeDisplay }}
                                                 {{-- <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}" class="">Access Course</a> --}}
