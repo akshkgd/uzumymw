@@ -70,9 +70,13 @@
                                                 $hours = floor($timeSpent / 60);
                                                 $minutes = $timeSpent % 60;
 
+                                                // Calculate progress percentage (assuming you have total_duration in minutes)
+                                                $totalDuration = $enrollment->batch->total_duration ?? 1; // Prevent division by zero
+                                                $progress = min(round(($timeSpent / $totalDuration) * 100), 100);
+
                                                 $timeDisplay = $hours > 0 
-                                                    ? "{$hours}Hrs {$minutes}Mins" 
-                                                    : "{$minutes}Mins";
+                                                    ? "{$hours}Hrs {$minutes}Mins • {$progress}% Complete" 
+                                                    : "{$minutes}Mins • {$progress}% Complete";
                                                 @endphp
                                                 {{ $timeDisplay }}
                                                 {{-- <a href="{{ action('StudentController@recordings', Crypt::encrypt($enrollment->id)) }}" class="">Access Course</a> --}}
