@@ -581,8 +581,11 @@ class AdminController extends Controller
         session()->flash('alert-danger', 'Batch Added');
         return redirect('/home');
     }
-    public function fetchCourseProgress(){
-        $courseProgress = CourseProgress::orderBy('lastAccess', 'desc')->get();
+    public function fetchCourseProgress() {
+        $courseProgress = CourseProgress::with(['students', 'batch', 'content'])  // Changed 'user' to 'students'
+            ->orderBy('lastAccess', 'desc')
+            ->paginate(100);
+        
         return view('admin.courseProgressTable', compact('courseProgress'));
     }
 
