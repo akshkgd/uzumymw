@@ -55,45 +55,29 @@
                                 <input type="checkbox" class="column-toggle" data-column="7"> 
                                 <span class="ml-2">Medium</span>
                             </label>
-                            @if($batch->type == 1)
                             <label class="flex items-center">
                                 <input type="checkbox" class="column-toggle" data-column="8"> 
+                                <span class="ml-2">College</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="9"> 
+                                <span class="ml-2">Course</span>
+                            </label>
+                            @if($batch->type == 1)
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="10"> 
                                 <span class="ml-2">Progress</span>
                             </label>
                             @endif
                             <label class="flex items-center">
-                                <input type="checkbox" class="column-toggle" data-column="9" checked> 
+                                <input type="checkbox" class="column-toggle" data-column="11" checked> 
                                 <span class="ml-2">Date</span>
                             </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="12" checked> 
+                                <span class="ml-2">Actions</span>
+                            </label>
                         </div>
-                    </div>
-                </div>
-            </div>
-            <div class="relative inline-block">
-                <button id="filterBtn" class="bg-white border rounded-lg px-4 py-2 inline-flex items-center gap-2 text-sm">
-                    <span>Filter Status</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="m6 9 6 6 6-6"/>
-                    </svg>
-                </button>
-                <div id="filterDropdown" class="hidden absolute z-10 mt-2 w-48 bg-white border rounded-lg shadow-lg">
-                    <div class="p-2 space-y-2">
-                        <label class="flex items-center">
-                            <input type="radio" name="status-filter" value="all" checked class="status-filter"> 
-                            <span class="ml-2">All</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="radio" name="status-filter" value="student" class="status-filter"> 
-                            <span class="ml-2">Student</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="radio" name="status-filter" value="professional" class="status-filter"> 
-                            <span class="ml-2">Working Professional</span>
-                        </label>
-                        <label class="flex items-center">
-                            <input type="radio" name="status-filter" value="other" class="status-filter"> 
-                            <span class="ml-2">Other</span>
-                        </label>
                     </div>
                 </div>
             </div>
@@ -131,11 +115,13 @@
                                     <th class="px-5 py-3  font-medium text-left">Certificate</th>
                                     <th class="px-5 py-3  font-medium text-left">Source</th>
                                     <th class="px-5 py-3  font-medium text-left">Medium</th>
+                                    <th class="px-5 py-3  font-medium text-left">College</th>
+                                    <th class="px-5 py-3  font-medium text-left">Course</th>
                                     @if($batch->type == 1)
                                     <th class="px-5 py-3  font-medium text-left">Progress</th>
                                     @endif
-                        <th class="px-5 py-3  font-medium text-left">Date</th>
-                        <th class="px-5 py-3  font-medium text-left">Actions</th>
+                                    <th class="px-5 py-3  font-medium text-left">Date</th>
+                                    <th class="px-5 py-3  font-medium text-left">Actions</th>
                                     
                                 </tr>
                             </thead>
@@ -170,6 +156,8 @@
                         </td>
                         <td class="px-4 py-4">{{ $enrollment->students->field1 ?: 'organic' }}</td>
                         <td class="px-4 py-4">{{ $enrollment->students->field2 ?: '-' }}</td>
+                        <td class="px-4 py-4">{{ $enrollment->students->college ?: '-' }}</td>
+                        <td class="px-4 py-4">{{ $enrollment->students->course ?: '-' }}</td>
 
                         @if($batch->type == 1)
                         
@@ -372,58 +360,19 @@ document.addEventListener('DOMContentLoaded', function() {
         const rows = table.getElementsByTagName('tr');
 
         for (let row of rows) {
-            const cell = row.cells[columnIndex];
-            if (cell) {
-                cell.style.display = isVisible ? '' : 'none';
+            const cells = row.cells;
+            if (cells.length > columnIndex) {  // Check if column exists
+                cells[columnIndex].style.display = isVisible ? '' : 'none';
             }
         }
     }
-});
 
-// Filter dropdown toggle
-const filterBtn = document.getElementById('filterBtn');
-const filterDropdown = document.getElementById('filterDropdown');
-const statusFilters = document.getElementsByClassName('status-filter');
-
-filterBtn.addEventListener('click', function() {
-    filterDropdown.classList.toggle('hidden');
-});
-
-// Close filter dropdown when clicking outside
-document.addEventListener('click', function(event) {
-    if (!filterBtn.contains(event.target) && !filterDropdown.contains(event.target)) {
-        filterDropdown.classList.add('hidden');
-    }
-});
-
-// Handle status filtering
-Array.from(statusFilters).forEach(filter => {
-    filter.addEventListener('change', function() {
-        filterTableByStatus(this.value);
+    // Set initial visibility for all columns
+    checkboxes.forEach(checkbox => {
+        const columnIndex = parseInt(checkbox.getAttribute('data-column'));
+        toggleColumn(columnIndex, checkbox.checked);
     });
 });
-
-function filterTableByStatus(status) {
-    const table = document.getElementById('enrollmentTable');
-    const rows = table.getElementsByTagName('tr');
-    
-    for (let i = 1; i < rows.length; i++) { // Start from 1 to skip header
-        const collegeCell = rows[i].cells[8]; // College column index
-        if (collegeCell) {
-            const collegeValue = collegeCell.textContent.toLowerCase().trim();
-            
-            if (status === 'all') {
-                rows[i].style.display = '';
-            } else if (status === 'student') {
-                rows[i].style.display = collegeValue !== '-' && !collegeValue.includes('working') ? '' : 'none';
-            } else if (status === 'professional') {
-                rows[i].style.display = collegeValue.includes('working') ? '' : 'none';
-            } else if (status === 'other') {
-                rows[i].style.display = collegeValue === '-' ? '' : 'none';
-            }
-        }
-    }
-}
 </script>
 
 @endsection
