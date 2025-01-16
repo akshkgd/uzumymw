@@ -486,14 +486,19 @@ quill.on('text-change', function(delta, oldDelta, source) {
   var quill = new Quill('#quill_editor', {
         theme: 'snow'
   });
-quill.on('text-change', function(delta, oldDelta, source) {
-    document.getElementById("quill_html").value = quill.root.innerHTML;
-});
 
-const value = `{!!$currentContent->desc!!}`;
-const delta = quill.clipboard.convert(value);
+  // Initialize with existing content
+  const existingContent = `{!! $currentContent->desc ?? '' !!}`;
+  if (existingContent) {
+      const delta = quill.clipboard.convert(existingContent);
+      quill.setContents(delta, 'silent');
+      // Set initial value for the hidden input
+      document.getElementById("quill_html").value = existingContent;
+  }
 
-quill.setContents(delta, 'silent')
+  quill.on('text-change', function(delta, oldDelta, source) {
+      document.getElementById("quill_html").value = quill.root.innerHTML;
+  });
 </script>
 
 {{-- sortable --}}
