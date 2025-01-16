@@ -300,7 +300,7 @@ public function updateContent( Request $request)
         // dd($request);
     $batch = Batch::findorFail($request->batchId);
     $a = BatchContent::findorFail($request->contentId);
-    if($batch->teacherId == Auth::user()->id) {
+    if($batch->teacherId == Auth::user()->id || Auth::user()->role == 100) {
         $a->title = $request->title;
         $a->type = $request->type;
         $a->desc  = $request->desc;
@@ -319,7 +319,7 @@ public function deleteContent($id)
 {
     $content = BatchContent::findOrFail($id);
     $batch = Batch::findOrFail($content->batchId);
-    if ($batch->teacherId == Auth::user()->id) {
+    if ($batch->teacherId == Auth::user()->id || Auth::user()->role == 100) {
         $content->delete();
         return redirect()->route('addCourseContent', [
             'id' => $batch->id, // Match the required 'id' parameter
@@ -337,7 +337,7 @@ public function deleteContent($id)
     public function storeSection(Request $request){
         $batch = Batch::findorFail($request->batchId);
         $sectionCount = BatchSection::where('batchID', $request->batchId)->get()->count();
-        if($batch->teacherId == Auth::user()->id) {
+        if($batch->teacherId == Auth::user()->id || Auth::user()->role == 100) {
             $a = new BatchSection();
             $a->name = $request->name;
             $a->batchid = $batch->id;
@@ -351,7 +351,7 @@ public function deleteContent($id)
     $section = BatchSection::findOrFail($id);
     $batch = Batch::findOrFail($section->batchId);
    
-    if ($batch->teacherId == Auth::user()->id) {
+    if ($batch->teacherId == Auth::user()->id || Auth::user()->role == 100) {
         // Delete all content associated with the section
         BatchContent::where('sectionId', $section->id)->delete();
 
@@ -375,7 +375,7 @@ public function updateSection(Request $request)
     $batch = Batch::findOrFail($request->batchId);
     $section = BatchSection::findOrFail($request->sectionId);
 
-    if ($batch->teacherId == Auth::user()->id) {
+    if ($batch->teacherId == Auth::user()->id || Auth::user()->role == 100) {
         $section->name = $request->name; // Update only the name
         $section->save();
 
@@ -404,7 +404,7 @@ public function updateSection(Request $request)
     {
     $batch = Batch::findorFail($request->batchId);
     $contentCount = BatchContent::where('sectionID', $request->sectionId)->get()->count();
-    if($batch->teacherId == Auth::user()->id) {
+    if($batch->teacherId == Auth::user()->id || Auth::user()->role == 100) {
 
         $a = new BatchContent();
         $a->title = $request->title;
