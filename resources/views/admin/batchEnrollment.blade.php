@@ -420,18 +420,19 @@ function filterTableByStatus(status) {
     const rows = table.getElementsByTagName('tr');
     
     for (let i = 1; i < rows.length; i++) { // Start from 1 to skip header
-        const collegeCell = rows[i].cells[8]; // College column index
+        const collegeCell = rows[i].cells[8]; // College column
+        
         if (collegeCell) {
             const collegeValue = collegeCell.textContent.toLowerCase().trim();
             
             if (status === 'all') {
                 rows[i].style.display = '';
             } else if (status === 'student') {
-                rows[i].style.display = collegeValue !== '-' && !collegeValue.includes('working') ? '' : 'none';
+                rows[i].style.display = collegeValue === 'student' ? '' : 'none';
             } else if (status === 'professional') {
-                rows[i].style.display = collegeValue.includes('working') ? '' : 'none';
+                rows[i].style.display = collegeValue === 'professional' ? '' : 'none';
             } else if (status === 'other') {
-                rows[i].style.display = collegeValue === '-' ? '' : 'none';
+                rows[i].style.display = (collegeValue !== 'student' && collegeValue !== 'professional') ? '' : 'none';
             }
         }
     }
