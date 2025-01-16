@@ -180,62 +180,62 @@ class TeacherController extends Controller
 {
     $batch = Batch::findorFail($id);
 
-    if ($batch->teacherId != Auth::user()->id) {
-        abort(403, 'Unauthorized action.');
-    }
+    if ($batch->teacherId == Auth::user()->id || Auth::user()->role == 100) {
+        $sections = BatchSection::where('batchId', $batch->id)->orderBy('order')->get();
+        $batchContent = BatchContent::where('batchId', $batch->id)->get();
 
-    $sections = BatchSection::where('batchId', $batch->id)->orderBy('order')->get();
-    $batchContent = BatchContent::where('batchId', $batch->id)->get();
+        // Sort batch content by 'order' or leave as-is if empty
+        $sortedBatchContent = $batchContent->isNotEmpty() ? $batchContent->sortBy('order') : $batchContent;
 
-    // Sort batch content by 'order' or leave as-is if empty
-    $sortedBatchContent = $batchContent->isNotEmpty() ? $batchContent->sortBy('order') : $batchContent;
+        $currentContent = null;
+        $currentSection = null;
 
-    $currentContent = null;
-    $currentSection = null;
+        // If sectionId is provided
+        if ($sectionId) {
+            $currentSection = BatchSection::findorFail($sectionId);
 
-    // If sectionId is provided
-    if ($sectionId) {
-        $currentSection = BatchSection::findorFail($sectionId);
-
-        if ($contentId) {
-            // Edit content within the given section
-            $currentContent = BatchContent::where('batchId', $batch->id)
-                ->where('id', $contentId)
-                ->first();
-        } else {
-            // No contentId passed, handle section editing only
-            $currentContent = BatchContent::where('batchId', $batch->id)
-                ->where('sectionId', $sectionId)
-                ->first();
-        }
-    } else { 
-        // Default behavior without sectionId
-        if ($contentId) {
-            $currentContent = BatchContent::find($contentId);
-            if (!$currentContent || $currentContent->batchId != $id) {
+            if ($contentId) {
+                // Edit content within the given section
+                $currentContent = BatchContent::where('batchId', $batch->id)
+                    ->where('id', $contentId)
+                    ->first();
+            } else {
+                // No contentId passed, handle section editing only
+                $currentContent = BatchContent::where('batchId', $batch->id)
+                    ->where('sectionId', $sectionId)
+                    ->first();
+            }
+        } else { 
+            // Default behavior without sectionId
+            if ($contentId) {
+                $currentContent = BatchContent::find($contentId);
+                if (!$currentContent || $currentContent->batchId != $id) {
+                    $currentContent = BatchContent::where('batchId', $batch->id)->first();
+                }
+            } else {
                 $currentContent = BatchContent::where('batchId', $batch->id)->first();
             }
-        } else {
-            $currentContent = BatchContent::where('batchId', $batch->id)->first();
         }
-    }
 
-    // Handle no content scenario
-    if (!$currentContent) {
-        $currentContent = (object)[
-            'id' => 0,
-            'title' => 'No Content',
-            'desc' => '',
-            'type' => 1,
-            'accessOn' => 0,
-            'videoLink' => '',
-            'sectionId' => $sectionId,
-            'batchId' => $batch->id,
-            'order' => 0
-        ];
-    }
+        // Handle no content scenario
+        if (!$currentContent) {
+            $currentContent = (object)[
+                'id' => 0,
+                'title' => 'No Content',
+                'desc' => '',
+                'type' => 1,
+                'accessOn' => 0,
+                'videoLink' => '',
+                'sectionId' => $sectionId,
+                'batchId' => $batch->id,
+                'order' => 0
+            ];
+        }
 
-    return view('teachers.addContent', compact('batch', 'sections', 'sortedBatchContent', 'batchContent', 'currentContent', 'currentSection'));
+        return view('teachers.addContent', compact('batch', 'sections', 'sortedBatchContent', 'batchContent', 'currentContent', 'currentSection'));
+    } else {
+        abort(403, 'Unauthorized action.');
+    }
 }
 
 
