@@ -288,3 +288,5 @@ Route::post('/admin/batch/update-all-progress/{batchId}', 'AdminController@updat
 Route::post('/mark-video-complete', 'StudentController@markVideoComplete')->name('mark.video.complete');
 Route::post('/admin/update-user-profile/{id}', 'AdminController@updateUserProfile')->name('admin.updateUserProfile');
 Route::get('/api/check-email', 'AdminController@checkEmail')->name('admin.checkEmail');
+
+Route::post('/update-section', [TeacherController::class, 'updateSection'])->name('updateSection');

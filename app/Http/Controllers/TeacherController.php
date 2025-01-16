@@ -319,7 +319,7 @@ public function deleteContent($id)
 {
     $content = BatchContent::findOrFail($id);
     $batch = Batch::findOrFail($content->batchId);
-    if ($batch->teacherId == Auth::user()->id || Auth::user()->role == 100) {
+    if ($batch->teacherId == Auth::user()->id || Auth::user()->role == 100 ) {
         $content->delete();
         return redirect()->route('addCourseContent', [
             'id' => $batch->id, // Match the required 'id' parameter

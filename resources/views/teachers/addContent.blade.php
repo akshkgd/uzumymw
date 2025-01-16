@@ -332,35 +332,26 @@
                 <div class=" text-left bg-white w-[550px] mx-auto">
                     @if(isset($currentSection))
                     {{-- <h1 class="text-lg font-bold text-gray-800 mt-5">Edit Section</h1> --}}
-                    <form action="{{ route('updateContent') }}" method="POST" class="mb-1 mt-7">
+                    <form action="{{ route('updateSection') }}" method="POST" class="mb-1 mt-7">
                         @csrf
-                        <div class="form-floating space-y-2 my-4">
-                            <label class="text-base  leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="floatingInput">Section Name</label>
-                            <input type="text" value="{{$currentSection->name}}" class="flex w-full px-3 py-3 text-base bg-white border rounded-lg border-neutral-300  placeholder:text-neutral-500 focus:border-neutral-300 focus:outline-none focus:ring-2  focus:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" id="floatingInput" name="accessOn" placeholder="Content">
-                            <p class="text-sm text-neutral-700">Once you delete a section all chapters inside the section will also be deleted!</p>
-                            
-                        </div>
-    
-                          
-                          <div class="flex gap-3">
-                            
-                                
-                                <button type="submit" class="save-btn text-white bg-black p-3 hover:bg-neutral-900 px-8 rounded-lg">Update section</button>
-                            </form>
-                                
-                                    
-                                        
-                                         
-                                         <a href="{{ route('deleteSection', $currentSection->id) }}" 
-                                            class="inline-block text-red-500 hover:text-red-600 p-3 bg-red-50 hover:bg-red-100 px-8 rounded-lg" 
-                                            onclick="return confirm('Are you sure you want to delete this section?')">
-                                             Delete Section
-                                         </a>
-                                         
-
-                          </div>
-                          {{-- <p class="text-sm text-neutral-600">Once you delete a section all chapters inside the section will also be deleted!</p> --}}
+                        <input type="hidden" name="sectionId" value="{{$currentSection->id}}">
+                        <input type="hidden" name="batchId" value="{{$batch->id}}">
                         
+                        <div class="form-floating space-y-2 my-4">
+                            <label class="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="floatingInput">Section Name</label>
+                            <input type="text" value="{{$currentSection->name}}" class="flex w-full px-3 py-3 text-base bg-white border rounded-lg border-neutral-300 placeholder:text-neutral-500 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" id="floatingInput" name="name" placeholder="Section Name">
+                            <p class="text-sm text-neutral-700">Once you delete a section all chapters inside the section will also be deleted!</p>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <button type="submit" class="save-btn text-white bg-black p-3 hover:bg-neutral-900 px-8 rounded-lg">Update section</button>
+                            <a href="{{ route('deleteSection', $currentSection->id) }}" 
+                               class="inline-block text-red-500 hover:text-red-600 p-3 bg-red-50 hover:bg-red-100 px-8 rounded-lg" 
+                               onclick="return confirm('Are you sure you want to delete this section? All chapters inside will be deleted!')">
+                                Delete Section
+                            </a>
+                        </div>
+                    </form>
                     @elseif($currentContent)
                     @if($currentContent->id == 0)
                           <div class="mt-7 max-w-sm">
