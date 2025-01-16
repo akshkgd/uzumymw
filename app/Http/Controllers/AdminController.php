@@ -80,58 +80,72 @@ class AdminController extends Controller
     public function students(Request $request)
     {
         $query = User::query();
-        $filter = $request->input('filter');
+        $dateFilter = $request->input('date_filter');
+        $userFilter = $request->input('user_filter', 'all');
         
-        // Apply date filters
-        switch ($filter) {
-            case 'today':
-                $query->whereDate('created_at', Carbon::today());
+        // Apply user type filters
+        switch ($userFilter) {
+            case 'professionals':
+                $query->where('college', 'professional');
                 break;
-            case 'yesterday':
-                $query->whereDate('created_at', Carbon::yesterday());
+            case 'students':
+                $query->where('college', 'student');
                 break;
-            case 'last_7_days':
-                $query->whereBetween('created_at', [Carbon::now()->subDays(7), Carbon::now()]);
+            case 'not_enrolled':
+                // Get IDs of users who have unpaid enrollments
+                $unpaidUserIds = CourseEnrollment::where('hasPaid', 0)
+                    ->orWhereNull('hasPaid')
+                    ->pluck('userId');
+                
+                // Get users who either have no enrollments or have unpaid enrollments
+                $query->whereIn('users.id', $unpaidUserIds)
+                      ->orWhereNotExists(function($query) {
+                          $query->select(DB::raw(1))
+                                ->from('course_enrollments')
+                                ->whereColumn('course_enrollments.userId', 'users.id');
+                      });
                 break;
-            case 'this_month':
-                $query->whereMonth('created_at', Carbon::now()->month)
-                      ->whereYear('created_at', Carbon::now()->year);
-                break;
-            case 'last_month':
-                $query->whereMonth('created_at', Carbon::now()->subMonth()->month)
-                      ->whereYear('created_at', Carbon::now()->subMonth()->year);
-                break;
-            case 'last_30_days':
-                $query->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()]);
-                break;
-            case 'last_3_months':
-                $query->whereBetween('created_at', [Carbon::now()->subMonths(3), Carbon::now()]);
-                break;
-            case 'last_6_months':
-                $query->whereBetween('created_at', [Carbon::now()->subMonths(6), Carbon::now()]);
+            case 'no_course':
+                $query->whereNull('course')->orWhere('course', '');
                 break;
             default:
-                $query->whereBetween('created_at', [Carbon::now()->subDays(30), Carbon::now()]);
+                $query->select('users.*');
+        }
+        
+        // Apply date filters with explicit table name
+        switch ($dateFilter) {
+            case 'today':
+                $query->whereDate('users.created_at', Carbon::today());
+                break;
+            case 'yesterday':
+                $query->whereDate('users.created_at', Carbon::yesterday());
+                break;
+            case 'last_7_days':
+                $query->whereBetween('users.created_at', [Carbon::now()->subDays(7), Carbon::now()]);
+                break;
+            case 'this_month':
+                $query->whereMonth('users.created_at', Carbon::now()->month)
+                      ->whereYear('users.created_at', Carbon::now()->year);
+                break;
+            case 'last_month':
+                $query->whereMonth('users.created_at', Carbon::now()->subMonth()->month)
+                      ->whereYear('users.created_at', Carbon::now()->subMonth()->year);
+                break;
+            case 'last_30_days':
+                $query->whereBetween('users.created_at', [Carbon::now()->subDays(30), Carbon::now()]);
+                break;
+            case 'last_3_months':
+                $query->whereBetween('users.created_at', [Carbon::now()->subMonths(3), Carbon::now()]);
+                break;
+            case 'last_6_months':
+                $query->whereBetween('users.created_at', [Carbon::now()->subMonths(6), Carbon::now()]);
+                break;
+            default:
+                $query->whereBetween('users.created_at', [Carbon::now()->subDays(30), Carbon::now()]);
                 break;
         }
 
-        // Eager load payment status using a subquery to improve performance
-        $users = $query->select('users.*')
-            ->selectSub(
-                CourseEnrollment::selectRaw('COUNT(*)')
-                    ->whereColumn('userId', 'users.id')
-                    ->where('hasPaid', 1)
-                    ->limit(1),
-                'has_paid'
-            )
-            ->latest()
-            ->paginate(100);
-
-        // Convert the payment status to boolean
-        $users->transform(function ($user) {
-            $user->hasPaid = (bool)$user->has_paid;
-            return $user;
-        });
+        $users = $query->latest('users.created_at')->paginate(100);
 
         return view('admin.students', compact('users'))
             ->with('i', ($request->input('page', 1) - 1) * 100);

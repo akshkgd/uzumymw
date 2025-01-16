@@ -9,166 +9,229 @@
         @include('layouts.alert')
         <div class="flex justify-center">
             <div class="w-full">
-                <div class="flex justify-between items-center">
+                <div class="fle justify-between items-center">
                     <div>
                         <h1 class="text-xl font-bold">Learners</h1>
                         <p class="text-sm text-neutral-700">Manage your learners</p>
                     </div>
                     
-                    
-                    <!-- Existing filter dropdown -->
-                    <form action="{{ route('admin.students') }}" method="GET">
-                        <select name="filter" onchange="this.form.submit()">
-                            <option value="">Last 30 days</option>
-                            <option value="today" {{ request('filter') == 'today' ? 'selected' : '' }}>Today</option>
-                            <option value="yesterday" {{ request('filter') == 'yesterday' ? 'selected' : '' }}>Yesterday</option>
-                            <option value="last_7_days" {{ request('filter') == 'last_7_days' ? 'selected' : '' }}>Last 7 Days</option>
-                            <option value="this_month" {{ request('filter') == 'this_month' ? 'selected' : '' }}>This Month</option>
-                            <option value="last_month" {{ request('filter') == 'last_month' ? 'selected' : '' }}>Last Month</option>
-                            <option value="last_30_days" {{ request('filter') == 'last_30_days' ? 'selected' : '' }}>Last 30 Days</option>
-                            <option value="last_3_months" {{ request('filter') == 'last_3_months' ? 'selected' : '' }}>Last 3 Months</option>
-                            <option value="last_6_months" {{ request('filter') == 'last_6_months' ? 'selected' : '' }}>Last 6 Months</option>
-                        </select>
-                    </form>
+                    <div>
+                        <div class="mt-2">
+                            <input type="tex" id="searchInput" onkeyup="searchTable()" placeholder="Search by name, email, or phone number" class="w-full px-4 py-2 border border-neutral-200 rounded-lg focus:outline-none focus:ring-0">
+                        </div>
+                        <!-- Filters and Column Toggle Section -->
+                        <div class="flex gap-4 mt-2 mb-6">
+                            <!-- Column Toggle Dropdown -->
+                            <div class="relative inline-block text-left">
+                                <button type="button" onclick="toggleColumnMenu()" class="inline-flex items-center px-4 py-2 border  rounded-md  text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    Columns
+                                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+                                <div id="columnMenu" class="hidden border origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white z-50">
+                                    <div class="py-1 px-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" checked data-column="name" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
+                                            <span class="ml-2">Name</span>
+                                        </label>
+                                    </div>
+                                    <div class="py-1 px-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" checked data-column="email" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
+                                            <span class="ml-2">Email</span>
+                                        </label>
+                                    </div>
+                                    <div class="py-1 px-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" checked data-column="mobile" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
+                                            <span class="ml-2">Mobile</span>
+                                        </label>
+                                    </div>
+                                    <div class="py-1 px-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" checked data-column="last_activity" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
+                                            <span class="ml-2">Last Activity</span>
+                                        </label>
+                                    </div>
+                                    <div class="py-1 px-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" data-column="source" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
+                                            <span class="ml-2">Source</span>
+                                        </label>
+                                    </div>
+                                    <div class="py-1 px-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" data-column="medium" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
+                                            <span class="ml-2">Medium</span>
+                                        </label>
+                                    </div>
+                                    <div class="py-1 px-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" data-column="campaign" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
+                                            <span class="ml-2">Campaign</span>
+                                        </label>
+                                    </div>
+                                    <div class="py-1 px-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" data-column="joined" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
+                                            <span class="ml-2">Joined On</span>
+                                        </label>
+                                    </div>
+                                    <div class="py-1 px-3">
+                                        <label class="flex items-center">
+                                            <input type="checkbox" checked="false" data-column="status" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
+                                            <span class="ml-2">Status</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- User Type Filter Dropdown -->
+                            <div class="relative inline-block text-left">
+                                <button type="button" onclick="toggleUserFilterMenu()" class="inline-flex items-center px-4 py-2 border  rounded-md text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    {{ request('user_filter') ? ucfirst(str_replace('_', ' ', request('user_filter'))) : 'All Users' }}
+                                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+                                <div id="userFilterMenu" class="hidden border origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white z-50">
+                                    <div class="py-1">
+                                        <a href="{{ route('admin.students', ['user_filter' => 'all', 'date_filter' => request('date_filter')]) }}" 
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('user_filter') == 'all' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            All Users
+                                        </a>
+                                        <a href="{{ route('admin.students', ['user_filter' => 'professionals', 'date_filter' => request('date_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('user_filter') == 'professionals' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            Working Professionals
+                                        </a>
+                                        <a href="{{ route('admin.students', ['user_filter' => 'students', 'date_filter' => request('date_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('user_filter') == 'students' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            Students
+                                        </a>
+                                        <a href="{{ route('admin.students', ['user_filter' => 'not_enrolled', 'date_filter' => request('date_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('user_filter') == 'not_enrolled' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            Not Enrolled
+                                        </a>
+                                        <a href="{{ route('admin.students', ['user_filter' => 'no_course', 'date_filter' => request('date_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('user_filter') == 'no_course' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            No Course Selected
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Date Filter Dropdown -->
+                            <div class="relative inline-block text-left">
+                                <button type="button" onclick="toggleDateFilterMenu()" class="inline-flex items-center px-4 py-2 border  rounded-md  text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                                    {{ request('date_filter') ? ucfirst(str_replace('_', ' ', request('date_filter'))) : 'Last 30 Days' }}
+                                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+                                <div id="dateFilterMenu" class="hidden border origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white z-50">
+                                    <div class="py-1">
+                                        <a href="{{ route('admin.students', ['date_filter' => 'today', 'user_filter' => request('user_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('date_filter') == 'today' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            Today
+                                        </a>
+                                        <a href="{{ route('admin.students', ['date_filter' => 'yesterday', 'user_filter' => request('user_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('date_filter') == 'yesterday' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            Yesterday
+                                        </a>
+                                        <a href="{{ route('admin.students', ['date_filter' => 'last_7_days', 'user_filter' => request('user_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('date_filter') == 'last_7_days' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            Last 7 Days
+                                        </a>
+                                        <a href="{{ route('admin.students', ['date_filter' => 'this_month', 'user_filter' => request('user_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('date_filter') == 'this_month' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            This Month
+                                        </a>
+                                        <a href="{{ route('admin.students', ['date_filter' => 'last_month', 'user_filter' => request('user_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('date_filter') == 'last_month' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            Last Month
+                                        </a>
+                                        <a href="{{ route('admin.students', ['date_filter' => 'last_30_days', 'user_filter' => request('user_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('date_filter') == 'last_30_days' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            Last 30 Days
+                                        </a>
+                                        <a href="{{ route('admin.students', ['date_filter' => 'last_3_months', 'user_filter' => request('user_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('date_filter') == 'last_3_months' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            Last 3 Months
+                                        </a>
+                                        <a href="{{ route('admin.students', ['date_filter' => 'last_6_months', 'user_filter' => request('user_filter')]) }}"
+                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('date_filter') == 'last_6_months' ? 'bg-violet-50 text-violet-700' : '' }}">
+                                            Last 6 Months
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Search Bar -->
+                        
+                    </div>
                 </div>
                 
         
         
         
         
-        <!-- Search Bar -->
-        <div class="my-4">
-            <input type="tex" id="searchInput" onkeyup="searchTable()" placeholder="Search by name, email, or phone number" class="w-full px-4 py-2 border border-neutral-200 rounded-lg focus:outline-none focus:ring-0">
-        </div>
-        <div>
-            <!-- Column Toggle Dropdown -->
-            <div class="relative inline-block text-left mr-4 mb-5">
-                <button type="button" onclick="toggleColumnMenu()" class="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                    Columns
-                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                </button>
-                <div id="columnMenu" class="hidden border origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white z-50">
-                    <div class="py-1 px-3">
-                        <label class="flex items-center">
-                            <input type="checkbox" checked data-column="name" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
-                            <span class="ml-2">Name</span>
-                        </label>
-                    </div>
-                    <div class="py-1 px-3">
-                        <label class="flex items-center">
-                            <input type="checkbox" checked data-column="email" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
-                            <span class="ml-2">Email</span>
-                        </label>
-                    </div>
-                    <div class="py-1 px-3">
-                        <label class="flex items-center">
-                            <input type="checkbox" checked data-column="mobile" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
-                            <span class="ml-2">Mobile</span>
-                        </label>
-                    </div>
-                    <div class="py-1 px-3">
-                        <label class="flex items-center">
-                            <input type="checkbox" checked data-column="last_activity" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
-                            <span class="ml-2">Last Activity</span>
-                        </label>
-                    </div>
-                    <div class="py-1 px-3">
-                        <label class="flex items-center">
-                            <input type="checkbox" data-column="source" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
-                            <span class="ml-2">Source</span>
-                        </label>
-                    </div>
-                    <div class="py-1 px-3">
-                        <label class="flex items-center">
-                            <input type="checkbox" data-column="medium" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
-                            <span class="ml-2">Medium</span>
-                        </label>
-                    </div>
-                    <div class="py-1 px-3">
-                        <label class="flex items-center">
-                            <input type="checkbox" data-column="campaign" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
-                            <span class="ml-2">Campaign</span>
-                        </label>
-                    </div>
-                    <div class="py-1 px-3">
-                        <label class="flex items-center">
-                            <input type="checkbox" data-column="joined" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
-                            <span class="ml-2">Joined On</span>
-                        </label>
-                    </div>
-                    <div class="py-1 px-3">
-                        <label class="flex items-center">
-                            <input type="checkbox" checked data-column="status" onchange="toggleColumn(this)" class="form-checkbox h-4 w-4 text-violet-600">
-                            <span class="ml-2">Status</span>
-                        </label>
-                    </div>
+        <div class="bg-white border rounded-lg">
+            <div class="overflow-x-auto ">
+                <table id="enrollmentTable" class="min-w-full divide-y divide-neutral-200">
+                    <thead>
+                        <tr class="text-black">
+                            <th class="px-5 py-3 font-medium text-left">#</th>
+                            <th class="px-5 py-3 font-medium text-left column-name">Name</th>
+                            <th class="px-5 py-3 font-medium text-left column-email">Email</th>
+                            <th class="px-5 py-3 font-medium text-left column-mobile">Mobile</th>
+                            <th class="px-5 py-3 font-medium text-left column-last_activity">Last Activity</th>
+                            <th class="px-5 py-3 font-medium text-left column-source hidden">Source</th>
+                            <th class="px-5 py-3 font-medium text-left column-medium hidden">Medium</th>
+                            <th class="px-5 py-3 font-medium text-left column-campaign hidden">Campaign</th>
+                            <th class="px-5 py-3 font-medium text-left column-joined hidden">Joined On</th>
+                            <th class="px-5 py-3 font-medium text-left column-status hidden">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        @foreach ($users as $user)
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm">{{ ++$i }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm column-name">
+                                <a href="{{action('AdminController@studentDetails', $user->id )}}" class="text-violet-700 hover:text-violet-800 flex items-center gap-2">
+                                    <img src="{{$user->avatar}}" alt="" class="w-5 h-5 rounded-full"> {{ $user->name }}
+                                </a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm column-email">{{ $user->email }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm column-mobile">
+                                <a href="tel:+{{$user->mobile}}" class="text-violet-700">{{ $user->mobile }}</a>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm column-last_activity">
+                                {{ $user->last_activity ? $user->last_activity->format('D, d M Y h:i A') : 'Never' }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm column-source hidden">{{ $user->field1 ?? '-' }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm column-medium hidden">{{ $user->field2 ?? '-' }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm column-campaign hidden">{{ $user->field3 ?? '-' }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm column-joined hidden">{{ $user->created_at->format('D, d M Y') }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm column-status hidden">
+                                test
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            <!-- Add pagination links below the table -->
+            <div class="px-6 py-4">
+                <div class="flex w-full justify-center items-center gap-5">
+                    {{ $users->appends(request()->query())->links('pagination::tailwind') }}
                 </div>
             </div>
-
-        </div>
-
-                <div class="bg-white border rounded-lg">
-                    <div class="overflow-x-auto ">
-                        <table id="enrollmentTable" class="min-w-full divide-y divide-neutral-200">
-                            <thead>
-                                <tr class="text-black">
-                                    <th class="px-5 py-3 font-medium text-left">#</th>
-                                    <th class="px-5 py-3 font-medium text-left column-name">Name</th>
-                                    <th class="px-5 py-3 font-medium text-left column-email">Email</th>
-                                    <th class="px-5 py-3 font-medium text-left column-mobile">Mobile</th>
-                                    <th class="px-5 py-3 font-medium text-left column-last_activity">Last Activity</th>
-                                    <th class="px-5 py-3 font-medium text-left column-source hidden">Source</th>
-                                    <th class="px-5 py-3 font-medium text-left column-medium hidden">Medium</th>
-                                    <th class="px-5 py-3 font-medium text-left column-campaign hidden">Campaign</th>
-                                    <th class="px-5 py-3 font-medium text-left column-joined hidden">Joined On</th>
-                                    <th class="px-5 py-3 font-medium text-left column-status">Status</th>
-                                </tr>
-                            </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
-                                @foreach ($users as $user)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm">{{ ++$i }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm column-name">
-                                        <a href="{{action('AdminController@studentDetails', $user->id )}}" class="text-violet-700 hover:text-violet-800">
-                                            <img src="{{$user->avatar}}" alt=""> {{ $user->name }}
-                                        </a>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm column-email">{{ $user->email }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm column-mobile">
-                                        <a href="tel:+{{$user->mobile}}" class="text-violet-700">{{ $user->mobile }}</a>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm column-last_activity">
-                                        {{ $user->last_activity ? $user->last_activity->format('D, d M Y h:i A') : 'Never' }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm column-source hidden">{{ $user->field1 ?? '-' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm column-medium hidden">{{ $user->field2 ?? '-' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm column-campaign hidden">{{ $user->field3 ?? '-' }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm column-joined hidden">{{ $user->created_at->format('D, d M Y') }}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm column-status">
-                                        @if ($user->hasPaid)
-                                            <span class="bg-green-100 text-green-800 text-xs font-normal px-2.5 py-0.5 rounded-full">Paid</span>
-                                        @else
-                                            <span class="bg-red-100 text-red-800 text-xs font-normal px-2.5 py-0.5 rounded-full">Free Lead</span>
-                                        @endif
-                                    </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- Add pagination links below the table -->
-                    <div class="px-6 py-4">
-                        <div class="flex w-full justify-center items-center gap-5">
-                            {{ $users->appends(request()->query())->links('pagination::tailwind') }}
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
+            
         </div>
     </div>
+</div>
 </section>
 
 <script>
@@ -233,6 +296,16 @@ function loadColumnPreferences() {
                 });
             }
         });
+    } else {
+        // Set default visibility for status column
+        const statusCheckbox = document.querySelector('[data-column="status"]');
+        if (statusCheckbox) {
+            statusCheckbox.checked = false;
+            const statusCells = document.querySelectorAll('.column-status');
+            statusCells.forEach(cell => {
+                cell.classList.add('hidden');
+            });
+        }
     }
 }
 
@@ -247,6 +320,29 @@ document.addEventListener('click', function(event) {
 
 // Load saved preferences when page loads
 document.addEventListener('DOMContentLoaded', loadColumnPreferences);
+
+function toggleUserFilterMenu() {
+    const menu = document.getElementById('userFilterMenu');
+    menu.classList.toggle('hidden');
+}
+
+function toggleDateFilterMenu() {
+    const menu = document.getElementById('dateFilterMenu');
+    menu.classList.toggle('hidden');
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', function(event) {
+    const userFilterMenu = document.getElementById('userFilterMenu');
+    const dateFilterMenu = document.getElementById('dateFilterMenu');
+    const columnMenu = document.getElementById('columnMenu');
+    
+    if (!event.target.closest('button')) {
+        userFilterMenu.classList.add('hidden');
+        dateFilterMenu.classList.add('hidden');
+        columnMenu.classList.add('hidden');
+    }
+});
 </script>
 
 <style>
