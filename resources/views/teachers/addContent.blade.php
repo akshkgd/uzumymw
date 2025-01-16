@@ -489,17 +489,40 @@ quill.on('text-change', function(delta, oldDelta, source) {
 </script> --}}
 @if($currentContent)
 <script>
-  var quill = new Quill('#quill_editor', {
-        theme: 'snow'
-  });
-quill.on('text-change', function(delta, oldDelta, source) {
-    document.getElementById("quill_html").value = quill.root.innerHTML;
-});
+    var quill = new Quill('#quill_editor', {
+          theme: 'snow',
+          modules: {
+              toolbar: [
+                  [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                  ['bold', 'italic', 'underline', 'strike'],
+                  ['blockquote', 'code-block'],
+                  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                  [{ 'indent': '-1'}, { 'indent': '+1' }],
+                  ['link', 'image'],
+                  ['clean']
+              ]
+          }
+    });
 
-const value = `{!!$currentContent->desc!!}`;
-const delta = quill.clipboard.convert(value);
+    // Set initial content and hidden input value
+    const content = `{!! $currentContent->desc ?? '' !!}`;
+    if (content) {
+        const delta = quill.clipboard.convert(content);
+        quill.setContents(delta, 'silent');
+        document.getElementById("quill_html").value = content;
+    }
 
-quill.setContents(delta, 'silent')
+    // Add form submit handler to ensure content is set
+    document.querySelector('form').addEventListener('submit', function(e) {
+        if (!document.getElementById("quill_html").value) {
+            document.getElementById("quill_html").value = quill.root.innerHTML;
+        }
+    });
+
+    // Handle content changes
+    quill.on('text-change', function(delta, oldDelta, source) {
+        document.getElementById("quill_html").value = quill.root.innerHTML;
+    });
 </script>
 
 {{-- sortable --}}
