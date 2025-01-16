@@ -73,10 +73,6 @@
                                 <input type="checkbox" class="column-toggle" data-column="11" checked> 
                                 <span class="ml-2">Date</span>
                             </label>
-                            <label class="flex items-center">
-                                <input type="checkbox" class="column-toggle" data-column="12" checked> 
-                                <span class="ml-2">Actions</span>
-                            </label>
                         </div>
                     </div>
                 </div>
@@ -364,7 +360,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         for (let row of rows) {
             const cells = row.cells;
-            // Since cells are 0-based, we don't need to subtract 1 from the index
+            // Skip if this is the Actions column (last column)
+            if (index === cells.length - 1) return;
+            
             if (cells.length > index) {
                 cells[index].style.display = isVisible ? '' : 'none';
             }
