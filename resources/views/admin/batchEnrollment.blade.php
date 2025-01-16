@@ -379,26 +379,18 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleColumn(columnIndex, checkbox.checked);
     });
 
-    // Hide date column by default
-    const dateCheckbox = document.querySelector('.column-toggle[data-column="date"]');
-    if (dateCheckbox) {
-        dateCheckbox.checked = false;
-        toggleColumn('date', false);
-    }
-});
+    function toggleColumn(columnIndex, isVisible) {
+        const table = document.getElementById('enrollmentTable');
+        const rows = table.getElementsByTagName('tr');
 
-function toggleColumn(columnName, show) {
-    const table = document.getElementById('enrollmentTable');
-    const rows = table.getElementsByTagName('tr');
-    const columnIndex = getColumnIndex(columnName);
-
-    for (let i = 0; i < rows.length; i++) {
-        const cell = rows[i].cells[columnIndex];
-        if (cell) {
-            cell.style.display = show ? '' : 'none';
+        for (let row of rows) {
+            const cell = row.cells[columnIndex];
+            if (cell) {
+                cell.style.display = isVisible ? '' : 'none';
+            }
         }
     }
-}
+});
 
 // Filter dropdown toggle
 const filterBtn = document.getElementById('filterBtn');
@@ -428,19 +420,18 @@ function filterTableByStatus(status) {
     const rows = table.getElementsByTagName('tr');
     
     for (let i = 1; i < rows.length; i++) { // Start from 1 to skip header
-        const collegeCell = rows[i].cells[8]; // College column
-        
+        const collegeCell = rows[i].cells[8]; // College column index
         if (collegeCell) {
             const collegeValue = collegeCell.textContent.toLowerCase().trim();
             
             if (status === 'all') {
                 rows[i].style.display = '';
             } else if (status === 'student') {
-                rows[i].style.display = collegeValue === 'student' ? '' : 'none';
+                rows[i].style.display = collegeValue !== '-' && !collegeValue.includes('working') ? '' : 'none';
             } else if (status === 'professional') {
-                rows[i].style.display = collegeValue === 'professional' ? '' : 'none';
+                rows[i].style.display = collegeValue.includes('working') ? '' : 'none';
             } else if (status === 'other') {
-                rows[i].style.display = (collegeValue !== 'student' && collegeValue !== 'professional') ? '' : 'none';
+                rows[i].style.display = collegeValue === '-' ? '' : 'none';
             }
         }
     }
