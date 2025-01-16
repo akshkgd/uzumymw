@@ -8,46 +8,52 @@
 <style>
    
     #quill_editor {
-    min-height: 100px; 
-    max-height: 140px; 
-    font-size: 16px;
-    position: static;
-    /* position: absolute; */
-    border-bottom-left-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-}
-.ql-toolbar.ql-snow {
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
-    
-    z-index: -600;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
-}
-.sidebar{
-    overflow-y: auto
-}
-.sidebar::-webkit-scrollbar{
-    display: none;
-}
-#suggestions-list {
-    position: absolute; /* Absolute positioning */
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    z-index: 1000;
-    max-height: 200px;
-    overflow-y: auto;
-    width: auto; /* Dynamically calculated */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
+        height: 120px; /* Approximately 4 lines (30px per line) */
+        min-height: 120px; /* Prevent resizing smaller than 4 lines */
+        max-height: none;
+        font-size: 16px;
+        position: static;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        resize: vertical;
+        overflow-y: auto;
+    }
 
-#suggestions-list.hidden {
-    display: none;
-}
-.active{
-    color: orangered !important;
-}
+    .ql-container {
+        resize: vertical;
+    }
+
+    .ql-toolbar.ql-snow {
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        z-index: -600;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+    .sidebar{
+        overflow-y: auto
+    }
+    .sidebar::-webkit-scrollbar{
+        display: none;
+    }
+    #suggestions-list {
+        position: absolute; /* Absolute positioning */
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        z-index: 1000;
+        max-height: 200px;
+        overflow-y: auto;
+        width: auto; /* Dynamically calculated */
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    #suggestions-list.hidden {
+        display: none;
+    }
+    .active{
+        color: orangered !important;
+    }
 
 </style>
 @section('content')
@@ -329,7 +335,7 @@
                         </div>
                     </div> --}}
 
-                <div class=" text-left bg-white w-[550px] mx-auto">
+                <div class=" text-left bg-white w-[750px] mx-auto">
                     @if(isset($currentSection))
                     {{-- <h1 class="text-lg font-bold text-gray-800 mt-5">Edit Section</h1> --}}
                     <form action="{{ route('updateSection') }}" method="POST" class="mb-1 mt-7">
@@ -486,19 +492,14 @@ quill.on('text-change', function(delta, oldDelta, source) {
   var quill = new Quill('#quill_editor', {
         theme: 'snow'
   });
+quill.on('text-change', function(delta, oldDelta, source) {
+    document.getElementById("quill_html").value = quill.root.innerHTML;
+});
 
-  // Initialize with existing content
-  const existingContent = `{!! $currentContent->desc ?? '' !!}`;
-  if (existingContent) {
-      const delta = quill.clipboard.convert(existingContent);
-      quill.setContents(delta, 'silent');
-      // Set initial value for the hidden input
-      document.getElementById("quill_html").value = existingContent;
-  }
+const value = `{!!$currentContent->desc!!}`;
+const delta = quill.clipboard.convert(value);
 
-  quill.on('text-change', function(delta, oldDelta, source) {
-      document.getElementById("quill_html").value = quill.root.innerHTML;
-  });
+quill.setContents(delta, 'silent')
 </script>
 
 {{-- sortable --}}
