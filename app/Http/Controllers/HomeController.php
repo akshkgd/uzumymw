@@ -55,6 +55,21 @@ class HomeController extends Controller
                     ->take(3)
                     ->get();
 
+                // Check if user has only purchased basic courses
+                $allEnrollments = CourseEnrollment::where('userId', $user->id)
+                    ->where('status', 1)
+                    ->where('hasPaid', 1)
+                    ->with('batch:id,topicId')
+                    ->get();
+                
+                $showPromotion = true;
+                foreach($allEnrollments as $enrollment) {
+                    if (!in_array($enrollment->batch->topicId, [100, 101, 102])) {
+                        $showPromotion = false;
+                        break;
+                    }
+                }
+
                 foreach($enrollments as $enrollment) {
                     switch($enrollment->batch->topicId) {
                         case 10:
@@ -81,7 +96,7 @@ class HomeController extends Controller
                     }
                 }
                 
-                return view('students.index', compact('enrollments'));
+                return view('students.index', compact('enrollments', 'showPromotion'));
             }
             
             session()->flash('alert-danger', 'Your Account has been terminated!');
