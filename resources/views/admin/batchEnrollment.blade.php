@@ -55,14 +55,22 @@
                                 <input type="checkbox" class="column-toggle" data-column="7"> 
                                 <span class="ml-2">Medium</span>
                             </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="8" checked> 
+                                <span class="ml-2">College</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="9"> 
+                                <span class="ml-2">Course</span>
+                            </label>
                             @if($batch->type == 1)
                             <label class="flex items-center">
-                                <input type="checkbox" class="column-toggle" data-column="8"> 
+                                <input type="checkbox" class="column-toggle" data-column="10"> 
                                 <span class="ml-2">Progress</span>
                             </label>
                             @endif
                             <label class="flex items-center">
-                                <input type="checkbox" class="column-toggle" data-column="9" checked> 
+                                <input type="checkbox" class="column-toggle" data-column="11"> 
                                 <span class="ml-2">Date</span>
                             </label>
                         </div>
@@ -131,6 +139,8 @@
                                     <th class="px-5 py-3  font-medium text-left">Certificate</th>
                                     <th class="px-5 py-3  font-medium text-left">Source</th>
                                     <th class="px-5 py-3  font-medium text-left">Medium</th>
+                                    <th class="px-5 py-3  font-medium text-left">College</th>
+                                    <th class="px-5 py-3  font-medium text-left">Course</th>
                                     @if($batch->type == 1)
                                     <th class="px-5 py-3  font-medium text-left">Progress</th>
                                     @endif
@@ -170,6 +180,8 @@
                         </td>
                         <td class="px-4 py-4">{{ $enrollment->students->field1 ?: 'organic' }}</td>
                         <td class="px-4 py-4">{{ $enrollment->students->field2 ?: '-' }}</td>
+                        <td class="px-4 py-4">{{ $enrollment->students->college ?: '-' }}</td>
+                        <td class="px-4 py-4">{{ $enrollment->students->course ?: '-' }}</td>
 
                         @if($batch->type == 1)
                         
