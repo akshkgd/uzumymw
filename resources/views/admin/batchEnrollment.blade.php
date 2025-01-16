@@ -358,18 +358,22 @@ document.addEventListener('DOMContentLoaded', function() {
     function toggleColumn(columnIndex, isVisible) {
         const table = document.getElementById('enrollmentTable');
         const rows = table.getElementsByTagName('tr');
-
+        
+        // Convert columnIndex to integer
+        const index = parseInt(columnIndex);
+        
         for (let row of rows) {
             const cells = row.cells;
-            if (cells.length > columnIndex) {  // Check if column exists
-                cells[columnIndex].style.display = isVisible ? '' : 'none';
+            // Since cells are 0-based, we don't need to subtract 1 from the index
+            if (cells.length > index) {
+                cells[index].style.display = isVisible ? '' : 'none';
             }
         }
     }
 
-    // Set initial visibility for all columns
+    // Initialize column visibility
     checkboxes.forEach(checkbox => {
-        const columnIndex = parseInt(checkbox.getAttribute('data-column'));
+        const columnIndex = checkbox.getAttribute('data-column');
         toggleColumn(columnIndex, checkbox.checked);
     });
 });
