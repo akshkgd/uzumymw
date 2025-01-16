@@ -379,18 +379,26 @@ document.addEventListener('DOMContentLoaded', function() {
         toggleColumn(columnIndex, checkbox.checked);
     });
 
-    function toggleColumn(columnIndex, isVisible) {
-        const table = document.getElementById('enrollmentTable');
-        const rows = table.getElementsByTagName('tr');
-
-        for (let row of rows) {
-            const cell = row.cells[columnIndex];
-            if (cell) {
-                cell.style.display = isVisible ? '' : 'none';
-            }
-        }
+    // Hide date column by default
+    const dateCheckbox = document.querySelector('.column-toggle[data-column="date"]');
+    if (dateCheckbox) {
+        dateCheckbox.checked = false;
+        toggleColumn('date', false);
     }
 });
+
+function toggleColumn(columnName, show) {
+    const table = document.getElementById('enrollmentTable');
+    const rows = table.getElementsByTagName('tr');
+    const columnIndex = getColumnIndex(columnName);
+
+    for (let i = 0; i < rows.length; i++) {
+        const cell = rows[i].cells[columnIndex];
+        if (cell) {
+            cell.style.display = show ? '' : 'none';
+        }
+    }
+}
 
 // Filter dropdown toggle
 const filterBtn = document.getElementById('filterBtn');
