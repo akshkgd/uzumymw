@@ -28,6 +28,10 @@
                     <div id="columnToggleDropdown" class="hidden absolute z-10 mt-2 w-56 bg-white border rounded-lg shadow-lg">
                         <div class="p-2 space-y-2">
                             <label class="flex items-center">
+                                <input type="checkbox" class="column-toggle" data-column="0" checked> 
+                                <span class="ml-2">#</span>
+                            </label>
+                            <label class="flex items-center">
                                 <input type="checkbox" class="column-toggle" data-column="1" checked> 
                                 <span class="ml-2">Name</span>
                             </label>
@@ -70,7 +74,7 @@
                             </label>
                             @endif
                             <label class="flex items-center">
-                                <input type="checkbox" class="column-toggle" data-column="11" checked> 
+                                <input type="checkbox" class="column-toggle" data-column="{{ $batch->type == 1 ? '11' : '10' }}"> 
                                 <span class="ml-2">Date</span>
                             </label>
                         </div>
@@ -327,9 +331,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const toggleBtn = document.getElementById('columnToggleBtn');
     const dropdown = document.getElementById('columnToggleDropdown');
     const checkboxes = document.querySelectorAll('.column-toggle');
+    const table = document.getElementById('enrollmentTable');
+    const isType1 = {{ $batch->type == 1 ? 'true' : 'false' }};
 
     // Toggle dropdown
-    toggleBtn.addEventListener('click', function() {
+    toggleBtn.addEventListener('click', function(e) {
+        e.preventDefault();
         dropdown.classList.toggle('hidden');
     });
 
@@ -340,40 +347,48 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Handle column visibility
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            toggleColumn(this.getAttribute('data-column'), this.checked);
-        });
-
-        // Initial column visibility
-        const columnIndex = checkbox.getAttribute('data-column');
-        toggleColumn(columnIndex, checkbox.checked);
-    });
-
     function toggleColumn(columnIndex, isVisible) {
-        const table = document.getElementById('enrollmentTable');
-        const rows = table.getElementsByTagName('tr');
+        if (!table) return;
         
-        // Convert columnIndex to integer
-        const index = parseInt(columnIndex);
+        const rows = table.getElementsByTagName('tr');
+        const lastColumnIndex = rows[0].cells.length - 1; // Index of Actions column
+        
+        // Debug log
+        console.log('Toggling column:', columnIndex, 'Visible:', isVisible);
         
         for (let row of rows) {
             const cells = row.cells;
-            // Skip if this is the Actions column (last column)
-            if (index === cells.length - 1) return;
+            // Skip if this is the Actions column
+            if (columnIndex === lastColumnIndex) return;
             
-            if (cells.length > index) {
-                cells[index].style.display = isVisible ? '' : 'none';
+            if (cells[columnIndex]) {
+                cells[columnIndex].style.display = isVisible ? '' : 'none';
             }
         }
     }
 
-    // Initialize column visibility
+    // Initialize columns on page load
+    function initializeColumns() {
+        const dateColumnIndex = isType1 ? 11 : 10;
+        
+        checkboxes.forEach(checkbox => {
+            const columnIndex = parseInt(checkbox.getAttribute('data-column'));
+            if (!checkbox.checked) {
+                toggleColumn(columnIndex, false);
+            }
+        });
+    }
+
+    // Handle column visibility changes
     checkboxes.forEach(checkbox => {
-        const columnIndex = checkbox.getAttribute('data-column');
-        toggleColumn(columnIndex, checkbox.checked);
+        checkbox.addEventListener('change', function() {
+            const columnIndex = parseInt(this.getAttribute('data-column'));
+            toggleColumn(columnIndex, this.checked);
+        });
     });
+
+    // Initialize on page load
+    initializeColumns();
 });
 </script>
 
