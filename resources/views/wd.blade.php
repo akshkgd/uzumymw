@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Development Masterclass</title>
+    <title></title>
     <meta name="keywords" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
     <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
     <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
@@ -63,6 +63,21 @@
             transition: background-color 0.25s;
             padding: 0 6px;
         }
+        @keyframes shake {
+            0% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            50% { transform: translateX(5px); }
+            75% { transform: translateX(-5px); }
+            100% { transform: translateX(0); }
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out infinite;
+        }
+
+        .mobile-cta {
+            /* box-shadow: 0 -2px 10px rgba(0,0,0,0.1); */
+        }
     </style>
     
   <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
@@ -82,21 +97,20 @@
             
                     
                     <main class="text-center">
-                        <div class="cwr my-5 border d-inline p-3 rounded-pill px-5">Fullstack Live Masterclass</div>
-                        <h1 class="fs-1 fw-bolder mt-5" style="">Build your career in <span class="wd_highlight"> full stack dev!</span>Join 2 days live Bootcamp</h1>
+                        <div class="cwr my-5 text-danger d-inline p-3 rounded-pill px-5">Still stuck between courses, tutorials and Roadmaps??</div>
+                        <h1 class="fs-1 fw-bolder mt-5" style="">Build your career in <span class="wd_highlight">Frontend Dev</span> Join 5 days live demo Sessions</h1>
                        
                         <div class="row justify-content-center">
-                            <p class="fs-6 text-muted col-md-10 text-center" style="font-size: calc(0.01rem + 1.6vw);">Learn what matters - all the way up to react and node js with real world scenarios and examples! The must-have Bootcamp in 2024. </p>
+                            <p class="fs-5 mt-5 text-muted col-md-10 text-center" style="font-size: calc(0.01rem + 1.6vw);">Learn exactly what matters to become a highly skilled frontend developer and make a switch, get salary hike or get your first job - Guaranteed!</p>
                         </div>
         
-                            <h4 class="fw-500 py-4"> <strong>Saturday, 8th June to 9th June </strong>  | 07:00 PM to 08:30 PM IST</h3>
+                            <h4 class="fw-500 py-4"> <strong>From Monday, 20th January </strong>  | 07:00 PM to 08:00 PM IST</h3>
                         
         
-                            <div class="my-3 white">
-                                <a href="" class="btn ck-btn ck-rounded btn-lg mt-3  px-5" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
-                                data-bs-target="#enroll">
-                                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll Now for Free</h2>
-                                    <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                            <div class="my-3 white d-none d-lg-block">
+                                <a href="https://chat.whatsapp.com/It7pyXpK9cC8d1YQEYtZut" target="_blank" class="btn ck-btn ck-rounded btn-lg mt-3 px-5">
+                                    <h2 class="fs-3 mb-1 text-white fw-bold">Join Now for Free</h2>
+                                    <p class="mb-0 text-white fw-lighter small">Join WhatsApp Group</p>
                                 </a>
                             </div>
 
@@ -134,9 +148,9 @@
                 <h4 class="fw-500 py-4"> <strong>Thu, 3th August to 14th August </strong>  | 06:00 PM IST</h3>
 
                     <div class="my-5">
-                        <a href="https://codekaro.in/workshop-enroll/121" class="btn btn-dark btn-lg btn-block px-5">
-                            <h2 class="fs-3 mb-1">Enroll now for free</h2>
-                            <p class="mb-0 fw-200">Enroll now limited seats are available</p>
+                        <a href="https://chat.whatsapp.com/It7pyXpK9cC8d1YQEYtZut" target="_blank" class="btn btn-dark btn-lg btn-block px-5">
+                            <h2 class="fs-3 mb-1">Join Now for Free</h2>
+                            <p class="mb-0 fw-200">Join WhatsApp Group</p>
                         </a>
                     </div>
             </main>
@@ -213,7 +227,7 @@
     </section>
 {{-- test --}}
     <section class="">
-        <div class="container mb-5">
+        <div class="container mb-5 d-none">
             <div class="row d-flex justify-content-center">
               <div class="text-center">
                 <h2>What's inside</h2>
@@ -278,10 +292,9 @@
                   </div>
                 
                   <div class="my-3 white text-center">
-                    <a href="" class="btn ck-btn ck-rounded btn-lg mt-3  px-5" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
-                    data-bs-target="#enroll">
-                        <h2 class="fs-3 mb-1 text-white fw-bold">Enroll Now for Free</h2>
-                        <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                    <a href="https://chat.whatsapp.com/It7pyXpK9cC8d1YQEYtZut" target="_blank" class="btn ck-btn ck-rounded btn-lg mt-3 px-5">
+                        <h2 class="fs-3 mb-1 text-white fw-bold">Join Now for Free</h2>
+                        <p class="mb-0 text-white fw-lighter small">Join WhatsApp Group</p>
                     </a>
                 </div>
                 
@@ -371,10 +384,9 @@
                 </div>
             </div>
             <div class="my-3 white text-center">
-                <a href="" class="btn ck-btn ck-rounded btn-lg mt-3  px-5" class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal"
-                data-bs-target="#enroll">
-                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll Now for Free</h2>
-                    <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+                <a href="https://chat.whatsapp.com/It7pyXpK9cC8d1YQEYtZut" target="_blank" class="btn ck-btn ck-rounded btn-lg mt-3 px-5">
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Join Now for Free</h2>
+                    <p class="mb-0 text-white fw-lighter small">Join WhatsApp Group</p>
                 </a>
             </div>
         </div>
@@ -565,22 +577,21 @@
               </div> --}}
             </div>
 
-            <div class="my-5 l-cta">
-                <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
-                    class="btn ck-btn ck-rounded btn-lg   px-5">
-                    <h2 class="fs-3 mb-1 text-white fw-bold">Enroll now for free</h2>
-                    <p class="mb-0 text-white fw-lighter small">Enroll now limited seats are available</p>
+            {{-- <div class="my-5 l-cta">
+                <a href="https://chat.whatsapp.com/It7pyXpK9cC8d1YQEYtZut" target="_blank" class="btn ck-btn ck-rounded btn-lg px-5">
+                    <h2 class="fs-3 mb-1 text-white fw-bold">Join Now for Free</h2>
+                    <p class="mb-0 text-white fw-lighter small">Join WhatsApp Group</p>
                 </a>
-            </div>
+            </div> --}}
             <p class="text-danger">Once the timer hits zero, pricing will be increased to 899.00/-</p>
         </div>
     </div>
 </section>
 
 
-  <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
+  {{-- <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
     <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="50" width="50">
-      </a>
+      </a> --}}
 
   <footer class="bd-footer p-3 p-md-5 mt-5 bg-light text-center text-sm-left">
     <div class="container">
@@ -730,12 +741,12 @@
           document.getElementById("days").innerText = Math.floor(distance / (day)),
           document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
           document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second));
 
           document.getElementById("days1").innerText = Math.floor(distance / (day)),
           document.getElementById("hours1").innerText = Math.floor((distance % (day)) / (hour)),
           document.getElementById("minutes1").innerText = Math.floor((distance % (hour)) / (minute)),
-          document.getElementById("seconds1").innerText = Math.floor((distance % (minute)) / second);
+          document.getElementById("seconds1").innerText = Math.floor((distance % (minute)) / second));
 
         //do something later when date is reached
         if (distance < 0) {
@@ -862,7 +873,29 @@
         // setInterval(addShakeAnimation, 3000);
     </script>
     
-    <script src="{{asset('/js/codekaro.js')}}"></script>
+    {{-- <script src="{{asset('/js/codekaro.js')}}"></script> --}}
+
+    <!-- Fixed bottom CTA for mobile -->
+    <div class="fixed-bottom d-lg-non text-center py-3 bg-whit mobile-cta mx-4">
+        <a href="https://chat.whatsapp.com/It7pyXpK9cC8d1YQEYtZut" target="_blank" class="btn ck-btn ck-rounded px-5 shake">
+            <span class="text-white fw-bol">Enroll Now – Secure Your ₹32 LPA Career Path Today!</span>
+        </a>
+    </div>
+
+    <!-- Add this script before closing body tag -->
+    <script>
+        // Add periodic shake animation
+        function addShakeAnimation() {
+            var button = document.querySelector('.mobile-cta .btn');
+            button.classList.add('shake');
+            setTimeout(function() {
+                button.classList.remove('shake');
+            }, 1000);
+        }
+
+        // Trigger shake animation every 5 seconds
+        setInterval(addShakeAnimation, 5000);
+    </script>
 </body>
 
 </html>
