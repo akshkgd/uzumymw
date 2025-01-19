@@ -77,133 +77,6 @@ class AdminController extends Controller
     return view('admin.reactEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
     }
 
-    public function students(Request $request)
-    {
-        $query = User::query();
-        $dateFilter = $request->input('date_filter');
-        $userFilter = $request->input('user_filter', 'all');
-        
-        // Apply user type filters
-        $this->applyUserTypeFilter($query, $userFilter, $dateFilter);
-        
-        // Apply date filters
-        $this->applyDateFilter($query, $dateFilter);
-
-        $users = $query->latest('users.created_at')->paginate(100);
-
-        return view('admin.students', compact('users'))
-            ->with('i', ($request->input('page', 1) - 1) * 100);
-    }
-
-    private function applyUserTypeFilter($query, $userFilter, $dateFilter)
-    {
-        switch ($userFilter) {
-            case 'professionals':
-                $query->where('college', 'professional');
-                break;
-            
-            case 'students':
-                $query->where('college', 'student');
-                break;
-            
-            case 'not_enrolled':
-                $this->applyNotEnrolledFilter($query, $dateFilter);
-                break;
-            
-            case 'no_course':
-                $query->whereNotExists(function($subquery) {
-                    $subquery->select(DB::raw(1))
-                            ->from('course_enrollments')
-                            ->whereColumn('course_enrollments.userId', 'users.id');
-                });
-                break;
-            
-            default:
-                $query->select('users.*');
-        }
-    }
-
-    private function applyNotEnrolledFilter($query, $dateFilter)
-    {
-        $query->where(function($query) use ($dateFilter) {
-            // Users who have only unpaid enrollments
-            $query->whereExists(function($subquery) use ($dateFilter) {
-                $subquery->select(DB::raw(1))
-                        ->from('course_enrollments')
-                        ->whereColumn('course_enrollments.userId', 'users.id')
-                        ->where(function($q) {
-                            $q->where('hasPaid', 0)
-                              ->orWhereNull('hasPaid');
-                        })
-                        ->whereNotExists(function($q) {
-                            $q->select(DB::raw(1))
-                                ->from('course_enrollments as ce2')
-                                ->whereColumn('ce2.userId', 'users.id')
-                                ->where('ce2.hasPaid', 1);
-                        });
-
-                $this->applyDateFilterToSubquery($subquery, $dateFilter, 'course_enrollments');
-            })
-            // OR users who have no enrollments at all within the timeframe
-            ->orWhere(function($query) use ($dateFilter) {
-                $query->whereNotExists(function($subquery) {
-                    $subquery->select(DB::raw(1))
-                            ->from('course_enrollments')
-                            ->whereColumn('course_enrollments.userId', 'users.id');
-                });
-                
-                $this->applyDateFilterToSubquery($query, $dateFilter, 'users');
-            });
-        });
-    }
-
-    private function applyDateFilter($query, $dateFilter)
-    {
-        $this->applyDateFilterToSubquery($query, $dateFilter, 'users');
-    }
-
-    private function applyDateFilterToSubquery($query, $dateFilter, $table)
-    {
-        switch ($dateFilter) {
-            case 'today':
-                $query->whereDate("$table.created_at", Carbon::today());
-                break;
-            
-            case 'yesterday':
-                $query->whereDate("$table.created_at", Carbon::yesterday());
-                break;
-            
-            case 'last_7_days':
-                $query->whereBetween("$table.created_at", [Carbon::now()->subDays(7), Carbon::now()]);
-                break;
-            
-            case 'this_month':
-                $query->whereMonth("$table.created_at", Carbon::now()->month)
-                      ->whereYear("$table.created_at", Carbon::now()->year);
-                break;
-            
-            case 'last_month':
-                $query->whereMonth("$table.created_at", Carbon::now()->subMonth()->month)
-                      ->whereYear("$table.created_at", Carbon::now()->subMonth()->year);
-                break;
-            
-            case 'last_30_days':
-                $query->whereBetween("$table.created_at", [Carbon::now()->subDays(30), Carbon::now()]);
-                break;
-            
-            case 'last_3_months':
-                $query->whereBetween("$table.created_at", [Carbon::now()->subMonths(3), Carbon::now()]);
-                break;
-            
-            case 'last_6_months':
-                $query->whereBetween("$table.created_at", [Carbon::now()->subMonths(6), Carbon::now()]);
-                break;
-            
-            default:
-                $query->whereBetween("$table.created_at", [Carbon::now()->subDays(30), Carbon::now()]);
-        }
-    }
-
     public function addAccess()
     {
         return view('admin.addAccess');
@@ -841,5 +714,20 @@ class AdminController extends Controller
                 'message' => 'Error updating profile: ' . $e->getMessage()
             ], 500);
         }
+    }
+
+    /**
+     * Display paginated list of students
+     */
+    public function students()
+    {
+        $users = User::select('id', 'name', 'email', 'mobile', 'avatar', 'created_at', 'lastActivity')
+            ->where('role', 0)
+            ->orderByDesc('id')
+            ->paginate(1000)
+            ->withQueryString();
+
+        return view('admin.students', compact('users'))
+            ->with('i', (request()->input('page', 1) - 1) * 1000);
     }
 }

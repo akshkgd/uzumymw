@@ -109,10 +109,7 @@
                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('user_filter') == 'students' ? 'bg-violet-50 text-violet-700' : '' }}">
                                             Students
                                         </a>
-                                        <a href="{{ route('admin.students', ['user_filter' => 'not_enrolled', 'date_filter' => request('date_filter')]) }}"
-                                           class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('user_filter') == 'not_enrolled' ? 'bg-violet-50 text-violet-700' : '' }}">
-                                            Not Enrolled
-                                        </a>
+                                        
                                         <a href="{{ route('admin.students', ['user_filter' => 'no_course', 'date_filter' => request('date_filter')]) }}"
                                            class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 {{ request('user_filter') == 'no_course' ? 'bg-violet-50 text-violet-700' : '' }}">
                                             No Course Selected
@@ -208,7 +205,7 @@
                                 <a href="tel:+{{$user->mobile}}" class="text-violet-700">{{ $user->mobile }}</a>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm column-last_activity">
-                                {{ $user->last_activity ? $user->last_activity->format('D, d M Y h:i A') : 'Never' }}
+                                {{ $user->lastActivity ? $user->lastActivity->format('D, d M Y h:i A') : 'Never' }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm column-source hidden">{{ $user->field1 ?? '-' }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm column-medium hidden">{{ $user->field2 ?? '-' }}</td>
