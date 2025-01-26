@@ -98,7 +98,7 @@
                                 <h2 class="mt-2 text-md">Looking for career growth?</h2>
                                 <h2 class=" text-md">Apply for 1:1 Mentorship</h2>
                             </div>
-                            <div class="sm:w-72 hover:cursor-pointer hover:rotate-1 transition-all" onclick="window.open('https://wa.me/917318555485?text=Hey%2C%20my%20email%20is%20{{ urlencode(Auth::user()->email) }}%2C%20and%20i%20want%20to%20join%20the%20frontend%20Domination%20Program.', '_blank')">
+                            <div class="sm:w-72 hover:cursor-pointer hover:rotate-1 transition-all" onclick="window.open('https://wa.me/917318555485?text=Hey%2C%20my%20email%20is%20{{ urlencode(Auth::user()->email) }}%2C%20and%20i%20want%20to%20join%20the%20Frontend%20domination%20Program.', '_blank')">
                             <img src="{{asset('assets/img/react.webp')}}" alt="" class="rounded-2xl filter grayscale hover:grayscale-0 transition-all">
                             <h2 class="mt-2 text-md">Want to upskill?</h2>
                             <h2 class=" text-md">Join Frontend cohort at ₹4999</h2>
