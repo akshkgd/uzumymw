@@ -218,6 +218,7 @@ Route::get('/css-enrollments', 'TeacherController@cssEnrollments');
 // Route::post('/update-course-content-order', 'TeacherController@updateCourseContentOrder');
 Route::post('/update-sort-order', 'TeacherController@updateSortOrder')->name('updateSortOrder');
 Route::get('/progress/{enrollmentId}', 'TeacherController@courseprogress');
+
 Route::post('/search-user', 'TeacherController@searchUser')->name('users.search');
 Route::get('/user/{id}/enrollments', 'TeacherController@showEnrollments')->name('user.enrollments');
 
@@ -261,6 +262,7 @@ Route::get('/admin/batch-suggestions', 'AdminController@batchSuggestions')->name
 Route::get('/admin/update-live-class/{id}', 'AdminController@addLiveClass');
 Route::post('/admin/update-live-class', 'AdminController@updateLiveClass')->name('updateLiveClass');
 Route::get('/api/students/{id}/sessions', 'AdminController@getStudentSessions')->name('students.sessions');
+Route::get('/admin-progress/{enrollmentId}', 'AdminController@courseProgress');
 
 // admin manage invoices
 Route::get('/admin/invoices', 'AdminController@listInvoices')->name('admin.invoices.list');
