@@ -56,7 +56,7 @@ trait NotificationTrait
         $email_data = [
             'name' => $enrollment->students->name,
             'workshopName' => $enrollment->batch->name,
-            'nextClass' => $enrollment->batch->startDate,
+            'nextClass' => $enrollment->batch->nextClass,
             'workshopGroup' => $enrollment->batch->groupLink,
             'teacher' => $enrollment->batch->teacher->name,
         ];
