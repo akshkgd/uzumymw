@@ -31,7 +31,7 @@ trait NotificationTrait
                     'batch_type' => $enrollment->batch->type
                 ]);
 
-                if ($enrollment->batch->type == 100) {
+                if ($enrollment->batch->topicId == 100) {
                     $this->sendOnboardingEmail($enrollment);
                 } else {
                     $this->sendCourseAccessNotification($enrollment);
