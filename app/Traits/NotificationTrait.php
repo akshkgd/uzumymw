@@ -8,7 +8,10 @@ use App\Mail\workshopEnrollmentSuccess;
 use App\Notifications\CourseAccessGranted;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
-use App\Models\CourseEnrollment;
+use Illuminate\Http\Request;
+use App\CourseEnrollment;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
 trait NotificationTrait
