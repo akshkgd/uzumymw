@@ -92,6 +92,7 @@ public function grantAccess(Request $request)
         if ($enrollment->hasPaid == 1) {
             $enrollment->field2 = 'Status is paid!!';
             $enrollment->save();
+            $this->sendEnrollmentNotification($enrollment);
         } else {
             $enrollment->status = 1;
             $enrollment->hasPaid = 1;
