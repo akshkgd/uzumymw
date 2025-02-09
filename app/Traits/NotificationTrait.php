@@ -25,7 +25,7 @@ trait NotificationTrait
     {
         try {
             // Check if payment is confirmed and email hasn't been sent
-            if ($enrollment->hasPaid == 1 ) {
+            if ($enrollment->hasPaid == 1 && !$enrollment->email_sent) {
                 Log::info('Processing enrollment notification', [
                     'enrollment_id' => $enrollment->id,
                     'batch_type' => $enrollment->batch->type,
@@ -43,7 +43,7 @@ trait NotificationTrait
                 }
 
                 // Only mark as sent after successful sending
-                // $enrollment->email_sent = true;
+                $enrollment->email_sent = true;
                 $enrollment->save();
                 
                 Log::info('Notification sent and marked as sent', [
