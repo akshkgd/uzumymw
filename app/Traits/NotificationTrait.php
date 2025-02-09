@@ -70,8 +70,24 @@ trait NotificationTrait
      */
     protected function sendCourseAccessNotification($enrollment)
     {
-        $user = $enrollment->students;
-        $user->notify(new CourseAccessGranted($enrollment));
+        try {
+            Log::info('Attempting to send course access notification', [
+                'enrollment_id' => $enrollment->id,
+                'user_id' => $enrollment->students->id ?? 'no_user',
+                'user_email' => $enrollment->students->email ?? 'no_email'
+            ]);
+            
+            $user = $enrollment->students;
+            $user->notify(new CourseAccessGranted($enrollment));
+            
+            Log::info('Course access notification sent successfully');
+        } catch (\Exception $e) {
+            Log::error('Failed to send course access notification: ' . $e->getMessage(), [
+                'enrollment_id' => $enrollment->id,
+                'error' => $e->getMessage()
+            ]);
+            throw $e;
+        }
     }
 
     /**

@@ -21,7 +21,7 @@ class CourseAccessGranted extends Notification implements ShouldQueue
 
     public function via($notifiable)
     {
-        return ['mail', 'database']; // Sends both email and database notification
+        return ['mail']; // Sends both email and database notification
     }
 
     public function toMail($notifiable)
@@ -40,10 +40,7 @@ class CourseAccessGranted extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            'message' => 'Course access granted for ' . $this->enrollment->batch->name,
-            'enrollment_id' => $this->enrollment->id,
-            'batch_id' => $this->enrollment->batchId,
-            'batch_name' => $this->enrollment->batch->name,
+            //
         ];
     }
 } 
