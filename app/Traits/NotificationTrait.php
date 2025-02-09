@@ -60,9 +60,7 @@ trait NotificationTrait
             'workshopGroup' => $enrollment->batch->groupLink,
             'teacher' => $enrollment->batch->teacher
         ];
-        
-        Mail::to($enrollment->students->email)
-            ->queue(new OnboardingMail($email_data));
+        Mail::to($enrollment->students->email)->send(new OnboardingMail($email_data));
     }
 
     /**
