@@ -185,35 +185,39 @@ class CourseEnrollmentController extends Controller
     }
     public function payment(Request $request)
     {
-        
         $input = $request->all();
-
-        // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
-        // $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
         $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
-
         $payment = $api->payment->fetch($input['razorpay_payment_id']);
         
-        if(count($input)  && !empty($input['razorpay_payment_id'])) {
+        if(count($input) && !empty($input['razorpay_payment_id'])) {
             try {
-                
-                // $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount'])); 
                 $response = $api->payment->fetch($input['razorpay_payment_id']);
-                
-            } 
-            catch (\Exception $e) {
-                return  $e->getMessage();
-                
-                \Session::put('error',$e->getMessage());
+            } catch (\Exception $e) {
+                return $e->getMessage();
+                \Session::put('error', $e->getMessage());
                 return redirect('home');
             }
-            $enrollment = CourseEnrollment::where('invoiceId', $response['order_id'])->update(['status' => 1, 'hasPaid' => 1, 'amountPaid'=> $response['amount'], 'paidAt'=> Carbon::now(), 'paymentMethod'=> $response['method'], 'transactionId'=> $response['id'] ]);
-            $enrollment = CourseEnrollment::where('invoiceID', $response['order_id'])->first();
-            $batch = Batch::find($enrollment->batchId);
-            // $user = User::find($enrollment->userId);
-            // $this->successMail($batch, $user);
-            
-            if($batch->topicId == 100){
+
+            // Update enrollment status
+            $enrollment = CourseEnrollment::where('invoiceId', $response['order_id'])
+                ->update([
+                    'status' => 1, 
+                    'hasPaid' => 1, 
+                    'amountPaid' => $response['amount'], 
+                    'paidAt' => Carbon::now(), 
+                    'paymentMethod' => $response['method'], 
+                    'transactionId' => $response['id']
+                ]);
+
+            // Get the full enrollment model for notification
+            $enrollmentModel = CourseEnrollment::where('invoiceID', $response['order_id'])->first();
+            $batch = Batch::find($enrollmentModel->batchId);
+
+            // Send enrollment notification
+            $this->sendEnrollmentNotification($enrollmentModel);
+
+            // Handle redirects based on batch type
+            if($batch->topicId == 100) {
                 return redirect('/bootcamp-success');
             }
             elseif ($batch->topicId == 101){
@@ -227,19 +231,15 @@ class CourseEnrollmentController extends Controller
             }
             elseif ($batch->topicId == 10){
                 return redirect('/mern-success');
-                // $this->successMail($enrollment->id);
-
             }
             elseif ($batch->topicId == 200){
                 return redirect('/demo-success');
             }
             else{
-                // $this->successMail($enrollment->id);
-                return view('students.PaymentComplete', compact('enrollment', 'batch'));
+                return view('students.PaymentComplete', compact('enrollmentModel', 'batch'));
             }
             session()->flash('alert-success', 'Payment Completed Successfully');
             return redirect('/home');
-            
         }   
     }
 
