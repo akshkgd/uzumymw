@@ -74,7 +74,7 @@ class WebhookController extends Controller
 public function grantAccess(Request $request)
 {   
     try {
-        \Log::info('Webhook Request:', $request->all());
+        Log::info('Webhook Request:', $request->all());
 
         $payload = $request->input('payload');
         $paymentData = data_get($payload, 'payment.entity');
@@ -89,8 +89,10 @@ public function grantAccess(Request $request)
             throw new \Exception('Course enrollment not found.');
         }
 
-        // First update payment status
+        // First update payment status if not already paid
         if ($enrollment->hasPaid == 0) {
+            Log::info('Updating payment status for enrollment', ['enrollment_id' => $enrollment->id]);
+            
             $enrollment->status = 1;
             $enrollment->hasPaid = 1;
             $enrollment->amountPaid = $paymentData['amount'];
@@ -99,23 +101,34 @@ public function grantAccess(Request $request)
             $enrollment->transactionId = $paymentData['id'];
             $enrollment->field2 = 'webhook access granted';
             $enrollment->save();
-        }
 
-        // Send notification if email hasn't been sent yet
-        if (!$enrollment->email_sent) {
-            
+            // Send Pabbly webhook first
+            Log::info('Sending Pabbly webhook', ['enrollment_id' => $enrollment->id]);
             $this->sendPabblyWebhook($enrollment->id, $paymentData['amount']);
+
+            // Then send email notification
+            Log::info('Sending enrollment notification', ['enrollment_id' => $enrollment->id]);
             $this->sendEnrollmentNotification($enrollment);
         } else {
-            Log::info('Email already sent for enrollment', [
+            Log::info('Payment already processed for enrollment', [
                 'enrollment_id' => $enrollment->id,
-                'email_sent_status' => $enrollment->email_sent
+                'payment_status' => $enrollment->hasPaid,
+                'email_sent' => $enrollment->email_sent
             ]);
         }
 
-        return response('Webhook Handled', 200);
+        return response()->json([
+            "status" => "success",
+            "message" => "Webhook processed successfully"
+        ], 200);
+
     } catch (\Exception $e) {
-        \Log::error('Error processing webhook request: ' . $e->getMessage());
+        Log::error('Error processing webhook request: ' . $e->getMessage(), [
+            'exception' => $e,
+            'trace' => $e->getTraceAsString()
+        ]);
+        
+        // Always return 200 to acknowledge webhook receipt
         return response()->json([
             "status" => "success",
             "message" => "Response Accepted"
