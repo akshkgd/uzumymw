@@ -7,6 +7,9 @@ use App\Mail\OnboardingMail;
 use App\Mail\workshopEnrollmentSuccess;
 use App\Notifications\CourseAccessGranted;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Http;
+use App\Models\CourseEnrollment;
+use Carbon\Carbon;
 
 trait NotificationTrait
 {
@@ -18,10 +21,22 @@ trait NotificationTrait
     protected function sendEnrollmentNotification($enrollment)
     {
         try {
-            if ($enrollment->batch->type == 100) {
-                $this->sendOnboardingEmail($enrollment);
-            } else {
-                $this->sendCourseAccessNotification($enrollment);
+            // Only send if hasPaid is 1 and email hasn't been sent yet
+            if ($enrollment->hasPaid == 1 && !$enrollment->email_sent) {
+                Log::info('Processing enrollment notification', [
+                    'enrollment_id' => $enrollment->id,
+                    'batch_type' => $enrollment->batch->type
+                ]);
+
+                if ($enrollment->batch->type == 100) {
+                    $this->sendOnboardingEmail($enrollment);
+                } else {
+                    $this->sendCourseAccessNotification($enrollment);
+                }
+
+                // Mark email as sent
+                $enrollment->email_sent = true;
+                $enrollment->save();
             }
         } catch (\Exception $e) {
             Log::error('Failed to send enrollment notification: ' . $e->getMessage());

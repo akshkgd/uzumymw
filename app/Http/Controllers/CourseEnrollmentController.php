@@ -18,10 +18,12 @@ use Carbon\Carbon;
 use App\Mail\EmailForQueuing;
 use Mail;
 use App\Mail\OnboardingMail;
+use App\Traits\NotificationTrait;
 
 class CourseEnrollmentController extends Controller
 {
-   
+    use NotificationTrait;
+
     /**
      * Create a new controller instance.
      *
@@ -276,24 +278,8 @@ class CourseEnrollmentController extends Controller
 
     private function successMail($enrollment)
     {
-                $courseEnrollment = CourseEnrollment::find($enrollment);
-                $user = User::find($courseEnrollment->userId);
-                $workshop = Batch::find($courseEnrollment->batchId);
-                
-                $email_data = array(
-                    'name' => $user['name'],
-                    'email' => $user['email'],
-                    'workshopName' => $workshop['name'],
-                    'workshopGroup' => $workshop['groupLink'],
-                    'discord' => $workshop['groupLink1'],
-                    'nextClass' => $workshop['nextClass'],
-                    'teacher' => $workshop->teacher->name,
-            
-                );
-                
-                
-                Mail::to($user->email)->send(new OnboardingMail($email_data));
-            
+        $courseEnrollment = CourseEnrollment::find($enrollment);
+        $this->sendEnrollmentNotification($courseEnrollment);
     }
     
     

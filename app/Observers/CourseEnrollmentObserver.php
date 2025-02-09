@@ -11,9 +11,12 @@ use Illuminate\Notifications\Notifiable;
 use App\Mail\EmailForQueuing;
 use Mail;
 use Ognjen\Laravel\AsyncMail;
+use App\Traits\NotificationTrait;
 
 class CourseEnrollmentObserver
 {
+    use NotificationTrait;
+
     /**
      * Handle the course enrollment "created" event.
      *
@@ -33,37 +36,9 @@ class CourseEnrollmentObserver
      */
     public function updated(CourseEnrollment $courseEnrollment)
     {
-        
-        if($courseEnrollment->isDirty('hasPaid')){
-            if($courseEnrollment->hasPaid == 1){
-                $user = User::find($courseEnrollment->userId);
-                $workshop = Batch::find($courseEnrollment->batchId);
-                
-                $email_data = array(
-                    'name' => $user['name'],
-                    'email' => $user['email'],
-                    'workshopName' => $workshop['name'],
-                    'workshopGroup' => $workshop['groupLink'],
-                    'discord' => $workshop['groupLink1'],
-                    'nextClass' => $workshop['nextClass'],
-                    'teacher' => $workshop->teacher->name,
-            
-                );
-                
-
-                // dd($email_data);
-                // send email with the template
-                // Mail::send('mail.coursePurchase', $email_data, function ($message) use ($email_data) {
-                //     $message->to($email_data['email'], $email_data['name'], $email_data['workshopName'], $email_data['workshopGroup'], $email_data['teacher'], $email_data['nextClass'])
-                //         ->subject('Complete the onboarding process for '. $email_data['workshopName'])
-                //         ->from('info@codekaro.in', 'Codekaro');
-                // });
-                // $user->notify(new courseTest($user));
-                
-                Mail::to($user->email)->send(new OnboardingMail($email_data));
-            }
+        if($courseEnrollment->isDirty('hasPaid') && $courseEnrollment->hasPaid == 1) {
+            $this->sendEnrollmentNotification($courseEnrollment);
         }
-        
     }
 
     /**

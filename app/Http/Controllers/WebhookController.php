@@ -118,24 +118,7 @@ public function grantAccess(Request $request)
     }
 }
 
-private function sendEnrollmentNotification($enrollment)
-{
-    if ($enrollment->batch->type == 100) {
-        // Send onboarding email
-        $email_data = [
-            'name' => $enrollment->students->name,
-            'workshopName' => $enrollment->batch->name,
-            'nextClass' => $enrollment->batch->startDate,
-            'workshopGroup' => $enrollment->batch->groupLink,
-            'teacher' => $enrollment->batch->teacher
-        ];
-        Mail::to($enrollment->students->email)->send(new OnboardingMail($email_data));
-    } else {
-        // Create and send notification
-        $user = $enrollment->students;
-        $user->notify(new CourseAccessGranted($enrollment));
-    }
-}
+
 
 private function sendPabbly($id, $p){
     $pabblyWebhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzNDA0M2M1MjZlNTUzNDUxM2Ei_pc';
