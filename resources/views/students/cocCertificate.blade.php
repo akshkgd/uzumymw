@@ -1,8 +1,6 @@
 @extends('layouts.t-student')
 @section('content')
 
-<!-- Add html2pdf library -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 <style>
     @media print {
@@ -12,6 +10,10 @@
         body {
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         @page {
             size: landscape;
@@ -23,7 +25,7 @@
     <div class="w-[1000px] mx-auto px-4 sm:px-6 lg:px-8 mt font-manrope">
         <!-- Update download button -->
         <div class="flex justify-end mb-4 no-print">
-            <button onclick="downloadPDF()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg flex items-center gap-2">
+            <button onclick="printCertificate()" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
@@ -87,7 +89,7 @@
                         </div>
 
                         <!-- Signatures and Footer -->
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20">
+                        <div class="flex items-center justify-between gap-8 mt-20">
                             <div class="text-center md:text-left">
                                 <img src="{{asset('assets/img/ashish_sign.png')}}" alt="signature" class="mx-auto md:mx-0">
                                 <h4 class="text-lg font-semibold mt-2">Ashish Shukla</h4>
@@ -107,7 +109,7 @@
                                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data={{ urlencode('https://codekaro.in/course-certificate/'.$certificate->certificateId) }}" 
                                          alt="Certificate QR Code" 
                                          class="ml-auto mb-2">
-                                    <p class="">Certificate Id: <span class="text-blue-600 font-semibold">{{$certificate->certificateId}}</span></p>
+                                    <p class="mb-5">Certificate Id: <span class="text-blue-600 font-semibold">{{$certificate->certificateId}}</span></p>
                                     {{-- <p class="text-sm mt-1 text-neutral-600">
                                         Verify the certificate on this QR
                                         
@@ -123,36 +125,17 @@
     </div>
 </section>
 
-<!-- Add download script -->
+<!-- Replace download script with print script -->
 <script>
-function downloadPDF() {
-    // Get the certificate element
-    const element = document.querySelector('.flex.justify-center');
+function printCertificate() {
+    // Set the document title which will be used as the PDF filename
+    const originalTitle = document.title;
+    document.title = 'codekaro-{{$batch->name}}-certificate-{{$certificate->certificateId}}';
     
-    // Configure the PDF options
-    const options = {
-        margin: 0,
-        filename: 'codekaro-certificate.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { 
-            scale: 2,
-            useCORS: true,
-            logging: true,
-            letterRendering: true
-        },
-        jsPDF: { 
-            unit: 'mm', 
-            format: 'a4', 
-            orientation: 'landscape'
-        }
-    };
-
-    // Generate and download PDF
-    html2pdf()
-        .from(element)
-        .set(options)
-        .save()
-        .catch(err => console.error('Error generating PDF:', err));
+    window.print();
+    
+    // Restore the original title
+    document.title = originalTitle;
 }
 </script>
 
