@@ -58,7 +58,7 @@ trait NotificationTrait
             'workshopName' => $enrollment->batch->name,
             'nextClass' => $enrollment->batch->startDate,
             'workshopGroup' => $enrollment->batch->groupLink,
-            'teacher' => $enrollment->batch->teacher
+            'teacher' => $enrollment->batch->teacher->name,
         ];
         Mail::to($enrollment->students->email)->send(new OnboardingMail($email_data));
     }
