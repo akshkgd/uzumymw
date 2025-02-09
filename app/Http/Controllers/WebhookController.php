@@ -103,8 +103,9 @@ public function grantAccess(Request $request)
 
         // Send notification if email hasn't been sent yet
         if (!$enrollment->email_sent) {
-            $this->sendEnrollmentNotification($enrollment);
+            
             $this->sendPabblyWebhook($enrollment->id, $paymentData['amount']);
+            $this->sendEnrollmentNotification($enrollment);
         } else {
             Log::info('Email already sent for enrollment', [
                 'enrollment_id' => $enrollment->id,

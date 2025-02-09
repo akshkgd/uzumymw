@@ -42,26 +42,28 @@ trait NotificationTrait
                     $this->sendCourseAccessNotification($enrollment);
                 }
 
-                // Only mark as sent after successful sending
+                // Update email_sent status in database first
                 $enrollment->email_sent = true;
                 $enrollment->save();
                 
                 Log::info('Notification sent and marked as sent', [
                     'enrollment_id' => $enrollment->id
                 ]);
-            } else {
-                Log::info('Skipping enrollment notification', [
-                    'reason' => $enrollment->hasPaid == 0 ? 'not paid' : 'email already sent',
-                    'has_paid' => $enrollment->hasPaid,
-                    'email_sent' => $enrollment->email_sent
-                ]);
+                return; // Add early return to prevent further processing
             }
+            
+            Log::info('Skipping enrollment notification', [
+                'reason' => $enrollment->hasPaid == 0 ? 'not paid' : 'email already sent',
+                'has_paid' => $enrollment->hasPaid,
+                'email_sent' => $enrollment->email_sent
+            ]);
+            
         } catch (\Exception $e) {
             Log::error('Failed to send enrollment notification: ' . $e->getMessage(), [
                 'enrollment_id' => $enrollment->id,
                 'error' => $e->getMessage()
             ]);
-            throw $e; // Re-throw to handle in calling code
+            throw $e;
         }
     }
 
