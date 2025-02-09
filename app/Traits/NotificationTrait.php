@@ -28,21 +28,34 @@ trait NotificationTrait
             if ($enrollment->hasPaid == 1 && !$enrollment->email_sent) {
                 Log::info('Processing enrollment notification', [
                     'enrollment_id' => $enrollment->id,
-                    'batch_type' => $enrollment->batch->type
+                    'batch_type' => $enrollment->batch->type,
+                    'topic_id' => $enrollment->batch->topicId,
+                    'has_paid' => $enrollment->hasPaid,
+                    'email_sent' => $enrollment->email_sent
                 ]);
 
                 if ($enrollment->batch->topicId == 100) {
+                    Log::info('Sending onboarding email');
                     $this->sendOnboardingEmail($enrollment);
                 } else {
+                    Log::info('Sending course access notification');
                     $this->sendCourseAccessNotification($enrollment);
                 }
 
                 // Mark email as sent
                 $enrollment->email_sent = true;
                 $enrollment->save();
+            } else {
+                Log::info('Skipping enrollment notification', [
+                    'has_paid' => $enrollment->hasPaid,
+                    'email_sent' => $enrollment->email_sent
+                ]);
             }
         } catch (\Exception $e) {
-            Log::error('Failed to send enrollment notification: ' . $e->getMessage());
+            Log::error('Failed to send enrollment notification: ' . $e->getMessage(), [
+                'enrollment_id' => $enrollment->id,
+                'error' => $e->getMessage()
+            ]);
         }
     }
 
