@@ -2,8 +2,30 @@
 @section('content')
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+    @media print {
+        .btn, nav, footer {
+            display: none !important;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 100%;
+            max-width: none;
+        }
+    }
+</style>
 <section>
     <div class="container">
+       
+        <div class="row mb-3">
+            <div class="col-12 text-center">
+                <button onclick="window.print()" class="">Download Certificate</button>
+            </div>
+        </div>
+        
         <div class="row justify-content-center">
             <div class="col-lg-10 col-xl-12 col-md-12">
                 <div class="card pb-0 ">
@@ -52,7 +74,7 @@
                 
                                 <img src="{{asset('assets/img/ashish_sign.png')}}" alt="uu" >
                                 <h4 class="pt-2 m-0 ck-font" >Ashish Shukla</h4>
-                                <p class="text-muted">CEO - Codekaro</p>
+                                <p class="text-muted">Founder - Codekaro</p>
                             </div>
                             <div class="col-sm-4 text-center  px-5 ">
                                 <img src="{{asset('assets/img/codekaro-dark.png')}}" alt="" class="avatar avatar-xlg">

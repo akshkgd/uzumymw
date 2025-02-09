@@ -424,4 +424,72 @@ public function updateTimeSpent(Request $request)
             return redirect()->back();
         }
     }
+
+    public function downloadInvoice($enrollmentId)
+    {
+        try {
+            \Log::info('Starting invoice download process for enrollment: ' . $enrollmentId);
+            
+            // Find enrollment and verify ownership
+            $enrollment = CourseEnrollment::findOrFail($enrollmentId);
+            \Log::info('Enrollment found', ['enrollment' => $enrollment->toArray()]);
+            
+            if (Auth::id() !== $enrollment->userId) {
+                \Log::warning('Unauthorized access attempt', ['user_id' => Auth::id(), 'enrollment_user_id' => $enrollment->userId]);
+                session()->flash('alert-danger', 'Unauthorized access to invoice');
+                return redirect()->back();
+            }
+
+            // Only allow invoice download for paid enrollments
+            if (!$enrollment->hasPaid) {
+                \Log::warning('Unpaid enrollment invoice attempt', ['enrollment_id' => $enrollmentId]);
+                session()->flash('alert-warning', 'Invoice is only available for paid enrollments');
+                return redirect()->back();
+            }
+
+            // Load relationships needed for invoice
+            
+            // Generate invoice ID if not exists
+            if (!$enrollment->invoiceId) {
+                $enrollment->invoiceId = 'INV-' . strtoupper(uniqid());
+                $enrollment->save();
+            }
+
+            $data = [
+                'enrollment' => $enrollment,
+                'user' => $enrollment->students,
+                'batch' => $enrollment->batch,
+                'paymentMethod' => $enrollment->paymentMethod,
+                'transactionId' => $enrollment->transactionId,
+                'invoiceDate' => Carbon::parse($enrollment->paidAt)->format('d M Y'),
+                'amount' => number_format($enrollment->amountPaid / 100, 2), // Convert from paisa to rupees
+                'invoiceId' => $enrollment->invoiceId
+            ];
+            
+            \Log::info('Preparing PDF with data', ['data' => $data]);
+
+            try {
+                $pdf = PDF::loadView('students.invoicePdf', $data);
+                \Log::info('PDF loaded successfully');
+                
+                $filename = 'invoice_' . $enrollment->invoiceId . '.pdf';
+                return $pdf->download($filename);
+            } catch (\Exception $pdfError) {
+                \Log::error('PDF generation failed', [
+                    'error' => $pdfError->getMessage(),
+                    'trace' => $pdfError->getTraceAsString()
+                ]);
+                throw $pdfError;
+            }
+
+        } catch (\Exception $e) {
+            \Log::error('Invoice download error', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+                'enrollment_id' => $enrollmentId
+            ]);
+            session()->flash('alert-danger', 'Error generating invoice. Please try again.');
+            return redirect()->back();
+        }
+    }
 }

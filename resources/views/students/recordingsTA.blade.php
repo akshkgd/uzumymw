@@ -39,6 +39,7 @@
         </div>
 
         <div class="relative">
+          
           <div x-data="{ dropdownOpen: false }" class="relative">
             <div class="flex gap-3 items-center">
               @if($intro == 'false' && $video->type == 2)
@@ -361,13 +362,15 @@
     </header>
 
     <!-- intro -->
+   
     @if($subStatus == true)
     @if($intro == 'true')
+
     <main class="min-h-scree mt-32 flex flex-col justify-center align-middle px-6 py-12 lg:px-8">
       
   
       <div class="sm:mx-auto sm:w-full sm:max-w-xl text-cente">
-        
+        @include('layouts.alert')
         <h2 class="text-cente text-lg -mt-1 font-semibold leading-9  text-gray-900">{{$enrollment->batch->name}}</h2>
 
         <p class="bg-white text-s text-gray-800">
@@ -381,7 +384,7 @@
         </p>
         {{-- links --}}
         <div class="flex gap-3 mt-5">
-          <a href="" class="inline-block border rounded-lg bg-violet-10 text-violet-60 py-2  px-5 ">Invoice</a>
+          <a href="{{ route('invoice.download', $enrollment->id) }}" class="inline-block border rounded-lg bg-violet-10 text-violet-60 py-2 px-5">Download Invoice</a>
           <a href="" class="inline-block border rounded-lg bg-violet-10 text-violet-60 py-2  px-5 ">Invite your Friend</a>
 
         </div>
@@ -685,24 +688,26 @@
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
     </div>
 
-    <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <div class="mt-1 flex justify-center">
-        <div class="inline-flex w-64 items-center justify-center "
-        >
-          
-          <img src="{{asset('assets/img/clockNudge.svg')}}" height="32px" alt="">
+    <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
+      
+      <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">{{$enrollment->batch->name}}</h2>
+      <p class="bg-white text-md px-6 text-red-600 text-center">Your Subscription for full stack is not active! Contact the support team at <span class="text-blue-600">info@codekaro.in</span> for more details.</p>
+      <div class="flex justify-center gap-2">
+        <a href="" class="bg-black text-white px-5 py-3 rounded-xl inline-block mt-6">Resume subscription</a>
+        <!-- <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Important Links</a> -->
+        
       </div>
+      
+      
+      
+      
+      <div class="text-center flex gap-2 absolute left-1/2 translate-x-[-50%] bottom-0 mb-5">
+        <a href="" class=" py-3 px-4 text-neutral-500 rounded-lg inline-block mt-6">Continue watching: Javascript Foundation</a>
+        <a href="" class=" py-3 px-4 text-neutral-500  rounded-lg inline-block mt-6">Back to Dashboard</a>
       </div>
-      <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900 mt-4">{{$video->title}} will be unlocked on {{ \Carbon\Carbon::now()->addDays($daysUntilVideoUnlocks)->isoFormat('MMMM Do, YYYY') }}</h2>
-
-      <p class="bg-white px-6 text-gray-500 text-center">Content will keep on unlocking on scheduled manner. Meanwhile you can watch the unlocked content and complete your assignments.</p>
-      {{-- <div class="text-center">
-        <button onclick="openConte" class="inline-flex items-center justify-center  transition-colors text-sm text-black bg-neutral-100 px-4 rounded-lg py-2  hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none">Course content</button>
-
-      </div>  --}}
     </div>
+    
   </main>
-  {{-- <h1 class="text-red-500 text-2xl mt-32">Video will be unlocked on {{ \Carbon\Carbon::now()->addDays($daysUntilVideoUnlocks)->isoFormat('MMMM Do, YYYY') }}</h1> --}}
   @endif
   @endif
   {{-- subscription not active --}}

@@ -184,7 +184,7 @@ Route::get('/certificate', function(){
     return view('students.certificate', compact('certificate', 'batch'));
 });
 Route::post('/update-time-spent', 'StudentController@updateTimeSpent')->name('update.timeSpent');
-
+Route::get('/invoice/download/{enrollmentId}', 'StudentController@downloadInvoice')->name('invoice.download');
 
 // Route::get('payment-razorpay', 'PaymentController@create')->name('paywithrazorpay');
 
@@ -292,3 +292,4 @@ Route::post('/admin/update-user-profile/{id}', 'AdminController@updateUserProfil
 Route::get('/api/check-email', 'AdminController@checkEmail')->name('admin.checkEmail');
 
 Route::post('/update-section', [TeacherController::class, 'updateSection'])->name('updateSection');
+
