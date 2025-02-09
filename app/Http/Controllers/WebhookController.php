@@ -21,9 +21,12 @@ use Mail;
 use App\Mail\OnboardingMail;
 use App\Workshop;
 use App\Mail\workshopEnrollmentSuccess;
+use App\Notifications\CourseAccessGranted;
+use App\Traits\NotificationTrait;
 
 class WebhookController extends Controller
 {
+    use NotificationTrait;
 
 //     public function grantAccess(Request $request)
 //     {   
@@ -83,19 +86,13 @@ public function grantAccess(Request $request)
             throw new \Exception('Payment data or notes not found in webhook request.');
         }
         $enrollment = CourseEnrollment::findorFail($notes['enrollmentId']);
-        // $sendPabbly = $this->sendPabbly($enrollment->id, $paymentData['amount']);
-
         if (!$enrollment) {
             throw new \Exception('Course enrollment not found.');
         }
-
-        // Check if the enrollment has already been paid
         if ($enrollment->hasPaid == 1) {
-            // Add additional handling logic for cases when the enrollment has already been paid
-            $enrollment->field2 = 'Satus is paid!!';
+            $enrollment->field2 = 'Status is paid!!';
             $enrollment->save();
         } else {
-            // Update enrollment with payment details
             $enrollment->status = 1;
             $enrollment->hasPaid = 1;
             $enrollment->amountPaid = $paymentData['amount'];
@@ -105,9 +102,9 @@ public function grantAccess(Request $request)
             $enrollment->field2 = 'webhook access granted';
             $enrollment->save();
 
-            // Call the sendPabbly function
-            $sendPabbly = $this->sendPabbly($enrollment->id, $paymentData['amount']);
-            \Log::info('Webhook handled successfully.');
+            // Use trait methods
+            $this->sendEnrollmentNotification($enrollment);
+            $this->sendPabblyWebhook($enrollment->id, $paymentData['amount']);
         }
         return response('Webhook Handled', 200);
     } catch (\Exception $e) {
@@ -121,6 +118,24 @@ public function grantAccess(Request $request)
     }
 }
 
+private function sendEnrollmentNotification($enrollment)
+{
+    if ($enrollment->batch->type == 100) {
+        // Send onboarding email
+        $email_data = [
+            'name' => $enrollment->students->name,
+            'workshopName' => $enrollment->batch->name,
+            'nextClass' => $enrollment->batch->startDate,
+            'workshopGroup' => $enrollment->batch->groupLink,
+            'teacher' => $enrollment->batch->teacher
+        ];
+        Mail::to($enrollment->students->email)->send(new OnboardingMail($email_data));
+    } else {
+        // Create and send notification
+        $user = $enrollment->students;
+        $user->notify(new CourseAccessGranted($enrollment));
+    }
+}
 
 private function sendPabbly($id, $p){
     $pabblyWebhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTZiMDYzNDA0M2M1MjZlNTUzNDUxM2Ei_pc';

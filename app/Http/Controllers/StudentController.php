@@ -394,17 +394,16 @@ public function updateTimeSpent(Request $request)
 
             $data = [
                 'user' => Auth::user(),
-                'enrollment' => $enrollment,
+                'certificate' => $enrollment,
                 'date' => Carbon::parse($enrollment->batch->endDate)->format('F d, Y')
             ];
 
             // Custom dimensions in points (1 inch = 72 points)
-            // Adjust these values based on your certificate's actual dimensions
             $width = 1024;  // Example width
             $height = 768;  // Example height
             
             $pdf = PDF::loadView('students.certificatePdf', $data)
-                ->setPaper([0, 0, $width, $height])  // Custom dimensions
+                ->setPaper([0, 0, $width, $height], 'landscape')  // Added 'landscape' orientation
                 ->setOptions([
                     'isHtml5ParserEnabled' => true,
                     'isRemoteEnabled' => true,

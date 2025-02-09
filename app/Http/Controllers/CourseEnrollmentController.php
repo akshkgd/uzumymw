@@ -225,14 +225,14 @@ class CourseEnrollmentController extends Controller
             }
             elseif ($batch->topicId == 10){
                 return redirect('/mern-success');
-                $this->successMail($enrollment->id);
+                // $this->successMail($enrollment->id);
 
             }
             elseif ($batch->topicId == 200){
                 return redirect('/demo-success');
             }
             else{
-                $this->successMail($enrollment->id);
+                // $this->successMail($enrollment->id);
                 return view('students.PaymentComplete', compact('enrollment', 'batch'));
             }
             session()->flash('alert-success', 'Payment Completed Successfully');
