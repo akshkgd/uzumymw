@@ -76,24 +76,21 @@ public function grantAccess(Request $request)
     try {
         \Log::info('Webhook Request:', $request->all());
 
-        // Extract payload data
         $payload = $request->input('payload');
         $paymentData = data_get($payload, 'payment.entity');
         $notes = data_get($paymentData, 'notes');
 
-        // Check if required data is present
         if (!$paymentData || !$notes) {
             throw new \Exception('Payment data or notes not found in webhook request.');
         }
+        
         $enrollment = CourseEnrollment::findorFail($notes['enrollmentId']);
         if (!$enrollment) {
             throw new \Exception('Course enrollment not found.');
         }
-        if ($enrollment->hasPaid == 1) {
-            $enrollment->field2 = 'Status is paid!!';
-            $enrollment->save();
-            $this->sendEnrollmentNotification($enrollment);
-        } else {
+
+        // First update payment status
+        if ($enrollment->hasPaid == 0) {
             $enrollment->status = 1;
             $enrollment->hasPaid = 1;
             $enrollment->amountPaid = $paymentData['amount'];
@@ -102,20 +99,26 @@ public function grantAccess(Request $request)
             $enrollment->transactionId = $paymentData['id'];
             $enrollment->field2 = 'webhook access granted';
             $enrollment->save();
+        }
 
-            // Use trait methods
+        // Send notification if email hasn't been sent yet
+        if (!$enrollment->email_sent) {
             $this->sendEnrollmentNotification($enrollment);
             $this->sendPabblyWebhook($enrollment->id, $paymentData['amount']);
+        } else {
+            Log::info('Email already sent for enrollment', [
+                'enrollment_id' => $enrollment->id,
+                'email_sent_status' => $enrollment->email_sent
+            ]);
         }
+
         return response('Webhook Handled', 200);
     } catch (\Exception $e) {
         \Log::error('Error processing webhook request: ' . $e->getMessage());
-        // return response('Error processing webhook request', 500);
         return response()->json([
             "status" => "success",
             "message" => "Response Accepted"
         ], 200);
-        
     }
 }
 

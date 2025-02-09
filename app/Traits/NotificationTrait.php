@@ -24,7 +24,7 @@ trait NotificationTrait
     protected function sendEnrollmentNotification($enrollment)
     {
         try {
-            // Only send if hasPaid is 1 and email hasn't been sent yet
+            // Check if payment is confirmed and email hasn't been sent
             if ($enrollment->hasPaid == 1 && !$enrollment->email_sent) {
                 Log::info('Processing enrollment notification', [
                     'enrollment_id' => $enrollment->id,
@@ -42,11 +42,16 @@ trait NotificationTrait
                     $this->sendCourseAccessNotification($enrollment);
                 }
 
-                // Mark email as sent
+                // Only mark as sent after successful sending
                 $enrollment->email_sent = true;
                 $enrollment->save();
+                
+                Log::info('Notification sent and marked as sent', [
+                    'enrollment_id' => $enrollment->id
+                ]);
             } else {
                 Log::info('Skipping enrollment notification', [
+                    'reason' => $enrollment->hasPaid == 0 ? 'not paid' : 'email already sent',
                     'has_paid' => $enrollment->hasPaid,
                     'email_sent' => $enrollment->email_sent
                 ]);
@@ -56,6 +61,7 @@ trait NotificationTrait
                 'enrollment_id' => $enrollment->id,
                 'error' => $e->getMessage()
             ]);
+            throw $e; // Re-throw to handle in calling code
         }
     }
 
