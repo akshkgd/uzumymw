@@ -13,6 +13,7 @@ use App\CourseEnrollment;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Mail\OnboardingMailL2;
 
 trait NotificationTrait
 {
@@ -37,6 +38,15 @@ trait NotificationTrait
                 if ($enrollment->batch->topicId == 100) {
                     Log::info('Sending onboarding email');
                     $this->sendOnboardingEmail($enrollment);
+                } else if ($enrollment->batch->topicId == 700) {
+                    Log::info('Sending L2 onboarding email');
+                    Mail::to($enrollment->students->email)->send(new OnboardingMailL2([
+                        'name' => $enrollment->students->name,
+                        'workshopName' => $enrollment->batch->name,
+                        'nextClass' => $enrollment->batch->nextClass,
+                        'workshopGroup' => $enrollment->batch->groupLink,
+                        'teacher' => $enrollment->batch->teacher->name,
+                    ]));
                 } else {
                     Log::info('Sending course access notification');
                     $this->sendCourseAccessNotification($enrollment);

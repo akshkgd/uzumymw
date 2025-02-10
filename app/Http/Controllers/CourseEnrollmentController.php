@@ -19,6 +19,7 @@ use App\Mail\EmailForQueuing;
 use Mail;
 use App\Mail\OnboardingMail;
 use App\Traits\NotificationTrait;
+use Illuminate\Support\Facades\Log;
 
 class CourseEnrollmentController extends Controller
 {
@@ -185,62 +186,69 @@ class CourseEnrollmentController extends Controller
     }
     public function payment(Request $request)
     {
-        
-        $input = $request->all();
-
-        // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
-        // $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
-        $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
-
-        $payment = $api->payment->fetch($input['razorpay_payment_id']);
-        
-        if(count($input)  && !empty($input['razorpay_payment_id'])) {
-            try {
-                
-                // $response = $api->payment->fetch($input['razorpay_payment_id'])->capture(array('amount'=>$payment['amount'])); 
+        try {
+            $input = $request->all();
+            $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
+            $payment = $api->payment->fetch($input['razorpay_payment_id']);
+            
+            if(count($input) && !empty($input['razorpay_payment_id'])) {
                 $response = $api->payment->fetch($input['razorpay_payment_id']);
                 
-            } 
-            catch (\Exception $e) {
-                return  $e->getMessage();
-                
-                \Session::put('error',$e->getMessage());
-                return redirect('home');
-            }
-            $enrollment = CourseEnrollment::where('invoiceId', $response['order_id'])->update(['status' => 1, 'hasPaid' => 1, 'amountPaid'=> $response['amount'], 'paidAt'=> Carbon::now(), 'paymentMethod'=> $response['method'], 'transactionId'=> $response['id'] ]);
-            $enrollment = CourseEnrollment::where('invoiceID', $response['order_id'])->first();
-            $batch = Batch::find($enrollment->batchId);
-            // $user = User::find($enrollment->userId);
-            // $this->successMail($batch, $user);
-            
-            if($batch->topicId == 100){
-                return redirect('/bootcamp-success');
-            }
-            elseif ($batch->topicId == 101){
-                return redirect('/javascript-success');
-            }
-            elseif ($batch->topicId == 102){
-                return redirect('/react-success');
-            }
-            elseif ($batch->topicId == 105){
-                return redirect('/css-upgrade-success');
-            }
-            elseif ($batch->topicId == 10){
-                return redirect('/mern-success');
-                // $this->successMail($enrollment->id);
+                // Update enrollment status
+                $enrollment = CourseEnrollment::where('invoiceId', $response['order_id'])
+                    ->update([
+                        'status' => 1, 
+                        'hasPaid' => 1, 
+                        'amountPaid' => $response['amount'], 
+                        'paidAt' => Carbon::now(), 
+                        'paymentMethod' => $response['method'], 
+                        'transactionId' => $response['id']
+                    ]);
 
-            }
-            elseif ($batch->topicId == 200){
-                return redirect('/demo-success');
-            }
-            else{
-                // $this->successMail($enrollment->id);
-                return view('students.PaymentComplete', compact('enrollment', 'batch'));
-            }
-            session()->flash('alert-success', 'Payment Completed Successfully');
+                // Get the updated enrollment
+                $enrollment = CourseEnrollment::where('invoiceID', $response['order_id'])->first();
+                $batch = Batch::find($enrollment->batchId);
+
+                // Send notifications
+                Log::info('Sending Pabbly webhook from payment endpoint', ['enrollment_id' => $enrollment->id]);
+                $this->sendPabblyWebhook($enrollment->id, $response['amount']);
+
+                Log::info('Sending enrollment notification from payment endpoint', ['enrollment_id' => $enrollment->id]);
+                $this->sendEnrollmentNotification($enrollment);
+
+                // Handle redirects based on course type
+                session()->flash('alert-success', 'Payment Completed Successfully');
+                
+                return $this->handlePaymentRedirect($batch);
+            }   
+        } catch (\Exception $e) {
+            Log::error('Payment processing failed: ' . $e->getMessage(), [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString()
+            ]);
+            session()->flash('error', 'Payment processing failed. Please contact support.');
             return redirect('/home');
-            
-        }   
+        }
+    }
+
+    private function handlePaymentRedirect($batch)
+    {
+        switch ($batch->topicId) {
+            case 100:
+                return redirect('/bootcamp-success');
+            case 101:
+                return redirect('/javascript-success');
+            case 102:
+                return redirect('/react-success');
+            case 105:
+                return redirect('/css-upgrade-success');
+            case 10:
+                return redirect('/mern-success');
+            case 200:
+                return redirect('/demo-success');
+            default:
+                return view('students.PaymentComplete', compact('enrollment', 'batch'));
+        }
     }
 
     private function sendOrderIdToPabbly($enrollment, $batch){

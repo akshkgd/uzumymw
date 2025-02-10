@@ -30,9 +30,13 @@ use Illuminate\Support\Facades\DB;
 use Jenssegers\Agent\Agent;
 use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
 use App\Jobs\UpdateBatchProgressJob;
+use App\Traits\NotificationTrait;
+use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
+    use NotificationTrait;
+
     public function __construct()
     {
         $this->middleware(['auth', 'verified', 'isAdmin']);
@@ -571,60 +575,69 @@ class AdminController extends Controller
             $enrollment = CourseEnrollment::where('batchId', $request->batchId)->where('userId', $user->id)->first();
                 if(!$enrollment){
                     $batch = Batch::findOrFail($request->batchId);
-        $a = new CourseEnrollment;
-        $a->userId = $user->id;
-        $a->batchId = $request->batchId;
-        $a->price = $batch->price;
-        $a->amountpayable = $batch->payable;
-        $a->amountPaid = $request->amount * 100;
+                    $a = new CourseEnrollment;
+                    $a->userId = $user->id;
+                    $a->batchId = $request->batchId;
+                    $a->price = $batch->price;
+                    $a->amountpayable = $batch->payable;
+                    $a->amountPaid = $request->amount * 100;
+                    $a->paidAt = $request->paidAt ?? Carbon::now();
+                    $a->paymentMethod = $request->paymentMethod ?? 'upi';
+                    $a->transactionId = $request->transactionId ?? 'TXN-' . strtoupper(uniqid());
+                    $a->invoiceId = $request->invoiceId ?? 'INV-' . strtoupper(uniqid());
+                    $a->status = 1;
+                    $a->hasPaid = 1;
+                    $a->certificateId = substr(md5(time()), 0, 16);
+                    $a->save();
 
-        // Set paidAt to current date if not provided
-        $a->paidAt = $request->paidAt ?? Carbon::now();
+                    // Send notifications using the trait
+                    try {
+                        Log::info('Sending Pabbly webhook from admin access grant', ['enrollment_id' => $a->id]);
+                        $this->sendPabblyWebhook($a->id, $a->amountPaid);
 
-        // Set paymentMethod to 'upi' if not provided
-        $a->paymentMethod = $request->paymentMethod ?? 'upi';
+                        Log::info('Sending enrollment notification from admin access grant', ['enrollment_id' => $a->id]);
+                        $this->sendEnrollmentNotification($a);
+                    } catch (\Exception $e) {
+                        Log::error('Failed to send notifications: ' . $e->getMessage(), [
+                            'enrollment_id' => $a->id,
+                            'error' => $e->getMessage()
+                        ]);
+                        // Continue execution even if notification fails
+                    }
 
-        // Generate random transactionId and invoiceId if not provided
-        $a->transactionId = $request->transactionId ?? 'TXN-' . strtoupper(uniqid());
-        $a->invoiceId = $request->invoiceId ?? 'INV-' . strtoupper(uniqid());
-
-        $a->status = 1;
-        $a->hasPaid = 1;
-        $a->certificateId = substr(md5(time()), 0, 16);
-        $a->save();
-                
-                $email_data = array(
-                    'name' => $user['name'],
-                    'email' => $user['email'],
-                    'workshopName' => $batch['name'],
-                    'workshopGroup' => $batch['groupLink'],
-                    'discord' => $batch['groupLink1'],
-                    'nextClass' => $batch['nextClass'],
-                    'teacher' => $batch->teacher->name,
-                );
-                Mail::to($user->email)->send(new OnboardingMailL2($email_data));
                     session()->flash('alert-success', 'Access Granted Successfully!');
                     return redirect()->back();
                 }
                 elseif ($enrollment && $enrollment->hasPaid == 0) {
                     $enrollment->status = 1;
                     $enrollment->hasPaid = 1;
-                    $enrollment->amountPaid = $request->amount *100;
+                    $enrollment->amountPaid = $request->amount * 100;
                     $enrollment->paidAt = $request->paidAt;
                     $enrollment->paymentMethod = $request->paymentMethod;
                     $enrollment->transactionId = $request->transactionId;
                     $enrollment->invoiceId = $request->invoiceId;
-        
-                    // Add a comment to field2 indicating the webhook data update
                     $enrollment->field2 = 'webhook access granted';
                     $enrollment->save();
+
+                    // Send notifications for updated enrollment
+                    try {
+                        Log::info('Sending Pabbly webhook from admin access update', ['enrollment_id' => $enrollment->id]);
+                        $this->sendPabblyWebhook($enrollment->id, $enrollment->amountPaid);
+
+                        Log::info('Sending enrollment notification from admin access update', ['enrollment_id' => $enrollment->id]);
+                        $this->sendEnrollmentNotification($enrollment);
+                    } catch (\Exception $e) {
+                        Log::error('Failed to send notifications: ' . $e->getMessage(), [
+                            'enrollment_id' => $enrollment->id,
+                            'error' => $e->getMessage()
+                        ]);
+                        // Continue execution even if notification fails
+                    }
+
                     session()->flash('alert-success', 'Access updated Successfully!');
-                    
                     return redirect()->back();
                 } 
                 else {
-                    // Add a comment or additional handling logic for cases when the enrollment has already been paid
-                    // ...
                     if ($enrollment) {
                         $enrollment->field2 = 'webhook called!!';
                         $enrollment->save();

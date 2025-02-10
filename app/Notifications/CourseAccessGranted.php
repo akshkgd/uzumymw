@@ -26,7 +26,7 @@ class CourseAccessGranted extends Notification implements ShouldQueue
 
     public function toMail($notifiable)
     {
-        $url = route('recordings', ['id' => Crypt::encrypt($this->enrollment->id)]); // Define this route
+        $url = 'https://codekaro.in/home'; // Define this route
 
         return (new MailMessage)
             ->subject('Access Granted for ' . $this->enrollment->batch->name)
