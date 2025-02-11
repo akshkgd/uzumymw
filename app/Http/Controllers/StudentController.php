@@ -118,13 +118,7 @@ class StudentController extends Controller
                 // $intro = false;
                 $intro = ($videoLink) ? "false" : "true";
                 $subStatus = true;
-                if ($enrollment->subscriptionId != null) {
-                    if ($enrollment->subscriptionStatus == 1 && $enrollment->accessTill > now()) {
-                        $subStatus = true;
-                    } else {
-                        $subStatus = false;
-                    }
-                }
+                
                 $accessTill = Carbon::now()->diffInDays(Carbon::parse($enrollment->paidAt));
                 $sections = BatchSection::where('batchId', $enrollment->batchId)
                     ->with(['chapters' => function($query) {
