@@ -685,25 +685,14 @@
   @endif
   @if($isVideoUnlocked == false)
   <main class="min-h-screen flex flex-col justify-center align-middle px-6 py-12 lg:px-8">
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-    </div>
-
-    <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
-      
-      <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">{{$enrollment->batch->name}}</h2>
-      <p class="bg-white text-md px-6 text-red-600 text-center">Your Subscription for full stack is not active! Contact the support team at <span class="text-blue-600">info@codekaro.in</span> for more details.</p>
-      <div class="flex justify-center gap-2">
-        <a href="" class="bg-black text-white px-5 py-3 rounded-xl inline-block mt-6">Resume subscription</a>
-        <!-- <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Important Links</a> -->
-        
-      </div>
-      
-      
-      
-      
-      <div class="text-center flex gap-2 absolute left-1/2 translate-x-[-50%] bottom-0 mb-5">
-        <a href="" class=" py-3 px-4 text-neutral-500 rounded-lg inline-block mt-6">Continue watching: Javascript Foundation</a>
-        <a href="" class=" py-3 px-4 text-neutral-500  rounded-lg inline-block mt-6">Back to Dashboard</a>
+    <div class="sm:mx-auto sm:w-full sm:max-w-md">
+      <div class="mt-1 flex justify-center">
+        <div class="inline-flex w-64 items-center justify-center ">
+          
+          <img src="{{asset('assets/img/clockNudge.svg')}}" height="32px" alt="">
+          <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900 mt-4">{{$video->title}} will be unlocked on {{ \Carbon\Carbon::now()->addDays($daysUntilVideoUnlocks)->isoFormat('MMMM Do, YYYY') }}</h2>
+          <p class="bg-white px-6 text-gray-500 text-center">Content will keep on unlocking on scheduled manner. Meanwhile you can watch the unlocked content and complete your assignments.</p>
+        </div>
       </div>
     </div>
     
