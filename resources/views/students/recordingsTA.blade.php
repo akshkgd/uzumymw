@@ -688,10 +688,11 @@
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <div class="mt-1 flex justify-center">
         <div class="inline-flex w-64 items-center justify-center ">
-          
+          <div>
           <img src="{{asset('assets/img/clockNudge.svg')}}" height="32px" alt="">
-          <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900 mt-4">{{$video->title}} will be unlocked on {{ \Carbon\Carbon::now()->addDays($daysUntilVideoUnlocks)->isoFormat('MMMM Do, YYYY') }}</h2>
+          <h2 class="text-center text-xl -mt-1 font-semibold leading-9 tracking-tight text-gray-900 mt-4">{{$video->title}} will be unlocked on {{ \Carbon\Carbon::now()->addDays($daysUntilVideoUnlocks)->isoFormat('MMMM Do, YYYY') }}</h2>
           <p class="bg-white px-6 text-gray-500 text-center">Content will keep on unlocking on scheduled manner. Meanwhile you can watch the unlocked content and complete your assignments.</p>
+          </div>
         </div>
       </div>
     </div>
