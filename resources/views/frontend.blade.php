@@ -3,7 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- Primary Meta Tags -->
+<title>Land a 6-8 LPA Frontend Job in 45 Days | Cohort for Freshers @ ₹4,999</title>
+<meta name="description" content="Crack frontend interviews and secure your first job (6-8 LPA) with our 45-day cohort. 100% money-back guarantee. Only 100 slots left!">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="[Your-URL-Here]">
+<meta property="og:title" content="Land Your First Frontend Job (6-8 LPA) in 45 Days">
+<meta property="og:description" content="Guaranteed frontend job or 100% refund. Join freshers cohort at ₹4,999. Live mentorship, mock interviews, and limited slots!">
+<meta property="og:image" content="{{asset('assets/img/react.webp')}}">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="[Your-URL-Here]">
+<meta property="twitter:title" content="6-8 LPA Frontend Job in 45 Days | Cohort for Freshers">
+<meta property="twitter:description" content="Crack interviews with live Zoom sessions, 3 real projects, and placement support. Enroll now @ ₹4,999!">
+<meta property="twitter:image" content="{{asset('assets/img/react.webp')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
  
