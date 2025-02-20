@@ -28,7 +28,7 @@
         
         <div class="max-w-6xl l-16 text-center">
             
-                <h1 class="text-white 2xl:text-6xl sm:text-5xl text-4xl font-black">Land Your First Frontend Job (6-8 LPA) <span class="key-highlight text-whit bg-gradient-to-r from-green-60 to-green-50 bg-clip-text text-transparen"> <img class="absolute bottom-0 left-0" src="../green-highlight.sv" alt=""> </span></h1>
+                <h1 class="text-white 2xl:text-6xl sm:text-5xl text-4xl font-black">Land Your First Frontend Job (6-8 LPA) <span class="key-highlight text-whit bg-gradient-to-r from-green-60 to-green-50 bg-clip-text text-transparen"> </h1>
             
             <div class="max-w-3xl mx-auto text-center">
             <p class="text-neutral-500 sm:px-5 text-xl sm:text-2xl mt-4 text-center">You will be able to crack frontend interviews & get a 6-8 LPA job as a fresher by the end of this cohort!</p>
@@ -283,7 +283,7 @@
      <section class="my-24 mx-auto max-w-2xl flex items-center justify-center md:p-0 p-5 ">
         <div class="text-center">
             <h1 class="text-white block sm:hidde font-black  2xl:text-5xl sm:text-5xl text-3xl mb-12">Certificate </h1>
-            <img src="../assets/certificate.png" alt="" class="w-full h-full rounded-lg">
+            <img src="{{asset('assets/img/feedbacks/certificate.png')}}" alt="" class="w-full h-full rounded-lg">
         </div>
     </section>
     <section class="s:h-screen h-[60vh] mt-24 2xl:max-w-4xl max-w-3xl mx-auto  flex items-center">
@@ -375,13 +375,13 @@
     <!-- feedback ends -->
      <section class="lg:h-screen flex items-center">
         <div class="max-w-5xl mx-auto p-5 mt-48 mb-24 text-cente">
-            <h1 class="hidden sm:block text-white 2xl:text-6xl sm:text-5xl text-4xl font-black">Invest ₹5,990 today → Earn 6-8 LPA package in next 45 days!</h1>
-            <h1 class="sm:hidden text-white lg:text-9xl sm:text-7xl text-4xl text-center  font-bold">Invest ₹5,990 today → Earn 6-8 LPA in 45 days!</h1>
+            <h1 class="hidden sm:block text-white 2xl:text-6xl sm:text-5xl text-4xl font-black">Invest ₹4,990 today → Earn 6-8 LPA package in next 45 days!</h1>
+            <h1 class="sm:hidden text-white lg:text-9xl sm:text-7xl text-4xl text-center  font-bold">Invest ₹4,999 today → Earn 6-8 LPA in 45 days!</h1>
 
             <ul class="text-neutral-500 text-xl sm:text-xl mt-4 text-center sm:text-left">  
                 <li>✅ Weekly Live Doubt Solving Sessions</li>  
                 <li>✅ Build 3 Projects for Your Resume</li>  
-                <li>✅ Taught by Ashish Shukla (Founder Codekaro, Ex Lido Learning, AOSPL)</li>  
+                <li>✅ Taught by Ashish Shukla</li>  
               </ul>
             <!-- <p class="text-neutral-600 text-xl sm:text-2xl mt-4 text-center sm:text-left">If anything is considered part of frontend dev, we're covering it in this course! With <span class="key-highlight text-whit bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">Diwali's special </span> unbeatable Price.</p> -->
             <!-- <p class="text-xs text-neutral-600 mt-3 text-center sm:text-left">*Course validity is for 1 year from date of batch start.</p> -->
