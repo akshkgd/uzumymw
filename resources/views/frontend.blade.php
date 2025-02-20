@@ -21,7 +21,7 @@
     <style>[x-cloak]{display:none}</style>
 </head>
 <body class="bg-neutral-950 select-non">
-    <div class="bg-red-500 text-white py-3 text-center text-lg font-bold">Only 100 Slots Available | 100% Money Back Guarantee*</div>
+    <div class="bg-red-500 text-white py-3 text-center text-lg font-bold">Only 50 Slots Available | 100% Money Back Guarantee*</div>
    
     <!-- hero section -->
     <section class="h-screen flex items-center justify-center text-center md:p-0 p-5">
@@ -375,13 +375,14 @@
     <!-- feedback ends -->
      <section class="lg:h-screen flex items-center">
         <div class="max-w-5xl mx-auto p-5 mt-48 mb-24 text-cente">
-            <h1 class="hidden sm:block text-white 2xl:text-6xl sm:text-5xl text-4xl font-black">Invest ₹4,990 today → Earn 6-8 LPA package in next 45 days!</h1>
+            <h1 class="hidden sm:block text-white 2xl:text-6xl sm:text-5xl text-4xl font-black">Invest ₹4,999 today → Earn 6-8 LPA package in next 45 days!</h1>
             <h1 class="sm:hidden text-white lg:text-9xl sm:text-7xl text-4xl text-center  font-bold">Invest ₹4,999 today → Earn 6-8 LPA in 45 days!</h1>
 
             <ul class="text-neutral-500 text-xl sm:text-xl mt-4 text-center sm:text-left">  
                 <li>✅ Weekly Live Doubt Solving Sessions</li>  
                 <li>✅ Build 3 Projects for Your Resume</li>  
                 <li>✅ Taught by Ashish Shukla</li>  
+                <li>✅ 50 Slots only</li>  
               </ul>
             <!-- <p class="text-neutral-600 text-xl sm:text-2xl mt-4 text-center sm:text-left">If anything is considered part of frontend dev, we're covering it in this course! With <span class="key-highlight text-whit bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">Diwali's special </span> unbeatable Price.</p> -->
             <!-- <p class="text-xs text-neutral-600 mt-3 text-center sm:text-left">*Course validity is for 1 year from date of batch start.</p> -->
