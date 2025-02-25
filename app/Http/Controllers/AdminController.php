@@ -32,6 +32,7 @@ use SebastianBergmann\CodeCoverage\Report\Xml\Totals;
 use App\Jobs\UpdateBatchProgressJob;
 use App\Traits\NotificationTrait;
 use Illuminate\Support\Facades\Log;
+use Carbon\CarbonPeriod;
 
 class AdminController extends Controller
 {
@@ -747,6 +748,145 @@ class AdminController extends Controller
         $enrollment = CourseEnrollment::findorFail($enrollmentId);
         $courseProgress = CourseProgress::where('userId', $enrollment->userId)->where('batchId', $enrollment->batchId)->get();
         return view('admin.courseProgress', compact('courseProgress', 'enrollment'));
+    }
+
+    public function getReportsData(Request $request)
+    {
+        try {
+            $range = $request->input('range', '365');
+            $endDate = Carbon::now();
+            $startDate = Carbon::now();
+
+            // Set date ranges
+            switch($range) {
+                case 'today':
+                    $startDate = Carbon::today();
+                    break;
+                case 'yesterday':
+                    $startDate = Carbon::yesterday();
+                    $endDate = Carbon::yesterday()->endOfDay();
+                    break;
+                case '7':
+                    $startDate = Carbon::now()->subDays(7);
+                    break;
+                case '30':
+                    $startDate = Carbon::now()->subDays(30);
+                    break;
+                case 'this_month':
+                    $startDate = Carbon::now()->startOfMonth();
+                    break;
+                case 'last_month':
+                    $startDate = Carbon::now()->subMonth()->startOfMonth();
+                    $endDate = Carbon::now()->subMonth()->endOfMonth();
+                    break;
+                case '90':
+                    $startDate = Carbon::now()->subDays(90);
+                    break;
+                case '365':
+                    $startDate = Carbon::now()->subYear();
+                    break;
+            }
+
+            // Get signups data
+            $currentSignups = User::where('role', 0)
+                                 ->whereBetween('created_at', [$startDate, $endDate])
+                                 ->count();
+            $previousSignups = User::where('role', 0)
+                                  ->whereBetween('created_at', [$startDate->copy()->subDays($startDate->diffInDays($endDate)), $startDate])
+                                  ->count();
+
+            // Get enrollments data
+            $currentEnrollments = CourseEnrollment::whereBetween('created_at', [$startDate, $endDate])
+                                                 ->count();
+            $previousEnrollments = CourseEnrollment::whereBetween('created_at', [$startDate->copy()->subDays($startDate->diffInDays($endDate)), $startDate])
+                                                  ->count();
+
+            // Get revenue data
+            $currentRevenue = CourseEnrollment::whereBetween('created_at', [$startDate, $endDate])
+                                             ->where('hasPaid', 1)
+                                             ->sum('amountPaid') / 100;
+            $previousRevenue = CourseEnrollment::whereBetween('created_at', [$startDate->copy()->subDays($startDate->diffInDays($endDate)), $startDate])
+                                                  ->where('hasPaid', 1)
+                                                  ->sum('amountPaid') / 100;
+
+            // Get learning time data
+            $currentLearningTime = CourseProgress::whereBetween('created_at', [$startDate, $endDate])
+                                                ->sum('timeSpent') / 3600;
+            $previousLearningTime = CourseProgress::whereBetween('created_at', [$startDate->copy()->subDays($startDate->diffInDays($endDate)), $startDate])
+                                                 ->sum('timeSpent') / 3600;
+
+            // Calculate changes
+            $signupsChange = $previousSignups > 0 ? (($currentSignups - $previousSignups) / $previousSignups) * 100 : 0;
+            $enrollmentsChange = $previousEnrollments > 0 ? (($currentEnrollments - $previousEnrollments) / $previousEnrollments) * 100 : 0;
+            $revenueChange = $previousRevenue > 0 ? (($currentRevenue - $previousRevenue) / $previousRevenue) * 100 : 0;
+            $learningTimeChange = $previousLearningTime > 0 ? (($currentLearningTime - $previousLearningTime) / $previousLearningTime) * 100 : 0;
+
+            // Get chart data
+            $signupsData = User::where('role', 0)
+                ->whereBetween('created_at', [$startDate, $endDate])
+                ->selectRaw('DATE(created_at) as date, COUNT(*) as signups')
+                ->groupBy('date')
+                ->orderBy('date')
+                ->get();
+
+            $revenueData = CourseEnrollment::whereBetween('created_at', [$startDate, $endDate])
+                ->where('hasPaid', 1)
+                ->selectRaw('DATE(created_at) as date, SUM(amountPaid)/100 as amount')
+                ->groupBy('date')
+                ->orderBy('date')
+                ->get();
+
+            return response()->json([
+                'metrics' => [
+                    'signups' => [
+                        'current' => (int)$currentSignups,
+                        'change' => round($signupsChange, 1),
+                        'difference' => $currentSignups - $previousSignups,
+                        'trend' => $signupsChange >= 0 ? 'up' : 'down'
+                    ],
+                    'enrollments' => [
+                        'current' => (int)$currentEnrollments,
+                        'change' => round($enrollmentsChange, 1),
+                        'difference' => $currentEnrollments - $previousEnrollments,
+                        'trend' => $enrollmentsChange >= 0 ? 'up' : 'down'
+                    ],
+                    'revenue' => [
+                        'current' => (int)$currentRevenue,
+                        'change' => round($revenueChange, 1),
+                        'difference' => round($currentRevenue - $previousRevenue),
+                        'trend' => $revenueChange >= 0 ? 'up' : 'down'
+                    ],
+                    'learningTime' => [
+                        'current' => round($currentLearningTime),
+                        'change' => round($learningTimeChange, 1),
+                        'trend' => $learningTimeChange >= 0 ? 'up' : 'down'
+                    ]
+                ],
+                'signupsEnrollments' => $signupsData->map(function($item) {
+                    return [
+                        'date' => Carbon::parse($item->date)->format('M d'),
+                        'signups' => (int)$item->signups
+                    ];
+                }),
+                'revenue' => $revenueData->map(function($item) {
+                    return [
+                        'date' => Carbon::parse($item->date)->format('M d'),
+                        'amount' => (int)$item->amount
+                    ];
+                })
+            ]);
+
+        } catch (\Exception $e) {
+            \Log::error('Reports Data Error: ' . $e->getMessage());
+            return response()->json([
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+
+    public function reports()
+    {
+        return view('admin.reports');
     }
 
 }

@@ -263,7 +263,8 @@ Route::get('/admin/update-live-class/{id}', 'AdminController@addLiveClass');
 Route::post('/admin/update-live-class', 'AdminController@updateLiveClass')->name('updateLiveClass');
 Route::get('/api/students/{id}/sessions', 'AdminController@getStudentSessions')->name('students.sessions');
 Route::get('/admin-progress/{enrollmentId}', 'AdminController@courseProgress');
-
+Route::get('/admin/reports', 'AdminController@reports')->name('admin.reports');
+Route::get('/admin/reports-data', 'AdminController@getReportsData')->middleware(['auth', 'isAdmin']);
 // admin manage invoices
 Route::get('/admin/invoices', 'AdminController@listInvoices')->name('admin.invoices.list');
 Route::get('/admin/invoices/download/{invoiceId}','AdminController@downloadInvoices' )->name('admin.invoices.download');

@@ -22,3 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::any('/'.env('TELEGRAM_BOT_TOKEN'),'TelegramController@index')->name('webhook');
 Route::get('uzumymw', 'TopicController@getUsers');
+Route::get('/admin/reports-data', 'AdminController@getReportsData')->middleware(['auth', 'isAdmin']);

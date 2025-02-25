@@ -1304,10 +1304,10 @@ iframe{border:0;}
             <div class="row justify-content-center align-items-cente">
                 <div class="col-md-10">
                     <main class="text-center">
-                        <h1 class="display-6 fw-bod  " style=" line-height:1.5; color:aliceblue; font-weight:600">Learn CSS in just 5 days to create <span style="color:#efa30e;">Netflix, chatgpt and Youtube</span>Like Designs.</h1>
+                        <h1 class="display-6 fw-bod  " style=" line-height:1.5; color:aliceblue; font-weight:600">Learn CSS in just 5 days to create <span style="color:#efa30e;">Netflix, ChatGpt and Youtube</span> Like Designs.</h1>
 
 
-                        <p style="font-size:1vw;" class="fs-5 text-white text-center">Master Advance concepts of CSS to create frontend designes of websites like <span style="color:#efa30e;">YouTube, Netflix and ChatGPT</span> in just 5 days! The must have bootcamp in 2024. </p>
+                        <p style="font-size:1vw;" class="fs-5 text-white text-center">Build your career In Front End or Full Stack, Start learning now to Secure a Minimum 8 LPA Package or Salary Hike Upto 87% Without Applying On Job Portals</p>
 
 
 
@@ -1323,7 +1323,7 @@ iframe{border:0;}
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l1.svg') }}" alt="">
-                                        5 Days Live <br> (Lang: English) 
+                                        5 Days Live 
                                     </div>
                                 </div>
 
@@ -1341,7 +1341,7 @@ iframe{border:0;}
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l3.svg') }}" alt="">
-                                        From {{ \Carbon\Carbon::parse($batch->startDate)->format('jS F') }}
+                                        From {{ \Carbon\Carbon::parse($batch->startDate)->format('jS M') }}
                                     </div>
                                 </div>
 
@@ -1350,7 +1350,7 @@ iframe{border:0;}
                                 <div class="card-dark">
                                     <div class="  text-white fs-6 d-flex align-items-center" style="gap:12px">
                                         <img src="{{ asset('assets/img/l4.svg') }}" alt="">
-                                        From 8 PM (IST)
+                                        From 8 PM
                                     </div>
                                 </div>
                             </div>
@@ -1360,9 +1360,7 @@ iframe{border:0;}
                                     style="border-radius: 14px" loading="lazy" alt="">
                                 <div class="text-white">
                                     <h4 class="fs-5 m-0 text-white">Ashish Shukla</h4>
-                                    <p class="small m-0 mt-1 text-white">I am a full stack developer and instructor
-                                        passionate about educating students through engaging lessons. Ex AOSPL, Lido
-                                        Learning
+                                    <p class="small m-0 mt-1 text-white">Software Engineer turned Entrepreneur. I have mentored more than 1 lakh students in the last 3.5 years. Ex Lido Learning, AOSPL 
                                     </p>
                                 </div>
                             </div>
@@ -1552,7 +1550,7 @@ iframe{border:0;}
 
                     <div class="shadow-card mt-5">
                         <div class="day">Day 5</div>
-                        <h3 class="fs-3 fw-bold">Major Project: Create YouTube Clone</h2>
+                        <h3 class="fs-3 fw-bold">Major Project: Create Instagram Clone</h2>
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Bonus: Host your project
                                 Online</div>
@@ -1907,7 +1905,7 @@ iframe{border:0;}
         </div>
     </section>
 
-    <section>
+    <section style="margin-bottom: 100px">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-8 text-centr">
@@ -2035,7 +2033,7 @@ iframe{border:0;}
                         </div>
                     </div>
 
-                    <div class="my-5 l-cta text-center">
+                    <div class="my-5 l-cta text-center " style="margin-bottom: 150px">
                         <a href="" data-bs-toggle="modal" data-bs-target="#enroll"
                             class="btn ck-btn ck-rounded btn-lg   px-5" data-bs-toggle="modal" data-bs-target="#enroll">
                             <h2 class="fs-3 mb-1 text-white fw-bold">Kickstart your webdev journey for just ₹59</h2>
