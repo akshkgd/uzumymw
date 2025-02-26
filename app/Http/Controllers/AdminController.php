@@ -759,36 +759,20 @@ class AdminController extends Controller
 
             // Set date ranges
             switch($range) {
-                case 'today':
-                    $startDate = Carbon::today();
-                    $endDate = Carbon::today()->endOfDay();
-                    // Previous day comparison
-                    $previousStartDate = Carbon::yesterday();
-                    $previousEndDate = Carbon::yesterday()->endOfDay();
-                    break;
-
-                case 'yesterday':
-                    $startDate = Carbon::yesterday();
-                    $endDate = Carbon::yesterday()->endOfDay();
-                    // Day before yesterday comparison
-                    $previousStartDate = Carbon::yesterday()->subDay();
-                    $previousEndDate = Carbon::yesterday()->subDay()->endOfDay();
-                    break;
 
                 case '7':
-                    $startDate = Carbon::now()->subDays(6)->startOfDay(); // Last 7 days including today
+                    $startDate = Carbon::now()->subDays(7)->startOfDay();
                     $endDate = Carbon::now()->endOfDay();
-                    // Previous 7 days comparison
-                    $previousStartDate = Carbon::now()->subDays(13)->startOfDay();
-                    $previousEndDate = Carbon::now()->subDays(7)->endOfDay();
-                    break;
+                    $previousStartDate = $startDate->copy()->subDays(7)->startOfDay();
+                    $previousEndDate = $endDate->copy()->subDays(7)->endOfDay();
+                break;
+
 
                 case '30':
-                    $startDate = Carbon::now()->subDays(29)->startOfDay(); // Last 30 days including today
+                    $startDate = Carbon::now()->subDays(30)->startOfDay();
                     $endDate = Carbon::now()->endOfDay();
-                    // Previous 30 days comparison
-                    $previousStartDate = Carbon::now()->subDays(59)->startOfDay();
-                    $previousEndDate = Carbon::now()->subDays(30)->endOfDay();
+                    $previousStartDate = $startDate->copy()->subDays(30)->startOfDay();
+                    $previousEndDate = $endDate->copy()->subDays(30)->endOfDay();
                     break;
 
                 case 'this_month':
@@ -824,11 +808,10 @@ class AdminController extends Controller
                     break;
 
                 case '365':
-                    $startDate = Carbon::now()->subDays(364)->startOfDay(); // Last 365 days including today
+                    $startDate = Carbon::now()->subDays(365)->startOfDay();
                     $endDate = Carbon::now()->endOfDay();
-                    // Previous year comparison
-                    $previousStartDate = Carbon::now()->subDays(729)->startOfDay();
-                    $previousEndDate = Carbon::now()->subDays(365)->endOfDay();
+                    $previousStartDate = $startDate->copy()->subDays(365)->startOfDay();
+                    $previousEndDate = $endDate->copy()->subDays(365)->endOfDay();
                     break;
 
                 case 'custom':
@@ -924,6 +907,24 @@ class AdminController extends Controller
                 ->orderBy('date')
                 ->get();
 
+            // Get previous period signups data for comparison
+            $previousSignupsData = User::where('role', 0)
+                ->whereDate('created_at', '>=', $previousStartDate)
+                ->whereDate('created_at', '<=', $previousEndDate)
+                ->selectRaw('DATE(created_at) as date, COUNT(*) as signups')
+                ->groupBy('date')
+                ->orderBy('date')
+                ->get();
+
+            // Get previous period revenue data for comparison
+            $previousRevenueData = CourseEnrollment::where('hasPaid', 1)
+                ->whereDate('paidAt', '>=', $previousStartDate)
+                ->whereDate('paidAt', '<=', $previousEndDate)
+                ->selectRaw('DATE(paidAt) as date, SUM(amountPaid)/100 as amount')
+                ->groupBy('date')
+                ->orderBy('date')
+                ->get();
+
             return response()->json([
                 'metrics' => [
                     'signups' => [
@@ -950,16 +951,22 @@ class AdminController extends Controller
                         'trend' => $learningTimeChange >= 0 ? 'up' : 'down'
                     ]
                 ],
-                'signupsEnrollments' => $signupsData->map(function($item) {
+                'signupsEnrollments' => $signupsData->map(function($item) use ($previousSignupsData) {
+                    $dateStr = Carbon::parse($item->date)->format('Y-m-d');
+                    $previousDay = $previousSignupsData->where('date', $dateStr)->first();
                     return [
                         'date' => Carbon::parse($item->date)->format('M d'),
-                        'signups' => (int)$item->signups
+                        'signups' => (int)$item->signups,
+                        'previousSignups' => $previousDay ? (int)$previousDay->signups : 0
                     ];
                 }),
-                'revenue' => $revenueData->map(function($item) {
+                'revenue' => $revenueData->map(function($item) use ($previousRevenueData) {
+                    $dateStr = Carbon::parse($item->date)->format('Y-m-d');
+                    $previousDay = $previousRevenueData->where('date', $dateStr)->first();
                     return [
                         'date' => Carbon::parse($item->date)->format('M d'),
-                        'amount' => (int)$item->amount
+                        'amount' => (int)$item->amount,
+                        'previousAmount' => $previousDay ? (int)$previousDay->amount : 0
                     ];
                 }),
                 'learningTime' => $learningTimeData->map(function($item) use ($previousLearningTimeData) {

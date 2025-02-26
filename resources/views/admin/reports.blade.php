@@ -62,14 +62,9 @@
 
     <!-- Charts -->
     <div class="grid grid-cols-1 gap-6">
-        <!-- Signups and Enrollments side by side -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-white p-6 rounded-lg border">
-                <div id="signupsChart" style="height: 400px;"></div>
-            </div>
-            <div class="bg-white p-6 rounded-lg border">
-                <div id="enrollmentsChart" style="height: 400px;"></div>
-            </div>
+        <!-- Signups chart full width -->
+        <div class="bg-white p-6 rounded-lg border">
+            <div id="signupsChart" style="height: 400px;"></div>
         </div>
         
         <!-- Revenue chart full width -->
@@ -89,7 +84,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const signupsChart = echarts.init(document.getElementById('signupsChart'));
     const revenueChart = echarts.init(document.getElementById('revenueChart'));
-    const enrollmentsChart = echarts.init(document.getElementById('enrollmentsChart'));
     const learningTimeChart = echarts.init(document.getElementById('learningTimeChart'));
     const dateRangeSelect = document.getElementById('dateRange');
     const customDateRange = document.getElementById('customDateRange');
@@ -240,36 +234,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             ]
-        });
-
-        // Enrollments Chart - Simplified approach
-        enrollmentsChart.setOption({
-            title: { 
-                text: 'Enrollments',
-                left: '20px',
-                top: '10px'
-            },
-            tooltip: {
-                trigger: 'axis'
-            },
-            xAxis: {
-                type: 'category',
-                data: data.signupsEnrollments.map(d => d.date),
-                axisLabel: {
-                    rotate: 45
-                }
-            },
-            yAxis: {
-                type: 'value'
-            },
-            series: [{
-                name: 'Enrollments',
-                type: 'bar',
-                data: data.signupsEnrollments.map(d => d.enrollments || 0),
-                itemStyle: {
-                    color: '#2dce89'
-                }
-            }]
         });
 
         // Revenue Chart

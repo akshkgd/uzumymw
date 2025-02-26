@@ -127,12 +127,11 @@ class HomeController extends Controller
 // Determine date range based on filter
 switch ($range) {
     case 'today':
-        $startDate = Carbon::today();
-        $endDate = Carbon::today();
+        $startDate = Carbon::today()->startOfDay();
+        $endDate = Carbon::today()->endOfDay();
         // Comparison to yesterday
         $previousStartDate = Carbon::yesterday()->startOfDay();
         $previousEndDate = Carbon::yesterday()->endOfDay();
-        
         break;
 
     case 'yesterday':
@@ -144,52 +143,60 @@ switch ($range) {
         break;
 
     case '7':
-        $startDate = Carbon::now()->subDays(7);
-        $endDate = Carbon::now();
-        $previousStartDate = $startDate->copy()->subDays(7);
-        $previousEndDate = $endDate->copy()->subDays(7);
+        $startDate = Carbon::now()->subDays(7)->startOfDay();
+        $endDate = Carbon::now()->endOfDay();
+        $previousStartDate = $startDate->copy()->subDays(7)->startOfDay();
+        $previousEndDate = $endDate->copy()->subDays(7)->endOfDay();
         break;
 
     case '30':
-        $startDate = Carbon::now()->subDays(30);
-        $endDate = Carbon::now();
-        $previousStartDate = $startDate->copy()->subDays(30);
-        $previousEndDate = $endDate->copy()->subDays(30);
+        $startDate = Carbon::now()->subDays(30)->startOfDay();
+        $endDate = Carbon::now()->endOfDay();
+        $previousStartDate = $startDate->copy()->subDays(30)->startOfDay();
+        $previousEndDate = $endDate->copy()->subDays(30)->endOfDay();
         break;
 
     case '365':
-        $startDate = Carbon::now()->subDays(365);
-        $endDate = Carbon::now();
-        $previousStartDate = $startDate->copy()->subDays(365);
-        $previousEndDate = $endDate->copy()->subDays(365);
+        $startDate = Carbon::now()->subDays(365)->startOfDay();
+        $endDate = Carbon::now()->endOfDay();
+        $previousStartDate = $startDate->copy()->subDays(365)->startOfDay();
+        $previousEndDate = $endDate->copy()->subDays(365)->endOfDay();
         break;
+        
+    case 'this_year':
+            $startDate = Carbon::now()->startOfYear();
+            $endDate = Carbon::now()->endOfYear();
+            // Previous year comparison
+            $previousStartDate = Carbon::now()->subYear()->startOfYear();
+            $previousEndDate = Carbon::now()->subYear()->endOfYear();
+            break;
 
     case 'this_month':
-        $startDate = Carbon::now()->startOfMonth();
-        $endDate = Carbon::now()->endOfMonth();
-        $previousStartDate = $startDate->copy()->subMonth()->startOfMonth();
-        $previousEndDate = $startDate->copy()->subMonth()->endOfMonth();
+        $startDate = Carbon::now()->startOfMonth()->startOfDay();
+        $endDate = Carbon::now()->endOfMonth()->endOfDay();
+        $previousStartDate = $startDate->copy()->subMonth()->startOfMonth()->startOfDay();
+        $previousEndDate = $startDate->copy()->subMonth()->endOfMonth()->endOfDay();
         break;
 
     case 'last_month':
-        $startDate = Carbon::now()->subMonth()->startOfMonth();
-        $endDate = Carbon::now()->subMonth()->endOfMonth();
-        $previousStartDate = $startDate->copy()->subMonth()->startOfMonth();
-        $previousEndDate = $startDate->copy()->subMonth()->endOfMonth();
+        $startDate = Carbon::now()->subMonth()->startOfMonth()->startOfDay();
+        $endDate = Carbon::now()->subMonth()->endOfMonth()->endOfDay();
+        $previousStartDate = $startDate->copy()->subMonth()->startOfMonth()->startOfDay();
+        $previousEndDate = $startDate->copy()->subMonth()->endOfMonth()->endOfDay();
         break;
 
     case 'last_3_months':
-        $startDate = Carbon::now()->subMonths(3)->startOfMonth();
-        $endDate = Carbon::now()->endOfMonth();
-        $previousStartDate = $startDate->copy()->subMonths(3)->startOfMonth();
-        $previousEndDate = $startDate->copy()->subMonths(3)->endOfMonth();
+        $startDate = Carbon::now()->subMonths(3)->startOfMonth()->startOfDay();
+        $endDate = Carbon::now()->endOfMonth()->endOfDay();
+        $previousStartDate = $startDate->copy()->subMonths(3)->startOfMonth()->startOfDay();
+        $previousEndDate = $startDate->copy()->subMonths(3)->endOfMonth()->endOfDay();
         break;
 
     default:
-        $startDate = Carbon::now()->subDays(7); // Default to last 7 days
-        $endDate = Carbon::now();
-        $previousStartDate = $startDate->copy()->subDays(7);
-        $previousEndDate = $endDate->copy()->subDays(7);
+        $startDate = Carbon::now()->subDays(7)->startOfDay(); // Default to last 7 days
+        $endDate = Carbon::now()->endOfDay();
+        $previousStartDate = $startDate->copy()->subDays(7)->startOfDay();
+        $previousEndDate = $endDate->copy()->subDays(7)->endOfDay();
         break;
 }
 
