@@ -40,19 +40,16 @@ class CourseEnrollmentObserver
         // If payment status changed
         if ($courseEnrollment->isDirty('hasPaid')) {
             if ($courseEnrollment->hasPaid == 1) {
-                // Payment successful - send notification
                 $this->sendEnrollmentNotification($courseEnrollment);
+                
+                
             } else if ($courseEnrollment->hasPaid == 0) {
                 // Payment status changed to unpaid - reset email_sent flag
                 // Use direct database update to avoid triggering observer again
                 CourseEnrollment::where('id', $courseEnrollment->id)
                     ->update(['email_sent' => false]);
                 
-                Log::info('Reset email_sent flag due to payment status change', [
-                    'enrollment_id' => $courseEnrollment->id,
-                    'hasPaid' => $courseEnrollment->hasPaid,
-                    'email_sent' => false
-                ]);
+                
             }
         }
     }
