@@ -753,7 +753,7 @@ class AdminController extends Controller
     public function getReportsData(Request $request)
     {
         try {
-            $range = $request->input('range', '365');
+            $range = $request->input('range', '7');
             $endDate = Carbon::now();
             $startDate = Carbon::now();
 
@@ -761,59 +761,131 @@ class AdminController extends Controller
             switch($range) {
                 case 'today':
                     $startDate = Carbon::today();
+                    $endDate = Carbon::today()->endOfDay();
+                    // Previous day comparison
+                    $previousStartDate = Carbon::yesterday();
+                    $previousEndDate = Carbon::yesterday()->endOfDay();
                     break;
+
                 case 'yesterday':
                     $startDate = Carbon::yesterday();
                     $endDate = Carbon::yesterday()->endOfDay();
+                    // Day before yesterday comparison
+                    $previousStartDate = Carbon::yesterday()->subDay();
+                    $previousEndDate = Carbon::yesterday()->subDay()->endOfDay();
                     break;
+
                 case '7':
-                    $startDate = Carbon::now()->subDays(7);
+                    $startDate = Carbon::now()->subDays(6)->startOfDay(); // Last 7 days including today
+                    $endDate = Carbon::now()->endOfDay();
+                    // Previous 7 days comparison
+                    $previousStartDate = Carbon::now()->subDays(13)->startOfDay();
+                    $previousEndDate = Carbon::now()->subDays(7)->endOfDay();
                     break;
+
                 case '30':
-                    $startDate = Carbon::now()->subDays(30);
+                    $startDate = Carbon::now()->subDays(29)->startOfDay(); // Last 30 days including today
+                    $endDate = Carbon::now()->endOfDay();
+                    // Previous 30 days comparison
+                    $previousStartDate = Carbon::now()->subDays(59)->startOfDay();
+                    $previousEndDate = Carbon::now()->subDays(30)->endOfDay();
                     break;
+
                 case 'this_month':
                     $startDate = Carbon::now()->startOfMonth();
+                    $endDate = Carbon::now()->endOfMonth();
+                    // Previous month comparison
+                    $previousStartDate = Carbon::now()->subMonth()->startOfMonth();
+                    $previousEndDate = Carbon::now()->subMonth()->endOfMonth();
                     break;
+
                 case 'last_month':
                     $startDate = Carbon::now()->subMonth()->startOfMonth();
                     $endDate = Carbon::now()->subMonth()->endOfMonth();
+                    // Month before last month comparison
+                    $previousStartDate = Carbon::now()->subMonths(2)->startOfMonth();
+                    $previousEndDate = Carbon::now()->subMonths(2)->endOfMonth();
                     break;
+
                 case '90':
-                    $startDate = Carbon::now()->subDays(90);
+                    $startDate = Carbon::now()->subDays(89)->startOfDay(); // Last 90 days including today
+                    $endDate = Carbon::now()->endOfDay();
+                    // Previous 90 days comparison
+                    $previousStartDate = Carbon::now()->subDays(179)->startOfDay();
+                    $previousEndDate = Carbon::now()->subDays(90)->endOfDay();
                     break;
+
+                case 'this_year':
+                    $startDate = Carbon::now()->startOfYear();
+                    $endDate = Carbon::now()->endOfYear();
+                    // Previous year comparison
+                    $previousStartDate = Carbon::now()->subYear()->startOfYear();
+                    $previousEndDate = Carbon::now()->subYear()->endOfYear();
+                    break;
+
                 case '365':
-                    $startDate = Carbon::now()->subYear();
+                    $startDate = Carbon::now()->subDays(364)->startOfDay(); // Last 365 days including today
+                    $endDate = Carbon::now()->endOfDay();
+                    // Previous year comparison
+                    $previousStartDate = Carbon::now()->subDays(729)->startOfDay();
+                    $previousEndDate = Carbon::now()->subDays(365)->endOfDay();
+                    break;
+
+                case 'custom':
+                    $startDate = Carbon::parse($request->input('start_date'))->startOfDay();
+                    $endDate = Carbon::parse($request->input('end_date'))->endOfDay();
+                    // Calculate previous period of same length
+                    $daysDiff = $startDate->diffInDays($endDate);
+                    $previousStartDate = $startDate->copy()->subDays($daysDiff + 1)->startOfDay();
+                    $previousEndDate = $endDate->copy()->subDays($daysDiff + 1)->endOfDay();
+                    break;
+
+                default:
+                    $startDate = Carbon::now()->subDays(6)->startOfDay(); // Default to last 7 days
+                    $endDate = Carbon::now()->endOfDay();
+                    // Previous 7 days comparison
+                    $previousStartDate = Carbon::now()->subDays(13)->startOfDay();
+                    $previousEndDate = Carbon::now()->subDays(7)->endOfDay();
                     break;
             }
 
             // Get signups data
-            $currentSignups = User::where('role', 0)
-                                 ->whereBetween('created_at', [$startDate, $endDate])
-                                 ->count();
-            $previousSignups = User::where('role', 0)
-                                  ->whereBetween('created_at', [$startDate->copy()->subDays($startDate->diffInDays($endDate)), $startDate])
-                                  ->count();
+            $currentSignups = User::whereDate('created_at', '>=', $startDate)
+            ->whereDate('created_at', '<=', $endDate)
+            ->count();
+            $previousSignups = User::whereDate('created_at', '>=', $previousStartDate)
+            ->whereDate('created_at', '<=', $previousEndDate)
+            ->count();
 
             // Get enrollments data
-            $currentEnrollments = CourseEnrollment::whereBetween('created_at', [$startDate, $endDate])
-                                                 ->count();
-            $previousEnrollments = CourseEnrollment::whereBetween('created_at', [$startDate->copy()->subDays($startDate->diffInDays($endDate)), $startDate])
-                                                  ->count();
+            $currentEnrollments = CourseEnrollment::where('hasPaid', 1)
+            ->whereDate('paidAt', '>=', $startDate)
+            ->whereDate('paidAt', '<=', $endDate)
+            ->count();
+            $previousEnrollments = CourseEnrollment::where('hasPaid', 1)
+            ->whereDate('paidAt', '>=', $previousStartDate)
+            ->whereDate('paidAt', '<=', $previousEndDate)
+            ->count();
+        
 
             // Get revenue data
-            $currentRevenue = CourseEnrollment::whereBetween('created_at', [$startDate, $endDate])
-                                             ->where('hasPaid', 1)
-                                             ->sum('amountPaid') / 100;
-            $previousRevenue = CourseEnrollment::whereBetween('created_at', [$startDate->copy()->subDays($startDate->diffInDays($endDate)), $startDate])
-                                                  ->where('hasPaid', 1)
-                                                  ->sum('amountPaid') / 100;
+            $currentRevenue = CourseEnrollment::where('hasPaid', 1)
+                ->whereDate('paidAt', '>=', $startDate)
+                ->whereDate('paidAt', '<=', $endDate)
+                ->sum('amountPaid') / 100; // Convert paisa to rupees
+
+            $previousRevenue = CourseEnrollment::where('hasPaid', 1)
+                ->whereDate('paidAt', '>=', $previousStartDate)
+                ->whereDate('paidAt', '<=', $previousEndDate)
+                ->sum('amountPaid') / 100;
 
             // Get learning time data
-            $currentLearningTime = CourseProgress::whereBetween('created_at', [$startDate, $endDate])
-                                                ->sum('timeSpent') / 3600;
-            $previousLearningTime = CourseProgress::whereBetween('created_at', [$startDate->copy()->subDays($startDate->diffInDays($endDate)), $startDate])
-                                                 ->sum('timeSpent') / 3600;
+            $currentLearningTime = CourseProgress::whereDate('firstAccess', '>=', $startDate)
+            ->whereDate('firstAccess', '<=', $endDate)
+            ->sum('timeSpent') / 60;
+            $previousLearningTime = CourseProgress::whereDate('firstAccess', '>=', $previousStartDate)
+            ->whereDate('firstAccess', '<=', $previousEndDate)
+            ->sum('timeSpent') / 60;
 
             // Calculate changes
             $signupsChange = $previousSignups > 0 ? (($currentSignups - $previousSignups) / $previousSignups) * 100 : 0;
@@ -829,9 +901,25 @@ class AdminController extends Controller
                 ->orderBy('date')
                 ->get();
 
-            $revenueData = CourseEnrollment::whereBetween('created_at', [$startDate, $endDate])
-                ->where('hasPaid', 1)
-                ->selectRaw('DATE(created_at) as date, SUM(amountPaid)/100 as amount')
+            $revenueData = CourseEnrollment::where('hasPaid', 1)
+                ->whereDate('paidAt', '>=', $startDate)
+                ->whereDate('paidAt', '<=', $endDate)
+                ->selectRaw('DATE(paidAt) as date, SUM(amountPaid)/100 as amount')
+                ->groupBy('date')
+                ->orderBy('date')
+                ->get();
+
+            // Get learning time data by date
+            $learningTimeData = CourseProgress::whereDate('firstAccess', '>=', $startDate)
+                ->whereDate('firstAccess', '<=', $endDate)
+                ->selectRaw('DATE(firstAccess) as date, SUM(timeSpent)/60 as hours')
+                ->groupBy('date')
+                ->orderBy('date')
+                ->get();
+
+            $previousLearningTimeData = CourseProgress::whereDate('firstAccess', '>=', $previousStartDate)
+                ->whereDate('firstAccess', '<=', $previousEndDate)
+                ->selectRaw('DATE(firstAccess) as date, SUM(timeSpent)/60 as hours')
                 ->groupBy('date')
                 ->orderBy('date')
                 ->get();
@@ -872,6 +960,14 @@ class AdminController extends Controller
                     return [
                         'date' => Carbon::parse($item->date)->format('M d'),
                         'amount' => (int)$item->amount
+                    ];
+                }),
+                'learningTime' => $learningTimeData->map(function($item) use ($previousLearningTimeData) {
+                    $previousDay = $previousLearningTimeData->where('date', $item->date)->first();
+                    return [
+                        'date' => Carbon::parse($item->date)->format('M d'),
+                        'hours' => round($item->hours),
+                        'previousHours' => $previousDay ? round($previousDay->hours) : 0
                     ];
                 })
             ]);
