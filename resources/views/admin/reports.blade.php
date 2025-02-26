@@ -21,7 +21,7 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
         <div class="bg-white border rounded-lg  px-6 py-3">
             <h3 class="text-gray-700">New Signups</h3>
-            <p class="text-3 font-bold "><span id="signupsCount">0</span> users</p>
+            <p class="text-3x font-bold "><span id="signupsCount">0</span> users</p>
             <p class="" id="signupsTrend"></p>
         </div>
         <div class="bg-white rounded-lg border px-6 py-3">
@@ -76,25 +76,49 @@ document.addEventListener('DOMContentLoaded', function() {
         signupsChart.setOption({
             title: { 
                 text: 'Signups Comparison',
-                left: 'center'
+                left: '20px',
+                top: '10px'
             },
             tooltip: {
+                show: true,
                 trigger: 'axis',
-                axisPointer: {
-                    type: 'border'
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderColor: '#ccc',
+                borderWidth: 1,
+                textStyle: {
+                    color: '#333'
+                },
+                formatter: function(params) {
+                    let result = `${params[0].axisValue}<br/>`;
+                    params.forEach(param => {
+                        result += `${param.seriesName}: ${param.value}<br/>`;
+                    });
+                    return result;
                 }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '15%',
+                top: '15%',
+                containLabel: true
             },
             legend: {
                 data: ['Current Period', 'Previous Period'],
-                top: '30px'
+                bottom: '5px'
             },
             xAxis: {
                 type: 'category',
-                data: data.signupsEnrollments.map(d => d.date)
+                data: data.signupsEnrollments.map(d => d.date),
+                axisLabel: {
+                    rotate: 45
+                }
             },
             yAxis: {
                 type: 'value',
-                name: 'Number of Signups'
+                name: 'Number of Signups',
+                nameLocation: 'middle',
+                nameGap: 50
             },
             series: [
                 {
@@ -102,7 +126,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     type: 'line',
                     data: data.signupsEnrollments.map(d => d.signups),
                     smooth: true,
-                    showSymbol: false,
+                    symbol: 'circle',
+                    symbolSize: 8,
                     itemStyle: {
                         color: '#5e72e4'
                     },
@@ -118,7 +143,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     type: 'line',
                     data: data.signupsEnrollments.map(d => d.previousSignups || 0),
                     smooth: true,
-                    showSymbol: false,
+                    symbol: 'circle',
+                    symbolSize: 8,
                     itemStyle: {
                         color: '#adb5bd'
                     },
@@ -136,33 +162,49 @@ document.addEventListener('DOMContentLoaded', function() {
         revenueChart.setOption({
             title: { 
                 text: 'Revenue Comparison',
-                left: 'left',
-                
+                left: '20px',
+                top: '10px'
             },
             tooltip: {
+                show: true,
                 trigger: 'axis',
-                axisPointer: {
-                    type: 'border'
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                borderColor: '#ccc',
+                borderWidth: 1,
+                textStyle: {
+                    color: '#333'
                 },
                 formatter: function(params) {
-                    return params.map(param => {
-                        return `${param.seriesName}: ₹${param.value}`
-                    }).join('<br>');
+                    let result = `${params[0].axisValue}<br/>`;
+                    params.forEach(param => {
+                        result += `${param.seriesName}: ₹${param.value}<br/>`;
+                    });
+                    return result;
                 }
+            },
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '15%',
+                top: '15%',
+                containLabel: true
             },
             legend: {
                 data: ['Current Period', 'Previous Period'],
-                top: '30px',
-                left: 'left',
-                
+                bottom: '5px'
             },
             xAxis: {
                 type: 'category',
-                data: data.revenue.map(d => d.date)
+                data: data.revenue.map(d => d.date),
+                axisLabel: {
+                    rotate: 45
+                }
             },
             yAxis: {
                 type: 'value',
                 name: '',
+                nameLocation: 'middle',
+                nameGap: 50,
                 axisLabel: {
                     formatter: '₹{value}'
                 }
@@ -173,7 +215,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     type: 'line',
                     data: data.revenue.map(d => d.amount),
                     smooth: true,
-                    showSymbol: false,
+                    symbol: 'circle',
+                    symbolSize: 8,
                     itemStyle: {
                         color: '#2dce89'
                     },
@@ -189,7 +232,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     type: 'line',
                     data: data.revenue.map(d => d.previousAmount || 0),
                     smooth: true,
-                    showSymbol: false,
+                    symbol: 'circle',
+                    symbolSize: 8,
                     itemStyle: {
                         color: '#adb5bd'
                     },
