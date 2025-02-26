@@ -23,7 +23,7 @@
                                 }}!</span>
                         </h2>
                         <p class="text-neutral-500 -mt-1">Welcome to your dashboard, here you will find the enrolled courses.</p>
-                    
+                        {{-- <a href="" class="">All Enrolled Courses</a> --}}
                     <div class="mt-8 flex flex-wrap gap-8">
                         @foreach ($enrollments as $enrollment)
                             
@@ -89,14 +89,16 @@
                         @if(isset($showPromotion) && $showPromotion)
                         
                             @if(Auth::user()->college == 'professional')
-                            <div class="sm:w-72 hover:cursor-pointer hover:rotate-1 transition-all" onclick="window.location.href='https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish'">
+                            <div class="sm:w-72 hover:cursor-pointer hover:rotate-1 transition-all" 
+                                 onclick="window.dispatchEvent(new CustomEvent('open-mentorship-modal'))">
                                 <img src="{{asset('assets/img/intensive.webp')}}" alt="" class="rounded-2xl filter grayscale hover:grayscale-0 transition-all">
                                 <h2 class="mt-2 text-md">Want to upskill?</h2>
                                 <h2 class=" text-md">Apply for 1:1 Mentorship</h2>
                             </div>
                             @else
                             <div class="flex gap-8 flex-wrap">
-                              <div class="sm:w-72 hover:cursor-pointer hover:rotate-1 transition-all" onclick="window.location.href='https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish'">
+                              <div class="sm:w-72 hover:cursor-pointer hover:rotate-1 transition-all" 
+                                   onclick="window.dispatchEvent(new CustomEvent('open-mentorship-modal'))">
                                 <img src="{{asset('assets/img/intensive.webp')}}" alt="" class="rounded-2xl filter grayscale hover:grayscale-0 transition-all">
                                 <h2 class="mt-2 text-md">Looking for career growth?</h2>
                                 <h2 class=" text-md">Apply for 1:1 Mentorship</h2>
@@ -201,40 +203,6 @@
                   </div>
                 </div>
               </div> -->
-
-    <!-- Invoice Card  -->
-    <!-- <div class="mt-4 px-4">
-                <div
-                  class="sm:w-[650px] p-4 w-full mx-auto border border-gray-200 rounded-2xl"
-                >
-                  <div class="grid grid-cols-2">
-                    <div class="justify-self-start">
-                      <div class="flex-auto">
-                        <p class="text-2xl font-medium leading-6 text-gray-900">
-                          How to CSS
-                        </p>
-                      </div>
-      
-                      <div class="flex flex-col sm:flex-row gap-x-4 my-2">
-                        <p class="text-xl items-center">₹ 17,999</p>
-                        <span class="hidden md:block text-2xl items-center"
-                          >&centerdot;</span
-                        >
-                        <p class="flex text-md text-gray-500 items-center">
-                          17th Nov 2023
-                        </p>
-                      </div>
-                    </div>
-                    <div class="justify-self-end">
-                      <a
-                        class="text-gray-700 hover:text-gray-900 cursor-pointer"
-                        href=""
-                        >Get Quote &nearr;</a
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div> -->
     </div>
     </main>
 
@@ -299,5 +267,116 @@
 
 
 
+
+
+
+<!-- Alpine.js Modal Component -->
+<div x-data="{ 
+    open: false
+}" 
+    x-init="
+        window.addEventListener('open-mentorship-modal', () => { open = true; });
+    "
+    x-show="open" 
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+    class="fixed inset-0 z-50 overflow-y-auto" 
+    style="display: none;"
+    @keydown.escape.window="open = false">
+    
+    <!-- Overlay -->
+    <div class="fixed z-10 inset-0 bg-black bg-opacity-50" @click="open = false"></div>
+    
+    <!-- Modal -->
+    <div class="relative min-h-screen flex items-center justify-center p-4 z-[300]">
+        <div class="relative bg-white rounded-xl max-w-md w-full p-6 overflow-hidden shado"
+             @click.away="open = false"
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 transform scale-95"
+             x-transition:enter-end="opacity-100 transform scale-100"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 transform scale-100"
+             x-transition:leave-end="opacity-0 transform scale-95">
+            
+            <!-- Close button -->
+            <button @click="open = false" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <!-- Modal content -->
+            <div class="text-center">
+                {{-- <img src="{{asset('assets/img/intensive.webp')}}" alt="1:1 Mentorship" class="mx-auto rounded-xl mb-4 w-32"> --}}
+                <h3 class="text-xl font-bold mb-2">Frontend Launchpad</h3>
+                <p class="text-gray-600 mb-4">Get personalized guidance from industry experts to accelerate your tech career.</p>
+                
+                <div class="space-y-3 text-left mb-6">
+                  <div class="flex items-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Onboarding call</span>
+                </div>
+                    <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <span>Personalized learning path</span>
+                    </div>
+                    <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <span>1:1 Doubt Solving</span>
+                    </div>
+                    <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <span>Code review & Detailed Feedbacks</span>
+                    </div>
+                    <div class="flex items-start">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                        </svg>
+                        <span>Interview preparation</span>
+                    </div>
+                    <div class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                      </svg>
+                      <span>Machine Coding Round</span>
+                  </div>
+                  <div class="flex items-start">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                    </svg>
+                    <span>Resume & LinkedIn Optimization</span>
+                </div>
+                <div class="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+                  <span>Job Referrals</span>
+              </div>
+                </div>
+                
+                <a href="https://cal.com/ashish-shukla-ye5ege/onboarding-process-with-ashish" 
+                   target="_blank"
+                   class="inline-flex w-full justify-center items-center px-5 py-3 border border-transparent text-base font-mediu rounded-xl text-white bg-black hover:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
+                    Apply for the Frontend Intensive
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Make sure Alpine.js is included -->
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 @endsection

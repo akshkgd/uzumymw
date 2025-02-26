@@ -3,30 +3,34 @@
 
 <header
       id="sticky-header"
-      class="fixed top-0 z-[60] flex items-center justify-center w-full h-16 duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-400 border-opacity-20"
+      class="fixed top-0 z-[60] h-14 flex items-center justify-center w-full duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-300 border-opacity-40"
     >
       <div
-        class="flex items-center justify-between w-full px-4 mx-auto 2xl:px-0 max-w-5xl"
+        class="flex items-center justify-between w-full px-4  mx-auto 2xl:px-0 max-w-6xl py-1"
       >
         <div
           class="relative z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left"
         >
           <a
             href="{{url('/home')}}"
-            class="inline-flex sm:mr-8 items-end font-sans text-2xl font-extrabold text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
+            class="inline-flex sm:mr-8 items-end font-sans text-lg flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
           >
-          <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round" style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16" aria-label="Vercel logo"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg>
+          {{-- <div class="font-bold text-neutral-700 text-xl">Codekaro</div> --}}
+          {{-- <img style="height: 18px" src="https://app.cal.com/api/logo" alt=""> --}}
+          <svg class=" rotate-90" fill="black" width="24" height="24" viewBox="0 0 32 32" version="1.1" aria-labelledby="codekaro-home" aria-hidden="false" style="flex-shrink:0"><desc lang="en-US">Unsplash logo</desc><title id="codekaro">Codekaro</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg>
+           
+          {{-- <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round" style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16" aria-label="Vercel logo"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg> --}}
+          {{-- <span class="font-bold text-xl text-neutral-900 font-geist">Codekaro</span> --}}
           </a>
-          
-        </div>
-
-        <div class="relative">
+          <nav
+            class="items-center hidden space-x-5 text-sm font-medium lg:flex"
+          >
             
-          <a href="{{url('/home')}}" class="btn border px-4 py-3 rounded-lg text-sm">Back to Dashboard</a>
-              </div>
-            </div>
-          </div>
+            
+          </nav>
         </div>
+        
+        <a href="{{url('/home')}}" class="btn border px-4 py-3 rounded-lg text-sm">Back to Dashboard</a>
       </div>
     </header>
 

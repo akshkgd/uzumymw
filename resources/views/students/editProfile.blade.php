@@ -1,4 +1,8 @@
 @extends('layouts.t-student')
+
+@section('title', 'Account Settings - Codekaro')
+@section('meta_description', 'Update your personal information and account settings.')
+
 @section('content')
 @include('layouts.t-student-nav')
 
@@ -6,7 +10,7 @@
 {{-- @include('layouts.ck-header') --}}
   
 <main
-      class="mt-32 flex flex-col justify-center align-middle px-6 py-12 lg:px-8"
+      class="mt-16 flex flex-col justify-center align-middle px-6 py-12 lg:px-8"
     >
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
         @if(session('alert-success'))
@@ -22,9 +26,8 @@
         <span class="block sm:inline text-small">{{ session('alert-danger') }}</span>
     </div>
 @endif
-        <h2 class="text-2xl font-bold leading-9 tracking-tight text-gray-900">
-          Hey {{Auth::user()->name}}, Complete your profile!
-        </h2>
+        <h2 class="text-xl font-semibold leading-9 tracking-tight text-gray-900">Your Profile</h2>
+        <p class="-mt-2 text-neutral-700">Manage or update your Profile!</p>
       </div>
 
       <div class="mt-2 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -91,7 +94,7 @@
                 type="submit"
                 class="inline-flex items-center justify-center px-4 py-3 text-sm font-normal tracking-wide text-white transition-colors duration-200 rounded-lg bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none"
               >
-                Save changes
+                Update Profile
               </button>
             </div>
           </div>

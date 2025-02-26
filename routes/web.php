@@ -157,7 +157,7 @@ Route::get('/workshop-enroll/{id}', 'WorkshopEnrollmentController@checkEnroll')-
 Route::get('/checkout/{id}', 'CourseEnrollmentController@checkout');
 Route::post('payment', 'CourseEnrollmentController@payment')->name('payment');
 Route::get('invoice/{id}', 'CourseEnrollmentController@invoice');
-Route::get('/my-course', 'CourseEnrollmentController@myCourse');
+// Route::get('/my-course', 'CourseEnrollmentController@myCourse');
 Route::get('/batch/{id}', 'BatchController@batchDetails')->name('details');
 Route::get('/workshop/{id}', 'WorkshopController@details');
 Route::get('/workshop-details/{id}', 'WorkshopController@workshopDetails');

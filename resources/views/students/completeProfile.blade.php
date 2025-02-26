@@ -1,4 +1,6 @@
 @extends('layouts.t-student')
+@section('title', 'Complete Profile - Codekaro')
+@section('meta_description', 'Complete your profile to see all your courses and upcoming classes.')
 @section('content')
 @include('layouts.t-student-nav')
 
