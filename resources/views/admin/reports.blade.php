@@ -19,34 +19,34 @@
 
     <!-- Metrics -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white border rounded-lg  px-6 py-3">
             <h3 class="text-gray-700">New Signups</h3>
-            <p class="text-3xl font-bold mt-2"><span id="signupsCount">0</span> users</p>
-            <p class="mt-2" id="signupsTrend"></p>
+            <p class="text-3 font-bold "><span id="signupsCount">0</span> users</p>
+            <p class="" id="signupsTrend"></p>
         </div>
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg border px-6 py-3">
             <h3 class="text-gray-700">New Enrollments</h3>
-            <p class="text-3xl font-bold mt-2"><span id="enrollmentsCount">0</span></p>
-            <p class="mt-2" id="enrollmentsTrend"></p>
+            <p class="text-3 font-bold"><span id="enrollmentsCount">0</span></p>
+            <p class="" id="enrollmentsTrend"></p>
         </div>
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg border px-6 py-3">
             <h3 class="text-gray-700">Revenue</h3>
-            <p class="text-3xl font-bold mt-2">₹<span id="revenueCount">0</span></p>
-            <p class="mt-2" id="revenueTrend"></p>
+            <p class="text-l font-bold ">₹<span id="revenueCount">0</span></p>
+            <p class="" id="revenueTrend"></p>
         </div>
-        <div class="bg-white rounded-lg shadow p-6">
+        <div class="bg-white rounded-lg border px-6 py-3">
             <h3 class="text-gray-700">Learning Time</h3>
-            <p class="text-3xl font-bold mt-2"><span id="learningTimeCount">0</span> Hrs</p>
-            <p class="mt-2" id="learningTimeTrend"></p>
+            <p class="text-3x font-bold mt-"><span id="learningTimeCount">0</span> Hrs</p>
+            <p class="mt-" id="learningTimeTrend"></p>
         </div>
     </div>
 
     <!-- Charts -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white p-6 rounded-lg shadow">
+        <div class="bg-white p-6 rounded-lg border">
             <div id="signupsChart" style="height: 400px;"></div>
         </div>
-        <div class="bg-white p-6 rounded-lg shadow">
+        <div class="bg-white p-6 rounded-lg border">
             <div id="revenueChart" style="height: 400px;"></div>
         </div>
     </div>
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
-                    type: 'shadow'
+                    type: 'border'
                 }
             },
             legend: {
@@ -136,12 +136,13 @@ document.addEventListener('DOMContentLoaded', function() {
         revenueChart.setOption({
             title: { 
                 text: 'Revenue Comparison',
-                left: 'center'
+                left: 'left',
+                
             },
             tooltip: {
                 trigger: 'axis',
                 axisPointer: {
-                    type: 'shadow'
+                    type: 'border'
                 },
                 formatter: function(params) {
                     return params.map(param => {
@@ -151,7 +152,9 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             legend: {
                 data: ['Current Period', 'Previous Period'],
-                top: '30px'
+                top: '30px',
+                left: 'left',
+                
             },
             xAxis: {
                 type: 'category',
@@ -159,7 +162,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             yAxis: {
                 type: 'value',
-                name: 'Revenue (₹)',
+                name: '',
                 axisLabel: {
                     formatter: '₹{value}'
                 }
