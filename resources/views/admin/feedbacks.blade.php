@@ -6,8 +6,8 @@
         <p class="text-neutral-600">Review, approve, or remove student feedback</p>
     </div>
 
-    <div class="mb-6" id="alert-container">
-        @include('layouts.alert')
+    <div class="mb-6" id="alert-containe">
+        @include('layouts.t-alert')
     </div>
 
     <div class="bg-white border rounded-lg overflow-hidden">
