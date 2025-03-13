@@ -1,6 +1,31 @@
-@extends ('layouts.t-student')
-@section ('content')
+<!DOCTYPE html>
+<html class="h-full bg-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Read authentic reviews from 32,000+ satisfied Codekaro students. Discover how our courses have helped students transform their careers and coding skills.">
+    <meta name="keywords" content="codekaro reviews, codekaro feedback, codekaro student testimonials, coding bootcamp reviews, learn coding reviews, programming course feedback, codekaro student experiences">
+    <title>Student Reviews & Feedback | Codekaro - Real Learning Experiences</title>
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:title" content="Student Reviews & Feedback | Codekaro - Real Learning Experiences">
+<meta property="og:description" content="Read authentic reviews from 32,000+ satisfied Codekaro students. Discover how our courses have helped students transform their careers and coding skills.">
+<meta property="og:image" content="{{ asset('images/codekaro-reviews-banner.jpg') }}">
 
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="{{ url()->current() }}">
+<meta property="twitter:title" content="Student Reviews & Feedback | Codekaro - Real Learning Experiences">
+<meta property="twitter:description" content="Read authentic reviews from 32,000+ satisfied Codekaro students. Discover how our courses have helped students transform their careers and coding skills.">
+<meta property="twitter:image" content="{{ asset('images/codekaro-reviews-banner.jpg') }}">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="{{ url('/reviews') }}">
+<link href="{{asset('css/app.css')}}" rel="stylesheet" />
+</head>
+<body>
 
 <div class="max-w-5xl 2xl:max-w-7xl mx-auto mt-32 mb-12">
     <div class="my-8 text-center">
@@ -29,40 +54,5 @@
 
 
 
-
-
-
-<section class="mt-0 hidden">
-    <div class="container">
-        <div class="row mb-5 justify-content-center">
-            <div class="col-xl-8 col-lg-9 text-center">
-                <h2 class="display-5 mx-xl-8 ">Hear more from people like you</h2>
-                <p class="lead">
-                    Here's what satisfied 9000+  students have to say about learning with codekaro.
-                </p>
-            </div>
-        </div>
-        <div class="row" data-isotope-collection data-ignore-hash="true">
-            @foreach($feedbacks as $feedback)
-            <div class="col-sm-6 col-lg-4" data-isotope-item>
-                <div class="card card-body">
-                    <div class="flex-grow-1 mb-3">
-                        <p class="lead">
-                            {{$feedback->feedback}}
-                        </p>
-                    </div>
-                    <div class="avatar-author align-items-center">
-                        <img src="{{$feedback->user->avatar}}" alt="{{$feedback->user->name}}" class="avatar">
-            
-                        <div class="ml-2">
-                            <h6>{{$feedback->user->name}}</h6>
-                            <span class="small">{{$feedback->user->college}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-</section>
-@endsection
+</body>
+</html>
