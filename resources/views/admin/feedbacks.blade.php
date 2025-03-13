@@ -25,11 +25,11 @@
                 @foreach($feedbacks as $feedback)
                 <tr class="hover:bg-neutral-50 transition-all duration-300" id="feedback-row-{{ $feedback->id }}">
                     <td class="px-6 py-3 whitespace-nowrap">
-                        <div class="flex items-center max-w-48 truncate">
+                        <div class="flex items-center ">
                             <div class="flex-shrink-0 h-10 w-10">
                                 <img class="h-10 w-10 rounded-full" src="{{ $feedback->user->avatar }}" alt="{{ $feedback->user->name }}">
                             </div>
-                            <div class="ml-4">
+                            <div class="ml-4 max-w-56 truncate">
                                 <div class="text-sm font-medium text-gray-900">{{ $feedback->user->name }}</div>
                                 <div class="text-sm text-neutral-600">{{ $feedback->user->college }}</div>
                             </div>
