@@ -46,7 +46,7 @@ Route::view('/web-development-masterclass','instawd');
 Route::view('/python-masterclass','python');
 Route::view('/web-development-bootcamp','wdm');
 Route::view('/wdt','wdt');
-Route::view('/love','love');
+// Route::view('/love','love');
 Route::view('/teach','teach');
 // Route::view('/how-to-css','css');
 Route::view('/start-css','css1');
@@ -72,9 +72,9 @@ Route::view('/c','students/certificatePdf');
 // Route::view('/start-react','react');
 // Route::view('/react-success','/students/reactSuccess');
 
-Route::get('/l', function () {
-    $feedbacks = Feedback::all()->where('status',0);
-    return view('l',compact('feedbacks'));
+Route::get('/reviews', function () {
+    $feedbacks = Feedback::where('status', 0)->latest()->paginate(200);
+    return view('l', compact('feedbacks'));
 });
 Route::get('/i', function () {
     $enrollment = CourseEnrollment::first();
