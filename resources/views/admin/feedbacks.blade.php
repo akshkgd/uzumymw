@@ -23,7 +23,7 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
                 @foreach($feedbacks as $feedback)
-                @if($feedback->status == 1)
+                @if($feedback->status == 0)
                 <tr class="hover:bg-neutral-50 transition-all duration-300" id="feedback-row-{{ $feedback->id }}">
                     <td class="px-6 py-3 whitespace-nowrap">
                         <div class="flex items-center ">
