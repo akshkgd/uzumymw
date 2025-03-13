@@ -204,17 +204,37 @@ class AdminController extends Controller
     }
     public function removeFeedback($id)
     {
-        $feedback  = Feedback::findorFail($id);
+        $feedback = Feedback::findorFail($id);
         $feedback->status = 1;
         $feedback->save();
+        
+        // Check if it's an AJAX request
+        if (request()->ajax() || request()->wantsJson() || request()->header('X-Requested-With') == 'XMLHttpRequest') {
+            return response()->json([
+                'success' => true,
+                'message' => 'Feedback Removed!'
+            ]);
+        }
+        
+        // For regular requests
         session()->flash('alert-success', 'Feedback Removed!');
         return redirect()->back();
     }
     public function addFeedback($id)
     {
-        $feedback  = Feedback::findorFail($id);
+        $feedback = Feedback::findorFail($id);
         $feedback->status = 0;
         $feedback->save();
+        
+        // Check if it's an AJAX request
+        if (request()->ajax() || request()->wantsJson() || request()->header('X-Requested-With') == 'XMLHttpRequest') {
+            return response()->json([
+                'success' => true,
+                'message' => 'Feedback Added Back!'
+            ]);
+        }
+        
+        // For regular requests
         session()->flash('alert-success', 'Feedback Added Back!');
         return redirect()->back();
     }
