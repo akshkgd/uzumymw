@@ -15,7 +15,7 @@
                 <div class="flex items-center gap-3">
                     <img loading="lazy" src="{{$feedback->user->avatar}}" class="avatar-sm-sm w-12 h-12 rounded-full" alt="{{$feedback->user->name}}">
                     <div>
-                        <p class="m-0 text-dark font-bol">{{$feedback->user->avatar}}</p>
+                        <p class="m-0 text-dark font-bol">{{$feedback->user->name}}</p>
                         <p class="-mt-1 text-sm text-neutral-600">{{$feedback->user->college}}</p>
                     </div>
                 </div>
