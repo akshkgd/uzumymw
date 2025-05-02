@@ -184,11 +184,10 @@
     
     <!-- hero section-->
 <section>
-    <div class="cards-section no-scrollbar hidde relative hidde">
+    <div class="cards-section no-scrollbar relative">
         <div id="scroll-content" class="scroll-wrapper my-10">
             <div class="dribble-cards" id="original-cards">
             
-
             <div class="card relative">
                 <img src="{{asset('assets/img/feedbacks/ebin.jpg')}}" class="user" alt="">
                 <div class="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-black/60"></div>
@@ -256,48 +255,11 @@
                     <p class="t">GFG - 8.5LPA</p>
                 </div>
             </div>
+            </div>
             
-            <!-- Second set of cards for better scrolling -->
-            <div class="card relative">
-                <img src="{{asset('assets/img/feedbacks/ebin.jpg')}}" class="user" alt="">
-                <div class="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-black/60"></div>
-                <div class="absolute bottom-6 left-6 text-white">
-                    <h2 class="text-xl font-bold">Ebin Joe</h2>
-                    <p class="t">Zoho - 8.5LPA</p>
-                </div>
-            </div>
-
-            
-
-            <div class="card relative">
-                <img src="{{asset('assets/img/feedbacks/keval.jpeg')}}" class="user" alt="">
-                <div class="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-black/60"></div>
-                <div class="absolute bottom-6 left-6 text-white">
-                    <h2 class="text-xl font-bold">Keval Kapadia</h2>
-                    <p class="t">SafeGolds - 25LPA</p>
-                </div>
-            </div>
-            <div class="card relative">
-                <img src="{{asset('assets/img/feedbacks/esha.jpg')}}" class="user" alt="">
-                <div class="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-black/60"></div>
-                <div class="absolute bottom-6 left-6 text-white">
-                    <h2 class="text-xl font-bold">Eesha Gunjekar</h2>
-                    <p class="t">Barclays - 75k/M</p>
-                </div>
-            </div>
-            <div class="card relative sm:mr-[24px] mr-[16px]">
-                <img src="{{asset('assets/img/feedbacks/laxmi.jpg')}}" class="user" alt="">
-                <div class="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-black/60"></div>
-                <div class="absolute bottom-6 left-6 text-white">
-                    <h2 class="text-xl font-bold">LaxmiPriya</h2>
-                    <p class="t">Freshworks - 7.2LPA</p>
-                </div>
-            </div>
-            </div>
             <div class="dribble-cards" id="cloned-cards">
                 <!-- This will be populated with JS -->
-              </div>
-            
+            </div>
         </div>
     </div>
 </section>
@@ -767,13 +729,7 @@
                 </video>
         </div>
         <!-- Feedback 1 -->
-        <div class="break-inside-avoid hidde feedback-card bg-whit borde rounded-3xl">
-            <!-- <div style="position: relative; padding-bottom: 177.77777777777777%; height: 0;"><iframe src="https://www.loom.com/embed/e095001581a14a839838c07e656dfe48?sid=910cb6d5-1dab-4975-a06e-a2d56351faa6?chromeless=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div> -->
-            <video class="rounded-2xl w-full h-96 object-cover bunny-video" controls autoplay loop muted 
-                 
-                data-src="https://vz-5f63f216-8ca.b-cdn.net/0a5d12e1-7285-4cf4-8fb4-07e29310096a/playlist.m3u8">
-            </video>
-        </div>
+        
 
         <!-- Feedback 2 -->
         <div class="break-inside-avoid p-3 feedback-card bg-white border rounded-3xl">
@@ -826,7 +782,13 @@
             <p class="text-md">All credits goes to you</p>
             <p class="text-md">This is the 3 interview I am going to have since bootcamp</p>
         </div>
-        
+        <div class="break-inside-avoid hidde feedback-card bg-whit borde rounded-3xl">
+            <!-- <div style="position: relative; padding-bottom: 177.77777777777777%; height: 0;"><iframe src="https://www.loom.com/embed/e095001581a14a839838c07e656dfe48?sid=910cb6d5-1dab-4975-a06e-a2d56351faa6?chromeless=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div> -->
+            <video class="rounded-2xl w-full h-96 object-cover bunny-video" controls autoplay loop muted 
+                 
+                data-src="https://vz-5f63f216-8ca.b-cdn.net/0a5d12e1-7285-4cf4-8fb4-07e29310096a/playlist.m3u8">
+            </video>
+        </div>
         <div class="break-inside-avoid p-3 feedback-card bg-white border rounded-3xl">
             <div class="flex mb-3 justify-content-between align-items-center">
                 <div class="flex items-center gap-3">
