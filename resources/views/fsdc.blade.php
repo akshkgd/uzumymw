@@ -7,8 +7,8 @@
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="[Your-URL-Here]">
-<meta property="og:title" content="Land Your First Frontend Job (6-8 LPA) in 45 Days">
-<meta property="og:description" content="Guaranteed frontend job or 100% refund. Join freshers cohort at ₹4,999. Live mentorship, mock interviews, and limited slots!">
+<meta property="og:title" content="Land Your First Fullstack Job 90 Days">
+<meta property="og:description" content="Guaranteed job or 100% refund. Join freshers cohort at ₹7,999. Live mentorship, mock interviews, and limited slots!">
 <meta property="og:image" content="{{asset('assets/img/node.webp')}}">
 
 <!-- Twitter -->
@@ -16,7 +16,7 @@
 <meta property="twitter:url" content="[Your-URL-Here]">
 <meta property="twitter:title" content="6-8 LPA Frontend Job in 45 Days | Cohort for Freshers">
 <meta property="twitter:description" content="Crack interviews with live Zoom sessions, 3 real projects, and placement support. Enroll now @ ₹7,999!">
-<meta property="twitter:image" content="{{asset('assets/img/react.webp')}}">
+<meta property="twitter:image" content="{{asset('assets/img/node.webp')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
  
@@ -33,7 +33,6 @@
     </style>
     <style>[x-cloak]{display:none}</style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <link rel="stylesheet" href="./output.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
