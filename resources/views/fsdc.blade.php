@@ -1092,7 +1092,27 @@
   });
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get all videos with bunny-video class
+    var videos = document.querySelectorAll(".bunny-video");
+    
+    videos.forEach(function(video) {
+      var videoSrc = video.getAttribute("data-src");
 
+      if (videoSrc) {
+        if (Hls.isSupported()) {
+          var hls = new Hls();
+          hls.loadSource(videoSrc);
+          hls.attachMedia(video);
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = videoSrc;
+        }
+      }
+    });
+  });
+</script>
       
 </body>
 </html>
