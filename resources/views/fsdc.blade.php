@@ -8,7 +8,7 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="[Your-URL-Here]">
 <meta property="og:title" content="Land Your First Fullstack Job 90 Days">
-<meta property="og:description" content="Guaranteed job or 100% refund. Join freshers cohort at ₹7,999. Live mentorship, mock interviews, and limited slots!">
+<meta property="og:description" content="Guaranteed job or 100% refund. Join fullstack cohort at ₹7,999. Live mentorship, and limited slots!">
 <meta property="og:image" content="{{asset('assets/img/node.webp')}}">
 
 <!-- Twitter -->
