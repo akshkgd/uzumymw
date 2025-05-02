@@ -753,7 +753,7 @@
 </section>
 
 <!-- feedbacks -->
-<div class="max-w-6xl mx-auto mt-32 mb-12 hidde">
+<div class="max-w-6xl mx-auto mt-32 mb-12 hidde p-4">
     <div class="text-center my-10">
         <h1 class="text-3xl font-extrabold font-manrop">Hear from codekaro Engineers</h1>
         <p class="text-lg">Find out what our students have to say about us</p>
