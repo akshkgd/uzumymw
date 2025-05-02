@@ -127,7 +127,7 @@
     <section class="relative z-10 mt-16">
         <div class="relative lg:pt-12 xl:pt-28">
             <div class="mx-auto px-6 max-w-5xl md:px-12">
-                <svg class="pointer-events-none absolute inset-[unset] left-1/2 top-0 w-[1200px] -translate-x-1/2 text-neutral-300 [mask-image:radial-gradient(black,transparent)] max-sm:opacity-70" width="100%" height="100%">
+                <svg class="lg:block hidden pointer-events-none absolute inset-[unset] left-1/2 top-0 w-[1200px] -translate-x-1/2 text-neutral-300 [mask-image:radial-gradient(black,transparent)] max-sm:opacity-70" width="100%" height="100%">
                     <defs>
                         <pattern id="grid-:r6:" x="-1" y="-19" width="80" height="80" patternUnits="userSpaceOnUse">
                             <path d="M 80 0 L 0 0 0 80" fill="transparent" stroke="currentColor" stroke-width="1"></path>
@@ -163,7 +163,7 @@
     
     <!-- hero section-->
 <section>
-    <div class="cards-section no-scrollbar hidden relative hidde">
+    <div class="cards-section no-scrollbar hidde relative hidde">
         <div id="scroll-content" class="scroll-wrapper my-10">
             <div class="dribble-cards" id="original-cards">
             
