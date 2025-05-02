@@ -54,7 +54,7 @@
 
   .dribble-cards {
     display: flex;
-    gap: 16px;
+    gap: 24px;
   }
   .card {
     width: 300px;
@@ -102,6 +102,10 @@
     border-radius: 16px;
     overflow: hidden;
     transition: transform 0.3s ease;
+  }
+  .dribble-cards {
+    display: flex;
+    gap: 16px;
   }
   }
 
@@ -280,7 +284,7 @@
                     <p class="t">Barclays - 75k/M</p>
                 </div>
             </div>
-            <div class="card relative">
+            <div class="card relative sm:mr-[24px] mr-[16px]">
                 <img src="{{asset('assets/img/feedbacks/laxmi.jpg')}}" class="user" alt="">
                 <div class="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-black/60"></div>
                 <div class="absolute bottom-6 left-6 text-white">
