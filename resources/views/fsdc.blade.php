@@ -50,6 +50,7 @@
     overflow: hidden;
     white-space: nowrap;
     position: relative;
+    padding: 20px 0;
   }
 
   .dribble-cards {
@@ -257,7 +258,7 @@
             </div>
             
             <!-- Second set of cards for better scrolling -->
-            <div class="card relative ml-5">
+            <div class="card relative">
                 <img src="{{asset('assets/img/feedbacks/ebin.jpg')}}" class="user" alt="">
                 <div class="absolute inset-0 bg-gradient-to-b from-white/0 via-white/0 to-black/60"></div>
                 <div class="absolute bottom-6 left-6 text-white">
@@ -760,15 +761,15 @@
     </div>
     <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
         <div class="break-inside-avoid  feedback-card bg-white borde rounded-3xl">
-            <video class="rounded-2xl w-full bunny-video" controls autoplay muted loop
+            <video class="rounded-2xl w-full h-96 object-cover bunny-video" controls autoplay muted loop
                     poster="https://vz-5f63f216-8ca.b-cdn.net/c5ef7646-20f4-4fdd-ab38-09ad9c36821a/preview.webp" 
                     data-src="https://vz-5f63f216-8ca.b-cdn.net/e7881f31-1133-447a-8b9a-d6fbdedac3dd/playlist.m3u8">
                 </video>
         </div>
         <!-- Feedback 1 -->
-        <div class="break-inside-avoid hidde p-3 feedback-card bg-whit borde rounded-3xl">
+        <div class="break-inside-avoid hidde feedback-card bg-whit borde rounded-3xl">
             <!-- <div style="position: relative; padding-bottom: 177.77777777777777%; height: 0;"><iframe src="https://www.loom.com/embed/e095001581a14a839838c07e656dfe48?sid=910cb6d5-1dab-4975-a06e-a2d56351faa6?chromeless=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div> -->
-            <video class="rounded-2xl w-full  bunny-video" controls autoplay loop muted 
+            <video class="rounded-2xl w-full h-96 object-cover bunny-video" controls autoplay loop muted 
                  
                 data-src="https://vz-5f63f216-8ca.b-cdn.net/0a5d12e1-7285-4cf4-8fb4-07e29310096a/playlist.m3u8">
             </video>
@@ -1061,10 +1062,16 @@
   // Set up GSAP infinite scroll animation
   document.addEventListener('DOMContentLoaded', function() {
     const scrollContent = document.getElementById('scroll-content');
-    const cards = scrollContent.querySelectorAll('.card');
-    const totalWidth = Array.from(cards).reduce((width, card) => {
-      return width + card.offsetWidth + parseInt(getComputedStyle(card).marginRight);
-    }, 0);
+    const cards = document.querySelectorAll('.card');
+    
+    // Calculate total width including gaps
+    let totalWidth = 0;
+    const cardWidth = cards[0].offsetWidth;
+    const cardStyle = getComputedStyle(cards[0]);
+    const cardGap = parseInt(getComputedStyle(document.querySelector('.dribble-cards')).gap);
+    
+    // Calculate full width considering all cards and their gaps
+    totalWidth = cards.length * cardWidth + (cards.length - 1) * cardGap;
     
     // Set initial position
     gsap.set(scrollContent, { x: 0 });
@@ -1084,7 +1091,7 @@
       
       // Create infinite scroll animation
       gsap.to(scrollContent, {
-        x: `-=${totalWidth / 2}`,
+        x: `-=${originalCards.offsetWidth}`,
         duration: totalWidth / scrollSpeed,
         ease: "none",
         repeat: -1,
