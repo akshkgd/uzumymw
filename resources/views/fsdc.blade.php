@@ -812,7 +812,7 @@
 
 
 <!-- FAQ Section -->
-<section class="bg-white py-24">
+<section class="bg-white py-8 sm:py-24">
     <div class="max-w-4xl mx-auto px-6">
         <div class="text-center mb-16">
             <h2 class="text-black text-2xl sm:text-3xl font-bold">Got Questions? We've Got Answers</h2>

@@ -3260,6 +3260,11 @@ video {
     padding-right: 1.5rem;
   }
 
+  .sm\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
   .sm\:text-left {
     text-align: left;
   }
