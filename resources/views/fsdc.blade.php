@@ -56,16 +56,16 @@
     display: flex;
     gap: 16px;
   }
-
   .card {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     margin-right: 0;
     flex-shrink: 0;
     border-radius: 16px;
     overflow: hidden;
     transition: transform 0.3s ease;
   }
+  
   .user{
     object-fit: cover;
     width: 100%;
@@ -94,12 +94,30 @@
     .scroll-speed {
       --scroll-speed: 80;
     }
+    .card {
+    width: 200px;
+    height: 200px;
+    margin-right: 0;
+    flex-shrink: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
   }
 
   @media (max-width: 480px) {
     .scroll-speed {
       --scroll-speed: 50;
     }
+    .card {
+    width: 200px;
+    height: 200px;
+    margin-right: 0;
+    flex-shrink: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
   }
 
   .no-scrollbar::-webkit-scrollbar {
