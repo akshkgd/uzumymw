@@ -284,7 +284,7 @@
     
 
     <!-- challenges -->
-    <section class="bg-black mt-16 lg:mt-32">
+    <section class="bg-black mt-10 lg:mt-32">
 
         <div class="max-w-3xl mx-auto py-32 px-6">
             <div class="text-center">
