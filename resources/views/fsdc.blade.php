@@ -161,7 +161,7 @@
     
     <!-- hero section-->
 <section>
-    <div class="cards-section no-scrollbar relative hidde">
+    <div class="cards-section no-scrollbar hidden relative hidde">
         <div id="scroll-content" class="scroll-wrapper my-10">
             <div class="dribble-cards" id="original-cards">
             
