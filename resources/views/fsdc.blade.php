@@ -44,6 +44,7 @@
     display: flex;
     will-change: transform;
     backface-visibility: hidden;
+    position: relative;
   }
 
   .cards-section {
@@ -57,6 +58,13 @@
     display: flex;
     gap: 24px;
   }
+  
+  /* Ensure no extra gap between original and cloned sets */
+  #cloned-cards {
+    position: relative;
+    margin-left: 24px; /* Match the gap between cards */
+  }
+  
   .card {
     width: 300px;
     height: 300px;
@@ -96,18 +104,22 @@
       --scroll-speed: 80;
     }
     .card {
-    width: 200px;
-    height: 200px;
-    margin-right: 0;
-    flex-shrink: 0;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
-  .dribble-cards {
-    display: flex;
-    gap: 16px;
-  }
+      width: 200px;
+      height: 200px;
+      margin-right: 0;
+      flex-shrink: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .dribble-cards {
+      display: flex;
+      gap: 16px;
+    }
+    #cloned-cards {
+      position: relative;
+      margin-left: 16px; /* Match the gap for medium screens */
+    }
   }
 
   @media (max-width: 480px) {
@@ -115,14 +127,18 @@
       --scroll-speed: 50;
     }
     .card {
-    width: 200px;
-    height: 200px;
-    margin-right: 0;
-    flex-shrink: 0;
-    border-radius: 16px;
-    overflow: hidden;
-    transition: transform 0.3s ease;
-  }
+      width: 200px;
+      height: 200px;
+      margin-right: 0;
+      flex-shrink: 0;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    #cloned-cards {
+      position: relative;
+      margin-left: 16px; /* Match the gap for small screens */
+    }
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -813,7 +829,7 @@
 
 <!-- FAQ Section -->
 <section class="bg-white py-8 sm:py-24">
-    <div class="max-w-4xl mx-auto px-6">
+    <div class="max-w-4xl mx-auto px-4">
         <div class="text-center mb-16">
             <h2 class="text-black text-2xl sm:text-3xl font-bold">Got Questions? We've Got Answers</h2>
             <p class="text-gray-600 text-lg mb-10">Everything you need to know before joining our Full Stack Development cohort</p>
@@ -832,7 +848,7 @@
                     @click="toggleQuestion(1)" 
                     class="flex justify-between items-center w-full p-5 text-left bg-white hover:bg-gray-50 transition-colors text-gray-900"
                 >
-                    <span class="text-lg font-medium">When does the next cohort begin?</span>
+                    <span class="sm:text-lg font-medium">When does the next cohort begin?</span>
                     <svg 
                         class="w-5 h-5 text-orange-500 transform transition-transform" 
                         :class="{'rotate-180': activeQuestion === 1}"
@@ -863,7 +879,7 @@
                     @click="toggleQuestion(2)" 
                     class="flex justify-between items-center w-full p-5 text-left bg-white hover:bg-gray-50 transition-colors text-gray-900"
                 >
-                    <span class="text-lg font-medium">How does the money-back guarantee work?</span>
+                    <span class="sm:text-lg font-medium">How does the money-back guarantee work?</span>
                     <svg 
                         class="w-5 h-5 text-orange-500 transform transition-transform" 
                         :class="{'rotate-180': activeQuestion === 2}"
@@ -900,7 +916,7 @@
                     @click="toggleQuestion(3)" 
                     class="flex justify-between items-center w-full p-5 text-left bg-white hover:bg-gray-50 transition-colors text-gray-900"
                 >
-                    <span class="text-lg font-medium">I've completed my payment. What are the next steps?</span>
+                    <span class="sm:text-lg font-medium">I've completed my payment. What are the next steps?</span>
                     <svg 
                         class="w-5 h-5 text-orange-500 transform transition-transform" 
                         :class="{'rotate-180': activeQuestion === 3}"
@@ -938,7 +954,7 @@
                     @click="toggleQuestion(4)" 
                     class="flex justify-between items-center w-full p-5 text-left bg-white hover:bg-gray-50 transition-colors text-gray-900"
                 >
-                    <span class="text-lg font-medium">How long will I have access to the course materials?</span>
+                    <span class="sm:text-lg font-medium">How long will I have access to the course materials?</span>
                     <svg 
                         class="w-5 h-5 text-orange-500 transform transition-transform" 
                         :class="{'rotate-180': activeQuestion === 4}"
@@ -976,7 +992,7 @@
                     @click="toggleQuestion(5)" 
                     class="flex justify-between items-center w-full p-5 text-left bg-white hover:bg-gray-50 transition-colors text-gray-900"
                 >
-                    <span class="text-lg font-medium">Do I need prior coding experience to join?</span>
+                    <span class="sm:text-lg font-medium">Do I need prior coding experience to join?</span>
                     <svg 
                         class="w-5 h-5 text-orange-500 transform transition-transform" 
                         :class="{'rotate-180': activeQuestion === 5}"
@@ -1016,70 +1032,80 @@
 </section>
 
 <script>
-  // Clone all cards for seamless loop
-  const originalCards = document.getElementById('original-cards');
-  const clonedCards = document.getElementById('cloned-cards');
-  clonedCards.innerHTML = originalCards.innerHTML;
-  
-  // Set up GSAP infinite scroll animation
   document.addEventListener('DOMContentLoaded', function() {
+    // Set up GSAP infinite scroll animation
     const scrollContent = document.getElementById('scroll-content');
+    const originalCards = document.getElementById('original-cards');
+    const clonedCards = document.getElementById('cloned-cards');
+    
+    // Clone the original cards for seamless scrolling
+    clonedCards.innerHTML = originalCards.innerHTML;
+    
+    // Get all cards for calculations
     const cards = document.querySelectorAll('.card');
     
-    // Calculate total width including gaps
-    let totalWidth = 0;
-    const cardWidth = cards[0].offsetWidth;
-    const cardStyle = getComputedStyle(cards[0]);
-    const cardGap = parseInt(getComputedStyle(document.querySelector('.dribble-cards')).gap);
+    // Initialize on both DOMContentLoaded and load events
+    initializeScroll();
+    window.addEventListener('load', initializeScroll);
     
-    // Calculate full width considering all cards and their gaps
-    totalWidth = cards.length * cardWidth + (cards.length - 1) * cardGap;
-    
-    // Set initial position
-    gsap.set(scrollContent, { x: 0 });
-    
-    // Create the animation
-    function createSmoothScroll() {
-      // Clear any existing animations
-      gsap.killTweensOf(scrollContent);
+    function initializeScroll() {
+      // Calculate dimensions
+      const cardWidth = cards[0].offsetWidth;
+      const cardGap = parseInt(getComputedStyle(document.querySelector('.dribble-cards')).gap);
+      const originalWidth = originalCards.offsetWidth;
       
-      // Calculate scroll speed based on screen size
-      let scrollSpeed = 100; // Base speed
-      if (window.innerWidth <= 480) {
-        scrollSpeed = 50;
-      } else if (window.innerWidth <= 768) {
-        scrollSpeed = 80;
+      // Create animation
+      function createSmoothScroll() {
+        // Clear any existing animations
+        gsap.killTweensOf(scrollContent);
+        
+        // Calculate speed based on screen size (higher = slower)
+        // Significantly slower on larger screens
+        let duration = 40; // Default for large screens
+        if (window.innerWidth <= 480) {
+          duration = 20; // Faster on mobile
+        } else if (window.innerWidth <= 768) {
+          duration = 30; // Medium speed on tablets
+        } else if (window.innerWidth <= 1200) {
+          duration = 35; // Slightly faster on smaller desktops
+        }
+        
+        // Create the infinite scroll animation with precise control
+        const tl = gsap.timeline({repeat: -1});
+        
+        // Initial animation to scroll the full width
+        tl.to(scrollContent, {
+          x: `-=${originalWidth}`,
+          duration: duration,
+          ease: "none",
+          onComplete: function() {
+            // When we reach the end of the original cards, 
+            // instantly (but invisibly to the user) jump back to start position
+            gsap.set(scrollContent, {x: 0});
+          }
+        });
+        
+        return tl;
       }
       
-      // Create infinite scroll animation
-      gsap.to(scrollContent, {
-        x: `-=${originalCards.offsetWidth}`,
-        duration: totalWidth / scrollSpeed,
-        ease: "none",
-        repeat: -1,
-        onRepeat: () => {
-          // Reset position when animation repeats
-          gsap.set(scrollContent, { x: 0 });
-        }
+      // Store the animation timeline
+      const scrollAnimation = createSmoothScroll();
+      
+      // Pause/play on hover
+      scrollContent.addEventListener('mouseenter', () => {
+        scrollAnimation.pause();
+      });
+      
+      scrollContent.addEventListener('mouseleave', () => {
+        scrollAnimation.play();
+      });
+      
+      // Recreate animation on window resize
+      window.addEventListener('resize', () => {
+        scrollAnimation.kill();
+        createSmoothScroll();
       });
     }
-    
-    // Initialize animation
-    createSmoothScroll();
-    
-    // Pause animation on hover
-    scrollContent.addEventListener('mouseenter', () => {
-      gsap.killTweensOf(scrollContent);
-    });
-    
-    scrollContent.addEventListener('mouseleave', () => {
-      createSmoothScroll();
-    });
-    
-    // Recreate animation on window resize
-    window.addEventListener('resize', () => {
-      createSmoothScroll();
-    });
   });
 </script>
 

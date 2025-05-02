@@ -3303,6 +3303,11 @@ video {
     line-height: 1.75rem;
   }
 
+  .sm\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
   .sm\:duration-200 {
     transition-duration: 200ms;
   }
