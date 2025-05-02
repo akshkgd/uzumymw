@@ -1006,6 +1006,9 @@ video {
 .mt-8 {
   margin-top: 2rem;
 }
+.-mt-16 {
+  margin-top: -4rem;
+}
 .box-border {
   box-sizing: border-box;
 }
@@ -3334,6 +3337,10 @@ video {
 
   .lg\:ml-64 {
     margin-left: 16rem;
+  }
+
+  .lg\:mt-32 {
+    margin-top: 8rem;
   }
 
   .lg\:block {

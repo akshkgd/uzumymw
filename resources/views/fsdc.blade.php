@@ -140,12 +140,10 @@
                         Get Job offers of <span class="underline text-orange-600">7-25 Lpa as a Full Stack dev</span> in <span class="underline decoration-orange-600">Just 90 Days</span> – Even if you have zero coding experience… <span class="underline decoration-orange-600">OR your money back!</span>
                     </h1>
                     <p class="text-wrap mx-auto mt-8 max-w-2xl text-xl text-gray-700 dark:text-gray-300">
-                        You will be able to crack frontend interviews & get a 6-8 LPA job as a fresher by the end of this cohort! Includes LIVE Job Prep & Resume Mastery.
+                        You will be able to crack frontend interviews & get a 7-25 LPA job as a fresher by the end of this cohort! Batch starting on 19th May.
 
                     </p>
-                    <p class="text-wrap mx-auto mt-6 max-w-2xl text-gray-700 dark:text-gray-300 ">
-                        Cohort Starting on 19th May
-                    </p>
+                    
                     <div class="mt-8 flex flex-row items-center justify-center gap-4">
                         <a href="https://rzp.io/rzp/fullstack-cohort" class="group bg-black py-4 px-6 text-white rounded-xl border border-black hover:text-white transition-all flex items-center gap-2">
                             Join the Fullstack Cohort Now for ₹7,999
@@ -286,7 +284,7 @@
     
 
     <!-- challenges -->
-    <section class="bg-black mt-32">
+    <section class="bg-black mt-16 lg:mt-32">
 
         <div class="max-w-3xl mx-auto py-32 px-6">
             <div class="text-center">
