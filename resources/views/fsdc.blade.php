@@ -184,7 +184,7 @@
                     </p>
                     
                     <div class="mt-8 flex flex-row items-center justify-center gap-4">
-                        <a href="https://rzp.io/rzp/fullstack-cohort" class="group bg-black py-4 px-6 text-white rounded-xl border border-black hover:text-white transition-all flex items-center gap-2">
+                        <a href="https://rzp.io/rzp/join-fsd" class="group bg-black py-4 px-6 text-white rounded-xl border border-black hover:text-white transition-all flex items-center gap-2">
                             Join the Fullstack Cohort Now for ₹7,999
                             <span class="transform transition-transform group-hover:translate-x-2 hidden sm:block">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -722,7 +722,7 @@
                 <span><strong>Only 50 slots available!</strong> - Secure your spot before they're gone</span>
             </div>
             
-            <a href="https://rzp.io/rzp/fullstack-cohort" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold py-4 px-8 rounded-xl transition-colors text-lg">
+            <a href="https://rzp.io/rzp/join-fsd" class="inline-block bg-orange-600 hover:bg-orange-700 text-white font-semibold py-4 px-8 rounded-xl transition-colors text-lg">
                 Join the Fullstack Cohort Now for ₹7,999
             </a>
             
