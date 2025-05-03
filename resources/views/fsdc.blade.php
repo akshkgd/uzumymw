@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Land a Fullstack Job in 90 Days | Cohort for Freshers @ ₹7,999</title>
-<meta name="description" content="Crack fullstack interviews and secure your first job (7-25 LPA) with our 90-day cohort. 100% money-back guarantee. Only 50 slots left!">
+    <meta name="description" content="Crack fullstack interviews and secure your first job (7-25 LPA) with our 90-day cohort. 100% money-back guarantee. Only 50 slots left!">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
