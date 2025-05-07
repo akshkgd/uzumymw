@@ -175,10 +175,10 @@
                     <rect fill="url(#grid-:r6:)" width="100%" height="100%"></rect>
                 </svg>
                 <div class="text-center relative z-20 mx-auto sm:w-10/12 lg:w-4/5">
-                    <h1 class="font-inter tracking-tight text-wrap text-2xl font-bold text-black dark:text-white xl:text-4xl lg:text-4xl">
+                    <h1 class="font-inter tracking-tight text-wrap text-2xl font-bold text-black xl:text-4xl lg:text-4xl">
                         Get Job offers of <span class="underline text-orange-600">7-25 Lpa as a Full Stack dev</span> in <span class="underline decoration-orange-600">Just 90 Days</span> – Even if you have zero coding experience… <span class="underline decoration-orange-600">OR your money back!</span>
                     </h1>
-                    <p class="text-wrap mx-auto mt-8 max-w-2xl text-xl text-gray-700 dark:text-gray-300">
+                    <p class="text-wrap mx-auto mt-8 max-w-2xl text-xl text-gray-700 ">
                         You will be able to crack frontend interviews & get a 7-25 LPA job as a fresher by the end of this cohort! Batch starting on 19th May.
 
                     </p>
