@@ -8,7 +8,7 @@
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Learn Javascript in just 2 Hours!">
     <meta property="og:description" content="Master exactly what matters in javascript & Start Your Journey Toward a High-Paying Career.">
-    <meta property="og:image" content="{{ asset('img/jse.webp') }}">
+    <meta property="og:image" content="{{ asset('assets/img/js.webp') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
     
@@ -16,7 +16,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Learn Javascript in just 2 Hours!">
     <meta name="twitter:description" content="Master exactly what matters in javascript & Start Your Journey Toward a High-Paying Career.">
-    <meta name="twitter:image" content="{{ asset('img/js.webp') }}">
+    <meta name="twitter:image" content="{{ asset('assets/img/js.webp') }}">
     
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
