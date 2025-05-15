@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Welcome to Javascript Masterclass</title>
+    <title>Web Development Masterclass</title>
     <meta name="keywords" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
     <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
     <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
@@ -37,9 +37,7 @@
     gtag('config', 'G-HC9ETJV29G');
     </script>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/ck_light.css')}}">
+   <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <style>
 
     </style>
@@ -72,7 +70,7 @@
 <script>
   gtag('event', 'conversion', {'send_to': 'AW-11206387820/C8DRCJDK9akYEOzQz98p'});
 </script>
-
+<script src="https://unpkg.com/alpinejs" defer></script>
 </head>
 
 <body>
@@ -80,117 +78,28 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8B392D"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-          <a class="navbar-brand fw-bold" href="{{url('/home')}}">Codekaro</a>
-          
-          
-        </div>
-      </nav>  
+@auth   
+@include('layouts.t-student-nav')
+@endauth
 <section>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="card f-1 text-center ">
-                    <div class="p-3">
-                        <h1 class="display-2">🎉</h1>
-                      <h2 class="fs-1">Congratulations, you have successfully enrolled for the <span class="wd_highlight1">How to Javascript</span> Bootcamp</h4>
-                      <p class="mt-5">Next Step</p>
-                      <a href="https://chat.whatsapp.com/HfhOb27nmr81mPbDXq1oMG" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
-                      {{-- <a href="{{url('/home')}}" class="btn btn-dark btn-lg py-3 px-4 rounded-pill my-2" style="">2. Complete your Profile</a> --}}
+  <div class="max-w-xl mx-auto mt-44 text-center shadow-l p-5 sm:p-16 text-center sm:text-lef rounded-xl">
+    <h1 class="text-2xl font-semibold">Congratulations @auth {{Auth::user()->name}} @endauth <span class="text-2xl">🎉</span></h1>
+    <p class=" font-ligh text-gray-700 text-lg mt-3">You have successfully enrolled for the <span class="underlin text-blac">How to Javascript Crash Course</span>. Live class will start from 18th May 11:00 AM.</span> </p>
+    <p class="   text-gray-700 "></p>
 
-                    </div>
-                    <div class="cd f-1-bottom p-3">
-                        you will get all the updates of assignments, upcoming classes on  the WhatsApp group, so make sure you join this without fail!
-                    </div>
-                  </div>
-            </div>
-        </div>
-    </div>
+    <a target="_blank" href="" class="text-white bg-green-600 py-3 px-10 mt-4 inline-block rounded-full transition-all hover:bg-green-700 hover:text-white">Join WhatsApp Group</a>
+  </div>
 </section>
 
+{{-- <section>
+  <div class="max-w-xl mx-auto mt-5 text-cente px-5">
+    <h2 class="text-lg">But wait ✋ we have something more exciting for you</h2>
+  </div>
+</section> --}}
 
     
-    <section class="">
-        <div class="container text-center ct">
-          <h1 id="headlin fw-600 mb-0">Live class will start from</h1>
-          <h2>Saturday, 15th June at 08:00 PM</h2>
-            {{-- <h1 id="headlin fw-600 mb-0">Live class is starting in</h1>
-            <div id="countdown">
-              <ul>
-                <li><span id="days"></span>days</li>
-                <li><span id="hours"></span>Hours</li>
-                <li><span id="minutes"></span>Minutes</li>
-                <li><span id="seconds"></span>Seconds</li>
-              </ul>
-            </div>
-            <div id="content" class="emoji">
-              <span>🥳</span>
-              <span>🎉</span>
-              <span>🎂</span>
-              <p id="headline"></p>
-            </div> --}}
-            
-          </div>
-  </section>
-
-
-  {{-- <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
-    <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="50" width="50">
-      </a> --}}
-
-  <footer class="bd-footer p-3 p-md-5 mt-5 bg-light text-center text-sm-left">
-    <div class="container">
-    <ul class="bd-footer-links">
-    <li><a href="https://codekaro.in/about">About</a></li>
-    <li><a href="https://codekaro.in/contact">Contact</a></li>
-    <li><a href="https://codekaro.in/privacy">Privacy Policy</a></li>
-    </ul>
-    <p>©2020-23 Codekaro All Rights Reserved.</p>
-    </div>
-    </footer>
+  
     
-    
-    <script>
-      startLoader = ()=>{
-          let loader = document.getElementById('loader');
-          loader.classlist.add('loader')
-      }
-      (function () {
-      const second = 1000,
-      minute = second * 60,
-      hour = minute * 60,
-      day = hour * 24;
-          
-let birthday = "august 9, 2023 06:00:00",
-    countDown = new Date(birthday).getTime(),
-    x = setInterval(function() {    
-
-      let now = new Date().getTime(),
-          distance = countDown - now;
-
-        document.getElementById("days").innerText = Math.floor(distance / (day)),
-        document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
-        document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
-        document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
-
-       
-      //do something later when date is reached
-      if (distance < 0) {
-        let headline = document.getElementById("headline"),
-            countdown = document.getElementById("countdown"),
-            content = document.getElementById("content");
-
-        headline.innerText = "Class has Started!";
-        countdown.style.display = "none";
-        content.style.display = "block";
-
-        clearInterval(x);
-      }
-      //seconds
-    }, 0)
-}());
-  </script>
     
 </body>
 
