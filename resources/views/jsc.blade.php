@@ -131,7 +131,19 @@
                                             <span class="text-sm text-neutral-500 line-through px-1">₹2499</span>
                                         </div>
                                         <label class="relative inline-flex items-center cursor-pointer mt-2">
-                                            <input type="checkbox" id="myCheckbox" name="myCheckbox" x-model="vipUpgrade" class="sr-onl peer">
+                                            <div x-data="{ vipUpgrade: 0 }">
+                                                <input
+                                                  type="checkbox"
+                                                  id="myCheckbox"
+                                                  name="recordingsCheckbox"
+                                                  x-model="vipUpgrade"
+                                                  @change="vipUpgrade = $event.target.checked ? 1 : 0"
+                                                  class="sr-only peer"
+                                                >
+                                              
+                                                <p class="mt-2">Value: <span x-text="vipUpgrade"></span></p>
+                                              </div>
+                                            {{-- <input type="checkbox" id="myCheckbox" name="myCheckbox" x-model="vipUpgrade" class="sr-onl peer"> --}}
                                             <!-- <div class="w-11 h-6 bg-neutral-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-neutral-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neutral-950"></div> -->
                                             <span class="ml-3 text-sm font-medium text-neutral-700">Add VIP Upgrade for ₹199</span>
                                         </label>
