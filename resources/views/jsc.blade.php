@@ -130,7 +130,7 @@
                                             <span class="text-sm text-neutral-500 line-through px-1">₹2499</span>
                                         </div>
                                         <label class="relative inline-flex items-center cursor-pointer mt-2">
-                                            <input type="hidden" name="recordingsCheckbox :value="vipUpgrade ? '1' : '0'">
+                                            <input type="hidden" name="recordingsCheckbox" :value="vipUpgrade ? '1' : '0'">
                                             <input type="checkbox" id="myCheckbox" x-model="vipUpgrade" class="sr-onl peer">
                                             <span class="ml-3 text-sm font-medium text-neutral-700">Add VIP Upgrade for ₹199</span>
                                         </label>
