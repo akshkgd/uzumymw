@@ -87,7 +87,7 @@
     <p class=" font-ligh text-gray-700 text-lg mt-3">You have successfully enrolled for the <span class="underlin text-blac">How to Javascript Crash Course</span>. Live class will start from 18th May 11:00 AM.</span> </p>
     <p class="   text-gray-700 "></p>
 
-    <a target="_blank" href="" class="text-white bg-green-600 py-3 px-10 mt-4 inline-block rounded-full transition-all hover:bg-green-700 hover:text-white">Join WhatsApp Group</a>
+    <a target="_blank" href="https://chat.whatsapp.com/L3s4Cl3DpGNA3FYP8VmIGc" class="text-white bg-green-600 py-3 px-10 mt-4 inline-block rounded-full transition-all hover:bg-green-700 hover:text-white">Join WhatsApp Group</a>
   </div>
 </section>
 
