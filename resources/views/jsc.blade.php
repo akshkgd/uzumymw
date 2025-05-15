@@ -7,10 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
-
+    
     <style>
         .jobs img{
             height: 28px;
@@ -20,7 +17,7 @@
 
     </style>
 </head>
-<body class="select-non bg-neutral-95 font-manrope " x-data="{ modalOpen: false, vipUpgrade: false }" @keydown.escape.window="modalOpen = false" :class="{ 'overflow-hidden': modalOpen }">
+<body class="select-non bg-neutral-95 font-manrop " x-data="{ modalOpen: false, vipUpgrade: false }" @keydown.escape.window="modalOpen = false" :class="{ 'overflow-hidden': modalOpen }">
     <!-- Full Screen Modal -->
     <template x-teleport="body">
         <div x-show="modalOpen" class="fixed inset-0 z-[99] flex w-screen h-screen overflow-hidden" x-cloak>
@@ -134,7 +131,7 @@
                                             <span class="text-sm text-neutral-500 line-through px-1">₹2499</span>
                                         </div>
                                         <label class="relative inline-flex items-center cursor-pointer mt-2">
-                                            <input type="checkbox" x-model="vipUpgrade" class="sr-onl peer">
+                                            <input type="checkbox" id="myCheckbox" name="myCheckbox" x-model="vipUpgrade" class="sr-onl peer">
                                             <!-- <div class="w-11 h-6 bg-neutral-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-neutral-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-neutral-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-neutral-950"></div> -->
                                             <span class="ml-3 text-sm font-medium text-neutral-700">Add VIP Upgrade for ₹199</span>
                                         </label>
