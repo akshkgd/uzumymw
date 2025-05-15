@@ -3,7 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Learn Javascript in just 2 Hours!</title>
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Learn Javascript in just 2 Hours!">
+    <meta property="og:description" content="Master exactly what matters in javascript & Start Your Journey Toward a High-Paying Career.">
+    <meta property="og:image" content="{{ asset('img/jse.webp') }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Learn Javascript in just 2 Hours!">
+    <meta name="twitter:description" content="Master exactly what matters in javascript & Start Your Journey Toward a High-Paying Career.">
+    <meta name="twitter:image" content="{{ asset('img/js.webp') }}">
+    
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
     
@@ -16,7 +30,24 @@
 
     </style>
 </head>
-<body class="select-non bg-neutral-95 font-manrop " x-data="{ modalOpen: false, vipUpgrade: false }" @keydown.escape.window="modalOpen = false" :class="{ 'overflow-hidden': modalOpen }">
+<body class="select-non bg-neutral-95 font-manrop " x-data="{ 
+    modalOpen: false, 
+    vipUpgrade: false,
+    minutes: 7,
+    seconds: 3,
+    init() {
+        setInterval(() => {
+            if (this.seconds > 0) {
+                this.seconds--;
+            } else {
+                if (this.minutes > 0) {
+                    this.minutes--;
+                    this.seconds = 59;
+                }
+            }
+        }, 1000);
+    }
+}" @keydown.escape.window="modalOpen = false" :class="{ 'overflow-hidden': modalOpen }">
     <!-- Full Screen Modal -->
     <template x-teleport="body">
         <div x-show="modalOpen" class="fixed inset-0 z-[99] flex w-screen h-screen overflow-hidden" x-cloak>
@@ -70,15 +101,15 @@
                                 <input type="hidden" name="courseId" value="131">
                                 <div class="space-y-1">
                                     <!-- <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Full Name</label> -->
-                                    <input name="name" @auth value="{{ Auth::user()->name }}" @endauth type="text" id="name" class="flex w-full rounded-lg border text-base font-medium border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Full Name">
+                                    <input name="name" @auth value="{{ Auth::user()->name }}" @endauth type="text" id="name" class="flex w-full rounded-lg border text-base  border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Full Name">
                                 </div>
                                 <div class="space-y-1">
                                     <!-- <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Email Address</label> -->
-                                    <input name="email" @auth value="{{ Auth::user()->email }}" @endauth type="text" id="name" class="flex w-full rounded-lg border font-medium border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Email Address">
+                                    <input name="email" @auth value="{{ Auth::user()->email }}" @endauth type="text" id="name" class="flex w-full rounded-lg border  border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Email Address">
                                 </div>
                                 <div class="space-y-1">
                                     <!-- <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="whatsapp">WhatsApp Number</label> -->
-                                    <input name="mobile" @auth value="{{ Auth::user()->mobile }}" @endauth type="text" id="name" class="flex w-full rounded-lg border font-medium border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="WhatsApp Number">
+                                    <input name="mobile" @auth value="{{ Auth::user()->mobile }}" @endauth type="text" id="name" class="flex w-full rounded-lg border  border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="WhatsApp Number">
                                     <p class="flex hidde gap-1 items-center mb-4">
                                         <span class="text-sm text-neutral-700">You will get updates on your</span>
                                         <svg width="79" height="18" viewBox="0 0 79 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -154,7 +185,7 @@
     <div class="fixed flex items-center px-4 justify-between z-20 bottom-0 h-14 bg-black w-full sm:hidden">
         <div class="text-white">
             <p><span class="font-bold text-sm">₹99</span> <span class="text-sm line-through text-neutral-300">899</span></p>
-            <p class="text-xs">Offer ends in 7m : 3s</p>
+            <p class="text-xs">Offer ends in <span x-text="minutes"></span>m : <span x-text="seconds.toString().padStart(2, '0')"></span>s</p>
         </div>
         <!-- <button @click="modalOpen=true" class=" bg-green-600 py-2 px-5 rounded-xl animate-bounc text-white font-medium">Join Bootcamp Now</button> -->
          <div class="overflow-hidde">
