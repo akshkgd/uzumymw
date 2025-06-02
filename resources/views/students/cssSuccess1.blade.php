@@ -70,7 +70,7 @@
 <script>
   gtag('event', 'conversion', {'send_to': 'AW-11206387820/C8DRCJDK9akYEOzQz98p'});
 </script>
-<script src="https://unpkg.com/alpinejs" defer></script>
+
 </head>
 
 <body>
@@ -78,9 +78,6 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8B392D"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-@auth   
-@include('layouts.t-student-nav')
-@endauth
 <section>
   <div class="max-w-xl mx-auto mt-44 text-cente shadow-l text-center sm:text-left rounded-xl">
     <h1 class="sm:text-2xl text-xl font-semibold">Congratulations @auth {{Auth::user()->name}} @endauth <span class="text-2xl">🎉</span></h1>
