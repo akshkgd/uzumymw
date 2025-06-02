@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Development Masterclass</title>
+    <title>CSS Bootcamp - Success</title>
     <meta name="keywords" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
     <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
     <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
@@ -83,11 +83,15 @@
 @endauth
 <section>
   <div class="max-w-xl mx-auto mt-44 text-cente shadow-l p-5 sm:p-16 text-center sm:text-left rounded-xl">
-    <h1 class="text-xl font-semibold">Congratulations @auth {{Auth::user()->name}} @endauth <span class="text-2xl">🎉</span></h1>
-    <p class=" font-ligh text-gray-700 text- mt-3">You have successfully enrolled for the <span class="underlin text-blac">How to CSS Bootcamp</span>. Live classes will start from <span class="underlin font-semibold text-black">{{ \Carbon\Carbon::parse($batch->nextClass)->format('D, d M h:i a') }} IST</span> </p>
-    <p class="   text-gray-700 "></p>
+    <h1 class="sm:text-2xl text:xl font-semibold">Congratulations @auth {{Auth::user()->name}} @endauth <span class="text-2xl">🎉</span></h1>
+    <p class=" font-ligh text-gray-700 sm:text-xl mt-3">You have successfully enrolled for the <span class="underlin text-blac">How to CSS Bootcamp</span>. Live classes will start from <span class="underline font-semibold text-black">{{ \Carbon\Carbon::parse($batch->nextClass)->format('D, d M h:i a') }} IST</span> </p>
+    <div class="fixed bottom-0 mb-10 w-full sm:static">
+        <p class="   text-gray-700  sm:hidden">Next Steps</p>
+      <a target="_blank" href="{{$batch->groupLink}}" class="text-white bg-green-600 py-4 px-16 mt-10 inline-block rounded-full sm:rounded-xl sm:w-full transition-all hover:bg-green-700 hover:text-white text-lg">Join WhatsApp Group</a>
+      <p class="text-sm block mt-3 text-neutral-700 sm:hidden">Join the WhatsApp group now <br> to receive Zoom links and updates.</p>
+      <p class="text-sm hidden sm:block mt-3 text-neutral-700">Join the WhatsApp group now to receive Zoom links and updates.</p>
 
-    {{-- <a target="_blank" href="{{$batch->groupLink}}" class="text-white bg-green-600 py-2 px-6 mt-4 inline-block rounded-full transition-all hover:bg-green-700 hover:text-white">Join WhatsApp Group</a> --}}
+    </div>
   </div>
 </section>
 

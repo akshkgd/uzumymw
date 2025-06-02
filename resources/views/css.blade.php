@@ -5,11 +5,26 @@
     <meta charset="utf-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title','Codekaro - Live Coding Classes learn to code like a pro')</title>
-    <meta name="keywords" content="@yield('meta_keywords','Codekaro try to bring latest courses to students. Not only that we provide a dedicated team to answer their doubts.')">
-    <meta name="og:description" content="@yield('meta_description','Codekaro try to bring latest courses to students. Not only that we provide a dedicated team to answer their doubts.')">
-    <link rel="canonical" href="{{url()->current()}}"/>
-    <link rel="icon" href="{{asset('/assets/img/chrome-icon.png')}}">
+    <title>@yield('title','Master CSS in Just 5 Days – Build Designs Inspired by Netflix, YouTube & ChatGPT')</title>
+
+<meta name="keywords" content="@yield('meta_keywords','CSS Bootcamp, Learn CSS, Live CSS Course, Frontend Development, Build Netflix Clone, YouTube UI, ChatGPT UI, HTML CSS Course, Codekaro')">
+
+<meta name="description" content="@yield('meta_description','Join the 5-Day Live CSS Bootcamp and master the fundamentals of CSS to build stunning, real-world UI designs inspired by Netflix, YouTube, and ChatGPT. Perfect for beginners looking to level up fast.')">
+
+<!-- Open Graph for social platforms -->
+<meta property="og:title" content="Master CSS in Just 5 Days – Build Designs Inspired by Netflix, YouTube & ChatGPT">
+<meta property="og:description" content="Join the 5-Day Live CSS Bootcamp and master the fundamentals of CSS to build stunning, real-world UI designs inspired by Netflix, YouTube, and ChatGPT.">
+<meta property="og:image" content="{{ asset('assets/img/css.webp') }}">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Master CSS in Just 5 Days – Build Designs Inspired by Netflix, YouTube & ChatGPT">
+<meta name="twitter:description" content="Join the 5-Day Live CSS Bootcamp and build stunning UI designs inspired by real-world apps. Learn fast, design like a pro.">
+<meta name="twitter:image" content="{{ asset('assets/img/css.webp') }}">
+
+    <link rel="icon" href="{{asset('assets/img/chrome-icon.png')}}">
     <meta name="facebook-domain-verification" content="sqxnqkagio33ipi426hafktfp1x76s" />
 <!-- Meta Pixel Code -->
 <script>
