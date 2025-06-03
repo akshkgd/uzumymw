@@ -252,14 +252,18 @@
             <div
               class="p-1 mt-1 bg-white border rounded-md shadow-md border-neutral-200/70 text-neutral-700"
             >
+            @php
+                  $email = Auth::user()->email;
+                  $obfuscatedEmail = substr($email, 0, 2) . str_repeat('•', strlen($email) - 6) . substr($email, -4);
+              @endphp
               <div class="py-2 px-2 text-neutral-600">
                 <div class="px-2 text-sm">Signed in as</div>
-                <div class="px-2  text-sm text-neutral-500">ak......@gmail.com</div>
+                <div class="px-2  text-sm text-neutral-500">{{$obfuscatedEmail}}</div>
               </div>
 
               <div class="h-px my-1 -mx-1 bg-neutral-200"></div>
               <a
-                href="#_"
+                href="{{url('/my-account')}}"
                 class="relative flex cursor-default select-none hover:bg-neutral-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
               >
                 <svg
@@ -309,30 +313,31 @@
               
               <!-- <div class="h-px my-1 -mx-1 bg-neutral-200"></div> -->
               <a
-                href="#_"
-                class="relative flex cursor-default select-none hover:bg-red-100 items-center hover:cursor-pointer hover:text-red-700 rounded px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="w-4 h-4 mr-2"
+                  href="{{ route('logout') }}" onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();"
+                  class="relative flex cursor-default select-none hover:bg-red-100 items-center hover:cursor-pointer hover:text-red-700 rounded px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
                 >
-                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
-                  <polyline points="16 17 21 12 16 7"></polyline>
-                  <line x1="21" x2="9" y1="12" y2="12"></line>
-                </svg>
-                <span>Log out</span>
-                <span class="ml-auto text-xs tracking-widest opacity-60"
-                  >⇧⌘Q</span
-                >
-              </a>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="w-4 h-4 mr-2"
+                  >
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                    <polyline points="16 17 21 12 16 7"></polyline>
+                    <line x1="21" x2="9" y1="12" y2="12"></line>
+                  </svg>
+                  <span>Log out</span>
+                  <span class="ml-auto text-xs tracking-widest opacity-60"
+                    >⇧⌘Q</span
+                  >
+                </a>
             </div>
           </div>
         </div>

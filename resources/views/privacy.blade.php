@@ -1,5 +1,7 @@
 @extends('layouts.ck')
 @section('content')
+@section('title', 'Privacy Policy')
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container ">
      

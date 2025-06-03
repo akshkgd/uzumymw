@@ -18,14 +18,18 @@
       [x-cloak] {
         display: none;
       }
-      /* @font-face {
-      font-family: 'Geist-Regular';
-      src: url('path/to/Geist-Regular.woff2') format('woff2');
-      } */
       body{
-        /* font-family: 'Geist-Regular', sans-serif !important; */
       }
     </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9323KT1W2S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9323KT1W2S');
+</script>
   </head>
   <body class="font-sans">
     

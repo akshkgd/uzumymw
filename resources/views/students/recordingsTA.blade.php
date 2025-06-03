@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <!-- Primary Meta Tags -->
-    <title>{{ $enrollment->batch->name ?? 'Course' }} | CodeKaro</title>
-    <meta name="title" content="{{ $enrollment->batch->name ?? 'Course' }} | CodeKaro">
+    <title>{{ $video->title ?? 'Course' }} | {{ Auth::user()->name ?? 'Guest' }}</title>
     <meta name="description" content="Learn {{ $enrollment->batch->name ?? 'programming' }} with CodeKaro's interactive online courses">
     
  
@@ -22,6 +21,15 @@
       }
       
     </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9323KT1W2S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-9323KT1W2S');
+</script>
   </head>
   <body class="font-geis">
     <div id="main">

@@ -1,5 +1,6 @@
 @extends('layouts.t-student')
 @section('content')
+
     @include('layouts.t-student-nav')
     <!-- student dashboard starts -->
 
