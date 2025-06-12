@@ -188,8 +188,7 @@
                         Get Job offers of <span class="underline text-orange-600">7-25 Lpa as a Full Stack dev</span> in <span class="underline decoration-orange-600">Just 90 Days</span> – Even if you have zero coding experience… <span class="underline decoration-orange-600">OR your money back!</span>
                     </h1>
                     <p class="text-wrap mx-auto mt-8 max-w-2xl text-xl text-gray-700 ">
-                        You will be able to crack frontend interviews & get a 7-25 LPA job as a fresher by the end of this cohort! Batch starting on 19th May.
-
+                        You will be able to crack frontend interviews & get a 7-25 LPA job as a fresher by the end of this cohort! Batch starting on 21st July.
                     </p>
                     
                     <div class="mt-8 flex flex-row items-center justify-center gap-4">
