@@ -47,23 +47,23 @@ body{
                     <div class="row">
                         <div class="col-md-6 col-lg-4 mt-5">
                             <a class="card hover-shadow-sm border-none shadow"
-                                href="/frontend-cohort">
-                                <img src="{{ asset('assets/img/react.webp') }}" alt="Image" class="card-img-top course-card">
+                                href="/join-fsd">
+                                <img src="{{ asset('assets/img/backend.webp') }}" alt="Image" class="card-img-top course-card">
 
                                 {{-- <img src="{{ asset($batch->img) }}" alt="Image" class="card-img-top"> --}}
                                 <div class="card-bod d-flex flex-column">
                                     <div class="py-2 px-3">
                                         <div class="pills">
-                                            <span class="badge badge-pill badge-primary bg-mute text-dark fw-light">Live Classes</span>
+                                            <span class="badge badge-pill badge-primary bg-mute text-dark fw-light">On demand lectured</span>
                                             <span class="badge badge-pill badge-primary bg-mute text-dark fw-lighter">English</span>
                                         </div>
                                         <div class="d-flex mt-3 justify-content-between align-items-center">
-                                            <h1 class="m-0 ck-font fw-400 fs-5 ">Frontend Cohort</h1>
-                                            <p class="m-0">Rs 14999</p>
+                                            <h1 class="m-0 ck-font fw-400 fs-5 ">Fullstack Cohort</h1>
+                                            <p class="m-0">Rs 41999</p>
                                         </div>
                                         
-                                            <p class="mt-2 pt-2 fs-medium mb-0">Starts on 3rd August</p> 
-                                            <p class="fs-small mt-0">Late evening classes</p>
+                                            <p class="mt-2 pt-2 fs-medium mb-0">Starts on 21st July</p> 
+                                            <p class="fs-small mt-0">Weekends Live Sessions</p>
                                             
                                             
                                             

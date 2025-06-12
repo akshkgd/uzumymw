@@ -3,21 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Land a Fullstack Job in 90 Days | Cohort for Freshers @ ₹7,999</title>
+    <title>Land a Fullstack Job in 90 Days | Cohort for Freshers @ ₹41,999</title>
     <meta name="description" content="Crack fullstack interviews and secure your first job (7-25 LPA) with our 90-day cohort. 100% money-back guarantee. Only 50 slots left!">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="[Your-URL-Here]">
 <meta property="og:title" content="Land Your First Fullstack Job 90 Days">
-<meta property="og:description" content="Guaranteed job or 100% refund. Join fullstack cohort at ₹7,999. Live mentorship, and limited slots!">
+<meta property="og:description" content="Guaranteed job or 100% refund. Join fullstack cohort at ₹41,999. Live mentorship, and limited slots!">
 <meta property="og:image" content="{{asset('assets/img/node.webp')}}">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="[Your-URL-Here]">
 <meta property="twitter:title" content="6-8 LPA Frontend Job in 45 Days | Cohort for Freshers">
-<meta property="twitter:description" content="Crack interviews with live Zoom sessions, 3 real projects, and placement support. Enroll now @ ₹7,999!">
+<meta property="twitter:description" content="Crack interviews with live Zoom sessions, 3 real projects, and placement support. Enroll now @ ₹41,999!">
 <meta property="twitter:image" content="{{asset('assets/img/node.webp')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
