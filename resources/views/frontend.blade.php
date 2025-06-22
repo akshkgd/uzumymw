@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Primary Meta Tags -->
-<title>Land a 6-8 LPA Frontend Job in 45 Days | Cohort for Freshers @ ₹4,999</title>
+<title>Land a 6-8 LPA Frontend Job in 45 Days | Cohort for Freshers @ ₹7,999</title>
 <meta name="description" content="Crack frontend interviews and secure your first job (6-8 LPA) with our 45-day cohort. 100% money-back guarantee. Only 100 slots left!">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="[Your-URL-Here]">
 <meta property="og:title" content="Land Your First Frontend Job (6-8 LPA) in 45 Days">
-<meta property="og:description" content="Guaranteed frontend job or 100% refund. Join freshers cohort at ₹4,999. Live mentorship, mock interviews, and limited slots!">
+<meta property="og:description" content="Guaranteed frontend job or 100% refund. Join freshers cohort at ₹7,999. Live mentorship, mock interviews, and limited slots!">
 <meta property="og:image" content="{{asset('assets/img/react.webp')}}">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="[Your-URL-Here]">
 <meta property="twitter:title" content="6-8 LPA Frontend Job in 45 Days | Cohort for Freshers">
-<meta property="twitter:description" content="Crack interviews with live Zoom sessions, 3 real projects, and placement support. Enroll now @ ₹4,999!">
+<meta property="twitter:description" content="Crack interviews with live Zoom sessions, 3 real projects, and placement support. Enroll now @ ₹7,999!">
 <meta property="twitter:image" content="{{asset('assets/img/react.webp')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
@@ -51,7 +51,7 @@
             </div>
             <!-- <h1 class="text-white text-4xl fot-bold">Create anything with code</h1> -->
             <!-- stats -->
-            <p class="text-neutral-500 sm:px-5 text-2xl sm:text-2xl mt-8 text-center">45-Day Cohort for Freshers @ ₹4,999</p>
+            <p class="text-neutral-500 sm:px-5 text-2xl sm:text-2xl mt-8 text-center">45-Day Cohort for Freshers @ ₹7,999</p>
 
              <a href="https://codekaro.in/enroll/120" class="inline-block py- w-ful py-4 px-16 bg-white ring-4 ring-neutral-800 mt-10 rounded-xl text-xl font-bold text-neutral-700 hover:bg-neutral-100">Join Frontend Cohort Now</a>
              <div class="flex flex-col md:flex-row justify-center gap-4 mt-">
@@ -391,8 +391,8 @@
     <!-- feedback ends -->
      <section class="lg:h-screen flex items-center">
         <div class="max-w-5xl mx-auto p-5 mt-48 mb-24 text-cente">
-            <h1 class="hidden sm:block text-white 2xl:text-6xl sm:text-5xl text-4xl font-black">Invest ₹4,999 today → Earn 6-8 LPA package in next 45 days!</h1>
-            <h1 class="sm:hidden text-white lg:text-9xl sm:text-7xl text-4xl text-center  font-bold">Invest ₹4,999 today → Earn 6-8 LPA in 45 days!</h1>
+            <h1 class="hidden sm:block text-white 2xl:text-6xl sm:text-5xl text-4xl font-black">Invest ₹7,999 today → Earn 6-8 LPA package in next 45 days!</h1>
+            <h1 class="sm:hidden text-white lg:text-9xl sm:text-7xl text-4xl text-center  font-bold">Invest ₹7,999 today → Earn 6-8 LPA in 45 days!</h1>
 
             <ul class="text-neutral-500 text-xl sm:text-xl mt-4 text-center sm:text-left">  
                 <li>✅ Weekly Live Doubt Solving Sessions</li>  
@@ -466,7 +466,7 @@
   });
 </script>
               
-            <a href="https://codekaro.in/enroll/120" class="inline-block text-white bg-gradient-to-r from-green-600 to-green-500 bg-clip-tex mt-3 mb-12 sm:px-12 w-full sm:w-auto text-center py-4 sm:rounded-xl rounded-full sm:text-3xl text-xl font-bold shado shado-xl shadow-neutral-500">Join frontend cohort now at 4999/-</a>
+            <a href="https://codekaro.in/enroll/120" class="inline-block text-white bg-gradient-to-r from-green-600 to-green-500 bg-clip-tex mt-3 mb-12 sm:px-12 w-full sm:w-auto text-center py-4 sm:rounded-xl rounded-full sm:text-3xl text-xl font-bold shado shado-xl shadow-neutral-500">Join frontend cohort now at 7999/-</a>
         </div>
      </section>
      

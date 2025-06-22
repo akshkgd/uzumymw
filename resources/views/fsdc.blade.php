@@ -493,7 +493,7 @@
 
     <div x-data="{ id: $id('accordion') }" class="cursor-pointer group">
         <button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underlin group-hover:decoration-green-00">
-            <span>4. React Js</span>
+            <span>5. React Js</span>
             <svg class="w-4 h-4 duration-200 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div x-show="activeAccordion==id" x-collapse x-cloak>
@@ -525,7 +525,7 @@
     </div>
     <div x-data="{ id: $id('accordion') }" class="cursor-pointer group">
         <button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underlin group-hover:decoration-green-00">
-            <span>5. Redux Toolkit</span>
+            <span>6. Redux Toolkit</span>
             <svg class="w-4 h-4 duration-700 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div x-show="activeAccordion==id" x-collapse x-collapse.duration.700ms x-cloak>
@@ -539,7 +539,7 @@
     </div>
     <div x-data="{ id: $id('accordion') }" class="cursor-pointer group">
         <button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underlin group-hover:decoration-green-00">
-            <span>6. Git & GitHub</span>
+            <span>7. Git & GitHub</span>
             <svg class="w-4 h-4 duration-700 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div x-show="activeAccordion==id" x-collapse x-collapse.duration.700ms x-cloak>
@@ -557,7 +557,7 @@
 
     <div x-data="{ id: $id('accordion') }" class="cursor-pointer group">
         <button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underlin group-hover:decoration-green-00">
-            <span>7. Node.js & Express</span>
+            <span>8. Node.js & Express</span>
             <svg class="w-4 h-4 duration-700 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div x-show="activeAccordion==id" x-collapse x-collapse.duration.700ms x-cloak>
@@ -577,7 +577,7 @@
 
     <div x-data="{ id: $id('accordion') }" class="cursor-pointer group">
         <button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underlin group-hover:decoration-green-00">
-            <span>8. MongoDB & Mongoose</span>
+            <span>9. MongoDB & Mongoose</span>
             <svg class="w-4 h-4 duration-700 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div x-show="activeAccordion==id" x-collapse x-collapse.duration.700ms x-cloak>
@@ -598,7 +598,7 @@
 
     <div x-data="{ id: $id('accordion') }" class="cursor-pointer group">
         <button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underlin group-hover:decoration-green-00">
-            <span>9. REST APIs & Authentication</span>
+            <span>10. REST APIs & Authentication</span>
             <svg class="w-4 h-4 duration-700 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div x-show="activeAccordion==id" x-collapse x-collapse.duration.700ms x-cloak>
@@ -619,7 +619,7 @@
 
     <div x-data="{ id: $id('accordion') }" class="cursor-pointer group">
         <button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underlin group-hover:decoration-green-00">
-            <span>10. Advanced Backend Topics</span>
+            <span>11. Advanced Backend Topics</span>
             <svg class="w-4 h-4 duration-700 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div x-show="activeAccordion==id" x-collapse x-collapse.duration.700ms x-cloak>
@@ -639,7 +639,7 @@
 
     <div x-data="{ id: $id('accordion') }" class="cursor-pointer group">
         <button @click="setActiveAccordion(id)" class="flex items-center justify-between w-full p-4 text-left select-none group-hover:underlin group-hover:decoration-green-00">
-            <span>11. Deployment & DevOps</span>
+            <span>12. Deployment & DevOps</span>
             <svg class="w-4 h-4 duration-700 ease-out" :class="{ 'rotate-180': activeAccordion==id }" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </button>
         <div x-show="activeAccordion==id" x-collapse x-collapse.duration.700ms x-cloak>
