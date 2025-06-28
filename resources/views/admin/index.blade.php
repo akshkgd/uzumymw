@@ -126,7 +126,7 @@
                             <th class="px-5 py-3  font-medium text-left">Email</th>
                             {{-- <th class="px-5 py-3  font-medium text-left">Mobile</th> --}}
                             <th class="px-5 py-3  font-medium text-left">Amount</th>
-                            <th class="px-5 py-3  font-medium text-left">Date</th>
+                            <th class="px-5 py-3  font-medium text-left">Campaign</th>
                             
                             <th class="px-5 py-3  font-medium text-left">Actions</th>
                         </tr>
@@ -141,7 +141,7 @@
                             <td class="px-4 py-4">{{ $enrollment->students->email }}</td>
                             {{-- <td class="px-4 py-2">{{ $enrollment->students->mobile }}</td> --}}
                             <td class="px-4 py-4">{{ number_format($enrollment->amountPaid / 100, 0) }} - {{$enrollment->paymentMethod}}</td>
-                            <td class="px-4 py-4">{{ Carbon\Carbon::parse($enrollment->paidAt)->format('D, d M Y') }}</td>
+                            <td class="px-4 py-4">{{ $enrollment->students->field1 ?: 'organic' }}</td>
                             {{-- <td class="px-4 py-2">{{ $enrollment->field2 }}</td>
                             <td class="px-4 py-2">{{ $enrollment->students->field1 }}</td>
                             <td class="px-4 py-2">{{ $enrollment->students->field2 }}</td> --}}
