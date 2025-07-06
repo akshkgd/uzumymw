@@ -297,4 +297,5 @@ Route::post('/admin/update-user-profile/{id}', 'AdminController@updateUserProfil
 Route::get('/api/check-email', 'AdminController@checkEmail')->name('admin.checkEmail');
 
 Route::post('/update-section', [TeacherController::class, 'updateSection'])->name('updateSection');
+Route::get('/api/batch/{hashId}', 'CodekaroController@BatchStreamDetails')->name('admin.streamDetails');
 

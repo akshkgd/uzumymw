@@ -78,6 +78,8 @@
                                         @elseif($batch->status == 3)
                                             <span class="bg-red-100 text-red-800 text-xs font-normal px-2.5 py-0.5 rounded-full">Completed</span>
                                         @endif
+                                        
+                                        <span>{{ \Vinkla\Hashids\Facades\Hashids::encode($batch->id) }}</span>
                                     </td>
                                     
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">

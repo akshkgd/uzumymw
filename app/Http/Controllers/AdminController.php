@@ -33,6 +33,7 @@ use App\Jobs\UpdateBatchProgressJob;
 use App\Traits\NotificationTrait;
 use Illuminate\Support\Facades\Log;
 use Carbon\CarbonPeriod;
+use Vinkla\Hashids\Facades\Hashids;
 
 class AdminController extends Controller
 {
@@ -749,7 +750,7 @@ class AdminController extends Controller
             ], 500);
         }
     }
-
+    
     /**
      * Display paginated list of students
      */

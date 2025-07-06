@@ -23,7 +23,8 @@
         "laravel/ui": "^2.4",
         "livewire/livewire": "^2.8",
         "ognjen/laravel-async-mail": "v3.0.0",
-        "razorpay/razorpay": "^2.5"
+        "razorpay/razorpay": "^2.5",
+        "vinkla/hashids": "^8.1"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

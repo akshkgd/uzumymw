@@ -30,6 +30,7 @@ use FacebookAds\Object\ServerSide\DeliveryCategory;
 use FacebookAds\Object\ServerSide\Event;
 use FacebookAds\Object\ServerSide\EventRequest;
 use FacebookAds\Object\ServerSide\UserData;
+use Vinkla\Hashids\Facades\Hashids;
 
 class CodekaroController extends Controller
 {
@@ -73,6 +74,27 @@ class CodekaroController extends Controller
         return response('Webhook Handled', 200);
     }
 }
+
+
+public function BatchStreamDetails($hashId){
+            $decoded = Hashids::decode($hashId);
+
+            if (empty($decoded)) {
+            return response()->json(['error' => 'Invalid batch link'], 404);
+            }
+            $id = $decoded[0];
+            $batch = Batch::find($id);
+            if (!$batch) {
+                return response()->json(['error' => 'Batch not found'], 404);
+            }
+            return response()->json([
+                'id' => $hashId,
+                'title' => $batch->name,
+                'time' => $batch->nextClass,
+                'topic' => $batch->topic,
+                'url' => $batch->meetingLink,
+            ]);
+        }
 
     public function upgradeCss(){
         if(Auth::check()){
