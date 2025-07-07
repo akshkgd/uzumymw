@@ -16,17 +16,17 @@
                 @csrf
                 <div class="mb-4">
                     <label for="meetingLink" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Next Class Topic</label>
-                    <input type="text" name="topic" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Topic">
+                    <input type="text" name="topic" value="{{$batch->topic}}" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Topic">
                     <input type="hidden" name="batchId" value="{{$batch->id}}" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Topic">
                     
                 </div>
                 <div class="mb-4">
                     <label for="meetingLink" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Next Class schedule</label>
-                    <input type="datetime-local" name="nextClass" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Meeting Link">
+                    <input type="datetime-local" name="nextClass" value="{{$batch->nextClass}}" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Meeting Link">
                 </div>
                 <div class="mb-4">
                     <label for="groupLink2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Meeting Link</label>
-                    <input type="text" name="meetingLink" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Zoom Link">
+                    <input type="text" name="meetingLink" value="{{$batch->meetingLink}}" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Zoom Link">
                 </div>
                 <!-- WhatsApp Checkbox -->
         <div class="mb-4 flex items-center">
@@ -35,7 +35,7 @@
         </div>
 
                 <div class="flex justify-en">
-                    <button type="submi" class="w-ful text-white bg-black hover:bg-neutral-800 focus:ring-0 focus:outline-none font-normal text-sm px-5 py-3 text-center">Grant Access</button>
+                    <button type="submi" class="w-ful text-white bg-black hover:bg-neutral-800 focus:ring-0 focus:outline-none font-normal text-sm px-5 py-3 text-center">Schedule Class</button>
                 </div>      
             </form>
         </div>
