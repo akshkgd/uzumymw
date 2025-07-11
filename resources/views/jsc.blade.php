@@ -91,7 +91,7 @@
                                     <svg class="text-white rotate-90 mx-auto mb-5" fill="black" width="24" height="24" viewBox="0 0 32 32" version="1.1" aria-labelledby="codekaro" aria-hidden="false" style="flex-shrink:0"><desc lang="en-US">Codekaro logo</desc><title id="unsplash-home">Codekaro</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg>
                                 </div> -->
                                 <h1 class="text-xl font-semibold tracking-tight font-sans flex gap-1 justify-center">Join<span class="relative"><img src="../assets/live_kids.svg" alt="" class="absolute -bottom-1"> Live</span> Javascript Crash Course!</h1>
-                                <p class="text-sm text-red-600 -mt- font-medium">Live class on 18th May | 11:00 AM</p>
+                                <p class="text-sm text-red-600 -mt- font-medium">Live class on 16th July | 07:00 PM</p>
                             </div>
                             <form class="space-y-3 text-left" action="{{ route('course-enrollment-auto') }}" method="POST">
                                 @csrf
@@ -182,21 +182,22 @@
     </template>
 
     <!-- mobile cta -->
-    <div class="fixed flex items-center px-4 justify-between z-20 bottom-0 h-14 bg-black w-full sm:hidden">
+    
+    <div class="fixed flex items-center px-4 justify-between z-20  py-2 bottom-0 h-18 bg-black  rounded-t-2xl w-full sm:hidden">
         <div class="text-white">
-            <p><span class="font-bold text-sm">₹99</span> <span class="text-sm line-through text-neutral-300">899</span></p>
-            <p class="text-xs">Offer ends in <span x-text="minutes"></span>m : <span x-text="seconds.toString().padStart(2, '0')"></span>s</p>
+            <p><span class="font-bold text-sm">₹99</span> <span class="text-sm line-through text-neutral-300">1999</span></p>
+            <p class="text-sm font-light"> <span x-text="minutes"></span>m : <span x-text="seconds.toString().padStart(2, '0')"></span>s Left</p>
         </div>
         <!-- <button @click="modalOpen=true" class=" bg-green-600 py-2 px-5 rounded-xl animate-bounc text-white font-medium">Join Bootcamp Now</button> -->
          <div class="overflow-hidde">
-            <a href="#_" @click="modalOpen=true" class="relative block rounded px-5 py-2 overflow-hidden group bg-green-500 text-white ring-green-400 transition-all ease-out duration-300">
+            <a href="#_" @click="modalOpen=true" class="relative block text-center rounded-3xl px-5 py-2 overflow-hidden group bg-green-500 text-white ring-green-400 transition-all ease-out duration-300">
                 <span class="absolute left-0 w-8 h-32 -mt-12 transform -translte-x-[-100%] bg-white opacity-20  rotate-12 button-animate">
                     <span></span>
                     <span></span>
                 </span>
                 
     
-                <span class="relative">Join Bootcamp Now</span>
+                <span class="relative ">Join Crash course for ₹99</span>
               </a>
               
               <style>
@@ -216,24 +217,76 @@
          </div>
     </div>
 <div class="w-full overflow-hidde">
-    
+    <!-- promotion -->
+    <div class="bg-violet-600 text-white py-3 hidde">
+        <div class="relative overflow-hidden w-full ">
+  <!-- Duplicated content for seamless loop -->
+  <div class="flex whitespace-nowrap gap-20 animate-marquee text-lg">
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+    <p>Limited Period Offer ★ Flat 90% Off ★</p>
+  </div>
+</div>
+
+<style>
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+</style>
+ 
+    </div>
+
+    <!-- promotion ends -->
     <!-- hero section -->
      <div class="bg-black">
-        <div class="max-w-3xl mx-auto">
-            <div class="py-24 sm:py-32 px-2 sm:px-4 text-center">
-                <h1 class="text-white font-manrope  text-2xl sm:text-4xl font-bold leadin-10"><span class="text-yellow-400">Learn Javascript in just 2 Hours</span> - Start Your Journey Toward a <span class="underline decoration-yellow-400">High-Paying Career</span></h1>
+        <div class="max-w-3xl mx-auto bg-black">
+            <div class="flex justify-center  items-center gap-2 pt-10 text-white sm:pt-12">
+            <div class="border- border-neutral-400  text-lg font-medium  ">Codekaro</div>
+            <div class="border-r border-neutral-400 h-full text-transparent">.</div>
+            <div class="borde border-neutral-400 inline-flex gap-2 pl-2  rounded-xl items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+</svg>
+                <div>
+                    <p class="text-sm font-light">LinkedIn</p>
+                    <p class="text-sm -mt-1">Top Startup 2023</p>
+                </div>
+            </div>
+        </div>
+            <div class="py-12 sm:pb-32 px-2 sm:px-4 text-center">
+                <h1 class="text-white font-manrope  text-3xl sm:text-4xl font-semibold leadin-10"><span class="text-amber-400">Learn Javascript in just 2 Hours</span> - Start Your Journey Toward a <span class="underline decoration-amber-400">High-Paying Career</span></h1>
                 <!-- <p class="text-white mt-4 text-lg">Build your career In Front End or Full Stack, Start learning now to Secure a Minimum 8 LPA Package or Salary Hike Upto 87% Without Applying On Job Portals</p> -->
                 <div class="mt-2 sm:mt-7 bg-neutral-5 rounded-xl p-4">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 hidde">
-                        <div class="bg-neutral-800 rounded-lg p-3 ring-4 ring-neutral-700 text-white font-bold text-lg  text-center"> On 18th May</div>
-                        <div class="bg-neutral-800 rounded-lg p-3 ring-4 ring-neutral-700 text-white font-bold text-lg  text-center"> 11:00 AM - 1:00 PM</div>
-                        <div class="bg-neutral-800 rounded-lg p-3 ring-4 ring-neutral-700 text-white font-bold text-lg  text-center">Live Zoom session</div>
-                        
+                    <div class=" grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 hidden sm:grid">
+                        <div class="bg-neutral-900 rounded-lg p-3 ring-4 ring-neutral-800 text-white font-bold text-lg  text-center"> On 16th July</div>
+                        <div class="bg-neutral-900 rounded-lg p-3 ring-4 ring-neutral-800 text-white font-bold text-lg  text-center"> 07:00 PM - 09:00 PM</div>
+                        <div class="bg-neutral-900 rounded-lg p-3 ring-4 ring-neutral-800 text-white font-bold text-lg  text-center">Live session</div>
                       </div>
                       
-                  <p class="mt-4 text- sm:font-medium sm:text-lg text-center text-neutral-200">Master the core concepts of Js to add real functionality to websites like Netflix and ChatGPT — all in just 2 hours!  The must have Javascript crash course in 2025.</p>
+                  <p class="mt-4 text-lg sm:font-medium sm:text-lg text-center text-neutral-200">Master the core concepts of Js to add real functionality to websites like Netflix and ChatGPT — all in just 2 hours!  The must have Javascript crash course in 2025.</p>
                   <div class="max-w-xl mx-auto ">
-                    <a href="#" @click="modalOpen=true" class="hidde sm:flex group bg-white py-4 px-6 rounded-2xl border  border-white hover:rounded-2xl transition-all flex justify-center mt-10 items-center gap-2 font-bold text-xl">
+                    <a href="#" @click="modalOpen=true" class="hidden sm:flex group bg-white py-4 px-6 rounded-2xl border  border-white hover:rounded-2xl transition-all justify-center mt-10 items-center gap-2 font-bold text-xl">
                         Join live Javascript crash course at ₹99 now
                         <span class="transform transition-transform group-hover:translate-x-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
@@ -241,7 +294,7 @@
                             </svg>
                         </span>
                     </a>
-                    <p class="text-red-500 mt-2 ">No Upsells. No Course Pitches. Just Pure Actionable insights.</p>
+                    <p class="text-red-500 mt-2 text-center">No Upsells. No Course Pitches. Just Pure Actionable insights.</p>
                   </div>
                   </div>
             </div>
@@ -347,7 +400,7 @@
     <!-- content -->
     <div class="flex justify-center mx-4 sm:mx-0">
         <div class="text-center">
-            <h1 class="text-3xl font-black tracking-tight mt-24">What exactly we will learn & build?</h1>
+            <h1 class="text-3xl font-bold font-manrope tracking-tight mt-24">What exactly we will learn & build?</h1>
             <p class="text-base mt-1 text-neutral-800">Skip the fluff — learn exactly what the industry cares about.</p>
             
         </div>
@@ -582,7 +635,7 @@
     <div class="max-w-4xl mx-auto px-4">
         <div class="text-center mb-16">
             <h2 class="text-black text-2xl sm:text-3xl font-black">Got Questions? We've Got Answers</h2>
-            <p class="text-gray-600 text-lg mb-10">Everything you need to know before joining our Full Stack Development cohort</p>
+            <p class="text-gray-600 text-lg mb-10">Everything you need to know before joining our Javascript Bootcamp! </p>
         </div>
 
         <div x-data="{ 
@@ -598,7 +651,7 @@
                     @click="toggleQuestion(1)" 
                     class="flex justify-between items-center w-full p-5 text-left bg-white hover:bg-gray-50 transition-colors text-gray-900"
                 >
-                    <span class="sm:text-lg font-medium">When does the next cohort begin?</span>
+                    <span class="sm:text-lg font-medium">When does the bootcamp begin?</span>
                     <svg 
                         class="w-5 h-5 text-orange-500 transform transition-transform" 
                         :class="{'rotate-180': activeQuestion === 1}"
@@ -619,7 +672,7 @@
                     x-cloak
                     class="p-5 bg-gray-50 text-gray-700"
                 >
-                    <p>Our next course kicks off on <span class="font-semibold text-orange-600">May 18th, 2025</span>. We recommend securing your spot early as our batches tend to fill up quickly.</p>
+                    <p>Our bootcamp kicks off on <span class="font-semibold text-orange-600">July 16th, 2025</span>. We recommend securing your spot early as our batches tend to fill up quickly.</p>
                 </div>
             </div>
 
