@@ -90,7 +90,7 @@
                                 <!-- <div class="text-center">
                                     <svg class="text-white rotate-90 mx-auto mb-5" fill="black" width="24" height="24" viewBox="0 0 32 32" version="1.1" aria-labelledby="codekaro" aria-hidden="false" style="flex-shrink:0"><desc lang="en-US">Codekaro logo</desc><title id="unsplash-home">Codekaro</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg>
                                 </div> -->
-                                <h1 class="text-xl font-semibold tracking-tight font-sans flex gap-1 justify-center">Join<span class="relative"><img src="../assets/live_kids.svg" alt="" class="absolute -bottom-1"> Live</span> Javascript Crash Course!</h1>
+                                <h1 class="text-xl font-semibold tracking-tight font-sans flex gap-1 justify-center">Join<span class="relative"><img src="{{asset('assets/img/live_kids.svg')}}" alt="" class="absolute -bottom-1"> Live</span> Javascript Crash Course!</h1>
                                 <p class="text-sm text-red-600 -mt- font-medium">Live class on 16th July | 07:00 PM</p>
                             </div>
                             <form class="space-y-3 text-left" action="{{ route('course-enrollment-auto') }}" method="POST">
@@ -183,14 +183,14 @@
 
     <!-- mobile cta -->
     
-    <div class="fixed flex items-center px-4 justify-between z-20  py-3 bottom-0 h-18 bg-black  rounded-t-2xl w-full sm:hidden">
+    <div class="fixed flex items-center px-4 justify-between z-20  py-4 bottom-0 h-18 bg-black/50 backdrop-blur-xl rounded-t-2xl w-full sm:hidden">
         <div class="text-white">
             <p><span class="font-bold text-sm">₹99</span> <span class="text-sm line-through text-neutral-300">1999</span></p>
             <p class="text-sm font-light"> <span x-text="minutes"></span>m : <span x-text="seconds.toString().padStart(2, '0')"></span>s Left</p>
         </div>
         <!-- <button @click="modalOpen=true" class=" bg-green-600 py-2 px-5 rounded-xl animate-bounc text-white font-medium">Join Bootcamp Now</button> -->
          <div class="overflow-hidde">
-            <a href="#_" @click="modalOpen=true" class="relative block text-center rounded-3xl px-5 py-2 overflow-hidden group bg-green-500 text-white ring-green-400 transition-all ease-out duration-300">
+            <a href="#_" @click="modalOpen=true" class="relative block text-center rounded-3xl px-5 py-3 overflow-hidden group bg-green-500 text-white ring-green-400 transition-all ease-out duration-300">
                 <span class="absolute left-0 w-8 h-32 -mt-12 transform -translte-x-[-100%] bg-white opacity-20  rotate-12 button-animate">
                     <span></span>
                     <span></span>
