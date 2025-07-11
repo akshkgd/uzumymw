@@ -183,7 +183,7 @@
 
     <!-- mobile cta -->
     
-    <div class="fixed flex items-center px-4 justify-between z-20  py-2 bottom-0 h-18 bg-black  rounded-t-2xl w-full sm:hidden">
+    <div class="fixed flex items-center px-4 justify-between z-20  py-3 bottom-0 h-18 bg-black  rounded-t-2xl w-full sm:hidden">
         <div class="text-white">
             <p><span class="font-bold text-sm">₹99</span> <span class="text-sm line-through text-neutral-300">1999</span></p>
             <p class="text-sm font-light"> <span x-text="minutes"></span>m : <span x-text="seconds.toString().padStart(2, '0')"></span>s Left</p>
