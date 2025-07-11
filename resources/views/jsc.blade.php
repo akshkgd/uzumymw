@@ -259,7 +259,7 @@
 
     <!-- promotion ends -->
     <!-- hero section -->
-     <div class="bg-black">
+     <div class="bg-black h-screen sm:h-auto">
         <div class="max-w-3xl mx-auto bg-black">
             <div class="flex justify-center  items-center gap-2 pt-10 text-white sm:pt-12">
             <div class="border- border-neutral-400  text-lg font-medium  ">Codekaro</div>
