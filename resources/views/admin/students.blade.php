@@ -205,7 +205,9 @@
                                 <a href="tel:+{{$user->mobile}}" class="text-violet-700">{{ $user->mobile }}</a>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm column-last_activity">
-                                {{ $user->lastActivity ? $user->lastActivity->format('D, d M Y h:i A') : 'Never' }}
+                                {{-- {{ $user->lastActivity ? $user->lastActivity->format('D, d M Y h:i A') : 'Never' }} --}}
+                                {{ $user->created_at ? $user->created_at->format('D, d M Y h:i A') : 'Never' }}
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm column-source hidden">{{ $user->field1 ?? '-' }}</td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm column-medium hidden">{{ $user->field2 ?? '-' }}</td>
