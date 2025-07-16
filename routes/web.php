@@ -272,6 +272,7 @@ Route::get('/admin/reports-data', 'AdminController@getReportsData')->middleware(
 // admin manage invoices
 Route::get('/admin/invoices', 'AdminController@listInvoices')->name('admin.invoices.list');
 Route::get('/admin/invoices/download/{invoiceId}','AdminController@downloadInvoices' )->name('admin.invoices.download');
+Route::get('/admin/wf', 'AdminController@wf');
 
 
 

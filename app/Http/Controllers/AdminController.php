@@ -1007,7 +1007,21 @@ class AdminController extends Controller
             ], 500);
         }
     }
-
+    public function wf()
+{
+    // Find professional users with latest first and pagination of 100
+    $professionalUsers = User::where('college', 'professional')
+        ->latest()
+        ->paginate(100);
+    
+    // Get count of professional users
+    $professionalUsersCount = User::where('college', 'professional')->count();
+    
+    // Alternative using scope (if you add the scope to User model)
+    // $professionalUsers = User::professional()->latest()->paginate(100);
+    
+    return view('admin.wf', compact('professionalUsers', 'professionalUsersCount'));
+}
     public function reports()
     {
         return view('admin.reports');
