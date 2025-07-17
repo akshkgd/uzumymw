@@ -299,4 +299,5 @@ Route::get('/api/check-email', 'AdminController@checkEmail')->name('admin.checkE
 
 Route::post('/update-section', [TeacherController::class, 'updateSection'])->name('updateSection');
 Route::get('/api/batch/{hashId}', 'CodekaroController@BatchStreamDetails')->name('admin.streamDetails');
+Route::get('/api/user/{email}', 'CodekaroController@userDetailsApi');
 
