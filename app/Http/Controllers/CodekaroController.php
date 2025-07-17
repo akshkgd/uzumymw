@@ -93,6 +93,7 @@ public function BatchStreamDetails($hashId){
                 'time' => $batch->nextClass,
                 'topic' => $batch->topic,
                 'url' => $batch->meetingLink,
+                'screenUrl' =>$batch->field1,
             ]);
         }
 

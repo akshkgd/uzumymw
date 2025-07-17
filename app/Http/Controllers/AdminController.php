@@ -328,6 +328,7 @@ class AdminController extends Controller
         $batch->topic = $request->topic;
         $batch->nextClass = $request->nextClass;
         $batch->meetingLink = $request->meetingLink;
+        $batch->field1 = $request->field1;
         $batch->save();
 
         // If 'sendWhatsApp' is checked, send WhatsApp notifications

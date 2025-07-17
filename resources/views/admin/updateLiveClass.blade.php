@@ -25,8 +25,13 @@
                     <input type="datetime-local" name="nextClass" value="{{$batch->nextClass}}" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Meeting Link">
                 </div>
                 <div class="mb-4">
-                    <label for="groupLink2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Meeting Link</label>
-                    <input type="text" name="meetingLink" value="{{$batch->meetingLink}}" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Zoom Link">
+                    <label for="groupLink2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Meeting Link / User Video HLS</label>
+                    <input type="text" name="meetingLink" value="{{$batch->meetingLink}}" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Zoom Link / User Video HLS">
+                </div>
+
+                <div class="mb-4">
+                    <label for="groupLink2" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Screen Video HLS</label>
+                    <input type="text" name="field1" value="{{$batch->field1}}" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Screen Video HLS">
                 </div>
                 <!-- WhatsApp Checkbox -->
         <div class="mb-4 flex items-center">
