@@ -117,13 +117,16 @@ class StudentController extends Controller
                 $video = $videoLink ? BatchContent::find($chapterId) : $content->first();
                 // $intro = false;
                 $intro = ($videoLink) ? "false" : "true";
-                $subStatus = true;
-                if ($enrollment->subscriptionId != null) {
-                    if ($enrollment->subscriptionStatus == 1 && $enrollment->accessTill > now()) {
-                        $subStatus = true;
-                    } else {
-                        $subStatus = false;
-                    }
+                if (blank($enrollment->accessTill)) {
+                    $effectiveAccessTill = Carbon::parse($enrollment->paidAt)->addYear();
+                } else {
+                    $effectiveAccessTill = Carbon::parse($enrollment->accessTill);
+                }
+
+                if ($effectiveAccessTill->isFuture()) {
+                    $subStatus = true;
+                } else {
+                    $subStatus = false;
                 }
                 $accessTill = Carbon::now()->diffInDays(Carbon::parse($enrollment->paidAt));
                 $sections = BatchSection::where('batchId', $enrollment->batchId)

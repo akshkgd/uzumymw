@@ -5,12 +5,9 @@
       <div
         class="flex items-center justify-between w-full px-4  mx-auto 2xl:px-0 max-w-6xl py-1"
       >
-        <div
-          class="relative z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left"
-        >
-          <a
-            href="{{url('/home')}}"
-            class="inline-flex sm:mr-8 items-end font-sans text-lg flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
+        <div class="relative z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left">
+          <a href="{{url('/home')}}"
+            class="sm:mr-8 font-sans text-lg flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline"
           >
           {{-- <div class="font-bold text-neutral-700 text-xl">Codekaro</div> --}}
           {{-- <img style="height: 18px" src="https://app.cal.com/api/logo" alt=""> --}}
@@ -19,6 +16,8 @@
           {{-- <svg xmlns="http://www.w3.org/2000/svg" data-testid="geist-icon" stroke-linejoin="round" style="width:23px;height:25px;color:var(--ds-gray-1000)" viewBox="0 0 16 16" aria-label="Vercel logo"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 1L16 15H0L8 1Z" fill="currentColor"></path></svg> --}}
           {{-- <span class="font-bold text-xl text-neutral-900 font-geist">Codekaro</span> --}}
           </a>
+          {{-- <div class="relative  z-10 flex items-center w-aut leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left"><a class="mr- flex items-center space-x-2" href="{{url('/home')}}"><svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-6"><ellipse cx="30.882" cy="30.803" rx="30.3097" ry="30.2769" fill="url(#paint0_radial_36_64)"></ellipse><defs><radialGradient id="paint0_radial_36_64" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0.572266 0.526062) rotate(44.969) scale(85.6825 85.6824)"><stop offset="0.352001" stop-color="#090909"></stop><stop offset="0.591494" stop-color="#2770EA"></stop><stop offset="0.793825" stop-color="#FF7E97"></stop><stop offset="0.972489" stop-color="#FF9203"></stop></radialGradient></defs></svg><span class="hidde text-xl font-bold tracking-tigh text-neutral-800 sm:inline-block">Codekaro</span></a><nav class="items-center hidden space-x- text-sm font-medium lg:flex"></nav></div> --}}
+
           <nav
             class="items-center hidden space-x-5 text-sm font-medium lg:flex"
           >
@@ -36,7 +35,7 @@
               class="inline-flex items-center justify-center h-12 py-2 pl-3 pr-0 text-sm font-medium transition-colors bg-white border-0 rounded-md text-neutral-700 focus:outline-none disabled:opacity-50 disabled:pointer-events-none"
             >
               <img
-                src="{{Auth::user()->avatar}}"
+                src="{{ Str::contains(Auth::user()->avatar, 'assets/img/mask.svg') ? asset('assets/img/mask.svg') : Auth::user()->avatar }}"
                 class="object-cover w-8 h-8 border rounded-full border-neutral-200"
               />
               <span

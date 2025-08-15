@@ -215,6 +215,10 @@ public function BatchStreamDetails($hashId){
         $batch = Batch::where('topicId', 100)->where('status', 1)->latest()->first();
         return view('css', compact('batch'));
     }
+    public function cssOne(){
+        $batch = Batch::where('topicId', 100)->where('status', 1)->latest()->first();
+        return view('cssOne', compact('batch'));
+    }
     public function javascriptSuccess(){
         return view('students.jsSuccess');
     }

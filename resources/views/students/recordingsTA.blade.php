@@ -66,21 +66,25 @@
 
     <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
       
-      <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">{{$enrollment->batch->name}}</h2>
-      <p class="bg-white text-md px-6 text-red-600 text-center">Your Subscription for full stack is not active! Contact the support team at <span class="text-blue-600">info@codekaro.in</span> for more details.</p>
+      <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">Access Expired </h2>
+      <p class="bg-white text-md px-6 text-neutral-800 text-center">Your access for {{$enrollment->batch->name}}  has come to an end! But we're just a message away if you need more time or feel there's been a mistake.</p>
       <div class="flex justify-center gap-2">
-        <a href="" class="bg-black text-white px-5 py-3 rounded-xl inline-block mt-6">Resume subscription</a>
-        <!-- <a href="" class="border px-5 py-3 rounded-lg inline-block mt-6">Important Links</a> -->
+        @php
+    $message = "Hey, my access to " . $enrollment->batch->name . " has expired, can you help? My email ID is " . Auth::user()->email;
+    $whatsappUrl = "https://wa.me/919452959744?text=" . urlencode($message);
+@endphp
+        <a href="{{ $whatsappUrl }}" target="_blank" class="bg-black text-white px-5 py-3 rounded-xl inline-block mt-6">Contact Support Team</a>
+        
         
       </div>
       
       
       
       
-      <div class="text-center flex gap-2 absolute left-1/2 translate-x-[-50%] bottom-0 mb-5">
+      {{-- <div class="text-center flex gap-2 absolute left-1/2 translate-x-[-50%] bottom-0 mb-5">
         <a href="" class=" py-3 px-4 text-neutral-500 rounded-lg inline-block mt-6">Continue watching: Javascript Foundation</a>
         <a href="" class=" py-3 px-4 text-neutral-500  rounded-lg inline-block mt-6">Back to Dashboard</a>
-      </div>
+      </div> --}}
     </div>
     
   </main>
