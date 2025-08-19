@@ -100,6 +100,12 @@
                     <input type="datetime-local" name="nextClass" value="{{ $batch->nextClass }}" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Class Schedule">
                 </div>
 
+                <div class="mb-4">
+                    <label for="nextClass" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Access Till</label>
+                    <input type="number" name="accessTill" value="{{ $batch->field5 }}" class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5 " placeholder="Access Till (in years)">
+                    <p class="text-xs text-neutral-600 mt-1">If left blank, it will be set to 1 year from the start date</p>
+                </div>
+
                 <!-- Batch Status -->
                 <div class="mb-4">
                     <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Batch Status</label>

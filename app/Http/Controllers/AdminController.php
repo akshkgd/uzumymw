@@ -310,6 +310,7 @@ class AdminController extends Controller
         $a->desc = $request->desc ;
         $a->nextClass = $request->nextClass ;
         $a->status = $request->status;
+        $a->field5 = $request->accessTill;
         $a->save();
         session()->flash('success', 'Batch updated');
         return redirect('/admin/batches');
