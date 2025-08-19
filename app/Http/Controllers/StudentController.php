@@ -118,8 +118,14 @@ class StudentController extends Controller
                 // $intro = false;
                 $intro = ($videoLink) ? "false" : "true";
                 if (blank($enrollment->accessTill)) {
-                    $effectiveAccessTill = Carbon::parse($enrollment->paidAt)->addYear();
-                } else {
+                    $field5 = $enrollment->batch->field5;
+                
+                    // If field5 is empty or not numeric, default to 1 year
+                    $yearsToAdd = (is_numeric($field5) && (int)$field5 > 0) ? (int)$field5 : 1;
+                
+                    $effectiveAccessTill = Carbon::parse($enrollment->batch->startDate)->addYears($yearsToAdd);
+                }
+                 else {
                     $effectiveAccessTill = Carbon::parse($enrollment->accessTill);
                 }
 
