@@ -10,7 +10,7 @@
           <div class="mt-1 flex justify-center">
             <div class="inline-flex w-64 items-center justify-center ">
               
-              <img src="{{asset('assets/img/personal-features-illustration.png')}}" class="h-36" alt="">
+              <img src="{{asset('assets/img/terminated.svg')}}" class="h-36" alt="">
             </div>
           </div>
           <h2 class="text-center text-2xl mt-2 font-bold leading-9 tracking-tight text-gray-900">Your account has been Terminated!</h2>
