@@ -23,7 +23,7 @@ class StudentController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']);
+        $this->middleware(['auth', 'verified', 'active']);
     }
     public function notes($id)
     {

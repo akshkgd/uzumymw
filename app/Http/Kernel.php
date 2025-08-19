@@ -38,6 +38,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \App\Http\Middleware\checkLastActivity::class,
+            
         ],
 
         'api' => [
@@ -67,5 +68,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'checkActivity' => \App\Http\Middleware\checkLastActivity::class,
         'isAdmin' => \App\Http\Middleware\isAdmin::class,
+        'active' => \App\Http\Middleware\ActiveMiddleware::class,
     ];
 }

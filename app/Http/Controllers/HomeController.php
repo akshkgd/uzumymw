@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']);
+        $this->middleware(['auth', 'verified', 'active']);
     }
 
     /**
@@ -98,9 +98,10 @@ class HomeController extends Controller
                 
                 return view('students.index', compact('enrollments', 'showPromotion'));
             }
-            
-            session()->flash('alert-danger', 'Your Account has been terminated!');
-            return view('students.index');
+            else{
+                session()->flash('alert-danger', 'Your Account has been terminated!');
+                return view('banned');
+            }
         }
         elseif(Auth::User()->role == 1){
             $batches = Batch::where('TeacherId', Auth::User()->id)->where('status', '<', 3)->orderBy('nextClass', 'asc')->get();
