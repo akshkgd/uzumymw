@@ -13,7 +13,7 @@
               <img src="{{asset('assets/img/terminated.svg')}}" class="h-36" alt="">
             </div>
           </div>
-          <h2 class="text-center text-xl mt-2 font-semibold leading-9 tracking-tigh text-gray-900">Your account has been Terminated!</h2>
+          <h2 class="text-center text-xl mt-2 font-semibold leading-9 tracking-tigh text-gray-950">Your account has been Terminated!</h2>
           <p class="bg-white px-6 text-neutral-700 text-center">You are currently logged in from <span class="font-bold">{{Auth::user()->email}}</span></p>
           <p class="bg-white px-6 text-neutral-700 text-center">If you think this is an error, please contact support.</p>
           <!-- <div class="text-center">

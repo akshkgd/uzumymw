@@ -52,7 +52,7 @@ class HomeController extends Controller
                         $query->select('id', 'topicId', 'name', 'type', 'status', 'groupLink', 'groupLink2');
                     }])
                     ->latest()
-                    ->take(3)
+                    ->take(10)
                     ->get();
 
                 // Check if user has only purchased basic courses
