@@ -145,7 +145,7 @@
                   Build the tech career <br> you <span class="text-[#ff4d00">deserve faster</span> with codekaro
               </h1>
               <p
-                  class="text-wrap mx-auto mt-5 max-w-2xl text-base md:text-lg text-neutral-800 dark:text-gray-300 ">
+                  class="text-wrap mx-auto mt-5 max-w-2xl text-base md:text-lg text-neutral-800  ">
                   Get your dream job, salary hike, role or make a switch faster than ever with 1:1 long term
                   personalized mentorship.
               </p>
