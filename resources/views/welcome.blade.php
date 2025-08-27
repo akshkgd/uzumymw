@@ -40,7 +40,7 @@
 
 <header>
   <nav
-      class="fixe top-0 overflow-hidden z-20 w-full bg-white/80 dark:bg-gray-950/75 dark:shadow-md rounded-b-l dark:shadow-gray-950/10 border- border-gray-100 border- dark:border-[--ui-dark-border-color] backdrop-blur">
+      class="fixe top-0 overflow-hidden z-20 w-full bg-white/80 rounded-b-l dark:shadow-gray-950/10 border- border-gray-100 border-  backdrop-blur">
       <div class="px-4 m-auto max-w-5xl 2xl:px-0">
           <div class="flex flex-wrap items-center justify-between py-2 sm:py-4">
               <div class="w-full items-center flex justify-between lg:w-auto">
@@ -141,7 +141,7 @@
                   </p>
               </div>
               <h1
-                  class="cal-sans trackingem] text-wrap text-3xl md:text-4xl font-extrabold text-neutral-800 dark:text-white xl:text-4xl lg:text-4xl">
+                  class="cal-sans trackingem] text-wrap text-3xl md:text-4xl font-extrabold text-neutral-800  xl:text-4xl lg:text-4xl">
                   Build the tech career <br> you <span class="text-[#ff4d00">deserve faster</span> with codekaro
               </h1>
               <p
