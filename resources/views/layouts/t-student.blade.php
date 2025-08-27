@@ -6,19 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title','Codekaro')</title>
     <meta name="og:description" content="@yield('meta_description','Community-led learning programs designed to fast track your career growth.')">
-    
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
-    <!-- Include the Alpine library on your page -->
     <script src="https://unpkg.com/alpinejs" defer></script>
-    <!-- Include the TailwindCSS library on your page -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet" />
-    {{-- <link rel="stylesheet" rel="preload" type="text/css" href="{{asset('assets/fonts/Geist-Regular.woff2')}}" /> --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
       [x-cloak] {
         display: none;
       }
-      body{
+      body {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+      }
+      .cal-sans {
+        font-family: "Cal Sans", sans-serif;
+        font-weight: 400;
+        font-style: normal;
       }
     </style>
     <!-- Google tag (gtag.js) -->
