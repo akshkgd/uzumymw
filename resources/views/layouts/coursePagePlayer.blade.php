@@ -8,7 +8,7 @@
             </div>
             <div class="my-5">
               
-              <h1 class="text-2xl  font-extrabold" id="title">{{ $video->title }}</h1>
+              <h1 class="text-2xl cal-sans font-extrabold" id="title">{{ $video->title }}</h1>
                 
             
               

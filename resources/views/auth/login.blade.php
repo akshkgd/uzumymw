@@ -96,7 +96,7 @@
                 
                 <div class="relative">
                     <div class="absolute flex items-center" aria-hidden="true">
-                        <div class="w-full border-t border-gray-200"></div>
+                        <div class="w-full border-t border-neutral-200"></div>
                     </div>
                     <div class="relative flex justify-center text-md leading-6">
                         <span class="bg-white px-6 text-gray-500 text-center">Login to your account to see all your courses
@@ -110,13 +110,13 @@
                     <!-- Google Login Button -->
                     <div class="flex justify-center transition-all duration-200">
                         <a href="{{ url('/redirect') }}"
-                            class="inline-flex w-800 w-full items-center justify-center px-3 py-3 gap-x-3 font-sans font-light tracking-wide transition-all duration-200 bg-black text-white rounded-xl hover:bg-neutral-800">
+                            class="inline-flex w-800 w-full items-center justify-center px-3 py-3 gap-x-3  tracking-wide transition-all duration-200 bg-neutral-900 text-white rounded-xl hover:bg-neutral-950">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-google" viewBox="0 0 16 16">
                                 <path
                                     d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z" />
                             </svg>
-                            <span class="text-md font-normal">Continue with Google</span>
+                            <span class="text-md font-light">Continue with Google</span>
                         </a>
                     </div>
 

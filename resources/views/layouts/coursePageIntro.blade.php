@@ -3,7 +3,7 @@
   
     <div class="sm:mx-auto sm:w-full sm:max-w-xl text-cente">
       @include('layouts.alert')
-      <h2 class="text-cente text-lg -mt-1 font-semibold leading-9  text-gray-900">{{$enrollment->batch->name}}</h2>
+      <h2 class="text-cente text-xl -mt-1 font-semibold leading-9 cal-sans text-gray-800">{{$enrollment->batch->name}}</h2>
 
       <p class="bg-white text-s text-gray-800">
           {{ optional($enrollment)->progress ?? 0 }}% completed in
@@ -111,7 +111,7 @@
           $today = \Carbon\Carbon::today();
         @endphp
         @if($nextClassDate->lessThanOrEqualTo($today))
-          <div class="flex text-left  items-center gap-2 hidden">
+          <div class="flex text-left  items-center gap-2 hidde">
           <div class="mt-2 sm:mt-0">
           <p class="text-red-600 ">No upcoming live class</p>
           <p class="text-neutral-700 text-s">You will be notified via email and WhatsApp when the new live class is scheduled.</p>

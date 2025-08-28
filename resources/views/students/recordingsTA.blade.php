@@ -8,16 +8,27 @@
     <!-- Primary Meta Tags -->
     <title>{{ $video->title ?? 'Course' }} | {{ Auth::user()->name ?? 'Guest' }}</title>
     <meta name="description" content="Learn {{ $enrollment->batch->name ?? 'programming' }} with CodeKaro's interactive online courses">
-    
- 
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link href="{{asset('css/app.css')}}" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
       [x-cloak] {
         display: none;
       }
       .desc a{
         color: rgb(0, 128, 255) !important;
+      }
+      body {
+        /* font-family: "Inter", sans-serif; */
+        font-optical-sizing: auto;
+      }
+      .cal-sans {
+        font-family: "Cal Sans", sans-serif;
+        font-weight: 400;
+        font-style: normal;
       }
       
     </style>
@@ -66,7 +77,7 @@
 
     <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
       
-      <h2 class="text-center text-xl -mt-1 font-bold leading-9 tracking-tight text-gray-900">Access Expired </h2>
+      <h2 class="text-center text-xl -mt-1 font-bold leading-9 cal-sans text-neutral-900">Access Expired </h2>
       <p class="bg-white text-md px-6 text-neutral-800 text-center">Your access for {{$enrollment->batch->name}}  has come to an end! But we're just a message away if you need more time or feel there's been a mistake.</p>
       <div class="flex justify-center gap-2">
         @php

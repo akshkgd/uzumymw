@@ -620,7 +620,7 @@ class AdminController extends Controller
                         $this->sendPabblyWebhook($a->id, $a->amountPaid);
 
                         Log::info('Sending enrollment notification from admin access grant', ['enrollment_id' => $a->id]);
-                        $this->sendEnrollmentNotification($a);
+                        // $this->sendEnrollmentNotification($a);
                     } catch (\Exception $e) {
                         Log::error('Failed to send notifications: ' . $e->getMessage(), [
                             'enrollment_id' => $a->id,
@@ -649,7 +649,7 @@ class AdminController extends Controller
                         $this->sendPabblyWebhook($enrollment->id, $enrollment->amountPaid);
 
                         Log::info('Sending enrollment notification from admin access update', ['enrollment_id' => $enrollment->id]);
-                        $this->sendEnrollmentNotification($enrollment);
+                        // $this->sendEnrollmentNotification($enrollment);
                     } catch (\Exception $e) {
                         Log::error('Failed to send notifications: ' . $e->getMessage(), [
                             'enrollment_id' => $enrollment->id,
