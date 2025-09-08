@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Javascript in just 2 Hours!</title>
+    <title>Master Frontend in just 5 Days!</title>
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Learn Javascript in just 2 Hours!">
-    <meta property="og:description" content="Master exactly what matters in javascript & Start Your Journey Toward a High-Paying Career.">
+    <meta property="og:title" content="Master Frontend in just 5 Days!">
+    <meta property="og:description" content="Master exactly what matters in frontend & Start Your Journey Toward a High-Paying Career.">
     <meta property="og:image" content="{{ asset('assets/img/js.webp') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Learn Javascript in just 2 Hours!">
-    <meta name="twitter:description" content="Master exactly what matters in javascript & Start Your Journey Toward a High-Paying Career.">
+    <meta name="twitter:title" content="Master Frontend in just 5 Days!">
+    <meta name="twitter:description" content="Master exactly what matters in frontend & Start Your Journey Toward a High-Paying Career.">
     <meta name="twitter:image" content="{{ asset('assets/img/js.webp') }}">
     
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
