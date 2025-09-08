@@ -122,7 +122,7 @@
 
 
 <section class="relative z-10 mt- w-full overflow-hidden">
-  <div class="relative lg:py-12 xl:pt-">
+  <div class="relative  sm:py-8 xl:py-12">
       <div class="mx-auto px-6 max-w-6xl md:px-12">
           <svg class="pointer-events-none absolute inset-[unset] left-1/2 top-0 w-[1200px] -translate-x-1/2 text-neutral-300 [mask-image:radial-gradient(black,transparent)] max-sm:opacity-70"
               width="100%" height="100%">
@@ -172,49 +172,49 @@
       <div class="scroll-container relative overflow-hidden">
           <div class="flex gap-2 scroll-animation whitespace-nowrap">
               <!-- First set of images -->
-              <img src="../lp-assets/Learne-10.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-11.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-12.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-13.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-14.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-15.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-16.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-17.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-18.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-19.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-20.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-10.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-11.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-12.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-13.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-14.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-15.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-16.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-17.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-18.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-19.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-20.svg" alt="" class="h-24   w-auto flex-shrink-0">
 
-              <img src="../lp-assets/Learne-1.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-2.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-3.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-4.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-5.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-6.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-7.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-8.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-9.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-1.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-2.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-3.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-4.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-5.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-6.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-7.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-8.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-9.svg" alt="" class="h-24   w-auto flex-shrink-0">
               
               <!-- Duplicate set for seamless loop -->
-              <img src="../lp-assets/Learne-10.svg" alt="" class="h-30 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-11.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-12.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-13.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-14.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-15.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-16.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-17.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-18.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-19.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-20.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-1.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-2.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-3.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-4.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-5.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-6.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-7.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-8.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
-              <img src="../lp-assets/Learne-9.svg" alt="" class="h-24 sm:h-28 w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-10.svg" alt="" class="h-24 w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-11.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-12.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-13.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-14.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-15.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-16.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-17.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-18.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-19.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-20.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-1.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-2.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-3.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-4.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-5.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-6.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-7.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-8.svg" alt="" class="h-24   w-auto flex-shrink-0">
+              <img src="../lp-assets/Learne-9.svg" alt="" class="h-24   w-auto flex-shrink-0">
           </div>
       </div>
   </div>

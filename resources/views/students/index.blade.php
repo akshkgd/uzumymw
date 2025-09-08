@@ -9,10 +9,10 @@
     {{-- course card start --}}
     @isset($enrollments)
         @if ($enrollments->count() > 0)
-            <main class=" flex flex-col justify-center align-middle py-12 mx-4 xlg:mx-0">
+            <main class=" flex flex-col justify-center align-middle py-12 mx-4 xl:mx-0">
                 <div class="mt-2">
-                    <div class="mt-24 max-w-6xl mx-auto">
-                        <h2 class="font-semibold text-xl">
+                    <div class="mt-24 max-w-6xl mx-auto px-0 sm:px-4 ">
+                        <h2 class="font-semibold cal-sans text-xl">
                             <span id="time"></span> <span>{{ 
                                 collect(explode(' ', Auth::user()->name))
                                     ->when(

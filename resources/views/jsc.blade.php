@@ -20,13 +20,25 @@
     
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <style>
         .jobs img{
             height: 28px;
             display: inline-block;
             filter: grayscale(100);
         }
+        body {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+      }
+      .cal-sans {
+        font-family: "Cal Sans", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
 
     </style>
 </head>
@@ -90,15 +102,15 @@
                                 <!-- <div class="text-center">
                                     <svg class="text-white rotate-90 mx-auto mb-5" fill="black" width="24" height="24" viewBox="0 0 32 32" version="1.1" aria-labelledby="codekaro" aria-hidden="false" style="flex-shrink:0"><desc lang="en-US">Codekaro logo</desc><title id="unsplash-home">Codekaro</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg>
                                 </div> -->
-                                <h1 class="text-xl font-semibold tracking-tight font-sans flex gap-1 justify-center">Join<span class="relative"><img src="{{asset('assets/img/live_kids.svg')}}" alt="" class="absolute -bottom-1"> Live</span> Javascript Crash Course!</h1>
-                                <p class="text-sm text-red-600 -mt- font-medium">Live class on 16th July | 07:00 PM</p>
+                                <h1 class="text-xl font-semibold tracking-tight font-sans flex gap-1 justify-center">Join<span class="relative"><img src="{{asset('assets/img/live_kids.svg')}}" alt="" class="absolute -bottom-1"> Live</span> Frontend Crash Course!</h1>
+                                <p class="text-sm text-red-600 -mt- font-medium">Live class on 10th Sept | 08:00 PM</p>
                             </div>
                             <form class="space-y-3 text-left" action="{{ route('course-enrollment-auto') }}" method="POST">
                                 @csrf
                                 <input type="hidden" name="source" value="{{ app('request')->input('utm_source') }}">
                                 <input type="hidden" name="medium" value="{{ app('request')->input('utm_medium') }}">
                                 <input type="hidden" name="campaign" value="{{ app('request')->input('utm_campaign') }}">
-                                <input type="hidden" name="courseId" value="138">
+                                <input type="hidden" name="courseId" value="150">
                                 <div class="space-y-1">
                                     <!-- <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Full Name</label> -->
                                     <input name="name" @auth value="{{ Auth::user()->name }}" @endauth type="text" id="name" class="flex w-full rounded-lg border text-base  border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Full Name">
@@ -169,7 +181,7 @@
                                 </div>
                                 <div class="flex flex-col-reverse sm:flex-row sm:justify-between sm:space-x-2">
                                     <button type="submit" class=" inline-flex gap-1 items-center justify-center rounded-xl bg-neutral-950 px-4 py-4 w-full font-medium text-white ring-offset-white transition-colors hover:bg-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neutral-950 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50">
-                                        Start Bootcamp for just  <span x-text="vipUpgrade ? ' ₹298 ' : ' ₹99 '"></span>
+                                        Join Frontend Crash Course for just  <span x-text="vipUpgrade ? ' ₹398 ' : ' ₹199 '"></span>
                                     </button>
                                 </div>
                             </form>
@@ -185,7 +197,7 @@
     
     <div class="fixed flex items-center px-4 justify-between z-20  py-4 bottom-0 h-18 bg-black/50 backdrop-blur-xl rounded-t-2xl w-full sm:hidden">
         <div class="text-white">
-            <p><span class="font-bold text-sm">₹99</span> <span class="text-sm line-through text-neutral-300">1999</span></p>
+            <p><span class="font-bold text-sm">₹199</span> <span class="text-sm line-through text-neutral-300">1999</span></p>
             <p class="text-sm font-light"> <span x-text="minutes"></span>m : <span x-text="seconds.toString().padStart(2, '0')"></span>s Left</p>
         </div>
         <!-- <button @click="modalOpen=true" class=" bg-green-600 py-2 px-5 rounded-xl animate-bounc text-white font-medium">Join Bootcamp Now</button> -->
@@ -197,7 +209,7 @@
                 </span>
                 
     
-                <span class="relative ">Join Crash course for ₹99</span>
+                <span class="relative ">Join Now for ₹199</span>
               </a>
               
               <style>
@@ -275,19 +287,19 @@
             </div>
         </div>
             <div class="py-12 sm:pb-32 px-2 sm:px-4 text-center">
-                <h1 class="text-white font-manrope  text-3xl sm:text-4xl font-semibold leadin-10"><span class="text-amber-400">Learn Javascript in just 2 Hours</span> - Start Your Journey Toward a <span class="underline decoration-amber-400">High-Paying Career</span></h1>
+                <h1 class="text-white cal-sans  text-3xl sm:text-4xl font-semibold leadin-10"><span class="text-amber-400">Master Frontend in just 5 days</span> - Start Your Journey Toward a <span class="underline decoration-amber-400">High-Paying Career</span></h1>
                 <!-- <p class="text-white mt-4 text-lg">Build your career In Front End or Full Stack, Start learning now to Secure a Minimum 8 LPA Package or Salary Hike Upto 87% Without Applying On Job Portals</p> -->
                 <div class="mt-2 sm:mt-7 bg-neutral-5 rounded-xl p-4">
                     <div class=" grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 hidden sm:grid">
-                        <div class="bg-neutral-900 rounded-lg p-3 ring-4 ring-neutral-800 text-white font-bold text-lg  text-center"> On 16th July</div>
-                        <div class="bg-neutral-900 rounded-lg p-3 ring-4 ring-neutral-800 text-white font-bold text-lg  text-center"> 07:00 PM - 09:00 PM</div>
+                        <div class="bg-neutral-900 rounded-lg p-3 ring-4 ring-neutral-800 text-white font-bold text-lg  text-center"> From 10th Sept</div>
+                        <div class="bg-neutral-900 rounded-lg p-3 ring-4 ring-neutral-800 text-white font-bold text-lg  text-center"> 08:00 PM - 09:00 PM</div>
                         <div class="bg-neutral-900 rounded-lg p-3 ring-4 ring-neutral-800 text-white font-bold text-lg  text-center">Live session</div>
                       </div>
                       
-                  <p class="mt-4 text-lg sm:font-medium sm:text-lg text-center text-neutral-200">Master the core concepts of Js to add real functionality to websites like Netflix and ChatGPT — all in just 2 hours!  The must have Javascript crash course in 2025.</p>
+                  <p class="mt-4 text-lg sm:font-medium sm:text-lg text-center text-neutral-200">Learn how to build real-world, functional websites like Netflix and Swiggy by mastering the core concepts of JavaScript & React js.</p>
                   <div class="max-w-xl mx-auto ">
                     <a href="#" @click="modalOpen=true" class="hidden sm:flex group bg-white py-4 px-6 rounded-2xl border  border-white hover:rounded-2xl transition-all justify-center mt-10 items-center gap-2 font-bold text-xl">
-                        Join live Javascript crash course at ₹99 now
+                        Join live Frontend crash course at ₹199 now
                         <span class="transform transition-transform group-hover:translate-x-2">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
@@ -414,11 +426,37 @@
 
                 <!-- Day 1 -->
                 <div class="border shadow-[6px_6px_0_-2px_#000] border-black p-6 mt-5 bg-white rounded-2xl">
-                    <div class="border border-black inline-block rounded-full px-5 py-1 bg-yellow-400">Module 1</div>
-                    <h3 class="text-xl font-bold mt-2">Javascript Foundation</h3>
+                    <div class="border border-black inline-block rounded-full px-5 py-1 bg-yellow-400">Day 01</div>
+                    <h3 class="text-xl font-bold mt-2">Master Tailwind CSS</h3>
                     <div class="mt-3 flex items-center">
                         <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
-                        Javascript Foundation
+                        Introduction to Tailwind CSS
+                    </div>
+                    <div class="mt-3 flex items-center">
+                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
+                        Tailwind CSS Grid
+                    </div>
+                    <div class="mt-3 flex items-center">
+                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
+                        Tailwind CSS Flexbox
+                    </div>
+                    <div class="mt-3 flex items-center">
+                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
+                        Tailwind CSS Responsive Design
+                    </div>
+                    <div class="mt-3 flex items-center">
+                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
+                        Tailwind CSS Animations
+                    </div>
+                </div>
+
+                <!-- Day 2 -->
+                <div class="border shadow-[6px_6px_0_-2px_#000] border-black p-6 mt-5 bg-white rounded-2xl">
+                    <div class="border border-black inline-block rounded-full px-5 py-1 bg-yellow-400">Day 02</div>
+                    <h3 class="text-xl font-bold mt-2">Understanding Javascript</h3>
+                    <div class="mt-3 flex items-center">
+                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
+                        How Javascript Works?
                     </div>
                     <div class="mt-3 flex items-center">
                         <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
@@ -428,45 +466,40 @@
                         <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
                         Arrays & Objects
                     </div>
-                    <div class="mt-3 flex items-center">
-                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
-                        Advance Concepts of Arrays
-                    </div>
-                    <div class="mt-3 flex items-center">
-                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
-                        If and Else & Usecases
-                    </div>
                 </div>
 
-                <!-- Day 2 -->
+                <!-- Day 3 -->
                 <div class="border shadow-[6px_6px_0_-2px_#000] border-black p-6 mt-5 bg-white rounded-2xl">
-                    <div class="border border-black inline-block rounded-full px-5 py-1 bg-yellow-400">Module 2</div>
-                    <h3 class="text-xl font-bold mt-2">How DOM Works?</h3>
+                    <div class="border border-black inline-block rounded-full px-5 py-1 bg-yellow-400">Day 03</div>
+                    <h3 class="text-xl font-bold mt-2">Javascript in Action</h3>
                     <div class="mt-3 flex items-center">
                         <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
-                        Loops & Usecases
+                        Functions & Loops
                     </div>
                     <div class="mt-3 flex items-center">
                         <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
-                        Master Functions
+                        Es6 Features
                     </div>
                     <div class="mt-3 flex items-center">
                         <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
                         Introduction to DOM
                     </div>
-                </div>
-
-                <!-- Day 3 -->
-                <div class="border shadow-[6px_6px_0_-2px_#000] border-black p-6 mt-5 bg-white rounded-2xl">
-                    <div class="border border-black inline-block rounded-full px-5 py-1 bg-yellow-400">Module 3</div>
-                    <h3 class="text-xl font-bold mt-2">Building projects</h3>
                     <div class="mt-3 flex items-center">
                         <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
-                        Creating Bill split App
+                        Array Mapping & Filters
                     </div>
                     <div class="mt-3 flex items-center">
                         <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
-                        Understanding Async JS
+                        How DOM Works?
+                    </div>
+                </div>
+
+                <div class="border shadow-[6px_6px_0_-2px_#000] border-black p-6 mt-5 bg-white rounded-2xl">
+                    <div class="border border-black inline-block rounded-full px-5 py-1 bg-yellow-400">Day 04</div>
+                    <h3 class="text-xl font-bold mt-2">Understanding Async Javascript</h3>
+                    <div class="mt-3 flex items-center">
+                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
+                        Understanding Async Javascript
                     </div>
                     <div class="mt-3 flex items-center">
                         <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
@@ -474,15 +507,35 @@
                     </div>
                     <div class="mt-3 flex items-center">
                         <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
-                        Event loops and promises
+                        Building a Movie Search App
+                    </div>
+                    
+                </div>
+
+                <div class="border shadow-[6px_6px_0_-2px_#000] border-black p-6 mt-5 bg-white rounded-2xl">
+                    <div class="border border-black inline-block rounded-full px-5 py-1 bg-yellow-400">Day 05</div>
+                    <h3 class="text-xl font-bold mt-2">Understanding React Js</h3>
+                    <div class="mt-3 flex items-center">
+                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
+                        How React Js Works?
                     </div>
                     <div class="mt-3 flex items-center">
                         <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
-                        Create Movie app using IMDB API
+                        Components & Props
+                    </div>
+                    <div class="mt-3 flex items-center">
+                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
+                        Conditional Rendering
+                    </div>
+                    <div class="mt-3 flex items-center">
+                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
+                        Handling Events
+                    </div>
+                    <div class="mt-3 flex items-center">
+                        <img class="mr-2" src="https://codekaro.in/assets/img/arrow2.svg" alt="" width="16" height="16">
+                        Building a Functional Food Ordering App
                     </div>
                 </div>
-
-
             
 
             </div>
