@@ -725,7 +725,7 @@
                     x-cloak
                     class="p-5 bg-gray-50 text-gray-700"
                 >
-                    <p>Our bootcamp kicks off on <span class="font-semibold text-orange-600">July 16th, 2025</span>. We recommend securing your spot early as our batches tend to fill up quickly.</p>
+                    <p>Crash Course kicks off on <span class="font-semibold text-orange-600">Sept 10th, 2025</span>. We recommend securing your spot early as our batches tend to fill up quickly.</p>
                 </div>
             </div>
 
