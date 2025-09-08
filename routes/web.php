@@ -62,7 +62,7 @@ Route::view('/join-frontend','joinFrontend');
 Route::view('/t','students/learn');
 Route::view('/c','students/certificatePdf');
 Route::view('/js-editor','jsEditor');
-Route::view('/start-js','jsc');
+Route::view('/start-fc','jsc');
 Route::view('/banned','banned');
 Route::view('/crash-course-schedule','ccSchedule');
 
