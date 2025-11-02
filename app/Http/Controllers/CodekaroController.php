@@ -75,8 +75,50 @@ class CodekaroController extends Controller
     }
 }
 
+    public function certificateDetailsApi($id)
+{
+    try {
+        // Find the course enrollment by certificateId
+        $enrollment = CourseEnrollment::where('certificateId', $id)->first();
+        // Check if enrollment exists
+        if (!$enrollment) {
+            return response()->json([
+                'success' => false,
+                'message' => 'Certificate not found'
+            ], 404);
+        }
 
-public function BatchStreamDetails($hashId){
+        // Prepare the response data
+        $courseEnrollmentDetails = [
+            'id' => $enrollment->id,
+            'name' => $enrollment->students->name,
+            'email' => $enrollment->students->email,
+            'batchName'=>$enrollment->batch->name,
+            'batchEndDate'=>$enrollment->batch->endDate,
+            'batchId' => $enrollment->batchId,
+            'certificateId' => $enrollment->certificateId,
+            'certificateGeneratedAt' => $enrollment->certificateGeneratedAt,
+            'status' => $enrollment->status,
+            'refundStatus' => $enrollment->refundStatus,
+            'refundAmount' => $enrollment->refundAmount,
+            'type' => $enrollment->type,
+            'time_spent' => $enrollment->time_spent,
+            'progress' => $enrollment->progress,
+        ];
+
+        return response()->json(
+             $courseEnrollmentDetails
+        , 200);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'success' => false,
+            'message' => 'An error occurred while fetching certificate details',
+            'error' => $e->getMessage()
+        ], 500);
+    }
+}
+    public function BatchStreamDetails($hashId){
             $decoded = Hashids::decode($hashId);
 
             if (empty($decoded)) {

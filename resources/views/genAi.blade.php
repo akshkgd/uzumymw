@@ -99,7 +99,7 @@
             <div class="border inline-block px-5 py-3 rounded-full mb-5 bg-orange-50 text-orange-800 border-orange-300">For Busy working professionals</div>
             <h1 class="text-2xl md:text-3xl font-semibold text-neutral-800 ck-sans -tracking-[0.10em]">AI Skills That Will Make You Irreplaceable: Master <span class="text-orange-600 underline">Python & Agentic
                     AI in just 3 days</span> to Become 10X More Valuable in Your Career</h1>
-            <p class="text-lg mt-5 text-neutral-700">This hands-on AI workshop transforms you into an AI power user who can build automated workflows, create professional content in minutes, and launch AI-powered apps—giving you the competitive edge that makes you irreplaceable in any industry.</p>
+            <p class="text-l mt-5 text-neutral-700 px-10">This hands-on AI workshop transforms you into an AI power user who can build automated workflows, create professional content in minutes, and launch AI-powered apps—giving you the competitive edge that makes you irreplaceable in any industry.</p>
             <div class="flex mt-5 gap-4 text-lef">
                 <div class="bg-[#552419] text-white px-5 w-1/2 py-3 rounde">From 4th - 6th Nov</div>
                 <div class="bg-[#552419] text-white px-5 w-1/2 py-3 rounde">8 PM - 9 PM (IST)</div>
@@ -223,7 +223,7 @@
             </div>
 
         </div>
-        <div class="max-w-5xl mx-auto my-12 m-3">
+        <div class="max-w-6xl mx-auto my-12 m-3">
             <div class="">
                 <h1 class="text-center font-medium ck-sans tracking-tighter p-3 text-3xl md:text-3xl text-white mb-10">What you will learn?</h1>
             </div>
