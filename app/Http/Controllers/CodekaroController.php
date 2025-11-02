@@ -93,6 +93,8 @@ class CodekaroController extends Controller
             'id' => $enrollment->id,
             'name' => $enrollment->students->name,
             'email' => $enrollment->students->email,
+            'isAccountActive' => $enrollment->students->status,
+            'hasPaid'=>$enrollment->hasPaid,
             'batchName'=>$enrollment->batch->name,
             'batchEndDate'=>$enrollment->batch->endDate,
             'batchId' => $enrollment->batchId,
