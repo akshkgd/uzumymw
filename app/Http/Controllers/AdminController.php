@@ -769,7 +769,10 @@ class AdminController extends Controller
     }
     public function courseProgress($enrollmentId){
         $enrollment = CourseEnrollment::findorFail($enrollmentId);
-        $courseProgress = CourseProgress::where('userId', $enrollment->userId)->where('batchId', $enrollment->batchId)->get();
+        $courseProgress = CourseProgress::with('content')
+            ->where('userId', $enrollment->userId)
+            ->where('batchId', $enrollment->batchId)
+            ->get();
         return view('admin.courseProgress', compact('courseProgress', 'enrollment'));
     }
 

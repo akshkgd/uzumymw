@@ -31,7 +31,7 @@
                             <tbody class="divide-y divide-neutral-200">
                                 @foreach ($courseProgress as $progress)
                                 <tr class="text-neutral-800">
-                                    <td class="px-5 py-4  font-medium whitespace-nowrap">{{ $progress->content->title }}</td>
+                                    <td class="px-5 py-4  font-medium whitespace-nowrap">{{ $progress->content ? $progress->content->title : 'N/A' }}</td>
                                     <td class="px-5 py-4 t whitespace-nowrap">{{ $progress->timeSpent }}m</td>
                                     <td class="px-5 py-4  whitespace-nowrap">{{ $progress->visited }}</td>
                                     <td class="px-5 py-4 text-sm whitespace-nowrap">{{ \Carbon\Carbon::parse($progress->lastAccess)->format('h:i A, d F Y') }}</td>
