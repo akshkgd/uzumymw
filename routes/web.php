@@ -65,7 +65,8 @@ Route::view('/js-editor','jsEditor');
 Route::view('/start-fc','jsc');
 Route::view('/banned','banned');
 Route::view('/crash-course-schedule','ccSchedule');
-Route::view('/ai','genAi');
+Route::view('/ai1','genAi');
+Route::view('/ai','genAi1');
 
 
 

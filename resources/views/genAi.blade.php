@@ -575,11 +575,11 @@
                             <button @click="toggleQuestion(index)" class="flex justify-between items-center w-full px-5 py-4 text-left bg-white transition-colors text-gray-900">
                                 <span class="sm:text-lg font-medium" x-text="faq.question"></span>
                                 <svg class="w-5 h-5 text-orange-500 transform transition-transform flex-shrink-0 ml-3" :class="{'rotate-180': activeQuestion === index}" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                            </button>
+                </button>
                             <div x-show="activeQuestion === index" x-collapse x-cloak class="p-4 text-gray-700">
                                 <p x-text="faq.answer"></p>
-                            </div>
-                        </div>
+                </div>
+            </div>
                     </template>
 
                 </div>
