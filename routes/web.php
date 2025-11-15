@@ -66,7 +66,7 @@ Route::view('/start-fc','jsc');
 Route::view('/banned','banned');
 Route::view('/crash-course-schedule','ccSchedule');
 Route::view('/ai1','genAi');
-Route::view('/ai','genAi1');
+Route::view('/genai-for-developers','genAi1');
 
 
 
