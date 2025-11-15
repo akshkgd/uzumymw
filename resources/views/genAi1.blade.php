@@ -333,7 +333,7 @@ linear var(--delay) var(--iteration-count);
                                             <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days md:size-6"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span>From 14th - 18th November 2025</span></div><div class="flex items-center gap-1 md:gap-2 hidden"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock md:size-6"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>Fri - 7PM to 11PM IST</span></div></div></div><div class="border border-black p-2 py-4 flex-1 flex justify-center items-center text-center"><div class="flex flex-row md:flex-row items-center gap-2 text-sm md:text-lg"><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide hidden lucide-calendar-days md:size-6"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span class="hidden">Day 2: 15th Nov</span></div><div class="flex items-center gap-1 md:gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock md:size-6"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>08:00 PM to 09:30 PM IST</span></div></div></div></div></div>
                             </section>
                                 </div><div class="font-figtree font-medium mb-4 md:text-xl">Mentors</div><div class="w-full overflow-x-auto pb-4 md:pb-0"><div class="flex md:flex-wrap justify-center gap- md:gap-2 min-w-max md:min-w-0"><div class="flex flex-col items-center w-[150px] md:w-auto text-center"><img src="/assets/img/genAiLP/ash.jpeg" alt="Sidharth" class="w-20 h-20 md:w-24 md:h-24"><div class="mt-2"><p class="font-figtree font-medium">Ashish</p><p class="text-gray-600 text-sm font-figtree font-normal">EX: Lido, Co Founder</p><p class="text-gray-600 text-sm font-figtree font-normal">Codekaro</p></div></div><div class="flex flex-col items-center w-[150px] md:w-auto text-center"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/ishan.svg" alt="Himanshu Srivastava" class="w-20 h-20 md:w-24 md:h-24"><div class="mt-2"><p class="font-figtree font-medium">Himanshu</p><p class="text-gray-600 text-sm font-figtree font-normal">Head of AI Initiatives</p><p class="text-gray-600 text-sm font-figtree font-normal">Codekaro</p></div></div><div class="flex hidden flex-col items-center w-[150px] md:w-auto text-center"><img src="/mdil.png" alt="KVS Dileep" class="w-20 h-20 md:w-24 md:h-24"><div class="mt-2"><p class="font-figtree font-medium">KVS Dileep</p><p class="text-gray-600 text-sm font-figtree font-normal">Head of AI Initiatives</p><p class="text-gray-600 text-sm font-figtree font-normal">codekaro</p></div></div></div></div>
-                                <a href="https://applications.codekaro.com/2021/14081" class="mt-6 bg-[#F1FE06] text-black px-6 py-3 border border-[#07090166] font-figtree font-normal w-[80%] md:w-[60%] text-center">Grab Your Spot For Rs. 199</a></div></div></div>
+                                <a href="#_" @click="modalOpen=true" class="mt-6 bg-[#F1FE06] text-black px-6 py-3 border border-[#07090166] font-figtree font-normal w-[80%] md:w-[60%] text-center">Grab Your Spot For Rs. 199</a></div></div></div>
     </section>
     {{-- logos --}}
     <section class="hidden">
@@ -361,13 +361,13 @@ linear var(--delay) var(--iteration-count);
                 <div class="border border-neutral-300  bg-white w-full  " >
                     <div class="p-3">
                         <p class="text-sm text-neutral-600 my-2">Day 01</p>
-                        <h1 class="font-medium text-lg">Thinking like a Model</h1>
+                        <h1 class="font-medium text-lg">Python Fundamentals for GenAI</h1>
                         <ul class="mt-2 list-disc ml-4 text-neutral-700">
-                            <li>How python works</li>
-                            <li>Variables & Datatypes</li>
-                            <li>Arrays</li>
-                            <li>Objects</li>
-                            <li>Conditionals</li>
+                            <li>Python Setup & Environment</li>
+                            <li>Core Python Syntax</li>
+                            <li>Control Flow Essentials</li>
+                            <li>Working With Data</li>
+                            <li>Python for AI Use Cases</li>
                             
                         </ul>
                     </div>
@@ -385,14 +385,15 @@ linear var(--delay) var(--iteration-count);
 
                 <div class="border border-neutral-300 bg-white  w-full">
                     <div class="p-3">
-                        <p class="text-sm text-neutral-600 my-2">Day 01</p>
-                        <h1 class="font-medium text-lg">Thinking like a Model</h1>
+                        <p class="text-sm text-neutral-600 my-2">Day 02</p>
+                        <h1 class="font-medium text-lg">Build AI Chatbot Using ChatGPT API</h1>
                         <ul class="mt-2 list-disc ml-4 text-neutral-700">
-                            <li>Human vs LLM thinking</li>
-                            <li>Learning & hallucinations</li>
-                            <li>Metacognition for prompts</li>
-                            <li>Failure modes & bias</li>
-                            <li>Functions</li>
+                            <li>Understanding APIs</li>
+                            <li>Python API Calls With requests</li>
+                            <li>ChatGPT API Fundamentals</li>
+                            <li>Using ChatGPT with Python</li>
+                            <li>Build Your Custom AI Chatbot</li>
+                            
                         </ul>
                     </div>
                     <div class="border-t border-neutral-300 bg-cover bg-center bg-[#f9fee " style="background-image: url(&quot;/assets/img/genAiLP/back.svg&quot;);">
@@ -411,21 +412,22 @@ linear var(--delay) var(--iteration-count);
 
                 <div class="border border-neutral-300  bg-white w-full ">
                     <div class="p-3">
-                        <p class="text-sm text-neutral-600 my-2">Day 01</p>
-                        <h1 class="font-medium text-lg">Thinking like a Model</h1>
+                        <p class="text-sm text-neutral-600 my-2">Day 03</p>
+                        <h1 class="font-medium text-lg">LangChain, LangGraph & Agentic AI</h1>
                         <ul class="mt-2 list-disc ml-4 text-neutral-700">
-                            <li>Human vs LLM thinking</li>
-                            <li>Learning & hallucinations</li>
-                            <li>Metacognition for prompts</li>
-                            <li>Failure modes & bias</li>
-                            <li>Deployment</li>
+                            <li>LangChain Fundamentals</li>
+                            <li>Building RAG (Retrieval Augmented Generation)</li>
+                            <li>LangGraph Basics</li>
+                            <li>Building an Agentic AI System</li>
+                            <li>Final Project: AI Agent</li>
+                
                         </ul>
                     </div>
                     <div class="border-t border-neutral-300 bg-cover bg-center bg-[#f9fee " style="background-image: url(&quot;/assets/img/genAiLP/back.svg&quot;);">
                         <div class="p-3 ">
                             <p class="text-neutral-600 text-xs">Tools you will learn</p>
                             <div class="flex gap-4 items-center">
-                                <img src="https://assets.nextleap.app/images/deepgram_case_study_icon_100920251653.svg"
+                                <img src="https://assets.nextleap.app/images/langchain_case_study_icon_100920251653.svg"
                                     alt="" class="mt-2 h-6">
                                 {{-- <img src="https://assets.nextleap.app/images/deepgram_case_study_icon_100920251653.svg" alt="" class="h-6 mt-2"> --}}
                             </div>
