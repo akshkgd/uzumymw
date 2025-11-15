@@ -4,22 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Master Frontend in just 5 Days!</title>
+    <title>Gen AI Engineering Mastermind</title>
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Master Frontend in just 5 Days!">
+    <meta property="og:title" content="Gen AI Engineering Mastermind">
     <meta property="og:description"
-        content="Master exactly what matters in frontend & Start Your Journey Toward a High-Paying Career.">
-    <meta property="og:image" content="{{ asset('assets/img/js.webp') }}">
+        content="Master exactly what matters in GenAi & Start Your Journey Toward a High-Paying Career.">
+    <meta property="og:image" content="{{ asset('assets/img/js.we') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Master Frontend in just 5 Days!">
+    <meta name="twitter:title" content="Gen AI Engineering Mastermind">
     <meta name="twitter:description"
-        content="Master exactly what matters in frontend & Start Your Journey Toward a High-Paying Career.">
-    <meta name="twitter:image" content="{{ asset('assets/img/js.webp') }}">
+        content="Master exactly what matters in GenAi & Start Your Journey Toward a High-Paying Career.">
+    <meta name="twitter:image" content="{{ asset('assets/img/js.we') }}">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
