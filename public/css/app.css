@@ -2683,6 +2683,9 @@ video {
 .text-\[30px\] {
   font-size: 30px;
 }
+.text-\[2px\] {
+  font-size: 2px;
+}
 .font-black {
   font-weight: 900;
 }
@@ -4554,6 +4557,14 @@ video {
 
   .md\:text-\[22px\] {
     font-size: 22px;
+  }
+
+  .md\:text-\[32px\] {
+    font-size: 32px;
+  }
+
+  .md\:text-\[3px\] {
+    font-size: 3px;
   }
 }
 @media (min-width: 1024px) {
