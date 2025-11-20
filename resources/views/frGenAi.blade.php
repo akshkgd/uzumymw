@@ -27,6 +27,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100;500;600;700;800;900&display=swap&family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-9323KT1W2S"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-9323KT1W2S');
+        </script>
+
     <style>
         @font-face {
         font-family: 'mackinac';
