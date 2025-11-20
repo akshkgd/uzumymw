@@ -271,7 +271,7 @@ linear var(--delay) var(--iteration-count);
                                     </div>
                                     
                                     <p class="text-sm flex gap-1">1. Get Lifetime Access to Recordings</p>
-                                    <p class="text-sm flex gap-1">2. Get 100+ Python interview Q&As</p>
+                                    <p class="text-sm flex gap-1">2. Get 100+ Javascript interview Q&As</p>
                                     <p class="text-sm flex gap-1">3. AI Resume & Portfolio Generator</p>
 
 
