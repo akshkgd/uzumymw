@@ -66,7 +66,7 @@
                     <p class="add">Electronic City Phase-1, Bengaluru, BLR 560100, India</p>
                    
                     <p class="add">info@codekaro.in</p>
-                    
+                    <p class="add">GSTIN - 09HAIPS9510Q2ZL</p>
                 </cente>
                 
                 
