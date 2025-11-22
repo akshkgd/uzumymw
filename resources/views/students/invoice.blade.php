@@ -24,9 +24,9 @@
                         <div class="px-3">
                             <img src="{{asset('assets/img/codekaro-dark.png')}}" alt="" class="avatar avatar-lg">
                             <p class=" m-0">Codekaro</p>
-                            <p class=" m-0 small">585/9 Lohatti Road</p>
-                            <p class=" m-0 small">Prayagraj, 211003</p>
-
+                            <p class=" m-0 small">Electronic City Phase-1, Bengaluru,</p>
+                            <p class=" m-0 small">BLR 560100, India</p>
+                            <p class=" m-0 small">GSTIN - 09HAIPS9510Q2ZL</p>
                         </div>
 
                         <div class="p-3">
