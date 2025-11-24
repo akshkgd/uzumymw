@@ -40,7 +40,7 @@ class CourseEnrollmentObserver
         // If payment status changed
         if ($courseEnrollment->isDirty('hasPaid')) {
             if ($courseEnrollment->hasPaid == 1) {
-                // $this->sendEnrollmentNotification($courseEnrollment);
+                $this->sendEnrollmentNotification($courseEnrollment);
                 
                 
             } else if ($courseEnrollment->hasPaid == 0) {
