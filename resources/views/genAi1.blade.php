@@ -27,6 +27,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100;500;600;700;800;900&display=swap&family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC9ETJV29G"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-HC9ETJV29G');
+    </script>
+    <!-- Meta Pixel Code -->
+<script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '606378664796034');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=606378664796034&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     <style>
         @font-face {
         font-family: 'mackinac';
@@ -179,6 +204,49 @@ linear var(--delay) var(--iteration-count);
         const totalMs = (this.minutes * 60 + this.seconds) * 1000;
         const endTime = Date.now() + totalMs;
         localStorage.setItem('timerEndTime', endTime.toString());
+    },
+    validateAndSubmit(event) {
+        const form = event.target;
+        const name = form.querySelector('[name=name]').value.trim();
+        const email = form.querySelector('[name=email]').value.trim();
+        const mobile = form.querySelector('[name=mobile]').value.trim();
+        
+        if (!name) {
+            alert('Please enter your full name');
+            form.querySelector('[name=name]').focus();
+            return false;
+        }
+        
+        if (!email) {
+            alert('Please enter your email address');
+            form.querySelector('[name=email]').focus();
+            return false;
+        }
+        
+        // Basic email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            alert('Please enter a valid email address');
+            form.querySelector('[name=email]').focus();
+            return false;
+        }
+        
+        if (!mobile) {
+            alert('Please enter your WhatsApp number');
+            form.querySelector('[name=mobile]').focus();
+            return false;
+        }
+        
+        // Mobile validation (10 digits)
+        const mobileRegex = /^[0-9]{10}$/;
+        if (!mobileRegex.test(mobile)) {
+            alert('Please enter a valid 10-digit mobile number');
+            form.querySelector('[name=mobile]').focus();
+            return false;
+        }
+        
+        // If all validations pass, submit the form
+        form.submit();
     }
 }" @keydown.escape.window="modalOpen = false" :class="{ 'overflow-hidden': modalOpen }">
     <!-- Full Screen Modal -->
@@ -208,40 +276,40 @@ linear var(--delay) var(--iteration-count);
                 class="relative flex w-full h-full bg-white overflow-hidden">
                 
                 <!-- Close Button -->
-                <!-- <button @click="modalOpen=false" class="absolute top-4 right-4 z-30 flex items-center justify-center px-3 py-3 space-x-1 text-xs font-medium uppercase border rounded-md border-neutral-200 text-neutral-600 hover:bg-neutral-100">
+                <button @click.stop="modalOpen=false" class="absolute top-4 right-4 z-[60] flex items-center justify-center px-3 py-3 space-x-1 text-xs font-medium uppercase border rounded-md border-neutral-200 text-neutral-600 hover:bg-neutral-100">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                     <span>Close</span>
-                </button> -->
+                </button> 
 
                 <!-- Content -->
                 <div class="relative flex flex-wrap items-center justify-center w-full h-full px-0 sm:px-8 overflow-y-auto z-50">
                     <div class="relative w-full max-w-md mx-auto py-8">
-                        <div class="relative text-center p-3 sm:p-6">
+                        <div class="relative text-center p-3 sm:p-6 ">
                             <div class="flex flex-col mb-6 space-y- text-center">
                                 <!-- <div class="text-center">
                                     <svg class="text-white rotate-90 mx-auto mb-5" fill="black" width="24" height="24" viewBox="0 0 32 32" version="1.1" aria-labelledby="codekaro" aria-hidden="false" style="flex-shrink:0"><desc lang="en-US">Codekaro logo</desc><title id="unsplash-home">Codekaro</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg>
                                 </div> -->
                                 <h1 class="text-xl font-semibold tracking-tight font-sans flex gap-1 justify-center">Join <span class="relative"><img src="https://codekaro.in/assets/img/live_kids.svg" alt="" class="absolute -bottom-1"> Live</span> Gen AI Engineering Mastermind</h1>
-                                <p class="text-sm text-red-600 -mt- font-medium">Live class from 10th Sept | 08:00 PM</p>
+                                <p class="text-sm text-red-600 -mt- font-medium">Live class from 5th Dec | 07:00 PM</p>
                             </div>
-                            <form class="space-y-3 text-left" action="https://codekaro.in/course-enrollment-auto" method="POST">
+                            <form class="space-y-3 text-left  mt-10" action="https://codekaro.in/course-enrollment-auto" method="POST" id="enrollmentForm" @submit.prevent="validateAndSubmit">
                                 <input type="hidden" name="_token" value="H2GL22rHHFEHaWOpgnEiyAc1aQdDRVAHZaJ8OzxK">                                <input type="hidden" name="source" value="">
                                 <input type="hidden" name="medium" value="">
                                 <input type="hidden" name="campaign" value="">
-                                <input type="hidden" name="courseId" value="150">
+                                <input type="hidden" name="courseId" value="162">
                                 <div class="space-y-1">
                                     <!-- <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Full Name</label> -->
-                                    <input name="name"  value="Ashish Shukla"  type="text" id="name" class="flex w-full rounded-none border text-base  border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Full Name">
+                                    <input name="name"  @auth value="{{Auth::user()->name}}" @endauth  type="text" id="name" required class="flex w-full rounded-none border text-base  border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Full Name">
                                 </div>
                                 <div class="space-y-1">
                                     <!-- <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="email">Email Address</label> -->
-                                    <input name="email"  value="myselfashishshukla@gmail.com"  type="text" id="name" class="flex w-full rounded-none border  border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Email Address">
+                                    <input name="email"  @auth value="{{Auth::user()->email}}" @endauth  type="email" id="email" required class="flex w-full rounded-none border  border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="Email Address">
                                 </div>
                                 <div class="space-y-1">
                                     <!-- <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="whatsapp">WhatsApp Number</label> -->
-                                    <input name="mobile"  value="7355191435"  type="text" id="name" class="flex w-full rounded-none border  border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="WhatsApp Number">
+                                    <input name="mobile"  @auth value="{{Auth::user()->mobile}}" @endauth  type="tel" id="mobile" required pattern="[0-9]{10}" class="flex w-full rounded-none border  border-neutral-200 bg-white px-3 py-3  ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-semibold placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:border-neutral-700 focus-visible:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" placeholder="WhatsApp Number">
                                     <p class="flex hidde gap-1 items-center mb-4">
                                         <span class="text-sm text-neutral-700">You will get updates on your</span>
                                         <svg width="79" height="18" viewBox="0 0 79 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -263,7 +331,7 @@ linear var(--delay) var(--iteration-count);
                                           </svg>
                                     </p>
                                 </div>
-                                <div class="hidde space-y-1 mt-3  border-2 border-green-500 bg-orange-5 rounded-x p-4 pb-3">
+                                <div class="hidden space-y-1 mt-3  border-2 border-green-500 bg-orange-5 rounded-x p-4 pb-3">
                                     <div class=" gap-2 mb-3">
                                         
                                         <h2 class="font-semibold">VIP Upgrade <span class="text-green-600">(Most Loved)</span></h2>
@@ -289,19 +357,19 @@ linear var(--delay) var(--iteration-count);
                                     </div>
                                     <div class="fle items-center justify-between mt-4">
                                         <div class="flex items-center gap-2 mt-2">
-                                            <span class="text-l font-semibold">₹199.00</span>
+                                            <span class="text-l font-semibold">₹99.00</span>
                                             <span class="text-sm text-neutral-500 line-through px-1">₹2499</span>
                                         </div>
                                         <label class="relative inline-flex items-center cursor-pointer mt-2">
                                             <input type="hidden" name="recordingsCheckbox" :value="vipUpgrade ? '1' : '0'">
                                             <input type="checkbox" id="myCheckbox" x-model="vipUpgrade" class="sr-onl peer">
-                                            <span class="ml-3 text-sm font-medium text-neutral-700">Add VIP Upgrade for ₹199</span>
+                                            <span class="ml-3 text-sm font-medium text-neutral-700">Add VIP Upgrade for ₹99</span>
                                         </label>
                                     </div>
                                 </div>
                                 <div class="flex flex-col-reverse sm:flex-row sm:justify-between sm:space-x-2">
                                     <button type="submit" class="text-center w-full md:w-auto bg-[#FAFF00] hover:bg-[#E5E500] text-black font-medium py-2 px-8 border border-black text-base sm:text-xl font-figtree">
-                                        Join Gen AI Engineering Mastermind for just  <span x-text="vipUpgrade ? ' ₹398 ' : ' ₹199 '"></span>
+                                        Join Gen AI Engineering Mastermind for just  <span x-text="vipUpgrade ? ' ₹398 ' : ' ₹99 '"></span>
                                     </button>
                                 </div>
                             </form>
@@ -330,10 +398,10 @@ linear var(--delay) var(--iteration-count);
                                 <div class="flex flex-col md:flex-row gap-4 md:gap-3 justify-center w-full">
                                     <div class="border border-black p-2 py-4 flex-1 flex justify-center items-center text-center">
                                         <div class="flex flex-row md:flex-row items-center gap-2 text-sm md:text-lg font-mackina">
-                                            <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days md:size-6"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span>From 14th - 18th November 2025</span></div><div class="flex items-center gap-1 md:gap-2 hidden"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock md:size-6"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>Fri - 7PM to 11PM IST</span></div></div></div><div class="border border-black p-2 py-4 flex-1 flex justify-center items-center text-center"><div class="flex flex-row md:flex-row items-center gap-2 text-sm md:text-lg"><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide hidden lucide-calendar-days md:size-6"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span class="hidden">Day 2: 15th Nov</span></div><div class="flex items-center gap-1 md:gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock md:size-6"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>08:00 PM to 09:30 PM IST</span></div></div></div></div></div>
+                                            <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days md:size-6"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span>From 5th - 7th December 2025</span></div><div class="flex items-center gap-1 md:gap-2 hidden"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock md:size-6"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>Fri - 7PM to 11PM IST</span></div></div></div><div class="border border-black p-2 py-4 flex-1 flex justify-center items-center text-center"><div class="flex flex-row md:flex-row items-center gap-2 text-sm md:text-lg"><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide hidden lucide-calendar-days md:size-6"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span class="hidden">Day 2: 15th Nov</span></div><div class="flex items-center gap-1 md:gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock md:size-6"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>07:00 PM to 09:00 PM IST</span></div></div></div></div></div>
                             </section>
                                 </div><div class="font-figtree font-medium mb-4 md:text-xl">Mentors</div><div class="w-full overflow-x-auto pb-4 md:pb-0"><div class="flex md:flex-wrap justify-center gap- md:gap-2 min-w-max md:min-w-0"><div class="flex flex-col items-center w-[150px] md:w-auto text-center"><img src="/assets/img/genAiLP/ash.jpeg" alt="Sidharth" class="w-20 h-20 md:w-24 md:h-24"><div class="mt-2"><p class="font-figtree font-medium">Ashish</p><p class="text-gray-600 text-sm font-figtree font-normal">EX: Lido, Co Founder</p><p class="text-gray-600 text-sm font-figtree font-normal">Codekaro</p></div></div><div class="flex flex-col items-center w-[150px] md:w-auto text-center"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/ishan.svg" alt="Himanshu Srivastava" class="w-20 h-20 md:w-24 md:h-24"><div class="mt-2"><p class="font-figtree font-medium">Himanshu</p><p class="text-gray-600 text-sm font-figtree font-normal">Head of AI Initiatives</p><p class="text-gray-600 text-sm font-figtree font-normal">Codekaro</p></div></div><div class="flex hidden flex-col items-center w-[150px] md:w-auto text-center"><img src="/mdil.png" alt="KVS Dileep" class="w-20 h-20 md:w-24 md:h-24"><div class="mt-2"><p class="font-figtree font-medium">KVS Dileep</p><p class="text-gray-600 text-sm font-figtree font-normal">Head of AI Initiatives</p><p class="text-gray-600 text-sm font-figtree font-normal">codekaro</p></div></div></div></div>
-                                <a href="#_" @click="modalOpen=true" class="mt-6 bg-[#F1FE06] text-black px-6 py-3 border border-[#07090166] font-figtree font-normal w-[80%] md:w-[60%] text-center">Grab Your Spot For Rs. 199</a></div></div></div>
+                                <a href="#_" @click="modalOpen=true" class="mt-6 bg-[#F1FE06] text-black px-6 py-3 border border-[#07090166] font-figtree font-normal w-[80%] md:w-[60%] text-center">Grab Your Spot For ₹99</a></div></div></div>
     </section>
     {{-- logos --}}
     <section class="hidden">
@@ -361,21 +429,20 @@ linear var(--delay) var(--iteration-count);
                 <div class="border border-neutral-300  bg-white w-full  " >
                     <div class="p-3">
                         <p class="text-sm text-neutral-600 my-2">Day 01</p>
-                        <h1 class="font-medium text-lg">Python Fundamentals for GenAI</h1>
+                        <h1 class="font-medium text-lg">GenAI Basics & Building AI Chatbot</h1>
                         <ul class="mt-2 list-disc ml-4 text-neutral-700">
-                            <li>Python Setup & Environment</li>
-                            <li>Core Python Syntax</li>
+                            <li>Learn how LLMs like GPT work?</li>
+                            <li>Prompt engineering</li>
                             <li>Control Flow Essentials</li>
-                            <li>Working With Data</li>
-                            <li>Python for AI Use Cases</li>
-                            
+                            <li>Building AI Chatbot</li>
+                            <li>Adding Knowledgebase to Bot</li>
                         </ul>
                     </div>
                     <div class="border-t border-neutral-300 bg-cover bg-center bg-[#f9fee " style="background-image: url(&quot;/assets/img/genAiLP/back.svg&quot;);">
                         <div class="p-3 ">
                             <p class="text-neutral-600 text-xs">Tools you will learn</p>
                             <div class="flex gap-4 items-center">
-                                <img src="https://assets.nextleap.app/images/claudeai_case_study_icon_100920251653.svg"
+                                <img src="https://assets.nextleap.app/images/openai_black_wordmark_290820252018.svg"
                                     alt="" class="mt-2 h-6">
                                 {{-- <img src="https://assets.nextleap.app/images/deepgram_case_study_icon_100920251653.svg" alt="" class="h-6 mt-2"> --}}
                             </div>
@@ -386,22 +453,22 @@ linear var(--delay) var(--iteration-count);
                 <div class="border border-neutral-300 bg-white  w-full">
                     <div class="p-3">
                         <p class="text-sm text-neutral-600 my-2">Day 02</p>
-                        <h1 class="font-medium text-lg">Build AI Chatbot Using ChatGPT API</h1>
+                        <h1 class="font-medium text-lg">Deep Dive on MCPs Server</h1>
                         <ul class="mt-2 list-disc ml-4 text-neutral-700">
-                            <li>Understanding APIs</li>
-                            <li>Python API Calls With requests</li>
-                            <li>ChatGPT API Fundamentals</li>
-                            <li>Using ChatGPT with Python</li>
-                            <li>Build Your Custom AI Chatbot</li>
-                            
+                            <li>Understanding MCP Server</li>
+                            <li>Real world usecases & Case Studies</li>
+                            <li>Building own MCP server</li>
+                            <li>Adding Tools</li>
+                            <li>Connecting MCP server with Claude</li>
                         </ul>
                     </div>
                     <div class="border-t border-neutral-300 bg-cover bg-center bg-[#f9fee " style="background-image: url(&quot;/assets/img/genAiLP/back.svg&quot;);">
                         <div class="p-3 ">
                             <p class="text-neutral-600 text-xs">Tools you will learn</p>
                             <div class="flex gap-4 items-center">
-                                <img src="https://assets.nextleap.app/images/openai_black_wordmark_290820252018.svg"
+                                <img src="https://assets.nextleap.app/images/claudeai_case_study_icon_100920251653.svg"
                                     alt="" class="mt-2 h-6">
+                                
                                 {{-- <img src="https://framerusercontent.com/images/Z7lJ0WDBTh8Bb02fDCRxUodgTI.png" alt="" class="h-6 mt-2"> --}}
                             </div>
                         </div>
@@ -413,10 +480,10 @@ linear var(--delay) var(--iteration-count);
                 <div class="border border-neutral-300  bg-white w-full ">
                     <div class="p-3">
                         <p class="text-sm text-neutral-600 my-2">Day 03</p>
-                        <h1 class="font-medium text-lg">LangChain, LangGraph & Agentic AI</h1>
+                        <h1 class="font-medium text-lg">LangChain & Agentic AI</h1>
                         <ul class="mt-2 list-disc ml-4 text-neutral-700">
+                            <li>Fundamentals of Agentic Ai</li>
                             <li>LangChain Fundamentals</li>
-                            <li>Building RAG (Retrieval Augmented Generation)</li>
                             <li>LangGraph Basics</li>
                             <li>Building an Agentic AI System</li>
                             <li>Final Project: AI Agent</li>
@@ -560,7 +627,7 @@ linear var(--delay) var(--iteration-count);
                 </div>
             </div>
     </section>
-    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 shadow-lg z-50"><div class="w-[90%] md:w-[80%] mx-auto py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0"><div class="w-full flex flex-row md:items-start items-center justify-start md:justify-start space-y-0 md:space-y-2 sm:space-x-4 gap-3"><div class="flex flex-col md:items-start"><div class="flex flex-row sm:flex-col sm:items-start sm:space-y-1 items-center"><p class="text-[18px] sm:text-[28px] font-mackinac font-medium text-black leading-tight flex items-center"><span class="text-black text-[22px] sm:text-[28px] font-bold">₹ 199</span> <span class="text-gray-500 line-through text-[16px] sm:text-[20px] ml-1">₹10,000</span></p><p class="text-[14px] sm:text-[18px] font-figtree flex items-center ml-2 sm:ml-0 sm:items-start"><span role="img" aria-label="alarm-clock" class="mr-1">⏳</span>Offer Ends in: <span class="font-semibold ml-1 sm:ml-0"><span x-text="minutes"></span>:<span x-text="seconds.toString().padStart(2, '0')"></span></span></p></div></div></div><a href="#_" @click="modalOpen=true" class="text-center w-full md:w-auto bg-[#FAFF00] hover:bg-[#E5E500] text-black font-medium py-2 px-8 border border-black text-base sm:text-xl font-figtree">Grab Your Spot For just ₹199</a></div></div>
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 shadow-lg z-50"><div class="w-[90%] md:w-[80%] mx-auto py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0"><div class="w-full flex flex-row md:items-start items-center justify-center sm:justify-start space-y-0 md:space-y-2 sm:space-x-4 gap-3"><div class="flex flex-col md:items-start"><div class="flex flex-row sm:flex-col sm:items-start sm:space-y-1 items-center"><p class="text-[18px] sm:text-[28px] font-mackinac font-medium text-black leading-tight flex items-center"><span class="text-black text-[22px] sm:text-[28px] font-bold">₹99</span> <span class="text-gray-500 line-through text-[16px] sm:text-[20px] ml-1">₹2,290</span></p><p class="text-[14px] sm:text-[18px] font-figtree flex items-center ml-2 sm:ml-0 sm:items-start"><span role="img" aria-label="alarm-clock" class="mr-1">⏳</span>Offer Ends in: <span class="font-semibold ml-1 sm:ml-0"><span x-text="minutes"></span>:<span x-text="seconds.toString().padStart(2, '0')"></span></span></p></div></div></div><a href="#_" @click="modalOpen=true" class="text-center w-full md:w-auto bg-[#FAFF00] hover:bg-[#E5E500] text-black font-medium py-2 px-8 border border-black text-base sm:text-xl font-figtree">Grab Your Spot For just ₹99</a></div></div>
 
 
 
