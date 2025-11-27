@@ -68,6 +68,7 @@ Route::view('/crash-course-schedule','ccSchedule');
 Route::view('/ai1','genAi');
 Route::view('/genai-for-developers','genAi1');
 Route::view('/frontend-with-genai','frGenAi');
+Route::view('/css-exclusive','cssEx');
 Route::view('/lop','cssNew');
 
 
