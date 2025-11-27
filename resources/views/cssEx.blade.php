@@ -7,19 +7,19 @@
     <title>Gen AI Engineering Mastermind</title>
 
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Gen AI Engineering Mastermind">
+    <meta property="og:title" content="CSS Mastermind">
     <meta property="og:description"
-        content="Master exactly what matters in GenAi & Start Your Journey Toward a High-Paying Career.">
-    <meta property="og:image" content="{{ asset('assets/img/js.we') }}">
+        content="Master exactly what matters in CSS and Frontend & Start Your Journey Toward a High-Paying Career.">
+    <meta property="og:image" content="{{ asset('assets/img/css.webp') }}">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Gen AI Engineering Mastermind">
+    <meta name="twitter:title" content="CSS Mastermind">
     <meta name="twitter:description"
-        content="Master exactly what matters in GenAi & Start Your Journey Toward a High-Paying Career.">
-    <meta name="twitter:image" content="{{ asset('assets/img/js.we') }}">
+        content="Master exactly what matters in CSS and Frontend and Start Your Journey Toward a High-Paying Career.">
+    <meta name="twitter:image" content="{{ asset('assets/img/css.webp') }}">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
@@ -391,7 +391,7 @@ linear var(--delay) var(--iteration-count);
                     
                     <div class="flex flex-col items-center text-center py-5">
                         <div class="text-black bg-[#EEFE05] text-sm font-figtree font-normal mb-4 p-2 border border-[#07090166]">5 Hours ◆ 5 LIVE EXPERT SESSIONS</div>
-                        <h1 class="text-3xl md:text-[34px] font-medium mb-4 font-mackinac">5 DAY CSS MASTERMIND</h1><p class="text-gray-700 text-14 md:text-[22px] w-[80%] mb-4 font-figtree font-normal">Master Gen AI in <span class="font-semibold">3 days</span>, from API Integration to Building Gen AI Agents. Boost your engineering skills with hands-on learning, whether you're a beginner or already working with Gen AI.</p>
+                        <h1 class="text-3xl md:text-[34px] font-medium mb-4 font-mackinac">5 DAY CSS MASTERMIND</h1><p class="text-gray-700 text-14 md:text-[22px] w-[80%] mb-4 font-figtree font-normal">Master CSS in <span class="font-semibold">5 days</span>, from positions to responsive desings. Boost your frontend skills with hands-on learning, whether you're a beginner or already working with Frontend.</p>
                         <div class="text-black bg-[#EEFE05] text-sm font-figtree font-normal mb-4 p-2 border border-[#07090166]">For Active Coders &amp; Working Professionals</div><div class="flex flex-wrap justify-center gap-6 text-sm mb-6 md:w-[90%] w-[100%]">
                             <section class="w-full py-2 px-4 text-center"><div class="max-w-5xl mx-auto">
                                 <div class="w-full flex items-center justify-center"></div>
