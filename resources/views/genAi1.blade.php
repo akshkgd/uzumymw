@@ -72,6 +72,76 @@
             font-family: "Inter", sans-serif;
             font-optical-sizing: auto;
         }
+                .cta-button {
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: shake 3s infinite;
+            position: relative;
+            overflow: hidden;
+        }
+                .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+        }
+
+        @keyframes shake {
+            0%, 90%, 100% {
+                transform: translateX(0) rotate(0deg);
+            }
+            91% {
+                transform: translateX(-3px) rotate(-1deg);
+            }
+            92% {
+                transform: translateX(3px) rotate(1deg);
+            }
+            93% {
+                transform: translateX(-3px) rotate(-1deg);
+            }
+            94% {
+                transform: translateX(3px) rotate(1deg);
+            }
+            95% {
+                transform: translateX(-2px) rotate(-0.5deg);
+            }
+            96% {
+                transform: translateX(2px) rotate(0.5deg);
+            }
+            97% {
+                transform: translateX(-1px) rotate(-0.3deg);
+            }
+            98% {
+                transform: translateX(1px) rotate(0.3deg);
+            }
+            99% {
+                transform: translateX(0) rotate(0deg);
+            }
+        }
+
+        @keyframes shake-hover {
+            0%, 100% {
+                transform: translateX(0) rotate(0deg) scale(1.05);
+            }
+            25% {
+                transform: translateX(-2px) rotate(-0.5deg) scale(1.05);
+            }
+            50% {
+                transform: translateX(2px) rotate(0.5deg) scale(1.05);
+            }
+            75% {
+                transform: translateX(-2px) rotate(-0.5deg) scale(1.05);
+            }
+        }
         .rfm-marquee-container {
     overflow-x: hidden;
     display: flex;
@@ -398,10 +468,10 @@ linear var(--delay) var(--iteration-count);
                                 <div class="flex flex-col md:flex-row gap-4 md:gap-3 justify-center w-full">
                                     <div class="border border-black p-2 py-4 flex-1 flex justify-center items-center text-center">
                                         <div class="flex flex-row md:flex-row items-center gap-2 text-sm md:text-lg font-mackina">
-                                            <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days md:size-6"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span>From 5th - 7th December 2025</span></div><div class="flex items-center gap-1 md:gap-2 hidden"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock md:size-6"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>Fri - 7PM to 11PM IST</span></div></div></div><div class="border border-black p-2 py-4 flex-1 flex justify-center items-center text-center"><div class="flex flex-row md:flex-row items-center gap-2 text-sm md:text-lg"><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide hidden lucide-calendar-days md:size-6"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span class="hidden">Day 2: 15th Nov</span></div><div class="flex items-center gap-1 md:gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock md:size-6"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>07:00 PM to 09:00 PM IST</span></div></div></div></div></div>
+                                            <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-days md:size-6"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span>From 8th - 10th December 2025</span></div><div class="flex items-center gap-1 md:gap-2 hidden"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock md:size-6"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>Fri - 7PM to 11PM IST</span></div></div></div><div class="border border-black p-2 py-4 flex-1 flex justify-center items-center text-center"><div class="flex flex-row md:flex-row items-center gap-2 text-sm md:text-lg"><div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide hidden lucide-calendar-days md:size-6"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path><path d="M8 14h.01"></path><path d="M12 14h.01"></path><path d="M16 14h.01"></path><path d="M8 18h.01"></path><path d="M12 18h.01"></path><path d="M16 18h.01"></path></svg><span class="hidden">Day 2: 15th Nov</span></div><div class="flex items-center gap-1 md:gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clock md:size-6"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg><span>07:00 PM to 09:00 PM IST</span></div></div></div></div></div>
                             </section>
                                 </div><div class="font-figtree font-medium mb-4 md:text-xl">Mentors</div><div class="w-full overflow-x-auto pb-4 md:pb-0"><div class="flex md:flex-wrap justify-center gap- md:gap-2 min-w-max md:min-w-0"><div class="flex flex-col items-center w-[150px] md:w-auto text-center"><img src="/assets/img/genAiLP/ash.jpeg" alt="Sidharth" class="w-20 h-20 md:w-24 md:h-24"><div class="mt-2"><p class="font-figtree font-medium">Ashish</p><p class="text-gray-600 text-sm font-figtree font-normal">EX: Lido, Co Founder</p><p class="text-gray-600 text-sm font-figtree font-normal">Codekaro</p></div></div><div class="flex flex-col items-center w-[150px] md:w-auto text-center"><img src="https://d31bwppm8yl9g2.cloudfront.net/learner/gs/ishan.svg" alt="Himanshu Srivastava" class="w-20 h-20 md:w-24 md:h-24"><div class="mt-2"><p class="font-figtree font-medium">Himanshu</p><p class="text-gray-600 text-sm font-figtree font-normal">Head of AI Initiatives</p><p class="text-gray-600 text-sm font-figtree font-normal">Codekaro</p></div></div><div class="flex hidden flex-col items-center w-[150px] md:w-auto text-center"><img src="/mdil.png" alt="KVS Dileep" class="w-20 h-20 md:w-24 md:h-24"><div class="mt-2"><p class="font-figtree font-medium">KVS Dileep</p><p class="text-gray-600 text-sm font-figtree font-normal">Head of AI Initiatives</p><p class="text-gray-600 text-sm font-figtree font-normal">codekaro</p></div></div></div></div>
-                                <a href="#_" @click="modalOpen=true" class="mt-6 bg-[#F1FE06] text-black px-6 py-3 border border-[#07090166] font-figtree font-normal w-[80%] md:w-[60%] text-center">Grab Your Spot For ₹99</a></div></div></div>
+                                <a href="#_" @click="modalOpen=true" class="mt-6 bg-[#F1FE06] text-black px-6 py-3 border border-[#07090166] font-figtree font-normal w-[80%] md:w-[60%] text-center cta-button">Grab Your Spot For ₹99</a></div></div></div>
     </section>
     {{-- logos --}}
     <section class="hidden">
@@ -627,7 +697,7 @@ linear var(--delay) var(--iteration-count);
                 </div>
             </div>
     </section>
-    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 shadow-lg z-50"><div class="w-[90%] md:w-[80%] mx-auto py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0"><div class="w-full flex flex-row md:items-start items-center justify-center sm:justify-start space-y-0 md:space-y-2 sm:space-x-4 gap-3"><div class="flex flex-col md:items-start"><div class="flex flex-row sm:flex-col sm:items-start sm:space-y-1 items-center"><p class="text-[18px] sm:text-[28px] font-mackinac font-medium text-black leading-tight flex items-center"><span class="text-black text-[22px] sm:text-[28px] font-bold">₹99</span> <span class="text-gray-500 line-through text-[16px] sm:text-[20px] ml-1">₹2,290</span></p><p class="text-[14px] sm:text-[18px] font-figtree flex items-center ml-2 sm:ml-0 sm:items-start"><span role="img" aria-label="alarm-clock" class="mr-1">⏳</span>Offer Ends in: <span class="font-semibold ml-1 sm:ml-0"><span x-text="minutes"></span>:<span x-text="seconds.toString().padStart(2, '0')"></span></span></p></div></div></div><a href="#_" @click="modalOpen=true" class="text-center w-full md:w-auto bg-[#FAFF00] hover:bg-[#E5E500] text-black font-medium py-2 px-8 border border-black text-base sm:text-xl font-figtree">Grab Your Spot For just ₹99</a></div></div>
+    <div class="fixed bottom-0 left-0 w-full bg-white border-t border-gray-300 shadow-lg z-50"><div class="w-[90%] md:w-[80%] mx-auto py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-4 sm:space-y-0"><div class="w-full flex flex-row md:items-start items-center justify-center sm:justify-start space-y-0 md:space-y-2 sm:space-x-4 gap-3"><div class="flex flex-col md:items-start"><div class="flex flex-row sm:flex-col sm:items-start sm:space-y-1 items-center"><p class="text-[18px] sm:text-[28px] font-mackinac font-medium text-black leading-tight flex items-center"><span class="text-black text-[22px] sm:text-[28px] font-bold">₹99</span> <span class="text-gray-500 line-through text-[16px] sm:text-[20px] ml-1">₹2,290</span></p><p class="text-[14px] sm:text-[18px] font-figtree flex items-center ml-2 sm:ml-0 sm:items-start"><span role="img" aria-label="alarm-clock" class="mr-1">⏳</span>Offer Ends in: <span class="font-semibold ml-1 sm:ml-0"><span x-text="minutes"></span>:<span x-text="seconds.toString().padStart(2, '0')"></span></span></p></div></div></div><a href="#_" @click="modalOpen=true" class="text-center w-full md:w-auto bg-[#FAFF00] hover:bg-[#E5E500] text-black font-medium py-2 px-8 border border-black text-base sm:text-xl font-figtree cta-button">Grab Your Spot For just ₹99</a></div></div>
 
 
 
