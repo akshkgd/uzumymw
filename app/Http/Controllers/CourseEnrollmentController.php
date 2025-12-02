@@ -162,7 +162,7 @@ class CourseEnrollmentController extends Controller
                 return redirect('/bootcamp-success');
             }
             elseif ($batchId->topicId == 101){
-                return redirect('/javascript-success');
+                return redirect('/mastermind-success');
             }
             elseif ($batchId->topicId == 102){
                 return redirect('/react-success');
