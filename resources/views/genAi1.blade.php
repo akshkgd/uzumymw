@@ -292,7 +292,7 @@ linear var(--delay) var(--iteration-count);
                                     <svg class="text-white rotate-90 mx-auto mb-5" fill="black" width="24" height="24" viewBox="0 0 32 32" version="1.1" aria-labelledby="codekaro" aria-hidden="false" style="flex-shrink:0"><desc lang="en-US">Codekaro logo</desc><title id="unsplash-home">Codekaro</title><path d="M10 9V0h12v9H10zm12 5h10v18H0V14h10v9h12v-9z"></path></svg>
                                 </div> -->
                                 <h1 class="text-xl font-semibold tracking-tight font-sans flex gap-1 justify-center">Join <span class="relative"><img src="https://codekaro.in/assets/img/live_kids.svg" alt="" class="absolute -bottom-1"> Live</span> Gen AI Engineering Mastermind</h1>
-                                <p class="text-sm text-red-600 -mt- font-medium">Live class from 5th Dec | 07:00 PM</p>
+                                <p class="text-sm text-red-600 -mt- font-medium">Live class from 8th Dec | 07:00 PM</p>
                             </div>
                             <form class="space-y-3 text-left  mt-10" action="https://codekaro.in/course-enrollment-auto" method="POST" id="enrollmentForm" @submit.prevent="validateAndSubmit">
                                 <input type="hidden" name="_token" value="H2GL22rHHFEHaWOpgnEiyAc1aQdDRVAHZaJ8OzxK">                                <input type="hidden" name="source" value="">

@@ -66,10 +66,10 @@
 <section>
   <div class="max-w-xl mx-auto mt-44 text-cente shadow-l text-center sm:text-left rounded-xl">
     <h1 class="sm:text-2xl text-xl font-semibold">Congratulations @auth {{Auth::user()->name}} @endauth <span class="text-2xl">🎉</span></h1>
-    <p class=" font-ligh text-gray-700 sm:text-xl mt-3 px-5 sm:p-0">You have successfully enrolled for the <span class="underlin text-blac">GenAi Mastermind.</span>. Live classes will start from <span class="underline font-semibold text-black">24th Nov, 08:00 PM IST</span> </p>
+    <p class=" font-ligh text-gray-700 sm:text-xl mt-3 px-5 sm:p-0">You have successfully enrolled for the <span class="underlin text-blac">GenAi Mastermind.</span>. Live classes will start from <span class="underline font-semibold text-black">8th Dec, 07:00 PM IST</span> </p>
     <div class="fixed bottom-0 mb-10 w-full sm:static">
         <p class="   text-gray-700  sm:hidden">Next Steps</p>
-      <a target="_blank" href="https://chat.whatsapp.com/Idztm7tLj088dA0vVAhwl4" class="text-white bg-green-600 py-4 px-16 mt-4 inline-block rounded-full sm:rounded-xl  transition-all hover:bg-green-700 hover:text-white text-lg">Join WhatsApp Group</a>
+      <a target="_blank" href="https://chat.whatsapp.com/ICXRurn2AyZ4waJvAoKCfb" class="text-white bg-green-600 py-4 px-16 mt-4 inline-block rounded-full sm:rounded-xl  transition-all hover:bg-green-700 hover:text-white text-lg">Join WhatsApp Group</a>
       <p class="text-sm block mt-3 text-neutral-700 sm:hidden">Join the WhatsApp group now <br> to receive Zoom links and updates.</p>
       <p class="text-sm hidden sm:block mt-3 text-neutral-700">Join the WhatsApp group now to receive Zoom links and updates.</p>
 
