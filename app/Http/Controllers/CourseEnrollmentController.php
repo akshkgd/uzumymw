@@ -237,7 +237,7 @@ class CourseEnrollmentController extends Controller
             case 100:
                 return redirect('/bootcamp-success');
             case 101:
-                return redirect('/javascript-success');
+                return redirect('/mastermind-success');
             case 102:
                 return redirect('/react-success');
             case 105:
