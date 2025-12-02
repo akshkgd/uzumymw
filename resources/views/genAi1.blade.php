@@ -365,9 +365,10 @@ linear var(--delay) var(--iteration-count);
                                 <p class="text-sm text-red-600 -mt- font-medium">Live class from 8th Dec | 07:00 PM</p>
                             </div>
                             <form class="space-y-3 text-left  mt-10" action="https://codekaro.in/course-enrollment-auto" method="POST" id="enrollmentForm" @submit.prevent="validateAndSubmit">
-                                <input type="hidden" name="_token" value="H2GL22rHHFEHaWOpgnEiyAc1aQdDRVAHZaJ8OzxK">                                <input type="hidden" name="source" value="">
-                                <input type="hidden" name="medium" value="">
-                                <input type="hidden" name="campaign" value="">
+                                <input type="hidden" name="_token" value="H2GL22rHHFEHaWOpgnEiyAc1aQdDRVAHZaJ8OzxK">                                
+                                <input type="hidden" name="source" value="{{ app('request')->input('utm_source') }}">
+                                <input type="hidden" name="medium" value="{{ app('request')->input('utm_medium') }}">
+                                <input type="hidden" name="campaign" value="{{ app('request')->input('utm_campaign') }}">
                                 <input type="hidden" name="courseId" value="162">
                                 <div class="space-y-1">
                                     <!-- <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="name">Full Name</label> -->
