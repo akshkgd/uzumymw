@@ -462,7 +462,7 @@ linear var(--delay) var(--iteration-count);
                     
                     <div class="flex flex-col items-center text-center py-5">
                         <div class="text-black bg-[#EEFE05] text-sm font-figtree font-normal mb-4 p-2 border border-[#07090166]">6 Hours ◆ 3 LIVE EXPERT SESSIONS</div>
-                        <h1 class="text-3xl md:text-[34px] font-medium mb-4 font-mackinac">Learn Gen AI in Just 3 Days by Building Your Own AI Agent Like ChatGPT</h1><p class="text-gray-700 text-14 md:text-[22px] w-[80%] mb-4 font-figtree font-normal">Learn Gen AI in <span class="font-semibold">3 days</span>, from API Integration to Building Gen AI Agents. Boost your engineering skills with hands-on learning, whether you're a beginner or already working with Gen AI.</p>
+                        <h1 class="text-3xl md:text-[34px] font-medium mb-4 font-mackinac">Learn Gen AI in Just 3 Days by Building Your Own AI Agent Like ChatGPT</h1><p class="text-gray-700 text-14 md:text-[22px] w-[80%] mb-4 font-figtree font-normal">In <span class="font-semibold">just 3 days</span>, go 3 days, from API Integration to Building Gen AI Agents. Boost your engineering skills with hands-on learning, whether you're a beginner or already working with Gen AI.</p>
                         <div class="text-black bg-[#EEFE05] text-sm font-figtree font-normal mb-4 p-2 border border-[#07090166]">For Active Coders &amp; Working Professionals</div><div class="flex flex-wrap justify-center gap-6 text-sm mb-6 md:w-[90%] w-[100%]">
                             <section class="w-full py-2 px-4 text-center"><div class="max-w-5xl mx-auto">
                                 <div class="w-full flex items-center justify-center"></div>
