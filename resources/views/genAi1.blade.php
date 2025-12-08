@@ -92,7 +92,7 @@
 
         .cta-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+            /* box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6); */
         }
 
         @keyframes shake {
