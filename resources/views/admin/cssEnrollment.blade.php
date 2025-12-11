@@ -140,7 +140,7 @@
                 {{-- Unpaid Enrollments Section --}}
                 <div class="px-6 py-4">
                 <div class="flex w-full justify-center items-center gap-5">
-                    {{ $users->appends(request()->query())->links('pagination::tailwind') }}
+                    {{ $enrollments->appends(request()->query())->links('pagination::tailwind') }}
                 </div>
             </div>
 
