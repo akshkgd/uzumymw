@@ -126,6 +126,7 @@
                         
                         <td class="px-4 py-4">{{ $enrollment->students->field1 ?: 'organic' }}</td>
                         <td class="px-4 py-4">{{ $enrollment->students->field2 ?: '-' }}</td>
+                        <td class="px-4 py-4">{{ $enrollment->students->field3 ?: '-' }}</td>
                         <td class="px-4 py-4">{{ $enrollment->students->college ?: '-' }}</td>
                         <td class="px-4 py-4">{{ $enrollment->students->course ?: '-' }}</td>
                         <td class="px-4 py-4">{{ Carbon\Carbon::parse($enrollment->paidAt)->format('D, d M Y') }}</td>
