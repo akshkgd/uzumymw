@@ -109,6 +109,7 @@
                                     <th class="px-5 py-3  font-medium text-left">Medium</th>
                                     <th class="px-5 py-3  font-medium text-left">Campaign</th>
                                     <th class="px-5 py-3  font-medium text-left">Profession</th>
+                                    <th class="px-5 py-3  font-medium text-left">Designation</th>
                                     <th class="px-5 py-3  font-medium text-left">Date</th>
                                     
                                 </tr>
