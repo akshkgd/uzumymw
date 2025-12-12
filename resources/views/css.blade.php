@@ -1321,7 +1321,7 @@ iframe{border:0;}
                         <h1 class="heading fw-bod  " style=" line-height:1.5; color:aliceblue; font-weight:600">Learn CSS in just 3 days to create <span style="color:#efa30e;">Netflix, ChatGpt and Youtube</span> Like Designs Confidently.</h1>
 
 
-                        <p style="font-size:1vw;" class="fs-5 text-white text-center">Perfect for Frontend, Backend, Full-Stack, Non-IT Professionals and College Grads who want to upgrade their skills in Frontend and finally feel confident with CSS in real-world projects.</p>
+                        <p style="font-size:1vw;" class="fs-5 text-white text-center">Perfect for Frontend, Backend, Full-Stack, Non-IT Professionals and College Grads who want to upgrade their skills in UI and finally feel confident with CSS in real-world projects.</p>
 
 
 
