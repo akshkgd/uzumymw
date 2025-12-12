@@ -12,8 +12,8 @@
 <meta name="description" content="@yield('meta_description','Join the 3-Day Live CSS Bootcamp and master the fundamentals of CSS to build stunning, real-world UI designs inspired by Netflix, YouTube, and ChatGPT. Perfect for frontend, backend or Fullstack developers looking to level up fast.')">
 
 <!-- Open Graph for social platforms -->
-<meta property="og:title" content="Master CSS in Just 5 Days – Build Designs Inspired by Netflix, YouTube & ChatGPT">
-<meta property="og:description" content="Join the 5-Day Live CSS Bootcamp and master the fundamentals of CSS to build stunning, real-world UI designs inspired by Netflix, YouTube, and ChatGPT.">
+<meta property="og:title" content="Master CSS in Just 3 Days – Build Designs Inspired by Netflix, YouTube & ChatGPT">
+<meta property="og:description" content="Join the 3-Day Live CSS Bootcamp and master the fundamentals of CSS to build stunning, real-world UI designs inspired by Netflix, YouTube, and ChatGPT.">
 <meta property="og:image" content="{{ asset('assets/img/css.webp') }}">
 <meta property="og:url" content="{{ url()->current() }}">
 <meta property="og:type" content="website">
@@ -2085,7 +2085,7 @@ iframe{border:0;}
 
                 <div class="modal-body p-4 pt-0 text-center mt-4">
                     {{-- <p class="small pt-3 fs-6">Modern CSS from the beginning - all the way up to Javascript expert level!</p> --}}
-                    <h2 class=" mb-0 fs-3 fw-bold">Join 5 days live CSS bootcamp!</h2>
+                    <h2 class=" mb-0 fs-3 fw-bold">Join 3 days live CSS bootcamp!</h2>
                     {{-- <p class="my-3 " style="font-size: 14px">Offer valid till</p> --}}
                     <div class="col-md-12 text-center mt-0 d-none">
                         <div id="countdown" class="">
