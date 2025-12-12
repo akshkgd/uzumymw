@@ -1290,7 +1290,7 @@ iframe{border:0;}
             <div class="row justify-content-center align-items-cente">
                 <div class="col-md-10">
                     <main class="text-center">
-                        <h1 class="display-6 fw-bod  " style=" line-height:1.5; color:aliceblue; font-weight:600">Learn CSS in just 5 days to <span style="color:#efa30e;">kickstart your Frontend or Fullstack</span>  journey</h1>
+                        <h1 class="display-6 fw-bod  " style=" line-height:1.5; color:aliceblue; font-weight:600">Learn CSS in just 3 days to <span style="color:#efa30e;">kickstart your Frontend or Fullstack</span>  journey</h1>
 
 
                         <p style="font-size:1vw;" class="fs-5 text-white text-center">Master Advance concepts of CSS to create frontend designes of websites like <span style="color:#efa30e;">YouTube, Netflix and ChatGPT</span> in just 5 days! The must have bootcamp in 2024. </p>

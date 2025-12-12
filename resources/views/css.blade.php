@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title','Master CSS in Just 5 Days – Build Designs Inspired by Netflix, YouTube & ChatGPT')</title>
+    <title>@yield('title','Master CSS in Just 3 Days – Build Designs Inspired by Netflix, YouTube & ChatGPT')</title>
 
 <meta name="keywords" content="@yield('meta_keywords','CSS Bootcamp, Learn CSS, Live CSS Course, Frontend Development, Build Netflix Clone, YouTube UI, ChatGPT UI, HTML CSS Course, Codekaro')">
 
-<meta name="description" content="@yield('meta_description','Join the 5-Day Live CSS Bootcamp and master the fundamentals of CSS to build stunning, real-world UI designs inspired by Netflix, YouTube, and ChatGPT. Perfect for beginners looking to level up fast.')">
+<meta name="description" content="@yield('meta_description','Join the 3-Day Live CSS Bootcamp and master the fundamentals of CSS to build stunning, real-world UI designs inspired by Netflix, YouTube, and ChatGPT. Perfect for frontend, backend or Fullstack developers looking to level up fast.')">
 
 <!-- Open Graph for social platforms -->
 <meta property="og:title" content="Master CSS in Just 5 Days – Build Designs Inspired by Netflix, YouTube & ChatGPT">
@@ -20,8 +20,8 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Master CSS in Just 5 Days – Build Designs Inspired by Netflix, YouTube & ChatGPT">
-<meta name="twitter:description" content="Join the 5-Day Live CSS Bootcamp and build stunning UI designs inspired by real-world apps. Learn fast, design like a pro.">
+<meta name="twitter:title" content="Master CSS in Just 3 Days – Build Designs Inspired by Netflix, YouTube & ChatGPT">
+<meta name="twitter:description" content="Join the 3-Day Live CSS Bootcamp and build stunning UI designs inspired by real-world apps. Learn fast, design like a pro.">
 <meta name="twitter:image" content="{{ asset('assets/img/css.webp') }}">
 
     <link rel="icon" href="{{asset('assets/img/chrome-icon.png')}}">
@@ -1280,7 +1280,20 @@ iframe{border:0;}
 @keyframes VOLUME_SMALL_WAVE_FLASH{0%{opacity:0;}33%{opacity:1;}66%{opacity:1;}100%{opacity:0;}}
 @keyframes VOLUME_LARGE_WAVE_FLASH{0%{opacity:0;}33%{opacity:1;}66%{opacity:1;}100%{opacity:0;}}
 @keyframes VOLUME_LARGE_WAVE_FLASH{0%{opacity:0;}33%{opacity:1;}66%{opacity:1;}100%{opacity:0;}}
-    </style>
+
+@media(min-width:786px){
+    .heading{
+    font-size: 36px
+} 
+}
+@media(max-width:785px){
+    .heading{
+    font-size: 26px
+} 
+}
+   
+    
+</style>
 </head>
 <body>
     <div class="container">
@@ -1300,15 +1313,15 @@ iframe{border:0;}
 
       </div>
       
-    <section class="pt-5" style=" background-color: #212121;">
+    <section class="pt-5" style=" background-color: #141414;">
         <div class="container">
             <div class="row justify-content-center align-items-cente">
                 <div class="col-md-10">
                     <main class="text-center">
-                        <h1 class="display-6 fw-bod  " style=" line-height:1.5; color:aliceblue; font-weight:600">Learn CSS in just 5 days to create <span style="color:#efa30e;">Netflix, ChatGpt and Youtube</span> Like Designs.</h1>
+                        <h1 class="heading fw-bod  " style=" line-height:1.5; color:aliceblue; font-weight:600">Learn CSS in just 3 days to create <span style="color:#efa30e;">Netflix, ChatGpt and Youtube</span> Like Designs Confidently.</h1>
 
 
-                        <p style="font-size:1vw;" class="fs-5 text-white text-center">Build your career In Front End or Full Stack, Start learning now to Secure a Minimum 8 LPA Package or Salary Hike Upto 87% Without Applying On Job Portals</p>
+                        <p style="font-size:1vw;" class="fs-5 text-white text-center">Perfect for Frontend, Backend, Full-Stack, Non-IT Professionals and College Grads who want to upgrade their skills in Frontend and finally feel confident with CSS in real-world projects.</p>
 
 
 
@@ -1497,20 +1510,21 @@ iframe{border:0;}
                 <div class="col-md-8 mb-5">
                     <div class="shadow-card mt-5">
                         <div class="day">Day 1</div>
-                        <h3 class="fs-3 fw-bold">Introduction to CSS</h2>
+                        <h3 class="fs-3 fw-bold">Introduction to CSS & Flexboxes</h2>
                             <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> CSS Implementation</div>
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> CSS Implementation the right way</div>
                             <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Typography</div>
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Box Model & spacing rules used by real UI engineers</div>
                             <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Box Model & Usecases</div>
-                            <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating login and
-                                feedback pages</div>
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Flexbox for real-world layouts</div>
                                 <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understanding Usecases</div>
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Create a professional login page design</div>
+                                <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Understand responsive behavior with real examples</div>
+                                    <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Netflix UI Case Study</div>
                     </div>
-                    <div class="shadow-card mt-5">
+                    <div class="shadow-card mt-5 " style="display: none">
                         <div class="day">Day 2</div>
                         <h3 class="fs-3 fw-bold">Learn use of Positions</h2>
                             <div class="mt-3"> <img height="10" class="me-3"
@@ -1523,7 +1537,7 @@ iframe{border:0;}
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating Static Blog</div>
                     </div>
                     
-                    <div class="shadow-card mt-5">
+                    <div class="shadow-card mt-5" style="display: none">
                         <div class="day">Day 3</div>
                         <h3 class="fs-3 fw-bold">Master Flexbox</h2>
                             <div class="mt-3"> <img height="10" class="me-3"
@@ -1537,20 +1551,23 @@ iframe{border:0;}
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Creating a zomato clone</div>
                     </div>
                     <div class="shadow-card mt-5">
-                        <div class="day">Day 4</div>
+                        <div class="day">Day 2</div>
                         <h3 class="fs-3 fw-bold">Master Responsive designs</h2>
                             <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Media Queries</div>
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Media Queries made simple</div>
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt="">Media queries examples and usecases</div>
                                 <div class="mt-3"> <img height="10" class="me-3"
-                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Creating Animations</div>
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Learn animations & transitions with practical patterns</div>
+                                    <div class="mt-3"> <img height="10" class="me-3"
+                                    src="{{ asset('assets/img/arrow2.svg') }}" alt="">Building Complex Animations</div>
+                                    
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt="">Using animations in real world examples.</div>
                     </div>
 
                     <div class="shadow-card mt-5">
-                        <div class="day">Day 5</div>
+                        <div class="day">Day 3</div>
                         <h3 class="fs-3 fw-bold">Major Project: Create Instagram Clone</h2>
                             <div class="mt-3"> <img height="10" class="me-3"
                                     src="{{ asset('assets/img/arrow2.svg') }}" alt=""> Bonus: Host your project
