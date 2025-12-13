@@ -2093,7 +2093,7 @@ iframe{border:0;}
                                 placeholder="name@example.com" @auth value="{{ Auth::user()->mobile }}" @endauth>
                             <label for="floatingInput">Mobile Number</label>
                         </div>
-                        <div class="text-left p-3 mb-2 d-none" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px" >
+                        <div class="text-left p-3 mb-2 d-none" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px; display:none" >
                             {{-- <div class="py-2" style="color:green">57% of Learners Choose this option to get 3x value</div>     --}}
                             <div class="text-left fw-600 mb-3 fs-6">VIP upgrade <span style="color:#29cf84; ">(Most Loved)</span></div>
                                 {{-- <div class="text-left  text-muted my-2" style="font-size: 14px">Get access to curated list of 100+ frontend Interview questions and 25+ projects with chatGPT prompts that will increase your productivity by 10x! </div> --}}
