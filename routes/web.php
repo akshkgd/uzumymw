@@ -10,6 +10,7 @@ use App\CourseEnrollment;
 use App\Http\Controllers\CodekaroController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\ChatbotController;
 use Telegram\Bot\Laravel\Facades\Telegram;
 
 
@@ -145,6 +146,21 @@ Route::get('/gpt', function () {
 
 
 Route::get('/fff', 'StudentController@fff');
+Route::get('/hi', 'ChatbotController@index');
+Route::post('/chat', 'ChatbotController@chat');
+
+
+
+// In routes/web.php
+Route::get('/test-api', function() {
+    try {
+        $client = new \GuzzleHttp\Client();
+        $response = $client->get('https://openrouter.ai/api/v1/models');
+        return response()->json(['status' => 'Guzzle works!', 'code' => $response->getStatusCode()]);
+    } catch (\Exception $e) {
+        return response()->json(['error' => $e->getMessage()]);
+    }
+});
 //student routes end
 Route::get('/event', 'WorkshopController@index');
 Route::resource('/faq', 'FaqController');

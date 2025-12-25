@@ -193,10 +193,16 @@ class CourseEnrollmentController extends Controller
             
             if(count($input) && !empty($input['razorpay_payment_id'])) {
                 $response = $api->payment->fetch($input['razorpay_payment_id']);
-                
-                // Update enrollment status
-                $enrollment = CourseEnrollment::where('invoiceId', $response['order_id'])
-                    ->update([
+                $enrollmentId = $response['notes']['enrollmentId'] ?? null;
+                $enrollment = CourseEnrollment::find($enrollmentId);
+                // test log
+                if($response['notes']['purpose']== 'vip'){
+                    $enrollment->update([
+                        'certificateFee' => $response['amount'],
+                    ]);
+                }
+                else{
+                    $enrollment->update([
                         'status' => 1, 
                         'hasPaid' => 1, 
                         'amountPaid' => $response['amount'], 
@@ -204,6 +210,8 @@ class CourseEnrollmentController extends Controller
                         'paymentMethod' => $response['method'], 
                         'transactionId' => $response['id']
                     ]);
+                }
+                
 
                 // Get the updated enrollment
                 $enrollment = CourseEnrollment::where('invoiceID', $response['order_id'])->first();
@@ -219,7 +227,7 @@ class CourseEnrollmentController extends Controller
                 // Handle redirects based on course type
                 session()->flash('alert-success', 'Payment Completed Successfully');
                 
-                return $this->handlePaymentRedirect($batch);
+                return $this->handlePaymentRedirect($batch, $enrollment->id, $enrollment->userId);
             }   
         } catch (\Exception $e) {
             Log::error('Payment processing failed: ' . $e->getMessage(), [
@@ -231,11 +239,13 @@ class CourseEnrollmentController extends Controller
         }
     }
 
-    private function handlePaymentRedirect($batch)
+    private function handlePaymentRedirect($batch, $enrollmentId, $userId)
     {
         switch ($batch->topicId) {
             case 100:
-                return redirect('/bootcamp-success');
+                // return redirect('/bootcamp-success');
+                // return redirect('/bootcamp-success?enrollmentId=' . $enrollmentId);
+                return redirect('/bootcamp-success?enrollmentId=' . $enrollmentId . '&userId=' . $userId);
             case 101:
                 return redirect('/mastermind-success');
             case 102:

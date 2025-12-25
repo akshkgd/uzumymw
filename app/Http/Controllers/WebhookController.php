@@ -109,7 +109,8 @@ public function grantAccess(Request $request)
             // Then send email notification
             Log::info('Sending enrollment notification', ['enrollment_id' => $enrollment->id]);
             $this->sendEnrollmentNotification($enrollment);
-        } else {
+        } 
+        else {
             Log::info('Payment already processed for enrollment', [
                 'enrollment_id' => $enrollment->id,
                 'payment_status' => $enrollment->hasPaid,
@@ -117,6 +118,10 @@ public function grantAccess(Request $request)
             ]);
         }
 
+        if($notes['purpose'] == 'vip'){
+            $enrollment->certificateFee == $paymentData['amount'];
+            $enrollment->save();
+        }
         return response()->json([
             "status" => "success",
             "message" => "Webhook processed successfully"
