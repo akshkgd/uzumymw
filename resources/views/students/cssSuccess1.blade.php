@@ -192,7 +192,8 @@
         
               
                                     </div>
-                                    <p class="text-sm my-6">Once you close this page, this offer is gone forever. You won’t see this offer again.</p>
+                                    <p>100% Moneyback Gaurentee</p>
+                                    <p class="text-sm my-6 text-red-600">Once you close this page, this offer is gone forever. You won’t see this offer again.</p>
                                 </div>
 
   </div>

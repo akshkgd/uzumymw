@@ -196,10 +196,12 @@ class CourseEnrollmentController extends Controller
                 $enrollmentId = $response['notes']['enrollmentId'] ?? null;
                 $enrollment = CourseEnrollment::find($enrollmentId);
                 // test log
-                if($response['notes']['purpose']== 'vip'){
+                $purpose = $response['notes']['purpose'] ?? null;
+                if($purpose == 'vip'){
                     $enrollment->update([
                         'certificateFee' => $response['amount'],
                     ]);
+                    return redirect('/bootcamp-success');
                 }
                 else{
                     $enrollment->update([
