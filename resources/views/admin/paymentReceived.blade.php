@@ -67,7 +67,7 @@
 
                 <div class="mb-4">
                     <label for="paidAt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Paid At</label>
-                    <input type="date" id="paidAt" name="paidAt" value="{{$enrollment->paidAt}}"
+                    <input type="date" id="paidAt" name="paidAt" value="{{ $enrollment->paidAt ? \Carbon\Carbon::parse($enrollment->paidAt)->format('Y-m-d') : '' }}"
                         class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5">
                 </div>
 
