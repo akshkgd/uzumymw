@@ -12,6 +12,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ChatbotController;
 use Telegram\Bot\Laravel\Facades\Telegram;
+use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 
 
 /*
@@ -326,3 +327,6 @@ Route::get('/api/batch/{hashId}', 'CodekaroController@BatchStreamDetails')->name
 Route::get('/api/user/{email}', 'CodekaroController@userDetailsApi');
 Route::get('/api/certificate/{id}', 'CodekaroController@certificateDetailsApi');
 
+// laravel log view
+// Route::get('log-viewer', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+Route::get('log-viewer', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware(['auth', 'isAdmin']);
