@@ -117,8 +117,8 @@ public function grantAccess(Request $request)
                 'email_sent' => $enrollment->email_sent
             ]);
         }
-
-        if($notes['purpose'] == 'vip'){
+        $purpose = $notes['purpose'] ?? null;
+        if($purpose == 'vip'){
             $enrollment->certificateFee == $paymentData['amount'];
             $enrollment->save();
         }
