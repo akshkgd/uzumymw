@@ -271,7 +271,7 @@
     }
 
     #table-log tbody td {
-      padding: 14px 16px;
+      padding: 8px 16px;
       vertical-align: middle;
       border: none;
       border-bottom: 1px solid var(--border-color);
