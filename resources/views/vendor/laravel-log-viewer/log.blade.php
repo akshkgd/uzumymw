@@ -221,7 +221,7 @@
 
     /* Main Content */
     .main-content {
-      height: calc(100vh - 110px);
+      height: calc(100vh - 170px);
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -231,8 +231,6 @@
       flex: 1;
       overflow: auto;
       padding: 0;
-      display: flex;
-      flex-direction: column;
     }
 
     .table-wrapper::-webkit-scrollbar {
@@ -433,10 +431,59 @@
     }
 
     .dataTables_wrapper .row:last-child {
+      display: none !important;
+    }
+
+    /* Custom Footer */
+    .log-footer {
+      background: var(--bg-secondary);
       border-top: 1px solid var(--border-color);
-      padding: 12px 20px;
+      padding: 6px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .log-footer-info {
+      color: var(--text-secondary);
+      font-size: 14px;
+    }
+
+    .log-footer-pagination {
+      display: flex;
+      gap: 4px;
+    }
+
+    .log-footer-pagination button {
+      border: 1px solid var(--border-color) !important;
       background: var(--bg-primary) !important;
-      position: relative;
+      color: var(--text-secondary) !important;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .log-footer-pagination button:hover:not(:disabled) {
+      background: var(--bg-tertiary) !important;
+      border-color: var(--accent-color) !important;
+      color: var(--text-primary) !important;
+    }
+
+    .log-footer-pagination button.active {
+      background: var(--bg-primary) !important;
+      border-color: #4a4a4a !important;
+      color: white !important;
+    }
+
+    .log-footer-pagination button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
 
     .dataTables_wrapper .dataTables_filter,
@@ -451,6 +498,10 @@
 
     .dataTables_wrapper .dataTables_scroll {
       overflow: visible;
+    }
+
+    .dataTables_scrollBody {
+      overflow: auto !important;
     }
 
     .dataTables_wrapper .dataTables_scrollHead {
@@ -595,9 +646,12 @@
     .main-container{
       border: 1px solid var(--border-color);
       border-radius: 12px;
-      margin: 20px;
+      margin: 20px 20px 100px 20px;
       overflow: hidden;
+      position: relative;
+      height: calc(100vh - 180px);
     }
+    
   </style>
 </head>
 <body>
@@ -724,6 +778,12 @@
       </div>
     @endif
     </div>
+    
+    <!-- Custom Footer -->
+    <div class="log-footer">
+      <div class="log-footer-info">Loading...</div>
+      <div class="log-footer-pagination"></div>
+    </div>
   </div>
 
 <!-- jQuery -->
@@ -753,13 +813,14 @@
     if ($('#table-log').length) {
       var table = $('#table-log').DataTable({
       "order": [$('#table-log').data('orderingIndex'), 'desc'],
+      "ordering": false,
       "stateSave": true,
         "pageLength": 100,
         "lengthMenu": [[25, 50, 100, 250, -1], [25, 50, 100, 250, "All"]],
         "scrollY": false,
         "scrollCollapse": false,
         "deferRender": true,
-        "dom": "trip",
+        "dom": "t",
         "language": {
           "search": "",
           "lengthMenu": "",
@@ -802,6 +863,84 @@
         table.column(0).search('^' + level + '$', true, false).draw();
       }
     });
+
+    // Custom pagination
+    function updatePagination() {
+      var info = table.page.info();
+      var pagination = $('.log-footer-pagination');
+      pagination.empty();
+      
+      // Previous button
+      pagination.append(
+        $('<button>')
+          .text('Previous')
+          .prop('disabled', info.page === 0)
+          .click(function() {
+            table.page('previous').draw('page');
+            updatePagination();
+          })
+      );
+      
+      // Page numbers
+      var startPage = Math.max(0, info.page - 2);
+      var endPage = Math.min(info.pages - 1, info.page + 2);
+      
+      if (startPage > 0) {
+        pagination.append(
+          $('<button>').text('1').click(function() {
+            table.page(0).draw('page');
+            updatePagination();
+          })
+        );
+        if (startPage > 1) {
+          pagination.append($('<span>').text('...').css({'padding': '8px', 'color': 'var(--text-secondary)'}));
+        }
+      }
+      
+      for (var i = startPage; i <= endPage; i++) {
+        (function(page) {
+          var btn = $('<button>')
+            .text(page + 1)
+            .click(function() {
+              table.page(page).draw('page');
+              updatePagination();
+            });
+          if (page === info.page) {
+            btn.addClass('active');
+          }
+          pagination.append(btn);
+        })(i);
+      }
+      
+      if (endPage < info.pages - 1) {
+        if (endPage < info.pages - 2) {
+          pagination.append($('<span>').text('...').css({'padding': '8px', 'color': 'var(--text-secondary)'}));
+        }
+        pagination.append(
+          $('<button>').text(info.pages).click(function() {
+            table.page(info.pages - 1).draw('page');
+            updatePagination();
+          })
+        );
+      }
+      
+      // Next button
+      pagination.append(
+        $('<button>')
+          .text('Next')
+          .prop('disabled', info.page >= info.pages - 1)
+          .click(function() {
+            table.page('next').draw('page');
+            updatePagination();
+          })
+      );
+      
+      // Update info
+      $('.log-footer-info').text((info.start + 1) + ' to ' + info.end + ' of ' + info.recordsDisplay);
+    }
+    
+    table.on('draw', updatePagination);
+    updatePagination();
   }
 
     // Confirmation dialogs
