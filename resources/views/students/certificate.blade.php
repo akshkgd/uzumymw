@@ -65,7 +65,17 @@
             
                                 @endif
                                     <h5 class="lead">
-                                        {{ \Carbon\Carbon::parse($batch->endDate)->format('d M Y') }}
+                                        @php
+                                            try {
+                                                if ($batch->endDate instanceof \Carbon\Carbon) {
+                                                    echo $batch->endDate->format('d M Y');
+                                                } else {
+                                                    echo \Carbon\Carbon::parse($batch->endDate)->format('d M Y');
+                                                }
+                                            } catch (\Exception $e) {
+                                                echo $batch->endDate;
+                                            }
+                                        @endphp
 
                                         </p>
                             {{-- <p class="lead">4th Aug 2020</p> --}}
