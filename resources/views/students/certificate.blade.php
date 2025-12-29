@@ -65,7 +65,8 @@
             
                                 @endif
                                     <h5 class="lead">
-                                        {{$batch->endDate->format('d M Y')}}
+                                        {{ \Carbon\Carbon::parse($batch->endDate)->format('d M Y') }}
+
                                         </p>
                             {{-- <p class="lead">4th Aug 2020</p> --}}
                         </div>

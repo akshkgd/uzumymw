@@ -329,4 +329,4 @@ Route::get('/api/certificate/{id}', 'CodekaroController@certificateDetailsApi');
 
 // laravel log view
 // Route::get('log-viewer', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
-Route::get('log-viewer', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware(['auth', 'isAdmin']);
+Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->middleware(['auth', 'isAdmin']);
