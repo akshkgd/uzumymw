@@ -781,7 +781,7 @@
     
     <!-- Custom Footer -->
     <div class="log-footer">
-      <div class="log-footer-info">Loading...</div>
+      <div class="log-footer-info" data-file-size="@if($current_file){{ number_format(filesize(storage_path('logs/'.$current_file)) / 1024, 2) }}@else 0 @endif">Loading...</div>
       <div class="log-footer-pagination"></div>
     </div>
   </div>
@@ -935,8 +935,20 @@
           })
       );
       
-      // Update info
-      $('.log-footer-info').text((info.start + 1) + ' to ' + info.end + ' of ' + info.recordsDisplay);
+      // Update info with file size
+      var fileSizeKB = parseFloat($('.log-footer-info').data('file-size'));
+      var fileSizeText = '';
+      
+      if (fileSizeKB > 0) {
+        if (fileSizeKB >= 1024) {
+          var fileSizeMB = (fileSizeKB / 1024).toFixed(2);
+          fileSizeText = ' (' + fileSizeMB + ' MB)';
+        } else {
+          fileSizeText = ' (' + fileSizeKB.toFixed(2) + ' KB)';
+        }
+      }
+      
+      $('.log-footer-info').text((info.start + 1) + ' to ' + info.end + ' of ' + info.recordsDisplay + fileSizeText);
     }
     
     table.on('draw', updatePagination);

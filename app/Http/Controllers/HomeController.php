@@ -193,6 +193,30 @@ switch ($range) {
         $previousEndDate = $startDate->copy()->subMonths(3)->endOfMonth()->endOfDay();
         break;
 
+    case 'custom':
+        // Handle custom date range
+        $startDateInput = $request->input('start_date');
+        $endDateInput = $request->input('end_date');
+        
+        if ($startDateInput && $endDateInput) {
+            $startDate = Carbon::parse($startDateInput)->startOfDay();
+            $endDate = Carbon::parse($endDateInput)->endOfDay();
+            
+            // Calculate the difference in days for comparison period
+            $daysDifference = $startDate->diffInDays($endDate) + 1;
+            
+            // Previous period is the same number of days before the start date
+            $previousEndDate = $startDate->copy()->subDay()->endOfDay();
+            $previousStartDate = $previousEndDate->copy()->subDays($daysDifference - 1)->startOfDay();
+        } else {
+            // If custom dates not provided, default to today
+            $startDate = Carbon::today()->startOfDay();
+            $endDate = Carbon::today()->endOfDay();
+            $previousStartDate = Carbon::yesterday()->startOfDay();
+            $previousEndDate = Carbon::yesterday()->endOfDay();
+        }
+        break;
+
     default:
         $startDate = Carbon::now()->subDays(7)->startOfDay(); // Default to last 7 days
         $endDate = Carbon::now()->endOfDay();
@@ -217,7 +241,7 @@ $enrollmentsThisPeriod = CourseEnrollment::where('hasPaid', 1)
 
     $enrollmentsDetailsThisPeriod = CourseEnrollment::where('hasPaid', 1)
     ->whereDate('paidAt', '>=', $startDate)
-    ->whereDate('paidAt', '<=', $endDate)->latest()->get();
+    ->whereDate('paidAt', '<=', $endDate)->latest()->paginate(100);
 
 $enrollmentsPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
     ->whereDate('paidAt', '>=', $previousStartDate)

@@ -60,7 +60,8 @@
 @if($isVideoUnlocked)
 @if($video->type == 2)
     @include('layouts.coursePagePlayer')
-    
+  @elseif($video->type == 4)
+  @include('layouts.coursePageCodingLab')
   @else
   @include('layouts.coursePageArticle')
   @endif

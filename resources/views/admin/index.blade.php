@@ -8,11 +8,12 @@
         <!-- Filter Form -->
         <div class="flex justify-between items-center mb-4">
             <div class="">
-                <h1 class="">Analytics</h1>
+                <h1 class="text-xl font-bold">Analytics</h1>
+                <p class="text-sm text-neutral-700">Get an insight into your sales, engagement, and school activity metrics.</p>
             </div>
-            <form method="GET" action="{{ url('/home') }}" class=" flex justify-end ">
+            <form method="GET" action="{{ url('/home') }}" class=" flex justify-end gap-2 items-end" id="filterForm">
                 <div class="mb- w-60">
-                    <select name="range" id="range" class="block w-full text-sm text-violet-700 bg-violet-100 border-none focus:ring-0 focus:border-none rounded-m p-2 pr-8 focus:outline-none" onchange="this.form.submit()">
+                    <select name="range" id="range" class="block w-full h-[38px] text-sm text-violet-700 bg-violet-100 border-none focus:ring-0 focus:border-none rounded-m px-2 pr-8 focus:outline-none" onchange="toggleCustomRange()">
                         <option value="today" {{ request('range', 'today') == 'today' ? 'selected' : '' }}>Today</option>
                         <option value="yesterday" {{ request('range') == 'yesterday' ? 'selected' : '' }}>Yesterday</option>
                         <option value="7" {{ request('range') == '7' ? 'selected' : '' }}>Last 7 Days</option>
@@ -21,10 +22,24 @@
                         <option value="this_month" {{ request('range') == 'this_month' ? 'selected' : '' }}>This Month</option>
                         <option value="last_month" {{ request('range') == 'last_month' ? 'selected' : '' }}>Last Month</option>
                         <option value="last_3_months" {{ request('range') == 'last_3_months' ? 'selected' : '' }}>Last 3 Months</option>
+                        <option value="custom" {{ request('range') == 'custom' ? 'selected' : '' }}>Custom Range</option>
                     </select>
                     
                     
                     
+                </div>
+                <div id="custom-range-fields" class="flex gap-2 items-end {{ request('range') == 'custom' ? '' : 'hidden' }}">
+                    <div class="flex flex-col w-48">
+                        <label for="start_date" class="text-xs text-neutral-600 mb-1">Start Date</label>
+                        <input type="date" name="start_date" id="start_date" value="{{ request('start_date') }}" class="w-full h-[38px] text-sm text-violet-700 bg-violet-100 border-none focus:ring-0 focus:border-none rounded-m px-2 focus:outline-none" required>
+                    </div>
+                    <div class="flex flex-col w-48">
+                        <label for="end_date" class="text-xs text-neutral-600 mb-1">End Date</label>
+                        <input type="date" name="end_date" id="end_date" value="{{ request('end_date') }}" class="w-full h-[38px] text-sm text-violet-700 bg-violet-100 border-none focus:ring-0 focus:border-none rounded-m px-2 focus:outline-none" required>
+                    </div>
+                    <div class="flex flex-col">
+                        <button type="submit" class="bg-violet-600 text-white h-[38px] px-6 rounded-m text-sm hover:bg-violet-700 whitespace-nowrap">Apply</button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -153,6 +168,9 @@
                     </tbody>
                 </table>
             </div>
+            <div class="px-5 py-4">
+                {{ $enrollmentsDetailsThisPeriod->appends(request()->query())->links() }}
+            </div>
         </div>
     </div>
         
@@ -167,15 +185,30 @@
         function toggleCustomRange() {
             var range = document.getElementById('range').value;
             var customRangeFields = document.getElementById('custom-range-fields');
+            var form = document.getElementById('filterForm');
+            
+            if (range === 'custom') {
+                customRangeFields.classList.remove('hidden');
+            } else {
+                customRangeFields.classList.add('hidden');
+                // Auto-submit for preset ranges (only when user changes the select)
+                if (event && event.type === 'change') {
+                    form.submit();
+                }
+            }
+        }
+    
+        // On page load, just show/hide the custom fields without submitting
+        window.onload = function() {
+            var range = document.getElementById('range').value;
+            var customRangeFields = document.getElementById('custom-range-fields');
+            
             if (range === 'custom') {
                 customRangeFields.classList.remove('hidden');
             } else {
                 customRangeFields.classList.add('hidden');
             }
-        }
-    
-        // Call function on page load to ensure proper state
-        window.onload = toggleCustomRange;
+        };
     </script>
     
 
