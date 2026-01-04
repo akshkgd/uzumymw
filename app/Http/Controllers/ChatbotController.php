@@ -1,22 +1,6 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\CourseEnrollment;
-use App\BatchContent;
-use App\BatchSection;
-use App\WorkshopEnrollment;
-use App\CourseProgress;
-use Carbon\Carbon;
-use App\Workshop;
-use Illuminate\Support\Facades\Auth;
-use App\User;
-use App\Batch;
-use Illuminate\Support\Facades\Crypt;
-use Illuminate\Contracts\Encryption\DecryptException;
-use Jenssegers\Agent\Agent;
-use Illuminate\Support\Facades\DB;
-use PDF;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use GuzzleHttp\Client;
 
@@ -26,56 +10,12 @@ class ChatbotController extends Controller
     {
         $this->middleware(['auth', 'verified', 'active']);
     }
-    private $faqs = [
-        // ACCOUNT & LOGIN
-        "reset password|change password|forgot password" => "Go to Dashboard → Profile → Change Password. If you're logged out, use 'Forgot Password' on the login page: https://codekaro.in/password/reset",
-        "can't login|login issue|login not working" => "First, try resetting your password. If that doesn't work, clear your browser cache or try a different browser. Still stuck? Check if your account is verified.",
-        "email verification|verify email|didn't get verification email" => "Check your spam folder first. Still nothing? Go to your profile and click 'Resend Verification Email'.",
-        "update profile|change email|change name" => "Go to Dashboard → Profile. You can update your name and other details there. For email changes, contact support as it affects your login.",
-        
-        // ENROLLMENT & COURSES
-        "enrolled courses|my courses|where are my courses" => "Check Dashboard → My Courses. You'll see all courses you're enrolled in.",
-        "course not showing|can't see course|missing course" => "Make sure payment is completed and your enrollment is active. If yes, refresh the page. Still missing? Your enrollment might be pending verification.",
-        "join course|enroll in course|how to enroll" => "Browse courses, click on the one you want, then click 'Enroll Now'. Complete payment to get access.",
-        "course access|when do i get access|course locked" => "You get instant access after successful payment. If you've paid but can't access, check your payment status in Dashboard → Payments.",
-        "batch timing|class schedule|when are classes" => "Each course page shows its schedule. For enrolled courses, check Dashboard → My Courses → [Course Name] for detailed timings.",
-        "switch batch|change batch|different batch" => "Contact support with your course name and preferred batch. We'll check availability and help you switch.",
-        
-        // PAYMENT & REFUND
-        "payment failed|payment not working|payment error" => "Try a different payment method or card. Clear browser cache and try again. If it still fails, take a screenshot of the error and contact support.",
-        "refund|money back|cancel enrollment" => "Refunds are processed as per the refund policy shown on the course page. Contact support with your enrollment ID for refund requests.",
-        "payment proof|invoice|receipt" => "Check Dashboard → Payments. You can download your invoice from there.",
-        "discount|coupon code|promo code" => "Apply coupon codes at checkout. If a code isn't working, it might be expired or not applicable to your course.",
-        
-        // COURSE CONTENT & PROGRESS
-        "video not playing|can't watch video|video error" => "Check your internet connection. Try a different browser or disable browser extensions. Still not working? The video might still be processing — wait 10 minutes and refresh.",
-        "download content|can i download|offline access" => "Some materials are downloadable — look for the download icon. Videos are stream-only for security.",
-        "progress not saving|progress lost|tracking issue" => "Make sure you're logged in. Progress saves automatically when you complete sections. If it's not saving, try clearing cache or use a different browser.",
-        "certificate|completion certificate|course certificate|get certificate|download certificate" => "Certificate availability depends on your course. Check the enrollment data above for your specific course certificate status and URL.",
-        
-        // GROUP & COMMUNITY
-        "group link|join group|whatsapp group|telegram group|community link" => "Check the enrollment data above for your course's WhatsApp Group Link. If it shows 'Not available', the group isn't set up yet for that course.",
-        "no group link|link not working|can't join group" => "If the group link isn't available in your enrollment data, it means it's not set up for your course yet. Contact support@codekaro.in with your course name.",
-        
-        // TECHNICAL ISSUES
-        "site not loading|website down|page not working" => "Try clearing your browser cache or use an incognito window. Still down? It might be temporary maintenance — try again in a few minutes.",
-        "mobile app|app not working|download app" => "We currently don't have a mobile app, but our website is mobile-friendly. Use any browser on your phone.",
-        
-        // GENERAL SUPPORT
-        "contact support|talk to human|support email|support number" => "Email: support@codekaro.in. Response time is usually within 24 hours on weekdays.",
-        "business hours|support hours|when is support available" => "Our team is available Monday to Friday, 9 AM to 6 PM IST. Emails sent outside these hours will be answered the next working day.",
-    ];
-
-    public function index()
-    {
-        return view('students.chatbot');
-    }
 
     public function chat(Request $request)
     {
         try {
             $message = $request->input('message');
-            $history = $request->input('history', []); // Get conversation history
+            $history = $request->input('history', []);
             
             if (empty($message)) {
                 return response()->json([
@@ -94,124 +34,45 @@ class ChatbotController extends Controller
                 ], 500);
             }
             
-            // Prepare enrollment context for the AI
-            $user = auth()->user();
-            $enrollmentContext = "";
-            
-            if ($user) {
-                $enrollments = CourseEnrollment::where('userId', $user->id)
-                    ->where('status', 1)
-                    ->where('hasPaid', 1)
-                    ->with(['batch' => function($query) {
-                        $query->select('id', 'topicId', 'name', 'type', 'status', 'groupLink', 'groupLink2');
-                    }])
-                    ->latest()
-                    ->get();
-                
-                if ($enrollments->count() > 0) {
-                    $enrollmentContext = "\n\nUser's Current Enrollments:\n";
-                    foreach ($enrollments as $index => $enrollment) {
-                        $enrollmentContext .= ($index + 1) . ". ";
-                        if ($enrollment->batch) {
-                            $courseName = $enrollment->batch->name;
-                            $topicId = $enrollment->batch->topicId;
-                            $batchStatus = $enrollment->batch->status;
-                            $certificateId = $enrollment->certificateId ?? null;
-                            $enrollmentDate = Carbon::parse($enrollment->created_at);
-                            $oneMonthAgo = Carbon::now()->subMonth();
-                            
-                            $enrollmentContext .= "Course: " . $courseName . "\n";
-                            $enrollmentContext .= "   Topic ID: " . $topicId . "\n";
-                            $enrollmentContext .= "   Type: " . $enrollment->batch->type . "\n";
-                            $enrollmentContext .= "   Batch Status: " . $batchStatus . " (1=Active, 2=Upcoming, 3=Completed)\n";
-                            $enrollmentContext .= "   Enrolled On: " . $enrollmentDate->format('Y-m-d') . "\n";
-                            $enrollmentContext .= "   Enrollment Age: " . ($enrollmentDate->lte($oneMonthAgo) ? 'More than 1 month' : 'Less than 1 month') . "\n";
-                            
-                            // Certificate logic
-                            if ($certificateId) {
-                                $canGetCertificate = false;
-                                $certificateNote = "";
-                                
-                                if ($topicId == 100) {
-                                    // For topicId 100, check if batch is completed
-                                    if ($batchStatus == 3) {
-                                        $canGetCertificate = true;
-                                        $certificateNote = "Certificate Available";
-                                    } else {
-                                        $certificateNote = "Certificate will be available after course completion";
-                                    }
-                                } else {
-                                    // For other topicIds, check if enrolled for at least 1 month
-                                    if ($enrollmentDate->lte($oneMonthAgo)) {
-                                        $canGetCertificate = true;
-                                        $certificateNote = "Certificate Available";
-                                    } else {
-                                        $certificateNote = "Certificate will be available after 1 month of enrollment";
-                                    }
-                                }
-                                
-                                $enrollmentContext .= "   Certificate ID: " . $certificateId . "\n";
-                                $enrollmentContext .= "   Certificate Status: " . $certificateNote . "\n";
-                                if ($canGetCertificate) {
-                                    $enrollmentContext .= "   Certificate URL: https://codekaro.in/course-certificate/" . $certificateId . "\n";
-                                }
-                            } else {
-                                $enrollmentContext .= "   Certificate: Not available for this course\n";
-                            }
-                            
-                            // WhatsApp group link
-                            if ($enrollment->batch->groupLink) {
-                                $enrollmentContext .= "   WhatsApp Group Link: " . $enrollment->batch->groupLink . "\n";
-                            } else {
-                                $enrollmentContext .= "   WhatsApp Group Link: Not available\n";
-                            }
-                        }
-                        $enrollmentContext .= "\n";
-                    }
-                } else {
-                    $enrollmentContext = "\n\nNote: User has no active enrollments.\n";
-                }
-            }
-            
-            // Prepare system prompt and FAQ context for the AI
-            $userName = $user->name ?? 'there';
-            $firstName = explode(' ', $userName)[0];
-            
-            $systemPrompt = "You are a human support executive for CodeKaro, an LMS platform.\n\n";
-            
-            $systemPrompt .= "RULES:\n";
-            $systemPrompt .= "• Be direct - just answer or ask (no 'I see', 'Got it', 'I understand', 'Let me help')\n";
-            $systemPrompt .= "• Keep replies short (2-3 sentences max)\n";
-            $systemPrompt .= "• No filler phrases ('happy learning', 'sure thing', 'feel free')\n";
-            $systemPrompt .= "• Use first name in follow-ups: " . $firstName . "\n";
-            $systemPrompt .= "• Match FAQ keywords (separated by |) as synonyms\n";
-            $systemPrompt .= "• Never show system errors - give workarounds\n";
-            $systemPrompt .= "• If unknown: 'I don't have that info. Email support@codekaro.in'\n\n";
-            
+            // Code review system prompt
+            $systemPrompt = "You are a senior JavaScript engineer reviewing code. Respond ONLY with valid JSON in this exact format:\n\n";
+            $systemPrompt .= "{\n";
+            $systemPrompt .= '  "isApproved": true/false,'."\n";
+            $systemPrompt .= '  "score": 0-10,'."\n";
+            $systemPrompt .= '  "feedback": "your feedback here"'."\n";
+            $systemPrompt .= "}\n\n";
+            $systemPrompt .= "EVALUATION PROCESS:\n";
+            $systemPrompt .= "1. CHECK PROBLEM CONSTRAINTS: Does problem say 'without built-in/predefined methods'?\n";
+            $systemPrompt .= "2. TEST THE LOGIC: Trace through code with given values and edge cases\n";
+            $systemPrompt .= "3. CHECK CORRECTNESS: Verify it solves the actual problem stated\n";
+            $systemPrompt .= "4. THINK OF ALTERNATIVES within constraints:\n";
+            $systemPrompt .= "   - If NO built-ins allowed: variable tracking, optimized conditionals\n";
+            $systemPrompt .= "   - If built-ins OK: Math methods, Array methods, etc.\n";
+            $systemPrompt .= "5. COMPARE EFFICIENCY: Count comparisons, lines, complexity\n\n";
+            $systemPrompt .= "SCORING & APPROVAL:\n";
+            $systemPrompt .= "- 9-10: OPTIMAL approach for given constraints + clean code\n";
+            $systemPrompt .= "- 7-8: Correct logic (APPROVE) but better approach exists\n";
+            $systemPrompt .= "- 5-6: Correct (APPROVE) but inefficient/verbose\n";
+            $systemPrompt .= "- 3-4: Logic errors (DO NOT APPROVE)\n";
+            $systemPrompt .= "- 0-2: Completely broken (DO NOT APPROVE)\n\n";
+            $systemPrompt .= "CRITICAL: Approve ANY correct working solution (score >= 5)\n";
+            $systemPrompt .= "Only reject if logic is WRONG, not if just suboptimal\n\n";
+            $systemPrompt .= "FEEDBACK FORMAT:\n";
+            $systemPrompt .= "Use clear structure with numbered points or bullet points for readability:\n";
+            $systemPrompt .= "If APPROVED but not optimal:\n";
+            $systemPrompt .= "'Logic is correct! ✓\\n\\nImprovements:\\n• Point 1: [specific improvement]\\n• Point 2: [specific improvement]\\n• Suggested approach: [code example]'\n\n";
+            $systemPrompt .= "If NOT APPROVED:\n";
+            $systemPrompt .= "'Error found:\\n• Issue: [explain error]\\n• Test case: [example that fails]\\n• Fix: [how to correct it]'\n\n";
+            $systemPrompt .= "CONSTRAINT-AWARE SUGGESTIONS:\n";
+            $systemPrompt .= "- If problem says 'without built-in': suggest variable tracking, optimized loops\n";
+            $systemPrompt .= "- If no restriction: suggest Math.max(), Array methods, etc.\n";
+            $systemPrompt .= "- If using built-in when forbidden: score 3-4 (constraint violation)\n\n";
             $systemPrompt .= "EXAMPLES:\n";
-            $systemPrompt .= "❌ 'I see you're trying to...'\n";
-            $systemPrompt .= "✅ 'Which course's certificate, " . $firstName . "? How to CSS or Fullstack 2.0?'\n\n";
-            $systemPrompt .= "❌ 'Got it—you're having trouble...'\n";
-            $systemPrompt .= "✅ 'Check your internet and try another browser. Still stuck? Wait 10 min and refresh.'\n\n";
-            
-            $systemPrompt .= "---\nKNOWLEDGE BASE:\n\n";
-            
-            foreach ($this->faqs as $question => $answer) {
-                $systemPrompt .= "Q: $question\n";
-                $systemPrompt .= "A: $answer\n\n";
-            }
-            
-            // Add enrollment context
-            if (!empty($enrollmentContext)) {
-                $systemPrompt .= "---\nUSER ENROLLMENTS:\n";
-                $systemPrompt .= $enrollmentContext;
-                $systemPrompt .= "---\n\n";
-                $systemPrompt .= "CERTIFICATE/GROUP LINK:\n";
-                $systemPrompt .= "• Check enrollment data for 'Certificate Status' or 'WhatsApp Group Link'\n";
-                $systemPrompt .= "• If available, provide URL/link directly\n";
-                $systemPrompt .= "• If multiple courses, ask: 'Which course, " . $firstName . "? [Course 1] or [Course 2]?'\n";
-                $systemPrompt .= "• If not available, explain when they'll get it\n\n";
-            }
+            $systemPrompt .= "Problem: 'Find max without built-ins', Code: if(a>=b&&a>=c)...else if(b>=c)...else\n";
+            $systemPrompt .= '{"isApproved":true,"score":7,"feedback":"Logic is correct! ✓\\n\\nImprovements:\\n• Current: 4 comparisons with nested conditions\\n• Optimal: Variable tracking (2 comparisons)\\n• Approach: let max=a; if(b>max)max=b; if(c>max)max=c"}\n\n';
+            $systemPrompt .= "Problem: 'Find max' (no restriction), Code: if(a>=b&&a>=c)...else if(b>=c)...else\n";
+            $systemPrompt .= '{"isApproved":true,"score":7,"feedback":"Logic is correct! ✓\\n\\nImprovements:\\n• Best: Math.max(a,b,c) - single line, optimal\\n• Alternative: Variable tracking for manual approach\\n• Your approach: Works but verbose"}\n\n';
+            $systemPrompt .= "REMEMBER: Return ONLY valid JSON, nothing else.";
 
             // Build messages array with system prompt and conversation history
             $messages = [
@@ -247,7 +108,7 @@ class ChatbotController extends Controller
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'model' => 'openai/gpt-4o-mini',
+                    'model' => 'nex-agi/deepseek-v3.1-nex-n1:free',
                     'messages' => $messages
                 ],
                 'timeout' => 30,

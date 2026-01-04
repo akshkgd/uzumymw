@@ -140,26 +140,21 @@ class CodekaroController extends Controller
                 'screenUrl' =>$batch->field1,
             ]);
         }
-        public function userDetailsApi($email)
-{
-    // Find user by email
-    $user = User::where('email', $email)->first();
-    
-    if (!$user) {
-        return response()->json(['error' => 'User not found'], 404);
-    }
-    
-    // Handle avatar URL replacement
-    $avatar = $user->avatar;
-    if ($avatar === 'assets/img/mask.svg') {
-        $avatar = 'https://plus.unsplash.com/premium_vector-1722167430275-348e8d11d82e?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWFufGVufDB8fDB8fHww';
-    }
-    
-    return response()->json([
-        'name' => $user->name,
-        'email' => $user->email,
-        'avatar' => $avatar,
-    ]);
+        public function userDetailsApi($email){
+            $user = User::where('email', $email)->first();
+            if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+            }
+            // Handle avatar URL replacement
+            $avatar = $user->avatar;
+            if ($avatar === 'assets/img/mask.svg') {
+                $avatar = 'https://plus.unsplash.com/premium_vector-1722167430275-348e8d11d82e?w=700&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWFufGVufDB8fDB8fHww';
+            }
+            return response()->json([
+            'name' => $user->name,
+            'email' => $user->email,
+            'avatar' => $avatar,
+        ]);
 }
 
     public function upgradeCss(){

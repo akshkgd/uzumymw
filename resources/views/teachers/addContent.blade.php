@@ -91,10 +91,18 @@
                                                 <li data-id="{{ $c->id }}" class="hover:text-violet-600 ">
                                                     <a class="sortable-item  mb-2 text-[15px] font-ligh text-neutral-700 flex gap-3 items-center {{ $c->id == $currentContent->id ? 'active' : '' }}" 
                                                        href="{{ route('addCourseContent', ['id' => $batch->id, 'contentId' => $c->id]) }}">
-                                                        @if ($c->type == 2)
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video "><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect></svg>
+                                                        @if ($c->type == 1)
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                                                        @elseif ($c->type == 2)
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-video"><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect></svg>
+                                                        @elseif ($c->type == 3)
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-radio"><path d="M4.9 19.1C1 15.2 1 8.8 4.9 4.9"/><path d="M7.8 16.2c-2.3-2.3-2.3-6.1 0-8.5"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8c2.3 2.3 2.3 6.1 0 8.5"/><path d="M19.1 4.9C23 8.8 23 15.1 19.1 19"/></svg>
+                                                        @elseif ($c->type == 4)
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-code"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                                                        @elseif ($c->type == 5)
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-check"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
                                                         @else
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text "><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
                                                         @endif
                                                         {{ $c->title }}
                                                     </a>
@@ -378,10 +386,15 @@
                     {{-- <h3 class="pb-2">Course: {{$batch->name}}</h3> --}}
                       
                     <div class="form-floating  mb-1 space-y-2 mt-2">
-                        <label class="text-base text-neutral-800 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="floatingInput">Assignment / Recordings </label>
-                        <input type="number" value="{{$currentContent->type}}" class="flex w-full px-3 py-3  bg-white border rounded-lg border-neutral-300  placeholder:text-neutral-500 focus:border-neutral-300 focus:outline-none focus:ring-2  focus:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" id="floatingInput" name="type" placeholder="Content Title" value="1">
-                      </div>
-                      <p class="small" style="color:red; font-size:14px; margin-top:4px">Add 1 for assignments and 2 for recordings</p>
+                        <label class="text-base text-neutral-800 leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="contentType">Content Type</label>
+                        <select name="type" id="contentType" class="flex w-full px-3 py-3 bg-white border rounded-lg border-neutral-300 placeholder:text-neutral-500 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50">
+                            <option value="1" {{ $currentContent->type == 1 ? 'selected' : '' }}>Article</option>
+                            <option value="2" {{ $currentContent->type == 2 ? 'selected' : '' }}>Video</option>
+                            <option value="3" {{ $currentContent->type == 3 ? 'selected' : '' }}>Live Session</option>
+                            <option value="4" {{ $currentContent->type == 4 ? 'selected' : '' }}>Coding Lab</option>
+                            <option value="5" {{ $currentContent->type == 5 ? 'selected' : '' }}>Assignment</option>
+                        </select>
+                    </div>
 
                     
                       <div class="form-floating my-4 space-y-2">

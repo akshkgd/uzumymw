@@ -1,5 +1,135 @@
+<style>
+  /* Dark mode styles for header */
+  #sticky-header.dark-mode {
+    background-color: rgba(26, 26, 26, 0.9) !important;
+    border-color: rgba(45, 45, 45, 0.4) !important;
+  }
+  #sticky-header.dark-mode .text-neutral-800 {
+    color: #e5e7eb !important;
+  }
+  #sticky-header.dark-mode .text-black {
+    color: #e5e7eb !important;
+  }
+  #sticky-header.dark-mode .text-neutral-700 {
+    color: #d1d5db !important;
+  }
+  #sticky-header.dark-mode .text-neutral-600 {
+    color: #9ca3af !important;
+  }
+  #sticky-header.dark-mode .text-neutral-500 {
+    color: #9ca3af !important;
+  }
+  #sticky-header.dark-mode .bg-neutral-50 {
+    background-color: #2d2d2d !important;
+  }
+  #sticky-header.dark-mode .hover\:bg-neutral-100:hover {
+    background-color: #374151 !important;
+  }
+  #sticky-header.dark-mode .bg-white {
+    background-color: #1a1a1a !important;
+  }
+  #sticky-header.dark-mode .hover\:bg-white:hover {
+    background-color: #2d2d2d !important;
+  }
+  #sticky-header.dark-mode .border-neutral-200 {
+    border-color: #374151 !important;
+  }
+  #sticky-header.dark-mode .bg-violet-100 {
+    background-color: #4c1d95 !important;
+  }
+  #sticky-header.dark-mode .border-violet-300 {
+    border-color: #6d28d9 !important;
+  }
+  #sticky-header.dark-mode .text-violet-600 {
+    color: #a78bfa !important;
+  }
+  #sticky-header.dark-mode .hover\:bg-violet-200:hover {
+    background-color: #5b21b6 !important;
+  }
+  #sticky-header.dark-mode .bg-green-50 {
+    background-color: #065f46 !important;
+  }
+  #sticky-header.dark-mode .border-green-50 {
+    border-color: #065f46 !important;
+  }
+  #sticky-header.dark-mode .text-green-700 {
+    color: #6ee7b7 !important;
+  }
+  #sticky-header.dark-mode svg {
+    color: #e5e7eb;
+  }
+  /* Dark mode dropdown styles */
+  body.dark-mode #sticky-header + * .bg-white,
+  #sticky-header.dark-mode ~ * .bg-white {
+    background-color: #1a1a1a !important;
+  }
+  #sticky-header.dark-mode .border-neutral-200\/70 {
+    border-color: rgba(55, 65, 81, 0.7) !important;
+  }
+  /* Dark mode for slide-over panel */
+  body.dark-mode .bg-white.border-r.border-neutral-100 {
+    background-color: #1a1a1a !important;
+    border-color: #374151 !important;
+  }
+  body.dark-mode .text-gray-900 {
+    color: #e5e7eb !important;
+  }
+  body.dark-mode .bg-orange-100 {
+    background-color: #7c2d12 !important;
+  }
+  body.dark-mode .bg-neutral-100 {
+    background-color: #2d2d2d !important;
+  }
+  body.dark-mode .text-neutral-700 {
+    color: #d1d5db !important;
+  }
+  body.dark-mode .hover\:text-violet-600:hover {
+    color: #a78bfa !important;
+  }
+  body.dark-mode .hover\:text-blue-600:hover {
+    color: #60a5fa !important;
+  }
+  body.dark-mode .text-orange-600 {
+    color: #fb923c !important;
+  }
+  body.dark-mode .text-green-600 {
+    color: #4ade80 !important;
+  }
+  body.dark-mode .hover\:bg-red-100:hover {
+    background-color: #7f1d1d !important;
+  }
+  body.dark-mode .hover\:text-red-700:hover {
+    color: #f87171 !important;
+  }
+  /* Dark mode for profile dropdown */
+  body.dark-mode .bg-white.border.rounded-md.shadow-md {
+    background-color: #1a1a1a !important;
+    border-color: rgba(55, 65, 81, 0.7) !important;
+  }
+  body.dark-mode .text-neutral-700 {
+    color: #d1d5db !important;
+  }
+  body.dark-mode .text-neutral-600 {
+    color: #9ca3af !important;
+  }
+  body.dark-mode .text-neutral-500 {
+    color: #9ca3af !important;
+  }
+  body.dark-mode .bg-neutral-200 {
+    background-color: #374151 !important;
+  }
+  body.dark-mode .hover\:bg-neutral-100:hover {
+    background-color: #2d2d2d !important;
+  }
+  body.dark-mode .border-neutral-200 {
+    border-color: #374151 !important;
+  }
+  body.dark-mode .border-neutral-100 {
+    border-color: #374151 !important;
+  }
+</style>
 <header id="sticky-header" class="fixed top-0 z-[20] h-14 flex items-center justify-center w-full duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-200 border-opacity-40">
-  <div class="flex items-center justify-between w-full px-4  mx-auto 2xl:px-0 max-w-6xl py-1">
+  <div class="flex items-center justify-between w-full px-4  mx-auto 2xl:px-4 max-w-6x py-1">
       <div class="relative z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left">
           <a href="{{ url('/home') }}"
               class="sm:mr-8 font-sans text-lg flex items-center gap-2 text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline">
@@ -202,7 +332,7 @@
                                                             <h2 class="text-base font-semibold leading-6">
                                                                 {{ $enrollment->batch->name }}</h2>
 
-                                                            <p class="bg-white text-sm text-neutral-600">
+                                                            <p class="text-sm text-neutral-600">
                                                                 {{ optional($enrollment)->progress ?? 0 }}% completed in
                                                                 @php
                                                                     $timeSpent = optional($enrollment)->time_spent ?? 0; // Time spent in minutes
@@ -263,6 +393,8 @@
                                                                                                         ry="2">
                                                                                                     </rect>
                                                                                                 </svg>
+                                                                                                @elseif($c->type == 4)
+                                                                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-code-corner-icon lucide-file-code-corner"><path d="M4 12.15V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2h-3.35"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="m5 16-3 3 3 3"/><path d="m9 22 3-3-3-3"/></svg>
                                                                                             @else
                                                                                                 <svg xmlns="http://www.w3.org/2000/svg"
                                                                                                     width="16"
@@ -390,3 +522,40 @@
         </div>
     </div>
 </header>
+
+<script>
+  // Check and apply dark mode to header
+  function applyHeaderDarkMode() {
+    const isDarkMode = localStorage.getItem('codekaro_dark_mode') === 'true';
+    const header = document.getElementById('sticky-header');
+    
+    // Only apply dark mode if we're on a coding lab page (type 4)
+    const isCodeLabPage = {{ isset($video) && $video->type == 4 ? 'true' : 'false' }};
+    
+    if (isDarkMode && isCodeLabPage) {
+      header.classList.add('dark-mode');
+      // Also add to body for dropdown styling
+      if (!document.body.classList.contains('dark-mode')) {
+        document.body.classList.add('dark-mode');
+      }
+    } else {
+      header.classList.remove('dark-mode');
+      document.body.classList.remove('dark-mode');
+    }
+  }
+  
+  // Apply on page load
+  applyHeaderDarkMode();
+  
+  // Listen for storage changes (when dark mode is toggled in editor)
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'codekaro_dark_mode') {
+      applyHeaderDarkMode();
+    }
+  });
+  
+  // Also listen for custom event for same-tab updates
+  window.addEventListener('darkModeChanged', function() {
+    applyHeaderDarkMode();
+  });
+</script>
