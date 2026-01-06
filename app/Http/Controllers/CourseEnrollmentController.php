@@ -247,7 +247,7 @@ class CourseEnrollmentController extends Controller
             case 100:
                 // return redirect('/bootcamp-success');
                 // return redirect('/bootcamp-success?enrollmentId=' . $enrollmentId);
-                return redirect('/bootcamp-success?enrollmentId=' . $enrollmentId . '&userId=' . $userId);
+                return redirect('/bootcamp-success?enrollmentid=' . $enrollmentId . '&userId=' . $userId);
             case 101:
                 return redirect('/mastermind-success');
             case 102:

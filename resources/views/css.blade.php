@@ -2123,9 +2123,9 @@ iframe{border:0;}
                                 placeholder="name@example.com" @auth value="{{ Auth::user()->mobile }}" @endauth>
                             <label for="floatingInput">Mobile Number</label>
                         </div>
-                        <div class="text-left p-3 mb-2" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px; display:none;" >
+                        <div class="text-left p-3 mb-2" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px; " >
                             {{-- <div class="py-2" style="color:green">57% of Learners Choose this option to get 3x value</div>     --}}
-                            <div class="text-left fw-600 mb-3 fs-6">VIP upgrade <span style="color:#29cf84; ">(Most Loved)</span></div>
+                            <div class="text-left fw-600 mb-3 fs-6">Don’t Miss Anything (Recommended)</div>
                                 {{-- <div class="text-left  text-muted my-2" style="font-size: 14px">Get access to curated list of 100+ frontend Interview questions and 25+ projects with chatGPT prompts that will increase your productivity by 10x! </div> --}}
                                 {{-- <div class="d-flex align-items-center mb-2" style="gap: 8px">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#29cf84" class="bi bi-check-all" viewBox="0 0 16 16">
@@ -2137,19 +2137,19 @@ iframe{border:0;}
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#29cf84" class="bi bi-check-all" viewBox="0 0 16 16">
                                         <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/>
                                       </svg>
-                                      <span>LinkedIn Shareable Certificate</span>
+                                      <span>Lifetime access to recordings</span>
                                 </div>
                                 <div class=" align-items-center mb-2" style="gap: 8px">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#29cf84" class="bi bi-check-all" viewBox="0 0 16 16">
                                         <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/>
                                       </svg>
-                                      <span>Get bootcamp recordings</span>
+                                      <span>LinkedIn Shareable Certificate</span>
                                 </div>
                                 <div class="d-flex align-items-center mb-2" style="gap: 8px">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#29cf84" class="bi bi-check-all" viewBox="0 0 16 16">
                                         <path d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z"/>
                                       </svg>
-                                      <span>Get Javascript Crash Course (Recorded)</span>
+                                      <span>Live Javascript Crash Course</span>
                                 </div>
                                 <div class="d-flex align-items-center mb-2" style="gap: 8px">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#29cf84" class="bi bi-check-all" viewBox="0 0 16 16">
@@ -2167,8 +2167,9 @@ iframe{border:0;}
                                 
                                 <div class="">
                                     <input type="checkbox" id="myCheckbox" name="myCheckbox" style="transform: scale(2); margin-left:6px; margin-right: 10px; margin-top:12px; cursor: pointer;" onchange="toggleRecordingCheckbox(this)">
-                                    <label for="myCheckbox" style="">Yes, I need this.</label>
+                                    <label for="myCheckbox" style="">Yes, add VIP access for just ₹199</label>
                                 </div>
+                                
 
   
                                 {{-- <div class="you-checkbox-item align-items-center p-0 m-0" style="border: 1px solid white; text-align:left; justify-content: left" onclick="toggleRecordingCheckbox(this)">
