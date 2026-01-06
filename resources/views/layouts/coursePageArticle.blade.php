@@ -6,7 +6,7 @@
             
             <div class="my-5">
 
-              <h1 class="text-2xl mt-5  font-extrabold" id="title">{{ $video->title }}</h1>
+              <h1 class="text-2xl mt-5  cal-sans" id="title">{{ $video->title }}</h1>
 
                 <div class="desc mt-0">
                   {!! $video->desc !!}
