@@ -877,7 +877,7 @@
                     x-cloak
                     class="p-5 bg-gray-50 text-gray-700"
                 >
-                    <p>Our next cohort kicks off on <span class="font-semibold text-orange-600">January 21st, 2025</span>. We recommend securing your spot early as our batches tend to fill up quickly.</p>
+                    <p>Our next cohort kicks off on <span class="font-semibold text-orange-600">January 21st, 2026</span>. We recommend securing your spot early as our batches tend to fill up quickly.</p>
                 </div>
             </div>
 
