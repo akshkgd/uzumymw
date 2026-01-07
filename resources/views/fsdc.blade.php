@@ -188,7 +188,7 @@
                         Get Job offers of <span class="underline text-orange-600">7-25 Lpa as a Full Stack dev</span> in <span class="underline decoration-orange-600">Just 90 Days</span> – Even if you have zero coding experience… <span class="underline decoration-orange-600">OR your money back!</span>
                     </h1>
                     <p class="text-wrap mx-auto mt-8 max-w-2xl text-xl text-gray-700 ">
-                        You will be able to crack frontend interviews & get a 7-25 LPA job as a fresher by the end of this cohort! Batch starting on 21st July.
+                        You will be able to crack frontend interviews & get a 7-25 LPA job as a fresher by the end of this cohort! Batch starting on 21st January.
                     </p>
                     
                     <div class="mt-8 flex flex-row items-center justify-center gap-4">
@@ -734,7 +734,7 @@
                 Join the Fullstack Cohort Now for ₹41,999
             </a>
             
-            <p class="text-gray-500 mt-4 text-sm">Batch starting on july 21st • 100% Money-back Guarantee</p>
+            <p class="text-gray-500 mt-4 text-sm">Batch starting on January 21st • 100% Money-back Guarantee</p>
         </div>
     </div>
 </section>
@@ -877,7 +877,7 @@
                     x-cloak
                     class="p-5 bg-gray-50 text-gray-700"
                 >
-                    <p>Our next cohort kicks off on <span class="font-semibold text-orange-600">july 21st, 2025</span>. We recommend securing your spot early as our batches tend to fill up quickly.</p>
+                    <p>Our next cohort kicks off on <span class="font-semibold text-orange-600">January 21st, 2025</span>. We recommend securing your spot early as our batches tend to fill up quickly.</p>
                 </div>
             </div>
 
@@ -950,7 +950,7 @@
                         <li>Login credentials for our learning platform</li>
                         <li>Invitation to our private community on Slack</li>
                         <li>Pre-course preparation materials to get you ready</li>
-                        <li>Calendar invites for all live sessions starting july 21st</li>
+                        <li>Calendar invites for all live sessions starting January 21st</li>
                     </ul>
                     <p class="mt-3">If you don't see this email, please check your spam folder or contact our support team at <span class="text-orange-600">support@codekaro.in</span></p>
                 </div>
