@@ -2123,7 +2123,7 @@ iframe{border:0;}
                                 placeholder="name@example.com" @auth value="{{ Auth::user()->mobile }}" @endauth>
                             <label for="floatingInput">Mobile Number</label>
                         </div>
-                        <div class="text-left p-3 mb-2" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px; " >
+                        <div class="text-left p-3 mb-2 hidden" style="border: 1px solid #29cf84; text-align:left; border-radius: 12px; " >
                             {{-- <div class="py-2" style="color:green">57% of Learners Choose this option to get 3x value</div>     --}}
                             {{-- <div class="text-left fw-600 mb-3 fs-6">Don’t Miss Anything (Recommended)</div> --}}
                             <div class="text-left fw-600 mb-3 fs-6">VIP upgrade <span style="color:#29cf84; ">(Most Loved)</span></div>
