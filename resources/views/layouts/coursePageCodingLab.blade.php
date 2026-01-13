@@ -514,22 +514,35 @@
         <div class="flex border-b">
           <button id="problemTab" onclick="switchTab('problem')"
             class="flex-1 px-4 py-3 flex items-center justify-center gap-2 border-b-2 border-black bg-gray-50">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-gray-700">
-              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="h-4 w-4 text-gray-700">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
             </svg>
             <span class="font-medium text-sm">Problem</span>
           </button>
           <button id="terminalTab" onclick="switchTab('terminal')"
             class="flex-1 px-4 py-3 flex items-center justify-center gap-2 border-b-2 border-transparent hover:bg-gray-50">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-gray-500">
-              <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="h-4 w-4 text-gray-500">
+              <polyline points="4 17 10 11 4 5" />
+              <line x1="12" y1="19" x2="20" y2="19" />
             </svg>
             <span class="font-medium text-sm">Terminal</span>
           </button>
           <button id="feedbackTab" onclick="switchTab('feedback')"
             class="flex-1 px-4 py-3 items-center justify-center gap-2 border-b-2 border-transparent hover:bg-gray-50 hidden">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4 text-gray-500">
-              <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="h-4 w-4 text-gray-500">
+              <path
+                d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+              <path d="M5 3v4" />
+              <path d="M19 17v4" />
+              <path d="M3 5h4" />
+              <path d="M17 19h4" />
             </svg>
             <span class="font-medium text-sm">Feedback</span>
           </button>
@@ -637,11 +650,14 @@ console.log("Hello, World!");`;
     }
 
     function applyDarkMode() {
-      if (!isCodeLabPage) return; // Only apply dark mode on code lab pages
-
       const body = document.body;
       const moonIcon = document.getElementById('moonIcon');
       const sunIcon = document.getElementById('sunIcon');
+
+      if (!isCodeLabPage) {
+        body.classList.remove('dark-mode');
+        return;
+      }
 
       if (isDarkMode) {
         body.classList.add('dark-mode');
@@ -804,10 +820,11 @@ console.log("Hello, World!");`;
         }
       });
 
-      // Apply dark mode on initial load (only for code lab pages)
+      // Apply dark mode theme
+      applyDarkMode();
+
+      // Notify header of initial dark mode state if on code lab page
       if (isCodeLabPage) {
-        applyDarkMode();
-        // Notify header of initial dark mode state
         window.dispatchEvent(new Event('darkModeChanged'));
       }
 
