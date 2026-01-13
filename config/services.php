@@ -30,9 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'google' => [
-		'client_id' => '823714980729-vn8815lmg5c40nkeqfptrnocno1aqsr8.apps.googleusercontent.com',
-		'client_secret' => 'bI_qHM71VCr6edkVSd3rMoon',
-		'redirect' => 'https://codekaro.in/callback',
-  ],
+        'client_id' => '823714980729-vn8815lmg5c40nkeqfptrnocno1aqsr8.apps.googleusercontent.com',
+        'client_secret' => 'bI_qHM71VCr6edkVSd3rMoon',
+        'redirect' => 'https://codekaro.in/callback',
+    ],
 
 ];

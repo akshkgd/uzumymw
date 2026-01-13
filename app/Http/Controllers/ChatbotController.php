@@ -16,14 +16,14 @@ class ChatbotController extends Controller
         try {
             $message = $request->input('message');
             $history = $request->input('history', []);
-            
+
             if (empty($message)) {
                 return response()->json([
                     'success' => false,
                     'reply' => 'Please provide a message.'
                 ], 400);
             }
-            
+
             // Check if API key exists
             $apiKey = env('OPENROUTER_API_KEY');
             if (empty($apiKey)) {
@@ -33,13 +33,13 @@ class ChatbotController extends Controller
                     'reply' => 'API key not configured. Please contact administrator.'
                 ], 500);
             }
-            
+
             // Code review system prompt
             $systemPrompt = "You are a senior JavaScript engineer reviewing code. Respond ONLY with valid JSON in this exact format:\n\n";
             $systemPrompt .= "{\n";
-            $systemPrompt .= '  "isApproved": true/false,'."\n";
-            $systemPrompt .= '  "score": 0-10,'."\n";
-            $systemPrompt .= '  "feedback": "your feedback here"'."\n";
+            $systemPrompt .= '  "isApproved": true/false,' . "\n";
+            $systemPrompt .= '  "score": 0-10,' . "\n";
+            $systemPrompt .= '  "feedback": "your feedback here"' . "\n";
             $systemPrompt .= "}\n\n";
             $systemPrompt .= "EVALUATION PROCESS:\n";
             $systemPrompt .= "1. CHECK PROBLEM CONSTRAINTS: Does problem say 'without built-in/predefined methods'?\n";
@@ -81,7 +81,7 @@ class ChatbotController extends Controller
                     'content' => $systemPrompt
                 ]
             ];
-            
+
             // Add conversation history if exists
             if (!empty($history) && is_array($history)) {
                 foreach ($history as $msg) {
@@ -93,7 +93,7 @@ class ChatbotController extends Controller
                     }
                 }
             }
-            
+
             // Add current user message
             $messages[] = [
                 'role' => 'user',
@@ -108,14 +108,14 @@ class ChatbotController extends Controller
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'model' => 'nex-agi/deepseek-v3.1-nex-n1:free',
+                    'model' => 'openai/gpt-5.1-codex-mini',
                     'messages' => $messages
                 ],
                 'timeout' => 30,
             ]);
 
             $data = json_decode($response->getBody(), true);
-            
+
             if (isset($data['choices'][0]['message']['content'])) {
                 return response()->json([
                     'success' => true,
@@ -131,16 +131,16 @@ class ChatbotController extends Controller
 
         } catch (\GuzzleHttp\Exception\RequestException $e) {
             Log::error('OpenRouter API Request Error: ' . $e->getMessage());
-            
+
             return response()->json([
                 'success' => false,
                 'reply' => 'Sorry, I could not connect to the AI service. Please try again later.'
             ], 500);
-            
+
         } catch (\Exception $e) {
             Log::error('Chat Error: ' . $e->getMessage());
             Log::error($e->getTraceAsString());
-            
+
             return response()->json([
                 'success' => false,
                 'reply' => 'Sorry, an unexpected error occurred. Please try again.'

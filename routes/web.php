@@ -25,53 +25,53 @@ use Rap2hpoutre\LaravelLogViewer\LogViewerController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::view('/internship-certificate/8be76c72dffcb7c5','clgInternship.himanshu');
-Route::view('/internship-certificate/8be76c72dffcb7c6','clgInternship.ashish');
-Route::view('/internship-certificate/8be76c72dffcb7c7','clgInternship.vivek');
+Route::view('/internship-certificate/8be76c72dffcb7c5', 'clgInternship.himanshu');
+Route::view('/internship-certificate/8be76c72dffcb7c6', 'clgInternship.ashish');
+Route::view('/internship-certificate/8be76c72dffcb7c7', 'clgInternship.vivek');
 
-Route::view('/complete','students.completeProfile');
+Route::view('/complete', 'students.completeProfile');
 Route::get('/webhook', 'TelegramController@webhook');
-Route::view('/contact-us','contact');
-Route::view('/game','game');
-Route::view('/himanshu','team.himanshu');
-Route::view('/ashish','team.ashish');
-Route::view('/arpit','team.arpit');
-Route::view('/privacy','privacy');
-Route::view('/terms','terms');
-Route::view('/refund-policy','refund');
-Route::view('/learn-git-and-github','git');
-Route::view('/instagram-live-masterclass','js');
-Route::view('/bootcamp-demo','wd');
-Route::view('/wd','wdSunday');
-Route::view('/cwr-live-masterclass','cwr');
-Route::view('/web-development-masterclass','instawd');
-Route::view('/python-masterclass','python');
-Route::view('/web-development-bootcamp','wdm');
-Route::view('/wdt','wdt');
+Route::view('/contact-us', 'contact');
+Route::view('/game', 'game');
+Route::view('/himanshu', 'team.himanshu');
+Route::view('/ashish', 'team.ashish');
+Route::view('/arpit', 'team.arpit');
+Route::view('/privacy', 'privacy');
+Route::view('/terms', 'terms');
+Route::view('/refund-policy', 'refund');
+Route::view('/learn-git-and-github', 'git');
+Route::view('/instagram-live-masterclass', 'js');
+Route::view('/bootcamp-demo', 'wd');
+Route::view('/wd', 'wdSunday');
+Route::view('/cwr-live-masterclass', 'cwr');
+Route::view('/web-development-masterclass', 'instawd');
+Route::view('/python-masterclass', 'python');
+Route::view('/web-development-bootcamp', 'wdm');
+Route::view('/wdt', 'wdt');
 // Route::view('/love','love');
-Route::view('/teach','teach');
+Route::view('/teach', 'teach');
 // Route::view('/how-to-css','css');
-Route::view('/start-css','css1');
-Route::view('/start-javascript','js5');
-Route::view('/start-webdev','wdStarter');
-Route::view('/join-mern','fsd');
-Route::view('/join-fsd','fsdc');
-Route::view('/css-success','students/cssSuccess1');
-Route::view('/css-replay','students/cssReplay');
-Route::view('/demo-success','students/demoSuccess');
-Route::view('/frontend-cohort','frontend');
-Route::view('/join-frontend','joinFrontend');
-Route::view('/t','students/learn');
-Route::view('/c','students/certificatePdf');
-Route::view('/js-editor','jsEditor');
-Route::view('/start-fc','jsc');
-Route::view('/banned','banned');
-Route::view('/crash-course-schedule','ccSchedule');
-Route::view('/ai1','genAi');
-Route::view('/genai-for-developers','genAi1');
-Route::view('/frontend-with-genai','frGenAi');
-Route::view('/css-exclusive','cssEx');
-Route::view('/lop','cssNew');
+Route::view('/start-css', 'css1');
+Route::view('/start-javascript', 'js5');
+Route::view('/start-webdev', 'wdStarter');
+Route::view('/join-mern', 'fsd');
+Route::view('/join-fsd', 'fsdc');
+Route::view('/css-success', 'students/cssSuccess1');
+Route::view('/css-replay', 'students/cssReplay');
+Route::view('/demo-success', 'students/demoSuccess');
+Route::view('/frontend-cohort', 'frontend');
+Route::view('/join-frontend', 'joinFrontend');
+Route::view('/t', 'students/learn');
+Route::view('/c', 'students/certificatePdf');
+Route::view('/js-editor', 'jsEditor');
+Route::view('/start-fc', 'jsc');
+Route::view('/banned', 'banned');
+Route::view('/crash-course-schedule', 'ccSchedule');
+Route::view('/ai1', 'genAi');
+Route::view('/genai-for-developers', 'genAi1');
+Route::view('/frontend-with-genai', 'frGenAi');
+Route::view('/css-exclusive', 'cssEx');
+Route::view('/lop', 'cssNew');
 
 
 
@@ -90,20 +90,20 @@ Route::get('/reviews', function () {
 });
 Route::get('/i', function () {
     $enrollment = CourseEnrollment::first();
-    return view('admin/invoicePdf',compact('enrollment'));
+    return view('admin/invoicePdf', compact('enrollment'));
 });
 Route::get('/it', function () {
     $users = Feedback::where('status', 1)->take(25)->get();
-    return view('internship',compact('users'));
-            // $enrollment = CourseEnrollment::find(13);
-            // $batch = Batch::find($enrollment->batchId);
-            // // $user = User::find($enrollment->userId);
-            // // $this->successMail($batch, $user);
-            // return view('students.PaymentComplete', compact('enrollment', 'batch'));
+    return view('internship', compact('users'));
+    // $enrollment = CourseEnrollment::find(13);
+    // $batch = Batch::find($enrollment->batchId);
+    // // $user = User::find($enrollment->userId);
+    // // $this->successMail($batch, $user);
+    // return view('students.PaymentComplete', compact('enrollment', 'batch'));
 });
 
 Route::get('/', function () {
-    
+
     // $batches = Workshop::where('status',1)->latest()->take(3)->get();
     // $courses = Batch::where('status',1)->latest()->take(2)->get();
     return view('welcome');
@@ -114,21 +114,21 @@ Route::get('/', function () {
 Route::get('/batch', function () {
     return view('students.batchDetails');
 });
-Route::get('/about',  function(){
+Route::get('/about', function () {
     return view('about');
 });
 
 Route::get('/logged-in-devices', 'ProfileController@index')
-		->name('logged-in-devices.list')
-		->middleware('auth');
+    ->name('logged-in-devices.list')
+    ->middleware('auth');
 
 Route::get('/logout/all', 'ProfileController@logoutAllDevices')
-		->name('logged-in-devices.logoutAll')
-		->middleware('auth');
+    ->name('logged-in-devices.logoutAll')
+    ->middleware('auth');
 
 Route::get('/logout/{device_id}', 'ProfileController@logoutDevice')
-		->name('logged-in-devices.logoutSpecific')
-		->middleware('auth');
+    ->name('logged-in-devices.logoutSpecific')
+    ->middleware('auth');
 // student routes start
 Route::get('/notes/{id}', 'StudentController@notes');
 Route::get('/recording-sessions/{batchId}/{cId?}', 'StudentController@recordings')->name('recordings');
@@ -153,11 +153,15 @@ Route::post('/chat', 'ChatbotController@chat');
 
 
 // In routes/web.php
-Route::get('/test-api', function() {
+Route::get('/test-api', function () {
     try {
         $client = new \GuzzleHttp\Client();
         $response = $client->get('https://openrouter.ai/api/v1/models');
-        return response()->json(['status' => 'Guzzle works!', 'code' => $response->getStatusCode()]);
+        $models = json_decode($response->getBody(), true);
+        $freeModels = array_filter($models['data'], function ($model) {
+            return strpos($model['id'], ':free') !== false || $model['pricing']['prompt'] == 0;
+        });
+        return response()->json(['free_models' => array_values($freeModels)]);
     } catch (\Exception $e) {
         return response()->json(['error' => $e->getMessage()]);
     }
@@ -172,7 +176,7 @@ Route::get('/delete-session/{sessionId}', 'StudentController@deleteSession')->na
 Auth::routes(['verify' => true]);
 Route::get('/redirect', 'googlelogin@redirectToProvider');
 Route::get('/callback', 'googlelogin@handleProviderCallback');
-Route::get('autocomplete','ProfileController@locationAutoComplete');
+Route::get('autocomplete', 'ProfileController@locationAutoComplete');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/my-account', 'ProfileController@editProfile');
@@ -205,7 +209,7 @@ Route::get('/test', 'CodekaroController@test');
 Route::post('/grant-access', 'WebhookController@grantAccess');
 Route::post('/start-subscription', 'SubscriptionController@startSubscriptionWebhook');
 Route::get('/join-class/{id}', 'StudentController@joinClass');
-Route::get('/certificate', function(){
+Route::get('/certificate', function () {
     $certificate = CourseEnrollment::first();
     // $students = CourseEnrollment::where('teacher_id', $ck_user->id)->count();
     $batch = Batch::first();
@@ -254,7 +258,8 @@ Route::get('/user/{id}/enrollments', 'TeacherController@showEnrollments')->name(
 
 
 //admin
-Route::get('/admin/students', 'AdminController@students')->name('admin.students');;
+Route::get('/admin/students', 'AdminController@students')->name('admin.students');
+;
 Route::get('/admin/css-enrollments', 'AdminController@cssEnrollments');
 Route::get('/admin/js-enrollments', 'AdminController@jsEnrollments');
 Route::get('/admin/react-enrollments', 'AdminController@reactEnrollments');
@@ -287,7 +292,8 @@ Route::get('/admin/add-access', 'AdminController@addAccess');
 Route::post('/get-email-suggestions', 'AdminController@getUser')->name('getUser');
 Route::post('/add-access', 'AdminController@addCourseAccess')->name('addAccess');
 Route::get('/admin/course-progress', 'AdminController@fetchCourseProgress');
-Route::get('/admin/batch-suggestions', 'AdminController@batchSuggestions')->name('getBatchSuggestions');;
+Route::get('/admin/batch-suggestions', 'AdminController@batchSuggestions')->name('getBatchSuggestions');
+;
 Route::get('/admin/update-live-class/{id}', 'AdminController@addLiveClass');
 Route::post('/admin/update-live-class', 'AdminController@updateLiveClass')->name('updateLiveClass');
 Route::get('/api/students/{id}/sessions', 'AdminController@getStudentSessions')->name('students.sessions');
@@ -296,7 +302,7 @@ Route::get('/admin/reports', 'AdminController@reports')->name('admin.reports');
 Route::get('/admin/reports-data', 'AdminController@getReportsData')->middleware(['auth', 'isAdmin']);
 // admin manage invoices
 Route::get('/admin/invoices', 'AdminController@listInvoices')->name('admin.invoices.list');
-Route::get('/admin/invoices/download/{invoiceId}','AdminController@downloadInvoices' )->name('admin.invoices.download');
+Route::get('/admin/invoices/download/{invoiceId}', 'AdminController@downloadInvoices')->name('admin.invoices.download');
 Route::get('/admin/wf', 'AdminController@wf');
 
 
