@@ -25,7 +25,7 @@ class ChatbotController extends Controller
             }
 
             // Check if API key exists
-            $apiKey = env('OPENROUTER_API_KEY');
+            $apiKey = config('services.openrouter.key');
             if (empty($apiKey)) {
                 Log::error('OpenRouter API key not found in .env file');
                 return response()->json([

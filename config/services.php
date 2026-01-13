@@ -35,4 +35,8 @@ return [
         'redirect' => 'https://codekaro.in/callback',
     ],
 
+    'openrouter' => [
+        'key' => env('OPENROUTER_API_KEY'),
+    ],
+
 ];
