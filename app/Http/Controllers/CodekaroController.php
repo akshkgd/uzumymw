@@ -138,6 +138,7 @@ class CodekaroController extends Controller
                 'topic' => $batch->topic,
                 'url' => $batch->meetingLink,
                 'screenUrl' =>$batch->field1,
+                'dummyCount' => (int) $batch->field2,
             ]);
         }
         public function userDetailsApi($email){
