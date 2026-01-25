@@ -333,13 +333,7 @@ class AdminController extends Controller
     }
     public function upcomingSessions()
     {
-        $batches = Batch::whereNotNull('meetingLink')
-            ->where('meetingLink', '!=', '')
-            ->whereNotNull('nextClass')
-            ->where('nextClass', '!=', '')
-            ->whereNotNull('field1')
-            ->where('field1', '!=', '')
-            ->get();
+        $batches = Batch::whereNotNull('meetingLink')->whereNotNull('nextClass')->whereNotNull('field1')->get();
         return view('admin.upcomingSessions', compact('batches'))->with('i');
     }
     public function updateLiveClass(Request $request)
