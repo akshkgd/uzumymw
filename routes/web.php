@@ -300,6 +300,7 @@ Route::get('/api/students/{id}/sessions', 'AdminController@getStudentSessions')-
 Route::get('/admin-progress/{enrollmentId}', 'AdminController@courseProgress');
 Route::get('/admin/reports', 'AdminController@reports')->name('admin.reports');
 Route::get('/admin/reports-data', 'AdminController@getReportsData')->middleware(['auth', 'isAdmin']);
+Route::get('/admin/upcoming-sessions', 'AdminController@upcomingSessions')->name('admin.upcoming-sessions');
 // admin manage invoices
 Route::get('/admin/invoices', 'AdminController@listInvoices')->name('admin.invoices.list');
 Route::get('/admin/invoices/download/{invoiceId}', 'AdminController@downloadInvoices')->name('admin.invoices.download');

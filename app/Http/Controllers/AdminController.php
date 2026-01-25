@@ -43,44 +43,47 @@ class AdminController extends Controller
     {
         $this->middleware(['auth', 'verified', 'isAdmin']);
     }
-    public function getUsers(){
-        $users = User::select('id','name', 'email','created_at', 'updated_at')->paginate(500);
-        
-        foreach($users as $user){
+    public function getUsers()
+    {
+        $users = User::select('id', 'name', 'email', 'created_at', 'updated_at')->paginate(500);
+
+        foreach ($users as $user) {
             $isPaid = CourseEnrollment::where('userId', $user->id)->where('hasPaid', 1)->count();
-        
-            if($isPaid > 0){
+
+            if ($isPaid > 0) {
                 $user->hasPaid = 1;
-            }
-            else{
+            } else {
                 $user->hasPaid = 0;
             }
         }
         return view('admin.emails', compact('users'))->with('i');
     }
-    public function cssEnrollments(){
+    public function cssEnrollments()
+    {
         $enrollments = CourseEnrollment::join('batches', 'course_enrollments.batchId', '=', 'batches.id')
-    ->where('batches.topicId', 100)
-    ->where('course_enrollments.hasPaid', 1)
-    ->select('course_enrollments.*')->latest() 
-    ->paginate(100); 
-    return view('admin.cssEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
+            ->where('batches.topicId', 100)
+            ->where('course_enrollments.hasPaid', 1)
+            ->select('course_enrollments.*')->latest()
+            ->paginate(100);
+        return view('admin.cssEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
     }
-    public function jsEnrollments(){
+    public function jsEnrollments()
+    {
         $enrollments = CourseEnrollment::join('batches', 'course_enrollments.batchId', '=', 'batches.id')
-    ->where('batches.topicId', 101)
-    ->where('course_enrollments.hasPaid', 1)
-    ->select('course_enrollments.*')->latest() 
-    ->paginate(100); 
-    return view('admin.jsEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
+            ->where('batches.topicId', 101)
+            ->where('course_enrollments.hasPaid', 1)
+            ->select('course_enrollments.*')->latest()
+            ->paginate(100);
+        return view('admin.jsEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
     }
-    public function reactEnrollments(){
+    public function reactEnrollments()
+    {
         $enrollments = CourseEnrollment::join('batches', 'course_enrollments.batchId', '=', 'batches.id')
-    ->where('batches.topicId', 102)
-    ->where('course_enrollments.hasPaid', 1)
-    ->select('course_enrollments.*')->latest() 
-    ->paginate(100); 
-    return view('admin.reactEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
+            ->where('batches.topicId', 102)
+            ->where('course_enrollments.hasPaid', 1)
+            ->select('course_enrollments.*')->latest()
+            ->paginate(100);
+        return view('admin.reactEnrollment', compact('enrollments'))->with('i', (request()->input('page', 1) - 1) * 100);
     }
 
     public function addAccess()
@@ -110,74 +113,75 @@ class AdminController extends Controller
         $user = User::findorFail($id);
         $enrollments = CourseEnrollment::where('userId', $id)->get();
         $recentVideos = CourseProgress::where('userId', $id)
-        ->orderBy('updated_at', 'desc') // Assuming 'updated_at' tracks the most recent activity
-        ->limit(3)
-        ->get();
+            ->orderBy('updated_at', 'desc') // Assuming 'updated_at' tracks the most recent activity
+            ->limit(3)
+            ->get();
         return view('admin.studentDetails', compact('user', 'enrollments'))->with('i');
     }
     public function getStudentSessions($id)
-{
-    // Ensure the user (student) exists
-    $student = User::find($id);
-    if (!$student) {
-        return response()->json(['error' => 'Student not found'], 404);
-    }
-
-    // Fetch the sessions for the student (use the user_id as the student)
-    $devices = \DB::table('sessions')->where('user_id', $student->id)
-    ->latest('last_activity')
-    ->select('id', 'ip_address', 'user_agent', 'last_activity')
-    ->cursor();
-
-    $deviceList = [];
-
-
-    // Process each session (using Jenssegers\Agent for device and browser details)
-    foreach ($devices as $device) {
-        $agent = new \Jenssegers\Agent\Agent();
-        $agent->setUserAgent($device->user_agent);
-
-        $device->browser = $agent->browser();
-        $device->is_mobile = $agent->isMobile();
-        $device->is_desktop = $agent->isDesktop();
-        $device->device_name = $agent->device();
-        $device->last_activity = \Carbon\Carbon::createFromTimestamp($device->last_activity)->format('d M Y h:i A');
-        $deviceList[] = $device;
-    }
-
-    return response()->json([
-        'devices' => $deviceList,
-        'current_session_id' => \Session::getId()
-    ]);
-}
-
-    public function search(Request $request){
-    $search = $request->search_value;
-    $users = User::where('email', 'LIKE', '%' . $search . '%')
-                ->orWhere('mobile', 'LIKE', '%' . $search . '%')
-                ->orderBy('created_at', 'desc')
-                ->get();
-    
-    if ($users->count() > 0) {
-        // If only one user is found, redirect to the user details page
-        if ($users->count() === 111) {
-            $user = $users->first();
-            return redirect()->route('admin.user.details', ['id' => $user->id]);
-        } 
-        // If more than one user is found, show the list of users
-        else {
-            return view('admin.search', compact('users', 'search'))->with('i');
+    {
+        // Ensure the user (student) exists
+        $student = User::find($id);
+        if (!$student) {
+            return response()->json(['error' => 'Student not found'], 404);
         }
-    } else {
-        // If no users are found, show a flash message and redirect back
-        session()->flash('success', 'User not found!');
-        return redirect()->back();
+
+        // Fetch the sessions for the student (use the user_id as the student)
+        $devices = \DB::table('sessions')->where('user_id', $student->id)
+            ->latest('last_activity')
+            ->select('id', 'ip_address', 'user_agent', 'last_activity')
+            ->cursor();
+
+        $deviceList = [];
+
+
+        // Process each session (using Jenssegers\Agent for device and browser details)
+        foreach ($devices as $device) {
+            $agent = new \Jenssegers\Agent\Agent();
+            $agent->setUserAgent($device->user_agent);
+
+            $device->browser = $agent->browser();
+            $device->is_mobile = $agent->isMobile();
+            $device->is_desktop = $agent->isDesktop();
+            $device->device_name = $agent->device();
+            $device->last_activity = \Carbon\Carbon::createFromTimestamp($device->last_activity)->format('d M Y h:i A');
+            $deviceList[] = $device;
+        }
+
+        return response()->json([
+            'devices' => $deviceList,
+            'current_session_id' => \Session::getId()
+        ]);
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->search_value;
+        $users = User::where('email', 'LIKE', '%' . $search . '%')
+            ->orWhere('mobile', 'LIKE', '%' . $search . '%')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        if ($users->count() > 0) {
+            // If only one user is found, redirect to the user details page
+            if ($users->count() === 111) {
+                $user = $users->first();
+                return redirect()->route('admin.user.details', ['id' => $user->id]);
+            }
+            // If more than one user is found, show the list of users
+            else {
+                return view('admin.search', compact('users', 'search'))->with('i');
+            }
+        } else {
+            // If no users are found, show a flash message and redirect back
+            session()->flash('success', 'User not found!');
+            return redirect()->back();
+        }
     }
 
     public function banStudent($id)
     {
-        $user  = User::findorFail($id);
+        $user = User::findorFail($id);
         $user->status = 0;
         $user->save();
         session()->flash('alert-success', 'Account Updated Successfully!');
@@ -185,7 +189,7 @@ class AdminController extends Controller
     }
     public function activateStudent($id)
     {
-        $user  = User::findorFail($id);
+        $user = User::findorFail($id);
         $user->status = 1;
         $user->save();
         session()->flash('alert-success', 'Account Updated Successfully!');
@@ -193,13 +197,14 @@ class AdminController extends Controller
     }
     public function makeTeacher($id)
     {
-        $user  = User::findorFail($id);
+        $user = User::findorFail($id);
         $user->role = 1;
         $user->save();
         session()->flash('alert-success', 'Account Updated Successfully!');
         return redirect()->back();
     }
-    public function feedbacks(){
+    public function feedbacks()
+    {
         $feedbacks = Feedback::latest()->get();
         return view('admin.feedbacks', compact('feedbacks'))->with('i');
     }
@@ -208,7 +213,7 @@ class AdminController extends Controller
         $feedback = Feedback::findorFail($id);
         $feedback->status = 1;
         $feedback->save();
-        
+
         // Check if it's an AJAX request
         if (request()->ajax() || request()->wantsJson() || request()->header('X-Requested-With') == 'XMLHttpRequest') {
             return response()->json([
@@ -216,7 +221,7 @@ class AdminController extends Controller
                 'message' => 'Feedback Removed!'
             ]);
         }
-        
+
         // For regular requests
         session()->flash('alert-success', 'Feedback Removed!');
         return redirect()->back();
@@ -226,7 +231,7 @@ class AdminController extends Controller
         $feedback = Feedback::findorFail($id);
         $feedback->status = 0;
         $feedback->save();
-        
+
         // Check if it's an AJAX request
         if (request()->ajax() || request()->wantsJson() || request()->header('X-Requested-With') == 'XMLHttpRequest') {
             return response()->json([
@@ -234,25 +239,26 @@ class AdminController extends Controller
                 'message' => 'Feedback Added Back!'
             ]);
         }
-        
+
         // For regular requests
         session()->flash('alert-success', 'Feedback Added Back!');
         return redirect()->back();
     }
     public function downgradeTeacher($id)
     {
-        $user  = User::findorFail($id);
+        $user = User::findorFail($id);
         $user->role = 0;
         $user->save();
         session()->flash('alert-success', 'Account Updated Successfully!');
         return redirect()->back();
     }
-    public function batchSuggestions(Request $request){
+    public function batchSuggestions(Request $request)
+    {
         $batchName = $request->query('batchName');
         $batches = Batch::where('name', 'LIKE', '%' . $batchName . '%')
-        ->orderBy('created_at', 'desc')  // Order by most recent
-        ->limit(50)
-        ->get(['id', 'name']);
+            ->orderBy('created_at', 'desc')  // Order by most recent
+            ->limit(50)
+            ->get(['id', 'name']);
         return response()->json($batches);
     }
 
@@ -261,14 +267,15 @@ class AdminController extends Controller
         $id = Crypt::decrypt($id);
         $batch = Batch::findorFail($id);
         $topics = BatchTopics::where('batchId', $id)->get();
-        return view('admin.addTopics', compact('topics','batch'));
+        return view('admin.addTopics', compact('topics', 'batch'));
 
     }
 
-    public function liveBatches(){
+    public function liveBatches()
+    {
         $batches = Batch::orderBy('created_at', 'desc')
-                ->get();
-        return view ('admin.batch', compact('batches'))->with('i');
+            ->get();
+        return view('admin.batch', compact('batches'))->with('i');
     }
 
     public function createBatch()
@@ -276,39 +283,42 @@ class AdminController extends Controller
         $teachers = User::where('role', 1)->get();
         return view('admin.createBatch', compact('teachers'));
     }
-    public function editBatch($id){
+    public function editBatch($id)
+    {
         $batch = Batch::findOrFail($id);
         $teachers = User::where('role', 1)->get();
         return view('admin.editBatch', compact('batch', 'teachers'));
     }
-    public function updateBatch(Request $request, $id){
+    public function updateBatch(Request $request, $id)
+    {
         $a = Batch::findOrFail($id);
         $a->topicId = $request->courseId;
         $a->name = $request->name;
         $a->description = $request->description;
         $a->price = $request->price;
-        $a->payable = $request->payable ;
-        $a->offerId = $request->offerId ;
+        $a->payable = $request->payable;
+        $a->offerId = $request->offerId;
         $a->limit = $request->limit;
-        $a->img = $request->img ;
-        if($request->hasFile('img')){
+        $a->img = $request->img;
+        if ($request->hasFile('img')) {
             // $a->association = $request->association;
             $path = $request->file('img')->store('img', 'public');
-            $a->img = $path;}
-        $a->type = $request->type ;
-        $a->startDate = $request->startDate ;
-        $a->endDate = $request->endDate ;
-        $a->schedule = $request->timing ;
-        $a->about = $request->about ;
+            $a->img = $path;
+        }
+        $a->type = $request->type;
+        $a->startDate = $request->startDate;
+        $a->endDate = $request->endDate;
+        $a->schedule = $request->timing;
+        $a->about = $request->about;
         $a->learn = $request->learn;
-        $a->benefits = $request->benefits ;
-        $a->groupLink = $request->groupLink ;
-        $a->groupLink2 = $request-> groupLink2;
-        $a->teacherId = $request->teacherId ;
-        $a->meetingLink = $request->meetingLink ;
-        $a->topic = $request->topic ;
-        $a->desc = $request->desc ;
-        $a->nextClass = $request->nextClass ;
+        $a->benefits = $request->benefits;
+        $a->groupLink = $request->groupLink;
+        $a->groupLink2 = $request->groupLink2;
+        $a->teacherId = $request->teacherId;
+        $a->meetingLink = $request->meetingLink;
+        $a->topic = $request->topic;
+        $a->desc = $request->desc;
+        $a->nextClass = $request->nextClass;
         $a->status = $request->status;
         $a->field5 = $request->accessTill;
         $a->save();
@@ -321,10 +331,21 @@ class AdminController extends Controller
         $batch = Batch::findorFail($id);
         return view('admin.updateLiveClass', compact('batch'));
     }
+    public function upcomingSessions()
+    {
+        $batches = Batch::whereNotNull('meetingLink')
+            ->where('meetingLink', '!=', '')
+            ->whereNotNull('nextClass')
+            ->where('nextClass', '!=', '')
+            ->whereNotNull('field1')
+            ->where('field1', '!=', '')
+            ->get();
+        return view('admin.upcomingSessions', compact('batches'))->with('i');
+    }
     public function updateLiveClass(Request $request)
     {
         $batch = Batch::findOrFail($request->batchId);
-        
+
         // Update batch details
         $batch->topic = $request->topic;
         $batch->nextClass = $request->nextClass;
@@ -345,12 +366,13 @@ class AdminController extends Controller
 
         return redirect()->back()->with('success', 'Live class scheduled.');
     }
-    private function sendLiveclassWhatsappReminder($id, $batch){
+    private function sendLiveclassWhatsappReminder($id, $batch)
+    {
         $pabblyWebhookUrl = 'https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTY0MDYzMjA0MzQ1MjY0NTUzZDUxM2Ii_pc';
         $enrollment = CourseEnrollment::findOrFail($id);
         $name = $enrollment->students->name;
         $email = $enrollment->students->email;
-        $batchName = $enrollment->batch->name; 
+        $batchName = $enrollment->batch->name;
         $user = $enrollment->students;
         $topic = $batch->topic;
         $link = $batch->meetingLink;
@@ -360,12 +382,12 @@ class AdminController extends Controller
             'phone' => $user->mobile,
             'batchName' => $batchName,
             'link' => $link,
-            'topic'=> $topic,
+            'topic' => $topic,
 
             // Add any other data you want to send to the Zapier webhook
         ];
         $response = Http::post($pabblyWebhookUrl, $data);
-}
+    }
 
     public function batchEnrollmentOld($id)
     {
@@ -375,55 +397,63 @@ class AdminController extends Controller
         $paidUsers = $paidEnrollments->count();
         $unpaidUsers = $unpaidEnrollments->count();
         $totalUsers = $paidUsers + $unpaidUsers;
-        $earning = (CourseEnrollment::where('batchId',$id)->where('hasPaid',1)->sum('amountPaid'))/100;
+        $earning = (CourseEnrollment::where('batchId', $id)->where('hasPaid', 1)->sum('amountPaid')) / 100;
         $teacherEarning = $earning * 0.4;
         $profit = $earning - $teacherEarning;
         return view('admin.batchEnrollment', compact('batch', 'paidEnrollments', 'unpaidEnrollments', 'totalUsers', 'paidUsers', 'unpaidUsers', 'earning', 'teacherEarning', 'profit'))->with('i');
     }
     public function batchEnrollment($id)
-{
-    $batch = Batch::findOrFail($id);
+    {
+        $batch = Batch::findOrFail($id);
 
-    // Fetch all enrollments for the batch in one query
-    $enrollments = CourseEnrollment::where('batchId', $batch->id)->get();
+        // Fetch all enrollments for the batch in one query
+        $enrollments = CourseEnrollment::where('batchId', $batch->id)->get();
 
-    // Separate paid and unpaid enrollments
-    $paidEnrollments = $enrollments->where('hasPaid', 1);
-    $paidUserIds = $paidEnrollments->pluck('userId')->toArray();
-    $unpaidEnrollments = $enrollments
-        ->where('hasPaid', 0)
-        ->whereNotIn('userId', $paidUserIds)
-        ->unique('userId');
+        // Separate paid and unpaid enrollments
+        $paidEnrollments = $enrollments->where('hasPaid', 1);
+        $paidUserIds = $paidEnrollments->pluck('userId')->toArray();
+        $unpaidEnrollments = $enrollments
+            ->where('hasPaid', 0)
+            ->whereNotIn('userId', $paidUserIds)
+            ->unique('userId');
 
-    // Total paid users
-    $totalPaidUsers = $paidEnrollments->count();
-    $totalUnpaidUsers = $unpaidEnrollments->count();
+        // Total paid users
+        $totalPaidUsers = $paidEnrollments->count();
+        $totalUnpaidUsers = $unpaidEnrollments->count();
 
-    // Paid users with and without certificates
-    $paidUsersWithCertificate = $paidEnrollments->where('hasCertificate', 1)->count();
-    $paidUsersWithoutCertificate = $totalPaidUsers - $paidUsersWithCertificate;
+        // Paid users with and without certificates
+        $paidUsersWithCertificate = $paidEnrollments->where('hasCertificate', 1)->count();
+        $paidUsersWithoutCertificate = $totalPaidUsers - $paidUsersWithCertificate;
 
-    // Revenue calculations (ensure consistency in monetary units)
-    $totalEarning = $paidEnrollments->sum('amountPaid') / 100;
-    $certificateFeeEarning = $paidEnrollments->sum('certificateFee');
-    $classEarning = $totalEarning - $certificateFeeEarning;
+        // Revenue calculations (ensure consistency in monetary units)
+        $totalEarning = $paidEnrollments->sum('amountPaid') / 100;
+        $certificateFeeEarning = $paidEnrollments->sum('certificateFee');
+        $classEarning = $totalEarning - $certificateFeeEarning;
 
-    // Percentage calculations
-    if ($totalEarning > 0) {
-        $certificateFeePercentage = number_format(($certificateFeeEarning / $totalEarning) * 100, 2);
-        $classEarningPercentage = number_format(($classEarning / $totalEarning) * 100, 2);
-    } else {
-        $certificateFeePercentage = $classEarningPercentage = 0;
+        // Percentage calculations
+        if ($totalEarning > 0) {
+            $certificateFeePercentage = number_format(($certificateFeeEarning / $totalEarning) * 100, 2);
+            $classEarningPercentage = number_format(($classEarning / $totalEarning) * 100, 2);
+        } else {
+            $certificateFeePercentage = $classEarningPercentage = 0;
+        }
+
+        return view('admin.batchEnrollment', compact(
+            'batch',
+            'paidEnrollments',
+            'unpaidEnrollments',
+            'totalPaidUsers',
+            'paidUsersWithCertificate',
+            'paidUsersWithoutCertificate',
+            'totalEarning',
+            'certificateFeeEarning',
+            'classEarning',
+            'certificateFeePercentage',
+            'classEarningPercentage',
+            'totalPaidUsers',
+            'totalUnpaidUsers'
+        ))->with('i');
     }
-
-    return view('admin.batchEnrollment', compact(
-        'batch', 'paidEnrollments', 'unpaidEnrollments', 'totalPaidUsers',
-        'paidUsersWithCertificate', 'paidUsersWithoutCertificate',
-        'totalEarning', 'certificateFeeEarning', 'classEarning',
-        'certificateFeePercentage', 'classEarningPercentage',
-        'totalPaidUsers', 'totalUnpaidUsers'
-    ))->with('i');
-}
 
 
 
@@ -456,42 +486,39 @@ class AdminController extends Controller
     public function workshops()
     {
         $workshops = Workshop::latest()->take(30)->get();
-        foreach ($workshops as $workshop){
+        foreach ($workshops as $workshop) {
             $workshop->teacher = User::findorFail($workshop->teacherId);
             $users = WorkshopEnrollment::where('workshopId', $workshop->id)->get();
-            foreach($users as $user){
+            foreach ($users as $user) {
                 $isConverted = CourseEnrollment::where('userId', $user->userId)->where('hasPaid', 1)->count();
-                if($isConverted == 0){
+                if ($isConverted == 0) {
                     $user->isConverted = 0;
-                }
-                else{
+                } else {
                     $user->isConverted = 1;
                 }
             }
             $totalUsers = $users->count();
             $paidUsers = $users->where('isConverted', 1)->count();
-            if($totalUsers != 0){
+            if ($totalUsers != 0) {
                 $workshop->conversions = $paidUsers / $totalUsers * 100;
-            }
-            else{
+            } else {
                 $workshop->conversions = 0;
             }
             $workshop->users = $totalUsers;
         }
         $totalWorkshops = Workshop::all()->count();
         $users = WorkshopEnrollment::select('userId')->distinct()->get();
-        foreach($users as $user){
+        foreach ($users as $user) {
             $isConverted = CourseEnrollment::where('userId', $user->userId)->where('hasPaid', 1)->count();
-            if($isConverted == 0){
+            if ($isConverted == 0) {
                 $user->isConverted = 0;
-            }
-            else{
+            } else {
                 $user->isConverted = 1;
             }
         }
         $totalUsers = $users->count();
         $paidUsers = $users->where('isConverted', 1)->count();
-        $conversionRate = ($paidUsers/$totalUsers)*100;
+        $conversionRate = ($paidUsers / $totalUsers) * 100;
         return view('admin.workshops', compact('workshops', 'totalWorkshops', 'totalUsers', 'paidUsers', 'conversionRate'))->with('i');
     }
     public function paymentReceived($id)
@@ -499,7 +526,7 @@ class AdminController extends Controller
         $id = Crypt::decrypt($id);
         $enrollment = CourseEnrollment::findorFail($id);
         $batch = Batch::findorFail($enrollment->batchId);
-        return view('admin.paymentReceived', compact('enrollment','batch'));
+        return view('admin.paymentReceived', compact('enrollment', 'batch'));
     }
     public function updatePaymentStatus(Request $request)
     {
@@ -512,11 +539,11 @@ class AdminController extends Controller
         $enrollment->hasPaid = $request->hasPaid;
         $enrollment->paidAt = $request->paidAt;
         $enrollment->accessTill = $request->accessTill;
-        $enrollment->certificateFee = (int)$request->certificateFee;
+        $enrollment->certificateFee = (int) $request->certificateFee;
         $enrollment->save();
         session()->flash('alert-success', 'Payment Details Updated Successfully!');
-        return redirect('/admin/batch-enrollment/'.$enrollment->batchId);
-        
+        return redirect('/admin/batch-enrollment/' . $enrollment->batchId);
+
     }
 
     public function addWorkshop(Request $request)
@@ -525,37 +552,39 @@ class AdminController extends Controller
         $a->topicId = $request->courseId;
         $a->name = $request->name;
         $a->description = $request->description;
-        $a->payable = $request->payable ;
-        $a->offerId = $request->offerId ;
+        $a->payable = $request->payable;
+        $a->offerId = $request->offerId;
         $a->limit = $request->limit;
-        $a->img = $request->img ;
-        if($request->hasFile('img')){
+        $a->img = $request->img;
+        if ($request->hasFile('img')) {
             // $a->association = $request->association;
             $path = $request->file('img')->store('img', 'public');
-            $a->img = $path;}
-        
-        $a->startDate = $request->startDate ;
-        $a->endDate = $request->endDate ;
-        $a->schedule = $request->schedule ;
-        $a->about = $request->about ;
+            $a->img = $path;
+        }
+
+        $a->startDate = $request->startDate;
+        $a->endDate = $request->endDate;
+        $a->schedule = $request->schedule;
+        $a->about = $request->about;
         $a->learn = $request->learn;
-        $a->benefits = $request->benefits ;
-        $a->groupLink = $request->groupLink ;
-        $a->groupLink1 = $request-> groupLink1;
-        $a->teacherId = $request->teacherId ;
-        $a->meetingLink = $request->meetingLink ;
-        $a->topic = $request->topic ;
-        $a->desc = $request->desc ;
-        $a->nextClass = $request->nextClass ;
+        $a->benefits = $request->benefits;
+        $a->groupLink = $request->groupLink;
+        $a->groupLink1 = $request->groupLink1;
+        $a->teacherId = $request->teacherId;
+        $a->meetingLink = $request->meetingLink;
+        $a->topic = $request->topic;
+        $a->desc = $request->desc;
+        $a->nextClass = $request->nextClass;
         $a->save();
         session()->flash('alert-danger', 'Batch Added');
         return redirect('/home');
     }
-    public function fetchCourseProgress() {
+    public function fetchCourseProgress()
+    {
         $courseProgress = CourseProgress::with(['students', 'batch', 'content'])  // Changed 'user' to 'students'
             ->orderBy('lastAccess', 'desc')
             ->paginate(100);
-        
+
         return view('admin.courseProgressTable', compact('courseProgress'));
     }
 
@@ -563,15 +592,15 @@ class AdminController extends Controller
     {
         // If no month is selected, default to last month
         $month = $request->query('month', Carbon::now()->subMonth()->format('m'));
-        $year = $request->query('year', Carbon::now()->format('Y')); 
+        $year = $request->query('year', Carbon::now()->format('Y'));
         // You can also let user pick year if needed, or just default to current year
 
         // Fetch all paid enrollments for the selected month
         // Assuming 'paidAt' column stores date/time in a format recognized by MySQL (e.g., Y-m-d H:i:s)
         $enrollments = CourseEnrollment::whereYear('paidAt', $year)
-                      ->whereMonth('paidAt', $month)
-                      ->where('hasPaid', 1)
-                      ->get();
+            ->whereMonth('paidAt', $month)
+            ->where('hasPaid', 1)
+            ->get();
 
         // Pass the currently selected month and year, and the enrollments
         return view('admin.invoices', compact('enrollments', 'month', 'year'));
@@ -592,92 +621,91 @@ class AdminController extends Controller
         $pdf = PDF::loadView('admin.invoicePdf', $data);
 
         // Return the PDF as a download
-        return $pdf->download('invoice_'.$invoiceId.'.pdf');
+        return $pdf->download('invoice_' . $invoiceId . '.pdf');
     }
 
-    public function addCourseAccess(Request $request){
-            $user = User::where('email', $request->email)->first();
-            $enrollment = CourseEnrollment::where('batchId', $request->batchId)->where('userId', $user->id)->first();
-                if(!$enrollment){
-                    $batch = Batch::findOrFail($request->batchId);
-                    $a = new CourseEnrollment;
-                    $a->userId = $user->id;
-                    $a->batchId = $request->batchId;
-                    $a->price = $batch->price;
-                    $a->amountpayable = $batch->payable;
-                    $a->amountPaid = $request->amount * 100;
-                    $a->paidAt = $request->paidAt ?? Carbon::now();
-                    $a->paymentMethod = $request->paymentMethod ?? 'upi';
-                    $a->transactionId = $request->transactionId ?? 'TXN-' . strtoupper(uniqid());
-                    $a->invoiceId = $request->invoiceId ?? 'INV-' . strtoupper(uniqid());
-                    $a->status = 1;
-                    $a->hasPaid = 1;
-                    $a->certificateId = substr(md5(time()), 0, 16);
-                    $a->save();
+    public function addCourseAccess(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+        $enrollment = CourseEnrollment::where('batchId', $request->batchId)->where('userId', $user->id)->first();
+        if (!$enrollment) {
+            $batch = Batch::findOrFail($request->batchId);
+            $a = new CourseEnrollment;
+            $a->userId = $user->id;
+            $a->batchId = $request->batchId;
+            $a->price = $batch->price;
+            $a->amountpayable = $batch->payable;
+            $a->amountPaid = $request->amount * 100;
+            $a->paidAt = $request->paidAt ?? Carbon::now();
+            $a->paymentMethod = $request->paymentMethod ?? 'upi';
+            $a->transactionId = $request->transactionId ?? 'TXN-' . strtoupper(uniqid());
+            $a->invoiceId = $request->invoiceId ?? 'INV-' . strtoupper(uniqid());
+            $a->status = 1;
+            $a->hasPaid = 1;
+            $a->certificateId = substr(md5(time()), 0, 16);
+            $a->save();
 
-                    // Send notifications using the trait
-                    try {
-                        Log::info('Sending Pabbly webhook from admin access grant', ['enrollment_id' => $a->id]);
-                        $this->sendPabblyWebhook($a->id, $a->amountPaid);
+            // Send notifications using the trait
+            try {
+                Log::info('Sending Pabbly webhook from admin access grant', ['enrollment_id' => $a->id]);
+                $this->sendPabblyWebhook($a->id, $a->amountPaid);
 
-                        Log::info('Sending enrollment notification from admin access grant', ['enrollment_id' => $a->id]);
-                        // $this->sendEnrollmentNotification($a);
-                    } catch (\Exception $e) {
-                        Log::error('Failed to send notifications: ' . $e->getMessage(), [
-                            'enrollment_id' => $a->id,
-                            'error' => $e->getMessage()
-                        ]);
-                        // Continue execution even if notification fails
-                    }
+                Log::info('Sending enrollment notification from admin access grant', ['enrollment_id' => $a->id]);
+                // $this->sendEnrollmentNotification($a);
+            } catch (\Exception $e) {
+                Log::error('Failed to send notifications: ' . $e->getMessage(), [
+                    'enrollment_id' => $a->id,
+                    'error' => $e->getMessage()
+                ]);
+                // Continue execution even if notification fails
+            }
 
-                    session()->flash('alert-success', 'Access Granted Successfully!');
-                    return redirect()->back();
-                }
-                elseif ($enrollment && $enrollment->hasPaid == 0) {
-                    $enrollment->status = 1;
-                    $enrollment->hasPaid = 1;
-                    $enrollment->amountPaid = $request->amount * 100;
-                    $enrollment->paidAt = $request->paidAt;
-                    $enrollment->paymentMethod = $request->paymentMethod;
-                    $enrollment->transactionId = $request->transactionId;
-                    $enrollment->invoiceId = $request->invoiceId;
-                    $enrollment->field2 = 'webhook access granted';
-                    $enrollment->save();
+            session()->flash('alert-success', 'Access Granted Successfully!');
+            return redirect()->back();
+        } elseif ($enrollment && $enrollment->hasPaid == 0) {
+            $enrollment->status = 1;
+            $enrollment->hasPaid = 1;
+            $enrollment->amountPaid = $request->amount * 100;
+            $enrollment->paidAt = $request->paidAt;
+            $enrollment->paymentMethod = $request->paymentMethod;
+            $enrollment->transactionId = $request->transactionId;
+            $enrollment->invoiceId = $request->invoiceId;
+            $enrollment->field2 = 'webhook access granted';
+            $enrollment->save();
 
-                    // Send notifications for updated enrollment
-                    try {
-                        Log::info('Sending Pabbly webhook from admin access update', ['enrollment_id' => $enrollment->id]);
-                        $this->sendPabblyWebhook($enrollment->id, $enrollment->amountPaid);
+            // Send notifications for updated enrollment
+            try {
+                Log::info('Sending Pabbly webhook from admin access update', ['enrollment_id' => $enrollment->id]);
+                $this->sendPabblyWebhook($enrollment->id, $enrollment->amountPaid);
 
-                        Log::info('Sending enrollment notification from admin access update', ['enrollment_id' => $enrollment->id]);
-                        // $this->sendEnrollmentNotification($enrollment);
-                    } catch (\Exception $e) {
-                        Log::error('Failed to send notifications: ' . $e->getMessage(), [
-                            'enrollment_id' => $enrollment->id,
-                            'error' => $e->getMessage()
-                        ]);
-                        // Continue execution even if notification fails
-                    }
+                Log::info('Sending enrollment notification from admin access update', ['enrollment_id' => $enrollment->id]);
+                // $this->sendEnrollmentNotification($enrollment);
+            } catch (\Exception $e) {
+                Log::error('Failed to send notifications: ' . $e->getMessage(), [
+                    'enrollment_id' => $enrollment->id,
+                    'error' => $e->getMessage()
+                ]);
+                // Continue execution even if notification fails
+            }
 
-                    session()->flash('alert-success', 'Access updated Successfully!');
-                    return redirect()->back();
-                } 
-                else {
-                    if ($enrollment) {
-                        $enrollment->field2 = 'webhook called!!';
-                        $enrollment->save();
-                    }
-                    return response('Webhook Handled', 200);
-                }
-            } 
-        
+            session()->flash('alert-success', 'Access updated Successfully!');
+            return redirect()->back();
+        } else {
+            if ($enrollment) {
+                $enrollment->field2 = 'webhook called!!';
+                $enrollment->save();
+            }
+            return response('Webhook Handled', 200);
+        }
+    }
+
 
     public function updateAllProgress($batchId)
     {
         try {
             // Queue the batch progress update job
             dispatch(new UpdateBatchProgressJob($batchId));
-            
+
             return response()->json([
                 'success' => true,
                 'message' => 'Progress update has been queued and will be processed shortly'
@@ -694,12 +722,12 @@ class AdminController extends Controller
     {
         try {
             $user = User::findOrFail($id);
-            
+
             // Validate email uniqueness excluding current user
             $emailExists = User::where('email', $request->email)
-                              ->where('id', '!=', $id)
-                              ->exists();
-            
+                ->where('id', '!=', $id)
+                ->exists();
+
             if ($emailExists) {
                 return response()->json([
                     'success' => false,
@@ -725,11 +753,11 @@ class AdminController extends Controller
             if ($user->email !== $request->email) {
                 $user->email = $request->email;
             }
-            
+
             if ($user->mobile !== $request->mobile) {
                 $user->mobile = $request->mobile;
             }
-            
+
             if ($user->name !== $request->name) {
                 $user->name = $request->name;
             }
@@ -753,7 +781,7 @@ class AdminController extends Controller
             ], 500);
         }
     }
-    
+
     /**
      * Display paginated list of students
      */
@@ -768,7 +796,8 @@ class AdminController extends Controller
         return view('admin.students', compact('users'))
             ->with('i', (request()->input('page', 1) - 1) * 1000);
     }
-    public function courseProgress($enrollmentId){
+    public function courseProgress($enrollmentId)
+    {
         $enrollment = CourseEnrollment::findorFail($enrollmentId);
         $courseProgress = CourseProgress::with('content')
             ->where('userId', $enrollment->userId)
@@ -785,14 +814,14 @@ class AdminController extends Controller
             $startDate = Carbon::now();
 
             // Set date ranges
-            switch($range) {
+            switch ($range) {
 
                 case '7':
                     $startDate = Carbon::now()->subDays(7)->startOfDay();
                     $endDate = Carbon::now()->endOfDay();
                     $previousStartDate = $startDate->copy()->subDays(7)->startOfDay();
                     $previousEndDate = $endDate->copy()->subDays(7)->endOfDay();
-                break;
+                    break;
 
 
                 case '30':
@@ -861,22 +890,22 @@ class AdminController extends Controller
 
             // Get signups data
             $currentSignups = User::whereDate('created_at', '>=', $startDate)
-            ->whereDate('created_at', '<=', $endDate)
-            ->count();
+                ->whereDate('created_at', '<=', $endDate)
+                ->count();
             $previousSignups = User::whereDate('created_at', '>=', $previousStartDate)
-            ->whereDate('created_at', '<=', $previousEndDate)
-            ->count();
+                ->whereDate('created_at', '<=', $previousEndDate)
+                ->count();
 
             // Get enrollments data
             $currentEnrollments = CourseEnrollment::where('hasPaid', 1)
-            ->whereDate('paidAt', '>=', $startDate)
-            ->whereDate('paidAt', '<=', $endDate)
-            ->count();
+                ->whereDate('paidAt', '>=', $startDate)
+                ->whereDate('paidAt', '<=', $endDate)
+                ->count();
             $previousEnrollments = CourseEnrollment::where('hasPaid', 1)
-            ->whereDate('paidAt', '>=', $previousStartDate)
-            ->whereDate('paidAt', '<=', $previousEndDate)
-            ->count();
-        
+                ->whereDate('paidAt', '>=', $previousStartDate)
+                ->whereDate('paidAt', '<=', $previousEndDate)
+                ->count();
+
 
             // Get revenue data
             $currentRevenue = CourseEnrollment::where('hasPaid', 1)
@@ -891,11 +920,11 @@ class AdminController extends Controller
 
             // Get learning time data
             $currentLearningTime = CourseProgress::whereDate('firstAccess', '>=', $startDate)
-            ->whereDate('firstAccess', '<=', $endDate)
-            ->sum('timeSpent') / 60;
+                ->whereDate('firstAccess', '<=', $endDate)
+                ->sum('timeSpent') / 60;
             $previousLearningTime = CourseProgress::whereDate('firstAccess', '>=', $previousStartDate)
-            ->whereDate('firstAccess', '<=', $previousEndDate)
-            ->sum('timeSpent') / 60;
+                ->whereDate('firstAccess', '<=', $previousEndDate)
+                ->sum('timeSpent') / 60;
 
             // Calculate changes
             $signupsChange = $previousSignups > 0 ? (($currentSignups - $previousSignups) / $previousSignups) * 100 : 0;
@@ -955,19 +984,19 @@ class AdminController extends Controller
             return response()->json([
                 'metrics' => [
                     'signups' => [
-                        'current' => (int)$currentSignups,
+                        'current' => (int) $currentSignups,
                         'change' => round($signupsChange, 1),
                         'difference' => $currentSignups - $previousSignups,
                         'trend' => $signupsChange >= 0 ? 'up' : 'down'
                     ],
                     'enrollments' => [
-                        'current' => (int)$currentEnrollments,
+                        'current' => (int) $currentEnrollments,
                         'change' => round($enrollmentsChange, 1),
                         'difference' => $currentEnrollments - $previousEnrollments,
                         'trend' => $enrollmentsChange >= 0 ? 'up' : 'down'
                     ],
                     'revenue' => [
-                        'current' => (int)$currentRevenue,
+                        'current' => (int) $currentRevenue,
                         'change' => round($revenueChange, 1),
                         'difference' => round($currentRevenue - $previousRevenue),
                         'trend' => $revenueChange >= 0 ? 'up' : 'down'
@@ -978,25 +1007,25 @@ class AdminController extends Controller
                         'trend' => $learningTimeChange >= 0 ? 'up' : 'down'
                     ]
                 ],
-                'signupsEnrollments' => $signupsData->map(function($item) use ($previousSignupsData) {
+                'signupsEnrollments' => $signupsData->map(function ($item) use ($previousSignupsData) {
                     $dateStr = Carbon::parse($item->date)->format('Y-m-d');
                     $previousDay = $previousSignupsData->where('date', $dateStr)->first();
                     return [
                         'date' => Carbon::parse($item->date)->format('M d'),
-                        'signups' => (int)$item->signups,
-                        'previousSignups' => $previousDay ? (int)$previousDay->signups : 0
+                        'signups' => (int) $item->signups,
+                        'previousSignups' => $previousDay ? (int) $previousDay->signups : 0
                     ];
                 }),
-                'revenue' => $revenueData->map(function($item) use ($previousRevenueData) {
+                'revenue' => $revenueData->map(function ($item) use ($previousRevenueData) {
                     $dateStr = Carbon::parse($item->date)->format('Y-m-d');
                     $previousDay = $previousRevenueData->where('date', $dateStr)->first();
                     return [
                         'date' => Carbon::parse($item->date)->format('M d'),
-                        'amount' => (int)$item->amount,
-                        'previousAmount' => $previousDay ? (int)$previousDay->amount : 0
+                        'amount' => (int) $item->amount,
+                        'previousAmount' => $previousDay ? (int) $previousDay->amount : 0
                     ];
                 }),
-                'learningTime' => $learningTimeData->map(function($item) use ($previousLearningTimeData) {
+                'learningTime' => $learningTimeData->map(function ($item) use ($previousLearningTimeData) {
                     $previousDay = $previousLearningTimeData->where('date', $item->date)->first();
                     return [
                         'date' => Carbon::parse($item->date)->format('M d'),
@@ -1014,20 +1043,20 @@ class AdminController extends Controller
         }
     }
     public function wf()
-{
-    // Find professional users with latest first and pagination of 100
-    $professionalUsers = User::where('college', 'professional')
-        ->latest()
-        ->paginate(100);
-    
-    // Get count of professional users
-    $professionalUsersCount = User::where('college', 'professional')->count();
-    
-    // Alternative using scope (if you add the scope to User model)
-    // $professionalUsers = User::professional()->latest()->paginate(100);
-    
-    return view('admin.wf', compact('professionalUsers', 'professionalUsersCount'));
-}
+    {
+        // Find professional users with latest first and pagination of 100
+        $professionalUsers = User::where('college', 'professional')
+            ->latest()
+            ->paginate(100);
+
+        // Get count of professional users
+        $professionalUsersCount = User::where('college', 'professional')->count();
+
+        // Alternative using scope (if you add the scope to User model)
+        // $professionalUsers = User::professional()->latest()->paginate(100);
+
+        return view('admin.wf', compact('professionalUsers', 'professionalUsersCount'));
+    }
     public function reports()
     {
         return view('admin.reports');

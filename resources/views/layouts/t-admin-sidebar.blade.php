@@ -101,6 +101,12 @@ input:-webkit-autofill:focus {
           <a href="{{ url('/admin/create/batch') }}" class="flex gap-2 items-center py-1.5 px-2  hover:bg-neutral-200 {{ Request::is('admin/students') ? 'bg-neutral-200' : '' }}">
             <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="16"></line><line x1="8" x2="16" y1="12" y2="12"></line></svg> Create Batch
           </a>
+
+          <!-- Upcoming Live Sessions -->
+          <a href="{{ url('/admin/upcoming-sessions') }}" class="flex gap-2 items-center py-1.5 px-2  hover:bg-neutral-200 {{ Request::is('admin/upcoming-sessions') ? 'bg-neutral-200' : '' }}">
+          <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-tv-minimal-play-icon lucide-tv-minimal-play"><path d="M15.033 9.44a.647.647 0 0 1 0 1.12l-4.065 2.352a.645.645 0 0 1-.968-.56V7.648a.645.645 0 0 1 .967-.56z"/><path d="M7 21h10"/><rect width="20" height="14" x="2" y="3" rx="2"/></svg>
+          Upcoming Sessions
+        </a>
         
           <!-- Learners link -->
           <a href="{{ url('/admin/students') }}" class="flex gap-2 items-center py-1.5 px-2 hover:bg-neutral-200 {{ Request::is('admin/learners') ? 'bg-neutral-200' : '' }}">
