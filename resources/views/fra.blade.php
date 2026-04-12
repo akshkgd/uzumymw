@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap"
+        rel="stylesheet">
+    <style>
+        .ck-sans {
+            font-family: "Google Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-variation-settings:
+                "GRAD" 0;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            /* align-items: center; */
+            /* justify-content: center; */
+            text-align: center;
+            padding: 80px 24px 30px;
+            position: relative;
+            top: 0;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 70% 55% at 50% -5%, rgba(232, 98, 42, 0.08) 0%, transparent 65%),
+                radial-gradient(ellipse 40% 35% at 50% 105%, rgba(14, 13, 12, 0.03) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .bw{
+            background: linear-gradient(#f0896900 0%, #ef886929 100%);
+        }
+        .aw{
+            background: linear-gradient(#64cc7b00 0%, #64cc7b29 100%);
+        }
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus {
+            -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+            box-shadow: 0 0 0px 1000px white inset !important;
+            -webkit-text-fill-color: #1f2937 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero " id="#">
+        <div class="max-w-3xl mx-auto md:mt-5 text-left md:text-center">
+            <h1 class="text-orange-600 text-base md:text-lg ck-sans">ONLY for Backend Developers with 1+ Years Experience Ready to Step Into Full Stack Roles.</h1>
+            <h1 class="text-2xl md:text-3xl font-bold ck-sans mt-5">Get a Clear Roadmap to Transition Into a High-Paying React Full Stack Role in the Next 90 Days</h1>
+            <p class="mt-5 text-neutral-600 md:text-xl">Book a strategy call and we’ll map out the fastest path to land higher-paying roles — even if you’re stuck, overwhelmed, or working full-time.</p>
+            
+            <div class="max-w-lg mx-auto mt-7 ">
+                <form action="{{ route('course-enrollment-auto') }}" method="POST"
+  class="flex flex-col space-y-3"
+  onsubmit="return handleSubmit()">
+  @csrf
+  <input type="hidden" name="source" value="{{ app('request')->input('utm_source') }}">
+  <input type="hidden" name="medium" value="{{ app('request')->input('utm_medium') }}">
+  <input type="hidden" name="campaign" value="{{ app('request')->input('utm_campaign') }}">
+  <input type="hidden" name="courseId" value="177">
+
+  <input type="text" id="name" name="name" onblur="validateName()"
+    class="border w-full bg-orange-50/30 p-3 border-neutral-300 rounded-none focus:bg-white focus:border-orange-600 focus:outline-none"
+    placeholder="Your Name">
+  <p id="name-err" class="hidden text-red-600 text-xs text-left">Please enter your full name.</p>
+
+  <input type="text" id="email" name="email" onblur="validateEmail()"
+    class="border w-full p-3 border-neutral-300 rounded-none focus:border-orange-600 focus:outline-none"
+    placeholder="Your Email">
+  <p id="email-err" class="hidden text-red-600 text-xs text-left">Please enter a valid email address.</p>
+
+  <div>
+    <div id="phone-wrap" class="flex items-center border border-neutral-300 px-4 py-3 bg-white gap-2.5 w-full focus-within:border-orange-600 transition-colors">
+      <span class="text-xl leading-none">🇮🇳</span>
+      <span class="font-medium text-neutral-800 whitespace-nowrap">+91</span>
+      <div class="w-px h-5 bg-neutral-300"></div>
+      <input id="phone" name="mobile" type="tel" placeholder="Enter Phone Number"
+        class="flex-1 bg-transparent border-none outline-none text-neutral-800 placeholder:text-neutral-400 caret-orange-600"
+        onblur="validatePhone()" />
+    </div>
+    <p id="phone-err" class="hidden text-red-600 text-xs mt-1 text-left">Please enter a valid 10-digit phone number.</p>
+  </div>
+
+  <button type="submit"
+    class="bg-orange-600 py-3 text-white mb-1 hover:cursor-pointer">
+    Book Your Strategy Call Now at ₹99
+  </button>
+  <p class="text-sm text-neutral-700">₹99 to secure your slot (fully refunded if you show up)</p>
+</form>    
+        </div>
+            
+            
+        </div>
+        <!-- testimonials -->
+         <div class="max-w-lg mx-auto mt-24 ck-sans">
+            <!-- one -->
+                <div class="border p-4 border-neutral-300 w-full box-border">
+                    <div class="flex mb-4 items-center gap-4 ck-sans">
+                        <img src="https://codekaro.in/assets/img/feedbacks/laxmi.jpg" alt="" class="h-16 w-16 rounded-full">
+                        <div class="text-left">
+                            <p class="font-semibold text-gray-900 text-base">Sivapriya</p>
+                            <p class="text-gray-400 text-sm">System Support Eng. → Frontend Developer, ZOHO</p>
+                        </div>
+                    </div>
+                    <p class="text-left">Laxmipriya was in a support role at Infosys at ₹3.2 LPA. She always wanted to be a developer but every time she tried, the basics felt shaky and she had no idea where to even start with real projects.</p> <br>
+                    <p class="text-left">She joined AlphaClub. We helped her get her basics right, got her working on real projects, prepared her for interviews and coding rounds, and fixed up her LinkedIn so the right people could find her.</p>
+                    <div class="border-t border-neutral-300 mt-4"></div>
+                    <h3 class="font-medium pt-4 text-left">She cracked ZOHO as a Frontend Developer at ₹7.5 LPA. Was at ₹3.2 LPA.</h3>
+                    <p class="text-sm text-left">From support tickets to shipping code. She made it happen.</p>
+                </div>
+                <!-- two -->
+                 <div class="border p-4 border-neutral-300 w-full mt-5">
+                    <div class="flex mb-4 items-center gap-4 ck-sans">
+                        <img src="https://codekaro.in/assets/img/feedbacks/keval.jpeg" alt="" class="h-16 w-16 rounded-full">
+                        <div class="text-left">
+                            <p class="font-semibold text-gray-900 text-base">Keval kapadia</p>
+                            <p class="text-gray-400 text-sm">Data Analyst → Senior Frontend Developer</p>
+                        </div>
+                    </div>
+                    <p class="text-left">Laxmipriya was in a support role at Infosys at ₹3.2 LPA. She always wanted to be a developer but every time she tried, the basics felt shaky and she had no idea where to even start with real projects.</p> <br>
+                    <p class="text-left">She joined AlphaClub. We helped her get her basics right, got her working on real projects, prepared her for interviews and coding rounds, and fixed up her LinkedIn so the right people could find her.</p>
+                    <div class="border-t border-neutral-300 mt-4"></div>
+                    <h3 class="font-medium pt-4 text-left">She cracked ZOHO as a Frontend Developer at ₹7.5 LPA. Was at ₹3.2 LPA.</h3>
+                    <p class="text-sm text-left">From support tickets to shipping code. She made it happen.</p>
+                </div>
+                <!-- three -->
+                 <div class="border p-4 border-neutral-300 w-full mt-5">
+                    <div class="flex mb-4 items-center gap-4 ck-sans">
+                        <img src="https://codekaro.in/assets/img/feedbacks/pruthviraj.jpeg" alt="" class="h-16 w-16 rounded-full">
+                        <div class="text-left">
+                            <p class="font-semibold text-gray-900 text-base">Pruthviraj</p>
+                            <p class="text-gray-400 text-sm">Angular Developer → Team Lead, Accenture</p>
+                        </div>
+                    </div>
+                    <p class="text-left">5 years of experience. Never switched companies. Pruthviraj was skilled — but the startup comfort zone had quietly become a cage. Interviews felt foreign. His resume screamed "one company, one role.</p> <br>
+                    <p class="text-left">We mapped his strengths, plugged the gaps in fundamentals and system design, and — most importantly — trained him to negotiate, not just interview.</p>
+                    <div class="border-t border-neutral-300 mt-4"></div>
+                    <h3 class="font-medium pt-4 text-left">Cracked Accenture as Team Lead at ₹23 LPA. Was at ₹9.3 LPA.</h3>
+                    <p class="text-sm text-left">5 years of experience finally got its worth.</p>
+                </div>
+         </div>
+
+         <!-- mentor -->
+          <div class="max-w-lg mx-auto md:fle gap-14 items-center mt-8">
+            <div class="relative h-56 w-56 mx-aut">
+                <img src="https://codekaro.in/assets/img/ashish.jpeg" alt="" class="h-56 w-56 mx-aut object-cover rounded-3xl -rotate- grayscale-100">
+                
+            </div>
+
+            <div class=" w-auto mt-5 md:mt-8 text-left">
+                <p>Hi 👋, I’m <span class="font-semibold">Ashish Shukla</span> — Software Engineer turned Full-Time Mentor. <br> <br> I’ve helped <span class="font-semibold">15,700+ developers transition into higher-paying roles</span> — without wasting months on random tutorials.
+
+                <br><br>After working at AICRA, Bluecore & Lido Learning, I realized most developers stay stuck not because they lack ability — but because they lack the right roadmap. <br><br> That’s exactly what I help developers like you fix.</p>
+
+                <a href="#" class="text-orange-600">Book your 30 min  Strategy Call Now to get your customized roadmap.</a>
+                <br>
+                <p class="text-neutral-700">(On this call, you’ll know exactly what to do next — whether you work with us or not.)</p>
+            </div>
+        </div>
+
+         <!-- footer -->
+          <div class="max-w-xl ck-sans mx-auto text-left md:text-center mt-5">
+            <p class="text-sm">Codekaro @2026</p>
+            <p class="text-xs text-neutral-500">This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
+          </div>
+    </div>
+
+
+
+    <div class="max-w-4xl mx-auto mt-130 md:mt-120 hidden">
+        
+
+
+    <div class="max-w-3xl mx-auto mt-24">
+        <!-- <div class="md:flex gap-14 items-center">
+            <div class="relative ">
+                <img src="https://codekaro.in/assets/img/ashish.jpeg" alt="" class="h-56 w-56 mx-auto object-cover rounded-3xl -rotate-6 grayscale-100">
+                <div class="absolute bottom-5 left-1/2 -translate-x-1/2 md:left-0 md:translate-0">
+                    <div class="bg-yellow-300 inline-block py-1 font-semibold px-4 rounded-full -rotate-6 md:ml-5">Ashish</div>
+                    <div class="bg-white py-1 font-semibold px-4 rounded-full -rotate-6 md:ml-5">Founder @Codekaro</div>
+
+                </div>
+            </div>
+
+            <div class="md:w-125 w-auto px-2 md:px-0 mt-5 md:mt-0">
+                <p>Hi, I’m Ashish Shukla — Software Engineer turned Full-Time Mentor. <br> I’ve helped 15700+ developers transition into better roles, increase their salaries, and land their first jobs in tech.
+
+                After working at companies like AICRA, Bluecore & Lido Learning, I realized most developers stay stuck not because they lack ability — but because they lack the right roadmap. That’s exactly what I help developers like you fix.</p>
+
+                <p>Book your 30 min  Strategy Call Now to get your customized roadmap.</p>
+            </div>
+        </div> -->
+    </div>
+    <script>
+//   
+
+function cleanPhone(val) {
+  // Remove all non-digits
+  let digits = val.trim().replace(/\D/g, '');
+  // Strip leading country code: 91XXXXXXXXXX → XXXXXXXXXX
+  if (digits.length === 12 && digits.startsWith('91')) {
+    digits = digits.slice(2);
+  }
+  // Strip leading 0: 09876543210 → 9876543210
+  if (digits.length === 11 && digits.startsWith('0')) {
+    digits = digits.slice(1);
+  }
+  return digits;
+}
+
+function setError(inputId, errId, show) {
+  const input = document.getElementById(inputId);
+  const err = document.getElementById(errId);
+  if (show) {
+    input.classList.add('border-red-500', 'bg-red-50');
+    input.classList.remove('border-neutral-300');
+    err.classList.remove('hidden');
+  } else {
+    input.classList.remove('border-red-500', 'bg-red-50');
+    input.classList.add('border-neutral-300');
+    err.classList.add('hidden');
+  }
+}
+
+function setPhoneError(show) {
+  const wrap = document.getElementById('phone-wrap');
+  const err = document.getElementById('phone-err');
+  if (show) {
+    wrap.classList.add('border-red-500');
+    wrap.classList.remove('border-neutral-300');
+    err.classList.remove('hidden');
+  } else {
+    wrap.classList.remove('border-red-500');
+    wrap.classList.add('border-neutral-300');
+    err.classList.add('hidden');
+  }
+}
+
+function validateName() {
+  const ok = document.getElementById('name').value.trim().length >= 2;
+  setError('name', 'name-err', !ok);
+  return ok;
+}
+
+function validateEmail() {
+  const val = document.getElementById('email').value.trim();
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+  setError('email', 'email-err', !ok);
+  return ok;
+}
+
+function validatePhone() {
+  const digits = cleanPhone(document.getElementById('phone').value);
+  const ok = digits.length === 10;
+  // Write cleaned value back so the server receives just 10 digits
+  if (ok) document.getElementById('phone').value = digits;
+  setPhoneError(!ok);
+  return ok;
+}
+
+function handleSubmit() {
+  const n = validateName();
+  const e = validateEmail();
+  const p = validatePhone();
+  return n && e && p; // returning false blocks form submission
+}
+</script>
+</body>
+</html>

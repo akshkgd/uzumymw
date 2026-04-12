@@ -72,6 +72,9 @@ Route::view('/genai-for-developers', 'genAi1');
 Route::view('/frontend-with-genai', 'frGenAi');
 Route::view('/css-exclusive', 'cssEx');
 Route::view('/lop', 'cssNew');
+Route::view('/lop', 'cssNew');
+Route::view('/fr-apply', 'fra');
+
 
 
 
