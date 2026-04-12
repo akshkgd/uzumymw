@@ -184,7 +184,7 @@
         </div>
 
          <!-- footer -->
-          <div class="max-w-xl ck-sans mx-auto text-left md:text-center mt-5">
+          <div class="max-w-lg ck-sans mx-auto text-left  mt-5">
             <p class="text-sm">Codekaro @2026</p>
             <p class="text-xs text-neutral-500">This site is not a part of the Facebook website or Facebook Inc. Additionally, This site is NOT endorsed by Facebook in any way. FACEBOOK is a trademark of FACEBOOK, Inc.</p>
           </div>
