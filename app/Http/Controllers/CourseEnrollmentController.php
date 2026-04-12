@@ -258,6 +258,8 @@ class CourseEnrollmentController extends Controller
                 return redirect('/mern-success');
             case 200:
                 return redirect('/demo-success');
+            case 500:
+                return redirect('/fra-success');
             default:
                 return view('students.PaymentComplete', compact('enrollment', 'batch'));
         }

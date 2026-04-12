@@ -107,8 +107,13 @@ public function grantAccess(Request $request)
             $this->sendPabblyWebhook($enrollment->id, $paymentData['amount']);
 
             // Then send email notification
-            Log::info('Sending enrollment notification', ['enrollment_id' => $enrollment->id]);
-            $this->sendEnrollmentNotification($enrollment);
+            if ($notes['topicId'] == 500){
+
+            }
+            else{
+                Log::info('Sending enrollment notification', ['enrollment_id' => $enrollment->id]);
+                $this->sendEnrollmentNotification($enrollment);
+            }
         } 
         else {
             Log::info('Payment already processed for enrollment', [
