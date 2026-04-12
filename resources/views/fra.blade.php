@@ -82,6 +82,7 @@
   <input type="hidden" name="medium" value="{{ app('request')->input('utm_medium') }}">
   <input type="hidden" name="campaign" value="{{ app('request')->input('utm_campaign') }}">
   <input type="hidden" name="courseId" value="177">
+  <input type="checkbox" class="hidden" id="myCheckbox" name="myCheckbox" style="transform: scale(2); margin-left:6px; margin-right: 10px; margin-top:12px; cursor: pointer;" onchange="toggleRecordingCheckbox(this)">
 
   <input type="text" id="name" name="name" onblur="validateName()"
     class="border w-full bg-orange-50/30 p-3 border-neutral-300 rounded-none focus:bg-white focus:border-orange-600 focus:outline-none"
