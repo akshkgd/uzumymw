@@ -188,7 +188,7 @@
                         Get Job offers of <span class="underline text-orange-600">7-25 Lpa as a Full Stack dev</span> in <span class="underline decoration-orange-600">Just 90 Days</span> – Even if you have zero coding experience… <span class="underline decoration-orange-600">OR your money back!</span>
                     </h1>
                     <p class="text-wrap mx-auto mt-8 max-w-2xl text-xl text-gray-700 ">
-                        You will be able to crack frontend interviews & get a 7-25 LPA job as a fresher by the end of this cohort! Batch starting on 23rd Feb.
+                        You will be able to crack frontend interviews & get a 7-25 LPA job as a fresher by the end of this cohort! Batch starting on 12th April.
                     </p>
                     
                     <div class="mt-8 flex flex-row items-center justify-center gap-4">
@@ -734,7 +734,7 @@
                 Join the Fullstack Cohort Now for ₹41,999
             </a>
             
-            <p class="text-gray-500 mt-4 text-sm">Batch starting on Feb 23rd • 100% Money-back Guarantee</p>
+            <p class="text-gray-500 mt-4 text-sm">Batch starting on April 12th • 100% Money-back Guarantee</p>
         </div>
     </div>
 </section>
