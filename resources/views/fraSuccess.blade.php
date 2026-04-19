@@ -32,27 +32,14 @@
   <!-- End Meta Pixel Code -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9323KT1W2S"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HC9ETJV29G"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-9323KT1W2S');
-</script>
-    
-    <script type="text/javascript">
-        window.addEventListener("load", function () {    document.querySelector('body').classList.add('loaded');  });
+    gtag('config', 'G-HC9ETJV29G');
     </script>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11206387820"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-
-gtag('config', 'AW-11206387820');
-</script>
 
     <style>
         .ck-sans {
