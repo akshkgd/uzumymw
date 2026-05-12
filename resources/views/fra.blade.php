@@ -21,6 +21,8 @@
   <meta name="twitter:image" content="https://yourdomain.com/images/og-image.jpg">
 
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- hls.js (lightweight HLS playback) -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@1/dist/hls.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap" rel="stylesheet">
@@ -185,9 +187,30 @@
                             <p class="text-gray-400 text-sm">Data Analyst → Senior Frontend Developer</p>
                         </div>
                     </div>
-                    <p class="text-left">Laxmipriya was in a support role at Infosys at ₹3.2 LPA. She always wanted to be a developer but every time she tried, the basics felt shaky and she had no idea where to even start with real projects.</p> <br>
-                    <p class="text-left">She joined AlphaClub. We helped her get her basics right, got her working on real projects, prepared her for interviews and coding rounds, and fixed up her LinkedIn so the right people could find her.</p>
-                    <div class="border-t border-neutral-300 mt-4"></div>
+                    <!-- <p class="text-left">Laxmipriya was in a support role at Infosys at ₹3.2 LPA. She always wanted to be a developer but every time she tried, the basics felt shaky and she had no idea where to even start with real projects.</p> <br> -->
+                    <p class="text-left">She joined AlphaClub. We helped her get her basics right, got her working on real projects, prepared her for interviews and coding rounds, and fixed up her LinkedIn so the right people could find her.</p> 
+                    <!-- HLS Video -->
+                    <div class="mt-4 hls-wrap" style="position:relative; aspect-ratio:16/9; background:#000; overflow:hidden;">
+                        <!-- Native video (hidden until playing) -->
+                        <video
+                            id="keval-video"
+                            class="hls-player"
+                            controls
+                            preload="none"
+                            data-src="https://vz-5f63f216-8ca.b-cdn.net/f84e2b0f-42fb-41fc-93ff-0228d4336724/playlist.m3u8"
+                            style="width:100%; height:100%; display:none; position:absolute; inset:0;">
+                        </video>
+                        <!-- Poster overlay (hides spinner) -->
+                        <div class="hls-poster" style="position:absolute; inset:0; cursor:pointer; background:url('https://vz-5f63f216-8ca.b-cdn.net/f84e2b0f-42fb-41fc-93ff-0228d4336724/preview.webp?v=1778573379') center/cover no-repeat;">
+                            <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center;">
+                                <div class="ring-4 ring-white/15" style="width:60px; height:60px; background:white; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:transform .15s;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 ml-1"  viewBox="0 0 24 24" fill="#474747"><polygon points="5,3 19,12 5,21"/></svg>
+                                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="border-t border-neutral-300 mt-4"></div> -->
                     <h3 class="font-medium pt-4 text-left">She cracked ZOHO as a Frontend Developer at ₹7.5 LPA. Was at ₹3.2 LPA.</h3>
                     <p class="text-sm text-left">From support tickets to shipping code. She made it happen.</p>
                 </div>
@@ -260,7 +283,60 @@
         </div> -->
     </div>
     <script>
-//   
+// ── HLS players: poster-overlay + single-video-at-a-time ─────────────────────
+(function () {
+  function initHlsPlayers() {
+    var videos = Array.from(document.querySelectorAll('video.hls-player'));
+
+    videos.forEach(function (video) {
+      var src = video.dataset.src;
+      if (!src) return;
+
+      var wrap   = video.closest('.hls-wrap');
+      var poster = wrap ? wrap.querySelector('.hls-poster') : null;
+
+      // — hls.js setup —
+      var hls = null;
+      if (Hls.isSupported()) {
+        hls = new Hls({ autoStartLoad: false });
+        hls.loadSource(src);
+        hls.attachMedia(video);
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = src; // Safari native HLS
+      }
+
+      // — poster click — show video, start load, play
+      if (poster) {
+        poster.addEventListener('click', function () {
+          // Pause all other players first
+          videos.forEach(function (other) {
+            if (other !== video && !other.paused) other.pause();
+          });
+          poster.style.display = 'none';
+          video.style.display  = 'block';
+          if (hls) hls.startLoad();
+          video.play();
+        });
+      }
+
+      // — if the native controls play button is used (e.g. after first play) —
+      video.addEventListener('play', function () {
+        if (hls && hls.loadLevel === -1) hls.startLoad();
+        if (poster) poster.style.display = 'none';
+        videos.forEach(function (other) {
+          if (other !== video && !other.paused) other.pause();
+        });
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initHlsPlayers);
+  } else {
+    initHlsPlayers();
+  }
+})();
+// ─────────────────────────────────────────────────────────────────────────────
 
 function cleanPhone(val) {
   // Remove all non-digits
