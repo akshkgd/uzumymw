@@ -1413,6 +1413,12 @@ video {
 .w-screen {
   width: 100vw;
 }
+.w-1 {
+  width: 0.25rem;
+}
+.w-14 {
+  width: 3.5rem;
+}
 .min-w-\[380px\] {
   min-width: 380px;
 }
@@ -2097,6 +2103,10 @@ video {
 .border-green-200 {
   --tw-border-opacity: 1;
   border-color: rgb(187 247 208 / var(--tw-border-opacity));
+}
+.border-green-600 {
+  --tw-border-opacity: 1;
+  border-color: rgb(22 163 74 / var(--tw-border-opacity));
 }
 .border-opacity-20 {
   --tw-border-opacity: 0.2;

@@ -50,7 +50,7 @@
 
         /* ── Checkmark glow ring ── */
         .check-ring {
-            box-shadow: 0 0 0 8px rgba(234,88,12,0.08), 0 0 0 20px rgba(234,88,12,0.04);
+            box-shadow: 0 0 0 8px rgba(22,163,74,0.08), 0 0 0 20px rgba(22,163,74,0.04);
         }
 
         /* ── CTA shimmer ── */
@@ -136,7 +136,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 18px 20px;
-            border-bottom: 1px solid #f1f5f9;
+            /* border-bottom: 1px solid #f1f5f9; */
             flex-shrink: 0;
         }
         @media (min-width: 768px) {
@@ -185,37 +185,37 @@
 
         <!-- Check icon -->
         <div class="anim-1 mb-7">
-            <div class="check-ring inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-50 border-2 border-green-200">
-                <svg class="w-10 h-10 text-green-600" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <div class="check-ring inline-flex items-center justify-center w-14 h-14 rounded-full bg-green-500">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
                 </svg>
             </div>
         </div>
 
         <!-- Headline -->
-        <h1 class="anim-2 text-2xl sm:text-3xl font-bold text-gray-900 leading-tight mb-3">
-            You're all set! 🎉
+        <h1 class="anim-2 text-2xl sm:text-2xl font-bold text-neutral-900 leading-tight mb-3">
+            You're Almost Done!@auth {{ auth()->user()->name }}@endauth 🎉
         </h1>
 
         <!-- Sub-copy -->
-        <p class="anim-3 text-gray-500 text-lg leading-relaxed mb-2">
-            Thanks for applying to <span class="font-semibold text-gray-700">Codekaro</span>.
+        <p class="anim-3 text-neutral-500 text-lg leading-relaxed mb-2">
+            Claim Your Personalized Roadmap Now!
         </p>
-        <p class="anim-3 text-gray-400 text-base mb-10 max-w-md">
-            The next step is a quick <span class="text-gray-600 font-medium">strategy call</span> with our team — we'll understand your goals and chart the best path forward.
+        <p class="anim-3 text-neutral-600 text-base mb-10 max-w-md">
+            On this 30-minute strategy call, we’ll understand your goals, challenges, and map out your personalized roadmap to transition into a high-paying full stack role.
         </p>
 
         <!-- CTA Button -->
         <button
             id="open-booking-btn"
             onclick="openBookingModal()"
-            class="btn-cta pulse bg-orange-600 hover:bg-orange-700 text-white font-semibold text-lg px-10 py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-300 anim-4"
+            class="btn-cta pulse bg-black hover:bg-neutral-950 text-white font- text-lg px-10 py-4 rounde-2xl shadow-lg hover:shadow-xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-orange-300 anim-4"
         >
-            📅 &nbsp;Book Your Strategy Call
+           Book Your Strategy Call Now
         </button>
 
         <!-- Micro-copy -->
-        <p class="mt-5 text-sm text-gray-400 anim-4">
+        <p class="mt-5 text-sm text-gray-400 anim-4 hidden">
             ✅ Free &nbsp;·&nbsp; 30 minutes &nbsp;·&nbsp; No pressure
         </p>
     </div>
