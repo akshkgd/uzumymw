@@ -251,7 +251,7 @@ class CourseEnrollmentController extends Controller
             case 101:
                 return redirect('/mastermind-success');
             case 102:
-                return redirect('/react-success');
+                return redirect('/backend-success');
             case 105:
                 return redirect('/css-upgrade-success');
             case 10:
