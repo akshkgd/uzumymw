@@ -114,9 +114,9 @@
 <body>
     <div class="hero " id="#">
         <div class="max-w-3xl mx-auto md:mt-5 text-left md:text-center">
-            <h1 class="text-orange-600 text-base md:text-lg ck-sans">ONLY for Frontend / Backend Developers with 1+ Years Experience Ready to Step Into Full Stack Roles.</h1>
-            <h1 class="text-2xl md:text-3xl font-bold ck-sans mt-5">We Help You Learn Full-Stack & Transition Into High Paying Roles Without Getting Stuck or Overwhelmed</h1>
-            <p class="mt-5 text-neutral-600 md:text-xl">Without Wasting Time on Random Tutorials or Losing Motivation While Working Full-Time</p>
+            <h1 class="text-orange-600 text-base md:text-lg ck-sans">ONLY for Backend Developers with 1+ Years Experience Ready to Step Into Full Stack Roles.</h1>
+            <h1 class="text-2xl md:text-3xl font-bold ck-sans mt-5">Backend Developers Transition to High-Paid React Full Stack Roles in Just 90 Days</h1>
+            <p class="mt-5 text-neutral-600 md:text-xl">Get a clear roadmap to become Full Stack developer in 90 days — without tutorial overload, confusion, or losing momentum halfway.</p>
             
             <div class="max-w-lg mx-auto mt-7 ">
                 <form action="{{ route('course-enrollment-auto') }}" method="POST"
