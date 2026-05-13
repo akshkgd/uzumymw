@@ -164,7 +164,7 @@
         <!-- testimonials -->
          <div class="max-w-lg mx-auto mt-24 ck-sans">
             <!-- one -->
-                <div class="border p-4 border-neutral-300 w-full box-border">
+                <div class="hidden border p-4 border-neutral-300 w-full box-border">
                     <div class="flex mb-4 items-center gap-4 ck-sans">
                         <img src="https://codekaro.in/assets/img/feedbacks/laxmi.jpg" alt="" class="h-16 w-16 rounded-full">
                         <div class="text-left">
@@ -188,7 +188,7 @@
                         </div>
                     </div>
                     <!-- <p class="text-left">Laxmipriya was in a support role at Infosys at ₹3.2 LPA. She always wanted to be a developer but every time she tried, the basics felt shaky and she had no idea where to even start with real projects.</p> <br> -->
-                    <p class="text-left">She joined AlphaClub. We helped her get her basics right, got her working on real projects, prepared her for interviews and coding rounds, and fixed up her LinkedIn so the right people could find her.</p> 
+                    <!-- <p class="text-left">She joined AlphaClub. We helped her get her basics right, got her working on real projects, prepared her for interviews and coding rounds, and fixed up her LinkedIn so the right people could find her.</p>  -->
                     <!-- HLS Video -->
                     <div class="mt-4 hls-wrap" style="position:relative; aspect-ratio:16/9; background:#000; overflow:hidden;">
                         <!-- Native video (hidden until playing) -->
@@ -211,8 +211,8 @@
                         </div>
                     </div>
                     <!-- <div class="border-t border-neutral-300 mt-4"></div> -->
-                    <h3 class="font-medium pt-4 text-left">She cracked ZOHO as a Frontend Developer at ₹7.5 LPA. Was at ₹3.2 LPA.</h3>
-                    <p class="text-sm text-left">From support tickets to shipping code. She made it happen.</p>
+                    <h3 class="font-medium pt-4 text-left">From ₹9.5 LPA to ₹25 LPA (163% Hike)</h3>
+                    <p class="text-sm text-left">Keval barely had time — office from 8 AM to 10 PM and stuck in tutorial hell. We helped him focus on the right skills, upskill fast, and make a switch in 3 months.</p>
                 </div>
                 <!-- three -->
                  <div class="border p-4 border-neutral-300 w-full mt-5">
