@@ -114,9 +114,9 @@
 <body>
     <div class="hero " id="#">
         <div class="max-w-3xl mx-auto md:mt-5 text-left md:text-center">
-            <h1 class="text-orange-600 text-base md:text-lg ck-sans">ONLY for Developers with 1+ Years Experience Ready to Step Into Full Stack Roles.</h1>
-            <h1 class="text-2xl md:text-3xl font-bold ck-sans mt-5">We Help You Learn Fullstack & Crack ₹10L–₹40LPA Without Getting Stuck or Overwhelmed</h1>
-            <p class="mt-5 text-neutral-600 md:text-xl">Book a strategy call and we’ll map out the fastest path to land higher-paying roles, even if you’re stuck, overwhelmed, or working full-time.</p>
+            <h1 class="text-orange-600 text-base md:text-lg ck-sans">ONLY for Frontend / Backend Developers with 1+ Years Experience Ready to Step Into Full Stack Roles.</h1>
+            <h1 class="text-2xl md:text-3xl font-bold ck-sans mt-5">We Help You Learn Full-Stack & Transition Into High Paying Roles Without Getting Stuck or Overwhelmed</h1>
+            <p class="mt-5 text-neutral-600 md:text-xl">Without Wasting Time on Random Tutorials or Losing Motivation While Working Full-Time</p>
             
             <div class="max-w-lg mx-auto mt-7 ">
                 <form action="{{ route('course-enrollment-auto') }}" method="POST"

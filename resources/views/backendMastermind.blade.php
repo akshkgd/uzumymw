@@ -529,7 +529,7 @@ You'll build a real server with Node Js and ship a full-stack Todoist clone usin
                     <div class="border-t border-neutral-300 bg-cover bg-center bg-[#f9fee " style="background-image: url(&quot;/assets/img/genAiLP/back.svg&quot;);">
                         <div class="p-4 ">
                             <p class="text-neutral-600 text-xs">Tools you will learn</p>
-                            <div class="flex gap-4 items-center">
+                            <div class="flex gap-4 items-center justify-start">
                                 <span class="mt-2 text-sm font-semibold bg-green-700 text-white px-2 py-1 rounded">MongoDB</span>
                                 <span class="mt-2 text-sm font-semibold bg-gray-900 text-white px-2 py-1 rounded">Mongoose</span>
                                 <span class="mt-2 text-sm font-semibold bg-gray-900 text-white px-2 py-1 rounded">MVC</span>
