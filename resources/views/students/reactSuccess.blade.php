@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>React js Bootcamp, registration successful</title>
+    <title>Backend Mastermind - Success</title>
     <meta name="keywords" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
     <meta name="og:description" content="Get started as a front-end web developer using HTML, CSS, JavaScript and Bootstrap. The modern web development course for everyone!">
     <link rel="canonical" href="https://codekaro.in/web-development-live-masterclass"/>
@@ -37,9 +37,7 @@
     gtag('config', 'G-HC9ETJV29G');
     </script>
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{asset('css/ck_light.css')}}">
+   <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <style>
 
     </style>
@@ -80,74 +78,24 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8B392D"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white">
-        <div class="container-fluid">
-          <a class="navbar-brand fw-bold" href="{{url('/home')}}">Codekaro</a>
-          
-          
-        </div>
-      </nav>  
 <section>
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-7">
-                <div class="card f-1 text-center ">
-                    <div class="p-3">
-                        <h1 class="display-2">🎉</h1>
-                      <h2 class="fs-1">Congratulations, you have successfully enrolled for the <span class="wd_highlight1">How to React Js</span> Bootcamp</h4>
-                      <p class="mt-5">Next Step</p>
-                      <a href="https://chat.whatsapp.com/ElopNgTd58XB8tCUcE4Ukz" class="btn btn-success btn-lg py-3 px-5 rounded-pill my-2" style="background-color: #25D366; border:1px solid #25D366;">Join WhatsApp Group Now</a>
-                      {{-- <a href="{{url('/home')}}" class="btn btn-dark btn-lg py-3 px-4 rounded-pill my-2" style="">2. Complete your Profile</a> --}}
+  <div class="max-w-lg mx-auto my-12 text-cente shadow-l text-center sm:text-left rounded-xl">
+    <h1 class="sm:text-2xl text-xl font-semibold">Congratulations @auth {{Auth::user()->name}} @endauth <span class="text-2xl">🎉</span></h1>
+    <p class=" font-ligh text-gray-700 sm:text-xl mt-3 px-5 sm:p-0">You have successfully enrolled for the <span class="underlin text-blac">How to CSS Bootcamp</span>. Live classes will start from <br> <span class="underline font-semibold text-black">Saturday 16th May 8:00 PM IST</span> </p>
+    <div class="fixed bottom-1 mb-10 w-full sm:static">
+        <p class="   text-gray-700 mt-2 sm:hidden">Next Steps</p>
+      <a target="_blank" href="https://chat.whatsapp.com/LQXbZieMN2vJHKT9nAsTQ1" class=" text-white bg-green-600 py-4 px-16 mt-4 inline-block rounded-full sm:rounded-xl  transition-all hover:bg-green-700 hover:text-white text-lg   ms:mx-0">Join WhatsApp Group</a>
+      <p class="text-sm block mt-3 text-neutral-700 sm:hidden">Join the WhatsApp group now <br> to receive Zoom links and updates.</p>
+      <p class="text-sm hidden sm:block mt-3 text-neutral-700">Join the WhatsApp group now to receive Zoom links and updates.</p>
 
-                    </div>
-                    <div class="cd f-1-bottom p-3">
-                        you will get all the updates of assignments, upcoming classes on  the WhatsApp group, so make sure you join this without fail!
-                    </div>
-                  </div>
-            </div>
-        </div>
     </div>
+  </div>
 </section>
 
 
-    
-    <section class="d-none">
-        <div class="container text-center ct">
-            <h1 id="headlin fw-600 mb-0">Live class is starting in</h1>
-            <div id="countdown">
-              <ul>
-                <li><span id="days"></span>days</li>
-                <li><span id="hours"></span>Hours</li>
-                <li><span id="minutes"></span>Minutes</li>
-                <li><span id="seconds"></span>Seconds</li>
-              </ul>
-            </div>
-            <div id="content" class="emoji">
-              <span>🥳</span>
-              <span>🎉</span>
-              <span>🎂</span>
-              <p id="headline"></p>
-            </div>
-            
-          </div>
-  </section>
 
 
-  {{-- <a href="https://wa.me/917355191435?text=Hey I have issue while enrolling in free Web Development Bootcamp" target="_blank" class="btn btn-light p-3 bg-light btn-round btn-floating" >
-    <img src="{{asset('assets/img/whatsapp.7130c1f8.png')}}" alt="" height="50" width="50">
-      </a> --}}
-
-  <footer class="bd-footer p-3 p-md-5 mt-5 bg-light text-center text-sm-left">
-    <div class="container">
-    <ul class="bd-footer-links">
-    <li><a href="https://codekaro.in/about">About</a></li>
-    <li><a href="https://codekaro.in/contact">Contact</a></li>
-    <li><a href="https://codekaro.in/privacy">Privacy Policy</a></li>
-    </ul>
-    <p>©2020-23 Codekaro All Rights Reserved.</p>
-    </div>
-    </footer>
-    
+ 
     
     
 </body>

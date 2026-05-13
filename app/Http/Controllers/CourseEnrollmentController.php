@@ -165,7 +165,7 @@ class CourseEnrollmentController extends Controller
                 return redirect('/mastermind-success');
             }
             elseif ($batchId->topicId == 102){
-                return redirect('/react-success');
+                return redirect('/backend-success');
             }
             elseif ($batchId->topicId == 103){
                 return redirect('/css-success');

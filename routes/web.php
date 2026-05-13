@@ -69,6 +69,7 @@ Route::view('/banned', 'banned');
 Route::view('/crash-course-schedule', 'ccSchedule');
 Route::view('/ai1', 'genAi');
 Route::view('/genai-for-developers', 'genAi1');
+Route::view('/start-backend', 'backendMastermind');
 Route::view('/frontend-with-genai', 'frGenAi');
 Route::view('/css-exclusive', 'cssEx');
 Route::view('/lop', 'cssNew');
@@ -86,7 +87,7 @@ Route::view('/fra-success', 'fraSuccess');
 
 // Route::view('/plinth','plinth');
 // Route::view('/start-react','react');
-// Route::view('/react-success','/students/reactSuccess');
+Route::view('/backend-success','/students/reactSuccess');
 
 Route::get('/reviews', function () {
     $feedbacks = Feedback::where('status', 0)->latest()->paginate(200);
