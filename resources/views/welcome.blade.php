@@ -398,14 +398,14 @@
           <a href="#" class="text-body block hover:text-title">
               <span>Customers</span>
           </a>
-          <a href="#" class="text-body block hover:text-title">
-              <span>Pricing</span>
+          <a href="/privacy" class="text-body block hover:text-title">
+              <span>Privacy Policy</span>
           </a>
-          <a href="#" class="text-body block hover:text-title">
-              <span>Help</span>
+          <a href="/contact" class="text-body block hover:text-title">
+              <span>Contact Us</span>
           </a>
-          <a href="#" class="text-body block hover:text-title">
-              <span>About</span>
+          <a href="/about" class="text-body block hover:text-title">
+              <span>About Us</span>
           </a>
       </div>
       <div class="my-8 flex flex-wrap justify-center gap-6 text-sm">
