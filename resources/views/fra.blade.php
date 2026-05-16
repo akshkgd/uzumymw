@@ -114,9 +114,10 @@
 <body>
     <div class="hero " id="#">
         <div class="max-w-3xl mx-auto md:mt-5 text-left md:text-center">
-            <h1 class="text-orange-600 text-base md:text-lg ck-sans">ONLY for Frontend / Backend Developers with 1+ Years Experience</h1>
-            <h1 class="text-2xl md:text-3xl font-bold ck-sans mt-5">Transition to High Paying MERN Full Stack Developer Roles in Just 90 Days</h1>
-            <p class="mt-5 text-neutral-600 md:text-xl">Get a clear roadmap to become Full Stack developer in 90 days — without tutorial overload, confusion, or losing momentum halfway.</p>
+            <h1 class="text-orange-600 text-base md:text-lg ck-sans">ONLY for Frontend / Backend Developers with 1+ Year of Experience</h1>
+            <h1 class="text-2xl md:text-3xl font-bold ck-sans mt-5">We Help frontend & backend developers transition into ₹10 – ₹40LPA MERN full stack roles
+without getting stuck in tutorial hell.</h1>
+            <p class="mt-5 text-neutral-600 md:text-xl">Most developers stay trapped in low-growth roles — learning randomly, doubting themselves, and never feeling ready to switch. We fix that with a step-by-step roadmap, mentorship, and interview-focused execution.</p>
             
             <div class="max-w-lg mx-auto mt-7 ">
                 <form action="{{ route('course-enrollment-auto') }}" method="POST"
