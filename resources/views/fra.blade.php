@@ -154,9 +154,9 @@ without getting stuck in tutorial hell.</h1>
 
   <button type="submit"
     class="bg-orange-600 py-3 text-white mb-1 hover:cursor-pointer">
-    Book Your Strategy Call Now at ₹99
+    Book Your Strategy Call Now 
   </button>
-  <p class="text-sm text-neutral-700">₹99 to secure your slot (fully refunded if you show up)</p>
+  {{-- <p class="text-sm text-neutral-700">₹99 to secure your slot (fully refunded if you show up)</p> --}}
 </form>    
         </div>
             
