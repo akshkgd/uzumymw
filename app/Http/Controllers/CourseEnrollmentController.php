@@ -133,57 +133,106 @@ class CourseEnrollmentController extends Controller
        
     }
 
-    public function checkout($id)
-    {
-        $id = Crypt::decrypt($id);
-        $enrollment = CourseEnrollment::findorFail($id);
-        $batchId = Batch::findorFail($enrollment->batchId);
-        // $this->sendOrderIdToPabbly($enrollment, $batchId);
+    // public function checkout($id)
+    // {
+    //     $id = Crypt::decrypt($id);
+    //     $enrollment = CourseEnrollment::findorFail($id);
+    //     $batchId = Batch::findorFail($enrollment->batchId);
         
-        if (Auth::user()->id == $enrollment->userId && $enrollment->hasPaid == 0) {
-            // $api = new Api(env('RAZOR_KEY'), env('RAZOR_SECRET'));
-            // $api = new Api('rzp_live_YFwQzuSuorFCPM', 'ny2jusfOW90PMDWArPi4MvoM');
-            $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
+    //     if (Auth::user()->id == $enrollment->userId && $enrollment->hasPaid == 0) {
+            
+    //         $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
 
-            $batch = Batch::find($enrollment->batchId);
-            $receiptId = Str::random(20);
-            $amountPayable = $batchId->payable*100 + $enrollment->certificateFee*100;
-            $order  = $api->order->create(array('amount' => $amountPayable, 'currency' => 'INR', 'notes' => array('Name' =>strtok(Auth::user()->name, ' '), 'Email' => Auth::user()->email, 'UserId'=> Auth::user()->id, 'Phone' => Auth::user()->mobile, 'Course' => $batchId->name, 'StartDate' => Carbon::parse($batch->startDate)->toDateString(), 'EndDate' =>Carbon::parse($batch->endDate)->toDateString(), 'CourseId' => $batchId->id, 'TopicId' => $batchId->topicId, 'enrollmentId'=> $id )));
-            $enrollment->invoiceID = $order->id;
-            $enrollment->save();
+    //         $batch = Batch::find($enrollment->batchId);
+    //         $receiptId = Str::random(20);
+    //         $amountPayable = $batchId->payable*100 + $enrollment->certificateFee*100;
+    //         $order  = $api->order->create(array('amount' => $amountPayable, 'currency' => 'INR', 'notes' => array('Name' =>strtok(Auth::user()->name, ' '), 'Email' => Auth::user()->email, 'UserId'=> Auth::user()->id, 'Phone' => Auth::user()->mobile, 'Course' => $batchId->name, 'StartDate' => Carbon::parse($batch->startDate)->toDateString(), 'EndDate' =>Carbon::parse($batch->endDate)->toDateString(), 'CourseId' => $batchId->id, 'TopicId' => $batchId->topicId, 'enrollmentId'=> $id )));
+    //         $enrollment->invoiceID = $order->id;
+    //         $enrollment->save();
 
             
 
-            return view('students.checkout', compact('enrollment', 'batch','order'));
-        }
-        else{
-            session()->flash('alert-warning', 'Payment Already Compleated');
-            if($batchId->topicId == 100){
-                return redirect('/bootcamp-success');
-            }
-            elseif ($batchId->topicId == 101){
-                return redirect('/mastermind-success');
-            }
-            elseif ($batchId->topicId == 102){
-                return redirect('/backend-success');
-            }
-            elseif ($batchId->topicId == 103){
-                return redirect('/css-success');
-            }
-            elseif ($batchId->topicId == 105){
-                return redirect('/css-upgrade-success');
-            }
-            elseif ($batchId->topicId == 200){
-                return redirect('/demo-success');
-            }
+    //         return view('students.checkout', compact('enrollment', 'batch','order'));
+    //     }
+    //     else{
+    //         session()->flash('alert-warning', 'Payment Already Compleated');
+    //         if($batchId->topicId == 100){
+    //             return redirect('/bootcamp-success');
+    //         }
+    //         elseif ($batchId->topicId == 101){
+    //             return redirect('/mastermind-success');
+    //         }
+    //         elseif ($batchId->topicId == 102){
+    //             return redirect('/backend-success');
+    //         }
+    //         elseif ($batchId->topicId == 103){
+    //             return redirect('/css-success');
+    //         }
+    //         elseif ($batchId->topicId == 105){
+    //             return redirect('/css-upgrade-success');
+    //         }
+    //         elseif ($batchId->topicId == 200){
+    //             return redirect('/demo-success');
+    //         }
 
-            else{
-            return redirect('/home');
+    //         else{
+    //         return redirect('/home');
 
-            }
-        }
+    //         }
+    //     }
         
+    // }
+
+
+    public function checkout($id)
+{
+    $id = Crypt::decrypt($id);
+    $enrollment = CourseEnrollment::findorFail($id);
+    $batchId = Batch::findorFail($enrollment->batchId);
+
+    if (Auth::user()->id == $enrollment->userId && $enrollment->hasPaid == 0) {
+        
+        $amountPayable = $batchId->payable * 100 + $enrollment->certificateFee * 100;
+
+        // ✅ Auto-enroll if nothing to pay
+        if ($amountPayable == 0) {
+            $enrollment->status = 1;
+            $enrollment->haspaid = 1;
+            $enrollment->save();
+            $this->successMail($enrollment->id);
+            session()->flash('alert-success', 'You have successfully enrolled in the course');
+            return $this->handlePaymentRedirect($batchId, $enrollment->id, Auth::user()->id, $enrollment);
+        }
+
+        $api = new Api('rzp_live_je6jCwL5udOnN0', 'UpS378sb6wz0LkVTcyJmAq62');
+        $batch = Batch::find($enrollment->batchId);
+        $receiptId = Str::random(20);
+        $order = $api->order->create(array(
+            'amount' => $amountPayable,
+            'currency' => 'INR',
+            'notes' => array(
+                'Name' => strtok(Auth::user()->name, ' '),
+                'Email' => Auth::user()->email,
+                'UserId' => Auth::user()->id,
+                'Phone' => Auth::user()->mobile,
+                'Course' => $batchId->name,
+                'StartDate' => Carbon::parse($batch->startDate)->toDateString(),
+                'EndDate' => Carbon::parse($batch->endDate)->toDateString(),
+                'CourseId' => $batchId->id,
+                'TopicId' => $batchId->topicId,
+                'enrollmentId' => $id
+            )
+        ));
+        $enrollment->invoiceID = $order->id;
+        $enrollment->save();
+
+        return view('students.checkout', compact('enrollment', 'batch', 'order'));
+
+    } else {
+        session()->flash('alert-warning', 'Payment Already Completed');
+        return $this->handlePaymentRedirect($batchId, $enrollment->id, Auth::user()->id, $enrollment);
     }
+}
     public function payment(Request $request)
     {
         try {
@@ -229,7 +278,7 @@ class CourseEnrollmentController extends Controller
                 // Handle redirects based on course type
                 session()->flash('alert-success', 'Payment Completed Successfully');
                 
-                return $this->handlePaymentRedirect($batch, $enrollment->id, $enrollment->userId);
+                return $this->handlePaymentRedirect($batch, $enrollment->id, $enrollment->userId, $enrollment);
             }   
         } catch (\Exception $e) {
             Log::error('Payment processing failed: ' . $e->getMessage(), [
@@ -241,7 +290,7 @@ class CourseEnrollmentController extends Controller
         }
     }
 
-    private function handlePaymentRedirect($batch, $enrollmentId, $userId)
+    private function handlePaymentRedirect($batch, $enrollmentId, $userId, $enrollment = null)
     {
         switch ($batch->topicId) {
             case 100:
