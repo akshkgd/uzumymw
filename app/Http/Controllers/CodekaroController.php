@@ -325,7 +325,7 @@ class CodekaroController extends Controller
                 $enrollment->hasPaid = 1;
                 $enrollment->paidAt = Carbon::now();
                 $enrollment->save();
-                return redirect('/demo-success');
+                return redirect('/fra-success');
         }
         else{
             $enrollId = Crypt::encrypt($enrollmentId);
