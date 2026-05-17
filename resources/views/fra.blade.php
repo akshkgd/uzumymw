@@ -114,7 +114,7 @@
 <body>
     <div class="hero " id="#">
         <div class="max-w-3xl mx-auto md:mt-5 text-left md:text-center">
-            <h1 class="text-orange-600 text-base md:text-lg ck-sans">ONLY for Frontend / Backend Developers with 1+ Year of Experience</h1>
+            <h1 class="text-orange-600 text-base md:text-lg ck-sans">ONLY for Frontend / Backend Developers with 2+ Year of Experience</h1>
             <h1 class="text-2xl md:text-3xl font-bold ck-sans mt-5">We Help frontend & backend developers transition into ₹10 – ₹40LPA MERN full stack roles
 without getting stuck in tutorial hell.</h1>
             <p class="mt-5 text-neutral-600 md:text-xl">Most developers stay trapped in low-growth roles — learning randomly, doubting themselves, and never feeling ready to switch. We fix that with a step-by-step roadmap, mentorship, and interview-focused execution.</p>
