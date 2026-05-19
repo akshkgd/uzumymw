@@ -76,6 +76,8 @@ Route::view('/lop', 'cssNew');
 Route::view('/lop', 'cssNew');
 Route::view('/fr-apply', 'fra');
 Route::view('/fra-success', 'fraSuccess');
+Route::view('/backend-cohort', 'backendCohort');
+
 
 
 

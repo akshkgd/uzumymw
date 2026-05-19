@@ -117,8 +117,11 @@
             <h1 class="text-orange-600 text-base md:text-lg ck-sans">ONLY for Frontend / Backend Developers with 2+ Year of Experience</h1>
             <h1 class="text-2xl md:text-3xl font-bold ck-sans mt-5">We Help frontend & backend developers transition into ₹10 – ₹40LPA MERN full stack roles
 without getting stuck in tutorial hell.</h1>
-            <p class="mt-5 text-neutral-600 md:text-xl">Most developers stay trapped in low-growth roles — learning randomly, doubting themselves, and never feeling ready to switch. We fix that with a step-by-step roadmap, mentorship, and interview-focused execution.</p>
-            
+            <p class="mt-5 text-neutral-600 md:text-xl mb-5">Most developers stay trapped in low-growth roles — learning randomly, doubting themselves, and never feeling ready to switch. We fix that with a step-by-step roadmap, mentorship, and interview-focused execution.</p>
+            {{-- video --}}
+
+<script src="https://fast.wistia.com/player.js" async></script><script src="https://fast.wistia.com/embed/rpfs9cdwy9.js" async type="module"></script><style>wistia-player[media-id='rpfs9cdwy9']:not(:defined) { background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/rpfs9cdwy9/swatch'); display: block; filter: blur(5px); padding-top:60.0%; }</style> <wistia-player media-id="rpfs9cdwy9" aspect="1.6666666666666667"></wistia-player>
+            {{-- video ends --}}
             <div class="max-w-lg mx-auto mt-7 ">
                 <form action="{{ route('course-enrollment-auto') }}" method="POST"
   class="flex flex-col space-y-3"
@@ -213,7 +216,7 @@ without getting stuck in tutorial hell.</h1>
                     </div>
                     <!-- <div class="border-t border-neutral-300 mt-4"></div> -->
                     <h3 class="font-medium pt-4 text-left">From ₹9.5 LPA to ₹25 LPA (163% Hike)</h3>
-                    <p class="text-sm text-left">Keval barely had time — office from 8 AM to 10 PM and stuck in tutorial hell. We helped him focus on the right skills, upskill fast, and make a switch in 3 months.</p>
+                    <p class="text-sm text-left">Keval barely had time — office from 8 AM to 9 PM and stuck in tutorial hell. We helped him focus on the right skills, upskill fast, and make a switch in 3 months.</p>
                 </div>
                 <!-- three -->
                  <div class="border p-4 border-neutral-300 w-full mt-5">
@@ -224,7 +227,7 @@ without getting stuck in tutorial hell.</h1>
                             <p class="text-gray-400 text-sm">Angular Developer → Team Lead, Accenture</p>
                         </div>
                     </div>
-                    <p class="text-left">5 years of experience. Never switched companies. Pruthviraj was skilled — but the startup comfort zone had quietly become a cage. Interviews felt foreign. His resume screamed "one company, one role.</p> <br>
+                    <p class="text-left">4.5 years of experience. Never switched companies. Pruthviraj was skilled — but the startup comfort zone had quietly become a cage. Interviews felt foreign. His resume screamed "one company, one role.</p> <br>
                     <p class="text-left">We mapped his strengths, plugged the gaps in fundamentals and system design, and — most importantly — trained him to negotiate, not just interview.</p>
                     <div class="border-t border-neutral-300 mt-4"></div>
                     <h3 class="font-medium pt-4 text-left">Cracked Accenture as Team Lead at ₹23 LPA. Was at ₹9.3 LPA.</h3>
