@@ -47,6 +47,68 @@
         <div class="relative w-full mt-2 content">
           <div class="bg-card text-neutral-900 mt-5">
             <div class="pt-0 space-y-2">
+              <!-- Avatar Selector Component -->
+              @php
+                  $rawAvatar = Auth::user()->getAttributes()['avatar'] ?? 'assets/img/mask.svg';
+                  $isGoogleAvatar = Str::startsWith($rawAvatar, 'http://') || Str::startsWith($rawAvatar, 'https://');
+              @endphp
+              <div x-data="{
+                  selectedAvatar: '{{ $rawAvatar }}',
+                  getAvatarUrl(avatar) {
+                      if (!avatar) return '{{ asset('assets/img/mask.svg') }}';
+                      if (avatar.startsWith('http://') || avatar.startsWith('https://')) {
+                          return avatar;
+                      }
+                      return '{{ asset('') }}' + avatar;
+                  }
+              }" class="space-y-4 mb-6">
+                  <!-- Current Avatar Preview -->
+                  <div class="flex flex-col items-start space-y-2">
+                      <div class="relative group">
+                          <img :src="getAvatarUrl(selectedAvatar)" class="w-24 h-24 rounded-2xl object-cover border border-neutral-200 shadow-sm transition-all duration-300" alt="Avatar Preview" />
+                      </div>
+                      <span class="text-xs text-neutral-500 font-normal">Profile Picture Preview</span>
+                  </div>
+
+                  <!-- Avatar Selection Options -->
+                  <div class="space-y-2">
+                      <label class="text-sm font-medium leading-none text-neutral-700">Choose an Avatar</label>
+                      <div class="flex flex-wrap gap-3 items-center justify-start p-3 bg-neutral-50 rounded-xl border border-neutral-200">
+                          <!-- Render Google Avatar option if the current raw avatar is a Google URL -->
+                          @if($isGoogleAvatar)
+                              <button type="button" 
+                                      @click="selectedAvatar = '{{ $rawAvatar }}'"
+                                      :class="selectedAvatar === '{{ $rawAvatar }}' ? 'ring-2 ring-neutral-900 scale-105' : 'hover:scale-105 opacity-80 hover:opacity-100'"
+                                      class="relative w-12 h-12 rounded-xl overflow-hidden transition-all duration-200 focus:outline-none">
+                                  <img src="{{ $rawAvatar }}" class="w-full h-full object-cover rounded-xl" alt="Google Avatar" />
+                              </button>
+                          @endif
+
+                          <!-- Predefined Avatars -->
+                          @foreach(range(1, 5) as $i)
+                              @php $path = "assets/img/user-img/{$i}.svg"; @endphp
+                              <button type="button" 
+                                      @click="selectedAvatar = '{{ $path }}'"
+                                      :class="selectedAvatar === '{{ $path }}' ? 'ring-2 ring-neutral-900 scale-105 border-transparent' : 'hover:scale-105 opacity-80 hover:opacity-100'"
+                                      class="relative w-12 h-12 rounded-xl overflow-hidden transition-all duration-200 focus:outline-none border border-neutral-200 bg-white p-1">
+                                  <img src="{{ asset($path) }}" class="w-full h-full object-contain rounded-xl" alt="Avatar {{ $i }}" />
+                              </button>
+                          @endforeach
+
+                          <!-- Default Avatar Mask option -->
+                          @php $maskPath = "assets/img/mask.svg"; @endphp
+                          <button type="button" 
+                                  @click="selectedAvatar = '{{ $maskPath }}'"
+                                  :class="selectedAvatar === '{{ $maskPath }}' ? 'ring-2 ring-neutral-900 scale-105 border-transparent' : 'hover:scale-105 opacity-80 hover:opacity-100'"
+                                  class="relative w-12 h-12 rounded-xl overflow-hidden transition-all duration-200 focus:outline-none border border-neutral-200 bg-white p-1">
+                              <img src="{{ asset($maskPath) }}" class="w-full h-full object-contain rounded-xl" alt="Default Avatar" />
+                          </button>
+                      </div>
+                  </div>
+
+                  <!-- Hidden Input to submit the selected avatar -->
+                  <input type="hidden" name="avatar" :value="selectedAvatar" />
+              </div>
               <div class="space-y-1">
                 <label
                   class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -88,6 +150,47 @@
                   class="flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-lg peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"
                 />
               </div>
+              <div class="space-y-1">
+                <label class="text-sm font-medium leading-none text-neutral-700" for="userType">
+                  I am a
+                </label>
+                <div class="relative">
+                  <select
+                    id="userType"
+                    name="college"
+                    class="flex w-full h-[50px] px-3 text-sm bg-white border rounded-lg peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50 appearance-none"
+                    onchange="updateFields(this.value)"
+                  >
+                    <option value="">Select</option>
+                    <option value="student" {{ Auth::user()->college == 'student' ? 'selected' : '' }}>Student</option>
+                    <option value="professional" {{ Auth::user()->college == 'professional' ? 'selected' : '' }}>Working Professional</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="space-y-1">
+                <label class="text-sm font-medium leading-none text-neutral-700" for="course">
+                  <span id="roleLabel">Current Course / Designation</span>
+                </label>
+                <div class="relative">
+                  <select
+                    id="course"
+                    name="course"
+                    class="flex w-full h-[50px] px-3 text-sm bg-white border rounded-lg peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50 appearance-none"
+                  >
+                    <option value="">Select</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-gray-500">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                      <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                    </svg>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="flex items-center pt-0 mt-3">
               <button
@@ -95,56 +198,6 @@
                 class="inline-flex items-center justify-center px-4 py-3 text-sm font-normal tracking-wide text-white transition-colors duration-200 rounded-lg bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none"
               >
                 Update Profile
-              </button>
-            </div>
-          </div>
-        </div>
-        <div class="relative w-full mt-10 content hidden">
-          <div class="bg-card text-neutral-900">
-            <div class="flex flex-col space-y-1.5">
-              <h3 class="text-lg font-semibold leading-none tracking-tight">
-                Educational info
-              </h3>
-              <p class="text-sm text-neutral-500">
-                Make changes to your account here. Click save when you're done.
-              </p>
-            </div>
-            <div class="pt-0 space-y-2 mt-5">
-              <div class="space-y-1">
-                <label
-                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for="name"
-                  >College / Company</label
-                ><input
-                  type="text"
-                  placeholder="i.e. IIT bombay / Zoho "
-                  id="name"
-                  name="college"
-                  value="{{Auth::user()->college}}"
-                  class="flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-lg peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"
-                />
-              </div>
-              <div class="space-y-1">
-                <label
-                  class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                  for="username"
-                  >Current Course/ Designation</label
-                ><input
-                  type="text"
-                  placeholder="B.tech, MCA / Frontend Developer"
-                  id="username"
-                  name="course"
-                  value="{{Auth::user()->course}}"
-                  class="flex w-full h-10 px-3 py-6 text-sm bg-white border rounded-lg peer border-neutral-300 ring-offset-background placeholder:text-neutral-400 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-400 disabled:cursor-not-allowed disabled:opacity-50"
-                />
-              </div>
-            </div>
-            <div class="flex items-center pt-0 mt-3">
-              <button
-                type="submit"
-                class="inline-flex items-center justify-center px-4 py-3 text-sm font-normal tracking-wide text-white transition-colors duration-200 rounded-lg bg-neutral-950 hover:bg-neutral-900 focus:ring-2 focus:ring-offset-2 focus:ring-neutral-900 focus:shadow-outline focus:outline-none"
-              >
-                Save changes
               </button>
             </div>
           </div>
@@ -280,4 +333,70 @@
         data-inject-svg />
 </a> --}}
 {{-- <a href="" class="btn btn-dark p-3 bg-dark btn-round  btn-floating">  <img src="/assets/img/icons/communication/chat4.svg" alt=""></a> --}}
+<script>
+function updateFields(userType) {
+  const courseSelect = document.getElementById('course');
+  const roleLabel = document.getElementById('roleLabel');
+
+  // Clear existing options
+  courseSelect.innerHTML = '<option value="">Select</option>';
+
+  if (userType === 'student') {
+    roleLabel.textContent = 'Current Course';
+
+    // Add student course options
+    const studentOptions = [
+      'B.Tech - IT/CS',
+      'B.Tech - Other',
+      'M.Tech',
+      'MCA',
+      'BCA',
+      'BSc - IT/CS',
+      'BSc - Other',
+      'Non-IT Graduate',
+      'Other'
+    ];
+
+    studentOptions.forEach(option => {
+      const element = document.createElement('option');
+      element.value = option;
+      element.textContent = option;
+      if (option === '{{Auth::user()->course}}') {
+        element.selected = true;
+      }
+      courseSelect.appendChild(element);
+    });
+
+  } else if (userType === 'professional') {
+    roleLabel.textContent = 'Designation';
+
+    // Add professional designation options
+    const professionalOptions = [
+      'Frontend Developer',
+      'Backend Developer',
+      'Full Stack Developer',
+      'Non-IT Professional',
+      'Others'
+    ];
+
+    professionalOptions.forEach(option => {
+      const element = document.createElement('option');
+      element.value = option;
+      element.textContent = option;
+      if (option === '{{Auth::user()->course}}') {
+        element.selected = true;
+      }
+      courseSelect.appendChild(element);
+    });
+  }
+}
+
+// Set initial values based on saved userType
+document.addEventListener('DOMContentLoaded', function() {
+  const userType = document.getElementById('userType').value;
+  if (userType) {
+    updateFields(userType);
+  }
+});
+</script>
 @endsection()

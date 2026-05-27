@@ -166,11 +166,37 @@ $imageUrl = (filter_var($user->avatar, FILTER_VALIDATE_URL) && preg_match('/^htt
                 <div class="border border-neutral-5 bg-green-5 rounded-lg p-5 my-8 w-">
                     <div class="my-4 flex items-center gap-4">
                         <img src="{{$imageUrl}}" class="h-16 w-16 rounded-full inline-block object-cover " alt="">
-                        <div class="">
-                            <h1>{{$user->name}}</h1>
-                            <h1 class="">{{$user->email}}</h1>
-                            <p class="text-sm">{{$user->mobile}}</p>
+                        <div class="flex-1">
+                            <h1 class="text-lg font-bold text-neutral-900 leading-tight">{{$user->name}}</h1>
+                            @if($user->college || $user->course)
+                            <p class="text-sm text-neutral-600 mt-1">
+                                <span class="capitalize">{{ $user->college == 'professional' ? 'Working Professional' : ($user->college == 'student' ? 'Student' : $user->college) }}</span>
+                                @if($user->college && $user->course)
+                                    - {{ $user->course }}
+                                @elseif($user->course)
+                                    {{ $user->course }}
+                                @endif
+                            </p>
+                            @else
+                            <p class="text-sm text-neutral-400 italic mt-1">Profile incomplete (no profession/role specified)</p>
+                            @endif
 
+                            <div class="mt-3 flex flex-col gap-1.5 text-sm text-neutral-700">
+                                <div class="flex items-center gap-1.5 group">
+                                    <span class="font-medium text-neutral-500 w-12">Email:</span>
+                                    <span>{{$user->email}}</span>
+                                    <button onclick="copyToClipboard('{{ $user->email }}', this)" class="text-neutral-400 hover:text-neutral-600 transition-colors p-0.5 rounded hover:bg-neutral-100/50 ml-2" title="Copy Email">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy inline-block align-middle"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                                    </button>
+                                </div>
+                                <div class="flex items-center gap-1.5 group">
+                                    <span class="font-medium text-neutral-500 w-12">Phone:</span>
+                                    <span>{{$user->mobile}}</span>
+                                    <button onclick="copyToClipboard('{{ $user->mobile }}', this)" class="text-neutral-400 hover:text-neutral-600 transition-colors p-0.5 rounded hover:bg-neutral-100/50 ml-2" title="Copy Mobile Number">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy inline-block align-middle"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="my-">
@@ -212,7 +238,7 @@ $imageUrl = (filter_var($user->avatar, FILTER_VALIDATE_URL) && preg_match('/^htt
                     <div class="flex justify-between items-center py-4">
                         <div class="px-0">
                             <h2 class="text-lg font-semibold mb- px-4">Courses</h2>
-                            <h1 class="text-neutral-70 px-4 -mt-1">Courses enrolled {{$enrollments->count()}}</h1>
+                            <h1 class="text-neutral-70 px-4 -mt-1">Courses enrolled {{$enrollments->where('hasPaid', 1)->count()}}</h1>
                         </div>
                         <div class="mr-4">
                             <input type="tex" id="searchInput" onkeyup="searchTable()" placeholder="Search course" class="w-full px-4 mr-4 inline-block py-2 border border-neutral-200 rounded-lg focus:outline-none focus:ring-0">
@@ -227,6 +253,7 @@ $imageUrl = (filter_var($user->avatar, FILTER_VALIDATE_URL) && preg_match('/^htt
                                     <th class="px-5 py-3  font-medium text-left ">Course</th>
                                     <th class="px-5 py-3  font-medium text-left">Enrolled On</th>
                                     <th class="px-5 py-3  font-medium text-left">Amount</th>
+                                    <th class="px-5 py-3  font-medium text-left">Progress</th>
                                     <th class="px-5 py-3  font-medium text-left">Actions</th>
                                 </tr>
                             </thead>
@@ -239,17 +266,52 @@ $imageUrl = (filter_var($user->avatar, FILTER_VALIDATE_URL) && preg_match('/^htt
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ \Carbon\Carbon::parse($enrollment->paidAt)->format('d M Y h:i A') }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{{ $enrollment->amountPaid / 100 }} - {{$enrollment->paymentMethod}}</td>
-
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        {{ $enrollment->progress ?? 0 }}% 
+                                        <span class="text-neutral-500 text-xs ml-1">
+                                            (@php
+                                                $ts = $enrollment->time_spent ?? 0;
+                                                $hrs = floor($ts / 60);
+                                                $mins = $ts % 60;
+                                                if ($hrs > 0) {
+                                                    echo "{$hrs}h {$mins}m";
+                                                } else {
+                                                    echo "{$mins}m";
+                                                }
+                                            @endphp)
+                                        </span>
+                                    </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm">
-                                        <div class="flex gap-2">
-                                            <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id))}}" class="text-neutral-600"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
-                                                <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
-                                              </svg></a>
-                                              @if($enrollment->batch->type == 1)
-                                              <a href="{{ url('/admin-progress/' . $enrollment->id) }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-graph-up" viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd" d="M0 0h1v15h15v1H0zm14.817 3.113a.5.5 0 0 1 .07.704l-4.5 5.5a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61 4.15-5.073a.5.5 0 0 1 .704-.07"/>
-                                              </svg></a>
-                                              @endif
+                                        <div class="flex gap-2 items-center">
+                                            <!-- General Actions -->
+                                            <div class="flex items-center gap-1">
+                                                <a href="{{action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id))}}" class="text-neutral-500 hover:text-neutral-800 transition-colors p-1 rounded-lg hover:bg-neutral-100/60 inline-flex items-center justify-center" title="Edit Payment">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pencil"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+                                                </a>
+                                                @if($enrollment->batch->type == 1)
+                                                <a href="{{ url('/admin-progress/' . $enrollment->id) }}" class="text-neutral-500 hover:text-neutral-800 transition-colors p-1 rounded-lg hover:bg-neutral-100/60 inline-flex items-center justify-center" title="View Progress">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+                                                </a>
+                                                @endif
+                                            </div>
+                                            
+                                            <!-- Separator Line -->
+                                            <span class="text-neutral-200 select-none">|</span>
+                                            
+                                            <!-- Certificate Actions -->
+                                            <div class="flex items-center gap-1">
+                                                @if($enrollment->certificateId)
+                                                    <button onclick="copyToClipboard('{{ url('/course-certificate/' . $enrollment->certificateId) }}', this)" 
+                                                            class="text-violet-600 hover:text-violet-800 transition-colors p-1 rounded-lg hover:bg-violet-50 inline-flex items-center justify-center" title="Copy Certificate Link">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                                                    </button>
+                                                @else
+                                                    <a href="{{ action('TeacherController@generateCertificate', $enrollment->id) }}" 
+                                                       class="text-neutral-400 hover:text-violet-600 transition-colors p-1 rounded-lg hover:bg-violet-50 inline-flex items-center justify-center" title="Generate Certificate">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-award"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+                                                    </a>
+                                                @endif
+                                            </div>
                                         </div>
                                         
                                     </td>
@@ -263,20 +325,27 @@ $imageUrl = (filter_var($user->avatar, FILTER_VALIDATE_URL) && preg_match('/^htt
 
                 {{-- sessions --}}
         <div class="bg-white border rounded-lg p- mt-8 mb-20">
-            <div class="py-4">
-                <h2 class="text-lg font-semibold mb- px-4">Session Details</h2>
-                <h1 class="text-neutral-70 px-4 ">Last activity {{ $user->lastActivity->format('F j, Y g:i A') }}</h1>
-
+            <div class="py-4 flex justify-between items-center px-4">
+                <div>
+                    <h2 class="text-lg font-semibold mb-">Session Details</h2>
+                    <h1 class="text-neutral-700 text-sm">Last activity {{ $user->lastActivity->format('F j, Y g:i A') }}</h1>
+                </div>
+                <div>
+                    <button onclick="deleteAllSessions()" class="bg-red-50 text-red-600 hover:bg-red-100 px-4 py-2 rounded-lg text-sm font-semibold transition-colors duration-150">
+                        Delete All Sessions
+                    </button>
+                </div>
             </div>
             
             <div class="overflow-x-auto">
                 <table id="sessionTable" class="min-w-full divide-y divide-neutral-200">
-                    <thead class="bg-gray-5">
+                    <thead class="bg-gray-50">
                         <tr class="text-left text-neutral-800">
                             <th class="px-5 py-3 font-medium">IP Address</th>
                             <th class="px-5 py-3 font-medium">Browser</th>
                             <th class="px-5 py-3 font-medium">Device</th>
                             <th class="px-5 py-3 font-medium">Last Activity</th>
+                            <th class="px-5 py-3 font-medium text-right">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="bg-whit divide-y divide-gray-200" id="sessionTableBody">
@@ -307,14 +376,20 @@ $imageUrl = (filter_var($user->avatar, FILTER_VALIDATE_URL) && preg_match('/^htt
                     // Loop through the sessions and insert them into the table
                     sessions.forEach(session => {
                         const row = document.createElement('tr');
+                        const isCurrent = session.id === currentSessionId;
                         row.innerHTML = `
                             <td class="px-6 py-3 whitespace-nowrap text-sm text-gray-900">${session.ip_address}</td>
                             <td class="px-6 py-3 whitespace-nowrap text-sm">${session.browser}</td>
                             <td class="px-6 py-3 whitespace-nowrap text-sm">${session.device_name}</td>
-                            <td class="px-6 py-3 whitespace-nowrap text-sm">${session.last_activity}</td>
+                            <td class="px-6 py-3 whitespace-nowrap text-sm">${session.last_activity} ${isCurrent ? '<span class="ml-2 px-2 py-0.5 text-xs font-semibold bg-neutral-200 text-neutral-800 rounded">Current</span>' : ''}</td>
+                            <td class="px-6 py-3 whitespace-nowrap text-sm text-right">
+                                <button onclick="deleteSession('${session.id}')" class="text-neutral-700 hover:text-red-600 transition-colors duration-150 mr-4 inline-flex items-center justify-center p-1.5 rounded-lg hover:bg-red-50" title="Delete Session">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash2-icon lucide-trash-2"><path d="M10 11v6"/><path d="M14 11v6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M3 6h18"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                </button>
+                            </td>
                         `;
                         // Highlight the current session
-                        if (session.id === currentSessionId) {
+                        if (isCurrent) {
                             row.classList.add('bg-neutral-100');
                         }
                         tableBody.appendChild(row);
@@ -323,6 +398,70 @@ $imageUrl = (filter_var($user->avatar, FILTER_VALIDATE_URL) && preg_match('/^htt
                 .catch(error => {
                     console.error('Error fetching session data:', error);
                 });
+        }
+
+        function deleteSession(sessionId) {
+            fetch(`/admin/students/{{ $user->id }}/sessions/${sessionId}/delete`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    fetchStudentSessions();
+                } else {
+                    alert(data.message || 'Failed to delete session');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting session:', error);
+                alert('An error occurred while deleting the session.');
+            });
+        }
+    
+        function deleteAllSessions() {
+            if (!confirm('Are you sure you want to delete ALL sessions for this student? This will log them out of all devices.')) {
+                return;
+            }
+    
+            fetch(`/admin/students/{{ $user->id }}/sessions/delete-all`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    fetchStudentSessions();
+                } else {
+                    alert(data.message || 'Failed to delete all sessions');
+                }
+            })
+            .catch(error => {
+                console.error('Error deleting all sessions:', error);
+                alert('An error occurred while deleting sessions.');
+            });
+        }
+
+        function copyToClipboard(text, element) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalHTML = element.innerHTML;
+                element.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check inline-block align-middle text-green-600"><path d="M20 6 9 17l-5-5"/></svg>`;
+                element.title = "Copied!";
+                setTimeout(() => {
+                    element.innerHTML = originalHTML;
+                    element.title = "Copy";
+                }, 1500);
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
         }
     </script>
             </div>

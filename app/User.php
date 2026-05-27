@@ -45,4 +45,12 @@ class User extends Authenticatable
     {
         return $this->email;
     }
+    public function getAvatarAttribute($value)
+    {
+        $avatar = $value ?: 'assets/img/mask.svg';
+        if (\Illuminate\Support\Str::startsWith($avatar, 'http://') || \Illuminate\Support\Str::startsWith($avatar, 'https://')) {
+            return $avatar;
+        }
+        return asset($avatar);
+    }
 }

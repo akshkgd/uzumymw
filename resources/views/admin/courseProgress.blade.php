@@ -4,13 +4,23 @@
 <section class="mt-5 sm:max-w-8xl  mx-auto">
     <div class="container mx-auto px-4">
         <h1 class="text-xl font-bold">{{$enrollment->batch->name}}</h1>
-        <div class="flex gap-5">
-            <h1>{{$enrollment->students->name}}</h1>
-            <h1>{{$enrollment->students->email}}</h1>
+        <div class="flex gap-5 mt-2">
+            <h1 class="font-medium text-neutral-800">{{$enrollment->students->name}}</h1>
+            <h1 class="text-neutral-600">{{$enrollment->students->email}}</h1>
         </div>
-        <div class="flex gap-5">
-            <h1>{{$enrollment->batch->name}}</h1>
-            <h1 class="text-neutral-600">Start date: {{ \Carbon\Carbon::parse($enrollment->paidAt)->format('d M Y') }}</h1>
+        <div class="flex gap-5 mt-2 text-sm text-neutral-600">
+            <h1>Start date: {{ \Carbon\Carbon::parse($enrollment->paidAt)->format('d M Y') }}</h1>
+            <span>•</span>
+            <h1>Progress: <span class="font-semibold text-neutral-900">{{ $enrollment->progress ?? 0 }}%</span> <span class="text-neutral-500 font-normal">(@php
+                $ts = $enrollment->time_spent ?? 0;
+                $hrs = floor($ts / 60);
+                $mins = $ts % 60;
+                if ($hrs > 0) {
+                    echo "{$hrs}h {$mins}m";
+                } else {
+                    echo "{$mins}m";
+                }
+            @endphp)</span></h1>
         </div>
 
         <a href="{{url()->previous()}}" class="my-3 bg-violet-100 inline-block borde border-violet-700 text-violet-700 rounded-full py-2 px-4 ">Back to enrollments</a>

@@ -30,6 +30,7 @@ class ProfileController extends Controller
             'mobile'=> 'nullable|regex:/^[6-9]\d{9}$/',
             'college'=> 'nullable|min:2', 
             'course'=> 'nullable|min:2', 
+            'avatar'=> 'nullable|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -57,6 +58,9 @@ class ProfileController extends Controller
         }
         if ($request->filled('bio')) {
             $user->bio = $request->bio;
+        }
+        if ($request->has('avatar')) {
+            $user->avatar = $request->avatar;
         }
 
         $user->save();

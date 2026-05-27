@@ -32,8 +32,48 @@
                              {{ $enrollment->batch->type == 1 ? "onclick=window.location.href='" . action('StudentController@recordings', Crypt::encrypt($enrollment->id)) . "'" : '' }}>
                             <div class="relative borde">
                                 <img class="rounded-xl" src="{{asset($enrollment->img)}}" alt="">
-                                <div class="absolute bottom-0 m-3 rounded-full text-sm px-4 {{ $enrollment->batch->status == 3 ? 'bg-green-50 text-green-800' : 'bg-orange-50 text-orange-950' }}">
-                                    {{ $enrollment->batch->status == 3 ? 'Completed' : 'In progress' }}
+                                @php
+                                    $accessTillDate = null;
+                                    if (!empty($enrollment->accessTill)) {
+                                        try {
+                                            $val = $enrollment->accessTill;
+                                            if ($val instanceof \Carbon\Carbon) {
+                                                $accessTillDate = $val->copy();
+                                            } elseif ($val instanceof \DateTime) {
+                                                $accessTillDate = \Carbon\Carbon::instance($val);
+                                            } else {
+                                                $accessTillDate = \Carbon\Carbon::parse($val);
+                                            }
+                                        } catch (\Exception $e) {}
+                                    }
+                                    if (!$accessTillDate) {
+                                        $baseDate = !empty($enrollment->paidAt) ? $enrollment->paidAt : $enrollment->created_at;
+                                        if ($baseDate) {
+                                            try {
+                                                if ($baseDate instanceof \Carbon\Carbon) {
+                                                    $accessTillDate = $baseDate->copy()->addYear();
+                                                } elseif ($baseDate instanceof \DateTime) {
+                                                    $accessTillDate = \Carbon\Carbon::instance($baseDate)->addYear();
+                                                } else {
+                                                    $accessTillDate = \Carbon\Carbon::parse($baseDate)->addYear();
+                                                }
+                                            } catch (\Exception $e) {}
+                                        }
+                                    }
+                                    if (!$accessTillDate) {
+                                        $accessTillDate = \Carbon\Carbon::now()->addYear();
+                                    }
+                                    $now = \Carbon\Carbon::now();
+                                    if ($accessTillDate->isPast()) {
+                                        $accessText = "Access Expired";
+                                        $badgeClass = "bg-red-50 text-red-600";
+                                    } else {
+                                        $accessText = "Access till " . $accessTillDate->format('jS M Y');
+                                        $badgeClass = "bg-white text-black shadow-sm";
+                                    }
+                                @endphp
+                                <div class="absolute bottom-0 m-3 rounded-full text-xs py-1.5 px-4 font-normal {{ $badgeClass }}">
+                                    {{ $accessText }}
                                 </div>
         
                             </div>

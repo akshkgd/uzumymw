@@ -154,6 +154,35 @@ class AdminController extends Controller
         ]);
     }
 
+    public function deleteStudentSession($id, $sessionId)
+    {
+        $student = User::findOrFail($id);
+        
+        \DB::table('sessions')
+            ->where('user_id', $student->id)
+            ->where('id', $sessionId)
+            ->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Session deleted successfully'
+        ]);
+    }
+
+    public function deleteAllStudentSessions($id)
+    {
+        $student = User::findOrFail($id);
+        
+        \DB::table('sessions')
+            ->where('user_id', $student->id)
+            ->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'All sessions deleted successfully'
+        ]);
+    }
+
     public function search(Request $request)
     {
         $search = $request->search_value;

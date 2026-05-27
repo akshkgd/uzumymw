@@ -304,6 +304,8 @@ Route::get('/admin/batch-suggestions', 'AdminController@batchSuggestions')->name
 Route::get('/admin/update-live-class/{id}', 'AdminController@addLiveClass');
 Route::post('/admin/update-live-class', 'AdminController@updateLiveClass')->name('updateLiveClass');
 Route::get('/api/students/{id}/sessions', 'AdminController@getStudentSessions')->name('students.sessions');
+Route::post('/admin/students/{id}/sessions/{sessionId}/delete', 'AdminController@deleteStudentSession')->name('admin.students.deleteSession');
+Route::post('/admin/students/{id}/sessions/delete-all', 'AdminController@deleteAllStudentSessions')->name('admin.students.deleteAllSessions');
 Route::get('/admin-progress/{enrollmentId}', 'AdminController@courseProgress');
 Route::get('/admin/reports', 'AdminController@reports')->name('admin.reports');
 Route::get('/admin/reports-data', 'AdminController@getReportsData')->middleware(['auth', 'isAdmin']);
