@@ -440,7 +440,7 @@
           <button :class="{ 'hover:bg-white': !dropdownOpen, 'bg-white': dropdownOpen }" @click="dropdownOpen=true"
             class="inline-flex items-center justify-center h-12 py-2 pl-3 pr-0 text-sm font-medium transition-colors bg-white border-0 rounded-md text-neutral-700 focus:outline-none disabled:opacity-50 disabled:pointer-events-none">
             <img
-              src="{{ Str::contains(Auth::user()->avatar, 'assets/img/mask.svg') ? asset('assets/img/mask.svg') : Auth::user()->avatar }}"
+              src="{{ Auth::user()->avatar }}"
               class="object-cover w-8 h-8 border rounded-full border-neutral-200" />
             <span class="flex flex-col items-start flex-shrink-0 h-full ml-2 leading-none translate-y-px">
               <!-- Replace with your button content -->
@@ -474,7 +474,7 @@
               <span>Profile</span>
               <span class="ml-auto text-xs tracking-widest opacity-60">⇧⌘P</span>
             </a>
-            <a href="#_"
+            <a href="{{ url('/sessions') }}"
               class="relative flex cursor-default select-none hover:bg-neutral-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -482,7 +482,7 @@
                 <rect width="20" height="14" x="2" y="5" rx="2"></rect>
                 <line x1="2" x2="22" y1="10" y2="10"></line>
               </svg>
-              <span>Billing</span><span class="ml-auto text-xs tracking-widest opacity-60">⌘B</span>
+              <span>Sessions</span><span class="ml-auto text-xs tracking-widest opacity-60">⌘B</span>
             </a>
 
             <!-- <div class="h-px my-1 -mx-1 bg-neutral-200"></div> -->
@@ -499,6 +499,9 @@
               <span>Log out</span>
               <span class="ml-auto text-xs tracking-widest opacity-60">⇧⌘Q</span>
             </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+              @csrf
+            </form>
           </div>
         </div>
       </div>
