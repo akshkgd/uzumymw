@@ -156,7 +156,7 @@
                             <td class="px-4 py-4">{{ $enrollment->students->email }}</td>
                             {{-- <td class="px-4 py-2">{{ $enrollment->students->mobile }}</td> --}}
                             <td class="px-4 py-4">{{ number_format($enrollment->amountPaid / 100, 0) }} - {{$enrollment->paymentMethod}}</td>
-                            <td class="px-4 py-4">{{ $enrollment->students->field3 ?: 'organic' }}</td>
+                            <td class="px-4 py-4">{{ $enrollment->students->field2 ?: 'organic' }}</td>
                             {{-- <td class="px-4 py-2">{{ $enrollment->field2 }}</td>
                             <td class="px-4 py-2">{{ $enrollment->students->field1 }}</td>
                             <td class="px-4 py-2">{{ $enrollment->students->field2 }}</td> --}}
