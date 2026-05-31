@@ -1085,4 +1085,23 @@ class AdminController extends Controller
         return view('admin.reports');
     }
 
+    public function searchUsersAjax(Request $request)
+    {
+        $query = $request->query('query');
+        if (empty($query)) {
+            return response()->json([]);
+        }
+
+        $users = User::where(function($q) use ($query) {
+            $q->where('name', 'LIKE', '%' . $query . '%')
+              ->orWhere('email', 'LIKE', '%' . $query . '%')
+              ->orWhere('mobile', 'LIKE', '%' . $query . '%');
+        })
+        ->orderBy('created_at', 'desc')
+        ->limit(10)
+        ->get(['id', 'name', 'email', 'mobile']);
+
+        return response()->json($users);
+    }
+
 }

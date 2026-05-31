@@ -272,6 +272,7 @@ Route::get('/admin/js-enrollments', 'AdminController@jsEnrollments');
 Route::get('/admin/react-enrollments', 'AdminController@reactEnrollments');
 Route::get('/admin/students/{id}', 'AdminController@studentDetails');
 Route::post('/search', 'AdminController@search')->name('search');
+Route::get('/admin/search-users-ajax', 'AdminController@searchUsersAjax')->name('admin.search-users-ajax');
 Route::get('/admin/ban-student/{id}', 'AdminController@banStudent');
 Route::get('/admin/activate-student/{id}', 'AdminController@activateStudent');
 Route::get('/admin/make-teacher/{id}', 'AdminController@makeTeacher');
