@@ -65,7 +65,7 @@
                   <!-- Current Avatar Preview -->
                   <div class="flex flex-col items-start space-y-2">
                       <div class="relative group">
-                          <img :src="getAvatarUrl(selectedAvatar)" class="w-24 h-24 rounded-2xl object-cover border border-neutral-200 shadow-sm transition-all duration-300" alt="Avatar Preview" />
+                          <img :src="getAvatarUrl(selectedAvatar)" class="w-24 h-24 rounded-2xl object-cover shadow-sm transition-all duration-300" alt="Avatar Preview" />
                       </div>
                       <span class="text-xs text-neutral-500 font-normal">Profile Picture Preview</span>
                   </div>
