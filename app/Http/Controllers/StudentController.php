@@ -145,8 +145,9 @@ class StudentController extends Controller
         }
 
         $startDate = $enrollment->startFrom ? Carbon::parse($enrollment->startFrom) : ($enrollment->paidAt ? Carbon::parse($enrollment->paidAt) : Carbon::now());
-        $daysSincePayment = Carbon::now()->diffInDays($startDate);
-        $accessTill = max($daysSincePayment, (int)$enrollment->override_access_days);
+        $daysSincePayment = $startDate->startOfDay()->diffInDays(Carbon::now()->startOfDay(), false);
+        $overrideDays = (int)$enrollment->override_access_days;
+        $accessTill = $overrideDays > 0 ? max($daysSincePayment, $overrideDays) : $daysSincePayment;
 
         $sections = BatchSection::where('batchId', $enrollment->batchId)
             ->with(['chapters' => function($query) {
