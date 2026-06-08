@@ -23,6 +23,8 @@
     
   </main>
   <script>
+    // ... existing player code ...
+    
     document.getElementById('markComplete').addEventListener('click', function() {
         const button = this;
         button.disabled = true; // Prevent double-clicks
@@ -34,19 +36,23 @@
                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
             },
             body: JSON.stringify({
-                videoId: window.activeVideo.id,
-                batchId: window.activeVideo.batchId
+                videoId: {{ $video->id }},
+                batchId: {{ $video->batchId }}
             })
         })
         .then(response => response.json())
         .then(data => {
             if (data.status === 'success') {
-                window.activeVideo.isCompleted = true;
-                if (typeof updateMarkCompleteButton === 'function') {
-                    updateMarkCompleteButton();
-                }
-                if (typeof addCheckmarkToSidebar === 'function') {
-                    addCheckmarkToSidebar(window.activeVideo.id);
+                // Update button appearance
+                button.classList.remove('bg-green-100', 'text-green-700', 'hover:bg-green-200');
+                button.classList.add('bg-neutral-100', 'text-neutral-700');
+                button.textContent = 'Completed';
+                button.disabled = true;
+                
+                // Optional: Update progress display if you have one
+                if (data.progress) {
+                    // Update any progress indicators here
+                    console.log(`Course progress: ${data.progress}%`);
                 }
             } else {
                 button.disabled = false; // Re-enable button on failure
@@ -68,14 +74,18 @@
     let lastProgress = 0;
     let isPlaying = false;
     let videoProgress = 0;
-    
+    let hasResumed = false;
+    let resumeFrom = {{ optional($video->userProgress(Auth::user()->id))->progress ?? 0 }};
     function resumeVideo(time){
       if (typeof time === 'number' && time >= 0) {
           player.setCurrentTime(time);
       } else {
+          console.warn('Invalid resume time:', time);
           player.setCurrentTime(0); // fallback to start
       }
     }
+    
+    
     
     player.on('ready', () => {
         console.log('Ready');
@@ -83,12 +93,13 @@
     
     player.on('play', () => {
         isPlaying = true;
-        if (!window.hasResumed) {
-            resumeVideo(window.resumeFrom);
-            window.hasResumed = true;
-        }
+        if (!hasResumed) {
+        resumeVideo(resumeFrom);
+        hasResumed = true;
+    }
     });
 
+    
     player.on('pause', () => {
         isPlaying = false;
     });
@@ -97,13 +108,26 @@
         isPlaying = false;
     });
     
+    // player.getDuration((duration) => {
+    //     totalDuration = duration;
+    //     totalVideoDuration = duration;
+    // });
+    
     // Event handler for time updates when the player is playing
     player.on('timeupdate', (timingData) => {
+        // Get current seconds
         const currentTime = timingData.seconds;
+    
+        // Calculate progress percentage and round to the nearest 25%
         const progressPercentage = (currentTime / timingData.duration) * 100;
         const progressRounded = Math.floor(progressPercentage / 25) * 25;
+    
+        // Log the progress percentage
+        // console.log('Progress Percentage: ' + Math.floor(progressPercentage) + "%");
         videoProgress = Math.floor(progressPercentage);
+        // Check if progress reached a new 25% milestone and update the progress bar
         if (progressRounded > lastProgress) {
+            // console.log(`Video progress: ${progressRounded}%`);
             lastProgress = progressRounded;
         }
     });
@@ -122,8 +146,8 @@
                             'X-CSRF-TOKEN': '{{ csrf_token() }}'
                         },
                         body: JSON.stringify({
-                            videoId: window.activeVideo.id,
-                            batchId: window.activeVideo.batchId,
+                            videoId: '{{ $video->id }}',
+                            batchId: '{{ $video->batchId }}',
                             progress: currentDuration, // Send current video timestamp
                             duration: totalDuration
                         })

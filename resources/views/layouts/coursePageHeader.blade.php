@@ -182,36 +182,14 @@
 
       <div x-data="{ dropdownOpen: false }" class="relative">
         <div class="flex gap-3 items-center">
-                  <button id="markComplete" style="display: {{ ($intro == 'false' && $video->type == 2 && $isVideoUnlocked == true) ? 'block' : 'none' }}" class="text-sm px-5 rounded-full py-2 border hover:bg-violet-200 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 disabled:pointer-events-none
+          @if ($intro == 'false' && $video->type == 2 && $isVideoUnlocked == true)
+                  <button id="markComplete" class="text-sm px-5 rounded-full py-2 border hover:bg-violet-200 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 disabled:pointer-events-none
                           {{ optional($video->userProgress(Auth::user()->id))->status
             ? 'bg-green-50 border-green-50 text-green-700 disabled:opacity-100'
             : 'bg-violet-100 border-violet-300 text-violet-600' }}" {{ optional($video->userProgress(Auth::user()->id))->status ? 'disabled' : '' }}>
                     {{ optional($video->userProgress(Auth::user()->id))->status ? 'Lesson Completed' : 'Mark as Complete' }}
                   </button>
-
-                  <script>
-                    function updateMarkCompleteButton() {
-                        const btn = document.getElementById('markComplete');
-                        if (!btn) return;
-
-                        if (window.activeVideo.intro === 'false' && window.activeVideo.isUnlocked) {
-                            btn.style.display = 'block';
-                        } else {
-                            btn.style.display = 'none';
-                            return;
-                        }
-
-                        if (window.activeVideo.isCompleted) {
-                            btn.disabled = true;
-                            btn.className = "text-sm px-5 rounded-full py-2 border bg-green-50 border-green-50 text-green-700 disabled:opacity-100 disabled:pointer-events-none";
-                            btn.innerText = "Lesson Completed";
-                        } else {
-                            btn.disabled = false;
-                            btn.className = "text-sm px-5 rounded-full py-2 border hover:bg-violet-200 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 bg-violet-100 border-violet-300 text-violet-600";
-                            btn.innerText = "Mark as Complete";
-                        }
-                    }
-                  </script>
+          @endif
           {{-- chapers slider --}}
           <div x-data="{ slideOverOpen: false }" class="relative z-50 w-auto h-auto hidden">
             <button @click="slideOverOpen=true"
@@ -274,9 +252,8 @@
                                     @foreach ($section->chapters as $c)
                                       <div x-show="activeAccordion==id" class="" x-collapse x-cloak>
                                         <a id="item" style="display: flex"
-                                          class="chapter-link-{{ $c->id }} w-full items-center gap-2 flex {{ $c->id == $video->id ? 'bg-orange-100 text-orange-600 font-medium' : 'bg-neutral-100' }} my-2 p-3 rounded-md text-left"
-                                          href="javascript:void(0)"
-                                          onclick="switchVideo({{ $c->id }}, '{{ $c->videoLink }}', {!! json_encode($c->title) !!}, {!! json_encode($c->desc) !!}, '{{ route('recordings', ['batchId' => $batchId, 'cId' => Crypt::encrypt($c->id)]) }}', {{ $accessTill >= $c->accessOn ? 'true' : 'false' }}, {{ optional($c->userProgress(Auth::id()))->status == 1 ? 'true' : 'false' }}, {{ optional($c->userProgress(Auth::id()))->progress ?? 0 }})">
+                                          class="w-full items-center gap-2 flex {{ $c->id == $video->id ? 'bg-orange-100' : 'bg-neutral-100' }} my-2 p-3 rounded-md text-left"
+                                          href="{{ route('recordings', ['batchId' => $batchId, 'cId' => Crypt::encrypt($c->id)]) }}">
 
                                           <div class="flex items-center gap-2 flex-1">
                                             @if ($c->type == 2)
@@ -301,15 +278,13 @@
                                             <span class="text-">{{ $c->title }}</span>
                                           </div>
 
-                                          <span class="checkmark-container-{{ $c->id }}">
-                                            @if (optional($c->userProgress(Auth::id()))->status == 1)
-                                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                stroke-linejoin="round" class="text-red-600">
-                                                <path d="M20 6L9 17l-5-5" />
-                                              </svg>
-                                            @endif
-                                          </span>
+                                          @if (optional($c->userProgress(Auth::id()))->status == 1)
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                              fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                              stroke-linejoin="round" class="text-red-600">
+                                              <path d="M20 6L9 17l-5-5" />
+                                            </svg>
+                                          @endif
                                         </a>
                                       </div>
                                     @endforeach
@@ -392,9 +367,8 @@
                                       <ul class="sortable-content-list ml-4" style="list-style-type: none;">
                                         @foreach ($section->chapters as $c)
                                           <li data-id="{{ $c->id }}" class="hover:text-violet-600">
-                                            <a class="chapter-link-{{ $c->id }} sortable-item mb-2 text-[15px] font-ligh text-neutral-700 flex gap-3 items-center {{ $c->id == $video->id ? 'text-orange-600 font-medium' : '' }}"
-                                              href="javascript:void(0)"
-                                              onclick="switchVideo({{ $c->id }}, '{{ $c->videoLink }}', {!! json_encode($c->title) !!}, {!! json_encode($c->desc) !!}, '{{ route('recordings', ['batchId' => $batchId, 'cId' => Crypt::encrypt($c->id)]) }}', {{ $accessTill >= $c->accessOn ? 'true' : 'false' }}, {{ optional($c->userProgress(Auth::id()))->status == 1 ? 'true' : 'false' }}, {{ optional($c->userProgress(Auth::id()))->progress ?? 0 }})">
+                                            <a class="sortable-item mb-2 text-[15px] font-ligh text-neutral-700 flex gap-3 items-center {{ $c->id == $video->id ? 'text-orange-600 font-medium' : '' }}"
+                                              href="{{ route('recordings', ['batchId' => $batchId, 'cId' => Crypt::encrypt($c->id)]) }}">
                                               @if ($c->type == 2)
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                   viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -434,16 +408,14 @@
                                                 </svg>
                                               @endif
                                               {{ $c->title }}
-                                              <span class="checkmark-container-{{ $c->id }}">
-                                                @if (optional($c->userProgress(Auth::id()))->status == 1)
-                                                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-                                                    fill="currentColor" class="bi bi-check-all text-green-600 -ml-2"
-                                                    viewBox="0 0 16 16">
-                                                    <path
-                                                      d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z" />
-                                                  </svg>
-                                                @endif
-                                              </span>
+                                              @if (optional($c->userProgress(Auth::id()))->status == 1)
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                  fill="currentColor" class="bi bi-check-all text-green-600 -ml-2"
+                                                  viewBox="0 0 16 16">
+                                                  <path
+                                                    d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486z" />
+                                                </svg>
+                                              @endif
                                             </a>
                                           </li>
                                         @endforeach
