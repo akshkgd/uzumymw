@@ -374,7 +374,27 @@
                           </div>
                     @else
                 <div class="p-5">
-                  <form action="{{ route('updateContent') }}" method="POST" class="mb-12">
+                  <!-- Video Preview Container (Inline) -->
+                  <div id="videoPreviewContainer" class="hidden w-full mb-12 animate-fade-in">
+                      <!-- Close Button -->
+                      <div class="flex justify-end mb-3">
+                          <button type="button" onclick="closeVideoPreview()" class="text-sm font-semibold text-neutral-500 hover:text-neutral-900 transition-colors flex items-center gap-1.5 focus:outline-none bg-neutral-100 hover:bg-neutral-200/80 px-3.5 py-2 rounded-lg">
+                              <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                              </svg>
+                              <span>Close Preview</span>
+                          </button>
+                      </div>
+
+                      <!-- Video Player Body -->
+                      <div class="video-container relative w-full pb-[56.25%] h-0  overflow-hidden">
+                          <div id="previewPlayerContainer" class="absolute inset-0 flex items-center justify-center">
+                              <!-- Dynamic iframe will be inserted here -->
+                          </div>
+                      </div>
+                  </div>
+
+                  <form action="{{ route('updateContent') }}" method="POST" id="chapterForm" class="mb-12">
                     @csrf
                     <input type="hidden" name="batchId" value="{{$batch->id}}">
                     <input type="hidden" name="contentId" value="{{$currentContent->id}}">
@@ -407,8 +427,14 @@
                     <input type="hidden" id="quill_html" name="desc"></input>
                       
                     <div class="form-floating space-y-2 my-4">
-                        <label class="text-base  leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="floatingInput">Bunny or YouTube Video Id</label>
-                        <input type="text" value="{{$currentContent->videoLink}}" class="flex w-full px-3 py-3 text-base bg-white border rounded-lg border-neutral-300  placeholder:text-neutral-500 focus:border-neutral-300 focus:outline-none focus:ring-2  focus:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" id="floatingInput" name="videoLink" placeholder="Content">
+                        <div class="flex justify-between items-center">
+                            <label class="text-base leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-neutral-800 font-medium" for="videoLinkInput">Bunny or YouTube Video Id</label>
+                            <button type="button" id="btnPreviewVideo" class="text-sm font-semibold text-violet-600 hover:text-violet-700 flex items-center gap-1.5 transition-colors focus:outline-none" onclick="openVideoPreview()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play-circle"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                                <span>Preview Video</span>
+                            </button>
+                        </div>
+                        <input type="text" value="{{$currentContent->videoLink}}" class="flex w-full px-3 py-3 text-base bg-white border rounded-lg border-neutral-300 placeholder:text-neutral-500 focus:border-neutral-300 focus:outline-none focus:ring-2 focus:ring-neutral-200 disabled:cursor-not-allowed disabled:opacity-50" id="videoLinkInput" name="videoLink" placeholder="Content">
                     </div>
                       <div class="form-floating space-y-2 my-4">
                         <label class="text-base  leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="floatingInput">Access On</label>
@@ -610,6 +636,86 @@ quill.on('text-change', function(delta, oldDelta, source) {
             document.getElementById('sectionIdInput').value = sectionId;
         }
     });
+
+    function openVideoPreview() {
+        const input = document.getElementById('videoLinkInput');
+        const titleInput = document.querySelector('input[name="title"]');
+        const title = titleInput ? titleInput.value.trim() : 'Video Preview';
+        const videoLink = input ? input.value.trim() : '';
+        
+        if (!videoLink) {
+            alert('Please enter a Video ID or URL first.');
+            return;
+        }
+        
+        const embedInfo = getEmbedUrl(videoLink);
+        if (!embedInfo) {
+            alert('Invalid video ID or URL.');
+            return;
+        }
+        
+        const form = document.getElementById('chapterForm');
+        const previewContainer = document.getElementById('videoPreviewContainer');
+        const container = document.getElementById('previewPlayerContainer');
+        
+        container.innerHTML = '<iframe id="preview-iframe" src="' + embedInfo.url + '" style="border:0;position:absolute;top:0;left:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe>';
+        
+        form.classList.add('hidden');
+        previewContainer.classList.remove('hidden');
+    }
+
+    function closeVideoPreview() {
+        const form = document.getElementById('chapterForm');
+        const previewContainer = document.getElementById('videoPreviewContainer');
+        const container = document.getElementById('previewPlayerContainer');
+        
+        previewContainer.classList.add('hidden');
+        form.classList.remove('hidden');
+        
+        if (container) {
+            container.innerHTML = '';
+        }
+    }
+
+    function getEmbedUrl(videoLink) {
+        if (!videoLink) return null;
+        
+        let isYouTube = false;
+        let youtubeId = '';
+        
+        if (videoLink.includes('youtube.com') || videoLink.includes('youtu.be')) {
+            isYouTube = true;
+            const ytRegExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = videoLink.match(ytRegExp);
+            if (match && match[2].length === 11) {
+                youtubeId = match[2];
+            }
+        } else if (videoLink.length < 12 && !videoLink.includes('/')) {
+            isYouTube = true;
+            youtubeId = videoLink;
+        }
+        
+        if (isYouTube && youtubeId) {
+            return {
+                type: 'youtube',
+                url: 'https://www.youtube.com/embed/' + youtubeId + '?autoplay=1&rel=0'
+            };
+        }
+        
+        let libraryId = '200867';
+        let videoId = videoLink;
+        
+        if (videoLink.includes('/')) {
+            const parts = videoLink.split('/');
+            libraryId = parts[0];
+            videoId = parts.slice(1).join('/');
+        }
+        
+        return {
+            type: 'bunny',
+            url: 'https://iframe.mediadelivery.net/embed/' + libraryId + '/' + videoId + '?autoplay=true&loop=false&muted=false&preload=true&responsive=true'
+        };
+    }
 </script>
 
 @endif

@@ -93,81 +93,79 @@ class StudentController extends Controller
 
     public function recordings($id, $videoLink = null)
     {
+        $chapterId = null;
+
         try {
-            // batchId is batch Enrollment Id
             $batchId = $id;
             $id = decrypt($id);
-            $chapterId = decrypt($videoLink);
+            if ($videoLink) {
+                $chapterId = decrypt($videoLink);
+            }
         } catch (DecryptException $e) {
-            // Handle decryption exception if needed
+            return redirect()->back()->with('alert-danger', 'Invalid link or resource.');
         }
 
         $enrollment = CourseEnrollment::findOrFail($id);
-        if (!empty($chapterId)) {
-            $progress = $this->updateCourseProgress($enrollment, $chapterId);
-        }
 
-        if (Auth::user()->id == $enrollment->userId) {
-            
-            if ($enrollment->hasPaid == 1) {
-                $content = BatchContent::where('batchId', $enrollment->batchId)->latest()->get();
-                if (!isset($chapterId)) {
-                    $chapterId = null; 
-                }
-                $video = $videoLink ? BatchContent::find($chapterId) : $content->first();
-                // $intro = false;
-                $intro = ($videoLink) ? "false" : "true";
-                if (blank($enrollment->accessTill)) {
-                    $field5 = $enrollment->batch->field5;
-                
-                    // If field5 is empty or not numeric, default to 1 year
-                    $yearsToAdd = (is_numeric($field5) && (int)$field5 > 0) ? (int)$field5 : 1;
-                
-                    $effectiveAccessTill = Carbon::parse($enrollment->batch->startDate)->addYears($yearsToAdd);
-                }
-                 else {
-                    $effectiveAccessTill = Carbon::parse($enrollment->accessTill);
-                }
-
-                if ($effectiveAccessTill->isFuture()) {
-                    $subStatus = true;
-                } else {
-                    $subStatus = false;
-                }
-                $accessTill = Carbon::now()->diffInDays(Carbon::parse($enrollment->paidAt));
-                $sections = BatchSection::where('batchId', $enrollment->batchId)
-                    ->with(['chapters' => function($query) {
-                        $query->with(['progress' => function($query) {
-                            $query->where('userId', Auth::id())
-                                ->select(['contentId', 'status', 'id']);
-                        }]);
-                    }])
-                    ->orderBy('order')
-                    ->get();
-                $accessOn = true;
-                if ($videoLink) {
-                    $isVideoUnlocked = ($accessTill >=  $video->accessOn) ? true : false;
-                    $enrollmentDate = Carbon::parse($enrollment->paidAt);
-                    $videoUnlockedOn = $enrollmentDate->copy()->addDays($video->accessOn);
-                    $daysUntilVideoUnlocks = Carbon::now()->diffInDays($videoUnlockedOn, false) + 1;
-                } else {
-                    $isVideoUnlocked = false;
-                    $daysUntilVideoUnlocks = Carbon::now()->addDays(7);
-                }
-                if ($sections->isEmpty()) {
-                   
-                    return view('students.recordings', compact('content', 'subStatus', 'batchId', 'video', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
-                } else {
-                   
-                    return view('students.recordingsTA', compact('sections', 'subStatus', 'content', 'batchId', 'video', 'intro', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
-                }
-            } else {
-                session()->flash('alert-warning', 'Complete your payment to see notes and assignments');
-                return redirect()->back();
-            }
-        } else {
+        if (Auth::user()->id != $enrollment->userId) {
             session()->flash('alert-danger', 'You are not authorized to view the recordings');
             return redirect()->back();
+        }
+
+        if ($enrollment->hasPaid != 1) {
+            session()->flash('alert-warning', 'Complete your payment to see notes and assignments');
+            return redirect()->back();
+        }
+
+        if (!empty($chapterId)) {
+            $this->updateCourseProgress($enrollment, $chapterId);
+        }
+
+        $content = BatchContent::where('batchId', $enrollment->batchId)->latest()->get();
+        $video = $videoLink ? BatchContent::find($chapterId) : $content->first();
+        $intro = ($videoLink) ? "false" : "true";
+
+        if (blank($enrollment->accessTill)) {
+            $field5 = optional($enrollment->batch)->field5;
+            $yearsToAdd = (is_numeric($field5) && (int)$field5 > 0) ? (int)$field5 : 1;
+            $effectiveAccessTill = Carbon::parse(optional($enrollment->batch)->startDate)->addYears($yearsToAdd);
+        } else {
+            $effectiveAccessTill = Carbon::parse($enrollment->accessTill);
+        }
+
+        if ($effectiveAccessTill->isFuture()) {
+            $subStatus = true;
+        } else {
+            $subStatus = false;
+        }
+
+        $daysSincePayment = Carbon::now()->diffInDays(Carbon::parse($enrollment->paidAt));
+        $accessTill = max($daysSincePayment, (int)$enrollment->override_access_days);
+
+        $sections = BatchSection::where('batchId', $enrollment->batchId)
+            ->with(['chapters' => function($query) {
+                $query->with(['progress' => function($query) {
+                    $query->where('userId', Auth::id())
+                        ->select(['contentId', 'status', 'id']);
+                }]);
+            }])
+            ->orderBy('order')
+            ->get();
+
+        $isVideoUnlocked = false;
+        $daysUntilVideoUnlocks = 0;
+
+        if ($video) {
+            $isVideoUnlocked = ($accessTill >= $video->accessOn) ? true : false;
+            $enrollmentDate = Carbon::parse($enrollment->paidAt);
+            $videoUnlockedOn = $enrollmentDate->copy()->addDays($video->accessOn);
+            $daysUntilVideoUnlocks = Carbon::now()->diffInDays($videoUnlockedOn, false) + 1;
+        }
+
+        if ($sections->isEmpty()) {
+            return view('students.recordings', compact('content', 'subStatus', 'batchId', 'video', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
+        } else {
+            return view('students.recordingsTA', compact('sections', 'subStatus', 'content', 'batchId', 'video', 'intro', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
         }
     }
 

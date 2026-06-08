@@ -562,6 +562,7 @@ class AdminController extends Controller
         $enrollment->hasPaid = $request->hasPaid;
         $enrollment->paidAt = $request->paidAt;
         $enrollment->accessTill = $request->accessTill;
+        $enrollment->override_access_days = $request->override_access_days;
         $enrollment->certificateFee = (int) $request->certificateFee;
         $enrollment->save();
         session()->flash('alert-success', 'Payment Details Updated Successfully!');
@@ -1104,4 +1105,37 @@ class AdminController extends Controller
         return response()->json($users);
     }
 
+    public function updateAccessOverride(Request $request, $id)
+    {
+        $request->validate([
+            'days' => 'nullable|integer|min:0'
+        ]);
+
+        try {
+            $enrollment = CourseEnrollment::findOrFail($id);
+            $enrollment->override_access_days = $request->input('days');
+            $enrollment->save();
+
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Student access override days updated successfully.'
+                ]);
+            }
+
+            session()->flash('alert-success', 'Student access override days updated successfully.');
+            return redirect()->back();
+        } catch (\Exception $e) {
+            if ($request->ajax() || $request->wantsJson()) {
+                return response()->json([
+                    'success' => false,
+                    'message' => 'Error updating student access: ' . $e->getMessage()
+                ], 500);
+            }
+
+            session()->flash('alert-danger', 'Error updating student access: ' . $e->getMessage());
+            return redirect()->back();
+        }
+    }
 }
+

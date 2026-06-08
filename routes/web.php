@@ -266,6 +266,7 @@ Route::get('/user/{id}/enrollments', 'TeacherController@showEnrollments')->name(
 
 //admin
 Route::get('/admin/students', 'AdminController@students')->name('admin.students');
+Route::post('/admin/enrollment/{id}/override-access', 'AdminController@updateAccessOverride')->name('admin.enrollment.overrideAccess');
 ;
 Route::get('/admin/css-enrollments', 'AdminController@cssEnrollments');
 Route::get('/admin/js-enrollments', 'AdminController@jsEnrollments');

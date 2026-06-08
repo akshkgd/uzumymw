@@ -21,6 +21,7 @@ class CourseEnrollment extends Model
         'email',
         'date',
         'startDate',
+        'override_access_days',
         // Add any other fields you might update
     ];
     public function batch(){

@@ -76,6 +76,15 @@
                     <input type="date" id="accessTill" name="accessTill" value="{{$enrollment->accessTill}}"
                         class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5">
                 </div>
+
+                <div class="mb-4">
+                    <label for="override_access_days" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Override Access Days</label>
+                    <input type="number" id="override_access_days" name="override_access_days" min="0" value="{{$enrollment->override_access_days}}"
+                        class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="e.g. 10 (Leave blank for normal timeline)">
+                    <p class="text-xs text-neutral-500 mt-1">
+                        Current days passed since payment: <span class="font-semibold text-gray-950">{{ $enrollment->paidAt ? \Carbon\Carbon::now()->diffInDays(\Carbon\Carbon::parse($enrollment->paidAt)) : '0 (Unpaid)' }}</span>
+                    </p>
+                </div>
                 @if($batch->type == 2)
                 <div class="mb-4">
                     <label class="inline-flex items-center">
