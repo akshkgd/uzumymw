@@ -814,7 +814,7 @@ class AdminController extends Controller
         $users = User::select('id', 'name', 'email', 'mobile', 'avatar', 'created_at', 'lastActivity')
             ->where('role', 0)
             ->orderByDesc('id')
-            ->paginate(10000)
+            ->paginate(100)
             ->withQueryString();
 
         return view('admin.students', compact('users'))

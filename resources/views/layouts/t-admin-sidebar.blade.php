@@ -10,8 +10,12 @@
     <!-- Include the Alpine library on your page -->
     <script src="https://unpkg.com/alpinejs" defer></script>
     <link href="{{asset('css/app.css')}}" rel="stylesheet" />
-    {{-- <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script> --}}
-    {{-- <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" /> --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cal+Sans&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+   
+      
     <style>
       input:-webkit-autofill,
 input:-webkit-autofill:hover,
@@ -20,6 +24,11 @@ input:-webkit-autofill:focus {
     color: inherit !important;
     transition: background-color 5000s ease-in-out 0s;
 }
+        .cal-sans {
+        font-family: "Cal Sans", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
       .user-search-dropdown-item {
           display: block;
           padding: 8px 12px;
@@ -169,17 +178,17 @@ input:-webkit-autofill:focus {
       </div>
     </div>
     <section class="flex w-full">
-      <div id="sidebar" class="w-64 fixed top-0 box-border p-3 h-screen bg-neutral-100 hidden lg:block">
+      <div id="sidebar" class="w-64 fixed top-0 box-border p-3 h-screen bg-neutral-10 border-r border-neutral-200 hidden lg:block">
           {{-- <div class="relative px-2 z-10 flex items-center w-auto leading-10 lg:flex-grow-0 lg:flex-shrink-0 lg:text-left"><a class="mr- flex items-center space-x-2" href=""><svg width="62" height="62" viewBox="0 0 62 62" fill="none" xmlns="http://www.w3.org/2000/svg" class="size-6"><ellipse cx="30.882" cy="30.803" rx="30.3097" ry="30.2769" fill="url(#paint0_radial_36_64)"></ellipse><defs><radialGradient id="paint0_radial_36_64" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0.572266 0.526062) rotate(44.969) scale(85.6825 85.6824)"><stop offset="0.352001" stop-color="#090909"></stop><stop offset="0.591494" stop-color="#2770EA"></stop><stop offset="0.793825" stop-color="#FF7E97"></stop><stop offset="0.972489" stop-color="#FF9203"></stop></radialGradient></defs></svg><span class="hidde text-xl font-bold tracking-tight sm:inline-block">Codekaro</span></a><nav class="items-center hidden space-x- text-sm font-medium lg:flex"></nav></div> --}}
         
-        <a href="{{ url('/home') }}" class="sm:mr-8 px-2 font-sans text-xl font-bold tracking-tight text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline" style="font-weight: 800; font-size: 22px;">
-          codekaro
+        <a href="{{ url('/home') }}" class="sm:mr-8 px-2 cal-sans text-xl font-semibold tracking-tig text-left text-black no-underline bg-transparent cursor-pointer group focus:no-underline">
+          Codekaro
         </a>
         <div class="mt-4 text-neutral-800 text-sm">
           <div style="position: relative; margin-bottom: 12px;" x-data="userSearch()">
             <form id="sidebarSearchForm" action="{{ route('search') }}" method="POST" @submit.prevent="submitSearch">
               @csrf
-              <div class="flex items-center bg-white border border-neutral-200 rounded-lg shadow-sm focus-within:ring-2 focus-within:ring-violet-500 focus-within:border-transparent transition-all duration-200 px-2 py-0.5" style="border: 1px solid #e5e5e5; border-radius: 8px; background-color: #ffffff; padding: 4px 8px; display: flex; align-items: center;">
+              <div class="flex items-center bg-white border border-neutral-200 rounded-lg focus:outline-none  transition-all duration-200 px-2 py-0.5" style="border: 1px solid #e5e5e5; border-radius: 8px; background-color: #ffffff; padding: 4px 8px; display: flex; align-items: center;">
                   <svg class="w-4 h-4 text-neutral-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="color: #a3a3a3; width: 16px; height: 16px; flex-shrink: 0; margin-right: 4px;">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
                   </svg>
@@ -208,7 +217,7 @@ input:-webkit-autofill:focus {
                  x-transition:leave="transition ease-in duration-75"
                  x-transition:leave-start="transform opacity-100 scale-100"
                  x-transition:leave-end="transform opacity-0 scale-95"
-                 class="absolute left-2 right-2 mt-1 bg-white border border-neutral-200 rounded-lg shadow-xl z-50 max-h-64 overflow-y-auto divide-y divide-neutral-100"
+                 class="absolute left-2 right-2 mt-1 bg-white border border-neutral-200 rounded-lg z-50 max-h-64 overflow-y-auto divide-y divide-neutral-100"
                  style="display: none; position: absolute; left: 0; right: 0; margin-top: 4px; background-color: #ffffff; border: 1px solid #e5e5e5; border-radius: 8px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); z-index: 50; max-height: 256px; overflow-y: auto;">
                  <template x-for="(user, index) in results" :key="user.id">
                      <a :href="'/admin/students/' + user.id" 
