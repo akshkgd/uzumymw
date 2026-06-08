@@ -121,8 +121,13 @@ class StudentController extends Controller
             $this->updateCourseProgress($enrollment, $chapterId);
         }
 
-        $content = BatchContent::where('batchId', $enrollment->batchId)->latest()->get();
-        $video = $videoLink ? BatchContent::find($chapterId) : $content->first();
+        $content = BatchContent::where('batchId', $enrollment->batchId)
+            ->with(['progress' => function($query) {
+                $query->where('userId', Auth::id())
+                    ->select(['contentId', 'status', 'id', 'userId', 'progress']);
+            }])
+            ->latest()->get();
+        $video = $videoLink ? $content->firstWhere('id', $chapterId) : $content->first();
         $intro = ($videoLink) ? "false" : "true";
 
         if (blank($enrollment->accessTill)) {

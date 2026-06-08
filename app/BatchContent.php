@@ -17,6 +17,12 @@ class BatchContent extends Model
     // Method to get the progress of a specific user for this content
     public function userProgress($userId)
     {
+        if ($this->relationLoaded('progress')) {
+            $loadedProgress = $this->progress->first();
+            if (is_null($loadedProgress) || $loadedProgress->userId == $userId) {
+                return $loadedProgress;
+            }
+        }
         return $this->progress()->where('userId', $userId)->first();
     } 
 
