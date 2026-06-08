@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CourseEnrollment extends Model
 {
-    Protected $dates = ['date', 'startDate', 'created_at'];
+    protected $dates = ['date', 'startDate', 'created_at', 'startFrom'];
     protected $fillable = [
         'status',
         'hasPaid',
@@ -22,6 +22,7 @@ class CourseEnrollment extends Model
         'date',
         'startDate',
         'override_access_days',
+        'startFrom',
         // Add any other fields you might update
     ];
     public function batch(){

@@ -144,7 +144,8 @@ class StudentController extends Controller
             $subStatus = false;
         }
 
-        $daysSincePayment = Carbon::now()->diffInDays(Carbon::parse($enrollment->paidAt));
+        $startDate = $enrollment->startFrom ? Carbon::parse($enrollment->startFrom) : ($enrollment->paidAt ? Carbon::parse($enrollment->paidAt) : Carbon::now());
+        $daysSincePayment = Carbon::now()->diffInDays($startDate);
         $accessTill = max($daysSincePayment, (int)$enrollment->override_access_days);
 
         $sections = BatchSection::where('batchId', $enrollment->batchId)
@@ -162,8 +163,7 @@ class StudentController extends Controller
 
         if ($video) {
             $isVideoUnlocked = ($accessTill >= $video->accessOn) ? true : false;
-            $enrollmentDate = Carbon::parse($enrollment->paidAt);
-            $videoUnlockedOn = $enrollmentDate->copy()->addDays($video->accessOn);
+            $videoUnlockedOn = $startDate->copy()->addDays($video->accessOn);
             $daysUntilVideoUnlocks = Carbon::now()->diffInDays($videoUnlockedOn, false) + 1;
         }
 

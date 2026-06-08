@@ -563,6 +563,7 @@ class AdminController extends Controller
         $enrollment->paidAt = $request->paidAt;
         $enrollment->accessTill = $request->accessTill;
         $enrollment->override_access_days = $request->override_access_days;
+        $enrollment->startFrom = $request->startFrom;
         $enrollment->certificateFee = (int) $request->certificateFee;
         $enrollment->save();
         session()->flash('alert-success', 'Payment Details Updated Successfully!');
@@ -661,6 +662,7 @@ class AdminController extends Controller
             $a->amountpayable = $batch->payable;
             $a->amountPaid = $request->amount * 100;
             $a->paidAt = $request->paidAt ?? Carbon::now();
+            $a->startFrom = $request->startFrom;
             $a->paymentMethod = $request->paymentMethod ?? 'upi';
             $a->transactionId = $request->transactionId ?? 'TXN-' . strtoupper(uniqid());
             $a->invoiceId = $request->invoiceId ?? 'INV-' . strtoupper(uniqid());
@@ -691,6 +693,7 @@ class AdminController extends Controller
             $enrollment->hasPaid = 1;
             $enrollment->amountPaid = $request->amount * 100;
             $enrollment->paidAt = $request->paidAt;
+            $enrollment->startFrom = $request->startFrom;
             $enrollment->paymentMethod = $request->paymentMethod;
             $enrollment->transactionId = $request->transactionId;
             $enrollment->invoiceId = $request->invoiceId;

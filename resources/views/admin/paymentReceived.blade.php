@@ -72,6 +72,12 @@
                 </div>
 
                 <div class="mb-4">
+                    <label for="startFrom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start From (Access begins from)</label>
+                    <input type="date" id="startFrom" name="startFrom" value="{{ $enrollment->startFrom ? \Carbon\Carbon::parse($enrollment->startFrom)->format('Y-m-d') : '' }}"
+                        class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5">
+                </div>
+
+                <div class="mb-4">
                     <label for="accessTill" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Access Till</label>
                     <input type="date" id="accessTill" name="accessTill" value="{{$enrollment->accessTill}}"
                         class="border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5">
