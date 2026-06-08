@@ -259,7 +259,7 @@ body{
                           <div id="section{{$section->id}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="">
                                         @foreach ($section->chapters as $c)
-                                        @if($accessTill >=  $c->accessOn )
+                                        @if($accessTill >=  (int)($c->accessOn ?? 0) )
                                         <a id="item" style="font-size: 16px;" class="{{ $c->id == $video->id ? 'active' : ' ' }}"  href="{{ route('recordings', ['batchId' => $batchId, 'cId' => Crypt::encrypt($c->id)]) }}">
                                             @if($c->type == 2)
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-play" viewBox="0 0 16 16">
