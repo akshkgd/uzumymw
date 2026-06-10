@@ -84,47 +84,39 @@ public function grantAccess(Request $request)
             throw new \Exception('Payment data or notes not found in webhook request.');
         }
         
-        $enrollment = CourseEnrollment::findorFail($notes['enrollmentId']);
-        if (!$enrollment) {
-            throw new \Exception('Course enrollment not found.');
-        }
-
-        // First update payment status if not already paid
-        if ($enrollment->hasPaid == 0) {
-            Log::info('Updating payment status for enrollment', ['enrollment_id' => $enrollment->id]);
+        $enrollmentId = $notes['enrollmentId'];
+        
+        \Illuminate\Support\Facades\DB::transaction(function () use ($enrollmentId, $paymentData) {
+            $enrollment = CourseEnrollment::where('id', $enrollmentId)->lockForUpdate()->first();
+            if (!$enrollment) {
+                throw new \Exception('Course enrollment not found.');
+            }
             
-            $enrollment->status = 1;
-            $enrollment->hasPaid = 1;
-            $enrollment->amountPaid = $paymentData['amount'];
-            $enrollment->paidAt = Carbon::now();
-            $enrollment->paymentMethod = $paymentData['method'];
-            $enrollment->transactionId = $paymentData['id'];
-            $enrollment->field2 = 'webhook access granted';
-            $enrollment->save();
-
-            // Send Pabbly webhook first
-            Log::info('Sending Pabbly webhook', ['enrollment_id' => $enrollment->id]);
-            $this->sendPabblyWebhook($enrollment->id, $paymentData['amount']);
-
-            // Then send email notification
-            if ($notes['topicId'] == 500){
-
+            if ($enrollment->hasPaid == 0) {
+                Log::info('Updating payment status for enrollment via webhook', ['enrollment_id' => $enrollment->id]);
+                
+                $enrollment->status = 1;
+                $enrollment->hasPaid = 1;
+                $enrollment->amountPaid = $paymentData['amount'];
+                $enrollment->paidAt = Carbon::now();
+                $enrollment->paymentMethod = $paymentData['method'];
+                $enrollment->transactionId = $paymentData['id'];
+                $enrollment->field2 = 'webhook access granted';
+                $enrollment->save();
+            } 
+            else {
+                Log::info('Payment already processed for enrollment via webhook lock check', [
+                    'enrollment_id' => $enrollment->id,
+                    'payment_status' => $enrollment->hasPaid,
+                    'email_sent' => $enrollment->email_sent
+                ]);
             }
-            else{
-                Log::info('Sending enrollment notification', ['enrollment_id' => $enrollment->id]);
-                $this->sendEnrollmentNotification($enrollment);
-            }
-        } 
-        else {
-            Log::info('Payment already processed for enrollment', [
-                'enrollment_id' => $enrollment->id,
-                'payment_status' => $enrollment->hasPaid,
-                'email_sent' => $enrollment->email_sent
-            ]);
-        }
+        });
+
+        $enrollment = CourseEnrollment::findOrFail($enrollmentId);
         $purpose = $notes['purpose'] ?? null;
         if($purpose == 'vip'){
-            $enrollment->certificateFee == $paymentData['amount'];
+            $enrollment->certificateFee = $paymentData['amount'];
             $enrollment->save();
         }
         return response()->json([

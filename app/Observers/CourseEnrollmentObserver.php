@@ -18,15 +18,11 @@ class CourseEnrollmentObserver
 {
     use NotificationTrait;
 
-    /**
-     * Handle the course enrollment "created" event.
-     *
-     * @param  \App\CourseEnrollment  $courseEnrollment
-     * @return void
-     */
     public function created(CourseEnrollment $courseEnrollment)
     {
-    
+        if ($courseEnrollment->hasPaid == 1) {
+            $this->sendEnrollmentNotification($courseEnrollment);
+        }
     }
 
     /**
@@ -41,15 +37,11 @@ class CourseEnrollmentObserver
         if ($courseEnrollment->isDirty('hasPaid')) {
             if ($courseEnrollment->hasPaid == 1) {
                 $this->sendEnrollmentNotification($courseEnrollment);
-                
-                
             } else if ($courseEnrollment->hasPaid == 0) {
                 // Payment status changed to unpaid - reset email_sent flag
                 // Use direct database update to avoid triggering observer again
                 CourseEnrollment::where('id', $courseEnrollment->id)
                     ->update(['email_sent' => false]);
-                
-                
             }
         }
     }

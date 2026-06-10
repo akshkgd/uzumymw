@@ -671,21 +671,6 @@ class AdminController extends Controller
             $a->certificateId = substr(md5(time()), 0, 16);
             $a->save();
 
-            // Send notifications using the trait
-            try {
-                Log::info('Sending Pabbly webhook from admin access grant', ['enrollment_id' => $a->id]);
-                $this->sendPabblyWebhook($a->id, $a->amountPaid);
-
-                Log::info('Sending enrollment notification from admin access grant', ['enrollment_id' => $a->id]);
-                // $this->sendEnrollmentNotification($a);
-            } catch (\Exception $e) {
-                Log::error('Failed to send notifications: ' . $e->getMessage(), [
-                    'enrollment_id' => $a->id,
-                    'error' => $e->getMessage()
-                ]);
-                // Continue execution even if notification fails
-            }
-
             session()->flash('alert-success', 'Access Granted Successfully!');
             return redirect()->back();
         } elseif ($enrollment && $enrollment->hasPaid == 0) {
@@ -699,21 +684,6 @@ class AdminController extends Controller
             $enrollment->invoiceId = $request->invoiceId;
             $enrollment->field2 = 'webhook access granted';
             $enrollment->save();
-
-            // Send notifications for updated enrollment
-            try {
-                Log::info('Sending Pabbly webhook from admin access update', ['enrollment_id' => $enrollment->id]);
-                $this->sendPabblyWebhook($enrollment->id, $enrollment->amountPaid);
-
-                Log::info('Sending enrollment notification from admin access update', ['enrollment_id' => $enrollment->id]);
-                // $this->sendEnrollmentNotification($enrollment);
-            } catch (\Exception $e) {
-                Log::error('Failed to send notifications: ' . $e->getMessage(), [
-                    'enrollment_id' => $enrollment->id,
-                    'error' => $e->getMessage()
-                ]);
-                // Continue execution even if notification fails
-            }
 
             session()->flash('alert-success', 'Access updated Successfully!');
             return redirect()->back();

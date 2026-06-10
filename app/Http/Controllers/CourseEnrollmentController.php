@@ -203,27 +203,25 @@ class CourseEnrollmentController extends Controller
                     return redirect('/bootcamp-success');
                 }
                 else{
-                    $enrollment->update([
-                        'status' => 1, 
-                        'hasPaid' => 1, 
-                        'amountPaid' => $response['amount'], 
-                        'paidAt' => Carbon::now(), 
-                        'paymentMethod' => $response['method'], 
-                        'transactionId' => $response['id']
-                    ]);
+                    \Illuminate\Support\Facades\DB::transaction(function () use ($enrollmentId, $response) {
+                        $enroll = CourseEnrollment::where('id', $enrollmentId)->lockForUpdate()->first();
+                        if ($enroll && $enroll->hasPaid == 0) {
+                            $enroll->update([
+                                'status' => 1, 
+                                'hasPaid' => 1, 
+                                'amountPaid' => $response['amount'], 
+                                'paidAt' => Carbon::now(), 
+                                'paymentMethod' => $response['method'], 
+                                'transactionId' => $response['id']
+                            ]);
+                        }
+                    });
                 }
                 
 
                 // Get the updated enrollment
                 $enrollment = CourseEnrollment::where('invoiceID', $response['order_id'])->first();
                 $batch = Batch::find($enrollment->batchId);
-
-                // Send notifications
-                // Log::info('Sending Pabbly webhook from payment endpoint', ['enrollment_id' => $enrollment->id]);
-                // $this->sendPabblyWebhook($enrollment->id, $response['amount']);
-
-                Log::info('Sending enrollment notification from payment endpoint', ['enrollment_id' => $enrollment->id]);
-                $this->sendEnrollmentNotification($enrollment);
 
                 // Handle redirects based on course type
                 session()->flash('alert-success', 'Payment Completed Successfully');

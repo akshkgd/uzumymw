@@ -35,6 +35,17 @@ trait NotificationTrait
                     'email_sent' => $enrollment->email_sent
                 ]);
 
+                // Send Pabbly webhook inside the notification flow
+                try {
+                    Log::info('Sending Pabbly webhook from notification flow', ['enrollment_id' => $enrollment->id]);
+                    $this->sendPabblyWebhook($enrollment->id, $enrollment->amountPaid);
+                } catch (\Exception $pe) {
+                    Log::error('Pabbly webhook failed inside notification flow: ' . $pe->getMessage(), [
+                        'enrollment_id' => $enrollment->id,
+                        'exception' => $pe
+                    ]);
+                }
+
                 if ($enrollment->batch->topicId == 100) {
                     Log::info('Sending onboarding email');
                     $this->sendOnboardingEmail($enrollment);
