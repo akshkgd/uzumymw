@@ -38,7 +38,7 @@ Route::view('/ashish', 'team.ashish');
 Route::view('/arpit', 'team.arpit');
 Route::view('/privacy', 'privacy');
 Route::view('/terms', 'terms');
-Route::view('/refund-policy', 'refund');
+Route::view('/refund', 'refund');
 Route::view('/learn-git-and-github', 'git');
 Route::view('/instagram-live-masterclass', 'js');
 Route::view('/bootcamp-demo', 'wd');

@@ -63,9 +63,9 @@ trait NotificationTrait
                     $this->sendCourseAccessNotification($enrollment);
                 }
 
-                // Update email_sent status in database first
+                // Update email_sent status in database using direct update to avoid triggering observer recursively
+                CourseEnrollment::where('id', $enrollment->id)->update(['email_sent' => true]);
                 $enrollment->email_sent = true;
-                $enrollment->save();
                 
                 Log::info('Notification sent and marked as sent', [
                     'enrollment_id' => $enrollment->id

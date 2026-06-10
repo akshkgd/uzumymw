@@ -1,153 +1,265 @@
-@extends('layouts.ck')
+@extends('layouts.t-student')
+
 @section('content')
-@section('title', 'Privacy Policy')
+<style>
+    body {
+        font-family: "Inter", sans-serif;
+        font-optical-sizing: auto;
+    }
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-    <div class="container ">
-     
-      <a class="navbar-brand fw-bold text-primary fs-4" href="{{url('/')}}">Codekaro</a>
-    </div>
-</nav>
-<div class="container pt-5 mt-5">
-    <div class="row justify-content-center">
-        <div class="col-sm-10">
+    .cal-sans {
+        font-family: "Cal Sans", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
 
-<p style="text-align: center;"><b>Privacy Policy</b></p>
-<p>Last updated: 2020-07-01</p>
-<p>1. <b>Introduction</b></p>
-<p>Welcome to <b>Codekaro</b> (“Company”, “we”, “our”, “us”)!</p>
-<p>These Terms of Service (“Terms”, “Terms of Service”) govern your use of our website located at <b>https://codekaro.in</b> (together or individually “Service”) operated by <b>Codekaro</b>.</p>
-<p>Our Privacy Policy also governs your use of our Service and explains how we collect, safeguard and disclose information that results from your use of our web pages.</p>
-<p>Your agreement with us includes these Terms and our Privacy Policy (“Agreements”). You acknowledge that you have read and understood Agreements, and agree to be bound of them.</p>
-<p>If you do not agree with (or cannot comply with) Agreements, then you may not use the Service, but please let us know by emailing at <b>info@codekaro.in</b> so we can try to find a solution. These Terms apply to all visitors, users and others who wish to access or use Service.</p>
-<p>2. <b>Communications</b></p>
-<p>By using our Service, you agree to subscribe to newsletters, marketing or promotional materials and other information we may send. However, you may opt out of receiving any, or all, of these communications from us by following the unsubscribe link or by emailing at info@codekaro.in.</p>
+    h1,h2,h3,h4,h5,h6 {
+        font-family: "Cal Sans", sans-serif;
+        letter-spacing: 0.01em;
+        font-weight: 400;
+        font-style: normal;
+    }
+</style>
 
-<p>3. <b>Contests, Sweepstakes and Promotions</b></p>
-<p>Any contests, sweepstakes or other promotions (collectively, “Promotions”) made available through Service may be governed by rules that are separate from these Terms of Service. If you participate in any Promotions, please review the applicable rules as well as our Privacy Policy. If the rules for a Promotion conflict with these Terms of Service, Promotion rules will apply.</p>
-
-
-<p>4. <b>Content</b></p><p>Content found on or through this Service are the property of Codekaro or used with permission. You may not distribute, modify, transmit, reuse, download, repost, copy, or use said Content, whether in whole or in part, for commercial purposes or for personal gain, without express advance written permission from us.</p>
-<p>5. <b>Prohibited Uses</b></p>
-<p>You may use Service only for lawful purposes and in accordance with Terms. You agree not to use Service:</p>
-<p>0.1. In any way that violates any applicable national or international law or regulation.</p>
-<p>0.2. For the purpose of exploiting, harming, or attempting to exploit or harm minors in any way by exposing them to inappropriate content or otherwise.</p>
-<p>0.3. To transmit, or procure the sending of, any advertising or promotional material, including any “junk mail”, “chain letter,” “spam,” or any other similar solicitation.</p>
-<p>0.4. To impersonate or attempt to impersonate Company, a Company employee, another user, or any other person or entity.</p>
-<p>0.5. In any way that infringes upon the rights of others, or in any way is illegal, threatening, fraudulent, or harmful, or in connection with any unlawful, illegal, fraudulent, or harmful purpose or activity.</p>
-<p>0.6. To engage in any other conduct that restricts or inhibits anyone’s use or enjoyment of Service, or which, as determined by us, may harm or offend Company or users of Service or expose them to liability.</p>
-<p>Additionally, you agree not to:</p>
-<p>0.1. Use Service in any manner that could disable, overburden, damage, or impair Service or interfere with any other party’s use of Service, including their ability to engage in real time activities through Service.</p>
-<p>0.2. Use any robot, spider, or other automatic device, process, or means to access Service for any purpose, including monitoring or copying any of the material on Service.</p>
-<p>0.3. Use any manual process to monitor or copy any of the material on Service or for any other unauthorized purpose without our prior written consent.</p>
-<p>0.4. Use any device, software, or routine that interferes with the proper working of Service.</p>
-<p>0.5. Introduce any viruses, trojan horses, worms, logic bombs, or other material which is malicious or technologically harmful.</p>
-<p>0.6. Attempt to gain unauthorized access to, interfere with, damage, or disrupt any parts of Service, the server on which Service is stored, or any server, computer, or database connected to Service.</p>
-<p>0.7. Attack Service via a denial-of-service attack or a distributed denial-of-service attack.</p>
-<p>0.8. Take any action that may damage or falsify Company rating.</p>
-<p>0.9. Otherwise attempt to interfere with the proper working of Service.</p>
-<p>6. <b>Analytics</b></p>
-<p>We may use third-party Service Providers to monitor and analyze the use of our Service.</p>
-<p>7. <b>No Use By Minors</b></p>
-<p>Service is intended only for access and use by individuals at least eighteen (18) years old. By accessing or using Service, you warrant and represent that you are at least eighteen (18) years of age and with the full authority, right, and capacity to enter into this agreement and abide by all of the terms and conditions of Terms. If you are not at least eighteen (18) years old, you are prohibited from both the access and usage of Service.</p>
-<p>8. <b>Accounts</b></p><p>When you create an account with us, you guarantee that you are above the age of 18, and that the information you provide us is accurate, complete, and current at all times. Inaccurate, incomplete, or obsolete information may result in the immediate termination of your account on Service.</p><p>You are responsible for maintaining the confidentiality of your account and password, including but not limited to the restriction of access to your computer and/or account. You agree to accept responsibility for any and all activities or actions that occur under your account and/or password, whether your password is with our Service or a third-party service. You must notify us immediately upon becoming aware of any breach of security or unauthorized use of your account.</p><p>You may not use as a username the name of another person or entity or that is not lawfully available for use, a name or trademark that is subject to any rights of another person or entity other than you, without appropriate authorization. You may not use as a username any name that is offensive, vulgar or obscene.</p><p>We reserve the right to refuse service, terminate accounts, remove or edit content, or cancel orders in our sole discretion.</p>
-<p>9. <b>Intellectual Property</b></p>
-<p>Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Codekaro and its licensors. Service is protected by copyright, trademark, and other laws of  and foreign countries. Our trademarks may not be used in connection with any product or service without the prior written consent of Codekaro.</p>
-<p>10. <b>Copyright Policy</b></p>
-<p>We respect the intellectual property rights of others. It is our policy to respond to any claim that Content posted on Service infringes on the copyright or other intellectual property rights (“Infringement”) of any person or entity.</p>
-<p>If you are a copyright owner, or authorized on behalf of one, and you believe that the copyrighted work has been copied in a way that constitutes copyright infringement, please submit your claim via email to info@codekaro.in, with the subject line: “Copyright Infringement” and include in your claim a detailed description of the alleged Infringement as detailed below, under “DMCA Notice and Procedure for Copyright Infringement Claims”</p>
-<p>You may be held accountable for damages (including costs and attorneys’ fees) for misrepresentation or bad-faith claims on the infringement of any Content found on and/or through Service on your copyright.</p>
-<p>11. <b>DMCA Notice and Procedure for Copyright Infringement Claims</b></p>
-<p>You may submit a notification pursuant to the Digital Millennium Copyright Act (DMCA) by providing our Copyright Agent with the following information in writing (see 17 U.S.C 512(c)(3) for further detail):</p>
-<p>0.1. an electronic or physical signature of the person authorized to act on behalf of the owner of the copyright’s interest;</p>
-<p>0.2. a description of the copyrighted work that you claim has been infringed, including the URL (i.e., web page address) of the location where the copyrighted work exists or a copy of the copyrighted work;</p>
-<p>0.3. identification of the URL or other specific location on Service where the material that you claim is infringing is located;</p>
-<p>0.4. your address, telephone number, and email address;</p>
-<p>0.5. a statement by you that you have a good faith belief that the disputed use is not authorized by the copyright owner, its agent, or the law;</p>
-<p>0.6. a statement by you, made under penalty of perjury, that the above information in your notice is accurate and that you are the copyright owner or authorized to act on the copyright owner’s behalf.</p>
-<p>You can contact our Copyright Agent via email at info@codekaro.in.</p>
-<p>12. <b>Error Reporting and Feedback</b></p>
-<p>You may provide us either directly at info@codekaro.in or via third party sites and tools with information and feedback concerning errors, suggestions for improvements, ideas, problems, complaints, and other matters related to our Service (“Feedback”). You acknowledge and agree that: (i) you shall not retain, acquire or assert any intellectual property right or other right, title or interest in or to the Feedback; (ii) Company may have development ideas similar to the Feedback; (iii) Feedback does not contain confidential information or proprietary information from you or any third party; and (iv) Company is not under any obligation of confidentiality with respect to the Feedback. In the event the transfer of the ownership to the Feedback is not possible due to applicable mandatory laws, you grant Company and its affiliates an exclusive, transferable, irrevocable, free-of-charge, sub-licensable, unlimited and perpetual right to use (including copy, modify, create derivative works, publish, distribute and commercialize) Feedback in any manner and for any purpose.</p>
-<p>13. <b>Links To Other Web Sites</b></p>
-<p>Our Service may contain links to third party web sites or services that are not owned or controlled by Codekaro.</p>
-<p>Codekaro has no control over, and assumes no responsibility for the content, privacy policies, or practices of any third party web sites or services. We do not warrant the offerings of any of these entities/individuals or their websites.</p>
-
-<p>YOU ACKNOWLEDGE AND AGREE THAT COMPANY SHALL NOT BE RESPONSIBLE OR LIABLE, DIRECTLY OR INDIRECTLY, FOR ANY DAMAGE OR LOSS CAUSED OR ALLEGED TO BE CAUSED BY OR IN CONNECTION WITH USE OF OR RELIANCE ON ANY SUCH CONTENT, GOODS OR SERVICES AVAILABLE ON OR THROUGH ANY SUCH THIRD PARTY WEB SITES OR SERVICES.</p>
-<p>WE STRONGLY ADVISE YOU TO READ THE TERMS OF SERVICE AND PRIVACY POLICIES OF ANY THIRD PARTY WEB SITES OR SERVICES THAT YOU VISIT.</p>
-<p>14. <b>Disclaimer Of Warranty</b></p>
-<p>THESE SERVICES ARE PROVIDED BY COMPANY ON AN “AS IS” AND “AS AVAILABLE” BASIS. COMPANY MAKES NO REPRESENTATIONS OR WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, AS TO THE OPERATION OF THEIR SERVICES, OR THE INFORMATION, CONTENT OR MATERIALS INCLUDED THEREIN. YOU EXPRESSLY AGREE THAT YOUR USE OF THESE SERVICES, THEIR CONTENT, AND ANY SERVICES OR ITEMS OBTAINED FROM US IS AT YOUR SOLE RISK.</p>
-<p>NEITHER COMPANY NOR ANY PERSON ASSOCIATED WITH COMPANY MAKES ANY WARRANTY OR REPRESENTATION WITH RESPECT TO THE COMPLETENESS, SECURITY, RELIABILITY, QUALITY, ACCURACY, OR AVAILABILITY OF THE SERVICES. WITHOUT LIMITING THE FOREGOING, NEITHER COMPANY NOR ANYONE ASSOCIATED WITH COMPANY REPRESENTS OR WARRANTS THAT THE SERVICES, THEIR CONTENT, OR ANY SERVICES OR ITEMS OBTAINED THROUGH THE SERVICES WILL BE ACCURATE, RELIABLE, ERROR-FREE, OR UNINTERRUPTED, THAT DEFECTS WILL BE CORRECTED, THAT THE SERVICES OR THE SERVER THAT MAKES IT AVAILABLE ARE FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS OR THAT THE SERVICES OR ANY SERVICES OR ITEMS OBTAINED THROUGH THE SERVICES WILL OTHERWISE MEET YOUR NEEDS OR EXPECTATIONS.</p>
-<p>COMPANY HEREBY DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, NON-INFRINGEMENT, AND FITNESS FOR PARTICULAR PURPOSE.</p>
-<p>THE FOREGOING DOES NOT AFFECT ANY WARRANTIES WHICH CANNOT BE EXCLUDED OR LIMITED UNDER APPLICABLE LAW.</p>
-<p>15. <b>Limitation Of Liability</b></p>
-<p>EXCEPT AS PROHIBITED BY LAW, YOU WILL HOLD US AND OUR OFFICERS, DIRECTORS, EMPLOYEES, AND AGENTS HARMLESS FOR ANY INDIRECT, PUNITIVE, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGE, HOWEVER IT ARISES (INCLUDING ATTORNEYS’ FEES AND ALL RELATED COSTS AND EXPENSES OF LITIGATION AND ARBITRATION, OR AT TRIAL OR ON APPEAL, IF ANY, WHETHER OR NOT LITIGATION OR ARBITRATION IS INSTITUTED), WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE, OR OTHER TORTIOUS ACTION, OR ARISING OUT OF OR IN CONNECTION WITH THIS AGREEMENT, INCLUDING WITHOUT LIMITATION ANY CLAIM FOR PERSONAL INJURY OR PROPERTY DAMAGE, ARISING FROM THIS AGREEMENT AND ANY VIOLATION BY YOU OF ANY FEDERAL, STATE, OR LOCAL LAWS, STATUTES, RULES, OR REGULATIONS, EVEN IF COMPANY HAS BEEN PREVIOUSLY ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. EXCEPT AS PROHIBITED BY LAW, IF THERE IS LIABILITY FOUND ON THE PART OF COMPANY, IT WILL BE LIMITED TO THE AMOUNT PAID FOR THE PRODUCTS AND/OR SERVICES, AND UNDER NO CIRCUMSTANCES WILL THERE BE CONSEQUENTIAL OR PUNITIVE DAMAGES. SOME STATES DO NOT ALLOW THE EXCLUSION OR LIMITATION OF PUNITIVE, INCIDENTAL OR CONSEQUENTIAL DAMAGES, SO THE PRIOR LIMITATION OR EXCLUSION MAY NOT APPLY TO YOU.</p>
-<p>16. <b>Termination</b></p>
-<p>We may terminate or suspend your account and bar access to Service immediately, without prior notice or liability, under our sole discretion, for any reason whatsoever and without limitation, including but not limited to a breach of Terms.</p>
-<p>If you wish to terminate your account, you may simply discontinue using Service.</p>
-<p>All provisions of Terms which by their nature should survive termination shall survive termination, including, without limitation, ownership provisions, warranty disclaimers, indemnity and limitations of liability.</p>
-<p>17. <b>Governing Law</b></p>
-<p>These Terms shall be governed and construed in accordance with the laws of India, which governing law applies to agreement without regard to its conflict of law provisions.</p>
-<p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service and supersede and replace any prior agreements we might have had between us regarding Service.</p>
-<p>18. <b>Changes To Service</b></p>
-<p>We reserve the right to withdraw or amend our Service, and any service or material we provide via Service, in our sole discretion without notice. We will not be liable if for any reason all or any part of Service is unavailable at any time or for any period. From time to time, we may restrict access to some parts of Service, or the entire Service, to users, including registered users.</p>
-<p>19. <b>Amendments To Terms</b></p>
-<p>We may amend Terms at any time by posting the amended terms on this site. It is your responsibility to review these Terms periodically.</p>
-<p>Your continued use of the Platform following the posting of revised Terms means that you accept and agree to the changes. You are expected to check this page frequently so you are aware of any changes, as they are binding on you.</p>
-<p>By continuing to access or use our Service after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use Service.</p>
-<p>20. <b>Waiver And Severability</b></p>
-<p>No waiver by Company of any term or condition set forth in Terms shall be deemed a further or continuing waiver of such term or condition or a waiver of any other term or condition, and any failure of Company to assert a right or provision under Terms shall not constitute a waiver of such right or provision.</p>
-<p>If any provision of Terms is held by a court or other tribunal of competent jurisdiction to be invalid, illegal or unenforceable for any reason, such provision shall be eliminated or limited to the minimum extent such that the remaining provisions of Terms will continue in full force and effect.</p>
-<p>21. <b>Referral Policy</b></p>
-<p>On every successful referral you can earn upto one thousand ruppes and the payout is being made on every saturday.</p>
-<p>Payouts will be added to your EMIs (pending course payment.) if you have active EMI for the course.</p>
-<p>22. <b>Acknowledgement</b></p>
-<p>BY USING SERVICE OR OTHER SERVICES PROVIDED BY US, YOU ACKNOWLEDGE THAT YOU HAVE READ THESE TERMS OF SERVICE AND AGREE TO BE BOUND BY THEM.</p>
-<p>23. <b>Refund policy</b></p>
-<p>Once you join the course after demo classes no refund will be made under any circumstances</p>
-<p><b>Token Amounts are non Refundable</b></p>
-
-<p><b>24. Terms and Conditions for Course Completion</b></p>
-
-<p>1. Batch Completion Timeline</p>
-<p>Batch completion may differ for a maximum of 3 months from the actual date of ending. We will make reasonable efforts to ensure timely completion, but unforeseen circumstances or logistical constraints may occasionally cause delays.</p>
-
-<p>2. Class Cancellations</p>
-<p>Classes may be canceled in the event of internet issues, health issues of the instructor, or important holidays. In such cases, the class will be rescheduled for the next available session. We will notify you in advance regarding any class cancellations or rescheduling.</p>
-
-<p>3. Minimum Student Requirement</p>
-<p>Sessions will not be conducted if there are no students available to attend the session live. We require a minimum number of participants for each session to ensure an effective learning experience.</p>
-
-<p>4. Batch Shifting</p>
-<p>Once your course is active, you can pause your course and join any upcoming batches for free of cost for the next two years. Multiple batch shifting will not be possible under any circumstances once a batch shift is being made.</p>
-
-<p>5. Student Code of Conduct</p>
-<p>We strive to maintain a respectful and inclusive learning environment. Any student found to be violating our guidelines or sharing any form of hate speech, religious messages, or inappropriate content in the discussion group may be removed from the batch without prior notice or refund.</p>
-
-<p>6. Course Access Period</p>
-<p>All cohort enrollments come with 1 year of access to course materials, recorded sessions, and associated resources, calculated from the start date of the batch. Upon expiry of this period, access to the course will be revoked. To continue accessing the content beyond the 1-year period, students must pay the applicable renewal fee. CodeKaro reserves the right to revise renewal pricing at any time.</p>
-
-<p>7. Mentorship Program Terms</p>
-<p>The mentorship program operates on a custom timeline that will be mutually discussed and agreed upon at the time of onboarding. This timeline may vary from 3 to 6 months depending on the student's availability and pace of learning. Mentorship sessions and support will only be provided within the agreed timeline. All mentorship enrollments also include 1 year of platform access from the start date, during which students may revisit course materials and resources for revision. Upon expiry of the 1-year access period, students must pay the applicable renewal fee to regain access. No extensions will be granted outside of the renewal process.</p>
-
-<p>8. Intellectual Property</p>
-<p>All course materials, including but not limited to videos, lectures, quizzes, and assignments, provided on our website are protected by copyright laws. You may access and use these materials for personal, non-commercial purposes only. Reproduction, distribution, or any other unauthorized use of these materials is strictly prohibited.</p>
-
-<p>9. Disclaimer</p>
-<p>While we make every effort to provide accurate and up-to-date content, we do not guarantee the completeness or accuracy of the information provided in our courses. The content is provided for educational purposes only and should not be considered as professional advice.</p>
-
-<p>10. Limitation of Liability</p>
-<p>We shall not be liable for any direct, indirect, incidental, consequential, or special damages arising out of or in connection with the use of our courses, whether based on contract, tort, negligence, or other legal theory. Your use of the courses is at your own risk.</p>
-
-<p>11. Modifications to Terms and Conditions</p>
-<p>We reserve the right to modify or update these terms and conditions at any time without prior notice. It is your responsibility to review this Agreement periodically for any changes. Your continued enrollment in the course after any modifications constitutes acceptance of the updated terms and conditions.</p>
-
-<p>12. Governing Law</p>
-<p>This Agreement shall be governed by and construed in accordance with the laws of [Jurisdiction].</p>
-<p>25. <b>Contact Us</b></p>
-<p>Please send your feedback, comments, requests for technical support by email: <b>info@codekaro.in</b>.</p>
+<header id="sticky-header"
+    class="sticky top-0 z-[20] h-14 flex items-center justify-center w-full duration-500 ease-out bg-white border-b bg-opacity-90 backdrop-blur-md border-neutral-200 border-opacity-40">
+    <div class="flex items-center justify-between w-full px-4 mx-auto max-w-5xl py-1">
+        <div class="relative z-10 flex items-center">
+            <a href="{{ url('/') }}"
+                class="font-sans text-lg flex items-center gap-2 text-black no-underline">
+                <span class="text-xl font-bold cal-sans text-neutral-800">Codekaro</span>
+            </a>
         </div>
+
+        <a href="{{ url('/') }}"
+            class="border px-4 py-3 rounded-lg text-sm hover:bg-gray-50">
+            Back to Home
+        </a>
+    </div>
+</header>
+
+<div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="prose prose-gray max-w-none">
+
+        <h1 class="text-2xl mb-2">Privacy Policy</h1>
+        <p class="text-gray-600 mb-8">Last Updated: 23rd October 2023</p>
+
+        <p>
+            Welcome to Codekaro ("Company", "we", "our", or "us").
+        </p>
+
+        <p>
+            This Privacy Policy explains how we collect, use, store, and protect your
+            personal information when you use our website, courses, mentorship programs,
+            learning platform, and related services ("Services").
+        </p>
+
+        <p>
+            By using our Services, you agree to the collection and use of information
+            in accordance with this Privacy Policy.
+        </p>
+
+        <h2 class="text-xl mt-10 mb-4">1. Information We Collect</h2>
+
+        <p>We may collect the following information:</p>
+
+        <h3 class="text-lg mt-6 mb-2">Personal Information</h3>
+        <ul class="list-disc pl-6">
+            <li>Full name</li>
+            <li>Email address</li>
+            <li>Mobile number</li>
+            <li>Billing and payment information</li>
+            <li>Profile information provided by you</li>
+        </ul>
+
+        <h3 class="text-lg mt-6 mb-2">Learning Information</h3>
+        <ul class="list-disc pl-6">
+            <li>Course enrollments</li>
+            <li>Course progress</li>
+            <li>Assignment submissions</li>
+            <li>Quiz and assessment results</li>
+            <li>Certificates earned</li>
+        </ul>
+
+        <h3 class="text-lg mt-6 mb-2">Technical Information</h3>
+        <ul class="list-disc pl-6">
+            <li>IP address</li>
+            <li>Browser type</li>
+            <li>Device information</li>
+            <li>Operating system</li>
+            <li>Usage and activity logs</li>
+        </ul>
+
+        <h3 class="text-lg mt-6 mb-2">Communication Information</h3>
+        <ul class="list-disc pl-6">
+            <li>Support requests</li>
+            <li>Feedback submissions</li>
+            <li>Messages sent through our platform</li>
+        </ul>
+
+        <h2 class="text-xl mt-10 mb-4">2. How We Use Your Information</h2>
+
+        <p>We use your information to:</p>
+
+        <ul class="list-disc pl-6">
+            <li>Provide access to courses and mentorship programs</li>
+            <li>Process payments and enrollments</li>
+            <li>Track learning progress</li>
+            <li>Deliver course-related communications</li>
+            <li>Respond to support requests</li>
+            <li>Improve our platform and services</li>
+            <li>Prevent fraud and unauthorized access</li>
+            <li>Comply with legal obligations</li>
+            <li>Send marketing and promotional communications (you may opt out at any time)</li>
+        </ul>
+
+        <h2 class="text-xl mt-10 mb-4">3. Payment Processing</h2>
+
+        <p>
+            Payments made through our platform may be processed by third-party
+            payment providers such as Razorpay, Cashfree, or other authorized
+            payment partners.
+        </p>
+
+        <p>
+            We do not store your complete debit card, credit card, UPI PIN,
+            or banking credentials on our servers.
+        </p>
+
+        <p>
+            Payment providers process your payment information according to
+            their own privacy policies and security standards.
+        </p>
+
+        <h2 class="text-xl mt-10 mb-4">4. Cookies and Analytics</h2>
+
+        <p>
+            We may use cookies and similar technologies to:
+        </p>
+
+        <ul class="list-disc pl-6">
+            <li>Keep you signed in</li>
+            <li>Remember your preferences</li>
+            <li>Improve website performance</li>
+            <li>Measure user engagement</li>
+            <li>Analyze traffic and platform usage</li>
+        </ul>
+
+        <p class="mt-4">
+            We may also use analytics and advertising tools such as Google Analytics,
+            Meta Pixel, and similar services to understand how users interact with
+            our platform.
+        </p>
+
+        <p>
+            You may disable cookies through your browser settings, although some
+            features of the platform may not function properly.
+        </p>
+
+        <h2 class="text-xl mt-10 mb-4">5. Information Sharing</h2>
+
+        <p>
+            We do not sell your personal information.
+        </p>
+
+        <p>
+            We may share information with:
+        </p>
+
+        <ul class="list-disc pl-6">
+            <li>Payment service providers</li>
+            <li>Learning platform and hosting providers</li>
+            <li>Analytics providers</li>
+            <li>Customer support tools</li>
+            <li>Government authorities when required by law</li>
+        </ul>
+
+        <p class="mt-4">
+            All third-party service providers are required to handle information
+            securely and only for authorized purposes.
+        </p>
+
+        <h2 class="text-xl mt-10 mb-4">6. Data Security</h2>
+
+        <p>
+            We implement reasonable administrative, technical, and organizational
+            safeguards to protect your information against unauthorized access,
+            disclosure, alteration, or destruction.
+        </p>
+
+        <p>
+            However, no method of transmission over the internet or electronic
+            storage is completely secure, and we cannot guarantee absolute security.
+        </p>
+
+        <h2 class="text-xl mt-10 mb-4">7. Data Retention</h2>
+
+        <p>
+            We retain your information for as long as necessary to:
+        </p>
+
+        <ul class="list-disc pl-6">
+            <li>Provide course access and student services</li>
+            <li>Maintain academic and transaction records</li>
+            <li>Comply with legal and regulatory requirements</li>
+            <li>Resolve disputes and enforce our agreements</li>
+        </ul>
+
+        <p class="mt-4">
+            When information is no longer required, we may securely delete or
+            anonymize it.
+        </p>
+
+        <h2 class="text-xl mt-10 mb-4">8. Children's Privacy</h2>
+
+        <p>
+            Our Services are primarily intended for individuals who are at least
+            18 years of age.
+        </p>
+
+        <p>
+            If a parent or guardian believes that a minor has provided personal
+            information without appropriate consent, they may contact us and we
+            will take reasonable steps to remove such information where applicable.
+        </p>
+
+        <h2 class="text-xl mt-10 mb-4">9. Third-Party Links</h2>
+
+        <p>
+            Our platform may contain links to third-party websites or services.
+        </p>
+
+        <p>
+            We are not responsible for the privacy practices, content, or policies
+            of such third-party websites. We encourage users to review their privacy
+            policies before providing personal information.
+        </p>
+
+        <h2 class="text-xl mt-10 mb-4">10. Changes to This Privacy Policy</h2>
+
+        <p>
+            We may update this Privacy Policy from time to time.
+        </p>
+
+        <p>
+            Any changes will be posted on this page along with the updated effective
+            date. Continued use of our Services after such changes constitutes
+            acceptance of the revised Privacy Policy.
+        </p>
+
+        <h2 class="text-xl mt-10 mb-4">11. Contact Us</h2>
+
+        <p>
+            If you have any questions, concerns, or requests regarding this Privacy
+            Policy, please contact us:
+        </p>
+
+        <div class="mt-4 p-4 border rounded-lg bg-gray-50">
+            <p><strong>Codekaro / Efslon Coding School</strong></p>
+            <p>Email: info@codekaro.in</p>
+            <p>Website: https://codekaro.in</p>
+        </div>
+
     </div>
 </div>
-
-@include('layouts.ck-footer')
 @endsection
