@@ -25,14 +25,34 @@ trait NotificationTrait
     protected function sendEnrollmentNotification($enrollment)
     {
         try {
-            // Check if payment is confirmed and email hasn't been sent
-            if ($enrollment->hasPaid == 1 && !$enrollment->email_sent) {
+            // Check if payment is confirmed
+            if ($enrollment->hasPaid == 1) {
+                // Atomically claim the notification dispatch to prevent any concurrent double processing
+                $affected = CourseEnrollment::where('id', $enrollment->id)
+                    ->where(function($query) {
+                        $query->where('email_sent', false)
+                              ->orWhereNull('email_sent');
+                    })
+                    ->update(['email_sent' => true]);
+
+                if ($affected === 0) {
+                    Log::info('Skipping enrollment notification', [
+                        'reason' => 'email already sent',
+                        'has_paid' => $enrollment->hasPaid,
+                        'email_sent' => true
+                    ]);
+                    return;
+                }
+
+                // Update local model property for consistency
+                $enrollment->email_sent = true;
+
                 Log::info('Processing enrollment notification', [
                     'enrollment_id' => $enrollment->id,
                     'batch_type' => $enrollment->batch->type,
                     'topic_id' => $enrollment->batch->topicId,
                     'has_paid' => $enrollment->hasPaid,
-                    'email_sent' => $enrollment->email_sent
+                    'email_sent' => false
                 ]);
 
                 // Send Pabbly webhook inside the notification flow
@@ -62,19 +82,15 @@ trait NotificationTrait
                     Log::info('Sending course access notification');
                     $this->sendCourseAccessNotification($enrollment);
                 }
-
-                // Update email_sent status in database using direct update to avoid triggering observer recursively
-                CourseEnrollment::where('id', $enrollment->id)->update(['email_sent' => true]);
-                $enrollment->email_sent = true;
                 
                 Log::info('Notification sent and marked as sent', [
                     'enrollment_id' => $enrollment->id
                 ]);
-                return; // Add early return to prevent further processing
+                return;
             }
             
             Log::info('Skipping enrollment notification', [
-                'reason' => $enrollment->hasPaid == 0 ? 'not paid' : 'email already sent',
+                'reason' => 'not paid',
                 'has_paid' => $enrollment->hasPaid,
                 'email_sent' => $enrollment->email_sent
             ]);
