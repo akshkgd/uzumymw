@@ -4,6 +4,7 @@ namespace App\Traits;
 
 use Mail;
 use App\Mail\OnboardingMail;
+use App\Mail\FraMail;
 use App\Mail\workshopEnrollmentSuccess;
 use App\Notifications\CourseAccessGranted;
 use Illuminate\Support\Facades\Log;
@@ -77,6 +78,12 @@ trait NotificationTrait
                         'nextClass' => $enrollment->batch->nextClass,
                         'workshopGroup' => $enrollment->batch->groupLink,
                         'teacher' => $enrollment->batch->teacher->name,
+                    ]));
+                } else if ($enrollment->batch->topicId == 500) {
+                    Log::info('Sending FRA onboarding slot booking email');
+                    Mail::to($enrollment->students->email)->send(new FraMail([
+                        'name' => $enrollment->students->name,
+                        'workshopName' => $enrollment->batch->name,
                     ]));
                 } else {
                     Log::info('Sending course access notification');

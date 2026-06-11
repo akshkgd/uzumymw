@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Http;
 use App\Mail\OnboardingMail;
+use App\Mail\FraMail;
 use App\Notifications\CourseAccessGranted;
 
 class NotificationConcurrencyTest extends TestCase
@@ -189,5 +190,87 @@ class NotificationConcurrencyTest extends TestCase
 
         // 5. Assert CourseAccessGranted notification was sent exactly once to the student
         Notification::assertSentTo($student, CourseAccessGranted::class, 1);
+    }
+
+    /**
+     * Test that concurrent webhook hits for topicId 500 (FRA)
+     * triggers Pabbly webhook and FraMail exactly once.
+     */
+    public function test_concurrent_webhook_for_topic_500_sends_fra_mail_exactly_once()
+    {
+        // 1. Arrange
+        $teacher = User::create([
+            'name' => 'Teacher Name',
+            'email' => 'teacher500@codekaro.in',
+            'password' => bcrypt('password'),
+        ]);
+
+        $student = User::create([
+            'name' => 'Student Name',
+            'email' => 'student500@codekaro.in',
+            'password' => bcrypt('password'),
+            'mobile' => '9876543210',
+        ]);
+
+        $batch = new Batch();
+        $batch->topicId = 500; // FRA
+        $batch->name = 'Full Stack Transition Roadmap';
+        $batch->startDate = now()->toDateString();
+        $batch->endDate = now()->addMonths(3)->toDateString();
+        $batch->teacherId = $teacher->id;
+        $batch->groupLink = 'https://chat.whatsapp.com/test500';
+        $batch->nextClass = '2026-06-11 20:00:00';
+        $batch->payable = 9900;
+        $batch->price = 9900;
+        $batch->save();
+
+        $enrollment = new CourseEnrollment();
+        $enrollment->userId = $student->id;
+        $enrollment->batchId = $batch->id;
+        $enrollment->price = 9900;
+        $enrollment->amountPayable = 9900;
+        $enrollment->status = 0;
+        $enrollment->hasPaid = 0;
+        $enrollment->invoiceId = 'INV-ORDER500';
+        $enrollment->save();
+
+        $payload = [
+            'payload' => [
+                'payment' => [
+                    'entity' => [
+                        'id' => 'pay_test500',
+                        'amount' => 9900,
+                        'method' => 'upi',
+                        'notes' => [
+                            'enrollmentId' => $enrollment->id,
+                            'topicId' => 500
+                        ]
+                    ]
+                ]
+            ]
+        ];
+
+        // Expect Pabbly webhook call exactly once
+        Http::shouldReceive('post')
+            ->once()
+            ->andReturn(new \Illuminate\Http\Client\Response(
+                new \GuzzleHttp\Psr7\Response(200, [], 'success')
+            ));
+
+        // 2. Act - Request 1 (Webhook/Payment Completes first)
+        $response1 = $this->postJson('/grant-access', $payload);
+        $response1->assertStatus(200);
+
+        // 3. Act - Request 2 (Duplicate request)
+        $response2 = $this->postJson('/grant-access', $payload);
+        $response2->assertStatus(200);
+
+        // 4. Assert database is updated correctly
+        $enrollment->refresh();
+        $this->assertEquals(1, $enrollment->hasPaid);
+        $this->assertTrue((bool)$enrollment->email_sent);
+
+        // 5. Assert FraMail was queued exactly once
+        Mail::assertQueued(FraMail::class, 1);
     }
 }

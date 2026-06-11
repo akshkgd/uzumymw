@@ -7,11 +7,11 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-
-class workshopEnrollmentSuccess extends Mailable implements ShouldQueue
+class FraMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
     public $email_data;
+
     /**
      * Create a new message instance.
      *
@@ -29,6 +29,7 @@ class workshopEnrollmentSuccess extends Mailable implements ShouldQueue
      */
     public function build()
     {
-        return $this->subject('Registration Successful for '. $this->email_data['workshopName'])->view('mail.workshopEnrollmentSuccess');
+        return $this->subject('Book your Transition Strategy Call | Codekaro')
+            ->view('mail.fra');
     }
 }
