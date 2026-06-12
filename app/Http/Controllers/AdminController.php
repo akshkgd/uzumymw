@@ -13,6 +13,7 @@ use App\Feedback;
 use App\BatchTopics;
 use App\CourseProgress;
 use App\CourseEnrollment;
+use App\CourseEnrollmentPayment;
 use App\WorkshopEnrollment;
 use PDF;
 use Razorpay\Api\Api;
@@ -555,20 +556,118 @@ class AdminController extends Controller
     {
         $enrollment = CourseEnrollment::findorFail($request->enrollmentId);
         $enrollment->batchId = $request->batchId;
-        $enrollment->invoiceId = $request->invoiceId;
-        $enrollment->transactionId = $request->transactionId;
-        $enrollment->paymentMethod = $request->paymentMethod;
-        $enrollment->amountPaid = $request->amountPaid;
-        $enrollment->hasPaid = $request->hasPaid;
-        $enrollment->paidAt = $request->paidAt;
         $enrollment->accessTill = $request->accessTill;
         $enrollment->override_access_days = $request->override_access_days;
         $enrollment->startFrom = $request->startFrom;
         $enrollment->certificateFee = (int) $request->certificateFee;
         $enrollment->save();
+
+        // Update or create primary payment transaction
+        $payment = $enrollment->payments()->first();
+        if (!$payment) {
+            $payment = new CourseEnrollmentPayment();
+            $payment->course_enrollment_id = $enrollment->id;
+        }
+
+        $payment->amount = $request->amountPaid;
+        $payment->paid_at = $request->paidAt ?? Carbon::now();
+        $payment->payment_method = $request->paymentMethod;
+        $payment->transaction_id = $request->transactionId;
+        $payment->invoice_id = $request->invoiceId;
+        $payment->purpose = $request->purpose ?? $payment->purpose ?? 'enrollment';
+        $payment->is_gst_applicable = $request->has('is_gst_applicable') ? (bool) $request->is_gst_applicable : ($payment->is_gst_applicable ?? true);
+        $payment->remarks = $request->remarks ?? $payment->remarks ?? 'Updated via payment update form';
+        $payment->save();
+
         session()->flash('alert-success', 'Payment Details Updated Successfully!');
         return redirect('/admin/batch-enrollment/' . $enrollment->batchId);
 
+    }
+
+    public function addManualPayment(Request $request)
+    {
+        $enrollment = CourseEnrollment::findorFail($request->enrollmentId);
+        
+        $transactionId = $request->transactionId ?? 'TXN-' . strtoupper(uniqid());
+        $invoiceId = $request->invoiceId ?? 'INV-' . strtoupper(uniqid());
+
+        // Check if transaction has already been logged
+        $txnExists = CourseEnrollmentPayment::where('transaction_id', $transactionId)->exists();
+        if ($txnExists) {
+            if ($request->wantsJson()) {
+                return response()->json(['success' => false, 'message' => 'This transaction ID has already been recorded.'], 422);
+            }
+            session()->flash('alert-warning', 'This transaction ID has already been recorded.');
+            return redirect()->back();
+        }
+
+        $payment = $enrollment->payments()->create([
+            'amount'            => $request->amount * 100, // input is in rupees, convert to paisa
+            'paid_at'           => $request->paidAt ?? Carbon::now(),
+            'payment_method'    => $request->paymentMethod ?? 'cash',
+            'transaction_id'    => $transactionId,
+            'invoice_id'        => $invoiceId,
+            'purpose'           => $request->purpose ?? 'enrollment',
+            'is_gst_applicable' => $request->has('is_gst_applicable') ? (bool) $request->is_gst_applicable : true,
+            'remarks'           => $request->remarks ?? 'Logged manually by admin'
+        ]);
+
+        $totalPaidPaisa = $enrollment->payments()->sum('amount');
+        $totalPaidRupees = $totalPaidPaisa / 100;
+        $payableRupees = $enrollment->payable_in_rupees;
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'New transaction logged successfully!',
+                'payment' => [
+                    'amount' => $payment->amount,
+                    'paid_at' => Carbon::parse($payment->paid_at)->format('d-M-Y'),
+                    'payment_method' => strtoupper($payment->payment_method),
+                    'purpose' => ucfirst($payment->purpose),
+                    'is_gst_applicable' => $payment->is_gst_applicable ? 'Yes' : 'No',
+                    'remarks' => $payment->remarks
+                ],
+                'enrollment' => [
+                    'amount_paid' => $totalPaidRupees,
+                    'payable_in_rupees' => $payableRupees,
+                    'pending_balance' => $payableRupees - $totalPaidRupees,
+                    'partially_paid' => $enrollment->fresh()->partiallyPaid()
+                ]
+            ]);
+        }
+
+        session()->flash('alert-success', 'New transaction logged successfully!');
+        return redirect()->back();
+    }
+
+    public function getEnrollmentPaymentsJson($id)
+    {
+        $enrollment = CourseEnrollment::with(['students', 'payments'])->findOrFail($id);
+        $totalPaidPaisa = $enrollment->payments()->sum('amount');
+        $totalPaidRupees = $totalPaidPaisa / 100;
+        $payableRupees = $enrollment->payable_in_rupees;
+        
+        return response()->json([
+            'enrollment' => [
+                'id' => $enrollment->id,
+                'student_name' => $enrollment->students->name,
+                'amount_payable' => $payableRupees,
+                'amount_paid' => $totalPaidRupees,
+                'pending_balance' => $payableRupees - $totalPaidRupees,
+                'partially_paid' => $enrollment->partiallyPaid()
+            ],
+            'payments' => $enrollment->payments()->orderBy('paid_at', 'desc')->get()->map(function($p) {
+                return [
+                    'amount' => $p->amount,
+                    'paid_at' => Carbon::parse($p->paid_at)->format('d-M-Y'),
+                    'payment_method' => strtoupper($p->payment_method),
+                    'purpose' => ucfirst($p->purpose),
+                    'is_gst_applicable' => $p->is_gst_applicable ? 'Yes' : 'No',
+                    'remarks' => $p->remarks
+                ];
+            })
+        ]);
     }
 
     public function addWorkshop(Request $request)
@@ -652,48 +751,54 @@ class AdminController extends Controller
     public function addCourseAccess(Request $request)
     {
         $user = User::where('email', $request->email)->first();
+        if (!$user) {
+            session()->flash('alert-danger', 'User not found!');
+            return redirect()->back();
+        }
+
         $enrollment = CourseEnrollment::where('batchId', $request->batchId)->where('userId', $user->id)->first();
+        $transactionId = $request->transactionId ?? 'TXN-' . strtoupper(uniqid());
+        $invoiceId = $request->invoiceId ?? 'INV-' . strtoupper(uniqid());
+
+        // Check if transaction has already been logged
+        $txnExists = CourseEnrollmentPayment::where('transaction_id', $transactionId)->exists();
+        if ($txnExists) {
+            session()->flash('alert-warning', 'This transaction ID has already been recorded.');
+            return redirect()->back();
+        }
+
         if (!$enrollment) {
             $batch = Batch::findOrFail($request->batchId);
-            $a = new CourseEnrollment;
-            $a->userId = $user->id;
-            $a->batchId = $request->batchId;
-            $a->price = $batch->price;
-            $a->amountpayable = $batch->payable;
-            $a->amountPaid = $request->amount * 100;
-            $a->paidAt = $request->paidAt ?? Carbon::now();
-            $a->startFrom = $request->startFrom;
-            $a->paymentMethod = $request->paymentMethod ?? 'upi';
-            $a->transactionId = $request->transactionId ?? 'TXN-' . strtoupper(uniqid());
-            $a->invoiceId = $request->invoiceId ?? 'INV-' . strtoupper(uniqid());
-            $a->status = 1;
-            $a->hasPaid = 1;
-            $a->certificateId = substr(md5(time()), 0, 16);
-            $a->save();
-
-            session()->flash('alert-success', 'Access Granted Successfully!');
-            return redirect()->back();
-        } elseif ($enrollment && $enrollment->hasPaid == 0) {
-            $enrollment->status = 1;
-            $enrollment->hasPaid = 1;
-            $enrollment->amountPaid = $request->amount * 100;
-            $enrollment->paidAt = $request->paidAt;
+            $enrollment = new CourseEnrollment;
+            $enrollment->userId = $user->id;
+            $enrollment->batchId = $request->batchId;
+            $enrollment->price = $batch->price;
+            $enrollment->amountpayable = $batch->payable;
             $enrollment->startFrom = $request->startFrom;
-            $enrollment->paymentMethod = $request->paymentMethod;
-            $enrollment->transactionId = $request->transactionId;
-            $enrollment->invoiceId = $request->invoiceId;
-            $enrollment->field2 = 'webhook access granted';
+            $enrollment->status = 1;
+            $enrollment->certificateId = substr(md5(time()), 0, 16);
+            $enrollment->field2 = 'access granted manually';
             $enrollment->save();
-
-            session()->flash('alert-success', 'Access updated Successfully!');
-            return redirect()->back();
         } else {
-            if ($enrollment) {
-                $enrollment->field2 = 'webhook called!!';
-                $enrollment->save();
-            }
-            return response('Webhook Handled', 200);
+            $enrollment->status = 1;
+            $enrollment->field2 = 'webhook/manual access updated';
+            $enrollment->save();
         }
+
+        // Create the transaction
+        $enrollment->payments()->create([
+            'amount'            => $request->amount * 100,
+            'paid_at'           => $request->paidAt ?? Carbon::now(),
+            'payment_method'    => $request->paymentMethod ?? 'upi',
+            'transaction_id'    => $transactionId,
+            'invoice_id'        => $invoiceId,
+            'purpose'           => $request->purpose ?? 'enrollment',
+            'is_gst_applicable' => $request->has('is_gst_applicable') ? (bool) $request->is_gst_applicable : true,
+            'remarks'           => $request->remarks ?? 'Access granted manually'
+        ]);
+
+        session()->flash('alert-success', 'Access and Payment logged successfully!');
+        return redirect()->back();
     }
 
 

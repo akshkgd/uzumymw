@@ -292,6 +292,8 @@ Route::post('/storeWorkshop', 'AdminController@addWorkshop')->name('storeWorksho
 Route::get('/admin/batch-enrollment/{id}', 'AdminController@batchEnrollment')->name('adminBatchEnrollment');
 Route::get('/admin/payment-received/{id}', 'AdminController@paymentReceived');
 Route::post('/updatePaymentStatus', 'AdminController@updatePaymentStatus')->name('updatePaymentStatus');
+Route::post('/addManualPayment', 'AdminController@addManualPayment')->name('addManualPayment');
+Route::get('/admin/enrollment/{id}/payments-json', 'AdminController@getEnrollmentPaymentsJson')->name('admin.enrollment.payments-json');
 Route::get('/admin/users', 'AdminController@getUsers');
 Route::get('/admin/workshops', 'AdminController@workshops');
 Route::get('/admin/feedbacks', 'AdminController@feedbacks');

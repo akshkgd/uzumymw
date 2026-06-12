@@ -89,13 +89,14 @@ class WorkshopEnrollmentController extends Controller
 
     private function inLimit($id){
         $workshop = Workshop::findorFail($id);
-        if($workshop->limit !=''){
-        $isEnrolled = WorkshopEnrollment::where('workshopId', $id)->get();
-        if($isEnrolled->count() < $workshop->limit)
-        return 'true';
+        if($workshop->limit == '' || $workshop->limit == null){
+            return 'true';
         }
-        
-       
+        $isEnrolled = WorkshopEnrollment::where('workshopId', $id)->get();
+        if($isEnrolled->count() < $workshop->limit) {
+            return 'true';
+        }
+        return 'false';
     }
     private function successMail($enrollId, $workshop){
     $email_data = array(

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use App\User;
 use App\CourseEnrollment;
+use App\CourseEnrollmentPayment;
 use App\WorkshopEnrollment;
 use Razorpay\Api\Api;
 use Illuminate\Support\Facades\Http;
@@ -86,29 +87,36 @@ public function grantAccess(Request $request)
         
         $enrollmentId = $notes['enrollmentId'];
         
-        \Illuminate\Support\Facades\DB::transaction(function () use ($enrollmentId, $paymentData) {
+        \Illuminate\Support\Facades\DB::transaction(function () use ($enrollmentId, $paymentData, $notes) {
             $enrollment = CourseEnrollment::where('id', $enrollmentId)->lockForUpdate()->first();
             if (!$enrollment) {
                 throw new \Exception('Course enrollment not found.');
             }
             
-            if ($enrollment->hasPaid == 0) {
-                Log::info('Updating payment status for enrollment via webhook', ['enrollment_id' => $enrollment->id]);
+            // Check if transaction has already been logged
+            $txnExists = CourseEnrollmentPayment::where('transaction_id', $paymentData['id'])->exists();
+            if (!$txnExists) {
+                Log::info('Updating payment status for enrollment via webhook', ['enrollment_id' => $enrollment->id, 'txn_id' => $paymentData['id']]);
                 
                 $enrollment->status = 1;
-                $enrollment->hasPaid = 1;
-                $enrollment->amountPaid = $paymentData['amount'];
-                $enrollment->paidAt = Carbon::now();
-                $enrollment->paymentMethod = $paymentData['method'];
-                $enrollment->transactionId = $paymentData['id'];
                 $enrollment->field2 = 'webhook access granted';
                 $enrollment->save();
+
+                $enrollment->payments()->create([
+                    'amount'            => $paymentData['amount'],
+                    'paid_at'           => Carbon::now(),
+                    'payment_method'    => $paymentData['method'],
+                    'transaction_id'    => $paymentData['id'],
+                    'invoice_id'        => $paymentData['order_id'] ?? null,
+                    'purpose'           => $notes['purpose'] ?? 'enrollment',
+                    'is_gst_applicable' => true,
+                    'remarks'           => 'Webhook payment processed'
+                ]);
             } 
             else {
-                Log::info('Payment already processed for enrollment via webhook lock check', [
+                Log::info('Payment already processed for enrollment via webhook transaction check', [
                     'enrollment_id' => $enrollment->id,
-                    'payment_status' => $enrollment->hasPaid,
-                    'email_sent' => $enrollment->email_sent
+                    'transaction_id' => $paymentData['id']
                 ]);
             }
         });

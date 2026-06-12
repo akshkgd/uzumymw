@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Crypt;
 use App\Batch;
 use App\User;
 use App\CourseEnrollment;
+use App\CourseEnrollmentPayment;
 use App\WorkshopEnrollment;
 use Razorpay\Api\Api;
 use Session;
@@ -124,13 +125,14 @@ class CourseEnrollmentController extends Controller
 
     private function inLimit($id){
         $batch = Batch::findorFail($id);
-        if($batch->limit !=''){
-        $isEnrolled = CourseEnrollment::where('batchId', $id)->where('hasPaid', 1)->get();
-        if($isEnrolled->count() < $batch->limit)
-        return 'true';
+        if($batch->limit == '' || $batch->limit == null){
+            return 'true';
         }
-        
-       
+        $isEnrolled = CourseEnrollment::where('batchId', $id)->where('hasPaid', 1)->get();
+        if($isEnrolled->count() < $batch->limit) {
+            return 'true';
+        }
+        return 'false';
     }
 
     public function checkout($id)
@@ -205,15 +207,25 @@ class CourseEnrollmentController extends Controller
                 else{
                     \Illuminate\Support\Facades\DB::transaction(function () use ($enrollmentId, $response) {
                         $enroll = CourseEnrollment::where('id', $enrollmentId)->lockForUpdate()->first();
-                        if ($enroll && $enroll->hasPaid == 0) {
-                            $enroll->update([
-                                'status' => 1, 
-                                'hasPaid' => 1, 
-                                'amountPaid' => $response['amount'], 
-                                'paidAt' => Carbon::now(), 
-                                'paymentMethod' => $response['method'], 
-                                'transactionId' => $response['id']
-                            ]);
+                        if ($enroll) {
+                            $txnExists = CourseEnrollmentPayment::where('transaction_id', $response['id'])->exists();
+                            if (!$txnExists) {
+                                $enroll->update([
+                                    'status' => 1,
+                                    'field2' => 'checkout access granted'
+                                ]);
+
+                                $enroll->payments()->create([
+                                    'amount'            => $response['amount'],
+                                    'paid_at'           => Carbon::now(),
+                                    'payment_method'    => $response['method'],
+                                    'transaction_id'    => $response['id'],
+                                    'invoice_id'        => $response['order_id'] ?? null,
+                                    'purpose'           => $response['notes']['purpose'] ?? 'enrollment',
+                                    'is_gst_applicable' => true,
+                                    'remarks'           => 'Gateway checkout payment'
+                                ]);
+                            }
                         }
                     });
                 }
