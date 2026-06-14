@@ -560,27 +560,32 @@ class AdminController extends Controller
         $enrollment->override_access_days = $request->override_access_days;
         $enrollment->startFrom = $request->startFrom;
         $enrollment->certificateFee = (int) $request->certificateFee;
+        if ($request->has('amountPayable')) {
+            $enrollment->amountPayable = $request->amountPayable * 100;
+        }
         $enrollment->save();
 
-        // Update or create primary payment transaction
-        $payment = $enrollment->payments()->first();
-        if (!$payment) {
-            $payment = new CourseEnrollmentPayment();
-            $payment->course_enrollment_id = $enrollment->id;
+        // Update or create primary payment transaction if amountPaid is present
+        if ($request->has('amountPaid')) {
+            $payment = $enrollment->payments()->first();
+            if (!$payment) {
+                $payment = new CourseEnrollmentPayment();
+                $payment->course_enrollment_id = $enrollment->id;
+            }
+
+            $payment->amount = $request->amountPaid;
+            $payment->paid_at = $request->paidAt ?? Carbon::now();
+            $payment->payment_method = $request->paymentMethod;
+            $payment->transaction_id = $request->transactionId;
+            $payment->invoice_id = $request->invoiceId;
+            $payment->purpose = $request->purpose ?? $payment->purpose ?? 'enrollment';
+            $payment->is_gst_applicable = $request->has('is_gst_applicable') ? (bool) $request->is_gst_applicable : ($payment->is_gst_applicable ?? true);
+            $payment->remarks = $request->remarks ?? $payment->remarks ?? 'Updated via payment update form';
+            $payment->save();
         }
 
-        $payment->amount = $request->amountPaid;
-        $payment->paid_at = $request->paidAt ?? Carbon::now();
-        $payment->payment_method = $request->paymentMethod;
-        $payment->transaction_id = $request->transactionId;
-        $payment->invoice_id = $request->invoiceId;
-        $payment->purpose = $request->purpose ?? $payment->purpose ?? 'enrollment';
-        $payment->is_gst_applicable = $request->has('is_gst_applicable') ? (bool) $request->is_gst_applicable : ($payment->is_gst_applicable ?? true);
-        $payment->remarks = $request->remarks ?? $payment->remarks ?? 'Updated via payment update form';
-        $payment->save();
-
         session()->flash('alert-success', 'Payment Details Updated Successfully!');
-        return redirect('/admin/batch-enrollment/' . $enrollment->batchId);
+        return redirect()->action('AdminController@paymentReceived', Crypt::encrypt($enrollment->id));
 
     }
 
@@ -638,6 +643,33 @@ class AdminController extends Controller
         }
 
         session()->flash('alert-success', 'New transaction logged successfully!');
+        return redirect()->back();
+    }
+
+    public function updatePayment(Request $request, $id)
+    {
+        $payment = CourseEnrollmentPayment::findOrFail($id);
+        
+        $payment->amount = $request->amount * 100; // convert input rupees to paisa
+        $payment->paid_at = $request->paidAt ?? \Carbon\Carbon::now();
+        $payment->payment_method = $request->paymentMethod ?? $payment->payment_method;
+        $payment->transaction_id = $request->transactionId;
+        $payment->invoice_id = $request->invoiceId;
+        $payment->purpose = $request->purpose ?? 'enrollment';
+        $payment->is_gst_applicable = $request->has('is_gst_applicable') ? (bool) $request->is_gst_applicable : false;
+        $payment->remarks = $request->remarks;
+        $payment->save();
+
+        session()->flash('alert-success', 'Transaction updated successfully!');
+        return redirect()->back();
+    }
+
+    public function deletePayment($id)
+    {
+        $payment = CourseEnrollmentPayment::findOrFail($id);
+        $payment->delete();
+
+        session()->flash('alert-success', 'Transaction deleted successfully!');
         return redirect()->back();
     }
 
@@ -1010,15 +1042,13 @@ class AdminController extends Controller
 
 
             // Get revenue data
-            $currentRevenue = CourseEnrollment::where('hasPaid', 1)
-                ->whereDate('paidAt', '>=', $startDate)
-                ->whereDate('paidAt', '<=', $endDate)
-                ->sum('amountPaid') / 100; // Convert paisa to rupees
+            $currentRevenue = CourseEnrollmentPayment::whereDate('paid_at', '>=', $startDate)
+                ->whereDate('paid_at', '<=', $endDate)
+                ->sum('amount') / 100; // Convert paisa to rupees
 
-            $previousRevenue = CourseEnrollment::where('hasPaid', 1)
-                ->whereDate('paidAt', '>=', $previousStartDate)
-                ->whereDate('paidAt', '<=', $previousEndDate)
-                ->sum('amountPaid') / 100;
+            $previousRevenue = CourseEnrollmentPayment::whereDate('paid_at', '>=', $previousStartDate)
+                ->whereDate('paid_at', '<=', $previousEndDate)
+                ->sum('amount') / 100;
 
             // Get learning time data
             $currentLearningTime = CourseProgress::whereDate('firstAccess', '>=', $startDate)
@@ -1042,10 +1072,9 @@ class AdminController extends Controller
                 ->orderBy('date')
                 ->get();
 
-            $revenueData = CourseEnrollment::where('hasPaid', 1)
-                ->whereDate('paidAt', '>=', $startDate)
-                ->whereDate('paidAt', '<=', $endDate)
-                ->selectRaw('DATE(paidAt) as date, SUM(amountPaid)/100 as amount')
+            $revenueData = CourseEnrollmentPayment::whereDate('paid_at', '>=', $startDate)
+                ->whereDate('paid_at', '<=', $endDate)
+                ->selectRaw('DATE(paid_at) as date, SUM(amount)/100 as amount')
                 ->groupBy('date')
                 ->orderBy('date')
                 ->get();
@@ -1075,10 +1104,9 @@ class AdminController extends Controller
                 ->get();
 
             // Get previous period revenue data for comparison
-            $previousRevenueData = CourseEnrollment::where('hasPaid', 1)
-                ->whereDate('paidAt', '>=', $previousStartDate)
-                ->whereDate('paidAt', '<=', $previousEndDate)
-                ->selectRaw('DATE(paidAt) as date, SUM(amountPaid)/100 as amount')
+            $previousRevenueData = CourseEnrollmentPayment::whereDate('paid_at', '>=', $previousStartDate)
+                ->whereDate('paid_at', '<=', $previousEndDate)
+                ->selectRaw('DATE(paid_at) as date, SUM(amount)/100 as amount')
                 ->groupBy('date')
                 ->orderBy('date')
                 ->get();

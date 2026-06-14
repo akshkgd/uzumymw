@@ -293,6 +293,8 @@ Route::get('/admin/batch-enrollment/{id}', 'AdminController@batchEnrollment')->n
 Route::get('/admin/payment-received/{id}', 'AdminController@paymentReceived');
 Route::post('/updatePaymentStatus', 'AdminController@updatePaymentStatus')->name('updatePaymentStatus');
 Route::post('/addManualPayment', 'AdminController@addManualPayment')->name('addManualPayment');
+Route::post('/admin/payments/{id}/update', 'AdminController@updatePayment')->name('updatePayment');
+Route::post('/admin/payments/{id}/delete', 'AdminController@deletePayment')->name('deletePayment');
 Route::get('/admin/enrollment/{id}/payments-json', 'AdminController@getEnrollmentPaymentsJson')->name('admin.enrollment.payments-json');
 Route::get('/admin/users', 'AdminController@getUsers');
 Route::get('/admin/workshops', 'AdminController@workshops');

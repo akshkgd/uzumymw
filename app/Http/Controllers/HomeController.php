@@ -11,6 +11,7 @@ use App\User;
 use App\Workshop;
 use App\CourseProgress;
 use App\CourseEnrollment;
+use App\CourseEnrollmentPayment;
 use App\WorkshopEnrollment;
 
 class HomeController extends Controller
@@ -249,15 +250,13 @@ $enrollmentsPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
     ->count();
 
 // Total revenue for the selected period
-$totalThisPeriod = CourseEnrollment::where('hasPaid', 1)
-    ->whereDate('paidAt', '>=', $startDate)
-    ->whereDate('paidAt', '<=', $endDate)
-    ->sum('amountPaid') / 100;
+$totalThisPeriod = CourseEnrollmentPayment::whereDate('paid_at', '>=', $startDate)
+    ->whereDate('paid_at', '<=', $endDate)
+    ->sum('amount') / 100;
 
-$totalPreviousPeriod = CourseEnrollment::where('hasPaid', 1)
-    ->whereDate('paidAt', '>=', $previousStartDate)
-    ->whereDate('paidAt', '<=', $previousEndDate)
-    ->sum('amountPaid') / 100;
+$totalPreviousPeriod = CourseEnrollmentPayment::whereDate('paid_at', '>=', $previousStartDate)
+    ->whereDate('paid_at', '<=', $previousEndDate)
+    ->sum('amount') / 100;
 
 // Calculate percentage change for users, enrollments, and revenue
 $userChangePercent = $usersPreviousPeriod > 0 ? (($usersThisPeriod - $usersPreviousPeriod) / $usersPreviousPeriod) * 100 : ($usersThisPeriod > 0 ? 100 : 0);
