@@ -1065,51 +1065,109 @@ class AdminController extends Controller
             $learningTimeChange = $previousLearningTime > 0 ? (($currentLearningTime - $previousLearningTime) / $previousLearningTime) * 100 : 0;
 
             // Get chart data
-            $signupsData = User::where('role', 0)
-                ->whereBetween('created_at', [$startDate, $endDate])
+            $currentPeriod = CarbonPeriod::create($startDate->copy()->startOfDay(), $endDate->copy()->endOfDay());
+            $currentDates = [];
+            foreach ($currentPeriod as $date) {
+                $currentDates[] = $date->format('Y-m-d');
+            }
+
+            $previousPeriod = CarbonPeriod::create($previousStartDate->copy()->startOfDay(), $previousEndDate->copy()->endOfDay());
+            $previousDates = [];
+            foreach ($previousPeriod as $date) {
+                $previousDates[] = $date->format('Y-m-d');
+            }
+
+            // Get signups data
+            $currentSignupsQuery = User::where('role', 0)
+                ->whereDate('created_at', '>=', $startDate)
+                ->whereDate('created_at', '<=', $endDate)
                 ->selectRaw('DATE(created_at) as date, COUNT(*) as signups')
                 ->groupBy('date')
-                ->orderBy('date')
-                ->get();
+                ->get()
+                ->pluck('signups', 'date')
+                ->toArray();
 
-            $revenueData = CourseEnrollmentPayment::whereDate('paid_at', '>=', $startDate)
-                ->whereDate('paid_at', '<=', $endDate)
-                ->selectRaw('DATE(paid_at) as date, SUM(amount)/100 as amount')
-                ->groupBy('date')
-                ->orderBy('date')
-                ->get();
-
-            // Get learning time data by date
-            $learningTimeData = CourseProgress::whereDate('firstAccess', '>=', $startDate)
-                ->whereDate('firstAccess', '<=', $endDate)
-                ->selectRaw('DATE(firstAccess) as date, SUM(timeSpent)/60 as hours')
-                ->groupBy('date')
-                ->orderBy('date')
-                ->get();
-
-            $previousLearningTimeData = CourseProgress::whereDate('firstAccess', '>=', $previousStartDate)
-                ->whereDate('firstAccess', '<=', $previousEndDate)
-                ->selectRaw('DATE(firstAccess) as date, SUM(timeSpent)/60 as hours')
-                ->groupBy('date')
-                ->orderBy('date')
-                ->get();
-
-            // Get previous period signups data for comparison
-            $previousSignupsData = User::where('role', 0)
+            $previousSignupsQuery = User::where('role', 0)
                 ->whereDate('created_at', '>=', $previousStartDate)
                 ->whereDate('created_at', '<=', $previousEndDate)
                 ->selectRaw('DATE(created_at) as date, COUNT(*) as signups')
                 ->groupBy('date')
-                ->orderBy('date')
-                ->get();
+                ->get()
+                ->pluck('signups', 'date')
+                ->toArray();
 
-            // Get previous period revenue data for comparison
-            $previousRevenueData = CourseEnrollmentPayment::whereDate('paid_at', '>=', $previousStartDate)
+            $signupsEnrollments = [];
+            foreach ($currentDates as $index => $currentDateStr) {
+                $previousDateStr = isset($previousDates[$index]) ? $previousDates[$index] : null;
+                $currentVal = $currentSignupsQuery[$currentDateStr] ?? 0;
+                $previousVal = ($previousDateStr && isset($previousSignupsQuery[$previousDateStr])) ? $previousSignupsQuery[$previousDateStr] : 0;
+
+                $signupsEnrollments[] = [
+                    'date' => Carbon::parse($currentDateStr)->format('M d'),
+                    'signups' => (int) $currentVal,
+                    'previousSignups' => (int) $previousVal
+                ];
+            }
+
+            // Get revenue data
+            $currentRevenueQuery = CourseEnrollmentPayment::whereDate('paid_at', '>=', $startDate)
+                ->whereDate('paid_at', '<=', $endDate)
+                ->selectRaw('DATE(paid_at) as date, SUM(amount)/100 as amount')
+                ->groupBy('date')
+                ->get()
+                ->pluck('amount', 'date')
+                ->toArray();
+
+            $previousRevenueQuery = CourseEnrollmentPayment::whereDate('paid_at', '>=', $previousStartDate)
                 ->whereDate('paid_at', '<=', $previousEndDate)
                 ->selectRaw('DATE(paid_at) as date, SUM(amount)/100 as amount')
                 ->groupBy('date')
-                ->orderBy('date')
-                ->get();
+                ->get()
+                ->pluck('amount', 'date')
+                ->toArray();
+
+            $revenueData = [];
+            foreach ($currentDates as $index => $currentDateStr) {
+                $previousDateStr = isset($previousDates[$index]) ? $previousDates[$index] : null;
+                $currentVal = $currentRevenueQuery[$currentDateStr] ?? 0;
+                $previousVal = ($previousDateStr && isset($previousRevenueQuery[$previousDateStr])) ? $previousRevenueQuery[$previousDateStr] : 0;
+
+                $revenueData[] = [
+                    'date' => Carbon::parse($currentDateStr)->format('M d'),
+                    'amount' => (int) $currentVal,
+                    'previousAmount' => (int) $previousVal
+                ];
+            }
+
+            // Get learning time data by date
+            $currentLearningQuery = CourseProgress::whereDate('firstAccess', '>=', $startDate)
+                ->whereDate('firstAccess', '<=', $endDate)
+                ->selectRaw('DATE(firstAccess) as date, SUM(timeSpent)/60 as hours')
+                ->groupBy('date')
+                ->get()
+                ->pluck('hours', 'date')
+                ->toArray();
+
+            $previousLearningQuery = CourseProgress::whereDate('firstAccess', '>=', $previousStartDate)
+                ->whereDate('firstAccess', '<=', $previousEndDate)
+                ->selectRaw('DATE(firstAccess) as date, SUM(timeSpent)/60 as hours')
+                ->groupBy('date')
+                ->get()
+                ->pluck('hours', 'date')
+                ->toArray();
+
+            $learningTimeData = [];
+            foreach ($currentDates as $index => $currentDateStr) {
+                $previousDateStr = isset($previousDates[$index]) ? $previousDates[$index] : null;
+                $currentVal = $currentLearningQuery[$currentDateStr] ?? 0;
+                $previousVal = ($previousDateStr && isset($previousLearningQuery[$previousDateStr])) ? $previousLearningQuery[$previousDateStr] : 0;
+
+                $learningTimeData[] = [
+                    'date' => Carbon::parse($currentDateStr)->format('M d'),
+                    'hours' => round($currentVal),
+                    'previousHours' => $previousDateStr ? round($previousVal) : 0
+                ];
+            }
 
             return response()->json([
                 'metrics' => [
@@ -1137,32 +1195,9 @@ class AdminController extends Controller
                         'trend' => $learningTimeChange >= 0 ? 'up' : 'down'
                     ]
                 ],
-                'signupsEnrollments' => $signupsData->map(function ($item) use ($previousSignupsData) {
-                    $dateStr = Carbon::parse($item->date)->format('Y-m-d');
-                    $previousDay = $previousSignupsData->where('date', $dateStr)->first();
-                    return [
-                        'date' => Carbon::parse($item->date)->format('M d'),
-                        'signups' => (int) $item->signups,
-                        'previousSignups' => $previousDay ? (int) $previousDay->signups : 0
-                    ];
-                }),
-                'revenue' => $revenueData->map(function ($item) use ($previousRevenueData) {
-                    $dateStr = Carbon::parse($item->date)->format('Y-m-d');
-                    $previousDay = $previousRevenueData->where('date', $dateStr)->first();
-                    return [
-                        'date' => Carbon::parse($item->date)->format('M d'),
-                        'amount' => (int) $item->amount,
-                        'previousAmount' => $previousDay ? (int) $previousDay->amount : 0
-                    ];
-                }),
-                'learningTime' => $learningTimeData->map(function ($item) use ($previousLearningTimeData) {
-                    $previousDay = $previousLearningTimeData->where('date', $item->date)->first();
-                    return [
-                        'date' => Carbon::parse($item->date)->format('M d'),
-                        'hours' => round($item->hours),
-                        'previousHours' => $previousDay ? round($previousDay->hours) : 0
-                    ];
-                })
+                'signupsEnrollments' => $signupsEnrollments,
+                'revenue' => $revenueData,
+                'learningTime' => $learningTimeData
             ]);
 
         } catch (\Exception $e) {
