@@ -85,18 +85,14 @@
     <!-- Student Info Section -->
     <div class="bg-white border border-neutral-200 p-4 mb-4">
         <!-- <h3 class="text-sm font-normal text-neutral-900 uppercas tracking-wider mb-3 border-b border-neutral-100 pb-1.5">Student Details</h3> -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm font-normal">
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm font-normal">
             <div>
                 <span class="text-neutral-500 block text-[10px] font-normal uppercase tracking-wider mb-0.5">Name</span>
                 <span class="text-neutral-900 font-normal text-bas">{{$enrollment->students->name}}</span>
             </div>
-            <div>
+            <div class="min-w-0">
                 <span class="text-neutral-500 block text-[10px] font-normal uppercase tracking-wider mb-0.5">Email</span>
-                <span class="text-neutral-900 font-normal">{{$enrollment->students->email}}</span>
-            </div>
-            <div>
-                <span class="text-neutral-500 block text-[10px] font-normal uppercase tracking-wider mb-0.5">Mobile</span>
-                <span class="text-neutral-900 font-normal">{{$enrollment->students->mobile}}</span>
+                <span class="text-neutral-900 font-normal block truncate" title="{{$enrollment->students->email}}">{{$enrollment->students->email}}</span>
             </div>
             <div>
                 <span class="text-neutral-500 block text-[10px] font-normal uppercase tracking-wider mb-0.5">Batch Name</span>
