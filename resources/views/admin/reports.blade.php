@@ -131,15 +131,15 @@
     <div class="mb-6 border-b border-neutral-200">
         <nav class="flex gap-6" aria-label="Tabs">
             <button type="button" onclick="switchReportTab('revenue')" id="tab-revenue"
-                class="border-b-2 border-blue-600 py-2.5 text-sm font-medium text-blue-600 focus:outline-none transition-all">
+                class="border-b-2 border-violet-600 py-2.5 text-sm font-normal text-violet-600 focus:outline-none transition-all">
                 Revenue
             </button>
             <button type="button" onclick="switchReportTab('enrollment')" id="tab-enrollment"
-                class="border-b-2 border-transparent py-2.5 text-sm font-medium text-neutral-500 hover:text-black hover:border-neutral-300 focus:outline-none transition-all">
+                class="border-b-2 border-transparent py-2.5 text-sm font-normal text-neutral-500 hover:text-black hover:border-neutral-300 focus:outline-none transition-all">
                 Enrollment & Signups
             </button>
             <button type="button" onclick="switchReportTab('learning')" id="tab-learning"
-                class="border-b-2 border-transparent py-2.5 text-sm font-medium text-neutral-500 hover:text-black hover:border-neutral-300 focus:outline-none transition-all">
+                class="border-b-2 border-transparent py-2.5 text-sm font-normal text-neutral-500 hover:text-black hover:border-neutral-300 focus:outline-none transition-all">
                 Learning Time
             </button>
         </nav>
@@ -329,10 +329,10 @@ document.addEventListener('DOMContentLoaded', function() {
             
             if (t === tabType) {
                 tabEl.classList.remove('border-transparent', 'text-neutral-500');
-                tabEl.classList.add('border-blue-600', 'text-blue-600');
+                tabEl.classList.add('border-violet-600', 'text-violet-600');
                 contentEl.classList.remove('hidden');
             } else {
-                tabEl.classList.remove('border-blue-600', 'text-blue-600');
+                tabEl.classList.remove('border-violet-600', 'text-violet-600');
                 tabEl.classList.add('border-transparent', 'text-neutral-500');
                 contentEl.classList.add('hidden');
             }
