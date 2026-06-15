@@ -205,9 +205,9 @@
                             <th class="px-6 py-4 font-semibold">Student</th>
                             <th class="px-6 py-4 font-semibold">Email</th>
                             <th class="px-6 py-4 font-semibold">Course</th>
-                            <th class="px-6 py-4 font-semibold text-right">Amount</th>
-                            <th class="px-6 py-4 font-semibold">Method</th>
                             <th class="px-6 py-4 font-semibold">Date</th>
+                            <th class="px-6 py-4 font-semibold text-right">Amount</th>
+                            <th class="px-6 py-4 font-semibold">GST Status</th>
                         </tr>
                     </thead>
                     <tbody id="transactions-table-body">
@@ -509,14 +509,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td class="px-6 py-4 align-top font-normal">${studentNameHtml}</td>
                 <td class="px-6 py-4 align-top font-normal">${emailCell}</td>
                 <td class="px-6 py-4 align-top text-neutral-700 font-normal">${tx.course_name}</td>
-                <td class="px-6 py-4 align-top text-right text-neutral-800 font-normal">
-                    <div class="flex items-center justify-end gap-1.5 whitespace-nowrap">
-                        <span>₹${numberFormat(tx.amount)}</span>
-                        ${gstPill}
-                    </div>
-                </td>
-                <td class="px-6 py-4 align-top text-neutral-600 uppercase font-normal">${tx.payment_method || '—'}</td>
                 <td class="px-6 py-4 align-top text-neutral-400 font-normal whitespace-nowrap">${dateOnly}</td>
+                <td class="px-6 py-4 align-top text-right text-neutral-800 font-normal">₹${numberFormat(tx.amount)}</td>
+                <td class="px-6 py-4 align-top font-normal whitespace-nowrap">${gstPill}</td>
             `;
             tbody.appendChild(tr);
         });
