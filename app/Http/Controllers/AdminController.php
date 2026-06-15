@@ -1042,13 +1042,51 @@ class AdminController extends Controller
 
 
             // Get revenue data
-            $currentRevenue = CourseEnrollmentPayment::whereDate('paid_at', '>=', $startDate)
+            $currentPayments = CourseEnrollmentPayment::whereDate('paid_at', '>=', $startDate)
                 ->whereDate('paid_at', '<=', $endDate)
-                ->sum('amount') / 100; // Convert paisa to rupees
+                ->get();
 
-            $previousRevenue = CourseEnrollmentPayment::whereDate('paid_at', '>=', $previousStartDate)
+            $currentRevenue = $currentPayments->sum('amount') / 100;
+
+            $currentRevenueNet = 0;
+            $currentRevenueGst = 0;
+            $currentRevenueCash = 0;
+            $currentRevenueGstApplicable = 0;
+            foreach ($currentPayments as $payment) {
+                $amt = $payment->amount / 100;
+                if ($payment->is_gst_applicable) {
+                    $net = $amt / 1.18;
+                    $currentRevenueGst += ($amt - $net);
+                    $currentRevenueNet += $net;
+                    $currentRevenueGstApplicable += $amt;
+                } else {
+                    $currentRevenueNet += $amt;
+                    $currentRevenueCash += $amt;
+                }
+            }
+
+            $previousPayments = CourseEnrollmentPayment::whereDate('paid_at', '>=', $previousStartDate)
                 ->whereDate('paid_at', '<=', $previousEndDate)
-                ->sum('amount') / 100;
+                ->get();
+
+            $previousRevenue = $previousPayments->sum('amount') / 100;
+
+            $previousRevenueNet = 0;
+            $previousRevenueGst = 0;
+            $previousRevenueCash = 0;
+            $previousRevenueGstApplicable = 0;
+            foreach ($previousPayments as $payment) {
+                $amt = $payment->amount / 100;
+                if ($payment->is_gst_applicable) {
+                    $net = $amt / 1.18;
+                    $previousRevenueGst += ($amt - $net);
+                    $previousRevenueNet += $net;
+                    $previousRevenueGstApplicable += $amt;
+                } else {
+                    $previousRevenueNet += $amt;
+                    $previousRevenueCash += $amt;
+                }
+            }
 
             // Get learning time data
             $currentLearningTime = CourseProgress::whereDate('firstAccess', '>=', $startDate)
@@ -1109,33 +1147,72 @@ class AdminController extends Controller
                 ];
             }
 
-            // Get revenue data
-            $currentRevenueQuery = CourseEnrollmentPayment::whereDate('paid_at', '>=', $startDate)
-                ->whereDate('paid_at', '<=', $endDate)
-                ->selectRaw('DATE(paid_at) as date, SUM(amount)/100 as amount')
-                ->groupBy('date')
-                ->get()
-                ->pluck('amount', 'date')
-                ->toArray();
+            // Group current payments by date
+            $currentPaymentsByDate = [];
+            foreach ($currentPayments as $payment) {
+                $dateStr = Carbon::parse($payment->paid_at)->format('Y-m-d');
+                if (!isset($currentPaymentsByDate[$dateStr])) {
+                    $currentPaymentsByDate[$dateStr] = [];
+                }
+                $currentPaymentsByDate[$dateStr][] = $payment;
+            }
 
-            $previousRevenueQuery = CourseEnrollmentPayment::whereDate('paid_at', '>=', $previousStartDate)
-                ->whereDate('paid_at', '<=', $previousEndDate)
-                ->selectRaw('DATE(paid_at) as date, SUM(amount)/100 as amount')
-                ->groupBy('date')
-                ->get()
-                ->pluck('amount', 'date')
-                ->toArray();
+            // Group previous payments by date
+            $previousPaymentsByDate = [];
+            foreach ($previousPayments as $payment) {
+                $dateStr = Carbon::parse($payment->paid_at)->format('Y-m-d');
+                if (!isset($previousPaymentsByDate[$dateStr])) {
+                    $previousPaymentsByDate[$dateStr] = [];
+                }
+                $previousPaymentsByDate[$dateStr][] = $payment;
+            }
 
             $revenueData = [];
             foreach ($currentDates as $index => $currentDateStr) {
                 $previousDateStr = isset($previousDates[$index]) ? $previousDates[$index] : null;
-                $currentVal = $currentRevenueQuery[$currentDateStr] ?? 0;
-                $previousVal = ($previousDateStr && isset($previousRevenueQuery[$previousDateStr])) ? $previousRevenueQuery[$previousDateStr] : 0;
+
+                // Current period stats for this date
+                $currGross = 0;
+                $currNet = 0;
+                $currGst = 0;
+                if (isset($currentPaymentsByDate[$currentDateStr])) {
+                    foreach ($currentPaymentsByDate[$currentDateStr] as $payment) {
+                        $amt = $payment->amount / 100;
+                        $currGross += $amt;
+                        if ($payment->is_gst_applicable) {
+                            $net = $amt / 1.18;
+                            $currGst += ($amt - $net);
+                        } else {
+                            $currNet += $amt; // Only sum where GST is not applicable
+                        }
+                    }
+                }
+
+                // Previous period stats for this date
+                $prevGross = 0;
+                $prevNet = 0;
+                $prevGst = 0;
+                if ($previousDateStr && isset($previousPaymentsByDate[$previousDateStr])) {
+                    foreach ($previousPaymentsByDate[$previousDateStr] as $payment) {
+                        $amt = $payment->amount / 100;
+                        $prevGross += $amt;
+                        if ($payment->is_gst_applicable) {
+                            $net = $amt / 1.18;
+                            $prevGst += ($amt - $net);
+                        } else {
+                            $prevNet += $amt; // Only sum where GST is not applicable
+                        }
+                    }
+                }
 
                 $revenueData[] = [
                     'date' => Carbon::parse($currentDateStr)->format('M d'),
-                    'amount' => (int) $currentVal,
-                    'previousAmount' => (int) $previousVal
+                    'amount' => $currGross,
+                    'previousAmount' => $prevGross,
+                    'amountNet' => $currNet,
+                    'previousAmountNet' => $prevNet,
+                    'amountGst' => $currGst,
+                    'previousAmountGst' => $prevGst
                 ];
             }
 
@@ -1169,6 +1246,40 @@ class AdminController extends Controller
                 ];
             }
 
+            // Get all transactions in that period
+            $paymentsQuery = CourseEnrollmentPayment::with(['enrollment.students', 'enrollment.batch'])
+                ->whereDate('paid_at', '>=', $startDate)
+                ->whereDate('paid_at', '<=', $endDate)
+                ->orderBy('paid_at', 'desc')
+                ->get();
+
+            $transactions = $paymentsQuery->map(function ($payment) {
+                $studentName = $payment->enrollment && $payment->enrollment->students
+                    ? $payment->enrollment->students->name
+                    : 'N/A';
+                $studentEmail = $payment->enrollment && $payment->enrollment->students
+                    ? $payment->enrollment->students->email
+                    : ($payment->enrollment->email ?? 'N/A');
+                $courseName = $payment->enrollment && $payment->enrollment->batch
+                    ? $payment->enrollment->batch->name
+                    : 'N/A';
+
+                return [
+                    'id' => $payment->id,
+                    'student_name' => $studentName,
+                    'student_email' => $studentEmail,
+                    'course_name' => $courseName,
+                    'amount' => (int) ($payment->amount / 100),
+                    'is_gst_applicable' => (bool) $payment->is_gst_applicable,
+                    'gst_amount' => $payment->is_gst_applicable ? (int) round(($payment->amount / 100) - ($payment->amount / 100 / 1.18)) : 0,
+                    'payment_method' => $payment->payment_method,
+                    'transaction_id' => $payment->transaction_id,
+                    'remarks' => $payment->remarks ?? '',
+                    'purpose' => $payment->purpose ?? '',
+                    'paid_at' => Carbon::parse($payment->paid_at)->format('d M Y, h:i A')
+                ];
+            });
+
             return response()->json([
                 'metrics' => [
                     'signups' => [
@@ -1184,10 +1295,23 @@ class AdminController extends Controller
                         'trend' => $enrollmentsChange >= 0 ? 'up' : 'down'
                     ],
                     'revenue' => [
-                        'current' => (int) $currentRevenue,
+                        'current' => $currentRevenue,
                         'change' => round($revenueChange, 1),
                         'difference' => round($currentRevenue - $previousRevenue),
-                        'trend' => $revenueChange >= 0 ? 'up' : 'down'
+                        'trend' => $revenueChange >= 0 ? 'up' : 'down',
+
+                        'currentNet' => $currentRevenueNet,
+                        'changeNet' => round($previousRevenueNet > 0 ? (($currentRevenueNet - $previousRevenueNet) / $previousRevenueNet) * 100 : 0, 1),
+                        'differenceNet' => round($currentRevenueNet - $previousRevenueNet),
+                        'trendNet' => ($currentRevenueNet - $previousRevenueNet) >= 0 ? 'up' : 'down',
+
+                        'currentGst' => $currentRevenueGst,
+                        'changeGst' => round($previousRevenueGst > 0 ? (($currentRevenueGst - $previousRevenueGst) / $previousRevenueGst) * 100 : 0, 1),
+                        'differenceGst' => round($currentRevenueGst - $previousRevenueGst),
+                        'trendGst' => ($currentRevenueGst - $previousRevenueGst) >= 0 ? 'up' : 'down',
+
+                        'currentCash' => $currentRevenueCash,
+                        'currentGstApplicable' => $currentRevenueGstApplicable,
                     ],
                     'learningTime' => [
                         'current' => round($currentLearningTime),
@@ -1197,7 +1321,8 @@ class AdminController extends Controller
                 ],
                 'signupsEnrollments' => $signupsEnrollments,
                 'revenue' => $revenueData,
-                'learningTime' => $learningTimeData
+                'learningTime' => $learningTimeData,
+                'transactions' => $transactions
             ]);
 
         } catch (\Exception $e) {

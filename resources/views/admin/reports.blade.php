@@ -91,8 +91,8 @@
                 <div class="relative w-48">
                     <select id="dateRange" class="w-full border border-neutral-200 rounded-none px-3 py-1.5 text-sm font-normal focus:outline-none focus:border-violet-500 focus:ring-0 appearance-none pr-8 bg-white">
                         <option value="7">Last 7 Days</option>
-                        <option value="30" selected>Last 30 Days</option>
-                        <option value="this_month">This Month</option>
+                        <option value="30">Last 30 Days</option>
+                        <option value="this_month" selected>This Month</option>
                         <option value="last_month">Last Month</option>
                         <option value="90">Last 3 Months</option>
                         <option value="this_year">This Year</option>
@@ -149,28 +149,72 @@
 
     <!-- Revenue Section -->
     <div id="content-revenue">
+        <!-- Revenue GST Filters -->
+        <div class="mb-4 flex flex-wrap items-center justify-between gap-3">
+            <span class="text-xs font-normal text-neutral-500">Filter Revenue by GST applicability</span>
+            <div class="inline-flex rounded-md shadow-sm bg-white" role="group">
+                <button type="button" onclick="setRevenueGstFilter('all')" id="gst-filter-all"
+                    class="px-3 py-1.5 text-xs font-normal text-violet-600 bg-violet-50 border border-violet-600 rounded-l-md focus:z-10 focus:outline-none transition-all">
+                    With GST (Gross)
+                </button>
+                <button type="button" onclick="setRevenueGstFilter('net')" id="gst-filter-net"
+                    class="px-3 py-1.5 text-xs font-normal text-neutral-600 border-t border-b border-r border-neutral-200 hover:bg-neutral-50 focus:z-10 focus:outline-none transition-all">
+                    Without GST
+                </button>
+                <button type="button" onclick="setRevenueGstFilter('gst')" id="gst-filter-gst"
+                    class="px-3 py-1.5 text-xs font-normal text-neutral-600 border-t border-b border-r border-neutral-200 rounded-r-md hover:bg-neutral-50 focus:z-10 focus:outline-none transition-all">
+                    18% GST Amount
+                </button>
+            </div>
+        </div>
+ 
         <!-- Summary Stats Grid -->
         <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
             <div class="border border-neutral-200 p-3 bg-white">
-                <span class="text-neutral-500 block text-[10px] font-normal uppercase tracking-wider mb-1">Total Revenue</span>
+                <span id="rev-total-title" class="text-neutral-500 block text-[10px] font-normal uppercase tracking-wider mb-1">Total Revenue</span>
                 <span class="text-xl font-normal text-neutral-900 block leading-tight">₹<span id="rev-total">0</span></span>
                 <span id="rev-total-trend" class="text-[10px] font-normal block mt-1 leading-none"></span>
             </div>
             <div class="border border-neutral-200 p-3 bg-white">
-                <span class="text-neutral-500 block text-[10px] font-normal uppercase tracking-wider mb-1">Daily Average</span>
-                <span class="text-xl font-normal text-neutral-900 block leading-tight">₹<span id="rev-avg">0</span></span>
-                <span class="text-[10px] text-neutral-400 block mt-1 leading-none font-normal">Per day during period</span>
+                <span id="rev-net-title" class="text-neutral-500 block text-[10px] font-normal uppercase tracking-wider mb-1">Net Revenue</span>
+                <span class="text-xl font-normal text-neutral-900 block leading-tight">₹<span id="rev-net">0</span></span>
+                <span id="rev-net-desc" class="text-[10px] text-neutral-400 block mt-1 leading-none font-normal">Total revenue excluding GST</span>
             </div>
             <div class="border border-neutral-200 p-3 bg-white">
-                <span class="text-neutral-500 block text-[10px] font-normal uppercase tracking-wider mb-1">Period Difference</span>
-                <span class="text-xl font-normal text-neutral-900 block leading-tight"><span id="rev-diff-sign"></span>₹<span id="rev-diff">0</span></span>
-                <span class="text-[10px] text-neutral-400 block mt-1 leading-none font-normal">Vs previous period</span>
+                <span id="rev-gst-title" class="text-neutral-500 block text-[10px] font-normal uppercase tracking-wider mb-1">Payable GST</span>
+                <span class="text-xl font-normal text-neutral-900 block leading-tight">₹<span id="rev-gst">0</span></span>
+                <span id="rev-gst-desc" class="text-[10px] text-neutral-400 block mt-1 leading-none font-normal">18% on applicable revenue</span>
             </div>
         </div>
 
         <!-- Chart -->
         <div class="border border-neutral-200 bg-white p-4">
             <div id="revenueChart" style="height: 400px;"></div>
+        </div>
+
+        <!-- Transactions Table -->
+        <div class="mt-6 border border-neutral-200 bg-white">
+            <div class="px-4 py-3 border-b border-neutral-200 flex justify-between items-center">
+                <span class="text-sm font-medium text-neutral-800">Period Transactions</span>
+                <span class="text-xs text-neutral-500 font-normal"><span id="tx-count">0</span> payments found</span>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs font-normal">
+                    <thead>
+                        <tr class="bg-neutral-50 text-neutral-500 border-b border-neutral-200 font-normal">
+                            <th class="px-4 py-2.5 font-normal">Student</th>
+                            <th class="px-4 py-2.5 font-normal">Course</th>
+                            <th class="px-4 py-2.5 font-normal text-right">Amount</th>
+                            <th class="px-4 py-2.5 font-normal">Method</th>
+                            <th class="px-4 py-2.5 font-normal">Notes</th>
+                            <th class="px-4 py-2.5 font-normal">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactions-table-body">
+                        <!-- Filled dynamically -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
@@ -241,6 +285,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const endDateInput = document.getElementById('endDate');
     let pickerInstance = null;
     let currentTab = 'revenue';
+    let currentGstFilter = 'all';
+    let globalReportData = null;
+
+    window.setRevenueGstFilter = function(filterType) {
+        currentGstFilter = filterType;
+        updateGstFilterUI();
+        if (globalReportData) {
+            updateMetrics(globalReportData.metrics);
+            updateCharts(globalReportData);
+            updateTransactionsTable(globalReportData.transactions);
+        }
+    }
+
+    function updateGstFilterUI() {
+        const filters = ['all', 'net', 'gst'];
+        filters.forEach(f => {
+            const btn = document.getElementById(`gst-filter-${f}`);
+            if (!btn) return;
+            if (f === currentGstFilter) {
+                btn.className = "px-3 py-1.5 text-xs font-normal text-violet-600 bg-violet-50 border border-violet-600 focus:z-10 focus:outline-none transition-all";
+                if (f === 'all') btn.classList.add('rounded-l-md');
+                if (f === 'gst') btn.classList.add('rounded-r-md');
+            } else {
+                btn.className = "px-3 py-1.5 text-xs font-normal text-neutral-600 bg-white border border-neutral-200 hover:bg-neutral-50 focus:z-10 focus:outline-none transition-all";
+                if (f === 'all') btn.classList.add('rounded-l-md');
+                if (f === 'gst') btn.classList.add('rounded-r-md');
+            }
+        });
+    }
 
     // Hide custom date range initially
     customDateRange.style.display = 'none';
@@ -377,12 +450,80 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(url)
             .then(res => res.json())
             .then(data => {
+                globalReportData = data;
                 updateCharts(data);
                 updateMetrics(data.metrics);
+                updateGstFilterUI();
+                updateTransactionsTable(data.transactions);
             })
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
+    }
+
+    function updateTransactionsTable(transactions) {
+        // Filter based on active GST filter pill
+        let filteredTx = transactions;
+        if (currentGstFilter === 'net') {
+            filteredTx = transactions.filter(tx => !tx.is_gst_applicable);
+        } else if (currentGstFilter === 'gst') {
+            filteredTx = transactions.filter(tx => tx.is_gst_applicable);
+        }
+
+        document.getElementById('tx-count').textContent = filteredTx.length;
+        const tbody = document.getElementById('transactions-table-body');
+        tbody.innerHTML = '';
+
+        if (filteredTx.length === 0) {
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="6" class="px-4 py-8 text-center text-neutral-400 font-normal">
+                        No transactions found in this period.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        filteredTx.forEach(tx => {
+            const tr = document.createElement('tr');
+            tr.className = "border-b border-neutral-100 hover:bg-neutral-50/50 transition-all font-normal";
+            
+            // Format GST flag indicator
+            const gstBadge = tx.is_gst_applicable 
+                ? '<span class="ml-1 px-1.5 py-0.5 text-[9px] font-normal bg-violet-50 text-violet-600 rounded">GST</span>' 
+                : '<span class="ml-1 px-1.5 py-0.5 text-[9px] font-normal bg-neutral-50 text-neutral-500 rounded">Exempt</span>';
+
+            const gstAmountHtml = tx.is_gst_applicable 
+                ? `<div class="text-[10px] text-violet-600 font-normal mt-0.5">GST: ₹${numberFormat(tx.gst_amount)}</div>` 
+                : '';
+
+            // Build student cell info
+            const studentCell = `
+                <div class="font-normal text-neutral-800">${tx.student_name}</div>
+                <div class="text-[10px] text-neutral-400 font-normal">${tx.student_email}</div>
+            `;
+
+            // Build notes/remarks column
+            const notesDetails = [];
+            if (tx.purpose) notesDetails.push(`Purpose: ${tx.purpose}`);
+            if (tx.transaction_id) notesDetails.push(`Tx ID: ${tx.transaction_id}`);
+            if (tx.remarks) notesDetails.push(`Note: ${tx.remarks}`);
+            const notesText = notesDetails.length > 0 ? notesDetails.join(' | ') : '—';
+
+            tr.innerHTML = `
+                <td class="px-4 py-3 align-top font-normal">${studentCell}</td>
+                <td class="px-4 py-3 align-top text-neutral-700 font-normal">${tx.course_name}</td>
+                <td class="px-4 py-3 align-top text-right text-neutral-800 font-normal">
+                    <div>₹${numberFormat(tx.amount)} ${gstBadge}</div>
+                    ${gstAmountHtml}
+                </td>
+                <td class="px-4 py-3 align-top text-neutral-600 uppercase font-normal">${tx.payment_method || '—'}</td>
+                <td class="px-4 py-3 align-top text-neutral-500 max-w-[240px] truncate font-normal" title="${notesText}">${notesText}</td>
+                <td class="px-4 py-3 align-top text-neutral-400 font-normal whitespace-nowrap">${tx.paid_at}</td>
+            `;
+            tbody.appendChild(tr);
+        });
     }
 
     function updateTrendElement(elementId, trend, change) {
@@ -399,16 +540,51 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateMetrics(metrics) {
         const days = getSelectedDaysCount();
         
-        // Revenue Report
-        document.getElementById('rev-total').textContent = numberFormat(metrics.revenue.current);
-        updateTrendElement('rev-total-trend', metrics.revenue.trend, metrics.revenue.change);
-        
-        const revAvg = days > 0 ? (metrics.revenue.current / days) : 0;
-        document.getElementById('rev-avg').textContent = numberFormat(Math.round(revAvg));
-        
-        const revDiff = metrics.revenue.difference;
-        document.getElementById('rev-diff-sign').textContent = revDiff >= 0 ? '+' : '-';
-        document.getElementById('rev-diff').textContent = numberFormat(Math.abs(revDiff));
+        const card1Title = document.getElementById('rev-total-title');
+        const card2Title = document.getElementById('rev-net-title');
+        const card2Desc = document.getElementById('rev-net-desc');
+        const card3Title = document.getElementById('rev-gst-title');
+        const card3Desc = document.getElementById('rev-gst-desc');
+
+        if (currentGstFilter === 'all') {
+            card1Title.textContent = 'Total Revenue';
+            document.getElementById('rev-total').textContent = numberFormat(Math.round(metrics.revenue.current));
+            updateTrendElement('rev-total-trend', metrics.revenue.trend, metrics.revenue.change);
+            
+            card2Title.textContent = 'Net Revenue';
+            document.getElementById('rev-net').textContent = numberFormat(Math.round(metrics.revenue.currentNet));
+            card2Desc.textContent = 'Total revenue excluding GST';
+
+            card3Title.textContent = 'Payable GST';
+            document.getElementById('rev-gst').textContent = numberFormat(Math.round(metrics.revenue.currentGst));
+            card3Desc.textContent = '18% on applicable revenue';
+        } else if (currentGstFilter === 'net') {
+            card1Title.textContent = 'Cash Revenue';
+            document.getElementById('rev-total').textContent = numberFormat(Math.round(metrics.revenue.currentCash));
+            document.getElementById('rev-total-trend').textContent = '';
+            
+            card2Title.textContent = '% of Total Revenue';
+            const pct = metrics.revenue.current > 0 ? (metrics.revenue.currentCash / metrics.revenue.current * 100) : 0;
+            document.getElementById('rev-net').textContent = pct.toFixed(1) + '%';
+            card2Desc.textContent = 'Share of total gross revenue';
+
+            card3Title.textContent = 'Payable GST';
+            document.getElementById('rev-gst').textContent = '0';
+            card3Desc.textContent = 'GST is not applicable on cash';
+        } else if (currentGstFilter === 'gst') {
+            card1Title.textContent = 'GST Applicable Revenue';
+            document.getElementById('rev-total').textContent = numberFormat(Math.round(metrics.revenue.currentGstApplicable));
+            document.getElementById('rev-total-trend').textContent = '';
+            
+            card2Title.textContent = 'Net Portion';
+            const netPortion = metrics.revenue.currentGstApplicable / 1.18;
+            document.getElementById('rev-net').textContent = numberFormat(Math.round(netPortion));
+            card2Desc.textContent = 'Excluding 18% GST';
+
+            card3Title.textContent = 'Payable GST';
+            document.getElementById('rev-gst').textContent = numberFormat(Math.round(metrics.revenue.currentGst));
+            card3Desc.textContent = '18% on applicable revenue';
+        }
 
         // Enrollment Report
         document.getElementById('enr-total').textContent = numberFormat(metrics.enrollments.current);
@@ -522,9 +698,24 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Revenue Chart
+        let currentRevenueData, previousRevenueData, revenueTitle;
+        if (currentGstFilter === 'all') {
+            currentRevenueData = data.revenue.map(d => d.amount);
+            previousRevenueData = data.revenue.map(d => d.previousAmount || 0);
+            revenueTitle = 'Revenue Comparison (With GST)';
+        } else if (currentGstFilter === 'net') {
+            currentRevenueData = data.revenue.map(d => d.amountNet);
+            previousRevenueData = data.revenue.map(d => d.previousAmountNet || 0);
+            revenueTitle = 'Revenue Comparison (Without GST)';
+        } else {
+            currentRevenueData = data.revenue.map(d => d.amountGst);
+            previousRevenueData = data.revenue.map(d => d.previousAmountGst || 0);
+            revenueTitle = 'Revenue Comparison (18% GST Only)';
+        }
+
         revenueChart.setOption({
             title: { 
-                text: 'Revenue Comparison',
+                text: revenueTitle,
                 left: '20px',
                 top: '10px'
             },
@@ -576,7 +767,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     name: 'Current Period',
                     type: 'line',
-                    data: data.revenue.map(d => d.amount),
+                    data: currentRevenueData,
                     smooth: true,
                     symbol: 'circle',
                     symbolSize: 0,
@@ -593,7 +784,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 {
                     name: 'Previous Period',
                     type: 'line',
-                    data: data.revenue.map(d => d.previousAmount || 0),
+                    data: previousRevenueData,
                     smooth: true,
                     symbol: 'circle',
                     symbolSize: 0,
@@ -666,7 +857,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Initial load
-    fetchData('30');
+    fetchData('this_month');
 });
 </script>
 @endsection
