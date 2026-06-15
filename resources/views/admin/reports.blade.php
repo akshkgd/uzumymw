@@ -194,25 +194,38 @@
 
         <!-- Transactions Table -->
         <div class="mt-6 border border-neutral-200 bg-white">
-            <div class="px-4 py-3 border-b border-neutral-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div class="px-4 py-3 border-b border-neutral-200 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
                 <div class="flex items-center gap-3">
                     <span class="text-sm font-medium text-neutral-800">Period Transactions</span>
                     <span class="text-xs text-neutral-500 font-normal"><span id="tx-count">0</span> payments found</span>
                 </div>
-                <!-- Batch Type Filter Button Group -->
-                <div class="inline-flex rounded-md shadow-sm bg-white" role="group">
-                    <button type="button" onclick="setBatchTypeFilter('all')" id="type-filter-all"
-                        class="px-3 py-1.5 text-xs font-normal text-violet-600 bg-violet-50 border border-violet-600 rounded-l-md focus:z-10 focus:outline-none transition-all">
-                        All
-                    </button>
-                    <button type="button" onclick="setBatchTypeFilter('course')" id="type-filter-course"
-                        class="px-3 py-1.5 text-xs font-normal text-neutral-600 border-t border-b border-r border-neutral-200 hover:bg-neutral-50 focus:z-10 focus:outline-none transition-all">
-                        Courses
-                    </button>
-                    <button type="button" onclick="setBatchTypeFilter('workshop')" id="type-filter-workshop"
-                        class="px-3 py-1.5 text-xs font-normal text-neutral-600 border-t border-b border-r border-neutral-200 rounded-r-md hover:bg-neutral-50 focus:z-10 focus:outline-none transition-all">
-                        Workshops
-                    </button>
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <!-- Search Input -->
+                    <div class="relative">
+                        <input type="text" id="txSearch" placeholder="Search by name or email..." 
+                            class="w-full sm:w-60 border border-neutral-200 rounded px-8 py-1.5 text-xs font-normal focus:outline-none focus:border-violet-500 focus:ring-0 bg-white"
+                            oninput="handleSearchInput(this.value)">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-2.5 pointer-events-none text-neutral-400">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Batch Type Filter Button Group -->
+                    <div class="inline-flex rounded-md shadow-sm bg-white" role="group">
+                        <button type="button" onclick="setBatchTypeFilter('all')" id="type-filter-all"
+                            class="px-3 py-1.5 text-xs font-normal text-violet-600 bg-violet-50 border border-violet-600 rounded-l-md focus:z-10 focus:outline-none transition-all">
+                            All
+                        </button>
+                        <button type="button" onclick="setBatchTypeFilter('course')" id="type-filter-course"
+                            class="px-3 py-1.5 text-xs font-normal text-neutral-600 border-t border-b border-r border-neutral-200 hover:bg-neutral-50 focus:z-10 focus:outline-none transition-all">
+                            Courses
+                        </button>
+                        <button type="button" onclick="setBatchTypeFilter('workshop')" id="type-filter-workshop"
+                            class="px-3 py-1.5 text-xs font-normal text-neutral-600 border-t border-b border-r border-neutral-200 rounded-r-md hover:bg-neutral-50 focus:z-10 focus:outline-none transition-all">
+                            Workshops
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="overflow-x-auto">
@@ -304,6 +317,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentTab = 'revenue';
     let currentGstFilter = 'all';
     let currentBatchTypeFilter = 'all';
+    let currentSearchQuery = '';
     let globalReportData = null;
 
     window.setRevenueGstFilter = function(filterType) {
@@ -356,6 +370,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (f === 'workshop') btn.classList.add('rounded-r-md');
             }
         });
+    }
+
+    window.handleSearchInput = function(query) {
+        currentSearchQuery = query.toLowerCase().trim();
+        if (globalReportData) {
+            updateTransactionsTable(globalReportData.transactions);
+        }
     }
 
     // Hide custom date range initially
@@ -518,6 +539,15 @@ document.addEventListener('DOMContentLoaded', function() {
             filteredTx = filteredTx.filter(tx => tx.batch_type !== 2);
         } else if (currentBatchTypeFilter === 'workshop') {
             filteredTx = filteredTx.filter(tx => tx.batch_type === 2);
+        }
+
+        // Filter based on Search Query (name or email)
+        if (currentSearchQuery) {
+            filteredTx = filteredTx.filter(tx => {
+                const nameMatch = tx.student_name && tx.student_name.toLowerCase().includes(currentSearchQuery);
+                const emailMatch = tx.student_email && tx.student_email.toLowerCase().includes(currentSearchQuery);
+                return nameMatch || emailMatch;
+            });
         }
 
         document.getElementById('tx-count').textContent = filteredTx.length;
