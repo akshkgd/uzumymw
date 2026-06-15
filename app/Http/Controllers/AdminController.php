@@ -1281,6 +1281,9 @@ class AdminController extends Controller
                 $courseName = $payment->enrollment && $payment->enrollment->batch
                     ? $payment->enrollment->batch->name
                     : 'N/A';
+                $batchType = $payment->enrollment && $payment->enrollment->batch
+                    ? (int) $payment->enrollment->batch->type
+                    : 0;
 
                 return [
                     'id' => $payment->id,
@@ -1288,6 +1291,7 @@ class AdminController extends Controller
                     'student_name' => $studentName,
                     'student_email' => $studentEmail,
                     'course_name' => $courseName,
+                    'batch_type' => $batchType,
                     'amount' => (int) ($payment->amount / 100),
                     'is_gst_applicable' => (bool) $payment->is_gst_applicable,
                     'gst_amount' => $payment->is_gst_applicable ? (int) round(($payment->amount / 100) - ($payment->amount / 100 / 1.18)) : 0,

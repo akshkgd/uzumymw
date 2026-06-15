@@ -194,9 +194,26 @@
 
         <!-- Transactions Table -->
         <div class="mt-6 border border-neutral-200 bg-white">
-            <div class="px-4 py-3 border-b border-neutral-200 flex justify-between items-center">
-                <span class="text-sm font-medium text-neutral-800">Period Transactions</span>
-                <span class="text-xs text-neutral-500 font-normal"><span id="tx-count">0</span> payments found</span>
+            <div class="px-4 py-3 border-b border-neutral-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <span class="text-sm font-medium text-neutral-800">Period Transactions</span>
+                    <span class="text-xs text-neutral-500 font-normal"><span id="tx-count">0</span> payments found</span>
+                </div>
+                <!-- Batch Type Filter Button Group -->
+                <div class="inline-flex rounded-md shadow-sm bg-white" role="group">
+                    <button type="button" onclick="setBatchTypeFilter('all')" id="type-filter-all"
+                        class="px-3 py-1.5 text-xs font-normal text-violet-600 bg-violet-50 border border-violet-600 rounded-l-md focus:z-10 focus:outline-none transition-all">
+                        All
+                    </button>
+                    <button type="button" onclick="setBatchTypeFilter('course')" id="type-filter-course"
+                        class="px-3 py-1.5 text-xs font-normal text-neutral-600 border-t border-b border-r border-neutral-200 hover:bg-neutral-50 focus:z-10 focus:outline-none transition-all">
+                        Courses
+                    </button>
+                    <button type="button" onclick="setBatchTypeFilter('workshop')" id="type-filter-workshop"
+                        class="px-3 py-1.5 text-xs font-normal text-neutral-600 border-t border-b border-r border-neutral-200 rounded-r-md hover:bg-neutral-50 focus:z-10 focus:outline-none transition-all">
+                        Workshops
+                    </button>
+                </div>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm font-normal divide-y divide-neutral-200">
@@ -286,6 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let pickerInstance = null;
     let currentTab = 'revenue';
     let currentGstFilter = 'all';
+    let currentBatchTypeFilter = 'all';
     let globalReportData = null;
 
     window.setRevenueGstFilter = function(filterType) {
@@ -311,6 +329,31 @@ document.addEventListener('DOMContentLoaded', function() {
                 btn.className = "px-3 py-1.5 text-xs font-normal text-neutral-600 bg-white border border-neutral-200 hover:bg-neutral-50 focus:z-10 focus:outline-none transition-all";
                 if (f === 'all') btn.classList.add('rounded-l-md');
                 if (f === 'gst') btn.classList.add('rounded-r-md');
+            }
+        });
+    }
+
+    window.setBatchTypeFilter = function(filterVal) {
+        currentBatchTypeFilter = filterVal;
+        updateBatchTypeFilterUI();
+        if (globalReportData) {
+            updateTransactionsTable(globalReportData.transactions);
+        }
+    }
+
+    function updateBatchTypeFilterUI() {
+        const filters = ['all', 'course', 'workshop'];
+        filters.forEach(f => {
+            const btn = document.getElementById(`type-filter-${f}`);
+            if (!btn) return;
+            if (f === currentBatchTypeFilter) {
+                btn.className = "px-3 py-1.5 text-xs font-normal text-violet-600 bg-violet-50 border border-violet-600 focus:z-10 focus:outline-none transition-all";
+                if (f === 'all') btn.classList.add('rounded-l-md');
+                if (f === 'workshop') btn.classList.add('rounded-r-md');
+            } else {
+                btn.className = "px-3 py-1.5 text-xs font-normal text-neutral-600 bg-white border border-neutral-200 hover:bg-neutral-50 focus:z-10 focus:outline-none transition-all";
+                if (f === 'all') btn.classList.add('rounded-l-md');
+                if (f === 'workshop') btn.classList.add('rounded-r-md');
             }
         });
     }
@@ -468,6 +511,13 @@ document.addEventListener('DOMContentLoaded', function() {
             filteredTx = transactions.filter(tx => !tx.is_gst_applicable);
         } else if (currentGstFilter === 'gst') {
             filteredTx = transactions.filter(tx => tx.is_gst_applicable);
+        }
+
+        // Filter based on active Batch Type filter
+        if (currentBatchTypeFilter === 'course') {
+            filteredTx = filteredTx.filter(tx => tx.batch_type !== 2);
+        } else if (currentBatchTypeFilter === 'workshop') {
+            filteredTx = filteredTx.filter(tx => tx.batch_type === 2);
         }
 
         document.getElementById('tx-count').textContent = filteredTx.length;
