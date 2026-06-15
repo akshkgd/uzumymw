@@ -499,8 +499,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Build GST applicable / exempt pill
             const gstPill = tx.is_gst_applicable 
-                ? '<span class="px-2 py-0.5 text-[10px] font-normal bg-violet-100 text-violet-700 rounded-full">GST Included</span>' 
-                : '<span class="px-2 py-0.5 text-[10px] font-normal bg-neutral-100 text-neutral-600 rounded-full">No GST</span>';
+                ? `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-medium bg-[#e6f4ea] text-[#137333] border border-[#ceead6]/60 rounded-full whitespace-nowrap">
+                    <svg class="w-3.5 h-3.5 text-[#137333]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    GST Included
+                   </span>`
+                : `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-medium bg-[#fce8e6] text-[#c5221f] border border-[#fad2cf]/60 rounded-full whitespace-nowrap">
+                    <svg class="w-3 h-3 text-[#c5221f]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    Not Included
+                   </span>`;
 
             // Extract just the date part (before the comma)
             const dateOnly = tx.paid_at.split(',')[0];
