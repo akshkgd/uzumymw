@@ -53,11 +53,19 @@ class CourseEnrollment extends Model
         $payable = $this->amountPayable ?? 0;
         $price = $this->price ?? 0;
 
-        if ($price > 0 && $payable >= $price * 50) {
+        // If price is set, use it to scale. A value in Paisa is 100 times the Rupee value.
+        // Even with a very large discount (e.g., up to 90% off), the Paisa value
+        // will be at least 10 times the original price.
+        // A value in Rupees will never exceed the price * 1.5.
+        // Therefore, a threshold of 2 * price is an extremely safe boundary.
+        if ($price > 0 && $payable >= $price * 2) {
             return $payable / 100;
         }
 
-        if ($payable > 50000) {
+        // Fallback for cases where price is not set:
+        // Since typical course prices/payments are above 50 Rupees, we can use 5000 Paisa (50 Rupees)
+        // as the boundary. Any value >= 5000 is treated as Paisa.
+        if ($payable >= 5000) {
             return $payable / 100;
         }
 
@@ -103,7 +111,7 @@ class CourseEnrollment extends Model
         if ($payments->isEmpty()) {
             $this->update([
                 'amountPaid' => 0,
-                'hasPaid' => 0,
+                'hasPaid' => ($this->amountPayable == 0) ? 1 : 0,
                 'paidAt' => null,
                 'transactionId' => null,
                 'invoiceId' => null,
@@ -117,7 +125,7 @@ class CourseEnrollment extends Model
 
         $this->update([
             'amountPaid'    => $totalPaidPaisa,
-            'hasPaid'       => $totalPaidPaisa > 0 ? 1 : 0,
+            'hasPaid'       => ($totalPaidPaisa > 0 || $this->amountPayable == 0) ? 1 : 0,
             'paidAt'        => $firstPayment->paid_at,
             'transactionId' => $latestPayment->transaction_id,
             'invoiceId'     => $latestPayment->invoice_id,

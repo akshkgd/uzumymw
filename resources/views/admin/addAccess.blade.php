@@ -35,6 +35,7 @@
                     <select name="hasPaid" id="hasPaid" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" required>
                         <option value="1" selected>Paid</option>
                         <option value="0">Unpaid</option>
+                        <option value="2">Free / Scholarship</option>
                     </select>
                 </div>
                 <div id="paymentFieldsContainer" class="space-y-4">
@@ -57,6 +58,12 @@
                     <div>
                         <label for="paidAt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Paid At*</label>
                         <input type="date" name="paidAt" id="paidAt" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" required />
+                    </div>
+                    <div class="flex items-center pt-2">
+                        <input type="hidden" name="is_gst_applicable" value="0" />
+                        <input type="checkbox" id="is_gst_applicable" name="is_gst_applicable" value="1" checked
+                            class="w-4 h-4 text-black border-gray-300 rounded focus:ring-0 focus:ring-offset-0 bg-gray-5" />
+                        <label for="is_gst_applicable" class="ml-2 text-sm font-medium text-gray-900 dark:text-white">Include in GST Reports</label>
                     </div>
                 </div>
                 <div>
@@ -126,6 +133,10 @@
                 paymentFieldsContainer.style.display = 'none';
                 amountInput.removeAttribute('required');
                 paidAtInput.removeAttribute('required');
+            }
+
+            if (hasPaidSelect.value === '2') {
+                document.getElementById('amountPayable').value = '0';
             }
         }
 

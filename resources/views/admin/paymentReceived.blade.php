@@ -328,6 +328,7 @@
                     </div>
 
                     <div class="flex items-center pt-0.5">
+                        <input type="hidden" name="is_gst_applicable" value="0" />
                         <input type="checkbox" id="new_is_gst_applicable" name="is_gst_applicable" value="1" checked
                             class="w-3.5 h-3.5 text-black border-neutral-200 rounded focus:ring-0 focus:ring-offset-0">
                         <label for="new_is_gst_applicable" class="ml-2 text-[11px] font-normal text-neutral-600">Include in GST Reports</label>
@@ -418,6 +419,7 @@
                     </div>
 
                     <div class="flex items-center pt-0.5">
+                        <input type="hidden" name="is_gst_applicable" value="0" />
                         <input type="checkbox" id="edit_is_gst_applicable" name="is_gst_applicable" value="1"
                             class="w-3.5 h-3.5 text-black border-neutral-200 rounded focus:ring-0 focus:ring-offset-0">
                         <label for="edit_is_gst_applicable" class="ml-2 text-[11px] font-normal text-neutral-600">Include in GST Reports</label>
