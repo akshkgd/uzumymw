@@ -128,7 +128,6 @@
                         <tr class="border-b border-neutral-200">
                             <th class="px-4 py-2 font-normal text-left tracking-wider">Paid At</th>
                             <th class="px-4 py-2 font-normal text-left tracking-wider">Amount</th>
-                            <th class="px-4 py-2 font-normal text-left tracking-wider">Type</th>
                             <th class="px-4 py-2 font-normal text-left tracking-wider">Notes</th>
                             <th class="px-4 py-2 font-normal text-right tracking-wider">Actions</th>
                         </tr>
@@ -138,9 +137,6 @@
                             <tr class="text-neutral-900 font-normal">
                                 <td class="px-4 py-3 font-normal">{{ \Carbon\Carbon::parse($p->paid_at)->format('M j, Y g:i A') }}</td>
                                 <td class="px-4 py-3 font-normal">₹{{ number_format($p->amount / 100) }}</td>
-                                <td class="px-4 py-3 font-normal">
-                                    {{ $p->purpose == 'renewal' ? 'Full' : 'Partial' }}
-                                </td>
                                 <td class="px-4 py-3 font-normal text-neutral-400">
                                     {{ $p->remarks ?? '-' }}
                                 </td>
