@@ -199,15 +199,15 @@
                 <span class="text-xs text-neutral-500 font-normal"><span id="tx-count">0</span> payments found</span>
             </div>
             <div class="overflow-x-auto">
-                <table class="w-full text-left text-xs font-normal">
+                <table class="w-full text-left text-sm font-normal divide-y divide-neutral-200">
                     <thead>
-                        <tr class="bg-neutral-50 text-neutral-500 border-b border-neutral-200 font-normal">
-                            <th class="px-4 py-2.5 font-normal">Student</th>
-                            <th class="px-4 py-2.5 font-normal">Course</th>
-                            <th class="px-4 py-2.5 font-normal text-right">Amount</th>
-                            <th class="px-4 py-2.5 font-normal">Method</th>
-                            <th class="px-4 py-2.5 font-normal">Notes</th>
-                            <th class="px-4 py-2.5 font-normal">Date</th>
+                        <tr class="bg-neutral-50/50 text-neutral-900 border-b border-neutral-200 font-semibold">
+                            <th class="px-6 py-4 font-semibold">Student</th>
+                            <th class="px-6 py-4 font-semibold">Email</th>
+                            <th class="px-6 py-4 font-semibold">Course</th>
+                            <th class="px-6 py-4 font-semibold text-right">Amount</th>
+                            <th class="px-6 py-4 font-semibold">Method</th>
+                            <th class="px-6 py-4 font-semibold">Date</th>
                         </tr>
                     </thead>
                     <tbody id="transactions-table-body">
@@ -477,7 +477,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (filteredTx.length === 0) {
             tbody.innerHTML = `
                 <tr>
-                    <td colspan="6" class="px-4 py-8 text-center text-neutral-400 font-normal">
+                    <td colspan="6" class="px-6 py-8 text-center text-neutral-400 font-normal">
                         No transactions found in this period.
                     </td>
                 </tr>
@@ -487,40 +487,36 @@ document.addEventListener('DOMContentLoaded', function() {
 
         filteredTx.forEach(tx => {
             const tr = document.createElement('tr');
-            tr.className = "border-b border-neutral-100 hover:bg-neutral-50/50 transition-all font-normal";
+            tr.className = "border-b border-neutral-200 hover:bg-neutral-50/50 transition-all font-normal";
             
-            // Format GST flag indicator
-            const gstBadge = tx.is_gst_applicable 
-                ? '<span class="ml-1 px-1.5 py-0.5 text-[9px] font-normal bg-violet-50 text-violet-600 rounded">GST</span>' 
-                : '<span class="ml-1 px-1.5 py-0.5 text-[9px] font-normal bg-neutral-50 text-neutral-500 rounded">Exempt</span>';
+            // Build clickable student name
+            const studentNameHtml = tx.student_id 
+                ? `<a href="/admin/students/${tx.student_id}" class="text-violet-700 hover:text-violet-800 font-normal">${tx.student_name}</a>` 
+                : `<span class="text-neutral-800 font-normal">${tx.student_name}</span>`;
 
-            const gstAmountHtml = tx.is_gst_applicable 
-                ? `<div class="text-[10px] text-violet-600 font-normal mt-0.5">GST: ₹${numberFormat(tx.gst_amount)}</div>` 
-                : '';
+            // Build separate email cell content
+            const emailCell = `<span class="text-neutral-600 font-normal block truncate max-w-[200px]" title="${tx.student_email}">${tx.student_email}</span>`;
 
-            // Build student cell info
-            const studentCell = `
-                <div class="font-normal text-neutral-800">${tx.student_name}</div>
-                <div class="text-[10px] text-neutral-400 font-normal">${tx.student_email}</div>
-            `;
+            // Build GST applicable / exempt pill
+            const gstPill = tx.is_gst_applicable 
+                ? '<span class="px-2 py-0.5 text-[10px] font-normal bg-violet-100 text-violet-700 rounded-full">GST Included</span>' 
+                : '<span class="px-2 py-0.5 text-[10px] font-normal bg-neutral-100 text-neutral-600 rounded-full">No GST</span>';
 
-            // Build notes/remarks column
-            const notesDetails = [];
-            if (tx.purpose) notesDetails.push(`Purpose: ${tx.purpose}`);
-            if (tx.transaction_id) notesDetails.push(`Tx ID: ${tx.transaction_id}`);
-            if (tx.remarks) notesDetails.push(`Note: ${tx.remarks}`);
-            const notesText = notesDetails.length > 0 ? notesDetails.join(' | ') : '—';
+            // Extract just the date part (before the comma)
+            const dateOnly = tx.paid_at.split(',')[0];
 
             tr.innerHTML = `
-                <td class="px-4 py-3 align-top font-normal">${studentCell}</td>
-                <td class="px-4 py-3 align-top text-neutral-700 font-normal">${tx.course_name}</td>
-                <td class="px-4 py-3 align-top text-right text-neutral-800 font-normal">
-                    <div>₹${numberFormat(tx.amount)} ${gstBadge}</div>
-                    ${gstAmountHtml}
+                <td class="px-6 py-4 align-top font-normal">${studentNameHtml}</td>
+                <td class="px-6 py-4 align-top font-normal">${emailCell}</td>
+                <td class="px-6 py-4 align-top text-neutral-700 font-normal">${tx.course_name}</td>
+                <td class="px-6 py-4 align-top text-right text-neutral-800 font-normal">
+                    <div class="flex items-center justify-end gap-1.5 whitespace-nowrap">
+                        <span>₹${numberFormat(tx.amount)}</span>
+                        ${gstPill}
+                    </div>
                 </td>
-                <td class="px-4 py-3 align-top text-neutral-600 uppercase font-normal">${tx.payment_method || '—'}</td>
-                <td class="px-4 py-3 align-top text-neutral-500 max-w-[240px] truncate font-normal" title="${notesText}">${notesText}</td>
-                <td class="px-4 py-3 align-top text-neutral-400 font-normal whitespace-nowrap">${tx.paid_at}</td>
+                <td class="px-6 py-4 align-top text-neutral-600 uppercase font-normal">${tx.payment_method || '—'}</td>
+                <td class="px-6 py-4 align-top text-neutral-400 font-normal whitespace-nowrap">${dateOnly}</td>
             `;
             tbody.appendChild(tr);
         });

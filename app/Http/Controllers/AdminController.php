@@ -1269,6 +1269,9 @@ class AdminController extends Controller
                 ->get();
 
             $transactions = $paymentsQuery->map(function ($payment) {
+                $studentId = $payment->enrollment && $payment->enrollment->students
+                    ? $payment->enrollment->students->id
+                    : null;
                 $studentName = $payment->enrollment && $payment->enrollment->students
                     ? $payment->enrollment->students->name
                     : 'N/A';
@@ -1281,6 +1284,7 @@ class AdminController extends Controller
 
                 return [
                     'id' => $payment->id,
+                    'student_id' => $studentId,
                     'student_name' => $studentName,
                     'student_email' => $studentEmail,
                     'course_name' => $courseName,
