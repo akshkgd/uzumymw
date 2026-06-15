@@ -11,6 +11,7 @@ class CourseEnrollment extends Model
         'status',
         'hasPaid',
         'amountPaid',
+        'amountPayable',
         'paidAt',
         'paymentMethod',
         'transactionId',

@@ -219,6 +219,24 @@
                         <input type="number" id="amountPayable" name="amountPayable" value="{{ $payable }}" step="0.01" min="0"
                             class="w-full border border-neutral-200 px-3 py-1.5 text-sm font-normal focus:outline-none focus:border-violet-500 focus:ring-0">
                     </div>
+                    <div>
+                        <label for="status" class="block text-xs font-normal text-neutral-700 mb-0.5">Enrollment Status</label>
+                        <select name="status" id="status" class="w-full border border-neutral-200 px-3 py-1.5 text-sm font-normal focus:outline-none focus:border-violet-500 focus:ring-0 bg-white">
+                            <option value="1" {{ $enrollment->status == 1 ? 'selected' : '' }}>Active</option>
+                            <option value="0" {{ $enrollment->status == 0 ? 'selected' : '' }}>Not Active</option>
+                            <option value="2" {{ $enrollment->status == 2 ? 'selected' : '' }}>Banned</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label for="hasPaid" class="block text-xs font-normal text-neutral-700 mb-0.5">Payment Status (Has Paid)</label>
+                        <select name="hasPaid" id="hasPaid" class="w-full border border-neutral-200 px-3 py-1.5 text-sm font-normal focus:outline-none focus:border-violet-500 focus:ring-0 bg-white">
+                            <option value="1" {{ $enrollment->hasPaid == 1 ? 'selected' : '' }}>Yes (Paid)</option>
+                            <option value="0" {{ $enrollment->hasPaid == 0 ? 'selected' : '' }}>No (Unpaid)</option>
+                        </select>
+                    </div>
                 </div>
 
                 @if($batch->type == 2)

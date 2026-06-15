@@ -27,24 +27,37 @@
                     <div id="batchSuggestions" class="absolut  z-10 bg-neutral-50 borde w-full max-h-40 overflow-y-auto box-border"></div> <!-- Container for batch suggestions -->
                   </div>
                 <div>
-                    <label for="invoiceId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Invoice ID*</label>
-                    <input type="text" name="invoiceId" id="invoiceId" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter invoice ID" required />
+                    <label for="amountPayable" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount Payable*</label>
+                    <input type="number" name="amountPayable" id="amountPayable" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter amount payable" required />
                 </div>
                 <div>
-                    <label for="transactionId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Transaction ID*</label>
-                    <input type="text" name="transactionId" id="transactionId" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter transaction ID" required />
+                    <label for="hasPaid" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment Status*</label>
+                    <select name="hasPaid" id="hasPaid" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" required>
+                        <option value="1" selected>Paid</option>
+                        <option value="0">Unpaid</option>
+                    </select>
                 </div>
-                <div>
-                    <label for="paymentMethod" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment Method*</label>
-                    <input type="text" name="paymentMethod" id="paymentMethod" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter payment method" required />
-                </div>
-                <div>
-                    <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount Paid*</label>
-                    <input type="text" name="amount" id="amount" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter amount paid" required />
-                </div>
-                <div>
-                    <label for="paidAt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Paid At*</label>
-                    <input type="date" name="paidAt" id="paidAt" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" required />
+                <div id="paymentFieldsContainer" class="space-y-4">
+                    <div>
+                        <label for="amount" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Amount Paid*</label>
+                        <input type="number" name="amount" id="amount" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter amount paid" required />
+                    </div>
+                    <div>
+                        <label for="invoiceId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Invoice ID</label>
+                        <input type="text" name="invoiceId" id="invoiceId" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter invoice ID (optional)" />
+                    </div>
+                    <div>
+                        <label for="transactionId" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Transaction ID</label>
+                        <input type="text" name="transactionId" id="transactionId" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter transaction ID (optional)" />
+                    </div>
+                    <div>
+                        <label for="paymentMethod" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Payment Method</label>
+                        <input type="text" name="paymentMethod" id="paymentMethod" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" placeholder="Enter payment method (optional)" value="upi" />
+                    </div>
+                    <div>
+                        <label for="paidAt" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Paid At*</label>
+                        <input type="date" name="paidAt" id="paidAt" class="bg-gray-5 border border-gray-300 text-gray-900 text-sm focus:ring-0 focus:border-violet-500 focus:outline-none block w-full p-2.5" required />
+                    </div>
                 </div>
                 <div>
                     <label for="startFrom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start From</label>
@@ -96,51 +109,74 @@
       }
   });
     document.addEventListener('DOMContentLoaded', function () {
-    var batchNameInput = document.getElementById('batchName');
-    var batchIdInput = document.getElementById('batchId');  // Hidden input for batch ID
-    var batchSuggestions = document.getElementById('batchSuggestions');
+        var batchNameInput = document.getElementById('batchName');
+        var batchIdInput = document.getElementById('batchId');  // Hidden input for batch ID
+        var batchSuggestions = document.getElementById('batchSuggestions');
+        var hasPaidSelect = document.getElementById('hasPaid');
+        var paymentFieldsContainer = document.getElementById('paymentFieldsContainer');
+        var amountInput = document.getElementById('amount');
+        var paidAtInput = document.getElementById('paidAt');
 
-    batchNameInput.addEventListener('input', function () {
-        var batchName = batchNameInput.value;
+        function togglePaymentFields() {
+            if (hasPaidSelect.value === '1') {
+                paymentFieldsContainer.style.display = 'block';
+                amountInput.setAttribute('required', 'required');
+                paidAtInput.setAttribute('required', 'required');
+            } else {
+                paymentFieldsContainer.style.display = 'none';
+                amountInput.removeAttribute('required');
+                paidAtInput.removeAttribute('required');
+            }
+        }
 
-        if (batchName.length > 2) {  // Only search when the input is longer than 2 characters
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '{{ route("getBatchSuggestions") }}?batchName=' + encodeURIComponent(batchName), true);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                    displayBatchSuggestions(JSON.parse(xhr.responseText));
-                }
-            };
-            xhr.send();
-        } else {
-            batchSuggestions.innerHTML = '';  // Clear suggestions if input is too short
+        hasPaidSelect.addEventListener('change', togglePaymentFields);
+        // Run once on load
+        togglePaymentFields();
+
+        batchNameInput.addEventListener('input', function () {
+            var batchName = batchNameInput.value;
+
+            if (batchName.length > 2) {  // Only search when the input is longer than 2 characters
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '{{ route("getBatchSuggestions") }}?batchName=' + encodeURIComponent(batchName), true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        displayBatchSuggestions(JSON.parse(xhr.responseText));
+                    }
+                };
+                xhr.send();
+            } else {
+                batchSuggestions.innerHTML = '';  // Clear suggestions if input is too short
+            }
+        });
+
+        function displayBatchSuggestions(batches) {
+            batchSuggestions.innerHTML = ''; // Clear previous suggestions
+            
+            if (batches.length > 0) {
+                batchSuggestions.classList.add('border')
+                batches.forEach(function (batch) {
+                    var suggestionItem = document.createElement('div');
+                    suggestionItem.classList.add('p-2','text-sm', 'cursor-pointer', 'hover:bg-neutral-200');
+                    suggestionItem.innerText = batch.name + ' (B-' + batch.id + ')';  // Show name and ID
+
+                    // Event to populate the input fields when a suggestion is clicked
+                    suggestionItem.addEventListener('click', function () {
+                        batchNameInput.value = batch.name;  // Set the batch name in the input
+                        batchIdInput.value = batch.id;  // Set the batch ID in the hidden input
+                        if (batch.payable !== undefined) {
+                            document.getElementById('amountPayable').value = batch.payable;
+                        }
+                        batchSuggestions.innerHTML = '';  // Clear suggestions after selection
+                    });
+
+                    batchSuggestions.appendChild(suggestionItem);
+                });
+            } else {
+                batchSuggestions.innerHTML = '<div class="p-2 text-gray-500">No results found</div>';
+            }
         }
     });
-
-    function displayBatchSuggestions(batches) {
-        batchSuggestions.innerHTML = ''; // Clear previous suggestions
-        
-        if (batches.length > 0) {
-          batchSuggestions.classList.add('border')
-            batches.forEach(function (batch) {
-                var suggestionItem = document.createElement('div');
-                suggestionItem.classList.add('p-2','text-sm', 'cursor-pointer', 'hover:bg-neutral-200');
-                suggestionItem.innerText = batch.name + ' (B-' + batch.id + ')';  // Show name and ID
-
-                // Event to populate the input fields when a suggestion is clicked
-                suggestionItem.addEventListener('click', function () {
-                    batchNameInput.value = batch.name;  // Set the batch name in the input
-                    batchIdInput.value = batch.id;  // Set the batch ID in the hidden input
-                    batchSuggestions.innerHTML = '';  // Clear suggestions after selection
-                });
-
-                batchSuggestions.appendChild(suggestionItem);
-            });
-        } else {
-            batchSuggestions.innerHTML = '<div class="p-2 text-gray-500">No results found</div>';
-        }
-    }
-});
 </script>
 @endsection
 {{-- @extends('layouts.ck-admin')
