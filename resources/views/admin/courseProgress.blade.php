@@ -5,11 +5,11 @@
     <div class="container mx-auto px-4">
         <h1 class="text-xl font-bold">{{$enrollment->batch->name}}</h1>
         <div class="flex gap-5 mt-2">
-            <h1 class="font-medium text-neutral-800">{{$enrollment->students->name}}</h1>
-            <h1 class="text-neutral-600">{{$enrollment->students->email}}</h1>
+            <h1 class="font-medium text-neutral-800">{{ optional($enrollment->students)->name ?? 'Deleted Student' }}</h1>
+            <h1 class="text-neutral-600">{{ optional($enrollment->students)->email ?? '' }}</h1>
         </div>
         <div class="flex gap-5 mt-2 text-sm text-neutral-600">
-            <h1>Start date: {{ \Carbon\Carbon::parse($enrollment->paidAt)->format('d M Y') }}</h1>
+            <h1>Start date: {{ $enrollment->paidAt ? \Carbon\Carbon::parse($enrollment->paidAt)->format('d M Y') : 'N/A' }}</h1>
             <span>•</span>
             <h1>Progress: <span class="font-semibold text-neutral-900">{{ $enrollment->progress ?? 0 }}%</span> <span class="text-neutral-500 font-normal">(@php
                 $ts = $enrollment->time_spent ?? 0;
@@ -44,7 +44,7 @@
                                     <td class="px-5 py-4  font-medium whitespace-nowrap">{{ $progress->content ? $progress->content->title : 'N/A' }}</td>
                                     <td class="px-5 py-4 t whitespace-nowrap">{{ $progress->timeSpent }}m</td>
                                     <td class="px-5 py-4  whitespace-nowrap">{{ $progress->visited }}</td>
-                                    <td class="px-5 py-4 text-sm whitespace-nowrap">{{ \Carbon\Carbon::parse($progress->lastAccess)->format('h:i A, d F Y') }}</td>
+                                    <td class="px-5 py-4 text-sm whitespace-nowrap">{{ $progress->lastAccess ? \Carbon\Carbon::parse($progress->lastAccess)->format('h:i A, d F Y') : 'N/A' }}</td>
                                     
                                 </tr> 
                                 @endforeach

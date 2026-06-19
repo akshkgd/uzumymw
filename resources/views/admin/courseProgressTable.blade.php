@@ -97,21 +97,25 @@
                                 @foreach ($courseProgress as $progress)
                                     <tr>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm column-name">
-                                            <a href="{{action('AdminController@studentDetails', $progress->students->id )}}" 
-                                               class="text-violet-700 hover:text-violet-800">
-                                                {{ $progress->students->name }}
-                                            </a>
+                                            @if($progress->students)
+                                                <a href="{{action('AdminController@studentDetails', $progress->students->id )}}" 
+                                                   class="text-violet-700 hover:text-violet-800">
+                                                    {{ $progress->students->name }}
+                                                </a>
+                                            @else
+                                                Deleted Student
+                                            @endif
                                         </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm column-email hidden">{{ $progress->students->email }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm column-course hidden">{{ $progress->batch->name }}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm column-video">{{ $progress->content->title }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm column-email hidden">{{ optional($progress->students)->email ?? 'N/A' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm column-course hidden">{{ optional($progress->batch)->name ?? 'Deleted Course/Batch' }}</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm column-video">{{ optional($progress->content)->title ?? 'Deleted Content/Video' }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm column-timeSpent">{{ $progress->timeSpent }}m</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm column-visited">{{ $progress->visited }}</td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm column-firstAccess hidden">
-                                            {{ \Carbon\Carbon::parse($progress->firstAccess)->format('D, d M Y h:i A') }}
+                                            {{ $progress->firstAccess ? \Carbon\Carbon::parse($progress->firstAccess)->format('D, d M Y h:i A') : 'N/A' }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm column-lastAccess">
-                                            {{ \Carbon\Carbon::parse($progress->lastAccess)->format('D, d M Y h:i A') }}
+                                            {{ $progress->lastAccess ? \Carbon\Carbon::parse($progress->lastAccess)->format('D, d M Y h:i A') : 'N/A' }}
                                         </td>
                                     </tr>
                                 @endforeach
