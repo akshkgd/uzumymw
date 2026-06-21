@@ -219,8 +219,8 @@
                               </div>
 
                               <!-- Table Header Row -->
-                              <div class="px-6 py-2.5 bg-neutral-50 dark:bg-neutral-950 border-b border-neutral-100 dark:border-neutral-850 flex items-center justify-between text-[10px] font-bold text-neutral-400 dark:text-neutral-500 tracking-wider uppercase select-none">
-                                <div class="w-12 text-left">Rank</div>
+                              <div class="px-6 py-2.5 bg-white dark:bg-neutral-900 border-b border-neutral-100 dark:border-neutral-850 flex items-center justify-between text-[10px] font-bold text-neutral-400 dark:text-neutral-500 tracking-wider select-none">
+                                <div class="w-8 text-left">Rank</div>
                                 <div class="flex-grow pl-6 text-left">Name</div>
                                 <div class="w-24 text-right">Total XP</div>
                               </div>
@@ -321,9 +321,8 @@
                                           <div class="flex items-center justify-between py-2.5 px-2" :class="user.id === {{ Auth::id() }} ? 'bg-amber-50/30 dark:bg-amber-950/10 font-semibold rounded-xl' : ''">
                                             
                                             <!-- Rank Indicator -->
-                                            <div class="w-12 flex-shrink-0 flex items-center justify-between text-xs text-neutral-500 font-semibold dark:text-neutral-400">
-                                              <span class="w-6 text-left" x-text="index + 1"></span>
-                                              <span class="text-neutral-300 dark:text-neutral-700 font-normal pr-1.5">—</span>
+                                            <div class="w-8 flex-shrink-0 text-xs text-neutral-500 font-semibold dark:text-neutral-400 text-left">
+                                              <span x-text="index + 1"></span>
                                             </div>
 
                                             <!-- Avatar & Name -->
@@ -370,11 +369,10 @@
                               <template x-if="currentUser && currentUser.rank > 1 && !loadingLeaderboard && {{ (Auth::user()->xp ?? 0) }} >= 50">
                                 <div class="px-6 py-3 bg-[#FFFDF5] dark:bg-amber-950/10 border-t border-amber-100 dark:border-amber-900/40 flex items-center justify-between sticky bottom-0 z-10 shadow-lg">
                                   
-                                  <!-- Rank + Dash -->
+                                  <!-- Rank -->
                                   <div class="flex items-center gap-3 min-w-0">
-                                    <div class="w-12 flex-shrink-0 flex items-center justify-between text-xs text-amber-700 dark:text-amber-400 font-bold">
-                                      <span class="w-6 text-left" x-text="currentUser.rank"></span>
-                                      <span class="text-amber-250 dark:text-amber-900 font-normal pr-1.5">—</span>
+                                    <div class="w-8 flex-shrink-0 text-xs text-amber-700 dark:text-amber-400 font-bold text-left">
+                                      <span x-text="currentUser.rank"></span>
                                     </div>
 
                                     <!-- Avatar & Name -->
