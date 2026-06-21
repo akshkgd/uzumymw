@@ -863,11 +863,11 @@
                       </div>
                     </div>
 
-                    <div class="p-4 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/50 rounded-xl flex gap-3.5 items-start">
+                    <div class="p-4 bg-violet-50 dark:bg-violet-950/20 border border-violet-100 dark:border-violet-900/50 rounded-xl flex gap-3.5 items-start">
                       <img src="{{ asset('assets/img/xpa2.svg') }}" class="w-6 h-6 object-contain mt-0.5" alt="Complete Lessons">
                       <div>
-                        <h4 class="text-sm font-bold text-emerald-900 dark:text-emerald-100">Complete Lessons (+50 XP)</h4>
-                        <p class="text-xs text-emerald-800 dark:text-emerald-200/80 mt-1 leading-relaxed">Finish a lesson, assignment, or video and click the "Mark as Complete" button to claim an instant 50 XP completion reward.</p>
+                        <h4 class="text-sm font-bold text-violet-900 dark:text-violet-100">Complete Lessons (+50 XP)</h4>
+                        <p class="text-xs text-violet-800 dark:text-violet-200/80 mt-1 leading-relaxed">Finish a lesson, assignment, or video and click the "Mark as Complete" button to claim an instant 50 XP completion reward.</p>
                       </div>
                     </div>
                   </div>
