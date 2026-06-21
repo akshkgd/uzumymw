@@ -218,12 +218,7 @@
                                 </button>
                               </div>
 
-                              <!-- Table Header Row -->
-                              <div class="px-6 py-2.5 bg-white dark:bg-neutral-900 border-b border-neutral-100 dark:border-neutral-850 flex items-center justify-between text-[10px] font-bold text-neutral-400 dark:text-neutral-500 tracking-wider select-none">
-                                <div class="w-8 text-left">Rank</div>
-                                <div class="flex-grow pl-6 text-left">Name</div>
-                                <div class="w-24 text-right">Total XP</div>
-                              </div>
+
 
                               <!-- Content Scroll Area -->
                               <div class="flex-grow overflow-y-auto relative min-h-[300px]">
