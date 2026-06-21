@@ -206,7 +206,7 @@
                                 <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-50 tracking-tight">
                                   Leaderboard
                                 </h3>
-                                <p class="text-neutral-500 dark:text-neutral-400 text-sm mt-1">
+                                <p class="text-neutral-500 dark:text-neutral-400 text-sm">
                                   Solve, earn XP & stay at the top
                                 </p>
                                 
@@ -410,10 +410,10 @@
                               
                               <!-- Header Area -->
                               <div class="p-6 pb-4 border-b border-neutral-100 dark:border-neutral-800 bg-white dark:bg-neutral-900">
-                                <h3 class="text-2xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight">
+                                <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-50 tracking-tight">
                                   How XP Works
                                 </h3>
-                                <p class="text-neutral-500 dark:text-neutral-400 text-sm mt-1">
+                                <p class="text-neutral-500 dark:text-neutral-400 text-sm">
                                   Learn how to collect experience points and rank up
                                 </p>
                               </div>
