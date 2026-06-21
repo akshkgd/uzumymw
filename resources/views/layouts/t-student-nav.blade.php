@@ -421,7 +421,7 @@
                               <!-- Rules List Scroll Container -->
                               <div class="flex-grow overflow-y-auto p-6 space-y-4">
                                 <div class="p-4 bg-[#FFFBEB] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/50 rounded-xl flex gap-3.5 items-start">
-                                  <span class="text-2xl mt-0.5">🔥</span>
+                                  <img src="{{ asset('assets/img/streak.svg') }}" class="w-6 h-6 object-contain mt-0.5" alt="Streak">
                                   <div>
                                     <h4 class="text-sm font-bold text-amber-900 dark:text-amber-100">Daily Study Streak (+10 XP)</h4>
                                     <p class="text-xs text-amber-800 dark:text-amber-200/80 mt-1 leading-relaxed">Study every single day to maintain your streak. Missing a day resets it to 0. Consecutive days of learning award a +10 XP streak bonus!</p>
@@ -429,7 +429,7 @@
                                 </div>
 
                                 <div class="p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/50 rounded-xl flex gap-3.5 items-start">
-                                  <span class="text-2xl mt-0.5">⚡</span>
+                                  <img src="{{ asset('assets/img/xpa1.svg') }}" class="w-6 h-6 object-contain mt-0.5" alt="Watch Lessons">
                                   <div>
                                     <h4 class="text-sm font-bold text-blue-900 dark:text-blue-100">Watch Lessons (+2 XP/min)</h4>
                                     <p class="text-xs text-blue-800 dark:text-blue-200/80 mt-1 leading-relaxed">Earn experience points passively as you watch course recordings. Every minute spent learning grants you 2 XP.</p>
@@ -437,7 +437,7 @@
                                 </div>
 
                                 <div class="p-4 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/50 rounded-xl flex gap-3.5 items-start">
-                                  <span class="text-2xl mt-0.5">✅</span>
+                                  <img src="{{ asset('assets/img/xpa2.svg') }}" class="w-6 h-6 object-contain mt-0.5" alt="Complete Lessons">
                                   <div>
                                     <h4 class="text-sm font-bold text-emerald-900 dark:text-emerald-100">Complete Lessons (+50 XP)</h4>
                                     <p class="text-xs text-emerald-800 dark:text-emerald-200/80 mt-1 leading-relaxed">Finish a lesson, assignment, or video and click the "Mark as Complete" button to claim an instant 50 XP completion reward.</p>
