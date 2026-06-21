@@ -47,7 +47,7 @@ class HomeController extends Controller
             
             if($user->status == 1){
                 $enrollments = CourseEnrollment::where('userId', $user->id)
-                    ->where('status', 1)
+                    ->whereIn('status', [1, 2])
                     ->where('hasPaid', 1)
                     ->with(['batch' => function($query) {
                         $query->select('id', 'topicId', 'name', 'type', 'status', 'groupLink', 'groupLink2');
@@ -58,7 +58,7 @@ class HomeController extends Controller
 
                 // Check if user has only purchased basic courses
                 $allEnrollments = CourseEnrollment::where('userId', $user->id)
-                    ->where('status', 1)
+                    ->whereIn('status', [1, 2])
                     ->where('hasPaid', 1)
                     ->with('batch:id,topicId')
                     ->get();

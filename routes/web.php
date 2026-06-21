@@ -341,6 +341,7 @@ Route::post('/store-subscription', 'SubscriptionController@payment')->name('stor
 // Add this new route
 Route::post('/admin/batch/update-all-progress/{batchId}', 'AdminController@updateAllProgress')->name('admin.updateAllProgress');
 Route::post('/mark-video-complete', 'StudentController@markVideoComplete')->name('mark.video.complete');
+Route::get('/api/leaderboard', 'StudentController@leaderboardApi')->name('leaderboard.api')->middleware('auth');
 Route::post('/admin/update-user-profile/{id}', 'AdminController@updateUserProfile')->name('admin.updateUserProfile');
 Route::get('/api/check-email', 'AdminController@checkEmail')->name('admin.checkEmail');
 

@@ -138,7 +138,7 @@ class StudentController extends Controller
             $effectiveAccessTill = Carbon::parse($enrollment->accessTill);
         }
 
-        if ($effectiveAccessTill->isFuture()) {
+        if ($effectiveAccessTill->isFuture() && $enrollment->status == 1) {
             $subStatus = true;
         } else {
             $subStatus = false;
@@ -169,10 +169,15 @@ class StudentController extends Controller
             $daysUntilVideoUnlocks = Carbon::now()->diffInDays($videoUnlockedOn, false) + 1;
         }
 
+        $leaderboard = \App\User::orderBy('xp', 'desc')
+            ->select('id', 'name', 'avatar', 'xp')
+            ->take(5)
+            ->get();
+
         if ($sections->isEmpty()) {
-            return view('students.recordings', compact('content', 'subStatus', 'batchId', 'video', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
+            return view('students.recordings', compact('content', 'subStatus', 'batchId', 'video', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks', 'leaderboard'));
         } else {
-            return view('students.recordingsTA', compact('sections', 'subStatus', 'content', 'batchId', 'video', 'intro', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks'));
+            return view('students.recordingsTA', compact('sections', 'subStatus', 'content', 'batchId', 'video', 'intro', 'enrollment', 'accessTill', 'isVideoUnlocked', 'daysUntilVideoUnlocks', 'leaderboard'));
         }
     }
 
@@ -228,6 +233,31 @@ public function updateTimeSpent(Request $request)
                 $courseEnrollment->time_spent = ($courseEnrollment->time_spent ?? 0) + 1;
                 $courseEnrollment->save();
             }
+
+            // Award XP to user globally (+2 XP per minute)
+            $user = Auth::user();
+            $user->xp = ($user->xp ?? 0) + 2;
+
+            // Handle streaks (once per day)
+            $today = \Carbon\Carbon::today()->toDateString();
+            if ($user->last_activity_date === null) {
+                $user->current_streak = 1;
+                $user->longest_streak = 1;
+                $user->last_activity_date = $today;
+            } else {
+                $lastActivity = \Carbon\Carbon::parse($user->last_activity_date);
+                $daysDiff = \Carbon\Carbon::today()->diffInDays($lastActivity);
+                if ($daysDiff == 1) {
+                    $user->current_streak += 1;
+                    $user->longest_streak = max($user->longest_streak, $user->current_streak);
+                    $user->last_activity_date = $today;
+                    $user->xp += 10; // +10 XP bonus for daily streak
+                } else if ($daysDiff > 1) {
+                    $user->current_streak = 1;
+                    $user->last_activity_date = $today;
+                }
+            }
+            $user->save();
         } else {
             // Create new progress record if it doesn't exist
             $courseProgress = new CourseProgress();
@@ -237,6 +267,31 @@ public function updateTimeSpent(Request $request)
             $courseProgress->timeSpent = 1;
             $courseProgress->progress = $currentProgress;
             $courseProgress->save();
+
+            // Award XP (+2 XP) and process streak for starting the study session
+            $user = Auth::user();
+            $user->xp = ($user->xp ?? 0) + 2;
+
+            // Handle streaks (once per day)
+            $today = \Carbon\Carbon::today()->toDateString();
+            if ($user->last_activity_date === null) {
+                $user->current_streak = 1;
+                $user->longest_streak = 1;
+                $user->last_activity_date = $today;
+            } else {
+                $lastActivity = \Carbon\Carbon::parse($user->last_activity_date);
+                $daysDiff = \Carbon\Carbon::today()->diffInDays($lastActivity);
+                if ($daysDiff == 1) {
+                    $user->current_streak += 1;
+                    $user->longest_streak = max($user->longest_streak, $user->current_streak);
+                    $user->last_activity_date = $today;
+                    $user->xp += 10; // +10 XP bonus for daily streak
+                } else if ($daysDiff > 1) {
+                    $user->current_streak = 1;
+                    $user->last_activity_date = $today;
+                }
+            }
+            $user->save();
         }
 
         return response()->json(['status' => 'success']);
@@ -351,6 +406,8 @@ public function updateTimeSpent(Request $request)
                 'contentId' => $videoId,
             ]);
 
+            $alreadyCompleted = $courseProgress->exists && $courseProgress->status == 1;
+
             // Update status
             $courseProgress->status = 1;
             if (!$courseProgress->exists) {
@@ -378,6 +435,33 @@ public function updateTimeSpent(Request $request)
             CourseEnrollment::where('userId', Auth::user()->id)
                 ->where('batchId', $batchId)
                 ->update(['progress' => $progressPercentage]);
+
+            if (!$alreadyCompleted) {
+                // Award XP to user globally (+50 XP for completing a video)
+                $user = Auth::user();
+                $user->xp = ($user->xp ?? 0) + 50;
+
+                // Handle streaks (once per day)
+                $today = \Carbon\Carbon::today()->toDateString();
+                if ($user->last_activity_date === null) {
+                    $user->current_streak = 1;
+                    $user->longest_streak = 1;
+                    $user->last_activity_date = $today;
+                } else {
+                    $lastActivity = \Carbon\Carbon::parse($user->last_activity_date);
+                    $daysDiff = \Carbon\Carbon::today()->diffInDays($lastActivity);
+                    if ($daysDiff == 1) {
+                        $user->current_streak += 1;
+                        $user->longest_streak = max($user->longest_streak, $user->current_streak);
+                        $user->last_activity_date = $today;
+                        $user->xp += 10; // +10 XP bonus for daily streak
+                    } else if ($daysDiff > 1) {
+                        $user->current_streak = 1;
+                        $user->last_activity_date = $today;
+                    }
+                }
+                $user->save();
+            }
 
             return response()->json([
                 'status' => 'success',
@@ -505,4 +589,26 @@ public function updateTimeSpent(Request $request)
             return redirect()->back();
         }
     }
+
+    public function leaderboardApi()
+    {
+        $leaderboard = \App\User::orderBy('xp', 'desc')
+            ->select('id', 'name', 'avatar', 'xp')
+            ->take(50)
+            ->get();
+
+        $currentUserRank = \App\User::where('xp', '>', Auth::user()->xp ?? 0)->count() + 1;
+
+        return response()->json([
+            'leaderboard' => $leaderboard,
+            'currentUser' => [
+                'id' => Auth::user()->id,
+                'name' => Auth::user()->name,
+                'avatar' => Auth::user()->avatar,
+                'xp' => Auth::user()->xp ?? 0,
+                'rank' => $currentUserRank
+            ]
+        ]);
+    }
 }
+

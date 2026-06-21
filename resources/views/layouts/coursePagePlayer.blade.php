@@ -7,16 +7,21 @@
                 <div style="position:relative;padding-top:56.25%;"><iframe id="bunny-stream-embed" src="https://iframe.mediadelivery.net/embed/{{ str_contains($video->videoLink, '/') ? substr($video->videoLink, 0, strpos($video->videoLink, '/')) : '200867' }}/{{ str_contains($video->videoLink, '/') ? substr($video->videoLink, strpos($video->videoLink, '/') + 1) : $video->videoLink }}?autoplay=true&loop=false&muted=false&preload=true&responsive=true" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe></div>
             </div>
             <div class="my-5">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-100 pb-4 mb-4">
+                <h1 class="text-2xl cal-sans font-extrabold text-neutral-900" id="title">{{ $video->title }}</h1>
+                @if ($intro == 'false' && $video->type == 2 && $isVideoUnlocked == true)
+                  <button id="markComplete" class="whitespace-nowrap inline-flex items-center justify-center text-sm px-5 py-2 border rounded-full font-semibold transition-all select-none focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none
+                          {{ optional($video->userProgress(Auth::user()->id))->status
+                            ? 'bg-neutral-100 border-neutral-200 text-neutral-500 disabled:opacity-100'
+                            : 'bg-violet-100 border-violet-200 text-violet-700 hover:bg-violet-200 active:bg-violet-100 focus:ring-violet-500' }}" {{ optional($video->userProgress(Auth::user()->id))->status ? 'disabled' : '' }}>
+                    {{ optional($video->userProgress(Auth::user()->id))->status ? 'Lesson Completed' : 'Mark as Complete' }}
+                  </button>
+                @endif
+              </div>
               
-              <h1 class="text-2xl cal-sans font-extrabold" id="title">{{ $video->title }}</h1>
-                
-            
-              
-                <div class="desc mt-0">
-                  {!! $video->desc !!}
-                </div>
-                
-                {{-- {{ $video->id }} --}}
+              <div class="desc mt-2 text-neutral-600 leading-relaxed">
+                {!! $video->desc !!}
+              </div>
             </div>
       </div>
     </div>
@@ -44,9 +49,9 @@
         .then(data => {
             if (data.status === 'success') {
                 // Update button appearance
-                button.classList.remove('bg-green-100', 'text-green-700', 'hover:bg-green-200');
-                button.classList.add('bg-neutral-100', 'text-neutral-700');
-                button.textContent = 'Completed';
+                button.classList.remove('bg-violet-100', 'border-violet-200', 'text-violet-700', 'hover:bg-violet-200');
+                button.classList.add('bg-neutral-100', 'border-neutral-200', 'text-neutral-500');
+                button.textContent = 'Lesson Completed';
                 button.disabled = true;
                 
                 // Optional: Update progress display if you have one

@@ -80,6 +80,7 @@
 </style>
 
 <div class="max-w-5xl mx-auto px-4 py-4">
+    @include('layouts.t-alert')
     <!-- Header -->
     <div class="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
@@ -187,10 +188,7 @@
             </div>
         </div>
 
-        <!-- Chart -->
-        <div class="border border-neutral-200 bg-white p-4">
-            <div id="revenueChart" style="height: 400px;"></div>
-        </div>
+
 
         <!-- Transactions Table -->
         <div class="mt-6 border border-neutral-200 bg-white">
@@ -237,7 +235,7 @@
                             <th class="px-6 py-4 font-semibold">Course</th>
                             <th class="px-6 py-4 font-semibold">Date</th>
                             <th class="px-6 py-4 font-semibold text-right">Amount</th>
-                            <th class="px-6 py-4 font-semibold">GST Status</th>
+                            <th class="px-6 py-4 font-semibold text-right">Actions</th>
                         </tr>
                     </thead>
                     <tbody id="transactions-table-body">
@@ -269,10 +267,7 @@
             </div>
         </div>
 
-        <!-- Chart -->
-        <div class="border border-neutral-200 bg-white p-4">
-            <div id="signupsChart" style="height: 400px;"></div>
-        </div>
+
     </div>
 
     <!-- Learning Section -->
@@ -303,11 +298,148 @@
     </div>
 </div>
 
+<!-- Edit Payment Modal -->
+<div id="editPaymentModal" class="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-[100] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+    <div class="bg-white border border-neutral-100 max-w-md w-full max-h-[90vh] flex flex-col relative transform scale-95 transition-all duration-300">
+        <!-- Close Button -->
+        <button onclick="closeEditPaymentModal()" class="absolute top-3 right-3 text-neutral-400 hover:text-neutral-600 focus:outline-none z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <!-- Header -->
+        <div class="px-6 pt-6 pb-3 bg-white">
+            <h3 class="text-base font-semibold text-neutral-900">Edit Payment</h3>
+            <p class="text-sm text-neutral-500 font-normal mt-2 leading-relaxed">Modify the recorded payment details.</p>
+        </div>
+
+        <!-- Scrollable Form Body -->
+        <div class="flex-1 overflow-y-auto px-5 py-2 bg-white">
+            <form id="editPaymentFormInner" action="" method="POST">
+                @csrf
+
+                <div class="space-y-2.5">
+                    <div>
+                        <label for="edit_amount" class="block text-[10px] font-normal text-neutral-600 mb-0.5">Amount (₹)</label>
+                        <input type="number" id="edit_amount" name="amount" required step="0.01" min="1"
+                            class="w-full border border-neutral-200 px-3 py-1.5 text-sm font-normal focus:outline-none focus:border-violet-500 focus:ring-0">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="edit_transactionId" class="block text-[10px] font-normal text-neutral-600 mb-0.5">Payment ID</label>
+                            <input type="text" id="edit_transactionId" name="transactionId" placeholder="pay_..."
+                                class="w-full border border-neutral-200 px-3 py-1.5 text-sm font-normal focus:outline-none focus:border-violet-500 focus:ring-0">
+                        </div>
+                        <div>
+                            <label for="edit_invoiceId" class="block text-[10px] font-normal text-neutral-600 mb-0.5">Order ID</label>
+                            <input type="text" id="edit_invoiceId" name="invoiceId" placeholder="order_..."
+                                class="w-full border border-neutral-200 px-3 py-1.5 text-sm font-normal focus:outline-none focus:border-violet-500 focus:ring-0">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="edit_paymentMethod" class="block text-[10px] font-normal text-neutral-600 mb-0.5">Payment Method</label>
+                        <div class="relative">
+                            <select name="paymentMethod" id="edit_paymentMethod" class="w-full border border-neutral-200 px-3 py-1.5 text-sm font-normal focus:outline-none focus:border-violet-500 focus:ring-0 bg-white">
+                                <option value="upi">UPI / QR Code</option>
+                                <option value="cash">Cash</option>
+                                <option value="bank_transfer">Bank Transfer</option>
+                                <option value="card">Card</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <label for="edit_paidAt" class="block text-[10px] font-normal text-neutral-600 mb-0.5">Payment Date</label>
+                        <input type="date" id="edit_paidAt" name="paidAt"
+                            class="w-full border border-neutral-200 px-3 py-1.5 text-sm font-normal focus:outline-none focus:border-violet-500 focus:ring-0">
+                    </div>
+
+                    <div class="flex items-center pt-0.5">
+                        <input type="hidden" name="is_gst_applicable" value="0" />
+                        <input type="checkbox" id="edit_is_gst_applicable" name="is_gst_applicable" value="1"
+                            class="w-3.5 h-3.5 text-black border-neutral-200 rounded focus:ring-0 focus:ring-offset-0">
+                        <label for="edit_is_gst_applicable" class="ml-2 text-[11px] font-normal text-neutral-600">Include in GST Reports</label>
+                    </div>
+
+                    <div>
+                        <label for="edit_remarks" class="block text-[10px] font-normal text-neutral-600 mb-0.5">Notes</label>
+                        <input type="text" id="edit_remarks" name="remarks" class="w-full border border-neutral-200 px-3 py-1.5 text-sm font-normal focus:outline-none focus:border-violet-500 focus:ring-0" placeholder="Optional notes...">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer Buttons -->
+        <div class="px-5 pt-1.5 pb-4 bg-white flex justify-end gap-3">
+            <button type="button" onclick="closeEditPaymentModal()" class="border border-neutral-300 hover:bg-neutral-50 text-neutral-700 text-xs font-normal py-1.5 px-3.5 transition-colors">
+                Cancel
+            </button>
+            <button type="submit" form="editPaymentFormInner" class="bg-black hover:bg-neutral-950 text-white text-xs font-normal py-1.5 px-4 transition-colors">
+                Save Changes
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Payment Modal -->
+<div id="deletePaymentModal" class="fixed inset-0 bg-neutral-900/50 backdrop-blur-sm z-[100] hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+    <div class="bg-white border border-neutral-100 max-w-md w-full relative transform scale-95 transition-all duration-300 overflow-hidden">
+        <!-- Close Button -->
+        <button onclick="closeDeletePaymentModal()" class="absolute top-3 right-3 text-neutral-400 hover:text-neutral-600 focus:outline-none z-10 p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
+
+        <!-- Header -->
+        <div class="px-6 pt-6 pb-3 bg-white">
+            <h3 class="text-base font-semibold text-neutral-900">Delete Transaction</h3>
+            <p class="text-sm text-neutral-500 font-normal mt-2 leading-relaxed">
+                Are you sure you want to delete this payment transaction? This action cannot be undone and will automatically update enrollment records.
+            </p>
+        </div>
+
+        <!-- Transaction Details Box -->
+        <div class="px-6 py-4 mx-6 my-2 bg-white border border-neutral-200/60 space-y-3.5">
+            <div class="flex justify-between items-center text-xs">
+                <span class="text-neutral-500 font-normal">Student</span>
+                <span id="delete_student_name" class="font-medium text-neutral-900 text-sm"></span>
+            </div>
+            <div class="border-t border-dashed border-neutral-200/80"></div>
+            <div class="flex justify-between items-center text-xs">
+                <span class="text-neutral-500 font-normal">Course</span>
+                <span id="delete_course_name" class="font-medium text-neutral-900 text-sm block truncate max-w-[220px] text-right" title=""></span>
+            </div>
+            <div class="border-t border-dashed border-neutral-200/80"></div>
+            <div class="flex justify-between items-center text-xs">
+                <span class="text-neutral-500 font-normal">Amount</span>
+                <span class="text-sm font-bold text-red-600 text-sm">₹<span id="delete_amount"></span></span>
+            </div>
+        </div>
+
+        <!-- Action Form -->
+        <form id="deletePaymentFormInner" action="" method="POST" class="hidden">
+            @csrf
+        </form>
+
+        <!-- Footer Buttons -->
+        <div class="px-6 pt-2 pb-5 bg-white flex justify-end gap-3 mt-4">
+            <button type="button" onclick="closeDeletePaymentModal()" class="border border-neutral-300 hover:bg-neutral-50 text-neutral-700 text-xs font-normal py-2 px-4 transition-colors">
+                Cancel
+            </button>
+            <button type="submit" form="deletePaymentFormInner" class="bg-red-600 hover:bg-red-700 text-white text-xs font-normal py-2 px-5 transition-colors">
+                Delete
+            </button>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js" defer></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const signupsChart = echarts.init(document.getElementById('signupsChart'));
-    const revenueChart = echarts.init(document.getElementById('revenueChart'));
     const learningTimeChart = echarts.init(document.getElementById('learningTimeChart'));
     const dateRangeSelect = document.getElementById('dateRange');
     const customDateRange = document.getElementById('customDateRange');
@@ -477,11 +609,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Resize charts to fit parent
         setTimeout(() => {
-            if (tabType === 'revenue') {
-                revenueChart.resize();
-            } else if (tabType === 'enrollment') {
-                signupsChart.resize();
-            } else if (tabType === 'learning') {
+            if (tabType === 'learning') {
                 learningTimeChart.resize();
             }
         }, 50);
@@ -565,46 +693,87 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        window.allTransactionsMap = window.allTransactionsMap || {};
         filteredTx.forEach(tx => {
+            window.allTransactionsMap[tx.id] = tx;
+
             const tr = document.createElement('tr');
             tr.className = "border-b border-neutral-200 hover:bg-neutral-50/50 transition-all font-normal";
             
             // Build clickable student name
             const studentNameHtml = tx.student_id 
-                ? `<a href="/admin/students/${tx.student_id}" class="text-violet-700 hover:text-violet-800 font-normal">${tx.student_name}</a>` 
-                : `<span class="text-neutral-800 font-normal">${tx.student_name}</span>`;
+                ? `<a href="/admin/students/${tx.student_id}" class="text-violet-700 hover:text-violet-800 font-normal block truncate max-w-[180px] whitespace-nowrap" title="${tx.student_name}">${tx.student_name}</a>` 
+                : `<span class="text-neutral-800 font-normal block truncate max-w-[180px] whitespace-nowrap" title="${tx.student_name}">${tx.student_name}</span>`;
 
             // Build separate email cell content
             const emailCell = `<span class="text-neutral-600 font-normal block truncate max-w-[200px]" title="${tx.student_email}">${tx.student_email}</span>`;
 
-            // Build GST applicable / exempt pill
-            const gstPill = tx.is_gst_applicable 
-                ? `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-medium bg-[#e6f4ea] text-[#137333] border border-[#ceead6]/60 rounded-full whitespace-nowrap">
-                    <svg class="w-3.5 h-3.5 text-[#137333]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                    </svg>
-                    GST Included
-                   </span>`
-                : `<span class="inline-flex items-center gap-1 px-2.5 py-0.5 text-[11px] font-medium bg-[#fce8e6] text-[#c5221f] border border-[#fad2cf]/60 rounded-full whitespace-nowrap">
-                    <svg class="w-3 h-3 text-[#c5221f]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                        <line x1="18" y1="6" x2="6" y2="18"></line>
-                        <line x1="6" y1="6" x2="18" y2="18"></line>
-                    </svg>
-                    Not Included
-                   </span>`;
+            // Build separate course name cell content
+            const courseCell = `<span class="text-neutral-700 font-normal block truncate max-w-[200px]" title="${tx.course_name}">${tx.course_name}</span>`;
 
             // Extract just the date part (before the comma)
             const dateOnly = tx.paid_at.split(',')[0];
 
+            const amountSubtext = tx.is_gst_applicable
+                ? `<span class="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium bg-[#e6f4ea] text-[#137333] border border-[#ceead6]/60 rounded-full whitespace-nowrap">
+                    <svg class="w-3 h-3 text-[#137333]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                    </svg>
+                    GST
+                   </span>`
+                : `<span class="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium bg-[#fce8e6] text-[#c5221f] border border-[#fad2cf]/60 rounded-full whitespace-nowrap">
+                    <svg class="w-2.5 h-2.5 text-[#c5221f]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    No GST
+                   </span>`;
+
+            const enrollmentLinkHtml = tx.enrollment_id_encrypted
+                ? `<a href="/admin/payment-received/${tx.enrollment_id_encrypted}" class="text-neutral-700 hover:text-violet-800 transition-colors p-1" title="Enrollment Details">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 lucide lucide-gallery-vertical-end">
+                        <path d="M7 2h10"/>
+                        <path d="M5 6h14"/>
+                        <rect width="18" height="12" x="3" y="10" rx="2"/>
+                    </svg>
+                   </a>`
+                : '';
+
             tr.innerHTML = `
-                <td class="px-6 py-4 align-top font-normal">${studentNameHtml}</td>
-                <td class="px-6 py-4 align-top font-normal">${emailCell}</td>
-                <td class="px-6 py-4 align-top text-neutral-700 font-normal">${tx.course_name}</td>
-                <td class="px-6 py-4 align-top text-neutral-400 font-normal whitespace-nowrap">${dateOnly}</td>
-                <td class="px-6 py-4 align-top text-right text-neutral-800 font-normal">₹${numberFormat(tx.amount)}</td>
-                <td class="px-6 py-4 align-top font-normal whitespace-nowrap">${gstPill}</td>
+                <td class="px-6 py-4 align-middle font-normal">${studentNameHtml}</td>
+                <td class="px-6 py-4 align-middle font-normal">${emailCell}</td>
+                <td class="px-6 py-4 align-middle font-normal">${courseCell}</td>
+                <td class="px-6 py-4 align-middle text-neutral-800 font-normal whitespace-nowrap">${dateOnly}</td>
+                <td class="px-6 py-4 align-middle text-right text-neutral-800 font-normal whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-3">
+                        <span class="text-neutral-900 font-normal">₹${numberFormat(tx.amount)}</span>
+                        ${amountSubtext}
+                    </div>
+                </td>
+                <td class="px-6 py-4 align-middle text-right font-normal">
+                    <div class="flex items-center justify-end gap-1.5">
+                        ${enrollmentLinkHtml}
+                        <button type="button" onclick="editPaymentById(${tx.id})" class="text-neutral-700 hover:text-violet-800 transition-colors p-1" title="Edit Payment">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 lucide lucide-settings-2">
+                                <path d="M20 7h-9"/>
+                                <path d="M14 17H5"/>
+                                <circle cx="17" cy="17" r="3"/>
+                                <circle cx="7" cy="7" r="3"/>
+                            </svg>
+                        </button>
+                        <button type="button" onclick="openDeleteConfirmationModal(${tx.id})" class="text-neutral-700 hover:text-red-600 transition-colors p-1" title="Delete Payment">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 lucide lucide-trash-2">
+                                <path d="M3 6h18"/>
+                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/>
+                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </button>
+                    </div>
+                </td>
             `;
             tbody.appendChild(tr);
         });
@@ -695,196 +864,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCharts(data) {
-        // Signups Chart
-        signupsChart.setOption({
-            title: { 
-                text: 'Signups & Enrollments',
-                left: '20px',
-                top: '10px'
-            },
-            tooltip: {
-                show: true,
-                trigger: 'axis',
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                borderColor: '#ccc',
-                borderWidth: 1,
-                textStyle: {
-                    color: '#333'
-                },
-                formatter: function(params) {
-                    let result = `${params[0].axisValue}<br/>`;
-                    params.forEach(param => {
-                        result += `${param.seriesName}: ${param.value}<br/>`;
-                    });
-                    return result;
-                }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '15%',
-                top: '15%',
-                containLabel: true
-            },
-            legend: {
-                data: ['Current Period', 'Previous Period'],
-                bottom: '5px'
-            },
-            xAxis: {
-                type: 'category',
-                data: data.signupsEnrollments.map(d => d.date),
-                axisLabel: {
-                    rotate: 45
-                }
-            },
-            yAxis: {
-                type: 'value',
-                name: 'Number of Signups',
-                nameLocation: 'middle',
-                nameGap: 50
-            },
-            series: [
-                {
-                    name: 'Current Period',
-                    type: 'line',
-                    data: data.signupsEnrollments.map(d => d.signups),
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 0,
-                    itemStyle: {
-                        color: '#2563eb'
-                    },
-                    areaStyle: {
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                            { offset: 0, color: 'rgba(37, 99, 235, 0.3)' },
-                            { offset: 1, color: 'rgba(37, 99, 235, 0.1)' }
-                        ])
-                    }
-                },
-                {
-                    name: 'Previous Period',
-                    type: 'line',
-                    data: data.signupsEnrollments.map(d => d.previousSignups || 0),
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 0,
-                    itemStyle: {
-                        color: '#adb5bd'
-                    },
-                    areaStyle: {
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                            { offset: 0, color: 'rgba(173, 181, 189, 0.3)' },
-                            { offset: 1, color: 'rgba(173, 181, 189, 0.1)' }
-                        ])
-                    }
-                }
-            ]
-        });
-
-        // Revenue Chart
-        let currentRevenueData, previousRevenueData, revenueTitle;
-        if (currentGstFilter === 'all') {
-            currentRevenueData = data.revenue.map(d => d.amount);
-            previousRevenueData = data.revenue.map(d => d.previousAmount || 0);
-            revenueTitle = 'Revenue Comparison (With GST)';
-        } else if (currentGstFilter === 'net') {
-            currentRevenueData = data.revenue.map(d => d.amountNet);
-            previousRevenueData = data.revenue.map(d => d.previousAmountNet || 0);
-            revenueTitle = 'Revenue Comparison (Without GST)';
-        } else {
-            currentRevenueData = data.revenue.map(d => d.amountGst);
-            previousRevenueData = data.revenue.map(d => d.previousAmountGst || 0);
-            revenueTitle = 'Revenue Comparison (18% GST Only)';
-        }
-
-        revenueChart.setOption({
-            title: { 
-                text: revenueTitle,
-                left: '20px',
-                top: '10px'
-            },
-            tooltip: {
-                show: true,
-                trigger: 'axis',
-                backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                borderColor: '#ccc',
-                borderWidth: 1,
-                textStyle: {
-                    color: '#333'
-                },
-                formatter: function(params) {
-                    let result = `${params[0].axisValue}<br/>`;
-                    params.forEach(param => {
-                        result += `${param.seriesName}: ₹${numberFormat(param.value)}<br/>`;
-                    });
-                    return result;
-                }
-            },
-            grid: {
-                left: '3%',
-                right: '4%',
-                bottom: '15%',
-                top: '15%',
-                containLabel: true
-            },
-            legend: {
-                data: ['Current Period', 'Previous Period'],
-                bottom: '5px'
-            },
-            xAxis: {
-                type: 'category',
-                data: data.revenue.map(d => d.date),
-                axisLabel: {
-                    rotate: 45
-                }
-            },
-            yAxis: {
-                type: 'value',
-                name: '',
-                nameLocation: 'middle',
-                nameGap: 50,
-                axisLabel: {
-                    formatter: '₹{value}'
-                }
-            },
-            series: [
-                {
-                    name: 'Current Period',
-                    type: 'line',
-                    data: currentRevenueData,
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 0,
-                    itemStyle: {
-                        color: '#16a34a'
-                    },
-                    areaStyle: {
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                            { offset: 0, color: 'rgba(22, 163, 74, 0.3)' },
-                            { offset: 1, color: 'rgba(22, 163, 74, 0.1)' }
-                        ])
-                    }
-                },
-                {
-                    name: 'Previous Period',
-                    type: 'line',
-                    data: previousRevenueData,
-                    smooth: true,
-                    symbol: 'circle',
-                    symbolSize: 0,
-                    itemStyle: {
-                        color: '#adb5bd'
-                    },
-                    areaStyle: {
-                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                            { offset: 0, color: 'rgba(173, 181, 189, 0.3)' },
-                            { offset: 1, color: 'rgba(173, 181, 189, 0.1)' }
-                        ])
-                    }
-                }
-            ]
-        });
-
         // Learning Time Chart
         learningTimeChart.setOption({
             title: { 
@@ -939,6 +918,102 @@ document.addEventListener('DOMContentLoaded', function() {
             ]
         });
     }
+
+    window.openEditPaymentModal = function(id, amount, purpose, transactionId, invoiceId, method, date, isGst, remarks) {
+        const modal = document.getElementById('editPaymentModal');
+        const form = document.getElementById('editPaymentFormInner');
+        
+        // Set Action URL
+        form.action = `/admin/payments/${id}/update`;
+        
+        // Populate Fields
+        document.getElementById('edit_amount').value = amount;
+        document.getElementById('edit_transactionId').value = transactionId || '';
+        document.getElementById('edit_invoiceId').value = invoiceId || '';
+        document.getElementById('edit_paymentMethod').value = method || 'upi';
+        document.getElementById('edit_paidAt').value = date;
+        document.getElementById('edit_is_gst_applicable').checked = isGst === 1;
+        document.getElementById('edit_remarks').value = remarks || '';
+        
+        // Open Modal
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        setTimeout(() => {
+            modal.classList.remove('opacity-0');
+            modal.querySelector('div').classList.remove('scale-95');
+        }, 10);
+    }
+
+    window.closeEditPaymentModal = function() {
+        const modal = document.getElementById('editPaymentModal');
+        modal.classList.add('opacity-0');
+        modal.querySelector('div').classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }, 300);
+    }
+
+    window.closeDeletePaymentModal = function() {
+        const modal = document.getElementById('deletePaymentModal');
+        modal.classList.add('opacity-0');
+        modal.querySelector('div').classList.add('scale-95');
+        setTimeout(() => {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+        }, 300);
+    }
+
+    window.editPaymentById = function(id) {
+        const tx = window.allTransactionsMap[id];
+        if (tx) {
+            window.openEditPaymentModal(
+                tx.id,
+                tx.amount,
+                tx.purpose || 'enrollment',
+                tx.transaction_id,
+                tx.invoice_id,
+                tx.payment_method,
+                tx.paid_at_date,
+                tx.is_gst_applicable ? 1 : 0,
+                tx.remarks
+            );
+        }
+    }
+
+    window.openDeleteConfirmationModal = function(id) {
+        const tx = window.allTransactionsMap[id];
+        if (tx) {
+            const modal = document.getElementById('deletePaymentModal');
+            const form = document.getElementById('deletePaymentFormInner');
+            
+            form.action = `/admin/payments/${id}/delete`;
+            
+            document.getElementById('delete_student_name').textContent = tx.student_name;
+            document.getElementById('delete_amount').textContent = tx.amount;
+            document.getElementById('delete_course_name').textContent = tx.course_name;
+            document.getElementById('delete_course_name').title = tx.course_name;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.querySelector('div').classList.remove('scale-95');
+            }, 10);
+        }
+    }
+
+    // Close modal when clicking on the backdrop
+    window.addEventListener('click', function(event) {
+        const editModal = document.getElementById('editPaymentModal');
+        const deleteModal = document.getElementById('deletePaymentModal');
+        if (event.target === editModal) {
+            window.closeEditPaymentModal();
+        }
+        if (event.target === deleteModal) {
+            window.closeDeletePaymentModal();
+        }
+    });
 
     // Initial load
     fetchData('this_month');

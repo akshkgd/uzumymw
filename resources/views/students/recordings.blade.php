@@ -221,6 +221,7 @@ body{
 
     @isset($content)
         @if ($content->count() > 0)
+            @if($subStatus == true && $enrollment->status == 1)
             <section>
 
 <div class="">
@@ -456,6 +457,35 @@ body{
                 </div>
                 </div>
             </section>
+            @else
+                <main class="min-h-screen flex flex-col justify-center align-middle px-6 py-12 lg:px-8">
+                    <div class="sm:mx-auto sm:w-full sm:max-w-sm"></div>
+                    <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
+                        <h2 class="text-center text-xl -mt-1 font-bold leading-9 cal-sans text-neutral-900" style="font-family: 'Cal Sans', sans-serif;">
+                            @if($enrollment->status == 2)
+                                Access Banned
+                            @else
+                                Access Expired
+                            @endif
+                        </h2>
+                        <p class="bg-white text-md px-6 text-neutral-800 text-center mt-3">
+                            @if($enrollment->status == 2)
+                                Your access for {{$enrollment->batch->name}} has been suspended. Please contact our support team for further details and assistance.
+                            @else
+                                Your access for {{$enrollment->batch->name}} has come to an end! But we're just a message away if you need more time or feel there's been a mistake.
+                            @endif
+                        </p>
+                        <div class="flex justify-center gap-2 mt-4">
+                            @php
+                                $statusText = $enrollment->status == 2 ? 'suspended' : 'expired';
+                                $message = "Hey, my access to " . $enrollment->batch->name . " is " . $statusText . ", can you help? My email ID is " . Auth::user()->email;
+                                $whatsappUrl = "https://wa.me/919452959744?text=" . urlencode($message);
+                            @endphp
+                            <a href="{{ $whatsappUrl }}" target="_blank" class="btn btn-dark px-5 py-3 rounded-xl inline-block mt-3" style="border-radius: 12px;">Contact Support Team</a>
+                        </div>
+                    </div>
+                </main>
+            @endif
         @else
             
                         <div class="rec-nf">

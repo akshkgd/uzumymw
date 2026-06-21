@@ -48,7 +48,7 @@
 
     <!-- intro -->
    
-    @if($subStatus == true)
+    @if($subStatus == true && $enrollment->status == 1)
     @if($intro == 'true')
       @include('layouts.coursePageIntro')
     @endif
@@ -78,11 +78,24 @@
 
     <div class="sm:mx-auto sm:w-full sm:max-w-md text-center">
       
-      <h2 class="text-center text-xl -mt-1 font-bold leading-9 cal-sans text-neutral-900">Access Expired </h2>
-      <p class="bg-white text-md px-6 text-neutral-800 text-center">Your access for {{$enrollment->batch->name}}  has come to an end! But we're just a message away if you need more time or feel there's been a mistake.</p>
+      <h2 class="text-center text-xl -mt-1 font-bold leading-9 cal-sans text-neutral-900">
+        @if($enrollment->status == 2)
+          Access Banned
+        @else
+          Access Expired
+        @endif
+      </h2>
+      <p class="bg-white text-md px-6 text-neutral-800 text-center">
+        @if($enrollment->status == 2)
+          Your access for {{$enrollment->batch->name}} has been suspended. Please contact our support team for further details and assistance.
+        @else
+          Your access for {{$enrollment->batch->name}} has come to an end! But we're just a message away if you need more time or feel there's been a mistake.
+        @endif
+      </p>
       <div class="flex justify-center gap-2">
         @php
-    $message = "Hey, my access to " . $enrollment->batch->name . " has expired, can you help? My email ID is " . Auth::user()->email;
+    $statusText = $enrollment->status == 2 ? 'suspended' : 'expired';
+    $message = "Hey, my access to " . $enrollment->batch->name . " is " . $statusText . ", can you help? My email ID is " . Auth::user()->email;
     $whatsappUrl = "https://wa.me/919452959744?text=" . urlencode($message);
 @endphp
         <a href="{{ $whatsappUrl }}" target="_blank" class="bg-black text-white px-5 py-3 rounded-xl inline-block mt-6">Contact Support Team</a>

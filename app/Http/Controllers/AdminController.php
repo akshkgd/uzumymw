@@ -1285,6 +1285,10 @@ class AdminController extends Controller
                     ? (int) $payment->enrollment->batch->type
                     : 0;
 
+                $enrollmentIdEncrypted = $payment->enrollment
+                    ? Crypt::encrypt($payment->enrollment->id)
+                    : null;
+
                 return [
                     'id' => $payment->id,
                     'student_id' => $studentId,
@@ -1297,9 +1301,12 @@ class AdminController extends Controller
                     'gst_amount' => $payment->is_gst_applicable ? (int) round(($payment->amount / 100) - ($payment->amount / 100 / 1.18)) : 0,
                     'payment_method' => $payment->payment_method,
                     'transaction_id' => $payment->transaction_id,
+                    'invoice_id' => $payment->invoice_id,
                     'remarks' => $payment->remarks ?? '',
                     'purpose' => $payment->purpose ?? '',
-                    'paid_at' => Carbon::parse($payment->paid_at)->format('d M Y, h:i A')
+                    'paid_at' => Carbon::parse($payment->paid_at)->format('d M Y, h:i A'),
+                    'paid_at_date' => Carbon::parse($payment->paid_at)->format('Y-m-d'),
+                    'enrollment_id_encrypted' => $enrollmentIdEncrypted
                 ];
             });
 
