@@ -630,7 +630,7 @@
                       </svg>
                     </div>
 
-                    <h3 class="text-2xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight">
+                    <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-50 tracking-tight">
                       Leaderboard
                     </h3>
                     <p class="text-neutral-500 dark:text-neutral-400 text-sm mt-1">
