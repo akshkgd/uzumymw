@@ -318,7 +318,7 @@
                                     <template x-if="!loadingLeaderboard && leaderboard.length > 0">
                                       <div class="flex flex-col gap-0.5">
                                         <template x-for="(user, index) in leaderboard" :key="user.id">
-                                          <div class="flex items-center justify-between py-2 px-2.5 transition-all duration-150 hover:bg-neutral-100/70 dark:hover:bg-neutral-800/40 rounded-xl cursor-pointer" :class="user.id === {{ Auth::id() }} ? 'bg-amber-50/50 dark:bg-amber-950/20 font-semibold' : ''">
+                                          <div class="flex items-center justify-between py-2.5 px-2" :class="user.id === {{ Auth::id() }} ? 'bg-amber-50/30 dark:bg-amber-950/10 font-semibold rounded-xl' : ''">
                                             
                                             <!-- Rank Indicator -->
                                             <div class="w-12 flex-shrink-0 flex items-center justify-between text-xs text-neutral-500 font-semibold dark:text-neutral-400">
@@ -345,7 +345,7 @@
                                               <div class="flex flex-col min-w-0">
                                                 <span class="text-sm font-medium text-neutral-850 dark:text-neutral-100 truncate" x-text="user.name"></span>
                                                 <template x-if="user.id === {{ Auth::id() }}">
-                                                  <span class="text-[9px] text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider">You</span>
+                                                  <span class="text-[9px] text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider mt-0.5">You</span>
                                                 </template>
                                               </div>
                                             </div>
@@ -367,7 +367,7 @@
                               </div>
 
                               <!-- Pinned Current User Footer (Only shown when unlocked) -->
-                              <template x-if="currentUser && !loadingLeaderboard && {{ (Auth::user()->xp ?? 0) }} >= 50">
+                              <template x-if="currentUser && currentUser.rank > 1 && !loadingLeaderboard && {{ (Auth::user()->xp ?? 0) }} >= 50">
                                 <div class="px-6 py-3 bg-[#FFFDF5] dark:bg-amber-950/10 border-t border-amber-100 dark:border-amber-900/40 flex items-center justify-between sticky bottom-0 z-10 shadow-lg">
                                   
                                   <!-- Rank + Dash -->
@@ -416,38 +416,38 @@
                             <div x-show="activeTab === 'rules'" class="flex-grow flex flex-col overflow-hidden">
                               
                               <!-- Header Area -->
-                              <div class="p-5 pb-3 border-b border-neutral-100 dark:border-neutral-800 bg-gradient-to-br from-white to-neutral-50/30 dark:from-neutral-900 dark:to-neutral-950/20">
-                                <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-50 tracking-tight">
+                              <div class="p-6 pb-4 border-b border-neutral-100 dark:border-neutral-800 bg-white dark:bg-neutral-900">
+                                <h3 class="text-2xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight">
                                   How XP Works
                                 </h3>
-                                <p class="text-neutral-500 dark:text-neutral-400 text-xs mt-0.5">
+                                <p class="text-neutral-500 dark:text-neutral-400 text-sm mt-1">
                                   Learn how to collect experience points and rank up
                                 </p>
                               </div>
 
                               <!-- Rules List Scroll Container -->
-                              <div class="flex-grow overflow-y-auto p-4 space-y-3">
-                                <div class="p-3 bg-[#FFFBEB] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/50 rounded-lg flex gap-2.5">
-                                  <span class="text-xl">🔥</span>
+                              <div class="flex-grow overflow-y-auto p-6 space-y-4">
+                                <div class="p-4 bg-[#FFFBEB] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/50 rounded-xl flex gap-3.5 items-start">
+                                  <span class="text-2xl mt-0.5">🔥</span>
                                   <div>
-                                    <h4 class="text-xs font-bold text-amber-900 dark:text-amber-100">Daily Study Streak (+10 XP)</h4>
-                                    <p class="text-[11px] text-amber-800 dark:text-amber-200/80 mt-0.5">Study every single day to maintain your streak. Missing a day resets it to 0. Consecutive days of learning award a +10 XP streak bonus!</p>
+                                    <h4 class="text-sm font-bold text-amber-900 dark:text-amber-100">Daily Study Streak (+10 XP)</h4>
+                                    <p class="text-xs text-amber-800 dark:text-amber-200/80 mt-1 leading-relaxed">Study every single day to maintain your streak. Missing a day resets it to 0. Consecutive days of learning award a +10 XP streak bonus!</p>
                                   </div>
                                 </div>
 
-                                <div class="p-3 bg-blue-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/50 rounded-lg flex gap-2.5">
-                                  <span class="text-xl">⚡</span>
+                                <div class="p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/50 rounded-xl flex gap-3.5 items-start">
+                                  <span class="text-2xl mt-0.5">⚡</span>
                                   <div>
-                                    <h4 class="text-xs font-bold text-blue-900 dark:text-blue-100">Watch Lessons (+2 XP/min)</h4>
-                                    <p class="text-[11px] text-blue-800 dark:text-blue-200/80 mt-0.5">Earn experience points passively as you watch course recordings. Every minute spent learning grants you 2 XP.</p>
+                                    <h4 class="text-sm font-bold text-blue-900 dark:text-blue-100">Watch Lessons (+2 XP/min)</h4>
+                                    <p class="text-xs text-blue-800 dark:text-blue-200/80 mt-1 leading-relaxed">Earn experience points passively as you watch course recordings. Every minute spent learning grants you 2 XP.</p>
                                   </div>
                                 </div>
 
-                                <div class="p-3 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/50 rounded-lg flex gap-2.5">
-                                  <span class="text-xl">✅</span>
+                                <div class="p-4 bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-100 dark:border-emerald-900/50 rounded-xl flex gap-3.5 items-start">
+                                  <span class="text-2xl mt-0.5">✅</span>
                                   <div>
-                                    <h4 class="text-xs font-bold text-emerald-900 dark:text-emerald-100">Complete Lessons (+50 XP)</h4>
-                                    <p class="text-[11px] text-emerald-800 dark:text-emerald-200/80 mt-0.5">Finish a lesson, assignment, or video and click the "Mark as Complete" button to claim an instant 50 XP completion reward.</p>
+                                    <h4 class="text-sm font-bold text-emerald-900 dark:text-emerald-100">Complete Lessons (+50 XP)</h4>
+                                    <p class="text-xs text-emerald-800 dark:text-emerald-200/80 mt-1 leading-relaxed">Finish a lesson, assignment, or video and click the "Mark as Complete" button to claim an instant 50 XP completion reward.</p>
                                   </div>
                                 </div>
                               </div>

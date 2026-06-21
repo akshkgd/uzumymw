@@ -1887,6 +1887,9 @@ video {
 .gap-8 {
   gap: 2rem;
 }
+.gap-3\.5 {
+  gap: 0.875rem;
+}
 .gap-x-2 {
   -moz-column-gap: 0.5rem;
        column-gap: 0.5rem;
@@ -2545,6 +2548,9 @@ video {
 .bg-\[\#FFFDF5\] {
   --tw-bg-opacity: 1;
   background-color: rgb(255 253 245 / var(--tw-bg-opacity));
+}
+.bg-amber-50\/30 {
+  background-color: rgb(255 251 235 / 0.3);
 }
 .bg-opacity-10 {
   --tw-bg-opacity: 0.1;
