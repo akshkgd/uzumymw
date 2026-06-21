@@ -209,7 +209,34 @@
                   .catch(() => { 
                       this.loadingLeaderboard = false; 
                   }); 
-          } 
+          },
+          getInitials(name) {
+              if (!name) return 'U';
+              const parts = name.trim().split(/\s+/);
+              if (parts.length >= 2) {
+                  return (parts[0][0] + parts[1][0]).toUpperCase();
+              }
+              return parts[0][0].toUpperCase();
+          },
+          getAvatarBg(name) {
+              if (!name) return '#6b7280';
+              const bgs = [
+                  '#78350f', // Amber/brownish
+                  '#b91c1c', // Red
+                  '#0d9488', // Teal
+                  '#0284c7', // Blue
+                  '#991b1b', // Burgundy
+                  '#4f46e5', // Indigo
+                  '#0891b2', // Cyan
+                  '#16a34a'  // Green
+              ];
+              let hash = 0;
+              for (let i = 0; i < name.length; i++) {
+                  hash = name.charCodeAt(i) + ((hash << 5) - hash);
+              }
+              const index = Math.abs(hash) % bgs.length;
+              return bgs[index];
+          }
       }" class="relative">
         <div class="flex gap-3 items-center">
           {{-- chapers slider --}}
@@ -591,9 +618,9 @@
                 <div x-show="activeTab === 'leaderboard'" class="flex-grow flex flex-col overflow-hidden">
                   
                   <!-- Header Area -->
-                  <div class="p-5 pb-3 relative overflow-hidden bg-gradient-to-br from-white to-neutral-50/30 dark:from-neutral-900 dark:to-neutral-950/20 border-b border-neutral-100 dark:border-neutral-855">
+                  <div class="p-6 pb-4 relative overflow-hidden bg-white dark:bg-neutral-900 border-b border-neutral-100 dark:border-neutral-800">
                     <!-- Vector Grid Background Pattern -->
-                    <div class="absolute right-0 top-0 w-36 h-36 opacity-10 dark:opacity-20 pointer-events-none">
+                    <div class="absolute right-0 top-0 w-36 h-36 opacity-10 dark:opacity-25 pointer-events-none">
                       <svg viewBox="0 0 100 100" class="w-full h-full text-neutral-950 dark:text-white" fill="none" stroke="currentColor" stroke-width="0.5">
                         <circle cx="90" cy="10" r="30" />
                         <circle cx="90" cy="10" r="50" />
@@ -603,19 +630,26 @@
                       </svg>
                     </div>
 
-                    <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-50 tracking-tight">
+                    <h3 class="text-2xl font-bold text-neutral-900 dark:text-neutral-50 tracking-tight">
                       Leaderboard
                     </h3>
-                    <p class="text-neutral-500 dark:text-neutral-400 text-xs mt-0.5">
+                    <p class="text-neutral-500 dark:text-neutral-400 text-sm mt-1">
                       Solve, earn XP & stay at the top
                     </p>
                     
-                    <button @click="activeTab = 'rules'" class="mt-3 inline-flex items-center gap-1.5 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-full px-3 py-1 text-xs font-semibold text-neutral-800 dark:text-neutral-200 transition-colors">
-                      <svg class="w-3.5 h-3.5 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    <button @click="activeTab = 'rules'" class="mt-4 inline-flex items-center gap-2 border border-neutral-250 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-full px-4 py-1.5 text-xs font-semibold text-neutral-800 dark:text-neutral-200 transition-colors">
+                      <svg class="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
                       How XP Works
                     </button>
+                  </div>
+
+                  <!-- Table Header Row -->
+                  <div class="px-6 py-2.5 bg-neutral-50 dark:bg-neutral-950 border-b border-neutral-100 dark:border-neutral-850 flex items-center justify-between text-[10px] font-bold text-neutral-400 dark:text-neutral-500 tracking-wider uppercase select-none">
+                    <div class="w-12 text-left">Rank</div>
+                    <div class="flex-grow pl-6 text-left">Name</div>
+                    <div class="w-24 text-right">Total XP</div>
                   </div>
 
                   <!-- Content Scroll Area -->
@@ -694,7 +728,7 @@
                       </div>
                     @else
                       <!-- UNLOCKED RANKINGS LIST -->
-                      <div class="px-5 py-2">
+                      <div class="px-4 py-2">
                         <template x-if="loadingLeaderboard">
                           <div class="flex flex-col items-center justify-center py-16 gap-3">
                             <div class="w-8 h-8 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
@@ -709,44 +743,48 @@
                         </template>
 
                         <template x-if="!loadingLeaderboard && leaderboard.length > 0">
-                          <div class="divide-y divide-neutral-100 dark:divide-neutral-850">
+                          <div class="flex flex-col gap-0.5">
                             <template x-for="(user, index) in leaderboard" :key="user.id">
-                              <div class="flex items-center justify-between py-2.5 transition-colors hover:bg-neutral-50/50 dark:hover:bg-neutral-800/20" :class="user.id === {{ Auth::id() }} ? 'bg-amber-50/50 dark:bg-amber-950/20 font-semibold -mx-5 px-5' : ''">
-                                <div class="flex items-center gap-2.5">
-                                  <!-- Rank Indicator -->
-                                  <div class="w-6 text-center text-xs font-normal text-neutral-500">
-                                    <template x-if="index === 0">
-                                      <span class="text-base">🥇</span>
-                                    </template>
-                                    <template x-if="index === 1">
-                                      <span class="text-base">🥈</span>
-                                    </template>
-                                    <template x-if="index === 2">
-                                      <span class="text-base">🥉</span>
-                                    </template>
-                                    <template x-if="index > 2">
-                                      <span x-text="index + 1" class="text-neutral-400 dark:text-neutral-500"></span>
-                                    </template>
-                                  </div>
+                              <div class="flex items-center justify-between py-2 px-2.5 transition-all duration-150 hover:bg-neutral-100/70 dark:hover:bg-neutral-800/40 rounded-xl cursor-pointer" :class="user.id === {{ Auth::id() }} ? 'bg-amber-50/50 dark:bg-amber-950/20 font-semibold' : ''">
+                                
+                                <!-- Rank Indicator -->
+                                <div class="w-12 flex-shrink-0 flex items-center justify-between text-xs text-neutral-500 font-semibold dark:text-neutral-400">
+                                  <span class="w-6 text-left" x-text="index + 1"></span>
+                                  <span class="text-neutral-300 dark:text-neutral-700 font-normal pr-1.5">—</span>
+                                </div>
 
-                                  <!-- Avatar -->
-                                  <img :src="user.avatar.includes('assets/img/mask.svg') ? '{{ asset('assets/img/mask.svg') }}' : user.avatar" 
-                                       class="w-8 h-8 rounded-full object-cover border border-neutral-200 dark:border-neutral-700" alt="Avatar">
+                                <!-- Avatar & Name -->
+                                <div class="flex items-center gap-3 flex-grow pl-3 overflow-hidden">
+                                  <!-- Image Avatar -->
+                                  <template x-if="user.avatar && !user.avatar.includes('assets/img/mask.svg')">
+                                    <img :src="user.avatar" 
+                                         class="w-8 h-8 rounded-full object-cover border border-neutral-200 dark:border-neutral-700" alt="Avatar">
+                                  </template>
+                                  <!-- Initials Avatar -->
+                                  <template x-if="!user.avatar || user.avatar.includes('assets/img/mask.svg')">
+                                    <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white uppercase select-none" 
+                                         :style="'background-color: ' + getAvatarBg(user.name)" 
+                                         x-text="getInitials(user.name)">
+                                    </div>
+                                  </template>
                                   
                                   <!-- Name -->
-                                  <div class="flex flex-col">
-                                    <span class="text-xs text-neutral-900 dark:text-neutral-100" x-text="user.name"></span>
+                                  <div class="flex flex-col min-w-0">
+                                    <span class="text-sm font-medium text-neutral-850 dark:text-neutral-100 truncate" x-text="user.name"></span>
                                     <template x-if="user.id === {{ Auth::id() }}">
                                       <span class="text-[9px] text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider">You</span>
                                     </template>
                                   </div>
                                 </div>
 
-                                <!-- XP Amount -->
-                                <div class="flex items-center gap-1">
-                                  <span class="text-xs font-bold text-neutral-900 dark:text-neutral-100" x-text="Number(user.xp).toLocaleString()"></span>
-                                  <span class="text-[10px] text-neutral-500">XP</span>
+                                <!-- XP Amount Badge -->
+                                <div class="w-24 flex-shrink-0 flex justify-end">
+                                  <div class="flex items-center gap-1.5 bg-[#FFFBEB] dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900/30 rounded-full pl-1.5 pr-3 py-1 h-8 select-none">
+                                    <img src="{{ asset('assets/img/xp.svg') }}" class="w-5 h-5 object-contain" alt="XP">
+                                    <span class="text-xs font-bold text-neutral-850 dark:text-neutral-100" x-text="Number(user.xp).toLocaleString()"></span>
+                                  </div>
                                 </div>
+
                               </div>
                             </template>
                           </div>
@@ -757,25 +795,46 @@
 
                   <!-- Pinned Current User Footer (Only shown when unlocked) -->
                   <template x-if="currentUser && !loadingLeaderboard && {{ (Auth::user()->xp ?? 0) }} >= 50">
-                    <div class="px-5 py-3 bg-amber-50/40 dark:bg-amber-950/10 border-t border-neutral-100 dark:border-neutral-800 flex items-center justify-between sticky bottom-0 z-10 backdrop-blur-md">
-                      <div class="flex items-center gap-2.5">
-                        <!-- Rank -->
-                        <div class="w-6 text-center text-xs font-semibold text-amber-700 dark:text-amber-400" x-text="currentUser.rank"></div>
-                        
-                        <!-- Avatar -->
-                        <img :src="currentUser.avatar.includes('assets/img/mask.svg') ? '{{ asset('assets/img/mask.svg') }}' : currentUser.avatar" 
-                             class="w-8 h-8 rounded-full object-cover border border-amber-250 dark:border-amber-900" alt="Avatar">
-                        
-                        <!-- Name -->
-                        <div class="flex flex-col">
-                          <span class="text-xs font-semibold text-neutral-900 dark:text-neutral-100">You</span>
-                          <span class="text-[9px] text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider">Your Rank</span>
+                    <div class="px-6 py-3 bg-[#FFFDF5] dark:bg-amber-950/10 border-t border-amber-100 dark:border-amber-900/40 flex items-center justify-between sticky bottom-0 z-10 shadow-lg">
+                      
+                      <!-- Rank + Dash -->
+                      <div class="flex items-center gap-3 min-w-0">
+                        <div class="w-12 flex-shrink-0 flex items-center justify-between text-xs text-amber-700 dark:text-amber-400 font-bold">
+                          <span class="w-6 text-left" x-text="currentUser.rank"></span>
+                          <span class="text-amber-250 dark:text-amber-900 font-normal pr-1.5">—</span>
+                        </div>
+
+                        <!-- Avatar & Name -->
+                        <div class="flex items-center gap-3 overflow-hidden">
+                          <!-- Image Avatar -->
+                          <template x-if="currentUser.avatar && !currentUser.avatar.includes('assets/img/mask.svg')">
+                            <img :src="currentUser.avatar" 
+                                 class="w-8 h-8 rounded-full object-cover border border-amber-250 dark:border-amber-900" alt="Avatar">
+                          </template>
+                          <!-- Initials Avatar -->
+                          <template x-if="!currentUser.avatar || currentUser.avatar.includes('assets/img/mask.svg')">
+                            <div class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold text-white uppercase select-none" 
+                                 :style="'background-color: ' + getAvatarBg(currentUser.name)" 
+                                 x-text="getInitials(currentUser.name)">
+                            </div>
+                          </template>
+
+                          <!-- Name -->
+                          <div class="flex flex-col min-w-0">
+                            <span class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 truncate" x-text="currentUser.name"></span>
+                            <span class="text-[9px] text-amber-600 dark:text-amber-400 font-bold uppercase tracking-wider">Your Rank</span>
+                          </div>
                         </div>
                       </div>
-                      <div class="flex items-center gap-1">
-                        <span class="text-xs font-bold text-neutral-900 dark:text-neutral-100" x-text="Number(currentUser.xp).toLocaleString()"></span>
-                        <span class="text-[10px] text-neutral-500 font-medium">XP</span>
+
+                      <!-- XP Amount Badge -->
+                      <div class="w-24 flex-shrink-0 flex justify-end">
+                        <div class="flex items-center gap-1.5 bg-[#FFFBEB] dark:bg-amber-950/40 border border-amber-250 dark:border-amber-900/50 rounded-full pl-1.5 pr-3 py-1 h-8 select-none">
+                          <img src="{{ asset('assets/img/xp.svg') }}" class="w-5 h-5 object-contain" alt="XP">
+                          <span class="text-xs font-bold text-amber-955 dark:text-amber-100" x-text="Number(currentUser.xp).toLocaleString()"></span>
+                        </div>
                       </div>
+
                     </div>
                   </template>
                 </div>
