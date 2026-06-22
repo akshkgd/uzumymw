@@ -344,6 +344,15 @@ public function updateTimeSpent(Request $request)
         return redirect()->back()->with('success', 'Session deleted successfully');
     }
 
+    public function payments()
+    {
+        $payments = \App\CourseEnrollmentPayment::whereHas('enrollment', function ($query) {
+            $query->where('userId', Auth::id());
+        })->with(['enrollment.batch'])->latest('paid_at')->get();
+
+        return view('students.payments', compact('payments'));
+    }
+
     public function recordingsTest($userId, $batchId)
     {
         // Fetch the relevant course enrollment record for the user and batch

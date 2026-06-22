@@ -179,6 +179,7 @@ Route::resource('/faq', 'FaqController');
 Route::resource('/course', 'BatchController');
 Route::resource('/feedback', 'FeedbackController');
 Route::get('/sessions', 'StudentController@sessions');
+Route::get('/payments', 'StudentController@payments')->name('student.payments')->middleware('auth');
 Route::get('/delete-session/{sessionId}', 'StudentController@deleteSession')->name('delete.session');
 Auth::routes(['verify' => true]);
 Route::get('/redirect', 'googlelogin@redirectToProvider');

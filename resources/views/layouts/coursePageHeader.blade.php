@@ -553,10 +553,22 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                 class="w-4 h-4 mr-2">
+                <path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/>
+                <path d="M10 19v-3.96 3.15"/>
+                <path d="M7 19h5"/>
+                <rect width="6" height="10" x="16" y="12" rx="2"/>
+              </svg>
+              <span>Sessions</span><span class="ml-auto text-xs tracking-widest opacity-60">⌘B</span>
+            </a>
+            <a href="{{ route('student.payments') }}"
+              class="relative flex cursor-default select-none hover:bg-neutral-100 items-center rounded px-2 py-1.5 text-sm outline-none transition-colors data-[disabled]:pointer-events-none data-[disabled]:opacity-50">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="w-4 h-4 mr-2">
                 <rect width="20" height="14" x="2" y="5" rx="2"></rect>
                 <line x1="2" x2="22" y1="10" y2="10"></line>
               </svg>
-              <span>Sessions</span><span class="ml-auto text-xs tracking-widest opacity-60">⌘B</span>
+              <span>Payments & Invoices</span>
             </a>
 
             <!-- <div class="h-px my-1 -mx-1 bg-neutral-200"></div> -->
@@ -600,7 +612,7 @@
                  x-transition:leave="ease-in duration-200"
                  x-transition:leave-start="opacity-100 scale-100"
                  x-transition:leave-end="opacity-0 scale-95"
-                 class="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-100 dark:border-neutral-800 shadow-2xl max-w-md w-full overflow-hidden flex flex-col max-h-[85vh] relative">
+                 class="bg-white dark:bg-neutral-900 rounded-2xl border border-neutral-100 dark:border-neutral-800 shadow-2xl max-w-md w-full overflow-hidden flex flex-col h-[480px] max-h-[85vh] relative">
               
               <!-- Close button overlay at top-right -->
               <div class="absolute top-4 right-4 z-50">
@@ -618,37 +630,26 @@
                 <div x-show="activeTab === 'leaderboard'" class="flex-grow flex flex-col overflow-hidden">
                   
                   <!-- Header Area -->
-                  <div class="p-6 pb-4 relative overflow-hidden bg-white dark:bg-neutral-900 border-b border-neutral-100 dark:border-neutral-800">
-                    <!-- Vector Grid Background Pattern -->
-                    <div class="absolute right-0 top-0 w-36 h-36 opacity-10 dark:opacity-25 pointer-events-none">
-                      <svg viewBox="0 0 100 100" class="w-full h-full text-neutral-950 dark:text-white" fill="none" stroke="currentColor" stroke-width="0.5">
-                        <circle cx="90" cy="10" r="30" />
-                        <circle cx="90" cy="10" r="50" />
-                        <circle cx="90" cy="10" r="70" />
-                        <line x1="90" y1="10" x2="20" y2="80" />
-                        <line x1="90" y1="10" x2="50" y2="90" />
-                      </svg>
+                  <div class="p-6 pb-4 relative overflow-hidden bg-white dark:bg-neutral-900">
+                    <div class="flex items-center gap-1.5">
+                      <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-50 tracking-tight">
+                        Leaderboard
+                      </h3>
+                      <button @click="activeTab = 'rules'" class="text-neutral-400 hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors p-1 rounded-full hover:bg-neutral-100 dark:hover:bg-neutral-800 focus:outline-none" title="How XP Works">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </button>
                     </div>
-
-                    <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-50 tracking-tight">
-                      Leaderboard
-                    </h3>
                     <p class="text-neutral-500 dark:text-neutral-400 text-sm">
-                      Solve, earn XP & stay at the top
+                      Watch lessons, complete chapters & stay at the top
                     </p>
-                    
-                    <button @click="activeTab = 'rules'" class="mt-4 inline-flex items-center gap-2 border border-neutral-250 dark:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-full px-4 py-1.5 text-xs font-semibold text-neutral-800 dark:text-neutral-200 transition-colors">
-                      <svg class="w-4 h-4 text-neutral-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      How XP Works
-                    </button>
                   </div>
 
 
 
                   <!-- Content Scroll Area -->
-                  <div class="flex-grow overflow-y-auto relative min-h-[300px]">
+                  <div class="flex-grow {{ (Auth::user()->xp ?? 0) < 50 ? 'overflow-hidden' : 'overflow-y-auto' }} relative min-h-[300px]">
                     
                     <!-- LOCKED STATE -->
                     @if((Auth::user()->xp ?? 0) < 50)
@@ -699,10 +700,28 @@
                           </div>
                           <span class="text-xs font-bold text-neutral-900">250 XP</span>
                         </div>
+                        <!-- Mockup Item 6 -->
+                        <div class="flex items-center justify-between py-2.5">
+                          <div class="flex items-center gap-2.5">
+                            <span class="w-6 text-center text-xs font-normal text-neutral-400">6</span>
+                            <div class="w-8 h-8 rounded-full bg-neutral-200"></div>
+                            <span class="text-xs text-neutral-900">Olivia Martinez</span>
+                          </div>
+                          <span class="text-xs font-bold text-neutral-900">210 XP</span>
+                        </div>
+                        <!-- Mockup Item 7 -->
+                        <div class="flex items-center justify-between py-2.5">
+                          <div class="flex items-center gap-2.5">
+                            <span class="w-6 text-center text-xs font-normal text-neutral-400">7</span>
+                            <div class="w-8 h-8 rounded-full bg-neutral-200"></div>
+                            <span class="text-xs text-neutral-900">James Taylor</span>
+                          </div>
+                          <span class="text-xs font-bold text-neutral-900">180 XP</span>
+                        </div>
                       </div>
 
                       <!-- Overlay Card in Foreground -->
-                      <div class="absolute inset-0 flex flex-col items-center justify-center p-5 text-center bg-white/10 dark:bg-neutral-900/10 backdrop-blur-[1px]">
+                      <div class="absolute inset-0 flex flex-col items-center justify-start pt-[72px] p-5 text-center bg-white/10 dark:bg-neutral-900/10 backdrop-blur-[1px]">
                         <!-- Lock Pill Badge -->
                         <div class="bg-[#FFF5F5] dark:bg-red-950/20 text-[#D12B2B] dark:text-red-400 border border-[#FFE3E3] dark:border-red-900/50 rounded-full px-3 py-1 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider shadow-sm">
                           <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3" viewBox="0 0 20 20" fill="currentColor">
@@ -836,7 +855,7 @@
                 <div x-show="activeTab === 'rules'" class="flex-grow flex flex-col overflow-hidden">
                   
                   <!-- Header Area -->
-                  <div class="p-6 pb-4 border-b border-neutral-100 dark:border-neutral-800 bg-white dark:bg-neutral-900">
+                  <div class="p-6 pb-4 bg-white dark:bg-neutral-900">
                     <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-50 tracking-tight">
                       How XP Works
                     </h3>
@@ -846,39 +865,36 @@
                   </div>
 
                   <!-- Rules List Scroll Container -->
-                  <div class="flex-grow overflow-y-auto p-6 space-y-4">
-                    <div class="p-4 bg-[#FFFBEB] dark:bg-amber-950/20 border border-amber-100 dark:border-amber-900/50 rounded-xl flex gap-3.5 items-start">
-                      <img src="{{ asset('assets/img/streak.svg') }}" class="w-6 h-6 object-contain mt-0.5" alt="Streak">
+                  <div class="flex-grow overflow-y-auto px-6 pb-6 pt-2 flex flex-col justify-center space-y-6">
+                    <div class="flex gap-4 items-center">
+                      <img src="{{ asset('assets/img/streak.svg') }}" class="w-6 h-6 object-contain flex-shrink-0" alt="Streak">
                       <div>
-                        <h4 class="text-sm font-bold text-amber-900 dark:text-amber-100">Daily Study Streak (+10 XP)</h4>
-                        <p class="text-xs text-amber-800 dark:text-amber-200/80 mt-1 leading-relaxed">Study every single day to maintain your streak. Missing a day resets it to 0. Consecutive days of learning award a +10 XP streak bonus!</p>
+                        <h4 class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">Daily Study Streak (+10 XP)</h4>
+                        <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 leading-relaxed">Study daily to maintain your streak. Missing a day resets it to 0. Consecutive days award +10 XP!</p>
                       </div>
                     </div>
 
-                    <div class="p-4 bg-blue-50 dark:bg-blue-950/20 border border-blue-100 dark:border-blue-900/50 rounded-xl flex gap-3.5 items-start">
-                      <img src="{{ asset('assets/img/xpa1.svg') }}" class="w-6 h-6 object-contain mt-0.5" alt="Watch Lessons">
+                    <div class="flex gap-4 items-center">
+                      <img src="{{ asset('assets/img/xpa1.svg') }}" class="w-6 h-6 object-contain flex-shrink-0" alt="Watch Lessons">
                       <div>
-                        <h4 class="text-sm font-bold text-blue-900 dark:text-blue-100">Watch Lessons (+2 XP/min)</h4>
-                        <p class="text-xs text-blue-800 dark:text-blue-200/80 mt-1 leading-relaxed">Earn experience points passively as you watch course recordings. Every minute spent learning grants you 2 XP.</p>
+                        <h4 class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">Watch Lessons (+2 XP/min)</h4>
+                        <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 leading-relaxed">Earn 2 XP passively for every minute spent watching course recordings.</p>
                       </div>
                     </div>
 
-                    <div class="p-4 bg-violet-50 dark:bg-violet-950/20 border border-violet-100 dark:border-violet-900/50 rounded-xl flex gap-3.5 items-start">
-                      <img src="{{ asset('assets/img/xpa2.svg') }}" class="w-6 h-6 object-contain mt-0.5" alt="Complete Lessons">
+                    <div class="flex gap-4 items-center">
+                      <img src="{{ asset('assets/img/xpa2.svg') }}" class="w-6 h-6 object-contain flex-shrink-0" alt="Complete Chapters">
                       <div>
-                        <h4 class="text-sm font-bold text-violet-900 dark:text-violet-100">Complete Lessons (+50 XP)</h4>
-                        <p class="text-xs text-violet-800 dark:text-violet-200/80 mt-1 leading-relaxed">Finish a lesson, assignment, or video and click the "Mark as Complete" button to claim an instant 50 XP completion reward.</p>
+                        <h4 class="text-sm font-semibold text-neutral-900 dark:text-neutral-100">Complete Chapters (+50 XP)</h4>
+                        <p class="text-xs text-neutral-500 dark:text-neutral-400 mt-0.5 leading-relaxed">Complete a chapter or assignment and click 'Mark as Complete' to claim 50 XP instantly.</p>
                       </div>
                     </div>
                   </div>
 
                   <!-- Rules Footer Link -->
-                  <div class="border-t border-neutral-100 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50 px-5 py-3">
-                    <button @click="activeTab = 'leaderboard'" class="w-full text-center py-2 text-xs font-semibold text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-850 border border-neutral-200 dark:border-neutral-700 hover:bg-neutral-50 rounded-lg flex items-center justify-center gap-1 transition-colors">
+                  <div class="bg-white dark:bg-neutral-900 px-6 pb-6 pt-2">
+                    <button @click="activeTab = 'leaderboard'" class="w-full text-center py-3.5 text-sm font-normal text-white dark:text-neutral-900 bg-neutral-900 dark:bg-white hover:bg-neutral-850 dark:hover:bg-neutral-100 rounded-xl transition-all duration-200 shadow-sm active:scale-[0.99]">
                       Go to Leaderboard
-                      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                      </svg>
                     </button>
                   </div>
                 </div>
