@@ -130,10 +130,12 @@ class StudentController extends Controller
         $video = $videoLink ? $content->firstWhere('id', $chapterId) : $content->first();
         $intro = ($videoLink) ? "false" : "true";
 
+        $startDate = $enrollment->startFrom ? Carbon::parse($enrollment->startFrom) : ($enrollment->paidAt ? Carbon::parse($enrollment->paidAt) : Carbon::now());
+
         if (blank($enrollment->accessTill)) {
             $field5 = optional($enrollment->batch)->field5;
             $yearsToAdd = (is_numeric($field5) && (int)$field5 > 0) ? (int)$field5 : 1;
-            $effectiveAccessTill = Carbon::parse(optional($enrollment->batch)->startDate)->addYears($yearsToAdd);
+            $effectiveAccessTill = $startDate->copy()->addYears($yearsToAdd);
         } else {
             $effectiveAccessTill = Carbon::parse($enrollment->accessTill);
         }
@@ -144,7 +146,6 @@ class StudentController extends Controller
             $subStatus = false;
         }
 
-        $startDate = $enrollment->startFrom ? Carbon::parse($enrollment->startFrom) : ($enrollment->paidAt ? Carbon::parse($enrollment->paidAt) : Carbon::now());
         $daysSincePayment = $startDate->startOfDay()->diffInDays(Carbon::now()->startOfDay(), false);
         $overrideDays = (int)$enrollment->override_access_days;
         $accessTill = $overrideDays > 0 ? max($daysSincePayment, $overrideDays) : $daysSincePayment;
