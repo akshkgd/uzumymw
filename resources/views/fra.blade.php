@@ -157,9 +157,9 @@ without getting stuck in tutorial hell.</h1>
 
   <button type="submit"
     class="bg-orange-600 py-3 text-white mb-1 hover:cursor-pointer">
-    Book Your Strategy Call Now at ₹99
+    Book Your Discovery Call Now at ₹149
   </button>
-  {{-- <p class="text-sm text-neutral-700">₹99 to secure your slot (fully refunded if you show up)</p> --}}
+  <p class="text-sm text-neutral-700">A 30 minute Discovery call to understand your career goals and determine if we can help you get guaranteed results faster.</p>
 </form>    
         </div>
             
