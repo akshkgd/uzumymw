@@ -238,6 +238,12 @@ class AdminController extends Controller
         $feedbacks = Feedback::latest()->get();
         return view('admin.feedbacks', compact('feedbacks'))->with('i');
     }
+    public function featureRequests()
+    {
+        $featureRequests = \App\FeatureRequest::with('user')->latest()->paginate(50)->withQueryString();
+        return view('admin.featureRequests', compact('featureRequests'))
+            ->with('i', (request()->input('page', 1) - 1) * 50);
+    }
     public function removeFeedback($id)
     {
         $feedback = Feedback::findorFail($id);

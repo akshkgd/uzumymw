@@ -300,6 +300,7 @@ Route::get('/admin/enrollment/{id}/payments-json', 'AdminController@getEnrollmen
 Route::get('/admin/users', 'AdminController@getUsers');
 Route::get('/admin/workshops', 'AdminController@workshops');
 Route::get('/admin/feedbacks', 'AdminController@feedbacks');
+Route::get('/admin/feature-requests', 'AdminController@featureRequests')->name('admin.feature-requests');
 Route::get('/admin/remove-feedback/{id}', 'AdminController@removeFeedback');
 Route::get('/admin/add-feedback/{id}', 'AdminController@addFeedback');
 Route::get('/admin/add-access', 'AdminController@addAccess');
@@ -350,6 +351,8 @@ Route::post('/update-section', [TeacherController::class, 'updateSection'])->nam
 Route::get('/api/batch/{hashId}', 'CodekaroController@BatchStreamDetails')->name('admin.streamDetails');
 Route::get('/api/user/{email}', 'CodekaroController@userDetailsApi');
 Route::get('/api/certificate/{id}', 'CodekaroController@certificateDetailsApi');
+
+Route::post('/feature-requests', 'FeatureRequestController@store')->name('feature-requests.store')->middleware('auth');
 
 // laravel log view
 // Route::get('log-viewer', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');

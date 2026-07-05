@@ -38,6 +38,7 @@
 </script>
   </head>
   <body class="font-sans">
+    @include('layouts.t-alert')
     
     @yield('content')
 

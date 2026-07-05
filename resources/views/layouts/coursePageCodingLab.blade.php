@@ -451,7 +451,7 @@
 </head>
 
 <body class="bg-white text-black  overflow-hidden flex flex-col font-sans">
-  <div class="flex flex-col h-[calc(100vh-56px)] mt-[56px]" id="container">
+  <div class="flex flex-col h-[calc(100vh-96px)] mt-[96px]" id="container">
     <!-- Header -->
     <div class="flex justify-between items-center px-4 py-2 border-b border-neutral-200">
       <h1 class="text-l font-">{{$video->title}}</h1>
