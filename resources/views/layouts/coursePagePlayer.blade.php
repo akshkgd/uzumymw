@@ -172,5 +172,72 @@
         // Call updateTimeSpent every 1 minute (60,000 milliseconds)
         setInterval(updateTimeSpent, 60000);
     });
+
+    // Global keyboard controls for video seeking and playback
+    document.addEventListener('keydown', function(event) {
+        // Ignore if user is typing in an input, textarea, or contenteditable element
+        const activeEl = document.activeElement;
+        if (activeEl && (
+            activeEl.tagName === 'INPUT' || 
+            activeEl.tagName === 'TEXTAREA' || 
+            activeEl.isContentEditable
+        )) {
+            return;
+        }
+
+        if (event.key === 'ArrowRight') {
+            player.getCurrentTime(time => {
+                if (typeof time === 'number') {
+                    player.setCurrentTime(time + 10);
+                }
+            });
+            event.preventDefault();
+        } else if (event.key === 'ArrowLeft') {
+            player.getCurrentTime(time => {
+                if (typeof time === 'number') {
+                    player.setCurrentTime(Math.max(0, time - 10));
+                }
+            });
+            event.preventDefault();
+        } else if (event.key === ' ' || event.key === 'Spacebar') {
+            if (isPlaying) {
+                player.pause();
+            } else {
+                player.play();
+            }
+            event.preventDefault();
+        } else if (event.key === 'f' || event.key === 'F') {
+            const iframe = document.getElementById('bunny-stream-embed');
+            if (iframe) {
+                if (!document.fullscreenElement && 
+                    !document.webkitFullscreenElement && 
+                    !document.mozFullScreenElement && 
+                    !document.msFullscreenElement) {
+                    // Enter fullscreen
+                    if (iframe.requestFullscreen) {
+                        iframe.requestFullscreen();
+                    } else if (iframe.webkitRequestFullscreen) {
+                        iframe.webkitRequestFullscreen();
+                    } else if (iframe.mozRequestFullScreen) {
+                        iframe.mozRequestFullScreen();
+                    } else if (iframe.msRequestFullscreen) {
+                        iframe.msRequestFullscreen();
+                    }
+                } else {
+                    // Exit fullscreen
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.mozCancelFullScreen) {
+                        document.mozCancelFullScreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                }
+            }
+            event.preventDefault();
+        }
+    });
     </script>
     
