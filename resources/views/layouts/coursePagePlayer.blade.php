@@ -1,5 +1,5 @@
 <main class=" flex gap-4 justify-center align-middle py-12 ">
-    <div class="2xl:px-0 max-w-6xl mt-24 ml-[370px]">
+    <div class="2xl:px-0 max-w-6xl mt-24">
       <div class="sm:w-[740px] px-2 sm:px-4 md:px-0">
             <div class="video-containe">
               <script type="text/javascript" src="//assets.mediadelivery.net/playerjs/player-0.1.0.min.js"></script>
