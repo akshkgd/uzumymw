@@ -323,6 +323,11 @@ Route::get('/admin/invoices', 'AdminController@listInvoices')->name('admin.invoi
 Route::get('/admin/invoices/download/{invoiceId}', 'AdminController@downloadInvoices')->name('admin.invoices.download');
 Route::get('/admin/wf', 'AdminController@wf');
 
+// admin migrations
+Route::get('/admin/migrations', 'AdminController@migrations')->name('admin.migrations');
+Route::get('/admin/migrations/stats', 'AdminController@migrationStats')->name('admin.migrations.stats');
+Route::post('/admin/migrations/send-chunk', 'AdminController@sendMigrationChunk')->name('admin.migrations.send-chunk');
+
 
 
 

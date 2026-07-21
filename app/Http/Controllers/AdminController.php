@@ -1439,5 +1439,146 @@ class AdminController extends Controller
             return redirect()->back();
         }
     }
+
+    /**
+     * Display the Admin Migrations page.
+     */
+    public function migrations()
+    {
+        $usersCount = User::count();
+        $batchesCount = Batch::count();
+        $enrollmentsCount = CourseEnrollment::count();
+
+        return view('admin.migrations', compact('usersCount', 'batchesCount', 'enrollmentsCount'));
+    }
+
+    /**
+     * Get real-time migration stats (counts).
+     */
+    public function migrationStats()
+    {
+        return response()->json([
+            'success' => true,
+            'users' => User::count(),
+            'batches' => Batch::count(),
+            'enrollments' => CourseEnrollment::count(),
+        ]);
+    }
+
+    /**
+     * Process and transmit a chunk of migration data to external API.
+     */
+    public function sendMigrationChunk(Request $request)
+    {
+        $request->validate([
+            'entity' => 'required|in:users,batches,enrollments',
+            'offset' => 'required|integer|min:0',
+            'limit' => 'required|integer|min:1|max:5000',
+            'target_url' => 'nullable|url',
+            'api_key' => 'nullable|string',
+        ]);
+
+        $entity = $request->input('entity');
+        $offset = (int) $request->input('offset');
+        $limit = (int) $request->input('limit', 50);
+        $targetUrl = $request->input('target_url') ?: 'https://api.codekaro.in/migration/users';
+        $apiKey = $request->input('api_key');
+
+        $items = [];
+        $totalRecords = 0;
+
+        if ($entity === 'users') {
+            $totalRecords = User::count();
+            $rawUsers = User::skip($offset)->take($limit)->get();
+            
+            // Format users payload: remove field1..field5, password, remember_token
+            $items = $rawUsers->map(function ($user) {
+                $userData = $user->toArray();
+                unset(
+                    $userData['field1'],
+                    $userData['field2'],
+                    $userData['field3'],
+                    $userData['field4'],
+                    $userData['field5'],
+                    $userData['password'],
+                    $userData['remember_token']
+                );
+                return $userData;
+            })->values()->all();
+        } elseif ($entity === 'batches') {
+            $totalRecords = Batch::count();
+            $items = Batch::skip($offset)->take($limit)->get()->toArray();
+        } elseif ($entity === 'enrollments') {
+            $totalRecords = CourseEnrollment::count();
+            $items = CourseEnrollment::skip($offset)->take($limit)->get()->toArray();
+        }
+
+        $processedCount = count($items);
+        $hasMore = ($offset + $processedCount) < $totalRecords;
+        $nextOffset = $offset + $processedCount;
+
+        if ($processedCount === 0) {
+            return response()->json([
+                'success' => true,
+                'entity' => $entity,
+                'processed' => 0,
+                'total_records' => $totalRecords,
+                'has_more' => false,
+                'next_offset' => $nextOffset,
+                'status_code' => 200,
+                'message' => 'No items left to process.'
+            ]);
+        }
+
+        $payload = [
+            'entity' => $entity,
+            'batch_index' => floor($offset / $limit) + 1,
+            'chunk_size' => $limit,
+            'total_records' => $totalRecords,
+            'data' => $items,
+        ];
+
+        try {
+            $startTime = microtime(true);
+            
+            $httpClient = Http::timeout(30);
+            if (!empty($apiKey)) {
+                $httpClient = $httpClient->withHeaders([
+                    'Authorization' => 'Bearer ' . $apiKey,
+                    'X-API-Key' => $apiKey,
+                ]);
+            }
+
+            $response = $httpClient->post($targetUrl, $payload);
+            $durationMs = round((microtime(true) - $startTime) * 1000, 2);
+
+            return response()->json([
+                'success' => $response->successful(),
+                'entity' => $entity,
+                'processed' => $processedCount,
+                'total_records' => $totalRecords,
+                'has_more' => $hasMore,
+                'next_offset' => $nextOffset,
+                'status_code' => $response->status(),
+                'response_body' => $response->json() ?? Str::limit($response->body(), 300),
+                'duration_ms' => $durationMs,
+                'target_url' => $targetUrl,
+            ]);
+        } catch (\Exception $e) {
+            Log::error("Migration Chunk Error [{$entity}]: " . $e->getMessage());
+
+            return response()->json([
+                'success' => false,
+                'entity' => $entity,
+                'processed' => 0,
+                'total_records' => $totalRecords,
+                'has_more' => true,
+                'next_offset' => $offset,
+                'status_code' => 500,
+                'error' => $e->getMessage(),
+                'target_url' => $targetUrl,
+            ], 500);
+        }
+    }
 }
 
