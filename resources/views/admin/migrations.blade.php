@@ -479,7 +479,13 @@
                         this.addLog(`Sent ${count.toLocaleString()} ${entity} chunk -> ${resData.target_url} [${resData.status_code}] (${resData.duration_ms}ms)`, 'success', entity);
                         return true;
                     } else {
-                        const errMsg = resData.error || resData.message || (typeof resData.response_body === 'string' ? resData.response_body : `HTTP ${resData.status_code || response.status}`);
+                        let errMsg = resData.error || resData.message;
+                        if (!errMsg && resData.response_body) {
+                            errMsg = typeof resData.response_body === 'object' ? JSON.stringify(resData.response_body) : resData.response_body;
+                        }
+                        if (!errMsg) {
+                            errMsg = `HTTP ${resData.status_code || response.status}`;
+                        }
                         this.addLog(`Chunk failed (Offset ${item.offset.toLocaleString()}): ${errMsg}`, 'danger', entity);
                         return false;
                     }
